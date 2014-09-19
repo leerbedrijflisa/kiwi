@@ -2,7 +2,7 @@
 
 namespace Lisa.Kiwi.Data.Models
 {
-    class KiwiContext : DbContext
+    public class KiwiContext : DbContext
     {
         public KiwiContext()
             : base("KiwiLocalConn")
