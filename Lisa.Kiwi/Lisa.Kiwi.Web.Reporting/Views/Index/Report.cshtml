@@ -1,0 +1,29 @@
+﻿@model Lisa.Kiwi.Web.Reporting.Models.OriginalReport
+
+@{
+    ViewBag.Title = "Report";
+}
+
+<h2>Report</h2>
+
+@using (Html.BeginForm("ReportDetails", "Index"))
+{
+    @Html.LabelFor(o => o.Title)
+    @Html.TextBoxFor(o => o.Title, new { @required = "required" })
+    <br />
+    @Html.LabelFor(o => o.Location)
+    @Html.TextBoxFor(o => o.Location, new { @required = "required" })
+    <br />
+    @Html.LabelFor(o => o.Time)
+    @Html.TextBoxFor(o => o.Time, new { @required = "required", @Value = DateTime.Now.ToString("dd-MM-yyyy") })
+    <br />
+    @Html.LabelFor(o => o.Description)
+    @Html.TextAreaFor(o => o.Description, new { @required = "required" })
+    <br />
+    @Html.Label("Contact gegevens")
+    @Html.CheckBox("contactMe", new { @value = "Neem contact met mij op"})
+    <p>Neem contact met mij op!</p>
+    <br />
+    <input type="submit" value="Volgende stap" />
+}
+
