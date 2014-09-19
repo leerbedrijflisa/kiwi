@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Http;
+﻿using System.Web.Http;
+using System.Web.Http.OData.Builder;
+using Lisa.Kiwi.Data.Models;
 
 namespace Lisa.Kiwi.WebApi
 {
@@ -10,6 +9,14 @@ namespace Lisa.Kiwi.WebApi
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
+            ODataConventionModelBuilder builder = new ODataConventionModelBuilder();
+            
+            builder.EntitySet<Report>("Report");
+            builder.EntitySet<Contact>("Contact");
+            builder.EntitySet<Remark>("Remark");
+            builder.EntitySet<Status>("Status");
+
+            config.Routes.MapODataRoute("odata", "odata", builder.GetEdmModel());
 
             // Web API routes
             config.MapHttpAttributeRoutes();

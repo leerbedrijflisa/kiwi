@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Lisa.Kiwi.Data.Models
 {
-    class Remark
+    public class Remark
     {
         [Key]
         public int Id { get; set; }

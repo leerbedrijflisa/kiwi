@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Lisa.Kiwi.Data.Models
 {
-    class Status
+    public class Status
     {
         [Key]
         public int Id { get; set; }

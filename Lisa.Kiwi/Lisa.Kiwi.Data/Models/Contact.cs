@@ -2,7 +2,7 @@
 
 namespace Lisa.Kiwi.Data.Models
 {
-    class Contact
+    public class Contact
     {
         [Key]
         public int Id { get; set; }
