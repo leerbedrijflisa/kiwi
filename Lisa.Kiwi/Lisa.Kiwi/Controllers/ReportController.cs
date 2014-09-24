@@ -130,7 +130,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
         [Queryable]
         public IQueryable<Contact> GetContact([FromODataUri] int key)
         {
-            return db.Report.Where(m => m.Id == key).SelectMany(m => m.Contact);
+            return db.Report.Where(m => m.Id == key).SelectMany(m => m.Contacts);
         }
 
         protected override void Dispose(bool disposing)
