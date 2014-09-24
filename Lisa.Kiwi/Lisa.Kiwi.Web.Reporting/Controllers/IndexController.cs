@@ -38,10 +38,11 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
         }
 
         [HttpPost]
-        public ActionResult ReportDetails(OriginalReport report, string contactMe)
+        public ActionResult ReportDetails(OriginalReport report, string contactMe = "false")
         {
             if (!CheckReport(report))
             {
+                // Hier opslaan!
                 return View("Report");
             }
 
@@ -49,13 +50,42 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             {
                 return ContactDetails(report.GuId);
             }
-
-            return View();
+            return RedirectToAction("Confirmed");
         }
 
         public ActionResult ContactDetails(string guid)
         {
+            ViewBag.Guid = guid;
+            return View("ContactDetails");
+        }
 
+        [HttpPost]
+        public ActionResult Contactdetails(Contact contact, string guid)
+        {
+            if (string.IsNullOrEmpty(contact.Email) && contact.Phone == 0 && contact.StudentNo == 0)
+            {
+                ModelState.AddModelError("Form", "U moet een van de contact velden invoeren (Telefoon, Email of studenten nummer).");
+            } 
+
+            if (contact.Email == "false")
+            {
+                contact.Email = "";
+            }
+
+
+
+            if (!ModelState.IsValid)
+            {
+                return View("Contactdetails");
+            }
+
+            // Save contact details
+
+            return RedirectToAction("Confirmed");
+        }
+
+        public ActionResult Confirmed()
+        {
             return View();
         }
 

@@ -95,6 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ConnectController.cs" />
     <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -119,6 +120,7 @@
     <Content Include="Views\Index\ReportType.cshtml" />
     <Content Include="Views\Index\Report.cshtml" />
     <Content Include="Views\Index\ContactDetails.cshtml" />
+    <Content Include="Views\Index\Confirmed.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -128,6 +130,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Connect\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Lisa.Kiwi.WebApi.Access\Lisa.Kiwi.WebApi.Access.csproj">

@@ -21,7 +21,7 @@ namespace Lisa.Kiwi.Web.Reporting.Models
         public string Title { get; set; }
         [Required, Display(Name = "Locatie"), StringLength(60, ErrorMessage = "De locatie mag niet langer zijn dan 60 karakters.")]
         public string Location { get; set; }
-        [Required, StringLength(19)]
+        [StringLength(19)]
         public string GuId { get; set; }
         public string UserAgent { get; set; }
         public string Ip { get; set; }
@@ -29,7 +29,7 @@ namespace Lisa.Kiwi.Web.Reporting.Models
         public string Description { get; set; }
         
         public DateTime Created {get;set;}
-        [Required, DataType(DataType.Date)]
+        [Required]
         public DateTime Time { get; set; }
 
         public ReportType Type { get; set; }
