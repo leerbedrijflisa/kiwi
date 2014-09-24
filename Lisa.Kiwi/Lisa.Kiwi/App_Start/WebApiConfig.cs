@@ -1,5 +1,6 @@
 ﻿using System.Web.Http;
 using System.Web.Http.OData.Builder;
+using System.Web.Http.OData.Extensions;
 using Lisa.Kiwi.Data.Models;
 
 namespace Lisa.Kiwi.WebApi
@@ -16,7 +17,7 @@ namespace Lisa.Kiwi.WebApi
             builder.EntitySet<Remark>("Remark");
             builder.EntitySet<Status>("Status");
 
-            config.Routes.MapODataRoute("odata", "odata", builder.GetEdmModel());
+            config.Routes.MapODataServiceRoute("odata", "odata", builder.GetEdmModel());
 
             // Web API routes
             config.MapHttpAttributeRoutes();
