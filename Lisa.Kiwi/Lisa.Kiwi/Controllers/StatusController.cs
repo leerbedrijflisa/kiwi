@@ -14,14 +14,14 @@ namespace Lisa.Kiwi.WebApi.Controllers
         private KiwiContext db = new KiwiContext();
 
         // GET odata/Status
-        [EnableQuery]
+        [Queryable]
         public IQueryable<Status> GetStatus()
         {
             return db.Status;
         }
 
         // GET odata/Status(5)
-        [EnableQuery]
+        [Queryable]
         public SingleResult<Status> GetStatus([FromODataUri] int key)
         {
             return SingleResult.Create(db.Status.Where(status => status.Id == key));
@@ -127,7 +127,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
         }
 
         // GET odata/Status(5)/Report
-        [EnableQuery]
+        [Queryable]
         public SingleResult<Report> GetReport([FromODataUri] int key)
         {
             return SingleResult.Create(db.Status.Where(m => m.Id == key).Select(m => m.Report));

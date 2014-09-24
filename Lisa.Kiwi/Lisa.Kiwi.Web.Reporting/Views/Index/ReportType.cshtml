@@ -1,0 +1,15 @@
+﻿@model Lisa.Kiwi.Web.Reporting.Models.OriginalReport
+
+@{
+    ViewBag.Title = "ReportType";
+}
+
+<h2>Report</h2>
+
+@using (Html.BeginForm("Report", "Index"))
+{
+    @Html.EnumDropDownListFor(m => m.Type)
+    <br />
+    <br />
+    <input type="submit" value="Volgende stap" />
+}

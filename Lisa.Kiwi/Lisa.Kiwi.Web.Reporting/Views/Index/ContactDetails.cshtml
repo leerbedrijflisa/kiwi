@@ -1,0 +1,45 @@
+﻿@model Lisa.Kiwi.Web.Reporting.Models.Contact
+
+@{
+    ViewBag.Title = "ContactDetails";
+}
+
+<h2>ContactDetails</h2>
+
+@using (Html.BeginForm("Contactdetails", "Index"))
+{
+    @Html.ValidationSummary()
+    
+    @Html.LabelFor(c => c.Name)
+    @Html.TextBoxFor(c => c.Name)
+    <br />
+    @Html.LabelFor(c => c.Phone) 
+    @Html.TextBoxFor(c => c.Phone, new { @Disabled = "Disabled", Value = "" }) 
+    @Html.CheckBox("phoneCheck", false, new { @Value = "Bel mij!", OnChange = "disabledCheck('phoneCheck', 'Phone');" })
+    <br />
+    @Html.LabelFor(c => c.Email) 
+    @Html.TextBoxFor(c => c.Email , new { @Disabled = "Disabled", Value = "" }) 
+    @Html.CheckBox("emailCheck", false, new { @Value = "Mail mij!", OnChange = "disabledCheck('emailCheck', 'Email'); " })
+    <br />
+    @Html.LabelFor(c => c.StudentNo) 
+    @Html.TextBoxFor(c => c.StudentNo, new { @Disabled = "Disabled", Value = "" }) 
+    @Html.CheckBox("studentCheck", false, new { @Value = "Neem contact op met mijn begleider/mentor", OnChange = "disabledCheck('studentCheck', 'StudentNo');" })
+    <br />
+    <br />
+    @Html.Hidden("guid", new { @Value = ViewBag.Guid });
+    <input type="submit" value="Bevestig" />
+}
+
+<script type="text/javascript">
+    function disabledCheck(checkboxId, inputId) {
+        var checkbox = document.getElementById(checkboxId);
+        var input = document.getElementById(inputId);
+        if (checkbox.checked) {
+            input.disabled = false;
+        } else {
+            input.disabled = true;
+        }
+    }
+
+    
+</script>

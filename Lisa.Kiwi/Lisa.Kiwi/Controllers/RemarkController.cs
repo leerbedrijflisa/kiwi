@@ -1,10 +1,16 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.ModelBinding;
 using System.Web.Http.OData;
+using System.Web.Http.OData.Routing;
 using Lisa.Kiwi.Data.Models;
 
 namespace Lisa.Kiwi.WebApi.Controllers
@@ -14,14 +20,14 @@ namespace Lisa.Kiwi.WebApi.Controllers
         private KiwiContext db = new KiwiContext();
 
         // GET odata/Remark
-        [EnableQuery]
+        [Queryable]
         public IQueryable<Remark> GetRemark()
         {
             return db.Remark;
         }
 
         // GET odata/Remark(5)
-        [EnableQuery]
+        [Queryable]
         public SingleResult<Remark> GetRemark([FromODataUri] int key)
         {
             return SingleResult.Create(db.Remark.Where(remark => remark.Id == key));
@@ -127,7 +133,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
         }
 
         // GET odata/Remark(5)/Report
-        [EnableQuery]
+        [Queryable]
         public SingleResult<Report> GetReport([FromODataUri] int key)
         {
             return SingleResult.Create(db.Remark.Where(m => m.Id == key).Select(m => m.Report));
