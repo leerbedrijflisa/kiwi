@@ -28,8 +28,8 @@ namespace Lisa.Kiwi.Data.Models
 
         [MaxLength(45)]
         public string Ip { get; set; }
-
-        public enum Type
+      
+        public enum ReportType
         {
             Drugs,
             Overlast,
@@ -41,11 +41,13 @@ namespace Lisa.Kiwi.Data.Models
             Digitaal
         }
 
-        public virtual ICollection<Contact> Contact { get; set; }
+        public ReportType Type { get; set; }
+
+        public virtual ICollection<Contact> Contacts { get; set; }
 
         public Report()
         {
-            Contact = new List<Contact>();
+            Contacts = new List<Contact>();
         }
     }
 }
