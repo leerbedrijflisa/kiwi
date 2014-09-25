@@ -26,15 +26,14 @@ namespace Lisa.Kiwi.Data.Migrations
                 Time = DateTime.Now.AddDays(-1),
                 Guid = Guid.NewGuid().ToString(),
                 UserAgent = "Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Firefox/31.0",
-                Ip = "85.119.106.81",
-                Type = Report.ReportType.Digitaal,
+                IpAddress = "85.119.106.81",
+                Type = ReportType.Digital,
                 Contacts = new List<Contact>
                 {
-                    new Contact
-                    {
-                        Email = "jordischarloo@gmail.com",
-                        Phone = "+31642904875",
-                        StudentNo = 99016300
+                    new Contact { 
+                        EmailAddress = "jordischarloo@gmail.com",
+                        PhoneNumber = "+31642904875",
+                        StudentNumber = 99016300
                     }
                 }
             };
@@ -53,9 +52,9 @@ namespace Lisa.Kiwi.Data.Migrations
                 Report = sampleReport
             };
 
-            context.Report.AddOrUpdate(sampleReport);
-            context.Status.AddOrUpdate(sampleStatus);
-            context.Remark.AddOrUpdate(sampleRemark);
+            context.Reports.AddOrUpdate(sampleReport);
+            context.Statuses.AddOrUpdate(sampleStatus);
+            context.Remarks.AddOrUpdate(sampleRemark);
         }
     }
 }

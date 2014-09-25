@@ -23,14 +23,14 @@ namespace Lisa.Kiwi.WebApi.Controllers
         [Queryable]
         public IQueryable<Remark> GetRemark()
         {
-            return db.Remark;
+            return db.Remarks;
         }
 
         // GET odata/Remark(5)
         [Queryable]
         public SingleResult<Remark> GetRemark([FromODataUri] int key)
         {
-            return SingleResult.Create(db.Remark.Where(remark => remark.Id == key));
+            return SingleResult.Create(db.Remarks.Where(remark => remark.Id == key));
         }
 
         // PUT odata/Remark(5)
@@ -75,7 +75,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Remark.Add(remark);
+            db.Remarks.Add(remark);
             await db.SaveChangesAsync();
 
             return Created(remark);
@@ -90,7 +90,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            Remark remark = await db.Remark.FindAsync(key);
+            Remark remark = await db.Remarks.FindAsync(key);
             if (remark == null)
             {
                 return NotFound();
@@ -120,13 +120,13 @@ namespace Lisa.Kiwi.WebApi.Controllers
         // DELETE odata/Remark(5)
         public async Task<IHttpActionResult> Delete([FromODataUri] int key)
         {
-            Remark remark = await db.Remark.FindAsync(key);
+            Remark remark = await db.Remarks.FindAsync(key);
             if (remark == null)
             {
                 return NotFound();
             }
 
-            db.Remark.Remove(remark);
+            db.Remarks.Remove(remark);
             await db.SaveChangesAsync();
 
             return StatusCode(HttpStatusCode.NoContent);
@@ -136,7 +136,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
         [Queryable]
         public SingleResult<Report> GetReport([FromODataUri] int key)
         {
-            return SingleResult.Create(db.Remark.Where(m => m.Id == key).Select(m => m.Report));
+            return SingleResult.Create(db.Remarks.Where(m => m.Id == key).Select(m => m.Report));
         }
 
         protected override void Dispose(bool disposing)
@@ -150,7 +150,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
 
         private bool RemarkExists(int key)
         {
-            return db.Remark.Count(e => e.Id == key) > 0;
+            return db.Remarks.Count(e => e.Id == key) > 0;
         }
     }
 }

@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using Lisa.Kiwi.Web.Reporting.Models;
 using Lisa.Kiwi.Tools;
+using System;
 
 namespace Lisa.Kiwi.Web.Reporting.Controllers
 {
-    public class IndexController : Controller
+    public class ReportController : Controller
     {
-        // GET: Index
         public ActionResult Index()
         {
             return View();
@@ -18,22 +15,25 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 
         public ActionResult ReportType()
         {
-            List<string> types = new List<string>()
+            ViewBag.ReportTypes = new string[]
             {
-                "Drugs", "Overlast", "Voertuigen", "Inbraak", "Diefstal", "Intimidatie", "Pesten", "Digitaal grensoverschrijdend gedrag", "Etc"
+                "Drugs",
+                "Overlast",
+                "Voertuigen",
+                "Inbraak",
+                "Diefstal",
+                "Intimidatie",
+                "Pesten",
+                "Digitaal grensoverschrijdend gedrag",
+                "Etc"
             };
 
-            ViewBag.ReportTypes = types;
             return View();
         }
 
         [HttpPost]
         public ActionResult Report(OriginalReport report)
         {
-            var rand = new Random().Next(0000, 9999);
-            var id = "M" + DateTime.Now.ToString("yyyyMMdd") + "-" + DateTime.Now.ToString("HHmmss") + "-" + rand;
-            report.GuId = id;
-
             return View();
         }
 
@@ -48,7 +48,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 
             if (contactMe != "false")
             {
-                return ContactDetails(report.GuId);
+                return ContactDetails(report.Guid);
             }
             return RedirectToAction("Confirmed");
         }

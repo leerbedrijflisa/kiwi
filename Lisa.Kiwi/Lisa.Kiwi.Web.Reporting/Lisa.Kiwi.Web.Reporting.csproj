@@ -95,8 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\ConnectController.cs" />
-    <Compile Include="Controllers\IndexController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -112,15 +111,15 @@
     <Content Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Index\Index.cshtml" />
+    <Content Include="Views\Report\Index.cshtml" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\Index\ReportType.cshtml" />
-    <Content Include="Views\Index\Report.cshtml" />
-    <Content Include="Views\Index\ContactDetails.cshtml" />
-    <Content Include="Views\Index\Confirmed.cshtml" />
+    <Content Include="Views\Report\ReportType.cshtml" />
+    <Content Include="Views\Report\Report.cshtml" />
+    <Content Include="Views\Report\ContactDetails.cshtml" />
+    <Content Include="Views\Report\Confirmed.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -10,8 +10,10 @@ namespace Lisa.Kiwi.Data.Models
 
         public DateTime Created { get; set; }
 
+        // TODO: unnest
         public enum StatusName
         {
+            // TODO: translate
             Open,
             Afgehandeld,
             Bezig,

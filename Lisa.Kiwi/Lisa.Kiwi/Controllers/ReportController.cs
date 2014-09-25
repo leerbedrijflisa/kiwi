@@ -17,14 +17,14 @@ namespace Lisa.Kiwi.WebApi.Controllers
         [Queryable]
         public IQueryable<Report> GetReport()
         {
-            return db.Report;
+            return db.Reports;
         }
 
         // GET odata/Report(5)
         [Queryable]
         public SingleResult<Report> GetReport([FromODataUri] int key)
         {
-            return SingleResult.Create(db.Report.Where(report => report.Id == key));
+            return SingleResult.Create(db.Reports.Where(report => report.Id == key));
         }
 
         // PUT odata/Report(5)
@@ -69,7 +69,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Report.Add(report);
+            db.Reports.Add(report);
             await db.SaveChangesAsync();
 
             return Created(report);
@@ -84,7 +84,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            Report report = await db.Report.FindAsync(key);
+            Report report = await db.Reports.FindAsync(key);
             if (report == null)
             {
                 return NotFound();
@@ -114,13 +114,13 @@ namespace Lisa.Kiwi.WebApi.Controllers
         // DELETE odata/Report(5)
         public async Task<IHttpActionResult> Delete([FromODataUri] int key)
         {
-            Report report = await db.Report.FindAsync(key);
+            Report report = await db.Reports.FindAsync(key);
             if (report == null)
             {
                 return NotFound();
             }
 
-            db.Report.Remove(report);
+            db.Reports.Remove(report);
             await db.SaveChangesAsync();
 
             return StatusCode(HttpStatusCode.NoContent);
@@ -130,7 +130,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
         [Queryable]
         public IQueryable<Contact> GetContact([FromODataUri] int key)
         {
-            return db.Report.Where(m => m.Id == key).SelectMany(m => m.Contacts);
+            return db.Reports.Where(m => m.Id == key).SelectMany(m => m.Contacts);
         }
 
         protected override void Dispose(bool disposing)
@@ -144,7 +144,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
 
         private bool ReportExists(int key)
         {
-            return db.Report.Count(e => e.Id == key) > 0;
+            return db.Reports.Count(e => e.Id == key) > 0;
         }
     }
 }

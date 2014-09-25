@@ -1,0 +1,10 @@
+﻿@{
+    ViewBag.Title = "Welkom";
+}
+
+<h1>Welkom!</h1>
+<p>Welkom bij de meldings wizzard</p>
+
+<form method="post" action="@Url.Action("ReportType")">
+  <input type="submit" name="NextStep" value="Maak een melding!">
+</form>

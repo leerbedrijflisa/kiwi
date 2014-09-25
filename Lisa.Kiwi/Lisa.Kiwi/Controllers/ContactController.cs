@@ -17,14 +17,14 @@ namespace Lisa.Kiwi.WebApi.Controllers
         [Queryable]
         public IQueryable<Contact> GetContact()
         {
-            return db.Contact;
+            return db.Contacts;
         }
 
         // GET odata/Contact(5)
         [Queryable]
         public SingleResult<Contact> GetContact([FromODataUri] int key)
         {
-            return SingleResult.Create(db.Contact.Where(contact => contact.Id == key));
+            return SingleResult.Create(db.Contacts.Where(contact => contact.Id == key));
         }
 
         // PUT odata/Contact(5)
@@ -69,7 +69,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Contact.Add(contact);
+            db.Contacts.Add(contact);
             await db.SaveChangesAsync();
 
             return Created(contact);
@@ -84,7 +84,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            Contact contact = await db.Contact.FindAsync(key);
+            Contact contact = await db.Contacts.FindAsync(key);
             if (contact == null)
             {
                 return NotFound();
@@ -114,13 +114,13 @@ namespace Lisa.Kiwi.WebApi.Controllers
         // DELETE odata/Contact(5)
         public async Task<IHttpActionResult> Delete([FromODataUri] int key)
         {
-            Contact contact = await db.Contact.FindAsync(key);
+            Contact contact = await db.Contacts.FindAsync(key);
             if (contact == null)
             {
                 return NotFound();
             }
 
-            db.Contact.Remove(contact);
+            db.Contacts.Remove(contact);
             await db.SaveChangesAsync();
 
             return StatusCode(HttpStatusCode.NoContent);
@@ -137,7 +137,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
 
         private bool ContactExists(int key)
         {
-            return db.Contact.Count(e => e.Id == key) > 0;
+            return db.Contacts.Count(e => e.Id == key) > 0;
         }
     }
 }

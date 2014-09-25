@@ -9,41 +9,52 @@ namespace Lisa.Kiwi.Web.Reporting.Models
 {
     public class OriginalReport
     {
-        public OriginalReport() {
+        public OriginalReport()
+        {
             Created = DateTime.Now;
-            UserAgent = System.Web.HttpContext.Current.Request.UserAgent;
+            UserAgent = HttpContext.Current.Request.UserAgent;
             Ip = Utils.GetIP();
             Priority = ReportPriority.Normaal;
         }
 
         public int Id { get; set; }
-        [Required, Display(Name="Title"), StringLength(150, ErrorMessage="De titel mag niet langer zijn dan 150 karakters.")]
+        
+        [Required]
+        [Display(Name="Title")]
+        [StringLength(150, ErrorMessage="De titel mag niet langer zijn dan 150 karakters.")]
         public string Title { get; set; }
-        [Required, Display(Name = "Locatie"), StringLength(60, ErrorMessage = "De locatie mag niet langer zijn dan 60 karakters.")]
+
+        [Required]
+        [Display(Name = "Locatie")]
+        [StringLength(60, ErrorMessage = "De locatie mag niet langer zijn dan 60 karakters.")]
         public string Location { get; set; }
+        
         [StringLength(19)]
-        public string GuId { get; set; }
+        public string Guid { get; set; }
+        
         public string UserAgent { get; set; }
         public string Ip { get; set; }
+        
         [Display(Name = "Beschrijving"), StringLength(1000, ErrorMessage = "De beschrijving mag niet langer zijn dan 1000 karakters.")]
         public string Description { get; set; }
         
         public DateTime Created {get;set;}
+        
         [Required]
         public DateTime Time { get; set; }
 
         public ReportType Type { get; set; }
         public ReportPriority Priority { get; set; }
 
+
+        public enum ReportType { }
     }
 
-    public enum ReportType
-    {
-        Drugs, Brand, verlast, Voertuigen, Inbraak, Diefstal, Intimidatie, Pesten, Internet
-    }
 
+    // TODO: unnest
     public enum ReportPriority
     {
+        // TODO: translate
         Laag,
         Normaal,
         Hoog

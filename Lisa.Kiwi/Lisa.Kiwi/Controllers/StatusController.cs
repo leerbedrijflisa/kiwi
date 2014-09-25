@@ -17,14 +17,14 @@ namespace Lisa.Kiwi.WebApi.Controllers
         [Queryable]
         public IQueryable<Status> GetStatus()
         {
-            return db.Status;
+            return db.Statuses;
         }
 
         // GET odata/Status(5)
         [Queryable]
         public SingleResult<Status> GetStatus([FromODataUri] int key)
         {
-            return SingleResult.Create(db.Status.Where(status => status.Id == key));
+            return SingleResult.Create(db.Statuses.Where(status => status.Id == key));
         }
 
         // PUT odata/Status(5)
@@ -69,7 +69,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Status.Add(status);
+            db.Statuses.Add(status);
             await db.SaveChangesAsync();
 
             return Created(status);
@@ -84,7 +84,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            Status status = await db.Status.FindAsync(key);
+            Status status = await db.Statuses.FindAsync(key);
             if (status == null)
             {
                 return NotFound();
@@ -114,13 +114,13 @@ namespace Lisa.Kiwi.WebApi.Controllers
         // DELETE odata/Status(5)
         public async Task<IHttpActionResult> Delete([FromODataUri] int key)
         {
-            Status status = await db.Status.FindAsync(key);
+            Status status = await db.Statuses.FindAsync(key);
             if (status == null)
             {
                 return NotFound();
             }
 
-            db.Status.Remove(status);
+            db.Statuses.Remove(status);
             await db.SaveChangesAsync();
 
             return StatusCode(HttpStatusCode.NoContent);
@@ -130,7 +130,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
         [Queryable]
         public SingleResult<Report> GetReport([FromODataUri] int key)
         {
-            return SingleResult.Create(db.Status.Where(m => m.Id == key).Select(m => m.Report));
+            return SingleResult.Create(db.Statuses.Where(m => m.Id == key).Select(m => m.Report));
         }
 
         protected override void Dispose(bool disposing)
@@ -144,7 +144,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
 
         private bool StatusExists(int key)
         {
-            return db.Status.Count(e => e.Id == key) > 0;
+            return db.Statuses.Count(e => e.Id == key) > 0;
         }
     }
 }
