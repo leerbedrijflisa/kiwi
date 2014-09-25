@@ -13,9 +13,9 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             return View();
         }
 
-        public ActionResult ReportType()
+        public ActionResult Type()
         {
-            ViewBag.ReportTypes = new string[]
+            var types = new string[]
             {
                 "Drugs",
                 "Overlast",
@@ -28,17 +28,24 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
                 "Etc"
             };
 
+            ViewBag.ReportTypes = new SelectList(types);
+
             return View();
         }
 
         [HttpPost]
-        public ActionResult Report(OriginalReport report)
+        public ActionResult Details(string reportType)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("Type");
+            }
+            ViewBag.Type = reportType;
             return View();
         }
 
         [HttpPost]
-        public ActionResult ReportDetails(OriginalReport report, string contactMe = "false")
+        public ActionResult Check(OriginalReport report, string contactMe = "false")
         {
             if (!CheckReport(report))
             {
@@ -62,7 +69,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
         [HttpPost]
         public ActionResult Contactdetails(Contact contact, string guid)
         {
-            if (string.IsNullOrEmpty(contact.Email) && contact.Phone == 0 && contact.StudentNo == 0)
+            if (string.IsNullOrEmpty(contact.Email) && contact.PhoneNumber == 0 && contact.StudentNumber == 0)
             {
                 ModelState.AddModelError("Form", "U moet een van de contact velden invoeren (Telefoon, Email of studenten nummer).");
             } 

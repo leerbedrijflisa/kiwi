@@ -5,6 +5,6 @@
 <h1>Welkom!</h1>
 <p>Welkom bij de meldings wizzard</p>
 
-<form method="post" action="@Url.Action("ReportType")">
+@using (Html.BeginForm("Type", "Report")) { 
   <input type="submit" name="NextStep" value="Maak een melding!">
-</form>
+}

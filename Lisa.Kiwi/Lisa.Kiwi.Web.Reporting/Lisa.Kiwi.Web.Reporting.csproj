@@ -116,8 +116,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\Report\ReportType.cshtml" />
-    <Content Include="Views\Report\Report.cshtml" />
+    <Content Include="Views\Report\Type.cshtml" />
+    <Content Include="Views\Report\Details.cshtml" />
     <Content Include="Views\Report\ContactDetails.cshtml" />
     <Content Include="Views\Report\Confirmed.cshtml" />
     <None Include="Web.Debug.config">
@@ -129,7 +129,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Connect\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Lisa.Kiwi.WebApi.Access\Lisa.Kiwi.WebApi.Access.csproj">
