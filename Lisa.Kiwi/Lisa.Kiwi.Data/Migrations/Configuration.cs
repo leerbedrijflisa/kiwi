@@ -24,7 +24,7 @@ namespace Lisa.Kiwi.Data.Migrations
                 Guid = Guid.NewGuid().ToString(),
                 UserAgent = "Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Firefox/31.0",
                 Ip = "85.119.106.81",
-                Type = Report.ReportType.Digitaal,
+                Type = ReportType.Digital,
                 Contacts = new List<Contact>
                 {
                     new Contact
@@ -39,7 +39,7 @@ namespace Lisa.Kiwi.Data.Migrations
             Status sampleStatus = new Status
             {
                 Created = DateTime.Now,
-                Name = Status.StatusName.Bezig,
+                Name = StatusName.Doing,
                 Report = sampleReport
             };
 

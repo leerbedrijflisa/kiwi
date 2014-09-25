@@ -7,7 +7,11 @@ namespace Lisa.Kiwi.Data.Models
 {
     public class Report
     {
-        [Key]
+        public Report()
+        {
+            Contacts = new List<Contact>();
+        }
+
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
@@ -15,39 +19,16 @@ namespace Lisa.Kiwi.Data.Models
         public string Description { get; set; }
 
         public const string Status = "Open";
-
         public DateTime Created { get; set; }
-
         public string Location { get; set; }
-
         public DateTime Time { get; set; }
-
         public string Guid { get; set; }
-
         public string UserAgent { get; set; }
 
         [MaxLength(45)]
         public string Ip { get; set; }
-      
-        public enum ReportType
-        {
-            Drugs,
-            Overlast,
-            Voertuigen,
-            Inbraak,
-            Diefstal,
-            Intimidatie,
-            Pesten,
-            Digitaal
-        }
 
         public ReportType Type { get; set; }
-
         public virtual ICollection<Contact> Contacts { get; set; }
-
-        public Report()
-        {
-            Contacts = new List<Contact>();
-        }
     }
 }

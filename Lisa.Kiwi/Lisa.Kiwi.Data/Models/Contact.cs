@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Lisa.Kiwi.Data.Models
+﻿namespace Lisa.Kiwi.Data.Models
 {
     public class Contact
     {
