@@ -7,7 +7,11 @@ namespace Lisa.Kiwi.Data.Models
 {
     public class Report
     {
-        [Key]
+        public Report()
+        {
+            Contacts = new List<Contact>();
+        }
+
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
@@ -22,15 +26,9 @@ namespace Lisa.Kiwi.Data.Models
         public string UserAgent { get; set; }
 
         [MaxLength(45)]
-        public string IpAddress { get; set; }
+        public string Ip { get; set; }
 
         public ReportType Type { get; set; }
-
         public virtual ICollection<Contact> Contacts { get; set; }
-
-        public Report()
-        {
-            Contacts = new List<Contact>();
-        }
     }
 }

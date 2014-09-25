@@ -14,14 +14,14 @@ namespace Lisa.Kiwi.WebApi.Controllers
         private KiwiContext db = new KiwiContext();
 
         // GET odata/Contact
-        [Queryable]
+        [EnableQuery]
         public IQueryable<Contact> GetContact()
         {
             return db.Contacts;
         }
 
         // GET odata/Contact(5)
-        [Queryable]
+        [EnableQuery]
         public SingleResult<Contact> GetContact([FromODataUri] int key)
         {
             return SingleResult.Create(db.Contacts.Where(contact => contact.Id == key));

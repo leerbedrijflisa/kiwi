@@ -4,10 +4,7 @@ using Lisa.Kiwi.Data.Models;
 
 namespace Lisa.Kiwi.Data.Migrations
 {
-    using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
-    using System.Linq;
 
     internal sealed class Configuration : DbMigrationsConfiguration<KiwiContext>
     {
@@ -26,11 +23,12 @@ namespace Lisa.Kiwi.Data.Migrations
                 Time = DateTime.Now.AddDays(-1),
                 Guid = Guid.NewGuid().ToString(),
                 UserAgent = "Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Firefox/31.0",
-                IpAddress = "85.119.106.81",
+                Ip = "85.119.106.81",
                 Type = ReportType.Digital,
                 Contacts = new List<Contact>
                 {
-                    new Contact { 
+                    new Contact
+                    {
                         EmailAddress = "jordischarloo@gmail.com",
                         PhoneNumber = "+31642904875",
                         StudentNumber = 99016300
@@ -41,7 +39,7 @@ namespace Lisa.Kiwi.Data.Migrations
             Status sampleStatus = new Status
             {
                 Created = DateTime.Now,
-                Name = Status.StatusName.Bezig,
+                Name = StatusName.Doing,
                 Report = sampleReport
             };
 
