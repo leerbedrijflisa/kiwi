@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
@@ -6,12 +7,15 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.OData;
 using Lisa.Kiwi.Data.Models;
+using Microsoft.WindowsAzure.Storage.Queue;
+using Newtonsoft.Json;
 
 namespace Lisa.Kiwi.WebApi.Controllers
 {
     public class ReportController : ODataController
     {
         private KiwiContext db = new KiwiContext();
+        private readonly CloudQueue _queue = new QueueConfig().BuildQueue();
 
         // GET odata/Report
         [EnableQuery]
@@ -39,15 +43,13 @@ namespace Lisa.Kiwi.WebApi.Controllers
             {
                 return BadRequest();
             }
-
-            db.Entry(report).State = EntityState.Modified;
-
+          
             try
             {
-                await db.SaveChangesAsync();
+                await _queue.AddMessageAsync(new CloudQueueMessage(JsonConvert.SerializeObject(report)));
             }
-            catch (DbUpdateConcurrencyException)
-            {
+            catch (Exception)
+            {   // TODO: Figure out possible exceptions!!
                 if (!ReportExists(key))
                 {
                     return NotFound();
@@ -69,8 +71,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Reports.Add(report);
-            await db.SaveChangesAsync();
+            await _queue.AddMessageAsync(new CloudQueueMessage(JsonConvert.SerializeObject(report)));
 
             return Created(report);
         }
@@ -94,10 +95,10 @@ namespace Lisa.Kiwi.WebApi.Controllers
 
             try
             {
-                await db.SaveChangesAsync();
+                await _queue.AddMessageAsync(new CloudQueueMessage(JsonConvert.SerializeObject(report)));
             }
-            catch (DbUpdateConcurrencyException)
-            {
+            catch (Exception)
+            {   // TODO: Figure out possible exceptions!!
                 if (!ReportExists(key))
                 {
                     return NotFound();
