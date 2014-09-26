@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
@@ -6,12 +7,15 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.OData;
 using Lisa.Kiwi.Data.Models;
+using Microsoft.WindowsAzure.Storage.Queue;
+using Newtonsoft.Json;
 
 namespace Lisa.Kiwi.WebApi.Controllers
 {
     public class StatusController : ODataController
     {
         private KiwiContext db = new KiwiContext();
+        private readonly CloudQueue _queue = new QueueConfig().BuildQueue();
 
         // GET odata/Status
         [EnableQuery]
@@ -44,9 +48,9 @@ namespace Lisa.Kiwi.WebApi.Controllers
 
             try
             {
-                await db.SaveChangesAsync();
+                await _queue.AddMessageAsync(new CloudQueueMessage(JsonConvert.SerializeObject(status)));
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception)
             {
                 if (!StatusExists(key))
                 {
@@ -69,8 +73,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Statuses.Add(status);
-            await db.SaveChangesAsync();
+            await _queue.AddMessageAsync(new CloudQueueMessage(JsonConvert.SerializeObject(status)));
 
             return Created(status);
         }
@@ -94,9 +97,9 @@ namespace Lisa.Kiwi.WebApi.Controllers
 
             try
             {
-                await db.SaveChangesAsync();
+                await _queue.AddMessageAsync(new CloudQueueMessage(JsonConvert.SerializeObject(status)));
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception)
             {
                 if (!StatusExists(key))
                 {
