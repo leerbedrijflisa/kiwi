@@ -13,17 +13,17 @@
     @Html.LabelFor(c => c.Name)
     @Html.TextBoxFor(c => c.Name)
     <br />
-    @Html.LabelFor(c => c.Phone) 
-    @Html.TextBoxFor(c => c.Phone, new { @Disabled = "Disabled", Value = "" }) 
-    @Html.CheckBox("phoneCheck", false, new { @Value = "Bel mij!", OnChange = "disabledCheck('phoneCheck', 'Phone');" })
+    @Html.LabelFor(c => c.PhoneNumber) 
+    @Html.TextBoxFor(c => c.PhoneNumber, new { @Disabled = "Disabled", Value = "", OnChange = "RemoveSpace('PhoneNumber');" }) 
+    @Html.CheckBox("phoneCheck", false, new { @Value = "Bel mij!", OnChange = "disabledCheck('phoneCheck', 'PhoneNumber');" })
     <br />
     @Html.LabelFor(c => c.Email) 
     @Html.TextBoxFor(c => c.Email , new { @Disabled = "Disabled", Value = "" }) 
     @Html.CheckBox("emailCheck", false, new { @Value = "Mail mij!", OnChange = "disabledCheck('emailCheck', 'Email'); " })
     <br />
-    @Html.LabelFor(c => c.StudentNo) 
-    @Html.TextBoxFor(c => c.StudentNo, new { @Disabled = "Disabled", Value = "" }) 
-    @Html.CheckBox("studentCheck", false, new { @Value = "Neem contact op met mijn begleider/mentor", OnChange = "disabledCheck('studentCheck', 'StudentNo');" })
+    @Html.LabelFor(c => c.StudentNumber) 
+    @Html.TextBoxFor(c => c.StudentNumber, new { @Disabled = "Disabled", Value = "", OnChange = "RemoveSpace('StudentNumber');" }) 
+    @Html.CheckBox("studentCheck", false, new { @Value = "Neem contact op met mijn begleider/mentor", OnChange = "disabledCheck('studentCheck', 'StudentNumber');" })
     <br />
     <br />
     @Html.Hidden("guid", new { @Value = ViewBag.Guid });
@@ -39,6 +39,11 @@
         } else {
             input.disabled = true;
         }
+    }
+
+    function RemoveSpace(inputId) {
+        var input = document.getElementById(inputId);
+        input.value = input.value.replace(' ', '');
     }
 
     

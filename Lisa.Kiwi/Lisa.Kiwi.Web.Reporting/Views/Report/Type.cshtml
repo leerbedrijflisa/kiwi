@@ -6,9 +6,9 @@
 
 <h2>Report</h2>
 
-@using (Html.BeginForm("Report", "Report"))
+@using (Html.BeginForm("Details", "Report"))
 {
-    @Html.EnumDropDownListFor(m => m.Type)
+    @Html.DropDownList("reportType", ViewBag.ReportTypes as SelectList)
     <br />
     <br />
     <input type="submit" value="Volgende stap" />
