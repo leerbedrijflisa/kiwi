@@ -20,13 +20,13 @@ namespace Lisa.Kiwi.WebApi
             config.Routes.MapODataServiceRoute("odata", "odata", builder.GetEdmModel());
 
             // Web API routes
-            config.MapHttpAttributeRoutes();
+            //config.MapHttpAttributeRoutes();
 
-            config.Routes.MapHttpRoute(
-                name: "KiwiReportApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
+            //config.Routes.MapHttpRoute(
+            //    name: "KiwiReportApi",
+            //    routeTemplate: "api/{controller}/{id}",
+            //    defaults: new { id = RouteParameter.Optional }
+            //);
         }
     }
 }

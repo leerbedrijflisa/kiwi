@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
@@ -6,12 +7,15 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.OData;
 using Lisa.Kiwi.Data.Models;
+using Microsoft.WindowsAzure.Storage.Queue;
+using Newtonsoft.Json;
 
 namespace Lisa.Kiwi.WebApi.Controllers
 {
     public class RemarkController : ODataController
     {
         private KiwiContext db = new KiwiContext();
+        private readonly CloudQueue _queue = new QueueConfig().BuildQueue();
 
         // GET odata/Remark
         [EnableQuery]
@@ -40,13 +44,11 @@ namespace Lisa.Kiwi.WebApi.Controllers
                 return BadRequest();
             }
 
-            db.Entry(remark).State = EntityState.Modified;
-
             try
             {
-                await db.SaveChangesAsync();
+                await _queue.AddMessageAsync(new CloudQueueMessage(JsonConvert.SerializeObject(remark)));
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception)
             {
                 if (!RemarkExists(key))
                 {
@@ -69,8 +71,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Remarks.Add(remark);
-            await db.SaveChangesAsync();
+            await _queue.AddMessageAsync(new CloudQueueMessage(JsonConvert.SerializeObject(remark)));
 
             return Created(remark);
         }
@@ -94,9 +95,9 @@ namespace Lisa.Kiwi.WebApi.Controllers
 
             try
             {
-                await db.SaveChangesAsync();
+                await _queue.AddMessageAsync(new CloudQueueMessage(JsonConvert.SerializeObject(remark)));
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception)
             {
                 if (!RemarkExists(key))
                 {
