@@ -20,7 +20,22 @@ namespace Lisa.Kiwi.WebApi.Access
                 Client.BaseAddress = new Uri("http://localhost:20151/");
                 Client.DefaultRequestHeaders.Accept.Clear();
                 Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            }
+        }
 
+        public void GetData()
+        {
+            HttpResponseMessage response = Client.GetAsync("odata/Report").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                var users = response.Content.ToString();
+
+            }
+            else
+            {
+                var test = string.Format("Error Code" + 
+                response.StatusCode + " : Message - " + response.ReasonPhrase);
             }
         }
     }
