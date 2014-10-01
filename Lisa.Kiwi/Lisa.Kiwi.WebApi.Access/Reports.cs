@@ -18,13 +18,27 @@ namespace Lisa.Kiwi.WebApi.Access
         public DateTime Created { get; set; }
         public DateTime Time { get; set; }
         public ReportPriority Priority { get; set; }
+        public ReportType Type { get; set; }
+        public virtual Status Status { get; set; }
     }
 
     public enum ReportPriority
     {
-        // TODO: translate
         Low,
         Normal,
         High
+    }
+
+    public enum ReportType
+    {
+        Drugs,
+        Nuisance,
+        Vehicles,
+        Burglary,
+        Theft,
+        Intimidation,
+        Bullying,
+        Digital,
+        Fire
     }
 }

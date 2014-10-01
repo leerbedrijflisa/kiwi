@@ -14,6 +14,9 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
         public ActionResult Index()
         {
             var reportsData = new TempReports().GetAll();
+            reportsData = reportsData
+                .Where(r => r.Status.Name != StatusName.Solved)
+                .OrderBy(r => r.Created);
 
             return View(reportsData);          
         }
