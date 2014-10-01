@@ -12,7 +12,7 @@ namespace Lisa.Kiwi.WebApi
             // Web API configuration and services
             ODataConventionModelBuilder builder = new ODataConventionModelBuilder();
             
-            builder.EntitySet<Report>("Report");
+            builder.EntitySet<Models.Report>("Report");
             builder.EntitySet<Contact>("Contact");
             builder.EntitySet<Remark>("Remark");
             builder.EntitySet<Status>("Status");

@@ -17,9 +17,28 @@ namespace Lisa.Kiwi.WebApi.Controllers
 
         // GET odata/Report
         [EnableQuery]
-        public IQueryable<Report> GetReport()
+        public IQueryable<Models.Report> GetReport()
         {
-            return db.Reports;
+            var result =
+                from s in db.Statuses
+                group s by s.Report
+                into g
+                let latest = g.Max(s => s.Created)
+                let r = g.Key
+                let status = g.FirstOrDefault(s => s.Created == latest)
+                select new Models.Report()
+                {
+                    Created = r.Created,
+                    Description = r.Description,
+                    Guid = r.Guid,
+                    Ip = r.Ip,
+                    Location = r.Location,
+                    Time = r.Time,
+                    UserAgent = r.UserAgent,
+                    Status = status.Name
+                };
+            
+            return result;
         }
 
         // GET odata/Report(5)
