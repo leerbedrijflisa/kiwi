@@ -20,7 +20,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
            }
            else
            {
-               return Redirect("Index");
+               return Redirect("Dashboard");
            }
         }
 
@@ -33,7 +33,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
             {
                 Session["user"] = username;
 
-                return Redirect("Index");
+                return Redirect("Dashboard");
             }
             else
             {
