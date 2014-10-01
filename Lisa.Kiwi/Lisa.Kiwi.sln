@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lisa.Kiwi.WebApi", "Lisa.Kiwi\Lisa.Kiwi.WebApi.csproj", "{72704C37-7BC2-4474-A720-24355545408C}"
 EndProject
@@ -13,10 +13,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lisa.Kiwi.Web.Reporting", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lisa.Kiwi.Web.Dashboard", "Lisa.Kiwi.Web.Dashboard\Lisa.Kiwi.Web.Dashboard.csproj", "{476282DB-8AF0-4C06-B47F-FEB896B4D2FB}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{7D815033-F107-4EE8-B132-DD8029488516}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{24DE5FED-AE64-4FD1-A4F3-246723D375AE}"
 	ProjectSection(SolutionItems) = preProject
 		.nuget\NuGet.Config = .nuget\NuGet.Config
-		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
