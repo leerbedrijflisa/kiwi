@@ -1,4 +1,12 @@
-﻿<h2>Dashboard</h2>
+﻿@model Lisa.Kiwi.WebApi.Access.Report[]
+
+<h2>Dashboard</h2>
+
+@foreach (var report in Model)
+{
+    @report.Description
+}
+
 <div class="row">
 <div class="col-sm-12">
     <table class="table">
@@ -37,5 +45,7 @@
             </tr>
         </tbody>
     </table>
+   
 </div>
 </div>
+
