@@ -4,7 +4,7 @@
     {
         Open,
         Solved,
-        Doing,
+        InProgress,
         Transferred
     }
 }

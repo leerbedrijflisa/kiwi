@@ -39,7 +39,14 @@ namespace Lisa.Kiwi.Data.Migrations
             Status sampleStatus = new Status
             {
                 Created = DateTime.Now,
-                Name = StatusName.Doing,
+                Name = StatusName.InProgress,
+                Report = sampleReport
+            };
+
+            Status sampleStatus2 = new Status
+            {
+                Created = DateTime.Now,
+                Name = StatusName.InProgress,
                 Report = sampleReport
             };
 
@@ -52,6 +59,7 @@ namespace Lisa.Kiwi.Data.Migrations
 
             context.Reports.AddOrUpdate(sampleReport);
             context.Statuses.AddOrUpdate(sampleStatus);
+            context.Statuses.AddOrUpdate(sampleStatus2);
             context.Remarks.AddOrUpdate(sampleRemark);
         }
     }

@@ -14,11 +14,8 @@ namespace Lisa.Kiwi.Data.Models
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-
-        [Column(TypeName = "text")]
         public string Description { get; set; }
 
-        public const string Status = "Open";
         public DateTime Created { get; set; }
         public string Location { get; set; }
         public DateTime Time { get; set; }
