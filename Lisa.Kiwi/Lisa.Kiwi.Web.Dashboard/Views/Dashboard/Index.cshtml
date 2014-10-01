@@ -24,7 +24,8 @@
               <td>@item.Type</td>
               <td>@item.Description</td>
               <td>@item.Status.Name</td>
-              <td><a href="/report">Bekijken</a></td>
+              @{ var url = "Report/" + item.Guid; }
+              <td>@Html.ActionLink("Bekijk", url)</td>
           </tr>
             }
         </tbody>
