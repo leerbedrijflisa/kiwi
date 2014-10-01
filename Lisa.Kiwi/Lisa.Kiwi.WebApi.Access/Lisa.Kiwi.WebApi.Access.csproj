@@ -50,9 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\OriginalReport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReportClient.cs" />
+    <Compile Include="Reports.cs" />
+    <Compile Include="TempReports.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
