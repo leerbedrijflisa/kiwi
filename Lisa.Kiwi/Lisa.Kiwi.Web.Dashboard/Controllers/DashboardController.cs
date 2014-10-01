@@ -21,5 +21,9 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
             return View(reportsData);          
         }
 
+        public ActionResult Report(string id)
+        {
+            return View();
+        }
     }
 }
