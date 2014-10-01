@@ -5,24 +5,18 @@ using System.Web;
 using System.Web.Mvc;
 using Lisa.Kiwi.WebApi.Access;
 using System.Threading.Tasks;
+using Lisa.Kiwi.Web.Dashboard.Models;
 
 namespace Lisa.Kiwi.Web.Dashboard.Controllers
 {
-    public class DashboardController : AsyncController
+    public class DashboardController : Controller
     {
-        
-     
-        // GET: Index
-        [HttpGet]
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
+            var reportsData = new TempReports().GetAll();
 
-
-               var connector = new Connector();
-               var reports = await connector.GetAllReports();
-               
-               return View(reports);          
-           
+            return View(reportsData);          
         }
+
     }
 }

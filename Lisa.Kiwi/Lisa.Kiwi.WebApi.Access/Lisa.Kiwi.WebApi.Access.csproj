@@ -51,6 +51,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+<<<<<<< HEAD
+=======
+    <Compile Include="Reports.cs" />
+    <Compile Include="TempReports.cs" />
+>>>>>>> a47a7dc6d61ace9647a34b1642974a44cb8cf9e1
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
