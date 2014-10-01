@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Lisa.Kiwi.WebApi.Access.Reports>
+﻿@model IEnumerable<Lisa.Kiwi.WebApi.Access.Report>
 
 <h2>Dashboard</h2>
 <div class="row">
@@ -24,7 +24,7 @@
               <td>@item.Description</td>
               <td>@item.Status.Name</td>
               @{ var url = "Report/" + item.Guid; }
-              <td>@Html.ActionLink("Bekijk", url)</td>
+              <td><a href="Dashboard/@url">Bekijk</a></td>
           </tr>
             }
         </tbody>
