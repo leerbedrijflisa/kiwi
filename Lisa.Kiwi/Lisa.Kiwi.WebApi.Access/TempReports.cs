@@ -21,7 +21,7 @@ namespace Lisa.Kiwi.WebApi.Access
                 Guid = Guid.NewGuid().ToString(),
                 UserAgent = "Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Firefox/31.0",
                 Ip = "85.119.106.81",
-                Priority = ReportPriority.Hoog
+                Priority = ReportPriority.High
             });
 
             list.Add(new Reports
@@ -33,7 +33,7 @@ namespace Lisa.Kiwi.WebApi.Access
                 Guid = Guid.NewGuid().ToString(),
                 UserAgent = "Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Firefox/31.0",
                 Ip = "85.119.106.81",
-                Priority = ReportPriority.Laag
+                Priority = ReportPriority.Low
             });
 
             list.Add(new Reports
@@ -45,7 +45,7 @@ namespace Lisa.Kiwi.WebApi.Access
                 Guid = Guid.NewGuid().ToString(),
                 UserAgent = "Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Firefox/31.0",
                 Ip = "85.119.106.81",
-                Priority = ReportPriority.Normaal
+                Priority = ReportPriority.Normal
             });
 
             list.Add(new Reports
@@ -57,7 +57,7 @@ namespace Lisa.Kiwi.WebApi.Access
                 Guid = Guid.NewGuid().ToString(),
                 UserAgent = "Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Firefox/31.0",
                 Ip = "85.119.106.81",
-                Priority = ReportPriority.Normaal
+                Priority = ReportPriority.Normal
             });
 
             return list;

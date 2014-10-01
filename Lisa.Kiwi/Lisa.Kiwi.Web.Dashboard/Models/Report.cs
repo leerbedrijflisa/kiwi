@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace Lisa.Kiwi.WebApi.Access
+namespace Lisa.Kiwi.Web.Dashboard.Models
 {
-    public class Reports
+    public class Report
     {
         public int Id { get; set; }
         public string Title { get; set; }
@@ -18,13 +17,6 @@ namespace Lisa.Kiwi.WebApi.Access
         public DateTime Created { get; set; }
         public DateTime Time { get; set; }
         public ReportPriority Priority { get; set; }
-    }
 
-    public enum ReportPriority
-    {
-        // TODO: translate
-        Low,
-        Normal,
-        High
     }
 }
