@@ -136,6 +136,7 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Scripts\jquery-2.1.1.min.map" />
     <Content Include="Views\Dashboard\Report.cshtml" />
+    <Content Include="Views\Shared\_404.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

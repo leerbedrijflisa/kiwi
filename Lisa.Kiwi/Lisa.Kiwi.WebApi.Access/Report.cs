@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lisa.Kiwi.WebApi.Access
 {
-    public class Reports
+    public class Report
     {
         public int Id { get; set; }
         public string Title { get; set; }
@@ -20,6 +20,7 @@ namespace Lisa.Kiwi.WebApi.Access
         public ReportPriority Priority { get; set; }
         public ReportType Type { get; set; }
         public virtual Status Status { get; set; }
+        public virtual ICollection<Contact> Contacts { get; set; }
     }
 
     public enum ReportPriority
