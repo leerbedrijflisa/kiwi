@@ -23,9 +23,9 @@
               <td>@item.Time.ToString("dd-mm-yy HH:mm")</td>
               <td>@item.Type</td>
               <td>@item.Description</td>
-              <td>@item.Status.Name</td>
-              @{ var url = "Report/" + item.Guid; }
-              <td><a href="Dashboard/@url">Bekijk</a></td>
+              <td>@item.Status.Last().Name</td>
+              @{ var url = "Report/Index/" + item.Guid; }
+              <td><a href="@url">Bekijk</a></td>
           </tr>
             }
         </tbody>

@@ -19,7 +19,7 @@ namespace Lisa.Kiwi.WebApi.Access
         public DateTime Time { get; set; }
         public ReportPriority Priority { get; set; }
         public ReportType Type { get; set; }
-        public virtual Status Status { get; set; }
+        public virtual ICollection<Status> Status { get; set; }
         public virtual ICollection<Contact> Contacts { get; set; }
     }
 
