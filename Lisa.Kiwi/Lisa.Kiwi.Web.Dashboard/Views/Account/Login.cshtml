@@ -7,7 +7,7 @@
 <div class="center-box">
 <h2>Login</h2>
     @using (Html.BeginForm("Login", "Account")) { 
-    <form>
+        @Html.ValidationSummary();
         <div class="form-group">
             <label for="InputUsername">Gebruikersnaam</label>
             @Html.TextBox("username", "user", new { @readonly = "readonly", @class = "form-control" })
@@ -17,6 +17,5 @@
             @Html.Password("password", "", new { @class = "form-control" })
         </div>
         <button type="submit" class="login-btn">Login</button>
-    </form>
     }
 </div>
