@@ -7,7 +7,7 @@ namespace Lisa.Kiwi.WebApi.Access
     class ClientConfig
     {
         //Where is the OData API hosted?
-        private const string BaseUrl = "http://localhost:20151/";
+        public const string BaseUrl = "http://localhost:20151/odata";
 
         public HttpClient BuildClient()
         {

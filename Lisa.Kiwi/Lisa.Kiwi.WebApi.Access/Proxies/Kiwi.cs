@@ -8,8 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 02/10/2014 14:00:06
-namespace Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.WebApi.Models
+// Generation date: 02/10/2014 14:59:48
+namespace Lisa.Kiwi.WebApi.Models
 {
     /// <summary>
     /// There are no comments for ReportSingle in the schema.
@@ -47,7 +47,7 @@ namespace Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.WebApi.Models
         /// <param name="time">Initial value of Time.</param>
         /// <param name="status">Initial value of Status.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        public static Report CreateReport(int ID, global::System.DateTimeOffset created, global::System.DateTimeOffset time, global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.StatusName status)
+        public static Report CreateReport(int ID, global::System.DateTimeOffset created, global::System.DateTimeOffset time, global::Lisa.Kiwi.Data.Models.StatusName status)
         {
             Report report = new Report();
             report.Id = ID;
@@ -245,7 +245,7 @@ namespace Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.WebApi.Models
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
         [global::Microsoft.OData.Client.OriginalNameAttribute("Status")]
-        public global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.StatusName Status
+        public global::Lisa.Kiwi.Data.Models.StatusName Status
         {
             get
             {
@@ -260,8 +260,8 @@ namespace Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.WebApi.Models
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        private global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.StatusName _Status;
-        partial void OnStatusChanging(global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.StatusName value);
+        private global::Lisa.Kiwi.Data.Models.StatusName _Status;
+        partial void OnStatusChanging(global::Lisa.Kiwi.Data.Models.StatusName value);
         partial void OnStatusChanged();
         /// <summary>
         /// This event is raised when the value of the property is changed
@@ -287,17 +287,17 @@ namespace Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.WebApi.Models
     public static class ExtensionMethods
     {
         /// <summary>
-        /// Get an entity of type global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.WebApi.Models.Report as global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.WebApi.Models.ReportSingle specified by key from an entity set
+        /// Get an entity of type global::Lisa.Kiwi.WebApi.Models.Report as global::Lisa.Kiwi.WebApi.Models.ReportSingle specified by key from an entity set
         /// </summary>
         /// <param name="source">source entity set</param>
         /// <param name="keys">dictionary with the names and values of keys</param>
-        public static global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.WebApi.Models.ReportSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.WebApi.Models.Report> source, global::System.Collections.Generic.Dictionary<string, object> keys)
+        public static global::Lisa.Kiwi.WebApi.Models.ReportSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::Lisa.Kiwi.WebApi.Models.Report> source, global::System.Collections.Generic.Dictionary<string, object> keys)
         {
-            return new global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.WebApi.Models.ReportSingle(source.Context, source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(source.Context, keys)));
+            return new global::Lisa.Kiwi.WebApi.Models.ReportSingle(source.Context, source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(source.Context, keys)));
         }
     }
 }
-namespace Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models
+namespace Lisa.Kiwi.Data.Models
 {
     /// <summary>
     /// There are no comments for ContactSingle in the schema.
@@ -492,7 +492,7 @@ namespace Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models
         /// There are no comments for Report in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        public global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.ReportSingle Report
+        public global::Lisa.Kiwi.Data.Models.ReportSingle Report
         {
             get
             {
@@ -502,13 +502,13 @@ namespace Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models
                 }
                 if ((this._Report == null))
                 {
-                    this._Report = new global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.ReportSingle(this.Context, GetPath("Report"));
+                    this._Report = new global::Lisa.Kiwi.Data.Models.ReportSingle(this.Context, GetPath("Report"));
                 }
                 return this._Report;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        private global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.ReportSingle _Report;
+        private global::Lisa.Kiwi.Data.Models.ReportSingle _Report;
     }
     /// <summary>
     /// There are no comments for Remark in the schema.
@@ -607,7 +607,7 @@ namespace Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
         [global::Microsoft.OData.Client.OriginalNameAttribute("Report")]
-        public global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.Report Report
+        public global::Lisa.Kiwi.Data.Models.Report Report
         {
             get
             {
@@ -622,8 +622,8 @@ namespace Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        private global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.Report _Report;
-        partial void OnReportChanging(global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.Report value);
+        private global::Lisa.Kiwi.Data.Models.Report _Report;
+        partial void OnReportChanging(global::Lisa.Kiwi.Data.Models.Report value);
         partial void OnReportChanged();
         /// <summary>
         /// This event is raised when the value of the property is changed
@@ -664,7 +664,7 @@ namespace Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models
         /// There are no comments for Report in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        public global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.ReportSingle Report
+        public global::Lisa.Kiwi.Data.Models.ReportSingle Report
         {
             get
             {
@@ -674,13 +674,13 @@ namespace Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models
                 }
                 if ((this._Report == null))
                 {
-                    this._Report = new global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.ReportSingle(this.Context, GetPath("Report"));
+                    this._Report = new global::Lisa.Kiwi.Data.Models.ReportSingle(this.Context, GetPath("Report"));
                 }
                 return this._Report;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        private global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.ReportSingle _Report;
+        private global::Lisa.Kiwi.Data.Models.ReportSingle _Report;
     }
     /// <summary>
     /// There are no comments for Status in the schema.
@@ -699,7 +699,7 @@ namespace Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models
         /// <param name="created">Initial value of Created.</param>
         /// <param name="name">Initial value of Name.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        public static Status CreateStatus(int ID, global::System.DateTimeOffset created, global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.StatusName name)
+        public static Status CreateStatus(int ID, global::System.DateTimeOffset created, global::Lisa.Kiwi.Data.Models.StatusName name)
         {
             Status status = new Status();
             status.Id = ID;
@@ -758,7 +758,7 @@ namespace Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
         [global::Microsoft.OData.Client.OriginalNameAttribute("Name")]
-        public global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.StatusName Name
+        public global::Lisa.Kiwi.Data.Models.StatusName Name
         {
             get
             {
@@ -773,15 +773,15 @@ namespace Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        private global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.StatusName _Name;
-        partial void OnNameChanging(global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.StatusName value);
+        private global::Lisa.Kiwi.Data.Models.StatusName _Name;
+        partial void OnNameChanging(global::Lisa.Kiwi.Data.Models.StatusName value);
         partial void OnNameChanged();
         /// <summary>
         /// There are no comments for Property Report in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
         [global::Microsoft.OData.Client.OriginalNameAttribute("Report")]
-        public global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.Report Report
+        public global::Lisa.Kiwi.Data.Models.Report Report
         {
             get
             {
@@ -796,8 +796,8 @@ namespace Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        private global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.Report _Report;
-        partial void OnReportChanging(global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.Report value);
+        private global::Lisa.Kiwi.Data.Models.Report _Report;
+        partial void OnReportChanging(global::Lisa.Kiwi.Data.Models.Report value);
         partial void OnReportChanged();
         /// <summary>
         /// This event is raised when the value of the property is changed
@@ -838,7 +838,7 @@ namespace Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models
         /// There are no comments for Contacts in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        public global::Microsoft.OData.Client.DataServiceQuery<global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.Contact> Contacts
+        public global::Microsoft.OData.Client.DataServiceQuery<global::Lisa.Kiwi.Data.Models.Contact> Contacts
         {
             get
             {
@@ -848,13 +848,13 @@ namespace Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models
                 }
                 if ((this._Contacts == null))
                 {
-                    this._Contacts = Context.CreateQuery<global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.Contact>(GetPath("Contacts"));
+                    this._Contacts = Context.CreateQuery<global::Lisa.Kiwi.Data.Models.Contact>(GetPath("Contacts"));
                 }
                 return this._Contacts;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        private global::Microsoft.OData.Client.DataServiceQuery<global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.Contact> _Contacts;
+        private global::Microsoft.OData.Client.DataServiceQuery<global::Lisa.Kiwi.Data.Models.Contact> _Contacts;
     }
     /// <summary>
     /// There are no comments for Report in the schema.
@@ -874,7 +874,7 @@ namespace Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models
         /// <param name="time">Initial value of Time.</param>
         /// <param name="type">Initial value of Type.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        public static Report CreateReport(int ID, global::System.DateTimeOffset created, global::System.DateTimeOffset time, global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.ReportType type)
+        public static Report CreateReport(int ID, global::System.DateTimeOffset created, global::System.DateTimeOffset time, global::Lisa.Kiwi.Data.Models.ReportType type)
         {
             Report report = new Report();
             report.Id = ID;
@@ -1072,7 +1072,7 @@ namespace Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
         [global::Microsoft.OData.Client.OriginalNameAttribute("Type")]
-        public global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.ReportType Type
+        public global::Lisa.Kiwi.Data.Models.ReportType Type
         {
             get
             {
@@ -1087,15 +1087,15 @@ namespace Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        private global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.ReportType _Type;
-        partial void OnTypeChanging(global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.ReportType value);
+        private global::Lisa.Kiwi.Data.Models.ReportType _Type;
+        partial void OnTypeChanging(global::Lisa.Kiwi.Data.Models.ReportType value);
         partial void OnTypeChanged();
         /// <summary>
         /// There are no comments for Property Contacts in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
         [global::Microsoft.OData.Client.OriginalNameAttribute("Contacts")]
-        public global::Microsoft.OData.Client.DataServiceCollection<global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.Contact> Contacts
+        public global::Microsoft.OData.Client.DataServiceCollection<global::Lisa.Kiwi.Data.Models.Contact> Contacts
         {
             get
             {
@@ -1110,8 +1110,8 @@ namespace Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        private global::Microsoft.OData.Client.DataServiceCollection<global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.Contact> _Contacts = new global::Microsoft.OData.Client.DataServiceCollection<global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.Contact>(null, global::Microsoft.OData.Client.TrackingMode.None);
-        partial void OnContactsChanging(global::Microsoft.OData.Client.DataServiceCollection<global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.Contact> value);
+        private global::Microsoft.OData.Client.DataServiceCollection<global::Lisa.Kiwi.Data.Models.Contact> _Contacts = new global::Microsoft.OData.Client.DataServiceCollection<global::Lisa.Kiwi.Data.Models.Contact>(null, global::Microsoft.OData.Client.TrackingMode.None);
+        partial void OnContactsChanging(global::Microsoft.OData.Client.DataServiceCollection<global::Lisa.Kiwi.Data.Models.Contact> value);
         partial void OnContactsChanged();
         /// <summary>
         /// This event is raised when the value of the property is changed
@@ -1177,44 +1177,44 @@ namespace Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models
     public static class ExtensionMethods
     {
         /// <summary>
-        /// Get an entity of type global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.Contact as global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.ContactSingle specified by key from an entity set
+        /// Get an entity of type global::Lisa.Kiwi.Data.Models.Contact as global::Lisa.Kiwi.Data.Models.ContactSingle specified by key from an entity set
         /// </summary>
         /// <param name="source">source entity set</param>
         /// <param name="keys">dictionary with the names and values of keys</param>
-        public static global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.ContactSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.Contact> source, global::System.Collections.Generic.Dictionary<string, object> keys)
+        public static global::Lisa.Kiwi.Data.Models.ContactSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::Lisa.Kiwi.Data.Models.Contact> source, global::System.Collections.Generic.Dictionary<string, object> keys)
         {
-            return new global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.ContactSingle(source.Context, source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(source.Context, keys)));
+            return new global::Lisa.Kiwi.Data.Models.ContactSingle(source.Context, source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(source.Context, keys)));
         }
         /// <summary>
-        /// Get an entity of type global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.Remark as global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.RemarkSingle specified by key from an entity set
+        /// Get an entity of type global::Lisa.Kiwi.Data.Models.Remark as global::Lisa.Kiwi.Data.Models.RemarkSingle specified by key from an entity set
         /// </summary>
         /// <param name="source">source entity set</param>
         /// <param name="keys">dictionary with the names and values of keys</param>
-        public static global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.RemarkSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.Remark> source, global::System.Collections.Generic.Dictionary<string, object> keys)
+        public static global::Lisa.Kiwi.Data.Models.RemarkSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::Lisa.Kiwi.Data.Models.Remark> source, global::System.Collections.Generic.Dictionary<string, object> keys)
         {
-            return new global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.RemarkSingle(source.Context, source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(source.Context, keys)));
+            return new global::Lisa.Kiwi.Data.Models.RemarkSingle(source.Context, source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(source.Context, keys)));
         }
         /// <summary>
-        /// Get an entity of type global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.Status as global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.StatusSingle specified by key from an entity set
+        /// Get an entity of type global::Lisa.Kiwi.Data.Models.Status as global::Lisa.Kiwi.Data.Models.StatusSingle specified by key from an entity set
         /// </summary>
         /// <param name="source">source entity set</param>
         /// <param name="keys">dictionary with the names and values of keys</param>
-        public static global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.StatusSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.Status> source, global::System.Collections.Generic.Dictionary<string, object> keys)
+        public static global::Lisa.Kiwi.Data.Models.StatusSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::Lisa.Kiwi.Data.Models.Status> source, global::System.Collections.Generic.Dictionary<string, object> keys)
         {
-            return new global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.StatusSingle(source.Context, source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(source.Context, keys)));
+            return new global::Lisa.Kiwi.Data.Models.StatusSingle(source.Context, source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(source.Context, keys)));
         }
         /// <summary>
-        /// Get an entity of type global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.Report as global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.ReportSingle specified by key from an entity set
+        /// Get an entity of type global::Lisa.Kiwi.Data.Models.Report as global::Lisa.Kiwi.Data.Models.ReportSingle specified by key from an entity set
         /// </summary>
         /// <param name="source">source entity set</param>
         /// <param name="keys">dictionary with the names and values of keys</param>
-        public static global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.ReportSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.Report> source, global::System.Collections.Generic.Dictionary<string, object> keys)
+        public static global::Lisa.Kiwi.Data.Models.ReportSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::Lisa.Kiwi.Data.Models.Report> source, global::System.Collections.Generic.Dictionary<string, object> keys)
         {
-            return new global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.ReportSingle(source.Context, source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(source.Context, keys)));
+            return new global::Lisa.Kiwi.Data.Models.ReportSingle(source.Context, source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(source.Context, keys)));
         }
     }
 }
-namespace Lisa.Kiwi.WebApi.Access.Proxies.Default
+namespace Default
 {
     /// <summary>
     /// There are no comments for Container in the schema.
@@ -1244,17 +1244,17 @@ namespace Lisa.Kiwi.WebApi.Access.Proxies.Default
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
         protected global::System.Type ResolveTypeFromName(string typeName)
         {
-            global::System.Type resolvedType = this.DefaultResolveType(typeName, "Lisa.Kiwi.WebApi.Models", "Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.WebApi.Models");
+            global::System.Type resolvedType = this.DefaultResolveType(typeName, "Lisa.Kiwi.WebApi.Models", "Lisa.Kiwi.WebApi.Models");
             if ((resolvedType != null))
             {
                 return resolvedType;
             }
-            resolvedType = this.DefaultResolveType(typeName, "Lisa.Kiwi.Data.Models", "Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models");
+            resolvedType = this.DefaultResolveType(typeName, "Lisa.Kiwi.Data.Models", "Lisa.Kiwi.Data.Models");
             if ((resolvedType != null))
             {
                 return resolvedType;
             }
-            resolvedType = this.DefaultResolveType(typeName, "Default", "Lisa.Kiwi.WebApi.Access.Proxies.Default");
+            resolvedType = this.DefaultResolveType(typeName, "Default", "Default");
             if ((resolvedType != null))
             {
                 return resolvedType;
@@ -1270,7 +1270,7 @@ namespace Lisa.Kiwi.WebApi.Access.Proxies.Default
         protected string ResolveNameFromType(global::System.Type clientType)
         {
             global::Microsoft.OData.Client.OriginalNameAttribute originalNameAttribute = (global::Microsoft.OData.Client.OriginalNameAttribute)global::System.Linq.Enumerable.SingleOrDefault(global::Microsoft.OData.Client.Utility.GetCustomAttributes(clientType, typeof(global::Microsoft.OData.Client.OriginalNameAttribute), true));
-            if (clientType.Namespace.Equals("Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.WebApi.Models", global::System.StringComparison.Ordinal))
+            if (clientType.Namespace.Equals("Lisa.Kiwi.WebApi.Models", global::System.StringComparison.Ordinal))
             {
                 if (originalNameAttribute != null)
                 {
@@ -1278,7 +1278,7 @@ namespace Lisa.Kiwi.WebApi.Access.Proxies.Default
                 }
                 return string.Concat("Lisa.Kiwi.WebApi.Models.", clientType.Name);
             }
-            if (clientType.Namespace.Equals("Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models", global::System.StringComparison.Ordinal))
+            if (clientType.Namespace.Equals("Lisa.Kiwi.Data.Models", global::System.StringComparison.Ordinal))
             {
                 if (originalNameAttribute != null)
                 {
@@ -1286,7 +1286,7 @@ namespace Lisa.Kiwi.WebApi.Access.Proxies.Default
                 }
                 return string.Concat("Lisa.Kiwi.Data.Models.", clientType.Name);
             }
-            if (clientType.Namespace.Equals("Lisa.Kiwi.WebApi.Access.Proxies.Default", global::System.StringComparison.Ordinal))
+            if (clientType.Namespace.Equals("Default", global::System.StringComparison.Ordinal))
             {
                 if (originalNameAttribute != null)
                 {
@@ -1300,75 +1300,75 @@ namespace Lisa.Kiwi.WebApi.Access.Proxies.Default
         /// There are no comments for Report in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        public global::Microsoft.OData.Client.DataServiceQuery<global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.WebApi.Models.Report> Report
+        public global::Microsoft.OData.Client.DataServiceQuery<global::Lisa.Kiwi.WebApi.Models.Report> Report
         {
             get
             {
                 if ((this._Report == null))
                 {
-                    this._Report = base.CreateQuery<global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.WebApi.Models.Report>("Report");
+                    this._Report = base.CreateQuery<global::Lisa.Kiwi.WebApi.Models.Report>("Report");
                 }
                 return this._Report;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        private global::Microsoft.OData.Client.DataServiceQuery<global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.WebApi.Models.Report> _Report;
+        private global::Microsoft.OData.Client.DataServiceQuery<global::Lisa.Kiwi.WebApi.Models.Report> _Report;
         /// <summary>
         /// There are no comments for Contact in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        public global::Microsoft.OData.Client.DataServiceQuery<global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.Contact> Contact
+        public global::Microsoft.OData.Client.DataServiceQuery<global::Lisa.Kiwi.Data.Models.Contact> Contact
         {
             get
             {
                 if ((this._Contact == null))
                 {
-                    this._Contact = base.CreateQuery<global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.Contact>("Contact");
+                    this._Contact = base.CreateQuery<global::Lisa.Kiwi.Data.Models.Contact>("Contact");
                 }
                 return this._Contact;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        private global::Microsoft.OData.Client.DataServiceQuery<global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.Contact> _Contact;
+        private global::Microsoft.OData.Client.DataServiceQuery<global::Lisa.Kiwi.Data.Models.Contact> _Contact;
         /// <summary>
         /// There are no comments for Remark in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        public global::Microsoft.OData.Client.DataServiceQuery<global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.Remark> Remark
+        public global::Microsoft.OData.Client.DataServiceQuery<global::Lisa.Kiwi.Data.Models.Remark> Remark
         {
             get
             {
                 if ((this._Remark == null))
                 {
-                    this._Remark = base.CreateQuery<global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.Remark>("Remark");
+                    this._Remark = base.CreateQuery<global::Lisa.Kiwi.Data.Models.Remark>("Remark");
                 }
                 return this._Remark;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        private global::Microsoft.OData.Client.DataServiceQuery<global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.Remark> _Remark;
+        private global::Microsoft.OData.Client.DataServiceQuery<global::Lisa.Kiwi.Data.Models.Remark> _Remark;
         /// <summary>
         /// There are no comments for Status in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        public global::Microsoft.OData.Client.DataServiceQuery<global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.Status> Status
+        public global::Microsoft.OData.Client.DataServiceQuery<global::Lisa.Kiwi.Data.Models.Status> Status
         {
             get
             {
                 if ((this._Status == null))
                 {
-                    this._Status = base.CreateQuery<global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.Status>("Status");
+                    this._Status = base.CreateQuery<global::Lisa.Kiwi.Data.Models.Status>("Status");
                 }
                 return this._Status;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        private global::Microsoft.OData.Client.DataServiceQuery<global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.Status> _Status;
+        private global::Microsoft.OData.Client.DataServiceQuery<global::Lisa.Kiwi.Data.Models.Status> _Status;
         /// <summary>
         /// There are no comments for Report in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        public void AddToReport(global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.WebApi.Models.Report report)
+        public void AddToReport(global::Lisa.Kiwi.WebApi.Models.Report report)
         {
             base.AddObject("Report", report);
         }
@@ -1376,7 +1376,7 @@ namespace Lisa.Kiwi.WebApi.Access.Proxies.Default
         /// There are no comments for Contact in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        public void AddToContact(global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.Contact contact)
+        public void AddToContact(global::Lisa.Kiwi.Data.Models.Contact contact)
         {
             base.AddObject("Contact", contact);
         }
@@ -1384,7 +1384,7 @@ namespace Lisa.Kiwi.WebApi.Access.Proxies.Default
         /// There are no comments for Remark in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        public void AddToRemark(global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.Remark remark)
+        public void AddToRemark(global::Lisa.Kiwi.Data.Models.Remark remark)
         {
             base.AddObject("Remark", remark);
         }
@@ -1392,7 +1392,7 @@ namespace Lisa.Kiwi.WebApi.Access.Proxies.Default
         /// There are no comments for Status in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        public void AddToStatus(global::Lisa.Kiwi.WebApi.Access.Proxies.Lisa.Kiwi.Data.Models.Status status)
+        public void AddToStatus(global::Lisa.Kiwi.Data.Models.Status status)
         {
             base.AddObject("Status", status);
         }
