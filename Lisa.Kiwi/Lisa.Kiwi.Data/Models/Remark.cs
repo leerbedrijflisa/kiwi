@@ -6,7 +6,7 @@ namespace Lisa.Kiwi.Data.Models
     public class Remark
     {
         public int Id { get; set; }
-        public DateTime Created { get; set; }
+        public DateTimeOffset Created { get; set; }
 
         [Column(TypeName = "text")]
         public string Description { get; set; }

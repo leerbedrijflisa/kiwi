@@ -3,7 +3,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
-using System.Web.Http.OData;
+using System.Web.OData;
 using Lisa.Kiwi.Data.Models;
 using Microsoft.WindowsAzure.Storage.Queue;
 using Newtonsoft.Json;
@@ -26,7 +26,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
                 let latest = g.Max(s => s.Created)
                 let r = g.Key
                 let status = g.FirstOrDefault(s => s.Created == latest)
-                select new Models.Report()
+                select new Models.Report
                 {
                     Id = r.Id,
                     Created = r.Created,

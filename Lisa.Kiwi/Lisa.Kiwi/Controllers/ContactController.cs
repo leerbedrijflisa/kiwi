@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
-using System.Web.Http.OData;
+using System.Web.OData;
 using Lisa.Kiwi.Data.Models;
 using Microsoft.WindowsAzure.Storage.Queue;
 using Newtonsoft.Json;

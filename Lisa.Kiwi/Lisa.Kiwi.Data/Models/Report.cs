@@ -16,9 +16,9 @@ namespace Lisa.Kiwi.Data.Models
         public int Id { get; set; }
         public string Description { get; set; }
 
-        public DateTime Created { get; set; }
+        public DateTimeOffset Created { get; set; }
         public string Location { get; set; }
-        public DateTime Time { get; set; }
+        public DateTimeOffset Time { get; set; }
         public string Guid { get; set; }
         public string UserAgent { get; set; }
 
