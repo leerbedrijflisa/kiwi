@@ -1,0 +1,151 @@
+﻿@model Lisa.Kiwi.WebApi.Access.Report
+
+@{
+
+ViewBag.Title = "Report";
+Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+@if (Model == null)
+{
+        @Html.Partial("_404")
+}
+else
+{
+
+        <div class="block-container">
+            <h2>Report</h2>
+            <div class="row">
+                <div class="col-sm-6 form-horizontal">
+                        <h3>Details</h3>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Tijd incident</label>
+                            <div class="col-sm-8">
+                                <p class="form-control-static">@Model.Time.ToString("dd-mm-yyyy HH:mm:ss")</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Type melding</label>
+                            <div class="col-sm-8">
+                                <p class="form-control-static">@Model.Type</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Beschrijving</label>
+                            <div class="col-sm-8">
+                                <p class="form-control-static">@Model.Description</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Ip adres</label>
+                            <div class="col-sm-8">
+                                <p class="form-control-static">@Model.Ip</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">User agent</label>
+                            <div class="col-sm-8">
+                                <p class="form-control-static">@Model.UserAgent</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Status</label>
+                            <div class="col-sm-8">
+                                <p class="form-control-static">@Model.Status.Last().Name</p>
+                            </div>
+                        </div>
+                        @if (Model.Contacts != null)
+                        {
+                            foreach (var contact in Model.Contacts)
+                            {
+                                <h3>Contactgegevens</h3>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Naam</label>
+                                    <div class="col-sm-8">
+                                        <p class="form-control-static">@contact.Name</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Telefoonnummer</label>
+                                    <div class="col-sm-8">
+                                        <p class="form-control-static">
+                                            @if (contact.PhoneNumber != null)
+                                            { @contact.PhoneNumber }
+                                            else
+                                            { <span>n.v.t</span> }
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Emailadres</label>
+                                    <div class="col-sm-8">
+                                        <p class="form-control-static">
+                                            @if (contact.EmailAddress != null)
+                                            { @contact.EmailAddress }
+                                            else
+                                            { <span>n.v.t</span> }
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Studenten OV nummer</label>
+                                    <div class="col-sm-8">
+                                        <p class="form-control-static">
+                                            @if (contact.StudentNumber != null)
+                                            { @contact.StudentNumber }
+                                            else
+                                            { <span>n.v.t</span> }
+                                        </p>
+                                    </div>
+                                </div>
+                            }
+                        }
+                        <h3>Acties</h3>
+                        @using (Html.BeginForm("Index", "Report", "POST"))
+                        {
+                            @Html.ValidationSummary()
+                            @Html.AntiForgeryToken()
+                            @Html.Hidden("guid", Model.Guid)
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Opmerking</label>
+                                <div class="col-sm-8">
+                                    <textarea class="col-sm-8 form-control report-comment" rows="3"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Nieuwe status</label>
+                                <div class="col-sm-8">
+                                    <select name="Status" class="col-sm-8">
+                                        @foreach (var item in ViewBag.Statusses)
+                                        {
+                                            var selected = "";
+                                            if (Model.Status.Last().Name == item)
+                                            {
+                                                selected = "selected";
+                                            }
+                                            <option @selected>@item</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-8 col-md-push-8">
+                                    <input class="col-sm-4 report-submit-comment" type="submit" value="Toevoegen" />
+                                </div>
+                            </div>
+                        }
+                </div>
+                <div class="col-sm-6">
+                    <h3>Logboek</h3>
+                </div>
+            </div>
+        </div>
+}
+
+
+
+
+
+
+
+

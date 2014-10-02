@@ -20,7 +20,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
            }
            else
            {
-               return Redirect("Dashboard");
+               return RedirectToAction("Index", "Dashboard");
            }
         }
 
@@ -29,16 +29,19 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
         {
             var masterpass = "hello";
 
-            if (masterpass == password)
+            if (masterpass != password)
             {
-                Session["user"] = username;
-
-                return Redirect("Dashboard");
+                ModelState.AddModelError("password", "Geen geldig wachtwoord en/of gebruikersnaam.");
             }
-            else
+            if (!ModelState.IsValid)
             {
                 return View();
             }
+
+            
+            Session["user"] = username;
+
+            return RedirectToAction("Index", "Dashboard");
         }
     }
 }

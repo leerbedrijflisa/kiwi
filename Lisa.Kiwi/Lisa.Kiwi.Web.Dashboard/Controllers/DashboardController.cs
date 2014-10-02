@@ -8,21 +8,24 @@ using System.Threading.Tasks;
 
 namespace Lisa.Kiwi.Web.Dashboard.Controllers
 {
-    public class DashboardController : AsyncController
+    public class DashboardController : Controller
     {
-        
-     
-        // GET: Index
-        [HttpGet]
-        public async Task<ActionResult> Index()
+        private TempReports Reports = new TempReports();
+
+        public ActionResult Index()
         {
+            var sessionTimeOut = Session.Timeout = 60;
+            if (Session["user"] == null || sessionTimeOut == 0)
+            {
+                return RedirectToAction("Login", "Account");
+            }
 
+            var reportsData = Reports.GetAll();
+            reportsData = reportsData
+                .Where(r => r.Status.Last().Name != StatusName.Solved)
+                .OrderBy(r => r.Created);
 
-               var connector = new Connector();
-               var reports = await connector.GetAllReports();
-               
-               return View(reports);          
-           
+            return View(reportsData);
         }
     }
 }
