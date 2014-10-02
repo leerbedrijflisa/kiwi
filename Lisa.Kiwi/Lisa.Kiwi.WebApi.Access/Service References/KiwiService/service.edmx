@@ -1,0 +1,85 @@
+﻿<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <edmx:DataServices m:DataServiceVersion="3.0" m:MaxDataServiceVersion="3.0" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
+    <Schema Namespace="Lisa.Kiwi.WebApi.Models" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <EntityType Name="Report">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Description" Type="Edm.String" />
+        <Property Name="Created" Type="Edm.DateTime" Nullable="false" />
+        <Property Name="Location" Type="Edm.String" />
+        <Property Name="Time" Type="Edm.DateTime" Nullable="false" />
+        <Property Name="Guid" Type="Edm.String" />
+        <Property Name="UserAgent" Type="Edm.String" />
+        <Property Name="Ip" Type="Edm.String" />
+        <Property Name="Status" Type="Edm.String" Nullable="false" />
+      </EntityType>
+    </Schema>
+    <Schema Namespace="Lisa.Kiwi.Data.Models" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <EntityType Name="Contact">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Name" Type="Edm.String" />
+        <Property Name="PhoneNumber" Type="Edm.String" />
+        <Property Name="EmailAddress" Type="Edm.String" />
+        <Property Name="StudentNumber" Type="Edm.Int32" />
+      </EntityType>
+      <EntityType Name="Remark">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Created" Type="Edm.DateTime" Nullable="false" />
+        <Property Name="Description" Type="Edm.String" />
+        <NavigationProperty Name="Report" Relationship="Lisa.Kiwi.Data.Models.Lisa_Kiwi_Data_Models_Remark_Report_Lisa_Kiwi_Data_Models_Report_ReportPartner" ToRole="Report" FromRole="ReportPartner" />
+      </EntityType>
+      <EntityType Name="Status">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Created" Type="Edm.DateTime" Nullable="false" />
+        <Property Name="Name" Type="Edm.String" Nullable="false" />
+        <NavigationProperty Name="Report" Relationship="Lisa.Kiwi.Data.Models.Lisa_Kiwi_Data_Models_Status_Report_Lisa_Kiwi_Data_Models_Report_ReportPartner" ToRole="Report" FromRole="ReportPartner" />
+      </EntityType>
+      <EntityType Name="Report">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Description" Type="Edm.String" />
+        <Property Name="Created" Type="Edm.DateTime" Nullable="false" />
+        <Property Name="Location" Type="Edm.String" />
+        <Property Name="Time" Type="Edm.DateTime" Nullable="false" />
+        <Property Name="Guid" Type="Edm.String" />
+        <Property Name="UserAgent" Type="Edm.String" />
+        <Property Name="Ip" Type="Edm.String" />
+        <Property Name="Type" Type="Edm.String" Nullable="false" />
+        <NavigationProperty Name="Contacts" Relationship="Lisa.Kiwi.Data.Models.Lisa_Kiwi_Data_Models_Report_Contacts_Lisa_Kiwi_Data_Models_Contact_ContactsPartner" ToRole="Contacts" FromRole="ContactsPartner" />
+      </EntityType>
+      <Association Name="Lisa_Kiwi_Data_Models_Remark_Report_Lisa_Kiwi_Data_Models_Report_ReportPartner">
+        <End Type="Lisa.Kiwi.Data.Models.Report" Role="Report" Multiplicity="0..1" />
+        <End Type="Lisa.Kiwi.Data.Models.Remark" Role="ReportPartner" Multiplicity="0..1" />
+      </Association>
+      <Association Name="Lisa_Kiwi_Data_Models_Status_Report_Lisa_Kiwi_Data_Models_Report_ReportPartner">
+        <End Type="Lisa.Kiwi.Data.Models.Report" Role="Report" Multiplicity="0..1" />
+        <End Type="Lisa.Kiwi.Data.Models.Status" Role="ReportPartner" Multiplicity="0..1" />
+      </Association>
+      <Association Name="Lisa_Kiwi_Data_Models_Report_Contacts_Lisa_Kiwi_Data_Models_Contact_ContactsPartner">
+        <End Type="Lisa.Kiwi.Data.Models.Contact" Role="Contacts" Multiplicity="*" />
+        <End Type="Lisa.Kiwi.Data.Models.Report" Role="ContactsPartner" Multiplicity="0..1" />
+      </Association>
+    </Schema>
+    <Schema Namespace="Default" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <EntityContainer Name="Container" m:IsDefaultEntityContainer="true">
+        <EntitySet Name="Report" EntityType="Lisa.Kiwi.WebApi.Models.Report" />
+        <EntitySet Name="Contact" EntityType="Lisa.Kiwi.Data.Models.Contact" />
+        <EntitySet Name="Remark" EntityType="Lisa.Kiwi.Data.Models.Remark" />
+        <EntitySet Name="Status" EntityType="Lisa.Kiwi.Data.Models.Status" />
+      </EntityContainer>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>
