@@ -22,7 +22,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 
             var reportsData = Reports.GetAll();
             reportsData = reportsData
-                .Where(r => r.Status.Name != StatusName.Solved)
+                .Where(r => r.Status.Last().Name != StatusName.Solved)
                 .OrderBy(r => r.Created);
 
             return View(reportsData);

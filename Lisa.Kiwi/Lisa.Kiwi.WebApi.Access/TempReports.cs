@@ -22,10 +22,12 @@ namespace Lisa.Kiwi.WebApi.Access
                 Ip = "85.119.106.81",
                 Priority = ReportPriority.High,
                 Type = ReportType.Drugs,
-                Status = new Status
+                Status = new List<Status>()
                 {
-                    Name = StatusName.Open,
-                    Created = DateTime.Now
+                    new Status {
+                        Name = StatusName.Open,
+                        Created = DateTime.Now
+                    }
                 },
                 Contacts = new List<Contact>()
                 {
@@ -47,10 +49,12 @@ namespace Lisa.Kiwi.WebApi.Access
                 Ip = "85.119.106.81",
                 Priority = ReportPriority.Low,
                 Type = ReportType.Burglary,
-                Status = new Status
+                Status = new List<Status>()
                 {
-                    Name = StatusName.Open,
-                    Created = DateTime.Now
+                    new Status {
+                        Name = StatusName.Open,
+                        Created = DateTime.Now
+                    }
                 },
                 Contacts = new List<Contact>()
                 {
@@ -72,11 +76,13 @@ namespace Lisa.Kiwi.WebApi.Access
                 Ip = "85.119.106.81",
                 Priority = ReportPriority.Normal,
                 Type = ReportType.Fire,
-                Status = new Status
+                Status = new List<Status>()
                 {
-                    Name = StatusName.Open,
-                    Created = DateTime.Now
-                }
+                    new Status {
+                        Name = StatusName.Doing,
+                        Created = DateTime.Now
+                    }
+                },
             });
 
             List.Add(new Report
@@ -90,10 +96,12 @@ namespace Lisa.Kiwi.WebApi.Access
                 Ip = "85.119.106.81",
                 Priority = ReportPriority.Normal,
                 Type = ReportType.Theft,
-                Status = new Status
+                Status = new List<Status>()
                 {
-                    Name = StatusName.Solved,
-                    Created = DateTime.Now
+                    new Status {
+                        Name = StatusName.Solved,
+                        Created = DateTime.Now
+                    }
                 },
                 Contacts = new List<Contact>()
                 {
@@ -121,5 +129,24 @@ namespace Lisa.Kiwi.WebApi.Access
             }
             return null;
         }
+
+        public bool SaveStatus(string guid, string status)
+        {
+            var report = List.Where(r => r.Guid == guid).First();
+            var enumStatus = (StatusName)Enum.Parse(typeof(StatusName), status, true);
+            report.Status.Add(new Status
+            {
+                Created = DateTime.Now,
+                Name = enumStatus
+            });
+
+            return true;
+        }
+
+        public bool SaveComment(string guid, string comment)
+        {
+            return true;
+        }
+
     }
 }

@@ -29,7 +29,7 @@ else
             <label class="col-sm-4">User agent</label>
             <p class="col-sm-8">@Model.UserAgent</p>
             <label class="col-sm-4">Status</label>
-            <p class="col-sm-8">@Model.Status.Name</p>
+            <p class="col-sm-8">@Model.Status.Last().Name</p>
         </div>
         @if (Model.Contacts != null)
         {
@@ -49,14 +49,31 @@ else
             }
         }
         <h3>Acties</h3>
+        @using (Html.BeginForm())
+        {
         <div class="form-group">
+            @Html.ValidationSummary(true)
+            @Html.AntiForgeryToken()
+            @Html.Hidden("guid", Model.Guid);
             <label class="col-sm-4">Opmerking</label>
-            <textarea class="col-sm-8"></textarea>
+            <textarea name="Comment" class="col-sm-8"></textarea>
             <label class="col-sm-4">Nieuwe status</label>
-            @Html.DropDownListFor(r => r.Status.Name, (SelectList)ViewBag.Statusses, new { @Class = "col-sm-8" })
+            @*@Html.DropDownListFor(r => r.Status.Last().Name, (SelectList)ViewBag.Statusses, new { @Class = "col-sm-8" })*@
+            <select name="Status" class="col-sm-8">
+                @foreach (var item in ViewBag.Statusses)
+                {
+                    var selected = "";
+                    if (Model.Status.Last().Name == item)
+                    {
+                        selected = "selected";
+                    }
+                    <option @selected>@item</option>
+                }
+            </select>
 
-            <input class="col-sm-12" type="submit" value="Toevoegen" />
+            <input class="col-sm-12" type="submit" value="Opslaan" />
         </div>
+        }
 
     </div>
     <div class="col-md-6">
