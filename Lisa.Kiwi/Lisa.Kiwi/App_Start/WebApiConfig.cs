@@ -9,9 +9,18 @@ namespace Lisa.Kiwi.WebApi
     {
         public static void Register(HttpConfiguration config)
         {
+            //Web API routes
+            config.MapHttpAttributeRoutes();
+
+            config.Routes.MapHttpRoute(
+                name: "KiwiReportApi",
+                routeTemplate: "api/{controller}/{id}",
+                defaults: new { id = RouteParameter.Optional }
+            );
+
             // Web API configuration and services
             ODataConventionModelBuilder builder = new ODataConventionModelBuilder();
-            
+
             builder.EntitySet<Models.Report>("Report");
             builder.EntitySet<Contact>("Contact");
             builder.EntitySet<Remark>("Remark");
@@ -19,14 +28,8 @@ namespace Lisa.Kiwi.WebApi
 
             config.Routes.MapODataServiceRoute("odata", "odata", builder.GetEdmModel());
 
-            // Web API routes
-            //config.MapHttpAttributeRoutes();
-
-            //config.Routes.MapHttpRoute(
-            //    name: "KiwiReportApi",
-            //    routeTemplate: "api/{controller}/{id}",
-            //    defaults: new { id = RouteParameter.Optional }
-            //);
+            //ODataMediaTypeFormatter odataFormatter = new ODataMediaTypeFormatter();
+            //odataFormatter.SupportedMediaTypes.Add(MediaTypeHeaderValue.Parse("application/json"));
         }
     }
 }

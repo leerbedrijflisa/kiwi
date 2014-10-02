@@ -28,6 +28,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
                 let status = g.FirstOrDefault(s => s.Created == latest)
                 select new Models.Report()
                 {
+                    Id = r.Id,
                     Created = r.Created,
                     Description = r.Description,
                     Guid = r.Guid,
