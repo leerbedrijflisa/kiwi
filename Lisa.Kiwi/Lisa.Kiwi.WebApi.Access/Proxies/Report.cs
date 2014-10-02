@@ -22,7 +22,7 @@ namespace Lisa.Kiwi.WebApi.Access.Proxies
         private static readonly Container container = new Container(new Uri(ClientConfig.BaseUrl));
 
         // Get an entire entity set.
-        static IEnumerable GetAllReports(Container container)
+        public static IEnumerable GetAllReports()
         {
             var reportsList = container.Report.ToList();
 
@@ -33,7 +33,15 @@ namespace Lisa.Kiwi.WebApi.Access.Proxies
         public static void GetReport(string guid)
         {
             //Lisa.Kiwi.WebApi.Models.Report
-            var report = container.Report.ByKey(new Dictionary<string, object>() {{"ID", 1}}).GetValue();
+            var report = container.Report.ByKey(new Dictionary<string, object> {{"ID", 1}}).GetValue();
+        }
+
+        public static IEnumerable GetAllReportsByStatusIsNot(string status)
+        {
+            //Lisa.Kiwi.WebApi.Models.Report
+            var report = container.Report.AppendRequestUri("$filter=Status ne " + status).ToList();
+
+            return report;
         }
 
 

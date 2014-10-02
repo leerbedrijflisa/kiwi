@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 02/10/2014 14:59:48
+// Generation date: 02/10/2014 15:32:41
 namespace Lisa.Kiwi.WebApi.Models
 {
     /// <summary>
