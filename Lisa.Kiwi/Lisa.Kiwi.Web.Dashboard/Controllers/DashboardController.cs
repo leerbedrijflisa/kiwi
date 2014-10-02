@@ -25,7 +25,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
                 .Where(r => r.Status.Name != StatusName.Solved)
                 .OrderBy(r => r.Created);
 
-            return View(reportsData);          
+            return View(reportsData);
         }
     }
 }

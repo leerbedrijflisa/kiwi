@@ -1,19 +1,18 @@
 ﻿@model IEnumerable<Lisa.Kiwi.WebApi.Access.Report>
 
 <h2>Dashboard</h2>
-
-
-
 <div class="row">
 <div class="col-sm-12">
     <table class="table">
         <thead>
-            <th>Melding aangemaakt</th>
-            <th>Datum incident</th>
-            <th>Type melding</th>
-            <th>Beschrijving</th>
-            <th>Status</th>
-            <th>Bekijken</th>
+            <tr>
+                <th>Melding aangemaakt</th>
+                <th>Datum incident</th>
+                <th>Type melding</th>
+                <th>Beschrijving</th>
+                <th>Status</th>
+                <th>Bekijken</th>
+            </tr>
         </thead>
         <tbody>
             @foreach (var item in Model)
@@ -30,7 +29,6 @@
             }
         </tbody>
     </table>
-   
 </div>
 </div>
 
