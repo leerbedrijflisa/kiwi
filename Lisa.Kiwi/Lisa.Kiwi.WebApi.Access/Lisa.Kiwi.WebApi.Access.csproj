@@ -90,11 +90,6 @@
       <DependentUpon>Kiwi.tt</DependentUpon>
     </Compile>
     <Compile Include="Reports.cs" />
-    <Compile Include="Service References\KiwiService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.datasvcmap</DependentUpon>
-    </Compile>
     <Compile Include="TempReports.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -104,7 +99,6 @@
       <LastGenOutput>Kiwi.cs</LastGenOutput>
     </None>
     <None Include="Proxies\Kiwi.ttinclude" />
-    <None Include="Service References\KiwiService\service.edmx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Interfaces\" />
@@ -114,17 +108,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ServiceReferenceMetadataStorage Include="Service References\KiwiService\">
-      <Type>datasvcmap</Type>
-    </ServiceReferenceMetadataStorage>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\KiwiService\Reference.datasvcmap">
-      <Generator>DataServicesCoreClientGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
