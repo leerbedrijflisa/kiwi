@@ -12,57 +12,120 @@
 }
 else
 {
-    
-<h2>report</h2>
-<div class="row">
-    <div class="col-md-6">
-        <h3>Details</h3>
-        <div class="form-group">
-            <label class="col-sm-4">Tijd incident</label>
-            <p class="col-sm-8">@Model.Time.ToString("dd-mm-yyyy HH:mm:ss")</p>
-            <label class="col-sm-4">Type melding</label>
-            <p class="col-sm-8">@Model.Type</p>
-            <label class="col-sm-4">Beschrijving</label>
-            <p class="col-sm-8">@Model.Description</p>
-            <label class="col-sm-4">IP adres</label>
-            <p class="col-sm-8">@Model.Ip</p>
-            <label class="col-sm-4">User agent</label>
-            <p class="col-sm-8">@Model.UserAgent</p>
-            <label class="col-sm-4">Status</label>
-            <p class="col-sm-8">@Model.Status.Name</p>
-        </div>
-        @if (Model.Contacts != null)
-        {
-            foreach (var contact in Model.Contacts)
-            {
-            <h3>Contact gegevens</h3>
-            <div class="form-group">
-                <label class="col-sm-4">Naam</label>
-                <p class="col-sm-8">@contact.Name</p>
-                <label class="col-sm-4">Telefoonnummer</label>
-                <p class="col-sm-8">@if(contact.PhoneNumber != null) { @contact.PhoneNumber } else { <span>n.v.t</span> }</p>
-                <label class="col-sm-4">Emailadres</label>
-                <p class="col-sm-8">@if(contact.EmailAddress != null) { @contact.EmailAddress } else { <span>n.v.t</span> }</p>
-                <label class="col-sm-4">Studenten OV nummer</label>
-                <p class="col-sm-8">@if(contact.StudentNumber != null) { @contact.StudentNumber } else { <span>n.v.t</span> }</p>
+
+    <div class="block-container">
+        <h2>Report</h2>
+        <div class="row">
+            <div class="col-sm-6">
+                <form class="form-horizontal" role="form">
+                    <h3>Details</h3>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Tijd incident</label>
+                        <div class="col-sm-8">
+                            <p class="form-control-static">@Model.Time.ToString("dd-mm-yyyy HH:mm:ss")</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Type melding</label>
+                        <div class="col-sm-8">
+                            <p class="form-control-static">@Model.Type</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Beschrijving</label>
+                        <div class="col-sm-8">
+                            <p class="form-control-static">@Model.Description</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Ip adres</label>
+                        <div class="col-sm-8">
+                            <p class="form-control-static">@Model.Ip</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">User agent</label>
+                        <div class="col-sm-8">
+                            <p class="form-control-static">@Model.UserAgent</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Status</label>
+                        <div class="col-sm-8">
+                            <p class="form-control-static">@Model.Status.Name</p>
+                        </div>
+                    </div>
+                    @if (Model.Contacts != null)
+                    {
+                        foreach (var contact in Model.Contacts)
+                        {
+                            <h3>Contactgegevens</h3>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Naam</label>
+                                <div class="col-sm-8">
+                                    <p class="form-control-static">@contact.Name</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Telefoonnummer</label>
+                                <div class="col-sm-8">
+                                    <p class="form-control-static">
+                                        @if (contact.PhoneNumber != null)
+                                        { @contact.PhoneNumber }
+                                        else
+                                        { <span>n.v.t</span> }
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Emailadres</label>
+                                <div class="col-sm-8">
+                                    <p class="form-control-static">
+                                        @if (contact.EmailAddress != null)
+                                        { @contact.EmailAddress }
+                                        else
+                                        { <span>n.v.t</span> }
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Studenten OV nummer</label>
+                                <div class="col-sm-8">
+                                    <p class="form-control-static">
+                                        @if (contact.StudentNumber != null)
+                                        { @contact.StudentNumber }
+                                        else
+                                        { <span>n.v.t</span> }
+                                    </p>
+                                </div>
+                            </div>
+                        }
+                    }
+                    <h3>Acties</h3>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Opmerking</label>
+                        <div class="col-sm-8">
+                            <textarea class="col-sm-8 form-control report-comment" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Nieuwe status</label>
+                        <div class="col-sm-8">
+                            @Html.DropDownListFor(r => r.Status.Name, (SelectList)ViewBag.Statusses, new { @Class = "col-sm-8 report-status-dropdown" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-8 col-md-push-8">
+                            <input class="col-sm-4 report-submit-comment" type="submit" value="Toevoegen" />
+                        </div>
+                    </div>
+                </form>
             </div>
-            }
-        }
-        <h3>Acties</h3>
-        <div class="form-group">
-            <label class="col-sm-4">Opmerking</label>
-            <textarea class="col-sm-8"></textarea>
-            <label class="col-sm-4">Nieuwe status</label>
-            @Html.DropDownListFor(r => r.Status.Name, (SelectList)ViewBag.Statusses, new { @Class = "col-sm-8" })
-
-            <input class="col-sm-12" type="submit" value="Toevoegen" />
+            <div class="col-sm-6">
+                <h3>Logboek</h3>
+            </div>
         </div>
-
     </div>
-    <div class="col-md-6">
-        <h3>Logboek</h3>
-    </div>
-</div>
 }
 
 

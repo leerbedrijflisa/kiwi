@@ -1,10 +1,10 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿html, body {
+    background-color: #b4b4b4;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
+    margin-top: 25px;
     padding-left: 15px;
     padding-right: 15px;
 }
@@ -13,19 +13,97 @@
 input,
 select,
 textarea {
-    max-width: 280px;
+    max-width: 400px;
 }
 
+h2 {
+    margin-top: 20px;
+    margin-bottom: 25px;
+    color: #306086;
+}
+
+/* Login form container */
 .center-box {
     position: fixed;
     top: 50%;
     left: 50%;
     width: 300px;
-    height: 300px;
-    margin-top: -150px;
+    height: 350px;
+    margin-top: -200px;
     margin-left: -150px;
-    padding: 5px;
+    padding: 10px;
     background-color: #fff;
     border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
 }
 
+.center-box .form-control {
+    width: 100%;
+    margin: 0;
+    background-color: #eaeaea;
+    border-radius: 5px;
+}
+
+.center-box label {
+    color: #5d5d5d;
+}
+
+.login-btn {
+    width: 100%;
+    height: 34px;
+    margin-top: 25px;
+    border: none;
+    background-color: #306086;
+    color: #fff;
+    border-radius: 5px;
+}
+
+/*Navigation bar Dashboard*/
+
+.navbar-inverse {
+    background-color: #306086;
+    border: none;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #fff;
+}
+
+/*Block class for the dashboard*/
+
+.block-container {
+    margin-top: 80px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.block-container h3 {
+    padding: 5px;
+    background-color: #306086;
+    color: #fff;
+}
+
+.report-comment {
+    margin-bottom: 10px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.report-status-dropdown {
+    height: 30px;
+    width: 150px;
+}
+
+.report-submit-comment {
+    height: 30px;
+    width: 200px;
+    margin-top: 40px;
+    background-color: #306086;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
