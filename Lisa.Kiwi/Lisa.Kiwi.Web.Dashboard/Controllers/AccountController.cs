@@ -12,9 +12,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
         [HttpGet]
         public ActionResult Login()
         {
-           var sessionTimeOut = Session.Timeout = 60;
-
-           if (Session["user"] == null || sessionTimeOut == 0)
+           if (Session["user"] == null)
            {
                return View();
            }
@@ -32,6 +30,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
             if (masterpass == password)
             {
                 Session["user"] = username;
+                Session.Timeout = 20;
 
                 return RedirectToAction("Index", "Dashboard");
             }

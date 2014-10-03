@@ -15,8 +15,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 
         public ActionResult Index(string id)
         {
-            var sessionTimeOut = Session.Timeout = 60;
-            if (Session["user"] == null || sessionTimeOut == 0)
+            if (Session["user"] == null)
             {
                 return RedirectToAction("Login", "Account");
             }
@@ -32,8 +31,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Index(string id, string guid, string Status, string Comment)
         {
-            var sessionTimeOut = Session.Timeout = 60;
-            if (Session["user"] == null || sessionTimeOut == 0)
+            if (Session["user"] == null)
             {
                 return RedirectToAction("Login", "Account");
             }

@@ -14,8 +14,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 
         public ActionResult Index()
         {
-            var sessionTimeOut = Session.Timeout = 60;
-            if (Session["user"] == null || sessionTimeOut == 0)
+            if (Session["user"] == null)
             {
                 return RedirectToAction("Login", "Account");
             }
