@@ -10,8 +10,8 @@
 {
     @Html.ValidationSummary();
     
-    @Html.LabelFor(o => o.Title)
-    @Html.TextBoxFor(o => o.Title, new { @required = "required" })
+    @Html.LabelFor(o => o.Type)
+    @ViewBag.Type
     <br />
     @Html.LabelFor(o => o.Location)
     @Html.TextBoxFor(o => o.Location, new { @required = "required" })

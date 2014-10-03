@@ -50,7 +50,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             if (!CheckReport(report))
             {
                 // Hier opslaan!
-                return View("Report");
+                return View("Details");
             }
 
             if (contactMe != "false")
