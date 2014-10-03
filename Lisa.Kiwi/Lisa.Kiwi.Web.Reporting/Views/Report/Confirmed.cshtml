@@ -3,7 +3,11 @@
     ViewBag.Title = "Confirmed";
 }
 
-<h2>Bevestigd</h2>
-<p>De melding is succes vol aangemaakt.</p>
 
-<p>@Html.ActionLink("Ga terug naar de home pagina", "Index")</p>
+<div class="center-box">
+    <h2>Bevestigd</h2>
+    <div class="form-group">
+        <p>De melding is succes vol aangemaakt.</p>
+    </div>
+    <p>@Html.ActionLink("Ga terug naar de home pagina", "Index", "Report", new { @class = "btn btn-default" })</p>
+</div>

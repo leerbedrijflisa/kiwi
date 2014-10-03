@@ -5,7 +5,7 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.OData;
-using Lisa.Kiwi.Data.Models;
+using Lisa.Kiwi.Data;
 using Microsoft.WindowsAzure.Storage.Queue;
 using Newtonsoft.Json;
 

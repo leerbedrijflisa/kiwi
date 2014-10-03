@@ -5,14 +5,12 @@
 //using System.Web.Mvc;
 //using Lisa.Kiwi.WebApi.Access;
 //using System.Threading.Tasks;
+//using Lisa.Kiwi.Data;
 
 //namespace Lisa.Kiwi.Web.Dashboard.Controllers
 //{
 //    public class ReportController : Controller
 //    {
-
-//        private TempReports Reports = new TempReports();
-
 //        public ActionResult Index(string id)
 //        {
 //            var sessionTimeOut = Session.Timeout = 60;
@@ -21,7 +19,7 @@
 //                return RedirectToAction("Login", "Account");
 //            }
 
-//            var report = Reports.GetReport(id);
+//            var report = ReportProxy.GetReport(id);
 //            var statusses = Enum.GetValues(typeof(StatusName)).Cast<StatusName>().ToList();
 //            ViewBag.Statusses = statusses;
 
@@ -38,7 +36,7 @@
 //                return RedirectToAction("Login", "Account");
 //            }
 
-//            var report = Reports.GetReport(id);
+//            var report = ReportProxy.GetReport(id);
 //            var statusses = Enum.GetValues(typeof(StatusName)).Cast<StatusName>().ToList();
 //            ViewBag.Statusses = statusses;
 
@@ -58,12 +56,12 @@
 
 //            if (report.Status.Last().Name.ToString() != Status)
 //            {
-//                Reports.SaveStatus(guid, Status);
+//                ReportProxy.SaveStatus(guid, Status);
 //            }
 
 //            if (!string.IsNullOrEmpty(Comment))
 //            {
-//                Reports.SaveComment(guid, Comment);
+//                ReportProxy.SaveComment(guid, Comment);
 //            }
 
 //            return View(report);

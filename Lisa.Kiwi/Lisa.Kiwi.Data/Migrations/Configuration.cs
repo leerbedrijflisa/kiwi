@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Lisa.Kiwi.Data.Models;
+using Lisa.Kiwi.Data;
 
 namespace Lisa.Kiwi.Data.Migrations
 {

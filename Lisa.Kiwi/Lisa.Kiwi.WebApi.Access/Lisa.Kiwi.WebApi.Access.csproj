@@ -87,7 +87,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Kiwi.tt</DependentUpon>
     </Compile>
-    <Compile Include="Proxies\Report.cs" />
+    <Compile Include="Proxies\ReportProxy.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

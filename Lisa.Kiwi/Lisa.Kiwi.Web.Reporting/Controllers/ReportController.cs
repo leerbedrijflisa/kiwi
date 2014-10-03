@@ -69,7 +69,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
         [HttpPost]
         public ActionResult Contactdetails(Contact contact, string guid)
         {
-            if (string.IsNullOrEmpty(contact.Email) && contact.PhoneNumber == 0 && contact.StudentNumber == 0)
+            if (string.IsNullOrEmpty(contact.Email) && string.IsNullOrEmpty(contact.PhoneNumber) && contact.StudentNumber == 0)
             {
                 ModelState.AddModelError("Form", "U moet een van de contact velden invoeren (Telefoon, Email of studenten nummer).");
             } 
@@ -80,10 +80,9 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             }
 
 
-
             if (!ModelState.IsValid)
             {
-                return View("Contactdetails");
+                return View();
             }
 
             // Save contact details

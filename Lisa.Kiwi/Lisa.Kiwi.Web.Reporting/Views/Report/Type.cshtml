@@ -1,15 +1,16 @@
 ﻿@model Lisa.Kiwi.Web.Reporting.Models.OriginalReport
 
 @{
-    ViewBag.Title = "ReportType";
+    ViewBag.Title = "Type melding";
 }
 
-<h2>Report</h2>
-
-@using (Html.BeginForm("Details", "Report"))
-{
-    @Html.DropDownList("reportType", ViewBag.ReportTypes as SelectList)
-    <br />
-    <br />
-    <input type="submit" value="Volgende stap" />
-}
+<div class="center-box">
+    <h2>Meldings type</h2>
+    @using (Html.BeginForm("Details", "Report"))
+    {
+        <div class="form-group">
+            @Html.DropDownList("reportType", ViewBag.ReportTypes as SelectList)
+        </div>
+        <input type="submit" value="Volgende stap" />
+    }
+</div>

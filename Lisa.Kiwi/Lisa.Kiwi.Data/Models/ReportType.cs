@@ -1,4 +1,4 @@
-﻿namespace Lisa.Kiwi.Data.Models
+﻿namespace Lisa.Kiwi.Data
 {
     public enum ReportType
     {
