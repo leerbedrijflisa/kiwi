@@ -18,11 +18,6 @@ namespace Lisa.Kiwi.Web.Reporting.Models
         }
 
         public int Id { get; set; }
-        
-        [Required]
-        [Display(Name="Title")]
-        [StringLength(150, ErrorMessage="De titel mag niet langer zijn dan 150 karakters.")]
-        public string Title { get; set; }
 
         [Required]
         [Display(Name = "Locatie")]
@@ -43,6 +38,7 @@ namespace Lisa.Kiwi.Web.Reporting.Models
         [Required]
         public DateTime Time { get; set; }
 
+        [Display(Name="Type melding")]
         public ReportType Type { get; set; }
         public ReportPriority Priority { get; set; }
 

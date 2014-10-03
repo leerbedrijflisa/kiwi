@@ -12,12 +12,6 @@
         @Html.ValidationSummary();
 
         <div class="form-group">
-            <label class="col-sm-3 control-label">Titel</label>
-            <div class="col-sm-9">
-                @Html.TextBoxFor(o => o.Title, new { @required = "required" })
-            </div>
-        </div>
-        <div class="form-group">
             <label class="col-sm-3 control-label">Locatie</label>
             <div class="col-sm-9">
                 @Html.TextBoxFor(o => o.Location, new { @required = "required" })
@@ -49,4 +43,5 @@
         </div>
     }
 </div>
+
 
