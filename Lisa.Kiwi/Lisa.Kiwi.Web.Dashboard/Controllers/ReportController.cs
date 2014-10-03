@@ -8,7 +8,22 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 {
     public class ReportController : Controller
     {
-        public ActionResult Index(int id)
+        public ActionResult Index()
+        {
+            var sessionTimeOut = Session.Timeout = 60;
+            if (Session["user"] == null || sessionTimeOut == 0)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            var reports = ReportProxy.GetReports();
+
+            var reportsData = reports.Where(r => r.Status != StatusName.Solved);
+
+            return View(reportsData);
+        }
+
+        public ActionResult Details(int id)
         {
             var sessionTimeOut = Session.Timeout = 60;
             if (Session["user"] == null || sessionTimeOut == 0)
@@ -29,7 +44,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Index(int id, string status, string comment)
+        public ActionResult Details(int id, string status, string comment)
         {
             var sessionTimeOut = Session.Timeout = 60;
             if (Session["user"] == null || sessionTimeOut == 0)
@@ -38,7 +53,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
             }
 
 
-            return RedirectToAction("Report", "Index", id);
+            return RedirectToAction("Report", "Details", id);
         }
     }
 }

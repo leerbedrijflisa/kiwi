@@ -16,7 +16,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
            }
            else
            {
-               return RedirectToAction("Index", "Dashboard");
+               return RedirectToAction("Index", "Report");
            }
         }
 
@@ -37,7 +37,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
             
             Session["user"] = username;
 
-            return RedirectToAction("Index", "Dashboard");
+            return RedirectToAction("Index", "Report");
         }
     }
 }
