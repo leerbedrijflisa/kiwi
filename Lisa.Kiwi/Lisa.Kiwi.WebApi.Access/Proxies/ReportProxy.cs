@@ -12,11 +12,9 @@ namespace Lisa.Kiwi.WebApi.Access
         private static readonly Container container = new Container(new Uri(ClientConfig.BaseUrl));
 
         // Get an entire entity set.
-        public static IEnumerable GetAllReports()
+        public static IQueryable<Report> GetReports()
         {
-            var reportsList = container.Report.ToList();
-
-            return reportsList;
+            return container.Report;
         }
 
         //Get an entity by keyvalue
