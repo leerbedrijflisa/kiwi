@@ -24,8 +24,7 @@
               <td>@item.Type</td>
               <td>@item.Description</td>
               <td>@item.Status</td>
-              @{ var url = "Report/Index/" + item.Id; }
-              <td><a href="@url">Bekijk</a></td>
+              <td><a href="@Url.Action("Index", "Report")">Bekijk</a></td>
           </tr>
             }
         </tbody>
