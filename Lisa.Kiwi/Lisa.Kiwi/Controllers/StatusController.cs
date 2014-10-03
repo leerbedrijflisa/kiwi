@@ -5,7 +5,7 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.OData;
-using Lisa.Kiwi.Data.Models;
+using Lisa.Kiwi.Data;
 using Microsoft.WindowsAzure.Storage.Queue;
 using Newtonsoft.Json;
 
@@ -130,7 +130,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
 
         // GET odata/Status(5)/Report
         [EnableQuery]
-        public SingleResult<Report> GetReport([FromODataUri] int key)
+        public SingleResult<Data.Report> GetReport([FromODataUri] int key)
         {
             return SingleResult.Create(db.Statuses.Where(m => m.Id == key).Select(m => m.Report));
         }

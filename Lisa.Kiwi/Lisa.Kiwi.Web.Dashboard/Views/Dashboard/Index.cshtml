@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Lisa.Kiwi.WebApi.Access.Report>
+﻿@model IEnumerable<Lisa.Kiwi.WebApi.Report>
 
 <div class="block-container">
 <h2>Meldingen</h2>
@@ -23,8 +23,8 @@
               <td>@item.Time.ToString("dd-mm-yy HH:mm")</td>
               <td>@item.Type</td>
               <td>@item.Description</td>
-              <td>@item.Status.Last().Name</td>
-              @{ var url = "Report/Index/" + item.Guid; }
+              <td>@item.Status</td>
+              @{ var url = "Report/Index/" + item.Id; }
               <td><a href="@url">Bekijk</a></td>
           </tr>
             }

@@ -1,6 +1,6 @@
 ﻿using System.Data.Entity;
 using System.Web;
-using Lisa.Kiwi.Data.Models;
+using Lisa.Kiwi.Data;
 using System.Web.Http;
 
 namespace Lisa.Kiwi.WebApi

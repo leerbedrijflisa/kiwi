@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Lisa.Kiwi.Data.Models
+namespace Lisa.Kiwi.Data
 {
     public class Status
     {

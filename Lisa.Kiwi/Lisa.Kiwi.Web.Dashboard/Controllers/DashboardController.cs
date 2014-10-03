@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using Lisa.Kiwi.WebApi.Access;
 
 namespace Lisa.Kiwi.Web.Dashboard.Controllers
 {
@@ -12,7 +13,8 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
                 return RedirectToAction("Login", "Account");
             }
 
-            var reportsData = WebApi.Access.Proxies.Report.GetAllReports();
+            var reportsData = ReportProxy.GetAllReports();
+
             return View(reportsData);
         }
     }

@@ -3,20 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Default;
-using Lisa.Kiwi.WebApi.Models;
 
-/* 
- * 
- *  This is an EXAMPLE.
- * 
- * 
- *  And an example ONLY.
- * 
- */
-
-namespace Lisa.Kiwi.WebApi.Access.Proxies
+namespace Lisa.Kiwi.WebApi.Access
 {
-    public class Report
+    public class ReportProxy
     {
         // You need this to initialize the access layer
         private static readonly Container container = new Container(new Uri(ClientConfig.BaseUrl));
@@ -32,13 +22,11 @@ namespace Lisa.Kiwi.WebApi.Access.Proxies
         //Get an entity by keyvalue
         public static void GetReport(string guid)
         {
-            //Lisa.Kiwi.WebApi.Models.Report
             var report = container.Report.ByKey(new Dictionary<string, object> {{"ID", 1}}).GetValue();
         }
 
         public static IEnumerable GetAllReportsByStatusIsNot(string status)
         {
-            //Lisa.Kiwi.WebApi.Models.Report
             var report = container.Report.AppendRequestUri("$filter=Status ne " + status).ToList();
 
             return report;
@@ -46,7 +34,7 @@ namespace Lisa.Kiwi.WebApi.Access.Proxies
 
 
         //Create a new entity
-        static void AddReport(WebApi.Models.Report report)
+        static void AddReport(Report report)
         {
             container.AddToReport(report);
             var serviceResponse = container.SaveChanges();
