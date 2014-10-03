@@ -2,9 +2,13 @@
     ViewBag.Title = "Welkom";
 }
 
-<h1>Welkom!</h1>
-<p>Welkom bij de meldings wizzard</p>
-
-@using (Html.BeginForm("Type", "Report")) { 
-  <input type="submit" name="NextStep" value="Maak een melding!">
-}
+<div class="center-box">
+    <h2>Welkom</h2>
+    @using (Html.BeginForm("Type", "Report"))
+    {
+        <div class="form-group">
+            <p>Maak een melding!</p>
+        </div>
+        <input type="submit" name="NextStep" value="Maak een melding!">
+    }
+</div>

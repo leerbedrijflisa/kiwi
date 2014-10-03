@@ -4,28 +4,49 @@
     ViewBag.Title = "Report";
 }
 
-<h2>Report</h2>
+<div class="center-box">
+    <h2>Report</h2>
 
-@using (Html.BeginForm("Check", "Report"))
-{
-    @Html.ValidationSummary();
-    
-    @Html.LabelFor(o => o.Title)
-    @Html.TextBoxFor(o => o.Title, new { @required = "required" })
-    <br />
-    @Html.LabelFor(o => o.Location)
-    @Html.TextBoxFor(o => o.Location, new { @required = "required" })
-    <br />
-    @Html.LabelFor(o => o.Time)
-    @Html.TextBoxFor(o => o.Time, new { @required = "required", @Value = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss") })
-    <br />
-    @Html.LabelFor(o => o.Description)
-    @Html.TextAreaFor(o => o.Description, new { @required = "required" })
-    <br />
-    @Html.Label("Contact gegevens")
-    <input type="checkbox" name="contactMe" value="Neem contact met mij op.">
-    <p>Neem contact met mij op!</p>
-    <br />
-    <input type="submit" value="Volgende stap" />
-}
+    @using (Html.BeginForm("Check", "Report"))
+    {
+        @Html.ValidationSummary();
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Titel</label>
+            <div class="col-sm-9">
+                @Html.TextBoxFor(o => o.Title, new { @required = "required" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Locatie</label>
+            <div class="col-sm-9">
+                @Html.TextBoxFor(o => o.Location, new { @required = "required" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Datum</label>
+            <div class="col-sm-9">
+                @Html.TextBoxFor(o => o.Time, new { @required = "required", @Value = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss") })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Beschrijving</label>
+            <div class="col-sm-9">
+                @Html.TextAreaFor(o => o.Description, new { @required = "required" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Contact</label>
+            <div class="col-sm-9">
+                <input type="checkbox" name="contactMe"> Ja, neem contact met mij op.
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-12">
+                <br />
+                <input type="submit" value="Volgende stap" class="btn btn-default" />
+            </div>
+        </div>
+    }
+</div>
 
