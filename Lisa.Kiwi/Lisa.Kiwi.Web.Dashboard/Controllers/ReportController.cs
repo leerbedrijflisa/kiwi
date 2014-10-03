@@ -52,8 +52,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
                 return RedirectToAction("Login", "Account");
             }
 
-
-            return RedirectToAction("Report", "Details", id);
+            return RedirectToAction("Details", new { id = id });
         }
     }
 }
