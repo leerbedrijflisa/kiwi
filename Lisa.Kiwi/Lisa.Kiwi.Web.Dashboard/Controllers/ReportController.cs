@@ -35,9 +35,9 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 
             var report = reports.Where(r => r.Id == id).FirstOrDefault();
 
-            var statusses = Enum.GetValues(typeof(StatusName)).Cast<StatusName>().ToList();
+            var statuses = Enum.GetValues(typeof(StatusName)).Cast<StatusName>().ToList();
 
-            ViewBag.Statusses = statusses;
+            ViewBag.Statuses = statuses;
 
             return View(report);
         }
