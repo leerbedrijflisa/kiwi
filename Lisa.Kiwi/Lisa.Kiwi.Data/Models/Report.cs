@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Lisa.Kiwi.Data.Models
+namespace Lisa.Kiwi.Data
 {
     public class Report
     {

@@ -4,7 +4,7 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.OData;
-using Lisa.Kiwi.Data.Models;
+using Lisa.Kiwi.Data;
 using Microsoft.WindowsAzure.Storage.Queue;
 using Newtonsoft.Json;
 
@@ -17,16 +17,15 @@ namespace Lisa.Kiwi.WebApi.Controllers
 
         // GET odata/Report
         [EnableQuery]
-        public IQueryable<Models.Report> GetReport()
+        public IQueryable<WebApi.Report> GetReport()
         {
             var result =
                 from s in db.Statuses
-                group s by s.Report
-                into g
+                group s by s.Report into g
                 let latest = g.Max(s => s.Created)
                 let r = g.Key
                 let status = g.FirstOrDefault(s => s.Created == latest)
-                select new Models.Report
+                select new WebApi.Report
                 {
                     Id = r.Id,
                     Created = r.Created,
@@ -36,7 +35,8 @@ namespace Lisa.Kiwi.WebApi.Controllers
                     Location = r.Location,
                     Time = r.Time,
                     UserAgent = r.UserAgent,
-                    Status = status.Name
+                    Status = status.Name,
+                    Contacts = r.Contacts
                 };
             
             return result;
@@ -44,7 +44,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
 
         // GET odata/Report(5)
         [EnableQuery]
-        public SingleResult<Report> GetReport([FromODataUri] int key)
+        public SingleResult<Data.Report> GetReport([FromODataUri] int key)
         {
             return SingleResult.Create(db.Reports.Where(report => report.Id == key));
         }
@@ -96,14 +96,14 @@ namespace Lisa.Kiwi.WebApi.Controllers
 
         // PATCH odata/Report(5)
         [AcceptVerbs("PATCH", "MERGE")]
-        public async Task<IHttpActionResult> Patch([FromODataUri] int key, Delta<Report> patch)
+        public async Task<IHttpActionResult> Patch([FromODataUri] int key, Delta<Data.Report> patch)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            Report report = await db.Reports.FindAsync(key);
+            Data.Report report = await db.Reports.FindAsync(key);
             if (report == null)
             {
                 return NotFound();
@@ -133,7 +133,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
         // DELETE odata/Report(5)
         public async Task<IHttpActionResult> Delete([FromODataUri] int key)
         {
-            Report report = await db.Reports.FindAsync(key);
+            Data.Report report = await db.Reports.FindAsync(key);
             if (report == null)
             {
                 return NotFound();

@@ -1,4 +1,4 @@
-﻿@model Lisa.Kiwi.WebApi.Access.Report
+﻿@model Lisa.Kiwi.WebApi.Report
 
 @{
 
@@ -51,7 +51,7 @@ else
                         <div class="form-group">
                             <label class="col-sm-4 control-label">Status</label>
                             <div class="col-sm-8">
-                                <p class="form-control-static">@Model.Status.Last().Name</p>
+                                <p class="form-control-static">@Model.Status</p>
                             </div>
                         </div>
                         @if (Model.Contacts != null)
@@ -119,7 +119,7 @@ else
                                         @foreach (var item in ViewBag.Statusses)
                                         {
                                             var selected = "";
-                                            if (Model.Status.Last().Name == item)
+                                            if (Model.Status == item)
                                             {
                                                 selected = "selected";
                                             }

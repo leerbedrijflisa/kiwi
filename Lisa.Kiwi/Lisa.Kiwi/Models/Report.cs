@@ -1,8 +1,9 @@
 ﻿using System;
-using Lisa.Kiwi.Data.Models;
+using Lisa.Kiwi.Data;
 using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
-namespace Lisa.Kiwi.WebApi.Models
+namespace Lisa.Kiwi.WebApi
 {
     public class Report
     {
@@ -16,5 +17,7 @@ namespace Lisa.Kiwi.WebApi.Models
         public string UserAgent { get; set; }
         public string Ip { get; set; }
         public StatusName Status { get; set; }
+        public ReportType Type { get; set; }
+        public IEnumerable<Contact> Contacts { get; set; }
     }
 }
