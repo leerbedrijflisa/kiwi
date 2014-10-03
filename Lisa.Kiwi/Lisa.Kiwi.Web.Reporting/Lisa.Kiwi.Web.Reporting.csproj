@@ -163,8 +163,8 @@
     <Content Include="Views\Report\Type.cshtml" />
     <Content Include="Views\Report\Details.cshtml" />
     <Content Include="Views\Report\ContactDetails.cshtml" />
-    <Content Include="Views\Report\Confirmed.cshtml" />
     <Content Include="Scripts\jquery-2.1.1.min.map" />
+    <Content Include="Views\Report\Confirmed.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

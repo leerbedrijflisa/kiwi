@@ -57,7 +57,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             {
                 return ContactDetails(report.Guid);
             }
-            return RedirectToAction("Confirmed");
+            return RedirectToAction("Confirmed", new { guid = report.Guid });
         }
 
         public ActionResult ContactDetails(string guid)
@@ -87,11 +87,12 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 
             // Save contact details
 
-            return RedirectToAction("Confirmed");
+            return RedirectToAction("Confirmed", new { guid = guid});
         }
 
-        public ActionResult Confirmed()
+        public ActionResult Confirmed(string guid)
         {
+            ViewBag.Guid = guid;
             return View();
         }
 

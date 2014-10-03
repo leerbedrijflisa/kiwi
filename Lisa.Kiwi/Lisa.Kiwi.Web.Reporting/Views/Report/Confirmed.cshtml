@@ -1,13 +1,98 @@
-﻿
+﻿@model Lisa.Kiwi.WebApi.Report
+
 @{
     ViewBag.Title = "Confirmed";
 }
 
 
-<div class="center-box">
-    <h2>Bevestigd</h2>
-    <div class="form-group">
-        <p>De melding is succes vol aangemaakt.</p>
+<div class="block-container">
+    <h2>Report - @ViewBag.Guid</h2>
+    <div class="row">
+        @*<div class="col-sm-6 form-horizontal">
+                <h3>Details</h3>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Tijd incident</label>
+                    <div class="col-sm-8">
+                        <p class="form-control-static">@Model.Time.ToString("dd-mm-yyyy HH:mm:ss")</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Type melding</label>
+                    <div class="col-sm-8">
+                        <p class="form-control-static">@Model.Type</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Beschrijving</label>
+                    <div class="col-sm-8">
+                        <p class="form-control-static">@Model.Description</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Ip adres</label>
+                    <div class="col-sm-8">
+                        <p class="form-control-static">@Model.Ip</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">User agent</label>
+                    <div class="col-sm-8">
+                        <p class="form-control-static">@Model.UserAgent</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Status</label>
+                    <div class="col-sm-8">
+                        <p class="form-control-static">@Model.Status</p>
+                    </div>
+                </div>
+                @if (Model.Contacts != null)
+                {
+                    foreach (var contact in Model.Contacts)
+                    {
+                        <h3>Contactgegevens</h3>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Naam</label>
+                            <div class="col-sm-8">
+                                <p class="form-control-static">@contact.Name</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Telefoonnummer</label>
+                            <div class="col-sm-8">
+                                <p class="form-control-static">
+                                    @if (contact.PhoneNumber != null)
+                                    { @contact.PhoneNumber }
+                                    else
+                                    { <span>n.v.t</span> }
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Emailadres</label>
+                            <div class="col-sm-8">
+                                <p class="form-control-static">
+                                    @if (contact.EmailAddress != null)
+                                    { @contact.EmailAddress }
+                                    else
+                                    { <span>n.v.t</span> }
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Studenten OV nummer</label>
+                            <div class="col-sm-8">
+                                <p class="form-control-static">
+                                    @if (contact.StudentNumber != null)
+                                    { @contact.StudentNumber }
+                                    else
+                                    { <span>n.v.t</span> }
+                                </p>
+                            </div>
+                        </div>
+                    }
+                }
+
+            </div>*@
     </div>
-    <p>@Html.ActionLink("Ga terug naar de home pagina", "Index", "Report", new { @class = "btn btn-default" })</p>
 </div>
