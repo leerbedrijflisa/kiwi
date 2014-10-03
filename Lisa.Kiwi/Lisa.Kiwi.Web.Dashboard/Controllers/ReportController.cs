@@ -33,7 +33,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 
             var reports = ReportProxy.GetReports();
 
-            var report = reports.Where(r => r.Id == id).ToList()[0];
+            var report = reports.Where(r => r.Id == id).FirstOrDefault();
 
             var statusses = Enum.GetValues(typeof(StatusName)).Cast<StatusName>().ToList();
 
