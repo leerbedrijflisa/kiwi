@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using Default;
 
 namespace Lisa.Kiwi.WebApi.Access
 {
@@ -19,7 +18,7 @@ namespace Lisa.Kiwi.WebApi.Access
         static void AddReport(Report report)
         {
             container.AddToReport(report);
-            var serviceResponse = container.SaveChanges();
+            container.SaveChanges();
         }
     }
 }

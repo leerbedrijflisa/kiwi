@@ -7,8 +7,6 @@ namespace Lisa.Kiwi.Data
     {
         public int Id { get; set; }
         public DateTimeOffset Created { get; set; }
-
-        [Column(TypeName = "text")]
         public string Description { get; set; }
 
         public virtual Report Report { get; set; }

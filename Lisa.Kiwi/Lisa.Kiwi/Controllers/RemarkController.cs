@@ -17,14 +17,14 @@ namespace Lisa.Kiwi.WebApi.Controllers
 
         // GET odata/Remark
         [EnableQuery]
-        public IQueryable<Remark> GetRemark()
+        public IQueryable<Data.Remark> GetRemark()
         {
             return db.Remarks;
         }
 
         // GET odata/Remark(5)
         [EnableQuery]
-        public SingleResult<Remark> GetRemark([FromODataUri] int key)
+        public SingleResult<Data.Remark> GetRemark([FromODataUri] int key)
         {
             return SingleResult.Create(db.Remarks.Where(remark => remark.Id == key));
         }
@@ -83,13 +83,13 @@ namespace Lisa.Kiwi.WebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            Remark remark = await db.Remarks.FindAsync(key);
+            Data.Remark remark = await db.Remarks.FindAsync(key);
             if (remark == null)
             {
                 return NotFound();
             }
 
-            patch.Patch(remark);
+            //patch.Patch(remark);
 
             try
             {
@@ -113,7 +113,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
         // DELETE odata/Remark(5)
         public async Task<IHttpActionResult> Delete([FromODataUri] int key)
         {
-            Remark remark = await db.Remarks.FindAsync(key);
+            Data.Remark remark = await db.Remarks.FindAsync(key);
             if (remark == null)
             {
                 return NotFound();
