@@ -13,15 +13,5 @@ namespace Lisa.Kiwi.WebApi.Access
 
         // You need this to initialize the access layer
         internal static Container container = new Container(BaseUri);
-
-        public HttpClient BuildClient()
-        {
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri(BaseUrl);
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-            return client;
-        }
     }
 }
