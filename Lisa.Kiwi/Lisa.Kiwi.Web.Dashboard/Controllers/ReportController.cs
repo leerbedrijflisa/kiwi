@@ -43,7 +43,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Details(int id, StatusName? status, string comment = null)
+        public ActionResult Details(int id, StatusName? status, string remark = null)
         {
             var sessionTimeOut = Session.Timeout = 60;
             if (Session["user"] == null || sessionTimeOut == 0)
@@ -68,6 +68,18 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
                 };
 
                 StatusProxy.AddStatus(newStatus);
+            }
+
+            if (remark != null)
+            {
+                var newRemark = new Remark
+                {
+                    Description = remark,
+                    Created = DateTimeOffset.Now,
+                    Report = report.Id
+                };
+
+                RemarkProxy.AddRemark(newRemark);
             }
 
             return RedirectToAction("Details", new { id = id });

@@ -4,10 +4,15 @@ using System.Net.Http.Headers;
 
 namespace Lisa.Kiwi.WebApi.Access
 {
-    class ClientConfig
+    internal class Client
     {
         //Where is the OData API hosted?
-        public const string BaseUrl = "http://localhost:20151/odata";
+        private const string BaseUrl = "http://localhost:20151/odata";
+
+        internal static Uri BaseUri = new Uri(BaseUrl);
+
+        // You need this to initialize the access layer
+        internal static Container container = new Container(BaseUri);
 
         public HttpClient BuildClient()
         {
