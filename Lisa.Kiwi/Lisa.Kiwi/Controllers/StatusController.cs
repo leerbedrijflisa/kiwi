@@ -47,7 +47,15 @@ namespace Lisa.Kiwi.WebApi.Controllers
 
             try
             {
-                await _queue.AddMessageAsync(new CloudQueueMessage(JsonConvert.SerializeObject(status)));
+                db.Statuses.Add(new Data.Status
+                {
+                    Id = status.Id,
+                    Name = status.Name,
+                    Created = status.Created,
+                    Report = db.Reports.Find(status.Report)
+                });
+
+                await db.SaveChangesAsync();
             }
             catch (Exception)
             {
