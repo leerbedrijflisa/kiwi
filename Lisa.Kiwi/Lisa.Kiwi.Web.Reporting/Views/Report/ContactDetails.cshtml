@@ -12,8 +12,13 @@
         @Html.ValidationSummary()
 
         <div class="form-group">
-            <label class="control-label">Volledige naam</label><br />
-            @Html.TextBoxFor(c => c.Name, new { @required = "required" })
+            <label class="control-label">Mogen wij contact met je opnemen?</label><br />         
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Naam</label><br />
+            @Html.CheckBox("nameCheck", false, new { @Value = "Naam", OnChange = "disabledCheck('nameCheck', 'Name');" })
+            @Html.TextBoxFor(c => c.Name, new { @Disabled = "Disabled", Value = "", OnChange = "RemoveSpace('Name');" })
         </div>
         <div class="form-group">
             <label class="control-label">Telefoon</label><br />

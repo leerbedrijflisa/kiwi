@@ -1,4 +1,5 @@
-﻿
+﻿@model Lisa.Kiwi.Web.Reporting.Models.OriginalReport
+
 @{
     ViewBag.Title = "Confirmed";
 }
@@ -9,5 +10,8 @@
     <div class="form-group">
         <p>De melding is succes vol aangemaakt.</p>
     </div>
+
+    
+
     <p>@Html.ActionLink("Ga terug naar de home pagina", "Index", "Report", new { @class = "btn btn-default" })</p>
 </div>
