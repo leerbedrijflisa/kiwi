@@ -3,22 +3,22 @@ using System.Linq;
 
 namespace Lisa.Kiwi.WebApi.Access
 {
-    public class ReportProxy
+    public class StatusProxy
     {
         // You need this to initialize the access layer
         private static readonly Container container = new Container(new Uri(ClientConfig.BaseUrl));
 
         // Get an entire entity set.
-        public static IQueryable<Report> GetReports()
+        public static IQueryable<Status> GetStatuses()
         {
-            return container.Report;
+            return container.Status;
         }
 
         //Create a new entity
-        static void AddReport(Report report)
+        public static void AddStatus(Status status)
         {
-            container.AddToReport(report);
-            container.SaveChanges();
+            container.AddToStatus(status);
+            var serviceResponse = container.SaveChanges();
         }
     }
 }
