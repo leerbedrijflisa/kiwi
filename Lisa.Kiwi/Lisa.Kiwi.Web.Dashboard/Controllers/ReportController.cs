@@ -43,7 +43,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Details(int id, StatusName? status, string remark = null)
+        public ActionResult Details(int id, StatusName? status, string remark)
         {
             var sessionTimeOut = Session.Timeout = 60;
             if (Session["user"] == null || sessionTimeOut == 0)

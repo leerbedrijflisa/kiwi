@@ -101,7 +101,7 @@ else
                             }
                         }
                         <h3>Acties</h3>
-                        @using (Html.BeginForm("Details", "Report", "POST"))
+                        @using (Html.BeginForm("Details", "Report"))
                         {
                             @Html.ValidationSummary()
                             @Html.AntiForgeryToken()
