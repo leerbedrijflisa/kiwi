@@ -34,30 +34,26 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
         }
 
         [HttpPost]
-        public ActionResult Details(string reportType)
+        public ActionResult Details(OriginalReport data, string reportType, string nextBtn)
         {
-            if (!ModelState.IsValid)
+            ViewBag.ReportType = reportType;
+            if (nextBtn != null)
             {
-                return View("Type");
+                if (ModelState.IsValid)
+                {
+                    string guid = Guid.NewGuid().ToString();
+
+                    OriginalReport report = new OriginalReport();
+                    report.Location = data.Location;
+                    report.Time = data.Time;
+                    report.Description = data.Description;
+                    report.Type = reportType;
+                    report.Guid = guid;
+     
+                    return View("ContactDetails");
+                }
             }
-            ViewBag.Type = reportType;
             return View();
-        }
-
-        [HttpPost]
-        public ActionResult Check(OriginalReport report, string contactMe = "false")
-        {
-            if (!CheckReport(report))
-            {
-                // Hier opslaan!
-                return View("Details");
-            }
-
-            if (contactMe != "false")
-            {
-                return ContactDetails(report.Guid);
-            }
-            return RedirectToAction("Confirmed");
         }
 
         public ActionResult ContactDetails(string guid)
@@ -69,17 +65,6 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
         [HttpPost]
         public ActionResult Contactdetails(Contact contact, string guid)
         {
-            if (string.IsNullOrEmpty(contact.Email) && string.IsNullOrEmpty(contact.PhoneNumber) && contact.StudentNumber == 0)
-            {
-                ModelState.AddModelError("Form", "U moet een van de contact velden invoeren (Telefoon, Email of studenten nummer).");
-            } 
-
-            if (contact.Email == "false")
-            {
-                contact.Email = "";
-            }
-
-
             if (!ModelState.IsValid)
             {
                 return View();
@@ -87,7 +72,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 
             // Save contact details
 
-            return RedirectToAction("Confirmed");
+            return View("Confirmed");
         }
 
         public ActionResult Confirmed()

@@ -5,12 +5,13 @@
 }
 
 <div class="center-box">
-    <h2>Meldings type</h2>
+    <h2>Wat wil je melden?</h2>
     @using (Html.BeginForm("Details", "Report"))
     {
         <div class="form-group">
             @Html.DropDownList("reportType", ViewBag.ReportTypes as SelectList)
         </div>
-        <input type="submit" value="Volgende stap" />
+        <input type="submit" name="typeBtn" value="Volgende" />
+    
     }
 </div>
