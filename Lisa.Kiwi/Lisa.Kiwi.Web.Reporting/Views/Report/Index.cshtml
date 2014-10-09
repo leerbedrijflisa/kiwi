@@ -5,14 +5,13 @@
 <div class="center-box">
     <div class="row">
         <div class="col-xs-12">
-    <h2>Welkom</h2>
-    @using (Html.BeginForm("Type", "Report"))
-    {
-        <div class="form-group">
-            <p>Maak een melding!</p>
-        </div>
-    <input type="submit" name="NextStep" value="Start" class="btn btn-default btn-report">
-    }
-</div>
+            <h2>Welkom</h2>
+
+            <div class="form-group">
+                <p>Maak een melding!</p>
+            </div>
+            <a href="@Url.Action("type", "Report")">Start</a>
+
         </div>
     </div>
+</div>

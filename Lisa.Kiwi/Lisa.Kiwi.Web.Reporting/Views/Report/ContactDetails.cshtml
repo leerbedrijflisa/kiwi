@@ -10,6 +10,7 @@
     @using (Html.BeginForm("Contactdetails", "Report"))
     {
         @Html.ValidationSummary()
+        @Html.AntiForgeryToken();
 
         <div class="form-group">
             <label class="control-label">Mogen wij contact met je opnemen?</label><br />

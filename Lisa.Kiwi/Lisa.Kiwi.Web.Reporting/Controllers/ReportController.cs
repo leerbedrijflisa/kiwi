@@ -13,6 +13,15 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             return View();
         }
 
+        private OriginalReport GetReport()
+        {
+            if(Session["userReport"] == null)
+            {
+                Session["userReport"] = new OriginalReport();
+            }
+            return (OriginalReport)Session["userRaport"];
+        }
+
         public ActionResult Type()
         {
             var types = new string[]
@@ -34,61 +43,71 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
         }
 
         [HttpPost]
-        public ActionResult Details(OriginalReport data, string reportType, string nextBtn)
+        public ActionResult Type(string reportType)
         {
-            ViewBag.ReportType = reportType;
-            if (nextBtn != null)
+            if (reportType != null)
             {
                 if (ModelState.IsValid)
                 {
-                    string guid = Guid.NewGuid().ToString();
-
-                    OriginalReport report = new OriginalReport();
-                    report.Location = data.Location;
-                    report.Time = data.Time;
-                    report.Description = data.Description;
-                    report.Type = reportType;
-                    report.Guid = guid;
-     
-                    return View("ContactDetails");
+                    OriginalReport type = GetReport();
+                    
+                    return RedirectToAction("Details", "Report");
                 }
             }
             return View();
         }
 
-        public ActionResult ContactDetails(string guid)
+        public ActionResult Details()
         {
-            ViewBag.Guid = guid;
-            return View("ContactDetails");
+            return View();
         }
 
         [HttpPost]
-        public ActionResult Contactdetails(Contact contact, string guid)
+        public ActionResult Details(OriginalReport data, string reportType)
         {
-            if (!ModelState.IsValid)
+            ViewBag.ReportType = reportType;
+
+            if (ModelState.IsValid)
             {
-                return View();
+                string guid = Guid.NewGuid().ToString();
+
+                OriginalReport report = new OriginalReport();
+                report.Location = data.Location;
+                report.Time = data.Time;
+                report.Description = data.Description;
+                report.Type = reportType;
+                report.Guid = guid;
+
+                return RedirectToAction("ContactDetails", "Report");
             }
 
-            // Save contact details
+            return View();
+        }
 
-            return View("Confirmed");
+        public ActionResult ContactDetails()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Contactdetails(Contact data, string guid)
+        {
+            if (ModelState.IsValid)
+            {
+                Contact contact = new Contact();
+                contact.Name = data.Name;
+                contact.PhoneNumber = data.PhoneNumber;
+                contact.Email = data.Email;
+                contact.StudentNumber = data.StudentNumber;
+                return RedirectToAction("Confirmed", "Report");
+            }
+
+            return View();
         }
 
         public ActionResult Confirmed()
         {
             return View();
-        }
-
-        private bool CheckReport(OriginalReport report, bool checkEmpty = true, string[] skipField = null)
-        {
-            if (!ModelState.IsValid)
-            {
-                return false;
-            }
-
-            return true;
-        }
-        
+        }       
     }
 }

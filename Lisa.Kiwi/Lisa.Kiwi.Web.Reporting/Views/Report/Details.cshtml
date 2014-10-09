@@ -9,7 +9,7 @@
         <div class="col-xs-12">
     <h2>Report</h2>
 
-    @using (Html.BeginForm("Details", "Report", FormMethod.Post))
+    @using (Html.BeginForm("Details", "Report"))
     {
         @Html.ValidationSummary();
         @Html.AntiForgeryToken();
