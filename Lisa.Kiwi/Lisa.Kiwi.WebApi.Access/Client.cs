@@ -12,6 +12,6 @@ namespace Lisa.Kiwi.WebApi.Access
         internal static Uri BaseUri = new Uri(BaseUrl);
 
         // You need this to initialize the access layer
-        internal static Container container = new Container(BaseUri);
+        internal static Container Container = new Container(BaseUri);
     }
 }

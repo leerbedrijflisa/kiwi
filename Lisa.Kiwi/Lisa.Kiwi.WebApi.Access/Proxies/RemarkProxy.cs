@@ -8,15 +8,15 @@ namespace Lisa.Kiwi.WebApi.Access
         // Get an entire entity set.
         public static IQueryable<Status> GetStatuses()
         {
-            return Client.container.Status;
+            return Client.Container.Status;
         }
 
         //Create a new entity
         public static void AddRemark(Remark remark)
         {
-            Client.container.AddToRemark(remark);
-            Client.container.SaveChanges();
-            Client.container = new Container(Client.BaseUri);
+            Client.Container.AddToRemark(remark);
+            Client.Container.SaveChanges();
+            Client.Container = new Container(Client.BaseUri);
         }
     }
 }

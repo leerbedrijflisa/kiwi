@@ -7,16 +7,16 @@ namespace Lisa.Kiwi.WebApi.Access
         // Get an entire entity set.
         public static IQueryable<Status> GetStatuses()
         {
-            return Client.container.Status;
+            return Client.Container.Status;
         }
 
         //Create a new entity
         public static void AddStatus(Status status)
         {
             //Client.container.Status.Context.AddObject("Status", status); //CreateStatus(status);
-            Client.container.AddToStatus(status);
-            Client.container.SaveChanges();
-            Client.container = new Container(Client.BaseUri);          
+            Client.Container.AddToStatus(status);
+            Client.Container.SaveChanges();
+            Client.Container = new Container(Client.BaseUri);          
         }
     }
 }
