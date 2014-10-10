@@ -4,18 +4,24 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 using Lisa.Kiwi.Tools;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Auth;
+using Microsoft.WindowsAzure.Storage.Table;
 
 namespace Lisa.Kiwi.Web.Reporting.Models
 {
-    public class OriginalReport
+    public class OriginalReport : TableEntity
     {
         public OriginalReport()
         {
+
             Created = DateTime.Now;
             UserAgent = HttpContext.Current.Request.UserAgent;
             Ip = Utils.GetIP();
             Priority = ReportPriority.Normaal;
         }
+
+        public string Cookie { get; set; }
 
         public int Id { get; set; }
 
