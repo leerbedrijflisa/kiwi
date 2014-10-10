@@ -3,6 +3,9 @@ using System.Web.Mvc;
 using Lisa.Kiwi.Web.Reporting.Models;
 using Lisa.Kiwi.Tools;
 using System;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Auth;
+using Microsoft.WindowsAzure.Storage.Table;
 
 namespace Lisa.Kiwi.Web.Reporting.Controllers
 {
