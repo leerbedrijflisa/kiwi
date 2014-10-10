@@ -15,7 +15,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 
         private OriginalReport GetReport()
         {
-            if(Session["userReport"] == null)
+            if (Session["userReport"] == null)
             {
                 Session["userReport"] = new OriginalReport();
             }
@@ -50,34 +50,14 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
                 if (ModelState.IsValid)
                 {
                     OriginalReport type = GetReport();
-                    
+
                     return RedirectToAction("Details", "Report");
                 }
             }
             return View();
         }
 
-<<<<<<< HEAD
-        [HttpPost]
-        public ActionResult Check(OriginalReport report, string contactMe = "false")
-        {
-            if (!CheckReport(report))
-            {
-                // Hier opslaan!
-                return View("Details");
-            }
-
-            if (contactMe != "false")
-            {
-                return ContactDetails(report.Guid);
-            }
-            return RedirectToAction("Confirmed", new { guid = report.Guid });
-        }
-
-        public ActionResult ContactDetails(string guid)
-=======
         public ActionResult Details()
->>>>>>> 625a80e4c6ffdb6b5abf3c0a3f237232634e4782
         {
             return View();
         }
@@ -101,21 +81,11 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
                 return RedirectToAction("ContactDetails", "Report");
             }
 
-<<<<<<< HEAD
-            // Save contact details
-
-            return RedirectToAction("Confirmed", new { guid = guid});
-        }
-
-        public ActionResult Confirmed(string guid)
-=======
             return View();
         }
 
         public ActionResult ContactDetails()
->>>>>>> 625a80e4c6ffdb6b5abf3c0a3f237232634e4782
         {
-            ViewBag.Guid = guid;
             return View();
         }
 
@@ -138,6 +108,6 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
         public ActionResult Confirmed()
         {
             return View();
-        }       
+        }
     }
 }

@@ -1,119 +1,22 @@
-<<<<<<< HEAD
-﻿@model Lisa.Kiwi.WebApi.Report
-=======
-﻿@model Lisa.Kiwi.Web.Reporting.Models.OriginalReport
->>>>>>> 625a80e4c6ffdb6b5abf3c0a3f237232634e4782
+@model Lisa.Kiwi.Web.Reporting.Models.OriginalReport
 
 @{
     ViewBag.Title = "Confirmed";
 }
 
 
-<<<<<<< HEAD
-<div class="block-container">
-    <h2>Report - @ViewBag.Guid</h2>
-    <div class="row">
-        @*<div class="col-sm-6 form-horizontal">
-                <h3>Details</h3>
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Tijd incident</label>
-                    <div class="col-sm-8">
-                        <p class="form-control-static">@Model.Time.ToString("dd-mm-yyyy HH:mm:ss")</p>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Type melding</label>
-                    <div class="col-sm-8">
-                        <p class="form-control-static">@Model.Type</p>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Beschrijving</label>
-                    <div class="col-sm-8">
-                        <p class="form-control-static">@Model.Description</p>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Ip adres</label>
-                    <div class="col-sm-8">
-                        <p class="form-control-static">@Model.Ip</p>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">User agent</label>
-                    <div class="col-sm-8">
-                        <p class="form-control-static">@Model.UserAgent</p>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Status</label>
-                    <div class="col-sm-8">
-                        <p class="form-control-static">@Model.Status</p>
-                    </div>
-                </div>
-                @if (Model.Contacts != null)
-                {
-                    foreach (var contact in Model.Contacts)
-                    {
-                        <h3>Contactgegevens</h3>
-                        <div class="form-group">
-                            <label class="col-sm-4 control-label">Naam</label>
-                            <div class="col-sm-8">
-                                <p class="form-control-static">@contact.Name</p>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-4 control-label">Telefoonnummer</label>
-                            <div class="col-sm-8">
-                                <p class="form-control-static">
-                                    @if (contact.PhoneNumber != null)
-                                    { @contact.PhoneNumber }
-                                    else
-                                    { <span>n.v.t</span> }
-                                </p>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-4 control-label">Emailadres</label>
-                            <div class="col-sm-8">
-                                <p class="form-control-static">
-                                    @if (contact.EmailAddress != null)
-                                    { @contact.EmailAddress }
-                                    else
-                                    { <span>n.v.t</span> }
-                                </p>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-4 control-label">Studenten OV nummer</label>
-                            <div class="col-sm-8">
-                                <p class="form-control-static">
-                                    @if (contact.StudentNumber != null)
-                                    { @contact.StudentNumber }
-                                    else
-                                    { <span>n.v.t</span> }
-                                </p>
-                            </div>
-                        </div>
-                    }
-                }
-
-            </div>*@
-    </div>
-</div>
-=======
 <div class="center-box">
     <div class="row">
         <div class="col-xs-12">
-    <h2>Bevestigd</h2>
-    <div class="form-group">
-        <p>De melding is succes vol aangemaakt.</p>
-    </div>
+            <h2>Bevestigd</h2>
+            <div class="form-group">
+                <p>De melding is succes vol aangemaakt.</p>
+            </div>
             <h4>Details</h4>
             <div class="form-group">
                 <label class="col-xs-12 control-label">Type melding</label>
                 <div class="col-xs-12">
-                   <p class="form-control-static">Hello</p>
+                    <p class="form-control-static">Hello</p>
                 </div>
             </div>
             <div class="form-group">
@@ -134,11 +37,10 @@
                     <p class="form-control-static">Praesent at lectus ullamcorper, placerat ligula nec, luctus nisl. Ut dictum ut nunc mattis efficitur. Aenean mattis pharetra cursus. Suspendisse at magna turpis.</p>
                 </div>
             </div>
-           
-    
 
-    <p>@Html.ActionLink("Ga terug naar de home pagina", "Index", "Report", new { @class = "btn btn-default btn-report" })</p>
+
+
+            <p>@Html.ActionLink("Ga terug naar de home pagina", "Index", "Report", new { @class = "btn btn-default btn-report" })</p>
         </div>
-        </div>
+    </div>
 </div>
->>>>>>> 625a80e4c6ffdb6b5abf3c0a3f237232634e4782

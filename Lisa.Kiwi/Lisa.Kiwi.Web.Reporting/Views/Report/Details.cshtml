@@ -7,63 +7,37 @@
 <div class="center-box">
     <div class="row">
         <div class="col-xs-12">
-    <h2>Report</h2>
+            <h2>Report</h2>
 
-    @using (Html.BeginForm("Details", "Report"))
-    {
-        @Html.ValidationSummary();
-        @Html.AntiForgeryToken();
-        <div class="form-group">
-<<<<<<< HEAD
-            <label class="col-sm-12 control-label">Locatie</label>
-            <div class="col-sm-12">
-                @Html.TextBoxFor(o => o.Location, new { @required = "required" })
-            </div>
+            @using (Html.BeginForm("Details", "Report"))
+            {
+                @Html.ValidationSummary();
+                @Html.AntiForgeryToken();
+                <div class="form-group">
+                    @Html.LabelFor(o => o.Location, new { @class = "col-xs-12" })
+                    <div class="col-xs-12">
+                        @Html.TextBoxFor(o => o.Location, new { @required = "required", @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(o => o.Time, new { @class = "col-xs-12" })
+                    <div class="col-xs-12">
+                        @Html.TextBoxFor(o => o.Time, new { @required = "required", @class = "form-control", @Value = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss") })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(o => o.Description, new { @class = "col-xs-12" })
+                    <div class="col-xs-12">
+                        @Html.TextAreaFor(o => o.Description, new { @required = "required", @class = "form-control", @rows = "3" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <br />
+                        <input type="submit" name="nextBtn" value="Volgende stap" class="btn btn-default btn-report" />
+                    </div>
+                </div>
+            }
         </div>
-        <div class="form-group">
-            <label class="col-sm-12 control-label">Datum</label>
-            <div class="col-sm-12">
-                @Html.TextBoxFor(o => o.Time, new { @required = "required", @Value = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss") })
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-12 control-label">Beschrijving</label>
-            <div class="col-sm-12">
-                @Html.TextAreaFor(o => o.Description, new { @required = "required" })
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-12 control-label">Contact</label>
-            <div class="col-sm-12">
-                <input type="checkbox" name="contactMe"> Ja, neem contact met mij op.
-=======
-            @Html.LabelFor(o => o.Location, new { @class = "col-xs-12" } )
-            <div class="col-xs-12">
-                @Html.TextBoxFor(o => o.Location, new { @required = "required", @class = "form-control" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(o => o.Time, new { @class = "col-xs-12" })
-            <div class="col-xs-12">
-                @Html.TextBoxFor(o => o.Time, new { @required = "required", @class = "form-control", @Value = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss") })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(o => o.Description, new { @class = "col-xs-12" })
-            <div class="col-xs-12">
-                @Html.TextAreaFor(o => o.Description, new { @required = "required", @class = "form-control", @rows = "3" })
->>>>>>> 625a80e4c6ffdb6b5abf3c0a3f237232634e4782
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-12">
-                <br />
-                <input type="submit" name="nextBtn" value="Volgende stap" class="btn btn-default btn-report" />
-            </div>
-        </div>
-    }
-            </div>
     </div>
 </div>
-
-
