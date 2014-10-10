@@ -1,28 +1,37 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
+using System.Web;
 using Lisa.Kiwi.Web.Reporting.Models;
 using Lisa.Kiwi.Tools;
 using System;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Table;
+using System.Configuration;
+using Microsoft.WindowsAzure;
 
 namespace Lisa.Kiwi.Web.Reporting.Controllers
 {
     public class ReportController : Controller
     {
+        CloudTable table;
+
+        public ReportController()
+        {
+            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+                CloudConfigurationManager.GetSetting("StorageConnectionString"));
+
+            // Create the table client.
+            CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
+
+            // Create the table if it doesn't exist.
+            table = tableClient.GetTableReference("report");
+            table.CreateIfNotExists();
+        }
+
         public ActionResult Index()
         {
             return View();
-        }
-
-        private OriginalReport GetReport()
-        {
-            if (Session["userReport"] == null)
-            {
-                Session["userReport"] = new OriginalReport();
-            }
-            return (OriginalReport)Session["userRaport"];
         }
 
         public ActionResult Type()
@@ -52,7 +61,22 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    OriginalReport type = GetReport();
+                    string guid = Guid.NewGuid().ToString();
+
+                    OriginalReport report = new OriginalReport();
+                
+                    report.Type = reportType;
+                    report.Guid = guid;
+                    report.Time = DateTime.Now;
+
+                    report.PartitionKey = guid;
+                    report.RowKey = "";
+
+                    TableOperation insertOperation = TableOperation.Insert(report);
+                    table.Execute(insertOperation);
+
+                    HttpCookie userReport = new HttpCookie("Cookie");
+                    userReport["guid"] = guid;
 
                     return RedirectToAction("Details", "Report");
                 }
@@ -66,20 +90,15 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
         }
 
         [HttpPost]
-        public ActionResult Details(OriginalReport data, string reportType)
+        public ActionResult Details(OriginalReport data)
         {
-            ViewBag.ReportType = reportType;
+            HttpCookie cookie = HttpContext.Request.Cookies.Get("Cookie");
+
+            
 
             if (ModelState.IsValid)
             {
-                string guid = Guid.NewGuid().ToString();
 
-                OriginalReport report = new OriginalReport();
-                report.Location = data.Location;
-                report.Time = data.Time;
-                report.Description = data.Description;
-                report.Type = reportType;
-                report.Guid = guid;
 
                 return RedirectToAction("ContactDetails", "Report");
             }
