@@ -3,12 +3,15 @@
 }
 
 <div class="center-box">
-    <h2>Welkom</h2>
-    @using (Html.BeginForm("Type", "Report"))
-    {
-        <div class="form-group">
-            <p>Maak een melding!</p>
+    <div class="row">
+        <div class="col-xs-12">
+            <h2>Welkom</h2>
+
+            <div class="form-group">
+                <p>Maak een melding!</p>
+            </div>
+            <a href="@Url.Action("type", "Report")">Start</a>
+
         </div>
-        <input type="submit" name="NextStep" value="Maak een melding!">
-    }
+    </div>
 </div>

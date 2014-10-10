@@ -80,14 +80,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClientConfig.cs" />
+    <Compile Include="Client.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proxies\Kiwi.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Kiwi.tt</DependentUpon>
     </Compile>
+    <Compile Include="Proxies\RemarkProxy.cs" />
     <Compile Include="Proxies\ReportProxy.cs" />
+    <Compile Include="Proxies\StatusProxy.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

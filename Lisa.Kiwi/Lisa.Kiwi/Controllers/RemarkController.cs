@@ -1,30 +1,28 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.OData;
 using Lisa.Kiwi.Data;
-using Microsoft.WindowsAzure.Storage.Queue;
-using Newtonsoft.Json;
 
 namespace Lisa.Kiwi.WebApi.Controllers
 {
     public class RemarkController : ODataController
     {
         private KiwiContext db = new KiwiContext();
-        private readonly CloudQueue _queue = new QueueConfig().BuildQueue();
 
         // GET odata/Remark
         [EnableQuery]
-        public IQueryable<Remark> GetRemark()
+        public IQueryable<Data.Remark> GetRemark()
         {
             return db.Remarks;
         }
 
         // GET odata/Remark(5)
         [EnableQuery]
-        public SingleResult<Remark> GetRemark([FromODataUri] int key)
+        public SingleResult<Data.Remark> GetRemark([FromODataUri] int key)
         {
             return SingleResult.Create(db.Remarks.Where(remark => remark.Id == key));
         }
@@ -42,9 +40,19 @@ namespace Lisa.Kiwi.WebApi.Controllers
                 return BadRequest();
             }
 
+            db.Entry(remark).State = EntityState.Modified;
+
             try
             {
-                await _queue.AddMessageAsync(new CloudQueueMessage(JsonConvert.SerializeObject(remark)));
+                db.Remarks.Add(new Data.Remark
+                {
+                    Id = remark.Id,
+                    Created = remark.Created,
+                    Description = remark.Description,
+                    Report = db.Reports.Find(remark.Report)
+                });
+
+                await db.SaveChangesAsync();
             }
             catch (Exception)
             {
@@ -69,7 +77,15 @@ namespace Lisa.Kiwi.WebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            await _queue.AddMessageAsync(new CloudQueueMessage(JsonConvert.SerializeObject(remark)));
+            db.Remarks.Add(new Data.Remark
+            {
+                Id = remark.Id,
+                Created = remark.Created,
+                Description = remark.Description,
+                Report = db.Reports.Find(remark.Report)
+            });
+
+            await db.SaveChangesAsync();
 
             return Created(remark);
         }
@@ -83,17 +99,31 @@ namespace Lisa.Kiwi.WebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            Remark remark = await db.Remarks.FindAsync(key);
-            if (remark == null)
+            Data.Remark dataRemark = await db.Remarks.FindAsync(key);
+            
+            if (dataRemark == null)
             {
                 return NotFound();
             }
 
+            var remark = new WebApi.Remark
+            {
+                Id = dataRemark.Id,
+                Created = dataRemark.Created,
+                Description = dataRemark.Description,
+                Report = dataRemark.Report.Id
+            };
+
             patch.Patch(remark);
+
+            dataRemark.Id = remark.Id;
+            dataRemark.Created = remark.Created;
+            dataRemark.Description = remark.Description;
+            dataRemark.Report = db.Reports.Find(remark.Report);
 
             try
             {
-                await _queue.AddMessageAsync(new CloudQueueMessage(JsonConvert.SerializeObject(remark)));
+                await db.SaveChangesAsync();
             }
             catch (Exception)
             {
@@ -113,7 +143,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
         // DELETE odata/Remark(5)
         public async Task<IHttpActionResult> Delete([FromODataUri] int key)
         {
-            Remark remark = await db.Remarks.FindAsync(key);
+            Data.Remark remark = await db.Remarks.FindAsync(key);
             if (remark == null)
             {
                 return NotFound();

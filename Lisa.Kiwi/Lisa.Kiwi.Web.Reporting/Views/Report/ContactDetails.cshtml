@@ -10,29 +10,51 @@
     @using (Html.BeginForm("Contactdetails", "Report"))
     {
         @Html.ValidationSummary()
+        @Html.AntiForgeryToken();
 
         <div class="form-group">
-            <label class="control-label">Volledige naam</label><br />
-            @Html.TextBoxFor(c => c.Name, new { @required = "required" })
+            <label class="control-label">Mogen wij contact met je opnemen?</label><br />
+        </div>
+
+        <div class="form-group">
+            <label class="checkbox-inline">
+                @Html.CheckBox("nameCheck", false, new { @Value = "Naam", OnChange = "disabledCheck('nameCheck', 'Name');" })
+                Naam
+            </label>
+            <div class="col-xs-12">
+                @Html.TextBoxFor(c => c.Name, new { @Disabled = "Disabled", Value = "", OnChange = "RemoveSpace('Name');", @class = "form-control" })
+            </div>
         </div>
         <div class="form-group">
-            <label class="control-label">Telefoon</label><br />
-            @Html.CheckBox("phoneCheck", false, new { @Value = "Bel mij!", OnChange = "disabledCheck('phoneCheck', 'PhoneNumber');" })
-            @Html.TextBoxFor(c => c.PhoneNumber, new { @Disabled = "Disabled", Value = "", OnChange = "RemoveSpace('PhoneNumber');" })
+            <label class="checkbox-inline">
+                @Html.CheckBox("phoneCheck", false, new { @Value = "Bel mij!", OnChange = "disabledCheck('phoneCheck', 'PhoneNumber');" })
+                Telefoon
+            </label>
+            <div class="col-xs-12">
+                @Html.TextBoxFor(c => c.PhoneNumber, new { @Disabled = "Disabled", Value = "", OnChange = "RemoveSpace('PhoneNumber');", @class = "form-control" })
+            </div>
         </div>
         <div class="form-group">
-            <label class="control-label">Email</label><br />
-            @Html.CheckBox("emailCheck", false, new { @Value = "Mail mij!", OnChange = "disabledCheck('emailCheck', 'Email'); " })
-            @Html.TextBoxFor(c => c.Email, new { @Disabled = "Disabled", Value = "" })
+            <label class="checkbox-inline">
+                @Html.CheckBox("emailCheck", false, new { @Value = "Mail mij!", OnChange = "disabledCheck('emailCheck', 'Email'); " })
+                E-mailadres
+            </label>
+            <div class="col-xs-12">
+                @Html.TextBoxFor(c => c.Email, new { @Disabled = "Disabled", Value = "", @class = "form-control" })
+            </div>
         </div>
         <div class="form-group">
-            <label class="control-label">Studentnummer</label><br />
-            @Html.CheckBox("studentCheck", false, new { @Value = "Neem contact op met mijn begleider/mentor", OnChange = "disabledCheck('studentCheck', 'StudentNumber');" })
-            @Html.TextBoxFor(c => c.StudentNumber, new { @Disabled = "Disabled", Value = "", OnChange = "RemoveSpace('StudentNumber');" })
+            <label class="checkbox-inline">
+                @Html.CheckBox("studentCheck", false, new { @Value = "Neem contact op met mijn begleider/mentor", OnChange = "disabledCheck('studentCheck', 'StudentNumber');" })
+                Studentnummer
+            </label>
+            <div class="col-xs-12">
+                @Html.TextBoxFor(c => c.StudentNumber, new { @Disabled = "Disabled", Value = "", OnChange = "RemoveSpace('StudentNumber');", @class = "form-control" })
+            </div>
         </div>
         <div class="form-group">
             @Html.Hidden("guid", new { @Value = ViewBag.Guid })
-            <input type="submit" value="Bevestig" class="btn btn-default" />
+            <input type="submit" value="Bevestig" class="btn btn-default btn-report" />
         </div>
     }
 </div>

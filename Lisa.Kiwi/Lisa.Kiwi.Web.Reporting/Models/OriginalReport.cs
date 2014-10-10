@@ -19,12 +19,12 @@ namespace Lisa.Kiwi.Web.Reporting.Models
 
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "U vergeet de Locatie")]
         [Display(Name = "Locatie")]
         [StringLength(60, ErrorMessage = "De locatie mag niet langer zijn dan 60 karakters.")]
         public string Location { get; set; }
         
-        [StringLength(19)]
+        [StringLength(36)]
         public string Guid { get; set; }
         
         public string UserAgent { get; set; }
@@ -39,7 +39,7 @@ namespace Lisa.Kiwi.Web.Reporting.Models
         public DateTime Time { get; set; }
 
         [Display(Name="Type melding")]
-        public ReportType Type { get; set; }
+        public string Type { get; set; }
         public ReportPriority Priority { get; set; }
 
 

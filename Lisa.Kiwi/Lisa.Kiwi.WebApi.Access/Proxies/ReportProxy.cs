@@ -1,25 +1,21 @@
-﻿using System;
-using System.Linq;
-using Default;
+﻿using System.Linq;
 
 namespace Lisa.Kiwi.WebApi.Access
 {
     public class ReportProxy
     {
-        // You need this to initialize the access layer
-        private static readonly Container container = new Container(new Uri(ClientConfig.BaseUrl));
-
         // Get an entire entity set.
         public static IQueryable<Report> GetReports()
         {
-            return container.Report;
+            return Client.Container.Report;
         }
 
         //Create a new entity
-        static void AddReport(Report report)
+        public static void AddReport(Report report)
         {
-            container.AddToReport(report);
-            var serviceResponse = container.SaveChanges();
+            Client.Container.AddToReport(report);
+            Client.Container.SaveChanges();
+            Client.Container = new Container(Client.BaseUri);
         }
     }
 }

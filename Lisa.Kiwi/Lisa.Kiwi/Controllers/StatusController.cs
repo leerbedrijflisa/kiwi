@@ -7,7 +7,6 @@ using System.Web.Http;
 using System.Web.OData;
 using Lisa.Kiwi.Data;
 using Microsoft.WindowsAzure.Storage.Queue;
-using Newtonsoft.Json;
 
 namespace Lisa.Kiwi.WebApi.Controllers
 {
@@ -18,14 +17,14 @@ namespace Lisa.Kiwi.WebApi.Controllers
 
         // GET odata/Status
         [EnableQuery]
-        public IQueryable<Status> GetStatus()
+        public IQueryable<Data.Status> GetStatus()
         {
             return db.Statuses;
         }
 
         // GET odata/Status(5)
         [EnableQuery]
-        public SingleResult<Status> GetStatus([FromODataUri] int key)
+        public SingleResult<Data.Status> GetStatus([FromODataUri] int key)
         {
             return SingleResult.Create(db.Statuses.Where(status => status.Id == key));
         }
@@ -47,7 +46,15 @@ namespace Lisa.Kiwi.WebApi.Controllers
 
             try
             {
-                await _queue.AddMessageAsync(new CloudQueueMessage(JsonConvert.SerializeObject(status)));
+                db.Statuses.Add(new Data.Status
+                {
+                    Id = status.Id,
+                    Name = status.Name,
+                    Created = status.Created,
+                    Report = db.Reports.Find(status.Report)
+                });
+
+                await db.SaveChangesAsync();
             }
             catch (Exception)
             {
@@ -65,38 +72,61 @@ namespace Lisa.Kiwi.WebApi.Controllers
         }
 
         // POST odata/Status
-        public async Task<IHttpActionResult> Post(Status status)
+        public async Task<IHttpActionResult> Post(WebApi.Status status)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            await _queue.AddMessageAsync(new CloudQueueMessage(JsonConvert.SerializeObject(status)));
+            db.Statuses.Add(new Data.Status
+            {
+                Id = status.Id,
+                Name = status.Name,
+                Created = status.Created,
+                Report = db.Reports.Find(status.Report)
+            });
+
+            await db.SaveChangesAsync();
 
             return Created(status);
         }
 
         // PATCH odata/Status(5)
         [AcceptVerbs("PATCH", "MERGE")]
-        public async Task<IHttpActionResult> Patch([FromODataUri] int key, Delta<Status> patch)
+        public async Task<IHttpActionResult> Patch([FromODataUri] int key, Delta<WebApi.Status> patch)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+         
+            //map Data.Status to WebApi.Status
+            Data.Status dataStatus = await db.Statuses.FindAsync(key);
 
-            Status status = await db.Statuses.FindAsync(key);
-            if (status == null)
+            if (dataStatus == null)
             {
                 return NotFound();
             }
 
+            var status = new WebApi.Status
+            {
+                Id = dataStatus.Id,
+                Created = dataStatus.Created,
+                Name = dataStatus.Name,
+                Report = dataStatus.Report.Id
+            };
+
             patch.Patch(status);
 
+            dataStatus.Id = status.Id;
+            dataStatus.Created = status.Created;
+            dataStatus.Name = status.Name;
+            dataStatus.Report = db.Reports.Find(status.Report);
+          
             try
             {
-                await _queue.AddMessageAsync(new CloudQueueMessage(JsonConvert.SerializeObject(status)));
+                await db.SaveChangesAsync();
             }
             catch (Exception)
             {
@@ -116,7 +146,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
         // DELETE odata/Status(5)
         public async Task<IHttpActionResult> Delete([FromODataUri] int key)
         {
-            Status status = await db.Statuses.FindAsync(key);
+            Data.Status status = await db.Statuses.FindAsync(key);
             if (status == null)
             {
                 return NotFound();

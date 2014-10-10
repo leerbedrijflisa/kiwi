@@ -1,10 +1,15 @@
+<<<<<<< HEAD
 ﻿@model Lisa.Kiwi.WebApi.Report
+=======
+﻿@model Lisa.Kiwi.Web.Reporting.Models.OriginalReport
+>>>>>>> 625a80e4c6ffdb6b5abf3c0a3f237232634e4782
 
 @{
     ViewBag.Title = "Confirmed";
 }
 
 
+<<<<<<< HEAD
 <div class="block-container">
     <h2>Report - @ViewBag.Guid</h2>
     <div class="row">
@@ -96,3 +101,44 @@
             </div>*@
     </div>
 </div>
+=======
+<div class="center-box">
+    <div class="row">
+        <div class="col-xs-12">
+    <h2>Bevestigd</h2>
+    <div class="form-group">
+        <p>De melding is succes vol aangemaakt.</p>
+    </div>
+            <h4>Details</h4>
+            <div class="form-group">
+                <label class="col-xs-12 control-label">Type melding</label>
+                <div class="col-xs-12">
+                   <p class="form-control-static">Hello</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-12 control-label">Locatie</label>
+                <div class="col-xs-12">
+                    <p class="form-control-static">Leerpark</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-12 control-label">Tijdstip</label>
+                <div class="col-xs-12">
+                    <p class="form-control-static">10-10-2014</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-12 control-label">Beschrijving</label>
+                <div class="col-xs-12">
+                    <p class="form-control-static">Praesent at lectus ullamcorper, placerat ligula nec, luctus nisl. Ut dictum ut nunc mattis efficitur. Aenean mattis pharetra cursus. Suspendisse at magna turpis.</p>
+                </div>
+            </div>
+           
+    
+
+    <p>@Html.ActionLink("Ga terug naar de home pagina", "Index", "Report", new { @class = "btn btn-default btn-report" })</p>
+        </div>
+        </div>
+</div>
+>>>>>>> 625a80e4c6ffdb6b5abf3c0a3f237232634e4782

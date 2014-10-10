@@ -13,6 +13,15 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             return View();
         }
 
+        private OriginalReport GetReport()
+        {
+            if(Session["userReport"] == null)
+            {
+                Session["userReport"] = new OriginalReport();
+            }
+            return (OriginalReport)Session["userRaport"];
+        }
+
         public ActionResult Type()
         {
             var types = new string[]
@@ -34,16 +43,21 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
         }
 
         [HttpPost]
-        public ActionResult Details(string reportType)
+        public ActionResult Type(string reportType)
         {
-            if (!ModelState.IsValid)
+            if (reportType != null)
             {
-                return View("Type");
+                if (ModelState.IsValid)
+                {
+                    OriginalReport type = GetReport();
+                    
+                    return RedirectToAction("Details", "Report");
+                }
             }
-            ViewBag.Type = reportType;
             return View();
         }
 
+<<<<<<< HEAD
         [HttpPost]
         public ActionResult Check(OriginalReport report, string contactMe = "false")
         {
@@ -61,50 +75,69 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
         }
 
         public ActionResult ContactDetails(string guid)
+=======
+        public ActionResult Details()
+>>>>>>> 625a80e4c6ffdb6b5abf3c0a3f237232634e4782
         {
-            ViewBag.Guid = guid;
-            return View("ContactDetails");
+            return View();
         }
 
         [HttpPost]
-        public ActionResult Contactdetails(Contact contact, string guid)
+        public ActionResult Details(OriginalReport data, string reportType)
         {
-            if (string.IsNullOrEmpty(contact.Email) && string.IsNullOrEmpty(contact.PhoneNumber) && contact.StudentNumber == 0)
-            {
-                ModelState.AddModelError("Form", "U moet een van de contact velden invoeren (Telefoon, Email of studenten nummer).");
-            } 
+            ViewBag.ReportType = reportType;
 
-            if (contact.Email == "false")
+            if (ModelState.IsValid)
             {
-                contact.Email = "";
+                string guid = Guid.NewGuid().ToString();
+
+                OriginalReport report = new OriginalReport();
+                report.Location = data.Location;
+                report.Time = data.Time;
+                report.Description = data.Description;
+                report.Type = reportType;
+                report.Guid = guid;
+
+                return RedirectToAction("ContactDetails", "Report");
             }
 
-
-            if (!ModelState.IsValid)
-            {
-                return View();
-            }
-
+<<<<<<< HEAD
             // Save contact details
 
             return RedirectToAction("Confirmed", new { guid = guid});
         }
 
         public ActionResult Confirmed(string guid)
+=======
+            return View();
+        }
+
+        public ActionResult ContactDetails()
+>>>>>>> 625a80e4c6ffdb6b5abf3c0a3f237232634e4782
         {
             ViewBag.Guid = guid;
             return View();
         }
 
-        private bool CheckReport(OriginalReport report, bool checkEmpty = true, string[] skipField = null)
+        [HttpPost]
+        public ActionResult Contactdetails(Contact data, string guid)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                return false;
+                Contact contact = new Contact();
+                contact.Name = data.Name;
+                contact.PhoneNumber = data.PhoneNumber;
+                contact.Email = data.Email;
+                contact.StudentNumber = data.StudentNumber;
+                return RedirectToAction("Confirmed", "Report");
             }
 
-            return true;
+            return View();
         }
-        
+
+        public ActionResult Confirmed()
+        {
+            return View();
+        }       
     }
 }
