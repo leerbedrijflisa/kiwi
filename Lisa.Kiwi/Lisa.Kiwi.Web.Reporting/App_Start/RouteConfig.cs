@@ -15,8 +15,8 @@ namespace Lisa.Kiwi.Web.Reporting
 
             routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                url: "{controller}/{action}/{guid}",
+                defaults: new { controller = "Report", action = "Index", guid = UrlParameter.Optional }
             );
         }
     }

@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Http;
+﻿using System.Web.Http;
+using System.Web.OData.Builder;
+using System.Web.OData.Extensions;
+using Lisa.Kiwi.Data;
 
 namespace Lisa.Kiwi.WebApi
 {
@@ -9,16 +9,17 @@ namespace Lisa.Kiwi.WebApi
     {
         public static void Register(HttpConfiguration config)
         {
-            // Web API configuration and services
+            ODataModelBuilder builder = new ODataConventionModelBuilder();
 
-            // Web API routes
-            config.MapHttpAttributeRoutes();
-
-            config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
+            builder.EntitySet<Report>("Report");
+            builder.EntitySet<Contact>("Contact");
+            builder.EntitySet<Remark>("Remark");
+            builder.EntitySet<Status>("Status");
+     
+            config.MapODataServiceRoute(
+                routeName: "ODataRoute",
+                routePrefix: "odata",
+                model: builder.GetEdmModel());
         }
     }
 }
