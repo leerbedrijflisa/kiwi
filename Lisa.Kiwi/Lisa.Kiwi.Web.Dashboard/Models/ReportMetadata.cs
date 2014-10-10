@@ -5,11 +5,7 @@ using System.Web;
 
 namespace Lisa.Kiwi.Web.Dashboard.Models
 {
-    public enum ReportPriority
+    public class ReportMetadata
     {
-        // TODO: translate
-        Low,
-        Normal,
-        High
     }
 }

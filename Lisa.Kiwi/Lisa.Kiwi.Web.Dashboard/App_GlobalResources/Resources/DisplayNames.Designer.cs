@@ -61,11 +61,38 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Beschrijving.
+        ///   Looks up a localized string similar to Lopende.
         /// </summary>
-        public static string ReportDescription {
+        public static string StatusInProgress {
             get {
-                return ResourceManager.GetString("ReportDescription", resourceCulture);
+                return ResourceManager.GetString("StatusInProgress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open.
+        /// </summary>
+        public static string StatusOpen {
+            get {
+                return ResourceManager.GetString("StatusOpen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Opgelost.
+        /// </summary>
+        public static string StatusSolved {
+            get {
+                return ResourceManager.GetString("StatusSolved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overgedragen.
+        /// </summary>
+        public static string StatusTransferred {
+            get {
+                return ResourceManager.GetString("StatusTransferred", resourceCulture);
             }
         }
     }

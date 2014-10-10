@@ -117,7 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ReportDescription" xml:space="preserve">
-    <value>Beschrijving</value>
+  <data name="StatusInProgress" xml:space="preserve">
+    <value>Lopende</value>
+  </data>
+  <data name="StatusOpen" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="StatusSolved" xml:space="preserve">
+    <value>Opgelost</value>
+  </data>
+  <data name="StatusTransferred" xml:space="preserve">
+    <value>Overgedragen</value>
   </data>
 </root>
