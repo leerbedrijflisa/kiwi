@@ -61,6 +61,78 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Contacten.
+        /// </summary>
+        public static string ReportContacts {
+            get {
+                return ResourceManager.GetString("ReportContacts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aangemaakt.
+        /// </summary>
+        public static string ReportCreated {
+            get {
+                return ResourceManager.GetString("ReportCreated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Beschrijving.
+        /// </summary>
+        public static string ReportDescription {
+            get {
+                return ResourceManager.GetString("ReportDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ip.
+        /// </summary>
+        public static string ReportIp {
+            get {
+                return ResourceManager.GetString("ReportIp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Locatie.
+        /// </summary>
+        public static string ReportLocation {
+            get {
+                return ResourceManager.GetString("ReportLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Datum incident.
+        /// </summary>
+        public static string ReportTime {
+            get {
+                return ResourceManager.GetString("ReportTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type.
+        /// </summary>
+        public static string ReportType {
+            get {
+                return ResourceManager.GetString("ReportType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User Agent.
+        /// </summary>
+        public static string ReportUserAgent {
+            get {
+                return ResourceManager.GetString("ReportUserAgent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Lopende.
         /// </summary>
         public static string StatusInProgress {

@@ -38,12 +38,12 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
                 return RedirectToAction("Login", "Account");
             }
 
+            var provider = new AssociatedMetadataTypeTypeDescriptionProvider(typeof(ReportProxy), typeof(ReportMetadata));
+            TypeDescriptor.AddProviderTransparent(provider, typeof(ReportProxy));
+
             var report = ReportProxy.GetReports().Where(r => r.Id == id).FirstOrDefault();
 
             var statuses = Enum.GetValues(typeof(StatusName)).Cast<StatusName>().ToList();
-            //var provider = new AssociatedMetadataTypeTypeDescriptionProvider(typeof(StatusName), typeof(StatusNameMetadata));
-            //TypeDescriptor.AddProviderTransparent(provider, typeof(StatusName));
-            
             ViewBag.Statuses = statuses;
 
             return View(report);
