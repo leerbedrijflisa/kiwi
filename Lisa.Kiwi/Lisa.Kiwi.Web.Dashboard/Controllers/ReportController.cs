@@ -24,8 +24,17 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 
             var reports = ReportProxy.GetReports();
 
+            var reportsData = reports;
 
-            var reportsData = reports.Where(r => r.Status != StatusName.Solved);
+            if (Session["user"].ToString() == "beveiliger")
+            {
+                reportsData = reports;
+            }
+            else
+            {
+                reportsData = reports.Where(r => r.Status != StatusName.Solved);
+            }
+            
 
             return View(reportsData);
         }
