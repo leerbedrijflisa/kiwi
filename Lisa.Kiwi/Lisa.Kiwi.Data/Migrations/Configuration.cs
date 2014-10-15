@@ -36,6 +36,12 @@ namespace Lisa.Kiwi.Data.Migrations
                 }
             };
 
+            ReportSettings sampleReportSettings = new ReportSettings
+            {
+                Visible = true,
+                Report = sampleReport
+            };
+
             Status sampleStatus = new Status
             {
                 Created = DateTime.Now,
@@ -57,6 +63,7 @@ namespace Lisa.Kiwi.Data.Migrations
                 Report = sampleReport
             };
 
+            context.ReportSettings.AddOrUpdate(sampleReportSettings);
             context.Reports.AddOrUpdate(sampleReport);
             context.Statuses.AddOrUpdate(sampleStatus);
             context.Statuses.AddOrUpdate(sampleStatus2);
