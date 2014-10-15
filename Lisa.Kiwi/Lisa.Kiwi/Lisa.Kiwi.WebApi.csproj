@@ -128,12 +128,14 @@
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\RemarkController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
+    <Compile Include="Controllers\ReportSettingsController.cs" />
     <Compile Include="Controllers\StatusController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Remark.cs" />
     <Compile Include="Models\Report.cs" />
+    <Compile Include="Models\ReportSettings.cs" />
     <Compile Include="Models\Status.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

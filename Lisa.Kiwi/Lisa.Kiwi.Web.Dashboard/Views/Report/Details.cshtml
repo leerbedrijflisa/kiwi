@@ -1,4 +1,7 @@
 ﻿@model Lisa.Kiwi.WebApi.Report
+@using Lisa.Kiwi.Web.Dashboard.Utils
+@using Lisa.Kiwi.Web.Dashboard.Models
+@using Lisa.Kiwi.Data
 
 @{
 
@@ -19,7 +22,7 @@ else
                 <div class="col-sm-6 form-horizontal">
                         <h3>Details</h3>
                         <div class="form-group">
-                            <label class="col-sm-4 control-label">Tijd incident</label>
+                            <label class="col-sm-4 control-label">@Html.LabelFor(m => m.Time) Tijd incident</label>
                             <div class="col-sm-8">
                                 <p class="form-control-static">@Model.Time.ToString("dd-mm-yyyy HH:mm:ss")</p>
                             </div>
@@ -51,7 +54,7 @@ else
                         <div class="form-group">
                             <label class="col-sm-4 control-label">Status</label>
                             <div class="col-sm-8">
-                                <p class="form-control-static">@Model.Status</p>
+                                <p class="form-control-static">@Model.Status.GetDisplayNameFromMetadata()</p>
                             </div>
                         </div>
                         @if (Model.Contacts != null)
@@ -116,14 +119,15 @@ else
                                 <label class="col-sm-4 control-label">Nieuwe status</label>
                                 <div class="col-sm-8">
                                     <select name="Status" class="col-sm-8">
-                                        @foreach (var item in ViewBag.Statuses)
+                                        @foreach (var item in Enum.GetValues(typeof(StatusNameMetadata)).Cast<StatusNameMetadata>().ToList())
                                         {
                                             var selected = "";
-                                            if (Model.Status == item)
+                                            if (item.ToString() == Model.Status.ToString())
                                             {
                                                 selected = "selected";
                                             }
-                                            <option @selected>@item</option>
+                                            
+                                            <option value="@item" @selected>@item.GetDisplayName()</option>
                                         }
                                     </select>
                                 </div>
