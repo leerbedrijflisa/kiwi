@@ -9,5 +9,6 @@ namespace Lisa.Kiwi.WebApi
         public DateTimeOffset Created { get; set; }
         public StatusName Name { get; set; }
         public int Report { get; set; }
+        public bool Visible { get; set; }
     }
 }
