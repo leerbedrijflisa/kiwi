@@ -4,11 +4,16 @@ using System.Web.Mvc;
 using Lisa.Kiwi.WebApi;
 using Lisa.Kiwi.WebApi.Access;
 using Lisa.Kiwi.Data;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
+using Lisa.Kiwi.Web.Dashboard.Models;
+using Lisa.Kiwi.Web.Dashboard.Utils;
 
 namespace Lisa.Kiwi.Web.Dashboard.Controllers
 {
     public class ReportController : Controller
     {
+
         public ActionResult Index()
         {
             var sessionTimeOut = Session.Timeout = 60;
@@ -19,7 +24,17 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 
             var reports = ReportProxy.GetReports();
 
-            var reportsData = reports.Where(r => r.Status != StatusName.Solved);
+            var reportsData = reports;
+
+            if (Session["user"].ToString() == "beveiliger")
+            {
+                reportsData = reports;
+            }
+            else
+            {
+                reportsData = reports.Where(r => r.Status != StatusName.Solved);
+            }
+            
 
             return View(reportsData);
         }
@@ -32,10 +47,12 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
                 return RedirectToAction("Login", "Account");
             }
 
+            var provider = new AssociatedMetadataTypeTypeDescriptionProvider(typeof(ReportProxy), typeof(ReportMetadata));
+            TypeDescriptor.AddProviderTransparent(provider, typeof(ReportProxy));
+
             var report = ReportProxy.GetReports().Where(r => r.Id == id).FirstOrDefault();
 
             var statuses = Enum.GetValues(typeof(StatusName)).Cast<StatusName>().ToList();
-
             ViewBag.Statuses = statuses;
 
             return View(report);
