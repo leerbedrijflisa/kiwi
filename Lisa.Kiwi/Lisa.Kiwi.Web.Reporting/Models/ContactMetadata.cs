@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Auth;
+using Microsoft.WindowsAzure.Storage.Table;
 
 namespace Lisa.Kiwi.Web.Reporting.Models
 {
-    public class Contact
+    public class ContactMetadata : TableEntity
     {
         public int Id { get; set; }
 

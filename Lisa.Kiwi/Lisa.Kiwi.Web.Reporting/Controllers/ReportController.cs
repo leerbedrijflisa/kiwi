@@ -1,13 +1,16 @@
-﻿using System.Collections.Generic;
-using System.Web.Mvc;
+﻿using System;
 using System.Web;
+using System.Web.Mvc;
+using System.Linq;
+using System.ComponentModel;
+using System.Configuration;
+using Lisa.Kiwi.WebApi.Access;
+using Lisa.Kiwi.Data;
 using Lisa.Kiwi.Web.Reporting.Models;
 using Lisa.Kiwi.Tools;
-using System;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Table;
-using System.Configuration;
 using Microsoft.WindowsAzure;
 
 namespace Lisa.Kiwi.Web.Reporting.Controllers
@@ -36,26 +39,16 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 
         public ActionResult Type()
         {
-            var types = new string[]
-            {
-                "Drugs",
-                "Overlast",
-                "Voertuigen",
-                "Inbraak",
-                "Diefstal",
-                "Intimidatie",
-                "Pesten",
-                "Digitaal grensoverschrijdend gedrag",
-                "Etc"
-            };
+            var types = Enum.GetValues(typeof(ReportType)).Cast<ReportType>().ToList();
 
-            ViewBag.ReportTypes = new SelectList(types);
+            ViewData["reportType"] = new SelectList(types);
+
 
             return View();
         }
 
         [HttpPost]
-        public ActionResult Type(string reportType)
+        public ActionResult Type(ReportType reportType)
         {
             if (reportType != null)
             {
@@ -110,13 +103,11 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
                     updateEntity.Description = data.Description;
 
                     TableOperation insertOrReplaceOperation = TableOperation.InsertOrReplace(updateEntity);
-
                     table.Execute(insertOrReplaceOperation);
 
                     return RedirectToAction("ContactDetails", "Report");
                 }
             }
-
             return View();
         }
 
@@ -126,18 +117,37 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
         }
 
         [HttpPost]
-        public ActionResult Contactdetails(Contact data, string guid)
+        public ActionResult Contactdetails(ContactMetadata data)
         {
+            HttpCookie cookie = HttpContext.Request.Cookies["userReport"];
+            string guid = cookie.Values["guid"];
+
             if (ModelState.IsValid)
             {
-                Contact contact = new Contact();
-                contact.Name = data.Name;
-                contact.PhoneNumber = data.PhoneNumber;
-                contact.Email = data.Email;
-                contact.StudentNumber = data.StudentNumber;
-                return RedirectToAction("Confirmed", "Report");
-            }
+                TableOperation retrieveOperation = TableOperation.Retrieve<OriginalReport>(guid, "");
+                TableResult retrievedResult = table.Execute(retrieveOperation);
 
+                OriginalReport entity = (OriginalReport)retrievedResult.Result;
+
+                if (retrievedResult != null)
+                {
+                    
+                    var report = new WebApi.Report
+                    {
+                        Description = entity.Description,
+                        Created = entity.Created,
+                        Location = entity.Location,
+                        Time = entity.Time,
+                        Guid = entity.PartitionKey,
+                        Type = entity.Type
+                    };
+
+                    ReportProxy.AddReport(report);
+
+
+                    return RedirectToAction("Confirmed", "Report");
+                }
+            }
             return View();
         }
 

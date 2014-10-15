@@ -145,7 +145,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Tools\StringHelper.cs" />
-    <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\ContactMetadata.cs" />
     <Compile Include="Models\OriginalReport.cs" />
     <Compile Include="Models\Remark.cs" />
     <Compile Include="Models\Status.cs" />
