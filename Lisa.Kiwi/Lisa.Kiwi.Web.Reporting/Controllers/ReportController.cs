@@ -75,8 +75,9 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
                     TableOperation insertOperation = TableOperation.Insert(report);
                     table.Execute(insertOperation);
 
-                    HttpCookie userReport = new HttpCookie("Cookie");
+                    HttpCookie userReport = new HttpCookie("userReport");
                     userReport["guid"] = guid;
+                    Response.Cookies.Add(userReport);
 
                     return RedirectToAction("Details", "Report");
                 }
@@ -92,15 +93,28 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
         [HttpPost]
         public ActionResult Details(OriginalReport data)
         {
-            HttpCookie cookie = HttpContext.Request.Cookies.Get("Cookie");
-
-            
+            HttpCookie cookie = HttpContext.Request.Cookies["userReport"];
+            string guid = cookie.Values["guid"];
 
             if (ModelState.IsValid)
             {
+                TableOperation retrieveOperation = TableOperation.Retrieve<OriginalReport>(guid, "");
+                TableResult retrievedResult = table.Execute(retrieveOperation);
 
+                OriginalReport updateEntity = (OriginalReport)retrievedResult.Result;
 
-                return RedirectToAction("ContactDetails", "Report");
+                if(retrievedResult.Result != null)
+                {
+                    updateEntity.Location = data.Location;
+                    updateEntity.Time = data.Time;
+                    updateEntity.Description = data.Description;
+
+                    TableOperation insertOrReplaceOperation = TableOperation.InsertOrReplace(updateEntity);
+
+                    table.Execute(insertOrReplaceOperation);
+
+                    return RedirectToAction("ContactDetails", "Report");
+                }
             }
 
             return View();
