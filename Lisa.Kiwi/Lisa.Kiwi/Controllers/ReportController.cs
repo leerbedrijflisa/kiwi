@@ -36,7 +36,6 @@ namespace Lisa.Kiwi.WebApi.Controllers
                     Time = r.Time,
                     UserAgent = r.UserAgent,
                     Status = status.Name,
-                    Visible = status.Visible,
                     Contacts = r.Contacts
                 };
             
@@ -65,7 +64,6 @@ namespace Lisa.Kiwi.WebApi.Controllers
                     Time = r.Time,
                     UserAgent = r.UserAgent,
                     Status = status.Name,
-                    Visible = status.Visible,
                     Contacts = r.Contacts
                 };
 
