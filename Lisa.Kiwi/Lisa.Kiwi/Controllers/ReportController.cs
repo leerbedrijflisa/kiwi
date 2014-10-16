@@ -114,7 +114,20 @@ namespace Lisa.Kiwi.WebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            await _queue.AddMessageAsync(new CloudQueueMessage(JsonConvert.SerializeObject(report)));
+            db.Reports.Add(new Data.Report
+            {
+                Id = report.Id,
+                Description = report.Description,
+                Created = report.Created,
+                Location = report.Location,
+                Time = report.Time,
+                Guid = report.Guid,
+                UserAgent = report.UserAgent,
+                Ip = report.Ip,
+                Type = report.Type
+            });
+
+            await db.SaveChangesAsync();
 
             return Created(report);
         }

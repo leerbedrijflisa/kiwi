@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using System.Linq;
 using System.ComponentModel;
 using System.Configuration;
+using Lisa.Kiwi.WebApi;
 using Lisa.Kiwi.WebApi.Access;
 using Lisa.Kiwi.Data;
 using Lisa.Kiwi.Web.Reporting.Models;
@@ -143,6 +144,22 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
                     };
 
                     ReportProxy.AddReport(report);
+
+                    var getReport = ReportProxy.GetReports().Where(r => r.Guid == guid).FirstOrDefault();
+
+                    
+                    
+                    if(getReport != null)
+                    {
+                        var status = new WebApi.Status
+                        {
+                            Created = entity.Created,
+                            Name = StatusName.Open,
+                            Report = getReport.Id
+                        };
+
+                        StatusProxy.AddStatus(status);
+                    }
 
 
                     return RedirectToAction("Confirmed", "Report");
