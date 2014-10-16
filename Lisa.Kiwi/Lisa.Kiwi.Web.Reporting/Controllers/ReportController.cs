@@ -18,19 +18,19 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 {
     public class ReportController : Controller
     {
-        CloudTable table;
-
-        public ReportController()
+        private CloudTable GetTableStorage()
         {
             CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-                CloudConfigurationManager.GetSetting("StorageConnectionString"));
+                    CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
             // Create the table client.
             CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
 
             // Create the table if it doesn't exist.
-            table = tableClient.GetTableReference("report");
+            CloudTable table = tableClient.GetTableReference("report");
             table.CreateIfNotExists();
+
+            return table;
         }
 
         public ActionResult Index()
@@ -55,6 +55,8 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                 
+
                     string guid = Guid.NewGuid().ToString();
 
                     OriginalReport report = new OriginalReport();
