@@ -132,6 +132,15 @@ else
                                     </select>
                                 </div>
                             </div>
+                            if(Session["user"] == "beveiliger")
+                            { 
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Zichtbaarheid</label>
+                                <div class="col-sm-8">
+                                    <textarea class="col-sm-8 form-control report-comment" rows="3"></textarea>
+                                </div>
+                            </div>
+                            }
                             <div class="form-group">
                                 <div class="col-sm-8 col-md-push-8">
                                     <input class="col-sm-4 report-submit-comment" type="submit" value="Toevoegen" />
