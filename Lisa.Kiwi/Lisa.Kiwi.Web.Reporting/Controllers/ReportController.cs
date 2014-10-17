@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using System.Linq;
 using System.ComponentModel;
 using System.Configuration;
+using Lisa.Kiwi.WebApi;
 using Lisa.Kiwi.WebApi.Access;
 using Lisa.Kiwi.Data;
 using Lisa.Kiwi.Web.Reporting.Models;
@@ -17,19 +18,19 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 {
     public class ReportController : Controller
     {
-        CloudTable table;
-
-        public ReportController()
+        private CloudTable GetTableStorage()
         {
             CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-                CloudConfigurationManager.GetSetting("StorageConnectionString"));
+                    CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
             // Create the table client.
             CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
 
             // Create the table if it doesn't exist.
-            table = tableClient.GetTableReference("report");
+            CloudTable table = tableClient.GetTableReference("report");
             table.CreateIfNotExists();
+
+            return table;
         }
 
         public ActionResult Index()
@@ -54,6 +55,8 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                 
+
                     string guid = Guid.NewGuid().ToString();
 
                     OriginalReport report = new OriginalReport();
@@ -143,6 +146,22 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
                     };
 
                     ReportProxy.AddReport(report);
+
+                    var getReport = ReportProxy.GetReports().Where(r => r.Guid == guid).FirstOrDefault();
+
+                    
+                    
+                    if(getReport != null)
+                    {
+                        var status = new WebApi.Status
+                        {
+                            Created = entity.Created,
+                            Name = StatusName.Open,
+                            Report = getReport.Id
+                        };
+
+                        StatusProxy.AddStatus(status);
+                    }
 
 
                     return RedirectToAction("Confirmed", "Report");
