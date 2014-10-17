@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 15/10/2014 15:20:28
+// Generation date: 17-10-2014 13:20:24
 namespace Lisa.Kiwi.WebApi
 {
     /// <summary>
@@ -67,22 +67,15 @@ namespace Lisa.Kiwi.WebApi
         /// <param name="created">Initial value of Created.</param>
         /// <param name="time">Initial value of Time.</param>
         /// <param name="status">Initial value of Status.</param>
-        /// <param name="visible">Initial value of Visible.</param>
         /// <param name="type">Initial value of Type.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        public static Report CreateReport(int ID, 
-                    global::System.DateTimeOffset created, 
-                    global::System.DateTimeOffset time, 
-                    global::Lisa.Kiwi.Data.StatusName status, 
-                    bool visible, 
-                    global::Lisa.Kiwi.Data.ReportType type)
+        public static Report CreateReport(int ID, global::System.DateTimeOffset created, global::System.DateTimeOffset time, global::Lisa.Kiwi.Data.StatusName status, global::Lisa.Kiwi.Data.ReportType type)
         {
             Report report = new Report();
             report.Id = ID;
             report.Created = created;
             report.Time = time;
             report.Status = status;
-            report.Visible = visible;
             report.Type = type;
             return report;
         }
@@ -293,29 +286,6 @@ namespace Lisa.Kiwi.WebApi
         private global::Lisa.Kiwi.Data.StatusName _Status;
         partial void OnStatusChanging(global::Lisa.Kiwi.Data.StatusName value);
         partial void OnStatusChanged();
-        /// <summary>
-        /// There are no comments for Property Visible in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        [global::Microsoft.OData.Client.OriginalNameAttribute("Visible")]
-        public bool Visible
-        {
-            get
-            {
-                return this._Visible;
-            }
-            set
-            {
-                this.OnVisibleChanging(value);
-                this._Visible = value;
-                this.OnVisibleChanged();
-                this.OnPropertyChanged("Visible");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        private bool _Visible;
-        partial void OnVisibleChanging(bool value);
-        partial void OnVisibleChanged();
         /// <summary>
         /// There are no comments for Property Type in the schema.
         /// </summary>
@@ -1320,7 +1290,6 @@ namespace Default
         <Property Name=""UserAgent"" Type=""Edm.String"" />
         <Property Name=""Ip"" Type=""Edm.String"" />
         <Property Name=""Status"" Type=""Lisa.Kiwi.Data.StatusName"" Nullable=""false"" />
-        <Property Name=""Visible"" Type=""Edm.Boolean"" Nullable=""false"" />
         <Property Name=""Type"" Type=""Lisa.Kiwi.Data.ReportType"" Nullable=""false"" />
         <NavigationProperty Name=""Contacts"" Type=""Collection(Lisa.Kiwi.Data.Contact)"" />
       </EntityType>
