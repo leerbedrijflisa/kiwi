@@ -19,12 +19,28 @@ namespace Lisa.Kiwi.WebApi.Controllers
         [EnableQuery]
         public IQueryable<WebApi.Report> GetReport()
         {
+            //var result =
+            //    from s in db.Statuses
+            //    group s by s.Report into g
+            //    let latest = g.Max(s => s.Created)
+            //    let r = g.Key
+            //    let status = g.FirstOrDefault(s => s.Created == latest)
+            //    select new WebApi.Report
+            //    {
+            //        Id = r.Id,
+            //        Created = r.Created,
+            //        Description = r.Description,
+            //        Guid = r.Guid,
+            //        Ip = r.Ip,
+            //        Location = r.Location,
+            //        Time = r.Time,
+            //        UserAgent = r.UserAgent,
+            //        Status = status.Name,
+            //        Contacts = r.Contacts
+            //    };
+
             var result =
-                from s in db.Statuses
-                group s by s.Report into g
-                let latest = g.Max(s => s.Created)
-                let r = g.Key
-                let status = g.FirstOrDefault(s => s.Created == latest)
+                from r in db.Reports
                 select new WebApi.Report
                 {
                     Id = r.Id,
@@ -35,10 +51,13 @@ namespace Lisa.Kiwi.WebApi.Controllers
                     Location = r.Location,
                     Time = r.Time,
                     UserAgent = r.UserAgent,
-                    Status = status.Name,
+                    Status = (from s in db.Statuses
+                                  where s.Report == r
+                                  orderby s.Created descending
+                                  select s).FirstOrDefault,
                     Contacts = r.Contacts
                 };
-            
+
             return result;
         }
 
@@ -66,6 +85,8 @@ namespace Lisa.Kiwi.WebApi.Controllers
                     Status = status.Name,
                     Contacts = r.Contacts
                 };
+
+
 
             return new SingleResult<WebApi.Report>(result); ;
         }
