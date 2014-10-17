@@ -7,6 +7,7 @@ namespace Lisa.Kiwi.WebApi
 {
     public class Report
     {
+
         [Key]
         public int Id { get; set; }
         public string Description { get; set; }
@@ -17,7 +18,6 @@ namespace Lisa.Kiwi.WebApi
         public string UserAgent { get; set; }
         public string Ip { get; set; }
         public StatusName Status { get; set; }
-        public bool Visible { get; set; }
         public ReportType Type { get; set; }
         public IEnumerable<Contact> Contacts { get; set; }
     }
