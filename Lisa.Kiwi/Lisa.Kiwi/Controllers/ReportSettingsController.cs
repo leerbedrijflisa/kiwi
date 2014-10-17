@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.OData;
 using Lisa.Kiwi.Data;
-using Microsoft.WindowsAzure.Storage.Queue;
+using Newtonsoft.Json;
+using System.Data.Entity;
 
 namespace Lisa.Kiwi.WebApi.Controllers
 {
@@ -17,16 +17,31 @@ namespace Lisa.Kiwi.WebApi.Controllers
 
         // GET: odata/ReportSettings
         [EnableQuery]
-        public IQueryable<Data.ReportSettings> GetReportSettings()
+        public IQueryable<WebApi.ReportSettings> GetReportSettings()
         {
-            return db.ReportSettings;
+            var result = from rs in db.ReportSettings
+                         select new WebApi.ReportSettings
+                         {
+                             Id = rs.Id,
+                             Visible = rs.Visible,
+                             Report = rs.Report.Id
+                         };
+            return result;
         }
 
         // GET: odata/ReportSettings(5)
         [EnableQuery]
-        public SingleResult<Data.ReportSettings> GetReportSettings([FromODataUri] int key)
+        public SingleResult<WebApi.ReportSettings> GetReportSettings([FromODataUri] int key)
         {
-            return SingleResult.Create(db.ReportSettings.Where(reportSettings => reportSettings.Id == key));
+             var result = from rs in db.ReportSettings
+                          where rs.Report.Id == key
+                         select new WebApi.ReportSettings
+                         {
+                             Id = rs.Id,
+                             Visible = rs.Visible,
+                             Report = rs.Report.Id
+                         };
+            return SingleResult.Create(result);
         }
 
         // PUT: odata/ReportSettings(5)
