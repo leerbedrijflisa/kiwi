@@ -7,7 +7,6 @@ using Lisa.Kiwi.Data;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
 using Lisa.Kiwi.Web.Dashboard.Models;
-using Lisa.Kiwi.Web.Dashboard.Utils;
 
 namespace Lisa.Kiwi.Web.Dashboard.Controllers
 {
@@ -100,6 +99,89 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
             }
 
             return RedirectToAction("Details", new { id = id });
+        }
+
+        public ActionResult Fill()
+        {
+            var sessionTimeOut = Session.Timeout = 60;
+            if (Session["user"] == null || sessionTimeOut == 0)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            ContactProxy.AddContact(new Contact
+            {
+                EmailAddress = "beyonce@gijs.nl",
+                Name = "Gijs Jannssenn",
+                PhoneNumber = "0655889944",
+                StudentNumber = 99015221
+            });
+
+            var contact = ContactProxy.GetContacts().Where(c => c.Name == "Gijs Jannssenn").FirstOrDefault();
+
+            contact = new Contact
+            {
+                Id = contact.Id,
+                EmailAddress = "beyonce@gijs.nl",
+                Name = "Gijs Jannssenn",
+                PhoneNumber = "0655889944",
+                StudentNumber = 99015221
+            };
+
+            ReportProxy.AddReport(new Report
+            {
+                Created = DateTime.UtcNow,
+                Status = StatusName.Open,
+                Description = "Er word drugs gedealed",
+                Ip = "180.16.52.39",
+                Location = "Arco Baleno",
+                Time = DateTime.Today.AddHours(8),
+                Type = ReportType.Drugs,
+                UserAgent = "Opera",
+                Guid = Guid.NewGuid().ToString()//,
+                //Contacts = contact
+            });
+
+            ReportProxy.AddReport(new Report
+            {
+                Created = DateTime.UtcNow,
+                Status = StatusName.InProgress,
+                Description = "Wiet verkoop",
+                Ip = "177.75.22.11",
+                Location = "Sportcentrum",
+                Time = DateTime.Today.AddHours(3).AddMinutes(34),
+                Type = ReportType.Drugs,
+                UserAgent = "Chrome",
+                Guid = Guid.NewGuid().ToString()
+            });
+
+            ReportProxy.AddReport(new Report
+            {
+                Created = DateTime.UtcNow,
+                Status = StatusName.Open,
+                Description = "Rook gesignaleerd",
+                Ip = "10.180.14.6",
+                Location = "Ocra",
+                Time = DateTime.Today.AddHours(7).AddMinutes(21),
+                Type = ReportType.Fire,
+                UserAgent = "Chrome",
+                Guid = Guid.NewGuid().ToString()
+            });
+
+            ReportProxy.AddReport(new Report
+            {
+                Created = DateTime.UtcNow,
+                Status = StatusName.Open,
+                Description = "Gebroken raam, verdwenen computer",
+                Ip = "10.180.14.47",
+                Location = "Bianco begane grond",
+                Time = DateTime.Today.AddHours(11).AddMinutes(30),
+                Type = ReportType.Theft,
+                UserAgent = "Chrome",
+                Guid = Guid.NewGuid().ToString()
+            });
+
+            return RedirectToAction("Index");
         }
     }
 }
