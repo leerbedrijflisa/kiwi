@@ -55,7 +55,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                 
+                    CloudTable table = GetTableStorage();
 
                     string guid = Guid.NewGuid().ToString();
 
@@ -68,9 +68,12 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
                     report.PartitionKey = guid;
                     report.RowKey = "";
 
+                    // TODO: report type cant use enums
+
                     TableOperation insertOperation = TableOperation.Insert(report);
                     table.Execute(insertOperation);
 
+                    // Cookie stays alive until user closes browser
                     HttpCookie userReport = new HttpCookie("userReport");
                     userReport["guid"] = guid;
                     Response.Cookies.Add(userReport);
@@ -94,6 +97,8 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 
             if (ModelState.IsValid)
             {
+                CloudTable table = GetTableStorage();
+
                 TableOperation retrieveOperation = TableOperation.Retrieve<OriginalReport>(guid, "");
                 TableResult retrievedResult = table.Execute(retrieveOperation);
 
@@ -127,6 +132,8 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 
             if (ModelState.IsValid)
             {
+                CloudTable table = GetTableStorage();
+
                 TableOperation retrieveOperation = TableOperation.Retrieve<OriginalReport>(guid, "");
                 TableResult retrievedResult = table.Execute(retrieveOperation);
 
@@ -147,10 +154,10 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 
                     ReportProxy.AddReport(report);
 
-                    var getReport = ReportProxy.GetReports().Where(r => r.Guid == guid).FirstOrDefault();
+                    var reportEntity = ReportProxy.GetReports();
+                    var getReport = reportEntity.Where(r => r.Guid == guid).FirstOrDefault();
 
-                    
-                    
+                 
                     if(getReport != null)
                     {
                         var status = new WebApi.Status
