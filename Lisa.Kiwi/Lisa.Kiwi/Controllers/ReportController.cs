@@ -22,7 +22,6 @@ namespace Lisa.Kiwi.WebApi.Controllers
             var result =
                 from s in db.Statuses
                 group s by s.Report into g
-                join rs in db.ReportSettings on g.Key.Id equals rs.Report.Id
                 let latest = g.Max(s => s.Created)
                 let r = g.Key
                 let status = g.FirstOrDefault(s => s.Created == latest)
@@ -37,7 +36,6 @@ namespace Lisa.Kiwi.WebApi.Controllers
                     Time = r.Time,
                     UserAgent = r.UserAgent,
                     Status = status.Name,
-                    Visible = rs.Visible,
                     Contacts = r.Contacts
                 };
             
@@ -51,7 +49,6 @@ namespace Lisa.Kiwi.WebApi.Controllers
             var result =
                 from s in db.Statuses
                 group s by s.Report into g
-                join rs in db.ReportSettings on g.Key.Id equals rs.Report.Id
                 let latest = g.Max(s => s.Created)               
                 let status = g.FirstOrDefault(s => s.Created == latest)
                 let r = g.Key
@@ -67,7 +64,6 @@ namespace Lisa.Kiwi.WebApi.Controllers
                     Time = r.Time,
                     UserAgent = r.UserAgent,
                     Status = status.Name,
-                    Visible = rs.Visible,
                     Contacts = r.Contacts
                 };
 
