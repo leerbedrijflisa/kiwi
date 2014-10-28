@@ -54,7 +54,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
                     Status = (from s in db.Statuses
                                   where s.Report == r
                                   orderby s.Created descending
-                                  select s).FirstOrDefault,
+                                  select s).FirstOrDefault().Name,
                     Contacts = r.Contacts
                 };
 

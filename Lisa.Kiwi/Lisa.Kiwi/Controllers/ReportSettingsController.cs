@@ -31,7 +31,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
 
         // GET: odata/ReportSettings(5)
         [EnableQuery]
-        public SingleResult<WebApi.ReportSettings> GetReportSettings([FromODataUri] int key)
+        public IQueryable<WebApi.ReportSettings> GetReportSettings([FromODataUri] int key)
         {
              var result = from rs in db.ReportSettings
                           where rs.Report.Id == key
@@ -41,7 +41,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
                              Visible = rs.Visible,
                              Report = rs.Report.Id
                          };
-            return SingleResult.Create(result);
+            return result;
         }
 
         // PUT: odata/ReportSettings(5)
