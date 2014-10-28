@@ -141,7 +141,6 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 
                 if (retrievedResult != null)
                 {
-                    
                     var report = new WebApi.Report
                     {
                         Description = entity.Description,
