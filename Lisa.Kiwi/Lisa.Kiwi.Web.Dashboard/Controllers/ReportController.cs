@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using Lisa.Kiwi.WebApi;
 using Lisa.Kiwi.WebApi.Access;
 using Lisa.Kiwi.Data;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel;
 using Lisa.Kiwi.Web.Dashboard.Models;
 using Lisa.Kiwi.Web.Dashboard.Utils;
 
@@ -23,21 +24,31 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
             }
 
             var reports = ReportProxy.GetReports();
+            var reportSettings = ReportSettingsProxy.GetReportSettings();
 
             var reportsData = reports;
-
-            if (Session["user"].ToString() == "beveiliger")
-            {
-                reportsData = reports;
-            }
-            else
-            {
-                reportsData = reports.Where(r => r.Status != StatusName.Solved);
-            }
             
+
+            if (Session["user"].ToString() != "beveiliger")
+            {
+                reportsData = reports.Where(r => r.Status != StatusName.Solved );
+                foreach (var item in reportSettings)
+                {
+                    if (item.Visible != false)
+                    {
+
+                    }
+                }
+            }
+
+
 
             return View(reportsData);
         }
+
+        //var provider = new AssociatedMetadataTypeTypeDescriptionProvider(typeof(ReportProxy), typeof(ReportMetadata));
+        //    TypeDescriptor.AddProviderTransparent(provider, typeof(ReportProxy));
+        // code for the metadata from a other model
 
         public ActionResult Details(int id)
         {
@@ -47,20 +58,18 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
                 return RedirectToAction("Login", "Account");
             }
 
-            var provider = new AssociatedMetadataTypeTypeDescriptionProvider(typeof(ReportProxy), typeof(ReportMetadata));
-            TypeDescriptor.AddProviderTransparent(provider, typeof(ReportProxy));
-
             var report = ReportProxy.GetReports().Where(r => r.Id == id).FirstOrDefault();
 
             var statuses = Enum.GetValues(typeof(StatusName)).Cast<StatusName>().ToList();
             ViewBag.Statuses = statuses;
+            ViewBag.Visible = ReportSettingsProxy.GetReportSettings().Where(rs => rs.Report == report.Id).FirstOrDefault().Visible;
 
             return View(report);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Details(int id, StatusName? status, string remark)
+        public ActionResult Details(int id, StatusName? status, string remark, bool Visibility = false)
         {
             var sessionTimeOut = Session.Timeout = 60;
             if (Session["user"] == null || sessionTimeOut == 0)
@@ -97,6 +106,19 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
                 };
 
                 RemarkProxy.AddRemark(newRemark);
+            }
+
+            if (Session["user"].ToString() == "beveiliger")
+            {
+                var settingsId = ReportSettingsProxy.GetReportSettings().Where(r => r.Report == report.Id).FirstOrDefault().Id;
+                var reportSettings = new ReportSettings
+                {
+                    Id = settingsId,
+                    Visible = Visibility,
+                    Report = report.Id
+                };
+
+                ReportSettingsProxy.AddSettings(reportSettings);
             }
 
             return RedirectToAction("Details", new { id = id });

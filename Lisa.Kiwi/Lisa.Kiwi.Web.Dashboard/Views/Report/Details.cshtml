@@ -132,12 +132,18 @@ else
                                     </select>
                                 </div>
                             </div>
-                            if(Session["user"] == "beveiliger")
+                            if (Session["user"].ToString() == "beveiliger")
                             { 
                             <div class="form-group">
                                 <label class="col-sm-4 control-label">Zichtbaarheid</label>
                                 <div class="col-sm-8">
-                                    <textarea class="col-sm-8 form-control report-comment" rows="3"></textarea>
+                                    <select name="Visibility" class="col-sm-8">
+                                        @{ var visible = ""; }
+                                        @if (ViewBag.Visible) { visible = "selected"; }
+                                        <option value="true" @visible>Zichtbaar</option>
+                                        @if (!ViewBag.Visible) { visible = "selected"; } else { visible = ""; }
+                                        <option value="false" @visible>Onzichtbaar</option>
+                                    </select>
                                 </div>
                             </div>
                             }
