@@ -14,7 +14,6 @@ namespace Lisa.Kiwi.WebApi.Controllers
     public class ContactController : ODataController
     {
         private KiwiContext db = new KiwiContext();
-        private readonly CloudQueue _queue = new QueueConfig().BuildQueue();
 
         // GET odata/Contact
         [EnableQuery]
@@ -45,7 +44,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
 
             try
             {
-                await _queue.AddMessageAsync(new CloudQueueMessage(JsonConvert.SerializeObject(contact)));
+                db.Contacts.Add(contact);
             }
             catch (Exception)
             {
@@ -70,7 +69,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            await _queue.AddMessageAsync(new CloudQueueMessage(JsonConvert.SerializeObject(contact)));
+            db.Contacts.Add(contact);
 
             return Created(contact);
         }
@@ -94,7 +93,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
 
             try
             {
-                await _queue.AddMessageAsync(new CloudQueueMessage(JsonConvert.SerializeObject(contact)));
+                db.Contacts.Add(contact);
             }
             catch (DbUpdateConcurrencyException)
             {
