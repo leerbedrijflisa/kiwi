@@ -2,15 +2,10 @@
 using System.Web;
 using System.Web.Mvc;
 using System.Linq;
-using System.ComponentModel;
-using System.Configuration;
-using Lisa.Kiwi.WebApi;
 using Lisa.Kiwi.WebApi.Access;
 using Lisa.Kiwi.Data;
 using Lisa.Kiwi.Web.Reporting.Models;
-using Lisa.Kiwi.Tools;
 using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Table;
 using Microsoft.WindowsAzure;
 
@@ -180,5 +175,8 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
         {
             return View();
         }
+
+        private ReportProxy ReportProxy = new ReportProxy();
+        private StatusProxy StatusProxy = new StatusProxy();
     }
 }
