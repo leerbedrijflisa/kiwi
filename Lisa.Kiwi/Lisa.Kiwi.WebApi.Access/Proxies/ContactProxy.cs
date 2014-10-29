@@ -1,25 +1,23 @@
 ﻿using System.Linq;
-using Default;
 
 //Namespace mimic door access layer template
 using Lisa.Kiwi.Data;
 
 namespace Lisa.Kiwi.WebApi.Access
 {
-    public class ContactProxy
+    public class ContactProxy : Client
     {
         // Get an entire entity set.
-        public static IQueryable<Contact> GetContacts()
+        public IQueryable<Contact> GetContacts()
         {
-            return Client.Container.Contact;
+            return Container.Contact;
         }
 
         //Create a new entity
-        public static void AddContact(Contact contact)
+        public void AddContact(Contact contact)
         {
-            Client.Container.AddToContact(contact);
-            Client.Container.SaveChanges();
-            Client.Container = new Container(Client.BaseUri);
+            Container.AddToContact(contact);
+            Container.SaveChanges();
         }
     }
 }

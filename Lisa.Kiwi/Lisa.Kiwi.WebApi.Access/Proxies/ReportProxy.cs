@@ -1,22 +1,20 @@
-﻿using Default;
-using System.Linq;
+﻿using System.Linq;
 
 namespace Lisa.Kiwi.WebApi.Access
 {
-    public class ReportProxy
+    public class ReportProxy : Client
     {
         // Get an entire entity set.
-        public static IQueryable<Report> GetReports()
+        public IQueryable<Report> GetReports()
         {
-            return Client.Container.Report;
+            return Container.Report;
         }
 
         //Create a new entity
-        public static void AddReport(Report report)
+        public void AddReport(Report report)
         {
-            Client.Container.AddToReport(report);
-            Client.Container.SaveChanges();
-            Client.Container = new Container(Client.BaseUri);
+            Container.AddToReport(report);
+            Container.SaveChanges();
         }
     }
 }
