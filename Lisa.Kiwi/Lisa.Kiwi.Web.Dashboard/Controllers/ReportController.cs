@@ -102,15 +102,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 
             if (Session["user"].ToString() == "beveiliger")
             {
-                var settingsId = ReportSettingsProxy.GetReportSettings().Where(r => r.Report == report.Id).FirstOrDefault().Id;
-                var reportSettings = new WebApi.ReportSettings
-                {
-                    Id = settingsId,
-                    Visible = Visibility,
-                    Report = report.Id
-                };
-
-                ReportSettingsProxy.AddSettings(reportSettings);
+                ReportSettingsProxy.UpdateVisibility(report.Id, Visibility);
             }
 
             return RedirectToAction("Details", new { id = id });
