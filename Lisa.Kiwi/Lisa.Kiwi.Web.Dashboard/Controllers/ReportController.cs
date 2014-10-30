@@ -39,7 +39,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
             {
                 reportsData.AddRange(reports);
             }
-            return View(reportsData);
+            return View(reportsData.OrderByDescending(r => r.Created));
         }
 
         //var provider = new AssociatedMetadataTypeTypeDescriptionProvider(typeof(ReportProxy), typeof(ReportMetadata));
@@ -138,7 +138,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
                 return RedirectToAction("Login", "Account");
             }
 
-            ContactProxy.AddContact(new Contact
+            var contact = ContactProxy.AddContact(new Contact
             {
                 EmailAddress = "beyonce@gijs.nl",
                 Name = "Gijs Jannssenn",
@@ -146,16 +146,55 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
                 StudentNumber = 99015221
             });
 
-            var contact = ContactProxy.GetContacts().Where(c => c.Name == "Gijs Jannssenn").FirstOrDefault();
-
-            contact = new Contact
+            var report = new Report
             {
-                Id = contact.Id,
-                EmailAddress = "beyonce@gijs.nl",
-                Name = "Gijs Jannssenn",
-                PhoneNumber = "0655889944",
-                StudentNumber = 99015221
+                Created = DateTime.UtcNow,
+                Status = StatusName.Open,
+                Description = "Ik word gepest",
+                Ip = "244.255.63.39",
+                Location = "Arco Baleno",
+                Time = DateTime.Today.AddHours(3),
+                Type = ReportType.Bullying,
+                UserAgent = "Opera",
+                Guid = Guid.NewGuid().ToString()
+                
+            }; 
+            
+            report.Contacts.Add(contact);
+            ReportProxy.AddReport(report);
+
+
+            report = new Report
+            {
+                Created = DateTime.UtcNow,
+                Status = StatusName.Open,
+                Description = "Gijs pest mij",
+                Ip = "190.11.22.86",
+                Location = "Azurro",
+                Time = DateTime.Today.AddHours(4),
+                Type = ReportType.Bullying,
+                UserAgent = "Opera",
+                Guid = Guid.NewGuid().ToString()
             };
+
+            report.Contacts.Add(contact);
+            ReportProxy.AddReport(report);
+
+            report = new Report
+            {
+                Created = DateTime.UtcNow,
+                Status = StatusName.Open,
+                Description = "Ik weer word gepest!",
+                Ip = "244.255.63.39",
+                Location = "Arco Baleno",
+                Time = DateTime.Today.AddHours(7),
+                Type = ReportType.Bullying,
+                UserAgent = "Opera",
+                Guid = Guid.NewGuid().ToString()
+            };
+
+            report.Contacts.Add(contact);
+            ReportProxy.AddReport(report);
 
             ReportProxy.AddReport(new Report
             {

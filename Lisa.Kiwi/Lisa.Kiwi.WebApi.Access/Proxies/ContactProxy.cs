@@ -14,10 +14,12 @@ namespace Lisa.Kiwi.WebApi.Access
         }
 
         //Create a new entity
-        public void AddContact(Contact contact)
+        public Contact AddContact(Contact contact)
         {
             Container.AddToContact(contact);
             Container.SaveChanges();
+
+            return contact;
         }
     }
 }

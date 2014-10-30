@@ -70,7 +70,8 @@ namespace Lisa.Kiwi.WebApi.Controllers
             }
 
             db.Contacts.Add(contact);
-
+            await db.SaveChangesAsync();
+           
             return Created(contact);
         }
 
@@ -94,6 +95,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
             try
             {
                 db.Contacts.Add(contact);
+                await db.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
