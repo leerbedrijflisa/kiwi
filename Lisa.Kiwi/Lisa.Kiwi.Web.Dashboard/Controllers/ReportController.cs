@@ -29,9 +29,14 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
                 foreach (var report in reports)
                 {
                     var settings = reportSettings.Where(rs => rs.Report == report.Id).FirstOrDefault();
-                    if (settings.Visible == true)
+                    if (settings != null && settings.Visible == true)
                     {
                         reportsData.Add(report);
+                    }
+
+                    if (report.Status == null)
+                    {
+                        report.Status = StatusName.Solved;
                     }
                 }
             }
