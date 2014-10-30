@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
 using Lisa.Kiwi.WebApi;
 using Lisa.Kiwi.WebApi.Access;
 using Lisa.Kiwi.Data;
-using Lisa.Kiwi.Web.Dashboard.Models;
 
 namespace Lisa.Kiwi.Web.Dashboard.Controllers
 {
@@ -202,5 +198,11 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 
             return RedirectToAction("Index");
         }
+
+        private ReportProxy ReportProxy = new ReportProxy();
+        private StatusProxy StatusProxy = new StatusProxy();
+        private RemarkProxy RemarkProxy = new RemarkProxy();
+        private ContactProxy ContactProxy = new ContactProxy();
+        private ReportSettingsProxy ReportSettingsProxy = new ReportSettingsProxy();
     }
 }

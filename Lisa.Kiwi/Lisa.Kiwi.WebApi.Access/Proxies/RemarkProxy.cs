@@ -1,23 +1,20 @@
-﻿using Default;
-using System;
-using System.Linq;
+﻿using System.Linq;
 
 namespace Lisa.Kiwi.WebApi.Access
 {
-    public class RemarkProxy
+    public class RemarkProxy : Client
     {
         // Get an entire entity set.
-        public static IQueryable<Status> GetStatuses()
+        public IQueryable<Status> GetStatuses()
         {
-            return Client.Container.Status;
+            return Container.Status;
         }
 
         //Create a new entity
-        public static void AddRemark(Remark remark)
+        public void AddRemark(Remark remark)
         {
-            Client.Container.AddToRemark(remark);
-            Client.Container.SaveChanges();
-            Client.Container = new Container(Client.BaseUri);
+            Container.AddToRemark(remark);
+            Container.SaveChanges();
         }
     }
 }

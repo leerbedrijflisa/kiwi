@@ -2,15 +2,10 @@
 using System.Web;
 using System.Web.Mvc;
 using System.Linq;
-using System.ComponentModel;
-using System.Configuration;
-using Lisa.Kiwi.WebApi;
 using Lisa.Kiwi.WebApi.Access;
 using Lisa.Kiwi.Data;
 using Lisa.Kiwi.Web.Reporting.Models;
-using Lisa.Kiwi.Tools;
 using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Table;
 using Microsoft.WindowsAzure;
 
@@ -51,35 +46,32 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
         [HttpPost]
         public ActionResult Type(ReportType reportType)
         {
-            if (reportType != null)
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
-                    CloudTable table = GetTableStorage();
+                CloudTable table = GetTableStorage();
 
-                    string guid = Guid.NewGuid().ToString();
+                string guid = Guid.NewGuid().ToString();
 
-                    OriginalReport report = new OriginalReport();
+                OriginalReport report = new OriginalReport();
                 
-                    report.Type = reportType;
-                    report.Guid = guid;
-                    report.Time = DateTime.Now;
+                report.Type = reportType;
+                report.Guid = guid;
+                report.Time = DateTime.Now;
 
-                    report.PartitionKey = guid;
-                    report.RowKey = "";
+                report.PartitionKey = guid;
+                report.RowKey = "";
 
-                    // TODO: report type cant use enums
+                // TODO: report type cant use enums
 
-                    TableOperation insertOperation = TableOperation.Insert(report);
-                    table.Execute(insertOperation);
+                TableOperation insertOperation = TableOperation.Insert(report);
+                table.Execute(insertOperation);
 
-                    // Cookie stays alive until user closes browser
-                    HttpCookie userReport = new HttpCookie("userReport");
-                    userReport["guid"] = guid;
-                    Response.Cookies.Add(userReport);
+                // Cookie stays alive until user closes browser
+                HttpCookie userReport = new HttpCookie("userReport");
+                userReport["guid"] = guid;
+                Response.Cookies.Add(userReport);
 
-                    return RedirectToAction("Details", "Report");
-                }
+                return RedirectToAction("Details", "Report");
             }
             return View();
         }
@@ -180,5 +172,8 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
         {
             return View();
         }
+
+        private ReportProxy ReportProxy = new ReportProxy();
+        private StatusProxy StatusProxy = new StatusProxy();
     }
 }
