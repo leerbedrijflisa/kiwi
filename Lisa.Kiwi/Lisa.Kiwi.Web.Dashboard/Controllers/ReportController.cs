@@ -4,12 +4,12 @@ using System.Web.Mvc;
 using Lisa.Kiwi.WebApi;
 using Lisa.Kiwi.WebApi.Access;
 using Lisa.Kiwi.Data;
+using System.Collections.Generic;
 
 namespace Lisa.Kiwi.Web.Dashboard.Controllers
 {
     public class ReportController : Controller
     {
-
         public ActionResult Index()
         {
             var sessionTimeOut = Session.Timeout = 60;
@@ -21,20 +21,24 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
             var reports = ReportProxy.GetReports();
             var reportSettings = ReportSettingsProxy.GetReportSettings();
 
-            var reportsData = reports;
-            
-            if (Session["user"].ToString() != "beveiliger")
-            {
-                reportsData = reports.Where(r => r.Status != StatusName.Solved );
-                foreach (var item in reportSettings)
-                {
-                    if (item.Visible != false)
-                    {
+            List<Report> reportsData = new List<Report>();
 
+            if (Session["user"].ToString() == "user")
+            {
+                reports = reports.Where(r => r.Status != StatusName.Solved);
+                foreach (var report in reports)
+                {
+                    var settings = reportSettings.Where(rs => rs.Report == report.Id).FirstOrDefault();
+                    if (settings.Visible == true)
+                    {
+                        reportsData.Add(report);
                     }
                 }
             }
-
+            else
+            {
+                reportsData.AddRange(reports);
+            }
             return View(reportsData);
         }
 
@@ -51,17 +55,35 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
             }
 
             var report = ReportProxy.GetReports().Where(r => r.Id == id).FirstOrDefault();
+            var visible = ReportSettingsProxy.GetReportSettings().Where(rs => rs.Report == report.Id).FirstOrDefault().Visible;
+
+            if (Session["user"].ToString() == "user")
+            {
+                if (report.Status == StatusName.Solved || (visible != true))
+                {
+                    return RedirectToAction("Index", "Report");
+                }
+            }
 
             var statuses = Enum.GetValues(typeof(StatusName)).Cast<StatusName>().ToList();
             ViewBag.Statuses = statuses;
-            ViewBag.Visible = ReportSettingsProxy.GetReportSettings().Where(rs => rs.Report == report.Id).FirstOrDefault().Visible;
+            ViewBag.Visible = visible;
+
+            var remarks = RemarkProxy.GetRemarks().Where(r => r.Report == report.Id).OrderByDescending(r => r.Created);
+            List<Remark> remarksData = new List<Remark>();
+            foreach (var remark in remarks)
+            {
+                remarksData.Add(remark);
+            }
+
+            ViewBag.Remarks = remarksData;
 
             return View(report);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Details(int id, StatusName? status, string remark, bool Visibility)
+        public ActionResult Details(int id, StatusName? status, string remark, bool Visibility = true)
         {
             var sessionTimeOut = Session.Timeout = 60;
             if (Session["user"] == null || sessionTimeOut == 0)

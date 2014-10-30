@@ -107,3 +107,13 @@ h2 {
     border: none;
     border-radius: 5px;
 }
+
+.remark-head div {
+    background:#417486;
+    color:#fff;
+}
+
+.remark-bottom div {
+    background:#e2e2e2;
+    margin-bottom:10px;
+}

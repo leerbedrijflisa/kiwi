@@ -15,9 +15,17 @@ namespace Lisa.Kiwi.WebApi.Controllers
 
         // GET odata/Remark
         [EnableQuery]
-        public IQueryable<Data.Remark> GetRemark()
+        public IQueryable<WebApi.Remark> GetRemark()
         {
-            return db.Remarks;
+            var remarks = from r in db.Remarks
+                          select new WebApi.Remark
+                          {
+                              Id = r.Id,
+                              Description = r.Description,
+                              Report = r.Report.Id,
+                              Created = r.Created
+                          };
+            return remarks;
         }
 
         // GET odata/Remark(5)
