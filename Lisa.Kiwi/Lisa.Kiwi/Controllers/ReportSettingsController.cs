@@ -35,52 +35,29 @@ namespace Lisa.Kiwi.WebApi.Controllers
         {
              var result = from rs in db.ReportSettings
                           where rs.Report.Id == key
-                         select new WebApi.ReportSettings
-                         {
+                          select new WebApi.ReportSettings
+                          {
                              Id = rs.Id,
                              Visible = rs.Visible,
                              Report = rs.Report.Id
-                         };
+                          };
             return result;
         }
 
         // PUT: odata/ReportSettings(5)
         public async Task<IHttpActionResult> Put([FromODataUri] int key, ReportSettings reportSettings)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (key != reportSettings.Id)
+            if (key != reportSettings.Report)
             {
                 return BadRequest();
             }
 
-            db.Entry(reportSettings).State = EntityState.Modified;
-
-            try
-            {
-                db.ReportSettings.Add(new Data.ReportSettings
-                {
-                    Id = reportSettings.Id,
-                    Visible = reportSettings.Visible,
-                    Report = db.Reports.Find(reportSettings.Report)
-                });
-
-                await db.SaveChangesAsync();
-            }
-            catch (Exception)
-            {
-                if (!ReportSettingsExists(key))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            //db.Entry(reportSettings).State = EntityState.Modified;
+            var Settings = db.ReportSettings
+                                .Where(rs => rs.Report.Id == key)
+                                .FirstOrDefault();
+            Settings.Visible = reportSettings.Visible;
+            await db.SaveChangesAsync();
 
             return Updated(reportSettings);
         }

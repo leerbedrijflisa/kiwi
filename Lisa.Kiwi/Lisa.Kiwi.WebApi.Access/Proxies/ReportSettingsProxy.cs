@@ -21,7 +21,8 @@ namespace Lisa.Kiwi.WebApi.Access
         public static void AddSettings(ReportSettings reportSettings)
         {
             //Client.container.Status.Context.AddObject("Status", status); //CreateStatus(status);
-            Client.Container.UpdateObject(reportSettings);
+            Client.Container.ChangeState(reportSettings, Microsoft.OData.Client.EntityStates.Modified);
+            //Client.Container.UpdateObject(reportSettings);
             //Client.Container.AddToReportSettings(reportSettings);
             Client.Container.SaveChanges();
             Client.Container = new Container(Client.BaseUri);
