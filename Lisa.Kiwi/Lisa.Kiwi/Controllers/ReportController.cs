@@ -65,12 +65,29 @@ namespace Lisa.Kiwi.WebApi.Controllers
         [EnableQuery]
         public SingleResult<Report> GetReport([FromODataUri] int key)
         {
+            //var result =
+            //    from s in db.Statuses
+            //    group s by s.Report into g
+            //    let latest = g.Max(s => s.Created)               
+            //    let status = g.FirstOrDefault(s => s.Created == latest)
+            //    let r = g.Key
+            //    where r.Id == key
+            //    select new WebApi.Report
+            //    {
+            //        Id = r.Id,
+            //        Created = r.Created,
+            //        Description = r.Description,
+            //        Guid = r.Guid,
+            //        Ip = r.Ip,
+            //        Location = r.Location,
+            //        Time = r.Time,
+            //        UserAgent = r.UserAgent,
+            //        Status = status.Name,
+            //        Contacts = r.Contacts
+            //    };
+
             var result =
-                from s in db.Statuses
-                group s by s.Report into g
-                let latest = g.Max(s => s.Created)               
-                let status = g.FirstOrDefault(s => s.Created == latest)
-                let r = g.Key
+                from r in db.Reports
                 where r.Id == key
                 select new WebApi.Report
                 {
@@ -82,11 +99,12 @@ namespace Lisa.Kiwi.WebApi.Controllers
                     Location = r.Location,
                     Time = r.Time,
                     UserAgent = r.UserAgent,
-                    Status = status.Name,
+                    Status = (from s in db.Statuses
+                              where s.Report == r
+                              orderby s.Created descending
+                              select s).FirstOrDefault().Name,
                     Contacts = r.Contacts
                 };
-
-
 
             return new SingleResult<WebApi.Report>(result); ;
         }
@@ -106,7 +124,22 @@ namespace Lisa.Kiwi.WebApi.Controllers
           
             try
             {
-                await _queue.AddMessageAsync(new CloudQueueMessage(JsonConvert.SerializeObject(report)));
+                var dataReport = new Data.Report
+                {
+                    Description = report.Description,
+                    Created = report.Created,
+                    Location = report.Location,
+                    Time = report.Time,
+                    Guid = report.Guid,
+                    UserAgent = report.UserAgent,
+                    Ip = report.Ip,
+                    Type = report.Type
+                };
+
+                db.Reports.Add(dataReport);
+                await db.SaveChangesAsync();
+
+                report.Id = dataReport.Id;
             }
             catch (Exception)
             {   // TODO: Figure out possible exceptions!!
@@ -131,9 +164,8 @@ namespace Lisa.Kiwi.WebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Reports.Add(new Data.Report
+            var dataReport = new Data.Report
             {
-                Id = report.Id,
                 Description = report.Description,
                 Created = report.Created,
                 Location = report.Location,
@@ -142,9 +174,12 @@ namespace Lisa.Kiwi.WebApi.Controllers
                 UserAgent = report.UserAgent,
                 Ip = report.Ip,
                 Type = report.Type
-            });
+            };
 
+            db.Reports.Add(dataReport);           
             await db.SaveChangesAsync();
+
+            report.Id = dataReport.Id;
 
             return Created(report);
         }
