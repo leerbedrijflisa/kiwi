@@ -23,7 +23,6 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 
             var reportsData = reports;
             
-
             if (Session["user"].ToString() != "beveiliger")
             {
                 reportsData = reports.Where(r => r.Status != StatusName.Solved );
@@ -35,8 +34,6 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
                     }
                 }
             }
-
-
 
             return View(reportsData);
         }
@@ -64,7 +61,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Details(int id, StatusName? status, string remark, bool Visibility = false)
+        public ActionResult Details(int id, StatusName? status, string remark, bool Visibility)
         {
             var sessionTimeOut = Session.Timeout = 60;
             if (Session["user"] == null || sessionTimeOut == 0)
@@ -105,15 +102,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 
             if (Session["user"].ToString() == "beveiliger")
             {
-                var settingsId = ReportSettingsProxy.GetReportSettings().Where(r => r.Report == report.Id).FirstOrDefault().Id;
-                var reportSettings = new ReportSettings
-                {
-                    Id = settingsId,
-                    Visible = Visibility,
-                    Report = report.Id
-                };
-
-                ReportSettingsProxy.AddSettings(reportSettings);
+                ReportSettingsProxy.UpdateVisibility(report.Id, Visibility);
             }
 
             return RedirectToAction("Details", new { id = id });

@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿﻿using Default;
+using System.Data.Services.Client;
+using System.Linq;
 
 namespace Lisa.Kiwi.WebApi.Access
 {
@@ -12,10 +14,16 @@ namespace Lisa.Kiwi.WebApi.Access
         }
 
         //Edit entity
-        public void AddSettings(ReportSettings reportSettings)
+        public void UpdateVisibility(int ReportID, bool Visibility)
         {
-            Container.UpdateObject(reportSettings);
-            Container.SaveChanges();
+            var reportSettings = Container.ReportSettings.Where(rs => rs.Report == ReportID).FirstOrDefault();
+            if(reportSettings != null) 
+            {
+                reportSettings.Visible = Visibility;
+                Container.UpdateObject(reportSettings);
+                Container.SaveChangesAsync();
+            }
+
         }
     }
 }
