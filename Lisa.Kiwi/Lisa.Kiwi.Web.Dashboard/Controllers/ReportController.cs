@@ -108,9 +108,17 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
                 };
 
                 StatusProxy.AddStatus(newStatus);
+
+                var statusRemark = new Remark
+                {
+                    Description = string.Format("De status is veranderd van {0} naar {1}", report.Status.ToString(), status.ToString()),
+                    Created = DateTime.Now,
+                    Report = report.Id
+                };
+                RemarkProxy.AddRemark(statusRemark);
             }
 
-            if (remark != null)
+            if (remark != null && !string.IsNullOrEmpty(remark))
             {
                 var newRemark = new Remark
                 {
