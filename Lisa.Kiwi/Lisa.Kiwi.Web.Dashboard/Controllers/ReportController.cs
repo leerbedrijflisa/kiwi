@@ -34,11 +34,6 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
                     {
                         reportsData.Add(report);
                     }
-
-                    if (report.Status == null)
-                    {
-                        report.Status = StatusName.Solved;
-                    }
                 }
             }
             else
