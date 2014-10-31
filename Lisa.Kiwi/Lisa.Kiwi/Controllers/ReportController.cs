@@ -136,6 +136,18 @@ namespace Lisa.Kiwi.WebApi.Controllers
                     Type = report.Type
                 };
 
+                if (report.Status != null)
+                {
+                    var dataStatus = new Data.Status
+                    {
+                        Created = report.Created,
+                        Name = report.Status,
+                        Report = dataReport
+                    };
+
+                    db.Statuses.Add(dataStatus);
+                }
+
                 db.Reports.Add(dataReport);
                 await db.SaveChangesAsync();
 
@@ -174,9 +186,22 @@ namespace Lisa.Kiwi.WebApi.Controllers
                 UserAgent = report.UserAgent,
                 Ip = report.Ip,
                 Type = report.Type
-            };
+            }; 
 
-            db.Reports.Add(dataReport);           
+            if (report.Status != null)
+            {
+                var dataStatus = new Data.Status
+                {
+                    Created = report.Created,
+                    Name = report.Status,
+                    Report = dataReport
+                };
+
+                db.Statuses.Add(dataStatus);
+            }
+
+            db.Reports.Add(dataReport);
+
             await db.SaveChangesAsync();
 
             report.Id = dataReport.Id;
