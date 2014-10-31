@@ -55,7 +55,6 @@
     <Compile Include="Models\KiwiContext.cs" />
     <Compile Include="Models\Remark.cs" />
     <Compile Include="Models\Report.cs" />
-    <Compile Include="Models\ReportSettings.cs" />
     <Compile Include="Models\ReportType.cs" />
     <Compile Include="Models\Status.cs" />
     <Compile Include="Models\StatusName.cs" />

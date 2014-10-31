@@ -15,7 +15,6 @@ namespace Lisa.Kiwi.WebApi
             builder.EntitySet<Contact>("Contact");
             builder.EntitySet<Remark>("Remark");
             builder.EntitySet<Status>("Status");
-            builder.EntitySet<ReportSettings>("ReportSettings");
      
             config.MapODataServiceRoute(
                 routeName: "ODataRoute",
