@@ -85,15 +85,19 @@ namespace Lisa.Kiwi.WebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Remarks.Add(new Data.Remark
+            var dataRemark = new Data.Remark
             {
                 Id = remark.Id,
                 Created = remark.Created,
                 Description = remark.Description,
                 Report = db.Reports.Find(remark.Report)
-            });
+            };
+
+            db.Remarks.Add(dataRemark);
 
             await db.SaveChangesAsync();
+
+            remark.Id = dataRemark.Id;
 
             return Created(remark);
         }

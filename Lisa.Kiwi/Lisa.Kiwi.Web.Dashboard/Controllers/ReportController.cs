@@ -27,7 +27,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
                 reports = reports.Where(r => r.Status != StatusName.Solved);
                 foreach (var report in reports)
                 {
-                    if (report.Hidden == true)
+                    if (report.Hidden == false)
                     {
                         reportsData.Add(report);
                     }
