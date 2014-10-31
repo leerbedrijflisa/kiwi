@@ -17,9 +17,17 @@ namespace Lisa.Kiwi.WebApi.Controllers
 
         // GET odata/Status
         [EnableQuery]
-        public IQueryable<Data.Status> GetStatus()
+        public IQueryable<WebApi.Status> GetStatus()
         {
-            return db.Statuses;
+            var result = from s in db.Statuses
+                            select new WebApi.Status 
+                            {
+                                Id = s.Id,
+                                Name = s.Name,
+                                Created = s.Created,
+                                Report = s.Report.Id
+                            };
+            return result;
         }
 
         // GET odata/Status(5)
