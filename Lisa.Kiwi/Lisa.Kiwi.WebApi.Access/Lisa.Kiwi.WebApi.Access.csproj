@@ -94,7 +94,6 @@
     </Compile>
     <Compile Include="Proxies\RemarkProxy.cs" />
     <Compile Include="Proxies\ReportProxy.cs" />
-    <Compile Include="Proxies\ReportSettingsProxy.cs" />
     <Compile Include="Proxies\StatusProxy.cs" />
   </ItemGroup>
   <ItemGroup>

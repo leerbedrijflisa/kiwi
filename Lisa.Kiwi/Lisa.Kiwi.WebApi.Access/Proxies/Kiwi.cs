@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 17-10-2014 13:20:24
+// Generation date: 31/10/2014 11:03:39
 namespace Lisa.Kiwi.WebApi
 {
     /// <summary>
@@ -66,15 +66,22 @@ namespace Lisa.Kiwi.WebApi
         /// <param name="ID">Initial value of Id.</param>
         /// <param name="created">Initial value of Created.</param>
         /// <param name="time">Initial value of Time.</param>
+        /// <param name="hidden">Initial value of Hidden.</param>
         /// <param name="status">Initial value of Status.</param>
         /// <param name="type">Initial value of Type.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        public static Report CreateReport(int ID, global::System.DateTimeOffset created, global::System.DateTimeOffset time, global::Lisa.Kiwi.Data.StatusName status, global::Lisa.Kiwi.Data.ReportType type)
+        public static Report CreateReport(int ID, 
+                    global::System.DateTimeOffset created, 
+                    global::System.DateTimeOffset time, 
+                    bool hidden, 
+                    global::Lisa.Kiwi.Data.StatusName status, 
+                    global::Lisa.Kiwi.Data.ReportType type)
         {
             Report report = new Report();
             report.Id = ID;
             report.Created = created;
             report.Time = time;
+            report.Hidden = hidden;
             report.Status = status;
             report.Type = type;
             return report;
@@ -194,6 +201,29 @@ namespace Lisa.Kiwi.WebApi
         private global::System.DateTimeOffset _Time;
         partial void OnTimeChanging(global::System.DateTimeOffset value);
         partial void OnTimeChanged();
+        /// <summary>
+        /// There are no comments for Property Hidden in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
+        [global::Microsoft.OData.Client.OriginalNameAttribute("Hidden")]
+        public bool Hidden
+        {
+            get
+            {
+                return this._Hidden;
+            }
+            set
+            {
+                this.OnHiddenChanging(value);
+                this._Hidden = value;
+                this.OnHiddenChanged();
+                this.OnPropertyChanged("Hidden");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
+        private bool _Hidden;
+        partial void OnHiddenChanging(bool value);
+        partial void OnHiddenChanged();
         /// <summary>
         /// There are no comments for Property Guid in the schema.
         /// </summary>
@@ -538,14 +568,16 @@ namespace Lisa.Kiwi.WebApi
         /// <param name="created">Initial value of Created.</param>
         /// <param name="name">Initial value of Name.</param>
         /// <param name="report">Initial value of Report.</param>
+        /// <param name="visible">Initial value of Visible.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        public static Status CreateStatus(int ID, global::System.DateTimeOffset created, global::Lisa.Kiwi.Data.StatusName name, int report)
+        public static Status CreateStatus(int ID, global::System.DateTimeOffset created, global::Lisa.Kiwi.Data.StatusName name, int report, bool visible)
         {
             Status status = new Status();
             status.Id = ID;
             status.Created = created;
             status.Name = name;
             status.Report = report;
+            status.Visible = visible;
             return status;
         }
         /// <summary>
@@ -641,113 +673,6 @@ namespace Lisa.Kiwi.WebApi
         partial void OnReportChanging(int value);
         partial void OnReportChanged();
         /// <summary>
-        /// This event is raised when the value of the property is changed
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        /// <summary>
-        /// The value of the property is changed
-        /// </summary>
-        /// <param name="property">property name</param>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        protected virtual void OnPropertyChanged(string property)
-        {
-            if ((this.PropertyChanged != null))
-            {
-                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
-            }
-        }
-    }
-    /// <summary>
-    /// There are no comments for ReportSettingsSingle in the schema.
-    /// </summary>
-    [global::Microsoft.OData.Client.OriginalNameAttribute("ReportSettingsSingle")]
-    public partial class ReportSettingsSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<ReportSettings>
-    {
-        /// <summary>
-        /// Initialize a new ReportSettingsSingle object.
-        /// </summary>
-        public ReportSettingsSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
-            : base(context, path) {}
-
-        /// <summary>
-        /// Initialize a new ReportSettingsSingle object.
-        /// </summary>
-        public ReportSettingsSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
-            : base(context, path, isComposable) {}
-    }
-    /// <summary>
-    /// There are no comments for ReportSettings in the schema.
-    /// </summary>
-    /// <KeyProperties>
-    /// Id
-    /// </KeyProperties>
-    [global::Microsoft.OData.Client.Key("Id")]
-    [global::Microsoft.OData.Client.OriginalNameAttribute("ReportSettings")]
-    public partial class ReportSettings : global::System.ComponentModel.INotifyPropertyChanged
-    {
-        /// <summary>
-        /// Create a new ReportSettings object.
-        /// </summary>
-        /// <param name="ID">Initial value of Id.</param>
-        /// <param name="report">Initial value of Report.</param>
-        /// <param name="visible">Initial value of Visible.</param>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        public static ReportSettings CreateReportSettings(int ID, int report, bool visible)
-        {
-            ReportSettings reportSettings = new ReportSettings();
-            reportSettings.Id = ID;
-            reportSettings.Report = report;
-            reportSettings.Visible = visible;
-            return reportSettings;
-        }
-        /// <summary>
-        /// There are no comments for Property Id in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        [global::Microsoft.OData.Client.OriginalNameAttribute("Id")]
-        public int Id
-        {
-            get
-            {
-                return this._Id;
-            }
-            set
-            {
-                this.OnIdChanging(value);
-                this._Id = value;
-                this.OnIdChanged();
-                this.OnPropertyChanged("Id");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        private int _Id;
-        partial void OnIdChanging(int value);
-        partial void OnIdChanged();
-        /// <summary>
-        /// There are no comments for Property Report in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        [global::Microsoft.OData.Client.OriginalNameAttribute("Report")]
-        public int Report
-        {
-            get
-            {
-                return this._Report;
-            }
-            set
-            {
-                this.OnReportChanging(value);
-                this._Report = value;
-                this.OnReportChanged();
-                this.OnPropertyChanged("Report");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        private int _Report;
-        partial void OnReportChanging(int value);
-        partial void OnReportChanged();
-        /// <summary>
         /// There are no comments for Property Visible in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
@@ -819,15 +744,6 @@ namespace Lisa.Kiwi.WebApi
         public static global::Lisa.Kiwi.WebApi.StatusSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::Lisa.Kiwi.WebApi.Status> source, global::System.Collections.Generic.Dictionary<string, object> keys)
         {
             return new global::Lisa.Kiwi.WebApi.StatusSingle(source.Context, source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(source.Context, keys)));
-        }
-        /// <summary>
-        /// Get an entity of type global::Lisa.Kiwi.WebApi.ReportSettings as global::Lisa.Kiwi.WebApi.ReportSettingsSingle specified by key from an entity set
-        /// </summary>
-        /// <param name="source">source entity set</param>
-        /// <param name="keys">dictionary with the names and values of keys</param>
-        public static global::Lisa.Kiwi.WebApi.ReportSettingsSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::Lisa.Kiwi.WebApi.ReportSettings> source, global::System.Collections.Generic.Dictionary<string, object> keys)
-        {
-            return new global::Lisa.Kiwi.WebApi.ReportSettingsSingle(source.Context, source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(source.Context, keys)));
         }
     }
 }
@@ -1212,23 +1128,6 @@ namespace Default
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
         private global::Microsoft.OData.Client.DataServiceQuery<global::Lisa.Kiwi.WebApi.Status> _Status;
         /// <summary>
-        /// There are no comments for ReportSettings in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        public global::Microsoft.OData.Client.DataServiceQuery<global::Lisa.Kiwi.WebApi.ReportSettings> ReportSettings
-        {
-            get
-            {
-                if ((this._ReportSettings == null))
-                {
-                    this._ReportSettings = base.CreateQuery<global::Lisa.Kiwi.WebApi.ReportSettings>("ReportSettings");
-                }
-                return this._ReportSettings;
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        private global::Microsoft.OData.Client.DataServiceQuery<global::Lisa.Kiwi.WebApi.ReportSettings> _ReportSettings;
-        /// <summary>
         /// There are no comments for Report in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
@@ -1260,14 +1159,6 @@ namespace Default
         {
             base.AddObject("Status", status);
         }
-        /// <summary>
-        /// There are no comments for ReportSettings in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        public void AddToReportSettings(global::Lisa.Kiwi.WebApi.ReportSettings reportSettings)
-        {
-            base.AddObject("ReportSettings", reportSettings);
-        }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
         private abstract class GeneratedEdmModel
         {
@@ -1286,6 +1177,7 @@ namespace Default
         <Property Name=""Created"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""Location"" Type=""Edm.String"" />
         <Property Name=""Time"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
+        <Property Name=""Hidden"" Type=""Edm.Boolean"" Nullable=""false"" />
         <Property Name=""Guid"" Type=""Edm.String"" />
         <Property Name=""UserAgent"" Type=""Edm.String"" />
         <Property Name=""Ip"" Type=""Edm.String"" />
@@ -1309,13 +1201,6 @@ namespace Default
         <Property Name=""Id"" Type=""Edm.Int32"" Nullable=""false"" />
         <Property Name=""Created"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""Name"" Type=""Lisa.Kiwi.Data.StatusName"" Nullable=""false"" />
-        <Property Name=""Report"" Type=""Edm.Int32"" Nullable=""false"" />
-      </EntityType>
-      <EntityType Name=""ReportSettings"">
-        <Key>
-          <PropertyRef Name=""Id"" />
-        </Key>
-        <Property Name=""Id"" Type=""Edm.Int32"" Nullable=""false"" />
         <Property Name=""Report"" Type=""Edm.Int32"" Nullable=""false"" />
         <Property Name=""Visible"" Type=""Edm.Boolean"" Nullable=""false"" />
       </EntityType>
@@ -1357,7 +1242,6 @@ namespace Default
         <EntitySet Name=""Contact"" EntityType=""Lisa.Kiwi.Data.Contact"" />
         <EntitySet Name=""Remark"" EntityType=""Lisa.Kiwi.WebApi.Remark"" />
         <EntitySet Name=""Status"" EntityType=""Lisa.Kiwi.WebApi.Status"" />
-        <EntitySet Name=""ReportSettings"" EntityType=""Lisa.Kiwi.WebApi.ReportSettings"" />
       </EntityContainer>
     </Schema>
   </edmx:DataServices>

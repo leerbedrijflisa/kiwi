@@ -14,6 +14,7 @@ namespace Lisa.Kiwi.WebApi
         public DateTimeOffset Created { get; set; }
         public string Location { get; set; }
         public DateTimeOffset Time { get; set; }
+        public bool Hidden { get; set; }
         public string Guid { get; set; }
         public string UserAgent { get; set; }
         public string Ip { get; set; }

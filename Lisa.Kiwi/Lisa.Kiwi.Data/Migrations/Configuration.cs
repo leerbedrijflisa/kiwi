@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Lisa.Kiwi.Data;
 
 namespace Lisa.Kiwi.Data.Migrations
 {
@@ -25,6 +24,7 @@ namespace Lisa.Kiwi.Data.Migrations
                 UserAgent = "Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Firefox/31.0",
                 Ip = "85.119.106.81",
                 Type = ReportType.Digital,
+                Hidden =  false,
                 Contacts = new List<Contact>
                 {
                     new Contact
@@ -34,12 +34,6 @@ namespace Lisa.Kiwi.Data.Migrations
                         StudentNumber = 99016300
                     }
                 }
-            };
-
-            ReportSettings sampleReportSettings = new ReportSettings
-            {
-                Visible = true,
-                Report = sampleReport
             };
 
             Status sampleStatus = new Status
@@ -63,7 +57,6 @@ namespace Lisa.Kiwi.Data.Migrations
                 Report = sampleReport
             };
 
-            context.ReportSettings.AddOrUpdate(sampleReportSettings);
             context.Reports.AddOrUpdate(sampleReport);
             context.Statuses.AddOrUpdate(sampleStatus);
             context.Statuses.AddOrUpdate(sampleStatus2);

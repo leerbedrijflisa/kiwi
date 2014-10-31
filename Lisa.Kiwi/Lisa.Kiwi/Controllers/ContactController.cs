@@ -45,6 +45,8 @@ namespace Lisa.Kiwi.WebApi.Controllers
             try
             {
                 db.Contacts.Add(contact);
+
+                await db.SaveChangesAsync();
             }
             catch (Exception)
             {

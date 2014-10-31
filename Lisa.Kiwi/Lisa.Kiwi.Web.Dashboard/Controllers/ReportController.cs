@@ -19,7 +19,6 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
             }
 
             var reports = ReportProxy.GetReports();
-            var reportSettings = ReportSettingsProxy.GetReportSettings();
 
             List<Report> reportsData = new List<Report>();
 
@@ -28,8 +27,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
                 reports = reports.Where(r => r.Status != StatusName.Solved);
                 foreach (var report in reports)
                 {
-                    var settings = reportSettings.Where(rs => rs.Report == report.Id).FirstOrDefault();
-                    if (settings != null && settings.Visible == true)
+                    if (report.Hidden == true)
                     {
                         reportsData.Add(report);
                     }
@@ -47,10 +45,6 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
             return View(reportsData.OrderByDescending(r => r.Created));
         }
 
-        //var provider = new AssociatedMetadataTypeTypeDescriptionProvider(typeof(ReportProxy), typeof(ReportMetadata));
-        //    TypeDescriptor.AddProviderTransparent(provider, typeof(ReportProxy));
-        // code for the metadata from a other model
-
         public ActionResult Details(int id)
         {
             var sessionTimeOut = Session.Timeout = 60;
@@ -60,11 +54,10 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
             }
 
             var report = ReportProxy.GetReports().Where(r => r.Id == id).FirstOrDefault();
-            var visible = ReportSettingsProxy.GetReportSettings().Where(rs => rs.Report == report.Id).FirstOrDefault().Visible;
 
             if (Session["user"].ToString() == "user")
             {
-                if (report.Status == StatusName.Solved || (visible != true))
+                if (report.Status == StatusName.Solved || (report.Hidden == true))
                 {
                     return RedirectToAction("Index", "Report");
                 }
@@ -72,7 +65,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 
             var statuses = Enum.GetValues(typeof(StatusName)).Cast<StatusName>().ToList();
             ViewBag.Statuses = statuses;
-            ViewBag.Visible = visible;
+            ViewBag.Visible = report.Hidden;
 
             var remarks = RemarkProxy.GetRemarks().Where(r => r.Report == report.Id).OrderByDescending(r => r.Created);
             List<Remark> remarksData = new List<Remark>();
@@ -137,7 +130,8 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 
             if (Session["user"].ToString() == "beveiliger")
             {
-                ReportSettingsProxy.UpdateVisibility(report.Id, Visibility);
+                report.Hidden = Visibility;
+                ReportProxy.AddReport(report);
             }
 
             return RedirectToAction("Details", new { id = id });
@@ -167,6 +161,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
                 Ip = "244.255.63.39",
                 Location = "Arco Baleno",
                 Time = DateTime.Today.AddHours(3),
+                Hidden = false,
                 Type = ReportType.Bullying,
                 UserAgent = "Opera",
                 Guid = Guid.NewGuid().ToString()
@@ -185,6 +180,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
                 Ip = "190.11.22.86",
                 Location = "Azurro",
                 Time = DateTime.Today.AddHours(4),
+                Hidden = false,
                 Type = ReportType.Bullying,
                 UserAgent = "Opera",
                 Guid = Guid.NewGuid().ToString()
@@ -201,6 +197,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
                 Ip = "244.255.63.39",
                 Location = "Arco Baleno",
                 Time = DateTime.Today.AddHours(7),
+                Hidden = false,
                 Type = ReportType.Bullying,
                 UserAgent = "Opera",
                 Guid = Guid.NewGuid().ToString()
@@ -217,6 +214,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
                 Ip = "180.16.52.39",
                 Location = "Arco Baleno",
                 Time = DateTime.Today.AddHours(8),
+                Hidden = false,
                 Type = ReportType.Drugs,
                 UserAgent = "Opera",
                 Guid = Guid.NewGuid().ToString()//,
@@ -231,6 +229,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
                 Ip = "177.75.22.11",
                 Location = "Sportcentrum",
                 Time = DateTime.Today.AddHours(3).AddMinutes(34),
+                Hidden = false,
                 Type = ReportType.Drugs,
                 UserAgent = "Chrome",
                 Guid = Guid.NewGuid().ToString()
@@ -244,6 +243,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
                 Ip = "10.180.14.6",
                 Location = "Ocra",
                 Time = DateTime.Today.AddHours(7).AddMinutes(21),
+                Hidden = false,
                 Type = ReportType.Fire,
                 UserAgent = "Chrome",
                 Guid = Guid.NewGuid().ToString()
@@ -257,6 +257,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
                 Ip = "10.180.14.47",
                 Location = "Bianco begane grond",
                 Time = DateTime.Today.AddHours(11).AddMinutes(30),
+                Hidden = false,
                 Type = ReportType.Theft,
                 UserAgent = "Chrome",
                 Guid = Guid.NewGuid().ToString()
@@ -269,6 +270,5 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
         private StatusProxy StatusProxy = new StatusProxy();
         private RemarkProxy RemarkProxy = new RemarkProxy();
         private ContactProxy ContactProxy = new ContactProxy();
-        private ReportSettingsProxy ReportSettingsProxy = new ReportSettingsProxy();
     }
 }

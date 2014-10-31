@@ -21,6 +21,7 @@ namespace Lisa.Kiwi.Data
         public DateTimeOffset Time { get; set; }
         public string Guid { get; set; }
         public string UserAgent { get; set; }
+        public bool Hidden { get; set; }
 
         [MaxLength(45)]
         public string Ip { get; set; }
