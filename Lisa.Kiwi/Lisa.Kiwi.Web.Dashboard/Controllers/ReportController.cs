@@ -5,6 +5,7 @@ using Lisa.Kiwi.WebApi;
 using Lisa.Kiwi.WebApi.Access;
 using Lisa.Kiwi.Data;
 using System.Collections.Generic;
+using Lisa.Kiwi.Web.Dashboard.Utils;
 
 namespace Lisa.Kiwi.Web.Dashboard.Controllers
 {
@@ -69,14 +70,43 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
             ViewBag.Statuses = statuses;
             ViewBag.Visible = visible;
 
-            var remarks = RemarkProxy.GetRemarks().Where(r => r.Report == report.Id).OrderByDescending(r => r.Created);
-            List<Remark> remarksData = new List<Remark>();
+            var remarks = RemarkProxy.GetRemarks()
+                .Where(r => r.Report == report.Id)
+                .OrderByDescending(r => r.Created);
+
+            var statusses = StatusProxy.GetStatuses()
+                .Where(r => r.Report == report.Id);
+
+            List<Models.Remark> remarksData = new List<Models.Remark>();
             foreach (var remark in remarks)
             {
-                remarksData.Add(remark);
+                remarksData.Add(new Models.Remark
+                {
+                    Created = remark.Created,
+                    Description = remark.Description,
+                    User = Session["user"].ToString()
+                });
             }
 
-            ViewBag.Remarks = remarksData;
+            var lastStatus = "";
+            foreach (var status in statusses)
+            {
+                var description = "";
+                if(lastStatus == "") {
+                    description = string.Format("The status {0} is created.", status.Name.GetDisplayNameFromMetadata());
+                } else {
+                    description = string.Format("The Status {0} is changed to {1}.", lastStatus, status.Name.GetDisplayNameFromMetadata());
+                }
+                remarksData.Add(new Models.Remark
+                {
+                    Created = status.Created,
+                    Description = description,
+                    User = Session["user"].ToString()
+                });
+                lastStatus = status.Name.ToString();
+            }
+
+            ViewBag.Remarks = remarksData.OrderByDescending(r => r.Created);
 
             return View(report);
         }
@@ -108,14 +138,6 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
                 };
 
                 StatusProxy.AddStatus(newStatus);
-
-                var statusRemark = new Remark
-                {
-                    Description = string.Format("De status is veranderd van {0} naar {1}", report.Status.ToString(), status.ToString()),
-                    Created = DateTime.Now,
-                    Report = report.Id
-                };
-                RemarkProxy.AddRemark(statusRemark);
             }
 
             if (remark != null && !string.IsNullOrEmpty(remark))
