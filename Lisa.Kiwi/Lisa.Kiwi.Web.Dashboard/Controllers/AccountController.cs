@@ -50,5 +50,15 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
             
             return RedirectToAction("Index", "Report");
         }
+
+        public ActionResult Logout()
+        {
+            if (Session.Count > 0)
+            {
+                Session.RemoveAll();
+            }
+            
+            return RedirectToAction("Login");
+        }
     }
 }
