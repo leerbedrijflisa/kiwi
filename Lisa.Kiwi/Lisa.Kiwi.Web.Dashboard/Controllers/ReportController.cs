@@ -81,12 +81,16 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
                 });
             }
 
-            var lastStatus = "";
+            var lastStatus = string.Empty;
             foreach (var status in statusses)
             {
                 var description = "";
-                if(lastStatus == "") {
-                    description = string.Format("The status {0} is created.", status.Name.GetStatusDisplayNameFromMetadata());
+                if(string.IsNullOrEmpty(lastStatus)) {
+                    var person = "Anoniem";
+                    if(report.Contacts.Count > 0) {
+                        person = report.Contacts[0].Name;
+                    }
+                    description = string.Format("Melding is aangemaakt door: {0} met de status {1}.", person, status.Name.GetStatusDisplayNameFromMetadata());
                 } else {
                     description = string.Format("The Status {0} is changed to {1}.", lastStatus, status.Name.GetStatusDisplayNameFromMetadata());
                 }
