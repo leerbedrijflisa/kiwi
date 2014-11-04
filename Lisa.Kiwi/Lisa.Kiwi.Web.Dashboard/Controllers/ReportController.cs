@@ -70,40 +70,11 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
             var statusses = StatusProxy.GetStatuses()
                 .Where(r => r.Report == report.Id);
 
-            List<Models.Remark> remarksData = new List<Models.Remark>();
-            foreach (var remark in remarks)
-            {
-                remarksData.Add(new Models.Remark
-                {
-                    Created = remark.Created,
-                    Description = remark.Description,
-                    User = Session["user"].ToString()
-                });
-            }
+            List<Models.Remark> LogbookData = new List<Models.Remark>();
+            LogbookData.AddRange(AddRemarksToLogbook(remarks));
+            LogbookData.AddRange(AddStatussesToLogbook(statusses, report));
 
-            var lastStatus = string.Empty;
-            foreach (var status in statusses)
-            {
-                var description = "";
-                if(string.IsNullOrEmpty(lastStatus)) {
-                    var person = "Anoniem";
-                    if(report.Contacts.Count > 0) {
-                        person = report.Contacts[0].Name;
-                    }
-                    description = string.Format("Melding is aangemaakt door: {0} met de status {1}.", person, status.Name.GetStatusDisplayNameFromMetadata());
-                } else {
-                    description = string.Format("The Status {0} is changed to {1}.", lastStatus, status.Name.GetStatusDisplayNameFromMetadata());
-                }
-                remarksData.Add(new Models.Remark
-                {
-                    Created = status.Created,
-                    Description = description,
-                    User = Session["user"].ToString()
-                });
-                lastStatus = status.Name.ToString();
-            }
-
-            ViewBag.Remarks = remarksData.OrderByDescending(r => r.Created);
+            ViewBag.Remarks = LogbookData.OrderByDescending(r => r.Created);
 
             return View(report);
         }
@@ -285,6 +256,60 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
             });
 
             return RedirectToAction("Index");
+        }
+
+        private List<Models.Remark> AddRemarksToLogbook(IQueryable<Remark> remarks)
+        {
+            List<Models.Remark> result = new List<Models.Remark>();
+            foreach (var remark in remarks)
+            {
+                result.Add(new Models.Remark
+                {
+                    Created = remark.Created,
+                    Description = remark.Description,
+                    User = Session["user"].ToString()
+                });
+            }
+            return result;
+        }
+
+        private List<Models.Remark> AddStatussesToLogbook(IQueryable<Status> statusses, Report report)
+        {
+            List<Models.Remark> result = new List<Models.Remark>();
+
+            var lastStatus = string.Empty;
+            foreach (var status in statusses)
+            {
+                var description = CreateLogbookStatusDescription(status, lastStatus, report);
+                lastStatus = status.Name.ToString();
+
+                result.Add(new Models.Remark
+                {
+                    Created = status.Created,
+                    Description = description,
+                    User = Session["user"].ToString()
+                });
+            }
+            return result;
+        }
+
+        private string CreateLogbookStatusDescription(Status status, string lastStatus, Report report)
+        {
+            var description = "";
+            if (string.IsNullOrEmpty(lastStatus))
+            {
+                var person = "Anoniem";
+                if (report.Contacts.Count > 0)
+                {
+                    person = report.Contacts[0].Name;
+                }
+                description = string.Format("Melding is aangemaakt door: {0} met de status {1}.", person, status.Name.GetStatusDisplayNameFromMetadata());
+            }
+            else
+            {
+                description = string.Format("The Status {0} is changed to {1}.", lastStatus, status.Name.GetStatusDisplayNameFromMetadata());
+            }
+            return description;
         }
 
         private ReportProxy ReportProxy = new ReportProxy();
