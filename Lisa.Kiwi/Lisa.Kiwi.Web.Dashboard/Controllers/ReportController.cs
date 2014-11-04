@@ -86,9 +86,9 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
             {
                 var description = "";
                 if(lastStatus == "") {
-                    description = string.Format("The status {0} is created.", status.Name.GetDisplayNameFromMetadata());
+                    description = string.Format("The status {0} is created.", status.Name.GetStatusDisplayNameFromMetadata());
                 } else {
-                    description = string.Format("The Status {0} is changed to {1}.", lastStatus, status.Name.GetDisplayNameFromMetadata());
+                    description = string.Format("The Status {0} is changed to {1}.", lastStatus, status.Name.GetStatusDisplayNameFromMetadata());
                 }
                 remarksData.Add(new Models.Remark
                 {

@@ -124,6 +124,87 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pesten.
+        /// </summary>
+        public static string ReportTypeBullying {
+            get {
+                return ResourceManager.GetString("ReportTypeBullying", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Inbraak.
+        /// </summary>
+        public static string ReportTypeBurglary {
+            get {
+                return ResourceManager.GetString("ReportTypeBurglary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Digitaal.
+        /// </summary>
+        public static string ReportTypeDigital {
+            get {
+                return ResourceManager.GetString("ReportTypeDigital", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Drugs.
+        /// </summary>
+        public static string ReportTypeDrugs {
+            get {
+                return ResourceManager.GetString("ReportTypeDrugs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Brand.
+        /// </summary>
+        public static string ReportTypeFire {
+            get {
+                return ResourceManager.GetString("ReportTypeFire", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Intimidatie.
+        /// </summary>
+        public static string ReportTypeIntimidation {
+            get {
+                return ResourceManager.GetString("ReportTypeIntimidation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overlast.
+        /// </summary>
+        public static string ReportTypeNuisance {
+            get {
+                return ResourceManager.GetString("ReportTypeNuisance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Diefstal.
+        /// </summary>
+        public static string ReportTypeTheft {
+            get {
+                return ResourceManager.GetString("ReportTypeTheft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Voortuigen.
+        /// </summary>
+        public static string ReportTypeVehicles {
+            get {
+                return ResourceManager.GetString("ReportTypeVehicles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to User Agent.
         /// </summary>
         public static string ReportUserAgent {

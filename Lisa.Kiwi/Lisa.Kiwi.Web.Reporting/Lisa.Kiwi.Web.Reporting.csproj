@@ -189,10 +189,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_GlobalResources\Resources\DisplayNames.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
+    <EmbeddedResource Include="App_GlobalResources\Resources\DisplayNames.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>DisplayNames.Designer.cs</LastGenOutput>
-    </Content>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

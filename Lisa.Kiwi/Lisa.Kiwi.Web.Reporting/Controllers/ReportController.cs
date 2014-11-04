@@ -41,11 +41,11 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             List<string> reportTypes = new List<string>();
             foreach (var reportType in types)
             {
-                reportTypes.Add(reportType.GetDisplayNameFromMetadata());
+                reportTypes.Add(reportType.GetReportTypeDisplayNameFromMetadata());
             }
 
 
-            ViewData["reportType"] = new SelectList(types.ToList());
+            ViewData["reportType"] = new SelectList(reportTypes);
 
 
             return View();

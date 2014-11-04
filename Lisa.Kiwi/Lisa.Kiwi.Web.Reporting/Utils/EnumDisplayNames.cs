@@ -26,13 +26,24 @@ namespace Lisa.Kiwi.Web.Reporting.Utils
             return attribute.GetName();
         }
 
-        public static string GetDisplayNameFromMetadata(this Enum value)
+        public static string GetStatusDisplayNameFromMetadata(this Enum value)
         {
             if (!Enum.IsDefined(typeof(StatusNameMetadata), value.ToString()))
             {
                 throw new Exception(String.Format("{0} is no enum property.", value));
             }
             Enum enumVal = (StatusNameMetadata)Enum.Parse(typeof(StatusNameMetadata), value.ToString());
+
+            return enumVal.GetDisplayName();
+        }
+
+        public static string GetReportTypeDisplayNameFromMetadata(this Enum value)
+        {
+            if (!Enum.IsDefined(typeof(ReportTypeMetadata), value.ToString()))
+            {
+                throw new Exception(String.Format("{0} is no enum property.", value));
+            }
+            Enum enumVal = (ReportTypeMetadata)Enum.Parse(typeof(ReportTypeMetadata), value.ToString());
 
             return enumVal.GetDisplayName();
         }
