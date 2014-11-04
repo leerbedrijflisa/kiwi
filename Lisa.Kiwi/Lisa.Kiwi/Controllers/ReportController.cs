@@ -19,26 +19,6 @@ namespace Lisa.Kiwi.WebApi.Controllers
         [EnableQuery]
         public IQueryable<WebApi.Report> GetReport()
         {
-            //var result =
-            //    from s in db.Statuses
-            //    group s by s.Report into g
-            //    let latest = g.Max(s => s.Created)
-            //    let r = g.Key
-            //    let status = g.FirstOrDefault(s => s.Created == latest)
-            //    select new WebApi.Report
-            //    {
-            //        Id = r.Id,
-            //        Created = r.Created,
-            //        Description = r.Description,
-            //        Guid = r.Guid,
-            //        Ip = r.Ip,
-            //        Location = r.Location,
-            //        Time = r.Time,
-            //        UserAgent = r.UserAgent,
-            //        Status = status.Name,
-            //        Contacts = r.Contacts
-            //    };
-
             var result =
                 from r in db.Reports
                 select new WebApi.Report
@@ -50,6 +30,8 @@ namespace Lisa.Kiwi.WebApi.Controllers
                     Ip = r.Ip,
                     Location = r.Location,
                     Time = r.Time,
+                    Type = r.Type,
+                    Hidden = r.Hidden,
                     UserAgent = r.UserAgent,
                     Status = (from s in db.Statuses
                                   where s.Report == r
@@ -65,27 +47,6 @@ namespace Lisa.Kiwi.WebApi.Controllers
         [EnableQuery]
         public SingleResult<Report> GetReport([FromODataUri] int key)
         {
-            //var result =
-            //    from s in db.Statuses
-            //    group s by s.Report into g
-            //    let latest = g.Max(s => s.Created)               
-            //    let status = g.FirstOrDefault(s => s.Created == latest)
-            //    let r = g.Key
-            //    where r.Id == key
-            //    select new WebApi.Report
-            //    {
-            //        Id = r.Id,
-            //        Created = r.Created,
-            //        Description = r.Description,
-            //        Guid = r.Guid,
-            //        Ip = r.Ip,
-            //        Location = r.Location,
-            //        Time = r.Time,
-            //        UserAgent = r.UserAgent,
-            //        Status = status.Name,
-            //        Contacts = r.Contacts
-            //    };
-
             var result =
                 from r in db.Reports
                 where r.Id == key
@@ -98,6 +59,8 @@ namespace Lisa.Kiwi.WebApi.Controllers
                     Ip = r.Ip,
                     Location = r.Location,
                     Time = r.Time,
+                    Type = r.Type,
+                    Hidden = r.Hidden,
                     UserAgent = r.UserAgent,
                     Status = (from s in db.Statuses
                               where s.Report == r
