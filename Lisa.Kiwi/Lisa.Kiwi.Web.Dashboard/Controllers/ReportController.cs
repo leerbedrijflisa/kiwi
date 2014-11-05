@@ -49,7 +49,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
                 return RedirectToAction("Login", "Account");
             }
 
-            var report = ReportProxy.GetReports().Where(r => r.Id == id).FirstOrDefault();
+            var report = ReportProxy.GetReports(true).Where(r => r.Id == id).FirstOrDefault();
 
             if (Session["user"].ToString() == "user")
             {

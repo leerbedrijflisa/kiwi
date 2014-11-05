@@ -5,9 +5,16 @@ namespace Lisa.Kiwi.WebApi.Access
     public class ReportProxy : Client
     {
         // Get an entire entity set.
-        public IQueryable<Report> GetReports()
+        public IQueryable<Report> GetReports(bool getContacts = false)
         {
-            return Container.Report;
+            if (!getContacts)
+            {
+                return Container.Report;
+            }
+            else
+            {
+                return Container.Report.Expand(r => r.Contacts);
+            }
         }
 
         //Create a new entity
