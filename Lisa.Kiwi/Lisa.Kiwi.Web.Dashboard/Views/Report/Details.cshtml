@@ -2,6 +2,7 @@
 @using Lisa.Kiwi.Web.Dashboard.Utils
 @using Lisa.Kiwi.Web.Dashboard.Models
 @using Lisa.Kiwi.Data
+@using System.Globalization;
 
 @{
 
@@ -22,9 +23,9 @@ else
                 <div class="col-sm-6 form-horizontal">
                         <h3>Details</h3>
                         <div class="form-group">
-                            <label class="col-sm-4 control-label">@Html.LabelFor(m => m.Time) Tijd incident</label>
+                            <label class="col-sm-4 control-label">Tijd incident</label>
                             <div class="col-sm-8">
-                                <p class="form-control-static">@Model.Time.ToString("dd-mm-yyyy HH:mm:ss")</p>
+                                <p class="form-control-static">@Model.Time.ToString("dd-MM-yyyy HH:mm")</p>
                             </div>
                         </div>
                         <div class="form-group">
@@ -159,8 +160,8 @@ else
                     @foreach (var remark in ViewBag.Remarks)
                     {
                         <div class="form-group remark-head">
-                            <div class="col-sm-7">By: <span>User</span></div>
-                            <div class="col-sm-5">Created: <span>@remark.Created.ToString("dd-MM-yyyy HH:mm")</span></div>
+                            <div class="col-sm-6">By: <span>User</span></div>
+                            <div class="col-sm-6">Created: <span>@remark.Created.ToLocalTime().ToString("ddd dd MMM yy HH:mm", new CultureInfo("nl-NL"))</span></div>
                         </div>
                         <div class="form-group remark-bottom">
                             <div class="col-sm-12">

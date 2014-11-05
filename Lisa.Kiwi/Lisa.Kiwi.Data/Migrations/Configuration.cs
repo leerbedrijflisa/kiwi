@@ -17,9 +17,9 @@ namespace Lisa.Kiwi.Data.Migrations
             Report sampleReport = new Report
             {
                 Description = "Dit is een test report. Lorem Lorem Kaasaus.",
-                Created = DateTime.Now,
+                Created = DateTime.UtcNow,
                 Location = "Het Lisa lokaal",
-                Time = DateTime.Now.AddDays(-1),
+                Time = DateTime.UtcNow.AddDays(-1),
                 Guid = Guid.NewGuid().ToString(),
                 UserAgent = "Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Firefox/31.0",
                 Ip = "85.119.106.81",
@@ -38,21 +38,21 @@ namespace Lisa.Kiwi.Data.Migrations
 
             Status sampleStatus = new Status
             {
-                Created = DateTime.Now,
+                Created = DateTime.UtcNow,
                 Name = StatusName.InProgress,
                 Report = sampleReport
             };
 
             Status sampleStatus2 = new Status
             {
-                Created = DateTime.Now,
+                Created = DateTime.UtcNow,
                 Name = StatusName.InProgress,
                 Report = sampleReport
             };
 
             Remark sampleRemark = new Remark
             {
-                Created = DateTime.Now,
+                Created = DateTime.UtcNow,
                 Description = "Laanaamaakai. Cheese is da bawm.",
                 Report = sampleReport
             };

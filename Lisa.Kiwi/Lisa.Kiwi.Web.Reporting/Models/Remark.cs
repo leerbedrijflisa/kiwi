@@ -9,7 +9,7 @@ namespace Lisa.Kiwi.Web.Reporting.Models
     {
         public Remark()
         {
-            Created = DateTime.Now;
+            Created = DateTime.UtcNow;
         }
 
         public int Id { get; set; }

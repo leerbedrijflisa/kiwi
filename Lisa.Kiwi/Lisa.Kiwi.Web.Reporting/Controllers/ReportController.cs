@@ -38,14 +38,18 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
         public ActionResult Type()
         {
             var types = Enum.GetValues(typeof(ReportType)).Cast<ReportType>();
-            List<string> reportTypes = new List<string>();
+            List<SelectListItem> reportTypes = new List<SelectListItem>();
             foreach (var reportType in types)
             {
-                reportTypes.Add(reportType.GetReportTypeDisplayNameFromMetadata());
+                reportTypes.Add(new SelectListItem
+                {
+                    Text = reportType.GetReportTypeDisplayNameFromMetadata(),
+                    Value = reportType.ToString()
+                });
             }
 
 
-            ViewData["reportType"] = new SelectList(reportTypes);
+            ViewData["reportType"] = reportTypes;
 
 
             return View();
@@ -64,7 +68,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
                 
                 report.Type = reportType;
                 report.Guid = guid;
-                report.Time = DateTime.Now;
+                report.Time = DateTime.UtcNow;
 
                 report.PartitionKey = guid;
                 report.RowKey = "";

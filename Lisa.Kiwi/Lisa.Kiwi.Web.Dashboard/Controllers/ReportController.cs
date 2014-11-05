@@ -20,7 +20,6 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
             }
 
             var reports = ReportProxy.GetReports();
-
             List<Report> reportsData = new List<Report>();
 
             if (Session["user"].ToString() == "user")
