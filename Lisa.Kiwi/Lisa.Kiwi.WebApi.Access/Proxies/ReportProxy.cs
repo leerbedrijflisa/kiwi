@@ -1,27 +1,30 @@
 ﻿using System.Linq;
+using Default;
 
 namespace Lisa.Kiwi.WebApi.Access
 {
-    public class ReportProxy : Client
-    {
+    public class ReportProxy
+	{
+		private readonly Container _container = new Container(Client.BaseUri);
+
         // Get an entire entity set.
         public IQueryable<Report> GetReports(bool getContacts = false)
         {
             if (!getContacts)
             {
-                return Container.Report;
+				return _container.Report;
             }
             else
             {
-                return Container.Report.Expand(r => r.Contacts);
+				return _container.Report.Expand(r => r.Contacts);
             }
         }
 
         //Create a new entity
         public void AddReport(Report report)
         {
-            Container.AddToReport(report);
-            Container.SaveChanges();
+			_container.AddToReport(report);
+			_container.SaveChanges();
         }
     }
 }

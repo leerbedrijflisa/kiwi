@@ -1,20 +1,23 @@
 ﻿using System.Linq;
+using Default;
 
 namespace Lisa.Kiwi.WebApi.Access
 {
-    public class StatusProxy : Client
+    public sealed class StatusProxy
     {
+		private readonly Container _container = new Container(Client.BaseUri);
+
         // Get an entire entity set.
         public IQueryable<Status> GetStatuses()
         {
-            return Container.Status;
+			return _container.Status;
         }
 
         //Create a new entity
         public void AddStatus(Status status)
         {
-            Container.AddToStatus(status);
-            Container.SaveChanges();           
+			_container.AddToStatus(status);
+			_container.SaveChanges();           
         }
     }
 }
