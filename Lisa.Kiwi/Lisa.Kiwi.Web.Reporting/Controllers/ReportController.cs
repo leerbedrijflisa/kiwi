@@ -64,7 +64,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
                 
                 report.Type = reportType;
                 report.Guid = guid;
-                report.Time = DateTime.Now;
+                report.Time = DateTime.UtcNow;
 
                 report.PartitionKey = guid;
                 report.RowKey = "";
