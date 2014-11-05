@@ -99,17 +99,15 @@ namespace Lisa.Kiwi.WebApi.Controllers
                     Type = report.Type
                 };
 
-                if (report.Status != null)
-                {
-                    var dataStatus = new Data.Status
-                    {
-                        Created = report.Created,
-                        Name = report.Status,
-                        Report = dataReport
-                    };
 
-                    db.Statuses.Add(dataStatus);
-                }
+                var dataStatus = new Data.Status
+                {
+                    Created = report.Created,
+                    Name = report.Status,
+                    Report = dataReport
+                };
+
+                db.Statuses.Add(dataStatus);
 
                 db.Reports.Add(dataReport);
                 await db.SaveChangesAsync();
@@ -151,17 +149,14 @@ namespace Lisa.Kiwi.WebApi.Controllers
                 Type = report.Type
             }; 
 
-            if (report.Status != null)
+            var dataStatus = new Data.Status
             {
-                var dataStatus = new Data.Status
-                {
-                    Created = report.Created,
-                    Name = report.Status,
-                    Report = dataReport
-                };
+                Created = report.Created,
+                Name = report.Status,
+                Report = dataReport
+            };
 
-                db.Statuses.Add(dataStatus);
-            }
+            db.Statuses.Add(dataStatus);
 
             db.Reports.Add(dataReport);
 
