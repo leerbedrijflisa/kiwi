@@ -29,11 +29,11 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
         [HttpPost]
         public ActionResult Login(string username, string password)
         {
-            var masterpass = "master";
-            var userpass = "hello";
+            var masterpass = "master"; // beveiliger
+            var userpass = "hello"; // beveiliger
 
 
-            if ((username == "beveiliger" && masterpass == password) || (username == "user" && userpass == password))
+            if ((username == "hoofd beveiliger" && masterpass == password) || (username == "beveiliger" && userpass == password))
             {
                 Session["user"] = username;
             }

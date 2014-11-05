@@ -133,17 +133,17 @@ else
                                     </select>
                                 </div>
                             </div>
-                            if (Session["user"].ToString() == "beveiliger")
+                            if (Session["user"].ToString() == "hoofd beveiliger")
                             { 
                             <div class="form-group">
                                 <label class="col-sm-4 control-label">Zichtbaarheid</label>
                                 <div class="col-sm-8">
                                     <select name="Visibility" class="col-sm-8">
                                         @{ var visible = ""; }
-                                        @if (ViewBag.Visible) { visible = "selected"; }
-                                        <option value="true" @visible>Zichtbaar</option>
-                                        @if (!ViewBag.Visible) { visible = "selected"; } else { visible = ""; }
-                                        <option value="false" @visible>Onzichtbaar</option>
+                                        @if (!ViewBag.Visible) { visible = "selected"; }
+                                        <option value="false" @visible>Zichtbaar</option>
+                                        @if (ViewBag.Visible) { visible = "selected"; } else { visible = ""; }
+                                        <option value="true" @visible>Onzichtbaar</option>
                                     </select>
                                 </div>
                             </div>

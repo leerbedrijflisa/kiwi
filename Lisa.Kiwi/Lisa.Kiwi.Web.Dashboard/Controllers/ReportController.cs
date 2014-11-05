@@ -22,7 +22,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
             var reports = _reportProxy.GetReports();
             List<Report> reportsData = new List<Report>();
 
-            if (Session["user"].ToString() == "user")
+            if (Session["user"].ToString() == "beveiliger")
             {
                 reports = reports.Where(r => r.Status != StatusName.Solved);
                 foreach (var report in reports)
@@ -48,7 +48,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
                 return RedirectToAction("Login", "Account");
             }
 
-            var report = _reportProxy.GetReports(true).FirstOrDefault(r => r.Id == id);
+            var report = _reportProxy.GetReports(true).Where(r => r.Id == id).FirstOrDefault();
 
             if (Session["user"].ToString() == "user")
             {
@@ -99,7 +99,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
             {
                 var newStatus = new Status
                 {
-                    Created = DateTimeOffset.Now,
+                    Created = DateTimeOffset.UtcNow,
                     Name = (StatusName) status,
                     Report = report.Id
                 };
@@ -112,7 +112,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
                 var newRemark = new Remark
                 {
                     Description = remark,
-                    Created = DateTimeOffset.Now,
+                    Created = DateTimeOffset.UtcNow,
                     Report = report.Id
                 };
 
