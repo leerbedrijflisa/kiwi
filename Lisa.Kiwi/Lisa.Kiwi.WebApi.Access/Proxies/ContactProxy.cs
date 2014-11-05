@@ -7,8 +7,6 @@ namespace Lisa.Kiwi.WebApi.Access
 {
     public sealed class ContactProxy
 	{
-		private readonly Container _container;
-
 		public ContactProxy(Uri odataUrl)
 	    {
 			_container = new Container(odataUrl);
@@ -28,5 +26,7 @@ namespace Lisa.Kiwi.WebApi.Access
 
             return contact;
         }
+
+        private readonly Container _container;
     }
 }

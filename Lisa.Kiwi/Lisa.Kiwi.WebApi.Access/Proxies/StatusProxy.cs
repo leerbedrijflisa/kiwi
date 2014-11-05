@@ -6,8 +6,6 @@ namespace Lisa.Kiwi.WebApi.Access
 {
     public sealed class StatusProxy
     {
-		private readonly Container _container;
-
 		public StatusProxy(Uri odataUrl)
 	    {
 			_container = new Container(odataUrl);
@@ -25,5 +23,7 @@ namespace Lisa.Kiwi.WebApi.Access
 			_container.AddToStatus(status);
 			_container.SaveChanges();           
         }
+
+        private readonly Container _container;
     }
 }

@@ -6,8 +6,6 @@ namespace Lisa.Kiwi.WebApi.Access
 {
     public class RemarkProxy
 	{
-		private readonly Container _container;
-
 		public RemarkProxy(Uri odataUrl)
 	    {
 			_container = new Container(odataUrl);
@@ -25,5 +23,7 @@ namespace Lisa.Kiwi.WebApi.Access
 			_container.AddToRemark(remark);
 			_container.SaveChanges();
         }
+
+        private readonly Container _container;
     }
 }
