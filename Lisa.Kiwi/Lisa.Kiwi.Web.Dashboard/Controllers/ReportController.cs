@@ -22,7 +22,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
             var reports = ReportProxy.GetReports();
             List<Report> reportsData = new List<Report>();
 
-            if (Session["user"].ToString() == "user")
+            if (Session["user"].ToString() == "beveiliger")
             {
                 reports = reports.Where(r => r.Status != StatusName.Solved);
                 foreach (var report in reports)
