@@ -4,9 +4,9 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using Lisa.Kiwi.Web.Dashboard.Models;
+using Lisa.Kiwi.Web.Reporting.Models;
 
-namespace Lisa.Kiwi.Web.Dashboard.Utils
+namespace Lisa.Kiwi.Web.Reporting.Utils
 {
     public static class EnumDisplayNames
     {

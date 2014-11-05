@@ -18,7 +18,6 @@ namespace Lisa.Kiwi.Web.Reporting.Models
 
             Created = DateTime.UtcNow;
             UserAgent = HttpContext.Current.Request.UserAgent;
-            Ip = Utils.GetIP();
             Priority = ReportPriority.Normaal;
         }
 

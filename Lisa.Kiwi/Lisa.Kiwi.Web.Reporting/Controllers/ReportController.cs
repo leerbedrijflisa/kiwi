@@ -8,6 +8,8 @@ using Lisa.Kiwi.Web.Reporting.Models;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Table;
 using Microsoft.WindowsAzure;
+using Lisa.Kiwi.Web.Reporting.Utils;
+using System.Collections.Generic;
 
 namespace Lisa.Kiwi.Web.Reporting.Controllers
 {
@@ -35,9 +37,15 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 
         public ActionResult Type()
         {
-            var types = Enum.GetValues(typeof(ReportType)).Cast<ReportType>().ToList();
+            var types = Enum.GetValues(typeof(ReportType)).Cast<ReportType>();
+            List<string> reportTypes = new List<string>();
+            foreach (var reportType in types)
+            {
+                reportTypes.Add(reportType.GetReportTypeDisplayNameFromMetadata());
+            }
 
-            ViewData["reportType"] = new SelectList(types);
+
+            ViewData["reportType"] = new SelectList(reportTypes);
 
 
             return View();
