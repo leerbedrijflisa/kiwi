@@ -169,6 +169,10 @@
       <Project>{2587c3b3-925f-4d00-96c7-535c57f90675}</Project>
       <Name>Lisa.Kiwi.WebApi.Access</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Lisa.Kiwi.Web\Lisa.Kiwi.Web.csproj">
+      <Project>{C064977D-F3EA-4519-BAE5-BEABE666E8F5}</Project>
+      <Name>Lisa.Kiwi.Web</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App_GlobalResources\Resources\DisplayNames.resx">
