@@ -19,7 +19,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
                 return RedirectToAction("Login", "Account");
             }
 
-            var reports = ReportProxy.GetReports();
+            var reports = _reportProxy.GetReports();
             List<Report> reportsData = new List<Report>();
 
             if (Session["user"].ToString() == "user")
@@ -48,7 +48,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
                 return RedirectToAction("Login", "Account");
             }
 
-            var report = ReportProxy.GetReports(true).Where(r => r.Id == id).FirstOrDefault();
+            var report = _reportProxy.GetReports(true).FirstOrDefault(r => r.Id == id);
 
             if (Session["user"].ToString() == "user")
             {
@@ -62,11 +62,11 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
             ViewBag.Statuses = statuses;
             ViewBag.Visible = report.Hidden;
 
-            var remarks = RemarkProxy.GetRemarks()
+            var remarks = _remarkProxy.GetRemarks()
                 .Where(r => r.Report == report.Id)
                 .OrderByDescending(r => r.Created);
 
-            var statusses = StatusProxy.GetStatuses()
+            var statusses = _statusProxy.GetStatuses()
                 .Where(r => r.Report == report.Id);
 
             List<Models.Remark> LogbookData = new List<Models.Remark>();
@@ -88,7 +88,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
                 return RedirectToAction("Login", "Account");
             }
 
-            var report = ReportProxy.GetReports().Where(r => r.Id == id).FirstOrDefault();
+            var report = _reportProxy.GetReports().FirstOrDefault(r => r.Id == id);
 
             if (report == null)
             {
@@ -104,7 +104,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
                     Report = report.Id
                 };
 
-                StatusProxy.AddStatus(newStatus);
+                _statusProxy.AddStatus(newStatus);
             }
 
             if (remark != null && !string.IsNullOrEmpty(remark))
@@ -116,13 +116,13 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
                     Report = report.Id
                 };
 
-                RemarkProxy.AddRemark(newRemark);
+                _remarkProxy.AddRemark(newRemark);
             }
 
             if (Session["user"].ToString() == "beveiliger")
             {
                 report.Hidden = Visibility;
-                ReportProxy.AddReport(report);
+                _reportProxy.AddReport(report);
             }
 
             return RedirectToAction("Details", new { id = id });
@@ -136,7 +136,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
                 return RedirectToAction("Login", "Account");
             }
 
-            var contact = ContactProxy.AddContact(new Contact
+            var contact = _contactProxy.AddContact(new Contact
             {
                 EmailAddress = "beyonce@gijs.nl",
                 Name = "Gijs Jannssenn",
@@ -160,7 +160,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
             }; 
             
             report.Contacts.Add(contact);
-            ReportProxy.AddReport(report);
+            _reportProxy.AddReport(report);
 
 
             report = new Report
@@ -178,7 +178,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
             };
 
             report.Contacts.Add(contact);
-            ReportProxy.AddReport(report);
+            _reportProxy.AddReport(report);
 
             report = new Report
             {
@@ -195,9 +195,9 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
             };
 
             report.Contacts.Add(contact);
-            ReportProxy.AddReport(report);
+            _reportProxy.AddReport(report);
 
-            ReportProxy.AddReport(new Report
+            _reportProxy.AddReport(new Report
             {
                 Created = DateTime.UtcNow,
                 Status = StatusName.Open,
@@ -212,7 +212,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
                 //Contacts = contact
             });
 
-            ReportProxy.AddReport(new Report
+            _reportProxy.AddReport(new Report
             {
                 Created = DateTime.UtcNow,
                 Status = StatusName.InProgress,
@@ -226,7 +226,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
                 Guid = Guid.NewGuid().ToString()
             });
 
-            ReportProxy.AddReport(new Report
+            _reportProxy.AddReport(new Report
             {
                 Created = DateTime.UtcNow,
                 Status = StatusName.Open,
@@ -240,7 +240,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
                 Guid = Guid.NewGuid().ToString()
             });
 
-            ReportProxy.AddReport(new Report
+            _reportProxy.AddReport(new Report
             {
                 Created = DateTime.UtcNow,
                 Status = StatusName.Open,
@@ -311,9 +311,9 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
             return description;
         }
 
-        private ReportProxy ReportProxy = new ReportProxy();
-        private StatusProxy StatusProxy = new StatusProxy();
-        private RemarkProxy RemarkProxy = new RemarkProxy();
-        private ContactProxy ContactProxy = new ContactProxy();
+		private readonly ReportProxy _reportProxy = new ReportProxy(ConfigHelper.GetODataUri());
+		private readonly StatusProxy _statusProxy = new StatusProxy(ConfigHelper.GetODataUri());
+		private readonly RemarkProxy _remarkProxy = new RemarkProxy(ConfigHelper.GetODataUri());
+		private readonly ContactProxy _contactProxy = new ContactProxy(ConfigHelper.GetODataUri());
     }
 }

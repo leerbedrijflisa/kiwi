@@ -1,11 +1,17 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Default;
 
 namespace Lisa.Kiwi.WebApi.Access
 {
     public class ReportProxy
 	{
-		private readonly Container _container = new Container(Client.BaseUri);
+		private readonly Container _container;
+
+		public ReportProxy(Uri odataUrl)
+	    {
+			_container = new Container(odataUrl);
+	    }
 
         // Get an entire entity set.
         public IQueryable<Report> GetReports(bool getContacts = false)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.Mvc;
 using System.Linq;
 using Lisa.Kiwi.WebApi.Access;
@@ -155,9 +156,9 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
                         Type = entity.Type
                     };
 
-                    ReportProxy.AddReport(report);
+                    _reportProxy.AddReport(report);
 
-                    var reportEntity = ReportProxy.GetReports();
+                    var reportEntity = _reportProxy.GetReports();
                     var getReport = reportEntity.Where(r => r.Guid == guid).FirstOrDefault();
 
                  
@@ -170,7 +171,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
                             Report = getReport.Id
                         };
 
-                        StatusProxy.AddStatus(status);
+                        _statusProxy.AddStatus(status);
                     }
 
 
@@ -185,7 +186,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             return View();
         }
 
-        private ReportProxy ReportProxy = new ReportProxy();
-        private StatusProxy StatusProxy = new StatusProxy();
+		private readonly ReportProxy _reportProxy = new ReportProxy(ConfigHelper.GetODataUri());
+		private readonly StatusProxy _statusProxy = new StatusProxy(ConfigHelper.GetODataUri());
     }
 }
