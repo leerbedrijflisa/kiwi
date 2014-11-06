@@ -126,9 +126,9 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
             
 			if (Session["user"].ToString() == "hoofd beveiliger")
 			{
-				report.Hidden = visibility;
+				report.Hidden = visibility;                
 
-			    _reportProxy.SaveReport();
+			    _reportProxy.SaveReport(report);
 			}
 
 			return RedirectToAction("Details", new {id});

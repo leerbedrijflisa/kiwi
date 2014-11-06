@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Default;
+using Microsoft.OData.Client;
 
 namespace Lisa.Kiwi.WebApi.Access
 {
@@ -28,8 +29,9 @@ namespace Lisa.Kiwi.WebApi.Access
 			_container.SaveChanges();
 		}
 
-	    public void SaveReport()
+	    public void SaveReport(Report report)
 	    {
+            _container.ChangeState(report, EntityStates.Modified);
 	        _container.SaveChanges();
 	    }
 
