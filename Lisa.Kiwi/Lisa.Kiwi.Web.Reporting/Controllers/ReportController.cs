@@ -17,9 +17,6 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 {
 	public class ReportController : Controller
 	{
-		private readonly ReportProxy _reportProxy = new ReportProxy(ConfigHelper.GetODataUri());
-		private readonly StatusProxy _statusProxy = new StatusProxy(ConfigHelper.GetODataUri());
-
 		private CloudTable GetTableStorage()
 		{
 			CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -189,5 +186,8 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 		{
 			return View();
 		}
+
+		private readonly ReportProxy _reportProxy = new ReportProxy(ConfigHelper.GetODataUri());
+		private readonly StatusProxy _statusProxy = new StatusProxy(ConfigHelper.GetODataUri());
 	}
 }

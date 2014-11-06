@@ -12,11 +12,6 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 {
 	public class ReportController : Controller
 	{
-		private readonly ContactProxy _contactProxy = new ContactProxy(ConfigHelper.GetODataUri());
-		private readonly RemarkProxy _remarkProxy = new RemarkProxy(ConfigHelper.GetODataUri());
-		private readonly ReportProxy _reportProxy = new ReportProxy(ConfigHelper.GetODataUri());
-		private readonly StatusProxy _statusProxy = new StatusProxy(ConfigHelper.GetODataUri());
-
 		public ActionResult Index()
 		{
 			var sessionTimeOut = Session.Timeout = 60;
@@ -317,5 +312,10 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 			}
 			return description;
 		}
+
+		private readonly ContactProxy _contactProxy = new ContactProxy(ConfigHelper.GetODataUri());
+		private readonly RemarkProxy _remarkProxy = new RemarkProxy(ConfigHelper.GetODataUri());
+		private readonly ReportProxy _reportProxy = new ReportProxy(ConfigHelper.GetODataUri());
+		private readonly StatusProxy _statusProxy = new StatusProxy(ConfigHelper.GetODataUri());
 	}
 }
