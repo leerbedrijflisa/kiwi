@@ -9,183 +9,177 @@ using Lisa.Kiwi.Data;
 
 namespace Lisa.Kiwi.WebApi.Controllers
 {
-    public class RemarkController : ODataController
-    {
-        private KiwiContext db = new KiwiContext();
+	public class RemarkController : ODataController
+	{
+		private readonly KiwiContext db = new KiwiContext();
 
-        // GET odata/Remark
-        [EnableQuery]
-        public IQueryable<WebApi.Remark> GetRemark()
-        {
-            var remarks = from r in db.Remarks
-                          select new WebApi.Remark
-                          {
-                              Id = r.Id,
-                              Description = r.Description,
-                              Report = r.Report.Id,
-                              Created = r.Created
-                          };
-            return remarks;
-        }
+		// GET odata/Remark
+		[EnableQuery]
+		public IQueryable<Remark> GetRemark()
+		{
+			var remarks = from r in db.Remarks
+				select new Remark
+				{
+					Id = r.Id,
+					Description = r.Description,
+					Report = r.Report.Id,
+					Created = r.Created
+				};
+			return remarks;
+		}
 
-        // GET odata/Remark(5)
-        [EnableQuery]
-        public SingleResult<Data.Remark> GetRemark([FromODataUri] int key)
-        {
-            return SingleResult.Create(db.Remarks.Where(remark => remark.Id == key));
-        }
+		// GET odata/Remark(5)
+		[EnableQuery]
+		public SingleResult<Data.Remark> GetRemark([FromODataUri] int key)
+		{
+			return SingleResult.Create(db.Remarks.Where(remark => remark.Id == key));
+		}
 
-        // PUT odata/Remark(5)
-        public async Task<IHttpActionResult> Put([FromODataUri] int key, Remark remark)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+		// PUT odata/Remark(5)
+		public async Task<IHttpActionResult> Put([FromODataUri] int key, Remark remark)
+		{
+			if (!ModelState.IsValid)
+			{
+				return BadRequest(ModelState);
+			}
 
-            if (key != remark.Id)
-            {
-                return BadRequest();
-            }
+			if (key != remark.Id)
+			{
+				return BadRequest();
+			}
 
-            db.Entry(remark).State = EntityState.Modified;
+			db.Entry(remark).State = EntityState.Modified;
 
-            try
-            {
-                db.Remarks.Add(new Data.Remark
-                {
-                    Id = remark.Id,
-                    Created = remark.Created,
-                    Description = remark.Description,
-                    Report = db.Reports.Find(remark.Report)
-                });
+			try
+			{
+				db.Remarks.Add(new Data.Remark
+				{
+					Id = remark.Id,
+					Created = remark.Created,
+					Description = remark.Description,
+					Report = db.Reports.Find(remark.Report)
+				});
 
-                await db.SaveChangesAsync();
-            }
-            catch (Exception)
-            {
-                if (!RemarkExists(key))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+				await db.SaveChangesAsync();
+			}
+			catch (Exception)
+			{
+				if (!RemarkExists(key))
+				{
+					return NotFound();
+				}
+				throw;
+			}
 
-            return Updated(remark);
-        }
+			return Updated(remark);
+		}
 
-        // POST odata/Remark
-        public async Task<IHttpActionResult> Post(Remark remark)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+		// POST odata/Remark
+		public async Task<IHttpActionResult> Post(Remark remark)
+		{
+			if (!ModelState.IsValid)
+			{
+				return BadRequest(ModelState);
+			}
 
-            var dataRemark = new Data.Remark
-            {
-                Id = remark.Id,
-                Created = remark.Created,
-                Description = remark.Description,
-                Report = db.Reports.Find(remark.Report)
-            };
+			var dataRemark = new Data.Remark
+			{
+				Id = remark.Id,
+				Created = remark.Created,
+				Description = remark.Description,
+				Report = db.Reports.Find(remark.Report)
+			};
 
-            db.Remarks.Add(dataRemark);
+			db.Remarks.Add(dataRemark);
 
-            await db.SaveChangesAsync();
+			await db.SaveChangesAsync();
 
-            remark.Id = dataRemark.Id;
+			remark.Id = dataRemark.Id;
 
-            return Created(remark);
-        }
+			return Created(remark);
+		}
 
-        // PATCH odata/Remark(5)
-        [AcceptVerbs("PATCH", "MERGE")]
-        public async Task<IHttpActionResult> Patch([FromODataUri] int key, Delta<Remark> patch)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+		// PATCH odata/Remark(5)
+		[AcceptVerbs("PATCH", "MERGE")]
+		public async Task<IHttpActionResult> Patch([FromODataUri] int key, Delta<Remark> patch)
+		{
+			if (!ModelState.IsValid)
+			{
+				return BadRequest(ModelState);
+			}
 
-            Data.Remark dataRemark = await db.Remarks.FindAsync(key);
-            
-            if (dataRemark == null)
-            {
-                return NotFound();
-            }
+			Data.Remark dataRemark = await db.Remarks.FindAsync(key);
 
-            var remark = new WebApi.Remark
-            {
-                Id = dataRemark.Id,
-                Created = dataRemark.Created,
-                Description = dataRemark.Description,
-                Report = dataRemark.Report.Id
-            };
+			if (dataRemark == null)
+			{
+				return NotFound();
+			}
 
-            patch.Patch(remark);
+			var remark = new Remark
+			{
+				Id = dataRemark.Id,
+				Created = dataRemark.Created,
+				Description = dataRemark.Description,
+				Report = dataRemark.Report.Id
+			};
 
-            dataRemark.Id = remark.Id;
-            dataRemark.Created = remark.Created;
-            dataRemark.Description = remark.Description;
-            dataRemark.Report = db.Reports.Find(remark.Report);
+			patch.Patch(remark);
 
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (Exception)
-            {
-                if (!RemarkExists(key))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+			dataRemark.Id = remark.Id;
+			dataRemark.Created = remark.Created;
+			dataRemark.Description = remark.Description;
+			dataRemark.Report = db.Reports.Find(remark.Report);
 
-            return Updated(remark);
-        }
+			try
+			{
+				await db.SaveChangesAsync();
+			}
+			catch (Exception)
+			{
+				if (!RemarkExists(key))
+				{
+					return NotFound();
+				}
+				throw;
+			}
 
-        // DELETE odata/Remark(5)
-        public async Task<IHttpActionResult> Delete([FromODataUri] int key)
-        {
-            Data.Remark remark = await db.Remarks.FindAsync(key);
-            if (remark == null)
-            {
-                return NotFound();
-            }
+			return Updated(remark);
+		}
 
-            db.Remarks.Remove(remark);
-            await db.SaveChangesAsync();
+		// DELETE odata/Remark(5)
+		public async Task<IHttpActionResult> Delete([FromODataUri] int key)
+		{
+			Data.Remark remark = await db.Remarks.FindAsync(key);
+			if (remark == null)
+			{
+				return NotFound();
+			}
 
-            return StatusCode(HttpStatusCode.NoContent);
-        }
+			db.Remarks.Remove(remark);
+			await db.SaveChangesAsync();
 
-        // GET odata/Remark(5)/Report
-        [EnableQuery]
-        public SingleResult<Data.Report> GetReport([FromODataUri] int key)
-        {
-            return SingleResult.Create(db.Remarks.Where(m => m.Id == key).Select(m => m.Report));
-        }
+			return StatusCode(HttpStatusCode.NoContent);
+		}
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+		// GET odata/Remark(5)/Report
+		[EnableQuery]
+		public SingleResult<Data.Report> GetReport([FromODataUri] int key)
+		{
+			return SingleResult.Create(db.Remarks.Where(m => m.Id == key).Select(m => m.Report));
+		}
 
-        private bool RemarkExists(int key)
-        {
-            return db.Remarks.Count(e => e.Id == key) > 0;
-        }
-    }
+		protected override void Dispose(bool disposing)
+		{
+			if (disposing)
+			{
+				db.Dispose();
+			}
+			base.Dispose(disposing);
+		}
+
+		private bool RemarkExists(int key)
+		{
+			return db.Remarks.Count(e => e.Id == key) > 0;
+		}
+	}
 }

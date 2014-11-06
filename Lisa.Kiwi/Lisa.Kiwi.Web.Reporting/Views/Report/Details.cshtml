@@ -11,24 +11,26 @@
 
             @using (Html.BeginForm("Details", "Report"))
             {
-                @Html.ValidationSummary();
-                @Html.AntiForgeryToken();
+                @Html.ValidationSummary()
+                ;
+                @Html.AntiForgeryToken()
+                ;
                 <div class="form-group">
-                    @Html.LabelFor(o => o.Location, new { @class = "col-xs-12" })
+                    @Html.LabelFor(o => o.Location, new {@class = "col-xs-12"})
                     <div class="col-xs-12">
-                        @Html.TextBoxFor(o => o.Location, new { @required = "required", @class = "form-control" })
+                        @Html.TextBoxFor(o => o.Location, new {@required = "required", @class = "form-control"})
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(o => o.Time, new { @class = "col-xs-12" })
+                    @Html.LabelFor(o => o.Time, new {@class = "col-xs-12"})
                     <div class="col-xs-12">
-                        @Html.TextBoxFor(o => o.Time, new { @required = "required", @class = "form-control", @Value = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") })
+                        @Html.TextBoxFor(o => o.Time, new {@required = "required", @class = "form-control", @Value = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")})
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(o => o.Description, new { @class = "col-xs-12" })
+                    @Html.LabelFor(o => o.Description, new {@class = "col-xs-12"})
                     <div class="col-xs-12">
-                        @Html.TextAreaFor(o => o.Description, new { @required = "required", @class = "form-control", @rows = "3" })
+                        @Html.TextAreaFor(o => o.Description, new {@required = "required", @class = "form-control", @rows = "3"})
                     </div>
                 </div>
                 <div class="form-group">

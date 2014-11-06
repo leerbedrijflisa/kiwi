@@ -9,136 +9,130 @@ using Lisa.Kiwi.Data;
 
 namespace Lisa.Kiwi.WebApi.Controllers
 {
-    public class ContactController : ODataController
-    {
-        private KiwiContext db = new KiwiContext();
+	public class ContactController : ODataController
+	{
+		private readonly KiwiContext db = new KiwiContext();
 
-        // GET odata/Contact
-        [EnableQuery]
-        public IQueryable<Contact> GetContact()
-        {
-            return db.Contacts;
-        }
+		// GET odata/Contact
+		[EnableQuery]
+		public IQueryable<Contact> GetContact()
+		{
+			return db.Contacts;
+		}
 
-        // GET odata/Contact(5)
-        [EnableQuery]
-        public SingleResult<Contact> GetContact([FromODataUri] int key)
-        {
-            return SingleResult.Create(db.Contacts.Where(contact => contact.Id == key));
-        }
+		// GET odata/Contact(5)
+		[EnableQuery]
+		public SingleResult<Contact> GetContact([FromODataUri] int key)
+		{
+			return SingleResult.Create(db.Contacts.Where(contact => contact.Id == key));
+		}
 
-        // PUT odata/Contact(5)
-        public async Task<IHttpActionResult> Put([FromODataUri] int key, Contact contact)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+		// PUT odata/Contact(5)
+		public async Task<IHttpActionResult> Put([FromODataUri] int key, Contact contact)
+		{
+			if (!ModelState.IsValid)
+			{
+				return BadRequest(ModelState);
+			}
 
-            if (key != contact.Id)
-            {
-                return BadRequest();
-            }
+			if (key != contact.Id)
+			{
+				return BadRequest();
+			}
 
-            try
-            {
-                db.Contacts.Add(contact);
+			try
+			{
+				db.Contacts.Add(contact);
 
-                await db.SaveChangesAsync();
-            }
-            catch (Exception)
-            {
-                if (!ContactExists(key))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+				await db.SaveChangesAsync();
+			}
+			catch (Exception)
+			{
+				if (!ContactExists(key))
+				{
+					return NotFound();
+				}
+				throw;
+			}
 
-            return Updated(contact);
-        }
+			return Updated(contact);
+		}
 
-        // POST odata/Contact
-        public async Task<IHttpActionResult> Post(Contact contact)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+		// POST odata/Contact
+		public async Task<IHttpActionResult> Post(Contact contact)
+		{
+			if (!ModelState.IsValid)
+			{
+				return BadRequest(ModelState);
+			}
 
-            db.Contacts.Add(contact);
-            await db.SaveChangesAsync();
-           
-            return Created(contact);
-        }
+			db.Contacts.Add(contact);
+			await db.SaveChangesAsync();
 
-        // PATCH odata/Contact(5)
-        [AcceptVerbs("PATCH", "MERGE")]
-        public async Task<IHttpActionResult> Patch([FromODataUri] int key, Delta<Contact> patch)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+			return Created(contact);
+		}
 
-            Contact contact = await db.Contacts.FindAsync(key);
-            if (contact == null)
-            {
-                return NotFound();
-            }
+		// PATCH odata/Contact(5)
+		[AcceptVerbs("PATCH", "MERGE")]
+		public async Task<IHttpActionResult> Patch([FromODataUri] int key, Delta<Contact> patch)
+		{
+			if (!ModelState.IsValid)
+			{
+				return BadRequest(ModelState);
+			}
 
-            patch.Patch(contact);
+			Contact contact = await db.Contacts.FindAsync(key);
+			if (contact == null)
+			{
+				return NotFound();
+			}
 
-            try
-            {
-                db.Contacts.Add(contact);
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ContactExists(key))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+			patch.Patch(contact);
 
-            return Updated(contact);
-        }
+			try
+			{
+				db.Contacts.Add(contact);
+				await db.SaveChangesAsync();
+			}
+			catch (DbUpdateConcurrencyException)
+			{
+				if (!ContactExists(key))
+				{
+					return NotFound();
+				}
+				throw;
+			}
 
-        // DELETE odata/Contact(5)
-        public async Task<IHttpActionResult> Delete([FromODataUri] int key)
-        {
-            Contact contact = await db.Contacts.FindAsync(key);
-            if (contact == null)
-            {
-                return NotFound();
-            }
+			return Updated(contact);
+		}
 
-            db.Contacts.Remove(contact);
-            await db.SaveChangesAsync();
+		// DELETE odata/Contact(5)
+		public async Task<IHttpActionResult> Delete([FromODataUri] int key)
+		{
+			Contact contact = await db.Contacts.FindAsync(key);
+			if (contact == null)
+			{
+				return NotFound();
+			}
 
-            return StatusCode(HttpStatusCode.NoContent);
-        }
+			db.Contacts.Remove(contact);
+			await db.SaveChangesAsync();
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+			return StatusCode(HttpStatusCode.NoContent);
+		}
 
-        private bool ContactExists(int key)
-        {
-            return db.Contacts.Count(e => e.Id == key) > 0;
-        }
-    }
+		protected override void Dispose(bool disposing)
+		{
+			if (disposing)
+			{
+				db.Dispose();
+			}
+			base.Dispose(disposing);
+		}
+
+		private bool ContactExists(int key)
+		{
+			return db.Contacts.Count(e => e.Id == key) > 0;
+		}
+	}
 }

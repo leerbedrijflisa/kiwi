@@ -1,36 +1,35 @@
-﻿@model IEnumerable<Lisa.Kiwi.WebApi.Report>
-@using Lisa.Kiwi.Web.Dashboard.Utils
+﻿@using Lisa.Kiwi.Web.Dashboard.Utils
+@model IEnumerable<Lisa.Kiwi.WebApi.Report>
 
 <div class="block-container">
-<h2>Meldingen</h2>
-<div class="row">
-<div class="col-sm-12">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Melding aangemaakt</th>
-                <th>Datum incident</th>
-                <th>Type melding</th>
-                <th>Beschrijving</th>
-                <th>Status</th>
-                <th>Bekijken</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-          <tr>
-              <td>@item.Created.ToLocalTime().ToString("dd-MM-yy HH:mm:ss")</td>
-              <td>@item.Time.ToString("dd-MM-yy HH:mm")</td>
-              <td>@item.Type.GetReportTypeDisplayNameFromMetadata()</td>
-              <td>@item.Description</td>
-              <td>@item.Status.GetStatusDisplayNameFromMetadata()</td>
-              <td><a href="@Url.Action("Details", new { id = item.Id })">Bekijk</a></td>
-          </tr>
-            }
-        </tbody>
-    </table>
+    <h2>Meldingen</h2>
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Melding aangemaakt</th>
+                        <th>Datum incident</th>
+                        <th>Type melding</th>
+                        <th>Beschrijving</th>
+                        <th>Status</th>
+                        <th>Bekijken</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Created.ToLocalTime().ToString("dd-MM-yy HH:mm:ss")</td>
+                            <td>@item.Time.ToString("dd-MM-yy HH:mm")</td>
+                            <td>@item.Type.GetReportTypeDisplayNameFromMetadata()</td>
+                            <td>@item.Description</td>
+                            <td>@item.Status.GetStatusDisplayNameFromMetadata()</td>
+                            <td><a href="@Url.Action("Details", new {id = item.Id})">Bekijk</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
-</div>
-</div>
-

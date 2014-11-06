@@ -12,7 +12,9 @@ namespace Lisa.Kiwi.Web
 			var urlSetting = config.AppSettings.Settings["KiwiODataUrl"];
 
 			if (urlSetting == null)
+			{
 				throw new ConfigurationErrorsException("KiwiODataUrl is missing in given configuration.");
+			}
 
 			return new Uri(urlSetting.Value);
 		}

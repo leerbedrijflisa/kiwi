@@ -4,19 +4,19 @@ using Microsoft.WindowsAzure.Storage.Queue;
 
 namespace Lisa.Kiwi.WebApi
 {
-    public class QueueConfig
-    {
-        public CloudQueue BuildQueue()
-        {
-            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-                CloudConfigurationManager.GetSetting("StorageConnectionString"));
+	public class QueueConfig
+	{
+		public CloudQueue BuildQueue()
+		{
+			CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+				CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-            CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
-            CloudQueue queue = queueClient.GetQueueReference("myqueue");
+			CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
+			CloudQueue queue = queueClient.GetQueueReference("myqueue");
 
-            queue.CreateIfNotExists();
+			queue.CreateIfNotExists();
 
-            return queue;
-        }
-    }
+			return queue;
+		}
+	}
 }
