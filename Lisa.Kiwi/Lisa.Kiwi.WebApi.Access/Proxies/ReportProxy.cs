@@ -28,6 +28,11 @@ namespace Lisa.Kiwi.WebApi.Access
 			_container.SaveChanges();
 		}
 
+	    public void SaveReport()
+	    {
+	        _container.SaveChanges();
+	    }
+
 		private readonly Container _container;
 	}
 }

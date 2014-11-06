@@ -123,11 +123,12 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 
 				_remarkProxy.AddRemark(newRemark);
 			}
-
-			if (Session["user"].ToString() == "beveiliger")
+            
+			if (Session["user"].ToString() == "hoofd beveiliger")
 			{
 				report.Hidden = visibility;
-				_reportProxy.AddReport(report);
+
+			    _reportProxy.SaveReport();
 			}
 
 			return RedirectToAction("Details", new {id});
