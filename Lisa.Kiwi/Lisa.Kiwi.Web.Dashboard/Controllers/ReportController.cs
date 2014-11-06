@@ -81,7 +81,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Details(int id, StatusName? status, string remark, bool Visibility = true)
+		public ActionResult Details(int id, StatusName? status, string remark, bool visibility = true)
 		{
 			var sessionTimeOut = Session.Timeout = 60;
 			if (Session["user"] == null || sessionTimeOut == 0)
@@ -89,7 +89,8 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 				return RedirectToAction("Login", "Account");
 			}
 
-			var report = _reportProxy.GetReports().FirstOrDefault(r => r.Id == id);
+            // System.NotSupportedException: The method 'FirstOrDefault' is not supported. - When using single call
+			var report = _reportProxy.GetReports().Where(r => r.Id == id).FirstOrDefault();
 
 			if (report == null)
 			{
@@ -98,14 +99,17 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 
 			if (status != null)
 			{
-				var newStatus = new Status
-				{
-					Created = DateTimeOffset.UtcNow,
-					Name = (StatusName) status,
-					Report = report.Id
-				};
+			    if (status != report.Status)
+			    {
+			        var newStatus = new Status
+			        {
+			            Created = DateTimeOffset.UtcNow,
+			            Name = (StatusName) status,
+			            Report = report.Id
+			        };
 
-				_statusProxy.AddStatus(newStatus);
+                    _statusProxy.AddStatus(newStatus);
+			    }
 			}
 
 			if (remark != null && !string.IsNullOrEmpty(remark))
@@ -122,7 +126,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 
 			if (Session["user"].ToString() == "beveiliger")
 			{
-				report.Hidden = Visibility;
+				report.Hidden = visibility;
 				_reportProxy.AddReport(report);
 			}
 
