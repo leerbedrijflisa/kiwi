@@ -9,6 +9,9 @@ namespace Lisa.Kiwi.WebApi
 	{
 		public static void Register(HttpConfiguration config)
 		{
+			// Enable Web API Attribute routing (used in non-REST controllers)
+			config.MapHttpAttributeRoutes();
+
 			ODataModelBuilder builder = new ODataConventionModelBuilder();
 
 			builder.EntitySet<Report>("Report");
