@@ -2,6 +2,7 @@
 using System.Linq;
 using Default;
 using Microsoft.OData.Client;
+using Lisa.Kiwi.WebApi.Access;
 
 namespace Lisa.Kiwi.WebApi.Access
 {
@@ -13,13 +14,19 @@ namespace Lisa.Kiwi.WebApi.Access
 		}
 
 		// Get an entire entity set.
-		public IQueryable<Report> GetReports(bool getContacts = false)
+		public IQueryable<Report> GetReports(ExpandOptions options = ExpandOptions.DontExpand)
 		{
-			if (!getContacts)
-			{
-				return _container.Report;
-			}
-			return _container.Report.Expand(r => r.Contacts);
+            switch (options) {
+                case ExpandOptions.ExpandContacts:
+                {
+                    return _container.Report.Expand(r => r.Contacts); 
+                }
+                default:
+                {
+                    return _container.Report; 
+                }
+
+            }
 		}
 
 		//Create a new entity

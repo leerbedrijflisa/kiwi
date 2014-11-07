@@ -7,6 +7,7 @@ using Lisa.Kiwi.Web.Dashboard.Utils;
 using Lisa.Kiwi.WebApi;
 using Lisa.Kiwi.WebApi.Access;
 using LogBookEntry = Lisa.Kiwi.Web.Dashboard.Models.LogBookEntry;
+using Lisa.Kiwi.Web.Dashboard.Models;
 
 namespace Lisa.Kiwi.Web.Dashboard.Controllers
 {
@@ -49,7 +50,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 				return RedirectToAction("Login", "Account");
 			}
 
-			var report = _reportProxy.GetReports(true).Where(r => r.Id == id).FirstOrDefault();
+            var report = _reportProxy.GetReports(ExpandOptions.ExpandContacts).Where(r => r.Id == id).FirstOrDefault();
 
 			if (Session["user"].ToString() == "user")
 			{
