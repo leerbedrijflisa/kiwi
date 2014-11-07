@@ -2,7 +2,7 @@
 
 namespace Lisa.Kiwi.Web.Dashboard.Models
 {
-	public class Remark
+	public class LogBookEntry
 	{
 		public int Id { get; set; }
 		public string User { get; set; }

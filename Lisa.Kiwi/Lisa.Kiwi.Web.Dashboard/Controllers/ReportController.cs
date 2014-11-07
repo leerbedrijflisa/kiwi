@@ -6,7 +6,7 @@ using Lisa.Kiwi.Data;
 using Lisa.Kiwi.Web.Dashboard.Utils;
 using Lisa.Kiwi.WebApi;
 using Lisa.Kiwi.WebApi.Access;
-using Remark = Lisa.Kiwi.Web.Dashboard.Models.Remark;
+using LogBookEntry = Lisa.Kiwi.Web.Dashboard.Models.LogBookEntry;
 
 namespace Lisa.Kiwi.Web.Dashboard.Controllers
 {
@@ -70,7 +70,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 			var statusses = _statusProxy.GetStatuses()
 				.Where(r => r.Report == report.Id);
 
-			List<Remark> LogbookData = new List<Remark>();
+            List<LogBookEntry> LogbookData = new List<LogBookEntry>();
 			LogbookData.AddRange(AddRemarksToLogbook(remarks));
 			LogbookData.AddRange(AddStatussesToLogbook(statusses, report));
 
@@ -262,12 +262,12 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 			return RedirectToAction("Index");
 		}
 
-		private List<Remark> AddRemarksToLogbook(IQueryable<WebApi.Remark> remarks)
+        private List<LogBookEntry> AddRemarksToLogbook(IQueryable<WebApi.Remark> remarks)
 		{
-			List<Remark> result = new List<Remark>();
+            List<LogBookEntry> result = new List<LogBookEntry>();
 			foreach (var remark in remarks)
 			{
-				result.Add(new Remark
+                result.Add(new LogBookEntry
 				{
 					Created = remark.Created,
 					Description = remark.Description,
@@ -277,9 +277,9 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 			return result;
 		}
 
-		private List<Remark> AddStatussesToLogbook(IQueryable<Status> statusses, Report report)
+        private List<LogBookEntry> AddStatussesToLogbook(IQueryable<Status> statusses, Report report)
 		{
-			List<Remark> result = new List<Remark>();
+            List<LogBookEntry> result = new List<LogBookEntry>();
 
 			var lastStatus = string.Empty;
 			foreach (var status in statusses)
@@ -287,7 +287,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 				var description = CreateLogbookStatusDescription(status, lastStatus, report);
 				lastStatus = status.Name.ToString();
 
-				result.Add(new Remark
+                result.Add(new LogBookEntry
 				{
 					Created = status.Created,
 					Description = description,
