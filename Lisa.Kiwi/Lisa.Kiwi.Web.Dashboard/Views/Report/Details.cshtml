@@ -1,5 +1,4 @@
-﻿@using System.Globalization
-@using Lisa.Kiwi.Web.Dashboard.Models
+﻿@using Lisa.Kiwi.Web.Dashboard.Models
 @using Lisa.Kiwi.Web.Dashboard.Utils
 @model Lisa.Kiwi.WebApi.Report
 
@@ -181,7 +180,7 @@ else
                 {
                     <div class="form-group remark-head">
                         <div class="col-sm-6">By: <span>User</span></div>
-                        <div class="col-sm-6">Created: <span>@remark.Created.ToLocalTime().ToString("ddd dd MMM yy HH:mm", new CultureInfo("nl-NL"))</span></div>
+                        <div class="col-sm-6">Created: <span>@remark.Created.ToLocalTime().ToString("ddd dd MMM yy HH:mm")</span></div>
                     </div>
                     <div class="form-group remark-bottom">
                         <div class="col-sm-12">

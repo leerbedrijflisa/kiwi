@@ -1,6 +1,5 @@
 @model Lisa.Kiwi.Web.Reporting.Models.OriginalReport
 @using Lisa.Kiwi.Web.Reporting.Utils
-@using System.Globalization
 
 @{
     ViewBag.Title = "Confirmed";
@@ -30,7 +29,7 @@
             <div class="form-group">
                 <label class="col-xs-12 control-label">Tijdstip</label>
                 <div class="col-xs-12">
-                    <p class="form-control-static">@Model.Time.ToString("ddd dd MM YYYY", new CultureInfo("nl-NL"))</p>
+                    <p class="form-control-static">@Model.Time.ToString("dddd dd MMM yyyy")</p>
                 </div>
             </div>
             <div class="form-group">
