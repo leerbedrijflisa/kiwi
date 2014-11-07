@@ -6,7 +6,6 @@ using System.Web.Http;
 using System.Web.OData;
 using Lisa.Kiwi.Data;
 using Microsoft.WindowsAzure.Storage.Queue;
-using Newtonsoft.Json;
 
 namespace Lisa.Kiwi.WebApi.Controllers
 {
@@ -168,24 +167,70 @@ namespace Lisa.Kiwi.WebApi.Controllers
 
 		// PATCH odata/Report(5)
 		[AcceptVerbs("PATCH", "MERGE")]
-		public async Task<IHttpActionResult> Patch([FromODataUri] int key, Delta<Data.Report> patch)
+		public async Task<IHttpActionResult> Patch([FromODataUri] int key, Delta<WebApi.Report> patch)
 		{
 			if (!ModelState.IsValid)
 			{
 				return BadRequest(ModelState);
 			}
 
-			Data.Report report = await db.Reports.FindAsync(key);
-			if (report == null)
+			Data.Report dataReport = await db.Reports.FindAsync(key);
+            if (dataReport == null)
 			{
 				return NotFound();
 			}
 
-			patch.Patch(report);
+		    var changes = patch.GetChangedPropertyNames();
+
+		    foreach (var change in changes)
+		    {
+		        object value;
+                patch.TryGetPropertyValue(change, out value);
+
+		        switch (change)
+		        {
+		            case "Description" :
+		                dataReport.Description = value.ToString();
+                        break;
+
+                    case "Created" :
+		                dataReport.Created = (DateTimeOffset)value;
+		                break;
+
+                    case "Location" :
+		                dataReport.Location = value.ToString();
+                        break;
+		                
+                    case "Time" :
+		                dataReport.Time = (DateTimeOffset)value;
+                        break;
+
+                    case "Guid" :
+		                dataReport.Guid = value.ToString();
+                        break;
+
+                    case "UserAgent" :
+		                dataReport.UserAgent = value.ToString();
+                        break;
+
+                    case "Ip" :
+		                dataReport.Ip = value.ToString();
+                        break;
+
+                    case "Type" :
+		                dataReport.Type = (ReportType)value;
+                        break;
+
+                    case "Hidden" :
+                    case "Visibility" :
+		                dataReport.Hidden = (bool)value;
+                        break;
+		        }
+		    }
 
 			try
 			{
-				await _queue.AddMessageAsync(new CloudQueueMessage(JsonConvert.SerializeObject(report)));
+			    await db.SaveChangesAsync();
 			}
 			catch (Exception)
 			{
@@ -197,7 +242,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
 				throw;
 			}
 
-			return Updated(report);
+			return Updated(patch);
 		}
 
 		// DELETE odata/Report(5)

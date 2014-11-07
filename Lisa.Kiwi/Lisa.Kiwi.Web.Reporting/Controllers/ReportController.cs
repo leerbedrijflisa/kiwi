@@ -17,10 +17,6 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 {
 	public class ReportController : Controller
 	{
-		private readonly ReportProxy _reportProxy = new ReportProxy(ConfigHelper.GetODataUri());
-        private readonly ContactProxy _contactProxy = new ContactProxy(ConfigHelper.GetODataUri());
-		private readonly StatusProxy _statusProxy = new StatusProxy(ConfigHelper.GetODataUri());
-
 		private CloudTable GetTableStorage()
 		{
 			CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -149,7 +145,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
                 List<Contact> contacts = new List<Contact>();
                 var contact = new Contact();
                 
-                if (data.Name != null || data.PhoneNumber != null || data.Email != null || data.StudentNumber != null)
+                if (data.Name != null || data.PhoneNumber != null || data.Email != null || data.StudentNumber <= 0)
                 {
                     contact.Name = data.Name;
                     contact.PhoneNumber = data.PhoneNumber;
@@ -207,5 +203,9 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 
 			return View(entity);
 		}
+
+		private readonly ReportProxy _reportProxy = new ReportProxy(ConfigHelper.GetODataUri());
+        private readonly ContactProxy _contactProxy = new ContactProxy(ConfigHelper.GetODataUri());
+		private readonly StatusProxy _statusProxy = new StatusProxy(ConfigHelper.GetODataUri());
 	}
 }

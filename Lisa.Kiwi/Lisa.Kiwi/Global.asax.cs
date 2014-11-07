@@ -1,7 +1,4 @@
-﻿using System.Data.Entity;
-using System.Web;
-using System.Web.Http;
-using Lisa.Kiwi.Data;
+﻿using System.Web;
 
 namespace Lisa.Kiwi.WebApi
 {
@@ -9,8 +6,7 @@ namespace Lisa.Kiwi.WebApi
 	{
 		protected void Application_Start()
 		{
-			GlobalConfiguration.Configure(WebApiConfig.Register);
-			Database.SetInitializer<KiwiContext>(null);
+			// This has been moved to Startup
 		}
 	}
 }

@@ -12,11 +12,6 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 {
 	public class ReportController : Controller
 	{
-		private readonly ContactProxy _contactProxy = new ContactProxy(ConfigHelper.GetODataUri());
-		private readonly RemarkProxy _remarkProxy = new RemarkProxy(ConfigHelper.GetODataUri());
-		private readonly ReportProxy _reportProxy = new ReportProxy(ConfigHelper.GetODataUri());
-		private readonly StatusProxy _statusProxy = new StatusProxy(ConfigHelper.GetODataUri());
-
 		public ActionResult Index()
 		{
 			var sessionTimeOut = Session.Timeout = 60;
@@ -86,7 +81,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Details(int id, StatusName? status, string remark, bool Visibility = true)
+		public ActionResult Details(int id, StatusName? status, string remark, bool visibility = true)
 		{
 			var sessionTimeOut = Session.Timeout = 60;
 			if (Session["user"] == null || sessionTimeOut == 0)
@@ -94,7 +89,8 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 				return RedirectToAction("Login", "Account");
 			}
 
-			var report = _reportProxy.GetReports().FirstOrDefault(r => r.Id == id);
+            // System.NotSupportedException: The method 'FirstOrDefault' is not supported. - When using single call
+			var report = _reportProxy.GetReports().Where(r => r.Id == id).FirstOrDefault();
 
 			if (report == null)
 			{
@@ -103,14 +99,17 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 
 			if (status != null)
 			{
-				var newStatus = new Status
-				{
-					Created = DateTimeOffset.UtcNow,
-					Name = (StatusName) status,
-					Report = report.Id
-				};
+			    if (status != report.Status)
+			    {
+			        var newStatus = new Status
+			        {
+			            Created = DateTimeOffset.UtcNow,
+			            Name = (StatusName) status,
+			            Report = report.Id
+			        };
 
-				_statusProxy.AddStatus(newStatus);
+                    _statusProxy.AddStatus(newStatus);
+			    }
 			}
 
 			if (remark != null && !string.IsNullOrEmpty(remark))
@@ -124,11 +123,12 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 
 				_remarkProxy.AddRemark(newRemark);
 			}
-
-			if (Session["user"].ToString() == "beveiliger")
+            
+			if (Session["user"].ToString() == "hoofd beveiliger")
 			{
-				report.Hidden = Visibility;
-				_reportProxy.AddReport(report);
+				report.Hidden = visibility;                
+
+			    _reportProxy.SaveReport(report);
 			}
 
 			return RedirectToAction("Details", new {id});
@@ -317,5 +317,10 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 			}
 			return description;
 		}
+
+		private readonly ContactProxy _contactProxy = new ContactProxy(ConfigHelper.GetODataUri());
+		private readonly RemarkProxy _remarkProxy = new RemarkProxy(ConfigHelper.GetODataUri());
+		private readonly ReportProxy _reportProxy = new ReportProxy(ConfigHelper.GetODataUri());
+		private readonly StatusProxy _statusProxy = new StatusProxy(ConfigHelper.GetODataUri());
 	}
 }
