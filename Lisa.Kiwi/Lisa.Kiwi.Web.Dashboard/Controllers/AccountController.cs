@@ -24,7 +24,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 			var userpass = "hello"; // beveiliger
 
 
-			if ((username == "hoofd beveiliger" && masterpass == password) || (username == "beveiliger" && userpass == password))
+			if ((username == "hoofdbeveiliger" && masterpass == password) || (username == "beveiliger" && userpass == password))
 			{
 				Session["user"] = username;
 			}
