@@ -18,6 +18,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 	public class ReportController : Controller
 	{
 		private readonly ReportProxy _reportProxy = new ReportProxy(ConfigHelper.GetODataUri());
+        private readonly ContactProxy _contactProxy = new ContactProxy(ConfigHelper.GetODataUri());
 		private readonly StatusProxy _statusProxy = new StatusProxy(ConfigHelper.GetODataUri());
 
 		private CloudTable GetTableStorage()
@@ -35,10 +36,10 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 			return table;
 		}
 
-		public ActionResult Index()
-		{
-			return View();
-		}
+        public ActionResult Index()
+        {
+            return View();
+        }
 
 		public ActionResult Type()
 		{
@@ -71,14 +72,11 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 
 				OriginalReport report = new OriginalReport();
 
-				report.Type = reportType;
 				report.Guid = guid;
 				report.Time = DateTime.UtcNow;
-
+                report.Type = reportType.ToString();
 				report.PartitionKey = guid;
 				report.RowKey = "";
-
-				// TODO: report type cant use enums
 
 				TableOperation insertOperation = TableOperation.Insert(report);
 				table.Execute(insertOperation);
@@ -148,6 +146,18 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 
 				OriginalReport entity = (OriginalReport) retrievedResult.Result;
 
+                List<Contact> contacts = new List<Contact>();
+                var contact = new Contact();
+                
+                if (data.Name != null || data.PhoneNumber != null || data.Email != null || data.StudentNumber != null)
+                {
+                    contact.Name = data.Name;
+                    contact.PhoneNumber = data.PhoneNumber;
+                    contact.EmailAddress = data.Email;
+                    contact.StudentNumber = data.StudentNumber;
+                }
+                var test = _contactProxy.GetContacts();
+
 				if (retrievedResult != null)
 				{
 					var report = new Report
@@ -157,7 +167,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 						Location = entity.Location,
 						Time = entity.Time,
 						Guid = entity.PartitionKey,
-						Type = entity.Type
+						Type = (ReportType)Enum.Parse(typeof(ReportType), entity.Type)
 					};
 
 					_reportProxy.AddReport(report);
@@ -187,7 +197,15 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 
 		public ActionResult Confirmed()
 		{
-			return View();
+            HttpCookie cookie = HttpContext.Request.Cookies["userReport"];
+            string guid = cookie.Values["guid"];
+
+            CloudTable table = GetTableStorage();
+            TableOperation retrieveOperation = TableOperation.Retrieve<OriginalReport>(guid, "");
+            TableResult retrievedResult = table.Execute(retrieveOperation);
+            OriginalReport entity = (OriginalReport)retrievedResult.Result;
+
+			return View(entity);
 		}
 	}
 }
