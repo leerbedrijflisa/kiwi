@@ -5,6 +5,11 @@ namespace Lisa.Kiwi.Data
 {
 	public class KiwiContext : IdentityDbContext<IdentityUser>
 	{
+		public KiwiContext()
+			: base("KiwiContext")
+		{
+		}
+
 		public DbSet<Report> Reports { get; set; }
 		public DbSet<Status> Statuses { get; set; }
 		public DbSet<Remark> Remarks { get; set; }
