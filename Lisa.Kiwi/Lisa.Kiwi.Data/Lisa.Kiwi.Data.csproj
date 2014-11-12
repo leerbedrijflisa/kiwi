@@ -80,7 +80,6 @@
   <ItemGroup>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Contact.cs" />
-    <Compile Include="Models\KiwiAuthContext.cs" />
     <Compile Include="Models\KiwiContext.cs" />
     <Compile Include="Models\Remark.cs" />
     <Compile Include="Models\Report.cs" />

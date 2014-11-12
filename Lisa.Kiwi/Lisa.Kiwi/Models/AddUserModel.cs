@@ -11,6 +11,7 @@ namespace Lisa.Kiwi.WebApi.Models
 		[Required]
 		[StringLength(
 			100,
+			// TODO: Dutch message.
 			ErrorMessage = "PASSWORD_STRINGLENGTH"/*"The {0} must be at least {2} characters long."*/,
 			MinimumLength = 6)]
 		[DataType(DataType.Password)]
