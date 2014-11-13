@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Lisa.Kiwi.Data.Migrations
 {
@@ -60,6 +62,24 @@ namespace Lisa.Kiwi.Data.Migrations
 			context.Statuses.AddOrUpdate(sampleStatus);
 			context.Statuses.AddOrUpdate(sampleStatus2);
 			context.Remarks.AddOrUpdate(sampleRemark);
+
+			var userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>(context));
+			var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+
+			// Create our Administrator role
+			roleManager.Create(new IdentityRole("Administrator"));
+			
+			// Add a test administrator account (name=admin pass=toor42)
+			var user = new IdentityUser("admin");
+			var adminresult = userManager.Create(user, "toor42");
+
+			// Add User Admin to Role Admin
+			if (adminresult.Succeeded)
+			{
+				var result = userManager.AddToRole(user.Id, "Administrator");
+			}
+
+			base.Seed(context);
 		}
 	}
 }
