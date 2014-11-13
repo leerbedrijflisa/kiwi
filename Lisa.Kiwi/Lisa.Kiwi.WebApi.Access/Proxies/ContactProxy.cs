@@ -9,8 +9,8 @@ namespace Lisa.Kiwi.WebApi.Access
 	{
 		public ContactProxy(Uri odataUrl)
 		{
-			_container = new Container(odataUrl);
-		}
+            _container = new AuthenticationContainer(odataUrl);
+        }
 
 		// Get an entire entity set.
 		public IQueryable<Contact> GetContacts()
