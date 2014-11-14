@@ -13,7 +13,6 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 {
 	public class ReportController : Controller
 	{
-<<<<<<< Updated upstream
         public ReportController()
         {
             // != null
@@ -35,10 +34,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
             _contactProxy = new ContactProxy(ConfigHelper.GetODataUri(), _token, _tokenType);
         }
 
-		public ActionResult Index()
-=======
 		public ActionResult Index(string sortBy = "Id DESC")
->>>>>>> Stashed changes
 		{
 			var sessionTimeOut = Session.Timeout = 60;
 			if (Session["user"] == null || sessionTimeOut == 0)
