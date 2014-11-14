@@ -9,6 +9,7 @@ using Lisa.Kiwi.Data;
 
 namespace Lisa.Kiwi.WebApi.Controllers
 {
+	[Authorize]
 	public class RemarkController : ODataController
 	{
 		private readonly KiwiContext db = new KiwiContext();

@@ -13,6 +13,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
 
 		[Authorize(Roles = "Administrator")]
 		[Route("add_user")]
+		[HttpPost]
 		public async Task<IHttpActionResult> AddUser(AddUserModel userModel)
 		{
 			if (!ModelState.IsValid)
@@ -25,7 +26,9 @@ namespace Lisa.Kiwi.WebApi.Controllers
 			return GetErrorResult(result) ?? Ok();
 		}
 
+		[Authorize]
 		[Route("test_auth")]
+		[HttpGet]
 		public IHttpActionResult TestAuth()
 		{
 			return Ok("Success!");
