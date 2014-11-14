@@ -1,4 +1,9 @@
-﻿using System.Web.Mvc;
+﻿using System.Security.Authentication;
+using System.Threading.Tasks;
+using System.Web.Mvc;
+using Lisa.Kiwi.WebApi.Access;
+using Newtonsoft.Json.Linq;
+using Resources;
 
 namespace Lisa.Kiwi.Web.Dashboard.Controllers
 {
@@ -18,19 +23,22 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 		}
 
 		[HttpPost]
-		public ActionResult Login(string username, string password)
+		public async Task<ActionResult> Login(string username, string password)
 		{
-			var masterpass = "master"; // beveiliger
-			var userpass = "hello"; // beveiliger
-
-
-			if ((username == "hoofdbeveiliger" && masterpass == password) || (username == "beveiliger" && userpass == password))
+			try
 			{
+			    var authenticationClient = new AuthenticationProxy(ConfigHelper.GetAuthUri());
+			    var authenticationReponse = await authenticationClient.Login(username, password);
+                var authenticationInformation = JObject.Parse(authenticationReponse);
+
+                Session["token"] = authenticationInformation.SelectToken("access_token");
+                Session["token_type"] = authenticationInformation.SelectToken("token_type");
+                Session["token_aliveTime"] = authenticationInformation.SelectToken("expires_in");
 				Session["user"] = username;
 			}
-			else
+			catch(AuthenticationException)
 			{
-				ModelState.AddModelError("password", "Geen geldig wachtwoord en/of gebruikersnaam.");
+				ModelState.AddModelError("password", DisplayNames.AccountLoginInvalid);
 			}
 
 			if (!ModelState.IsValid)

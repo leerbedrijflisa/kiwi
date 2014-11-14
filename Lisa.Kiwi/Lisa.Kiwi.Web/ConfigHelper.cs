@@ -18,5 +18,18 @@ namespace Lisa.Kiwi.Web
 
 			return new Uri(urlSetting.Value);
 		}
+
+        public static Uri GetAuthUri()
+        {
+            var config = WebConfigurationManager.OpenWebConfiguration("~");
+            var urlSetting = config.AppSettings.Settings["KiwiAuthUrl"];
+
+            if (urlSetting == null)
+            {
+                throw new ConfigurationErrorsException("KiwiAuthUrl is missing in given configuration.");
+            }
+
+            return new Uri(urlSetting.Value);
+        }
 	}
 }

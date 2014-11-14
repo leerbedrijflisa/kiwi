@@ -1,35 +1,27 @@
 ﻿using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 
 namespace Lisa.Kiwi.WebApi.Access
 {
     public class AuthenticationProxy
     {
-        public async Task<string> Login()
+        public async Task<string> Login(string username, string password)
         {
-            object Account = new
-            {
-                Username = "Kees",
-                Password = "Kees123"
-            };
-
             try
             {
-               HttpResponseMessage response = await _client.PostAsync("", new StringContent(JsonConvert.SerializeObject(Account), Encoding.UTF8, "application/json"));
+               HttpResponseMessage response = await _client.PostAsync("", new StringContent("grant_type=password&username=" + username + "&password=" + password));
 
                 try
                 {
-                    string token = response.Content.ToString();
+                    string token = await response.Content.ReadAsStringAsync();
 
                     return token;
                 }
                 catch (NullReferenceException)
                 {
-                    throw new Exception("WebApi did not response to login request.");
+                    throw new Exception("WebApi did not respond to login request.");
                 }
             } 
             catch (Exception)
@@ -38,15 +30,15 @@ namespace Lisa.Kiwi.WebApi.Access
             }
         }
 
-        private AuthenticationProxy(Uri odataUrl)
+        public AuthenticationProxy(Uri authUri)
         {
             _client = new HttpClient
             {
-                BaseAddress = odataUrl
+                BaseAddress = authUri
             };
 
             _client.DefaultRequestHeaders.Accept.Clear();
-            _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/x-www-form-urlencoded"));
         }
 
         private readonly HttpClient _client;

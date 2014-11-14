@@ -6,9 +6,9 @@ namespace Lisa.Kiwi.WebApi.Access
 {
 	public sealed class StatusProxy
 	{
-		public StatusProxy(Uri odataUrl)
+        public StatusProxy(Uri odataUrl, string token = null, string tokenType = null)
 		{
-			_container = new AuthenticationContainer(odataUrl);
+            _container = new AuthenticationContainer(odataUrl, token, tokenType);
 		}
 
 		// Get an entire entity set.
@@ -24,6 +24,6 @@ namespace Lisa.Kiwi.WebApi.Access
 			_container.SaveChanges();
 		}
 
-		private readonly Container _container;
+        private readonly AuthenticationContainer _container;
 	}
 }

@@ -1,21 +1,28 @@
 ﻿using System;
 using Default;
+using Microsoft.OData.Client;
 
 namespace Lisa.Kiwi.WebApi.Access
 {
     class AuthenticationContainer : Container
     {
-        public AuthenticationContainer(Uri serviceRoot, string token = null) : base(serviceRoot)
+        public AuthenticationContainer(Uri serviceRoot, string token = null, string tokenType = null) : base(serviceRoot)
         {
-            if (token != null)
+            _token = token;
+            _tokenType = tokenType;
+
+            if (!string.IsNullOrEmpty(token))
             {
                 BuildingRequest += _container_InjectToken;
             }
         }
 
-        void _container_InjectToken(object sender, Microsoft.OData.Client.BuildingRequestEventArgs e)
+        void _container_InjectToken(object sender, BuildingRequestEventArgs e)
         {
-            e.Headers.Add("Token", "123456");
+            e.Headers.Add("Authorization", _tokenType + " " + _token);
         }
+
+        private string _token ;
+        private string _tokenType;
     }
 }
