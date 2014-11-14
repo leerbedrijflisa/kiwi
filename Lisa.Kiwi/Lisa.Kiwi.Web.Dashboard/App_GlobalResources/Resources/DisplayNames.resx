@@ -180,4 +180,7 @@
   <data name="StatusTransferred" xml:space="preserve">
     <value>Overgedragen</value>
   </data>
+  <data name="AccountLoginInvalid" xml:space="preserve">
+    <value>Geen geldig wachtwoord en/of gebruikersnaam.</value>
+  </data>
 </root>
