@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using Lisa.Kiwi.Data;
 using Lisa.Kiwi.Web.Dashboard.Utils;
 using Lisa.Kiwi.WebApi;
@@ -12,6 +13,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 {
 	public class ReportController : Controller
 	{
+<<<<<<< Updated upstream
         public ReportController()
         {
             // != null
@@ -34,6 +36,9 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
         }
 
 		public ActionResult Index()
+=======
+		public ActionResult Index(string sortBy = "Id DESC")
+>>>>>>> Stashed changes
 		{
 			var sessionTimeOut = Session.Timeout = 60;
 			if (Session["user"] == null || sessionTimeOut == 0)
@@ -41,7 +46,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 				return RedirectToAction("Login", "Account");
 			}
 
-			var reports = _reportProxy.GetReports();
+			var reports = _reportProxy.GetReports().SortBy(sortBy);
 			List<Report> reportsData = new List<Report>();
 
 			if (Session["user"].ToString() == "beveiliger")

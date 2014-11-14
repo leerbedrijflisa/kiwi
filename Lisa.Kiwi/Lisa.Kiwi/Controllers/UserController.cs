@@ -6,7 +6,7 @@ using Microsoft.AspNet.Identity;
 namespace Lisa.Kiwi.WebApi.Controllers
 {
 	[RoutePrefix("api/users")]
-	public class AuthenticationController : ApiController
+	public class UserController : ApiController
 	{
 		private readonly AuthRepository _auth = new AuthRepository();
 
