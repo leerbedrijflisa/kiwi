@@ -14,26 +14,18 @@ namespace Lisa.Kiwi.WebApi.Access
 		}
 
 		// Get an entire entity set.
-		public IQueryable<Report> GetReports(ExpandOptions options = ExpandOptions.DontExpand)
+		public IQueryable<Report> GetReports()
 		{
-            switch (options) {
-                case ExpandOptions.ExpandContacts:
-                {
-                    return _container.Report.Expand(r => r.Contacts); 
-                }
-                default:
-                {
-                    return _container.Report; 
-                }
-
-            }
+            return _container.Report;             
 		}
 
 		//Create a new entity
-		public void AddReport(Report report)
+		public Report AddReport(Report report)
 		{
 			_container.AddToReport(report);
 			_container.SaveChanges();
+
+            return report;
 		}
 
 	    public void SaveReport(Report report)

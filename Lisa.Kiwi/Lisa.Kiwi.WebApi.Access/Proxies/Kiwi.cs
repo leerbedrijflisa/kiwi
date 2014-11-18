@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 31/10/2014 11:03:39
+// Generation date: Tue 18 Nov 14 13:21:27
 namespace Lisa.Kiwi.WebApi
 {
     /// <summary>
@@ -28,27 +28,6 @@ namespace Lisa.Kiwi.WebApi
         /// </summary>
         public ReportSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
             : base(context, path, isComposable) {}
-        /// <summary>
-        /// There are no comments for Contacts in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        public global::Microsoft.OData.Client.DataServiceQuery<global::Lisa.Kiwi.Data.Contact> Contacts
-        {
-            get
-            {
-                if (!this.IsComposable)
-                {
-                    throw new global::System.NotSupportedException("The previous function is not composable.");
-                }
-                if ((this._Contacts == null))
-                {
-                    this._Contacts = Context.CreateQuery<global::Lisa.Kiwi.Data.Contact>(GetPath("Contacts"));
-                }
-                return this._Contacts;
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        private global::Microsoft.OData.Client.DataServiceQuery<global::Lisa.Kiwi.Data.Contact> _Contacts;
     }
     /// <summary>
     /// There are no comments for Report in the schema.
@@ -340,28 +319,202 @@ namespace Lisa.Kiwi.WebApi
         partial void OnTypeChanging(global::Lisa.Kiwi.Data.ReportType value);
         partial void OnTypeChanged();
         /// <summary>
-        /// There are no comments for Property Contacts in the schema.
+        /// This event is raised when the value of the property is changed
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        [global::Microsoft.OData.Client.OriginalNameAttribute("Contacts")]
-        public global::Microsoft.OData.Client.DataServiceCollection<global::Lisa.Kiwi.Data.Contact> Contacts
+        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        /// <summary>
+        /// The value of the property is changed
+        /// </summary>
+        /// <param name="property">property name</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
+        protected virtual void OnPropertyChanged(string property)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
+            }
+        }
+    }
+    /// <summary>
+    /// There are no comments for ContactSingle in the schema.
+    /// </summary>
+    [global::Microsoft.OData.Client.OriginalNameAttribute("ContactSingle")]
+    public partial class ContactSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<Contact>
+    {
+        /// <summary>
+        /// Initialize a new ContactSingle object.
+        /// </summary>
+        public ContactSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
+            : base(context, path) {}
+
+        /// <summary>
+        /// Initialize a new ContactSingle object.
+        /// </summary>
+        public ContactSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
+            : base(context, path, isComposable) {}
+    }
+    /// <summary>
+    /// There are no comments for Contact in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::Microsoft.OData.Client.Key("Id")]
+    [global::Microsoft.OData.Client.OriginalNameAttribute("Contact")]
+    public partial class Contact : global::System.ComponentModel.INotifyPropertyChanged
+    {
+        /// <summary>
+        /// Create a new Contact object.
+        /// </summary>
+        /// <param name="ID">Initial value of Id.</param>
+        /// <param name="report">Initial value of Report.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
+        public static Contact CreateContact(int ID, int report)
+        {
+            Contact contact = new Contact();
+            contact.Id = ID;
+            contact.Report = report;
+            return contact;
+        }
+        /// <summary>
+        /// There are no comments for Property Id in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
+        [global::Microsoft.OData.Client.OriginalNameAttribute("Id")]
+        public int Id
         {
             get
             {
-                return this._Contacts;
+                return this._Id;
             }
             set
             {
-                this.OnContactsChanging(value);
-                this._Contacts = value;
-                this.OnContactsChanged();
-                this.OnPropertyChanged("Contacts");
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
+                this.OnPropertyChanged("Id");
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        private global::Microsoft.OData.Client.DataServiceCollection<global::Lisa.Kiwi.Data.Contact> _Contacts = new global::Microsoft.OData.Client.DataServiceCollection<global::Lisa.Kiwi.Data.Contact>(null, global::Microsoft.OData.Client.TrackingMode.None);
-        partial void OnContactsChanging(global::Microsoft.OData.Client.DataServiceCollection<global::Lisa.Kiwi.Data.Contact> value);
-        partial void OnContactsChanged();
+        private int _Id;
+        partial void OnIdChanging(int value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property Name in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
+        [global::Microsoft.OData.Client.OriginalNameAttribute("Name")]
+        public string Name
+        {
+            get
+            {
+                return this._Name;
+            }
+            set
+            {
+                this.OnNameChanging(value);
+                this._Name = value;
+                this.OnNameChanged();
+                this.OnPropertyChanged("Name");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
+        private string _Name;
+        partial void OnNameChanging(string value);
+        partial void OnNameChanged();
+        /// <summary>
+        /// There are no comments for Property PhoneNumber in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
+        [global::Microsoft.OData.Client.OriginalNameAttribute("PhoneNumber")]
+        public string PhoneNumber
+        {
+            get
+            {
+                return this._PhoneNumber;
+            }
+            set
+            {
+                this.OnPhoneNumberChanging(value);
+                this._PhoneNumber = value;
+                this.OnPhoneNumberChanged();
+                this.OnPropertyChanged("PhoneNumber");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
+        private string _PhoneNumber;
+        partial void OnPhoneNumberChanging(string value);
+        partial void OnPhoneNumberChanged();
+        /// <summary>
+        /// There are no comments for Property EmailAddress in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
+        [global::Microsoft.OData.Client.OriginalNameAttribute("EmailAddress")]
+        public string EmailAddress
+        {
+            get
+            {
+                return this._EmailAddress;
+            }
+            set
+            {
+                this.OnEmailAddressChanging(value);
+                this._EmailAddress = value;
+                this.OnEmailAddressChanged();
+                this.OnPropertyChanged("EmailAddress");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
+        private string _EmailAddress;
+        partial void OnEmailAddressChanging(string value);
+        partial void OnEmailAddressChanged();
+        /// <summary>
+        /// There are no comments for Property StudentNumber in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
+        [global::Microsoft.OData.Client.OriginalNameAttribute("StudentNumber")]
+        public global::System.Nullable<int> StudentNumber
+        {
+            get
+            {
+                return this._StudentNumber;
+            }
+            set
+            {
+                this.OnStudentNumberChanging(value);
+                this._StudentNumber = value;
+                this.OnStudentNumberChanged();
+                this.OnPropertyChanged("StudentNumber");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
+        private global::System.Nullable<int> _StudentNumber;
+        partial void OnStudentNumberChanging(global::System.Nullable<int> value);
+        partial void OnStudentNumberChanged();
+        /// <summary>
+        /// There are no comments for Property Report in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
+        [global::Microsoft.OData.Client.OriginalNameAttribute("Report")]
+        public int Report
+        {
+            get
+            {
+                return this._Report;
+            }
+            set
+            {
+                this.OnReportChanging(value);
+                this._Report = value;
+                this.OnReportChanged();
+                this.OnPropertyChanged("Report");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
+        private int _Report;
+        partial void OnReportChanging(int value);
+        partial void OnReportChanged();
         /// <summary>
         /// This event is raised when the value of the property is changed
         /// </summary>
@@ -728,6 +881,15 @@ namespace Lisa.Kiwi.WebApi
             return new global::Lisa.Kiwi.WebApi.ReportSingle(source.Context, source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(source.Context, keys)));
         }
         /// <summary>
+        /// Get an entity of type global::Lisa.Kiwi.WebApi.Contact as global::Lisa.Kiwi.WebApi.ContactSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="source">source entity set</param>
+        /// <param name="keys">dictionary with the names and values of keys</param>
+        public static global::Lisa.Kiwi.WebApi.ContactSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::Lisa.Kiwi.WebApi.Contact> source, global::System.Collections.Generic.Dictionary<string, object> keys)
+        {
+            return new global::Lisa.Kiwi.WebApi.ContactSingle(source.Context, source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(source.Context, keys)));
+        }
+        /// <summary>
         /// Get an entity of type global::Lisa.Kiwi.WebApi.Remark as global::Lisa.Kiwi.WebApi.RemarkSingle specified by key from an entity set
         /// </summary>
         /// <param name="source">source entity set</param>
@@ -749,178 +911,6 @@ namespace Lisa.Kiwi.WebApi
 }
 namespace Lisa.Kiwi.Data
 {
-    /// <summary>
-    /// There are no comments for ContactSingle in the schema.
-    /// </summary>
-    [global::Microsoft.OData.Client.OriginalNameAttribute("ContactSingle")]
-    public partial class ContactSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<Contact>
-    {
-        /// <summary>
-        /// Initialize a new ContactSingle object.
-        /// </summary>
-        public ContactSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
-            : base(context, path) {}
-
-        /// <summary>
-        /// Initialize a new ContactSingle object.
-        /// </summary>
-        public ContactSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
-            : base(context, path, isComposable) {}
-    }
-    /// <summary>
-    /// There are no comments for Contact in the schema.
-    /// </summary>
-    /// <KeyProperties>
-    /// Id
-    /// </KeyProperties>
-    [global::Microsoft.OData.Client.Key("Id")]
-    [global::Microsoft.OData.Client.OriginalNameAttribute("Contact")]
-    public partial class Contact : global::System.ComponentModel.INotifyPropertyChanged
-    {
-        /// <summary>
-        /// Create a new Contact object.
-        /// </summary>
-        /// <param name="ID">Initial value of Id.</param>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        public static Contact CreateContact(int ID)
-        {
-            Contact contact = new Contact();
-            contact.Id = ID;
-            return contact;
-        }
-        /// <summary>
-        /// There are no comments for Property Id in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        [global::Microsoft.OData.Client.OriginalNameAttribute("Id")]
-        public int Id
-        {
-            get
-            {
-                return this._Id;
-            }
-            set
-            {
-                this.OnIdChanging(value);
-                this._Id = value;
-                this.OnIdChanged();
-                this.OnPropertyChanged("Id");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        private int _Id;
-        partial void OnIdChanging(int value);
-        partial void OnIdChanged();
-        /// <summary>
-        /// There are no comments for Property Name in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        [global::Microsoft.OData.Client.OriginalNameAttribute("Name")]
-        public string Name
-        {
-            get
-            {
-                return this._Name;
-            }
-            set
-            {
-                this.OnNameChanging(value);
-                this._Name = value;
-                this.OnNameChanged();
-                this.OnPropertyChanged("Name");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        private string _Name;
-        partial void OnNameChanging(string value);
-        partial void OnNameChanged();
-        /// <summary>
-        /// There are no comments for Property PhoneNumber in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        [global::Microsoft.OData.Client.OriginalNameAttribute("PhoneNumber")]
-        public string PhoneNumber
-        {
-            get
-            {
-                return this._PhoneNumber;
-            }
-            set
-            {
-                this.OnPhoneNumberChanging(value);
-                this._PhoneNumber = value;
-                this.OnPhoneNumberChanged();
-                this.OnPropertyChanged("PhoneNumber");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        private string _PhoneNumber;
-        partial void OnPhoneNumberChanging(string value);
-        partial void OnPhoneNumberChanged();
-        /// <summary>
-        /// There are no comments for Property EmailAddress in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        [global::Microsoft.OData.Client.OriginalNameAttribute("EmailAddress")]
-        public string EmailAddress
-        {
-            get
-            {
-                return this._EmailAddress;
-            }
-            set
-            {
-                this.OnEmailAddressChanging(value);
-                this._EmailAddress = value;
-                this.OnEmailAddressChanged();
-                this.OnPropertyChanged("EmailAddress");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        private string _EmailAddress;
-        partial void OnEmailAddressChanging(string value);
-        partial void OnEmailAddressChanged();
-        /// <summary>
-        /// There are no comments for Property StudentNumber in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        [global::Microsoft.OData.Client.OriginalNameAttribute("StudentNumber")]
-        public global::System.Nullable<int> StudentNumber
-        {
-            get
-            {
-                return this._StudentNumber;
-            }
-            set
-            {
-                this.OnStudentNumberChanging(value);
-                this._StudentNumber = value;
-                this.OnStudentNumberChanged();
-                this.OnPropertyChanged("StudentNumber");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        private global::System.Nullable<int> _StudentNumber;
-        partial void OnStudentNumberChanging(global::System.Nullable<int> value);
-        partial void OnStudentNumberChanged();
-        /// <summary>
-        /// This event is raised when the value of the property is changed
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        /// <summary>
-        /// The value of the property is changed
-        /// </summary>
-        /// <param name="property">property name</param>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        protected virtual void OnPropertyChanged(string property)
-        {
-            if ((this.PropertyChanged != null))
-            {
-                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
-            }
-        }
-    }
     /// <summary>
     /// There are no comments for StatusName in the schema.
     /// </summary>
@@ -966,15 +956,6 @@ namespace Lisa.Kiwi.Data
     /// </summary>
     public static class ExtensionMethods
     {
-        /// <summary>
-        /// Get an entity of type global::Lisa.Kiwi.Data.Contact as global::Lisa.Kiwi.Data.ContactSingle specified by key from an entity set
-        /// </summary>
-        /// <param name="source">source entity set</param>
-        /// <param name="keys">dictionary with the names and values of keys</param>
-        public static global::Lisa.Kiwi.Data.ContactSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::Lisa.Kiwi.Data.Contact> source, global::System.Collections.Generic.Dictionary<string, object> keys)
-        {
-            return new global::Lisa.Kiwi.Data.ContactSingle(source.Context, source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(source.Context, keys)));
-        }
     }
 }
 namespace Default
@@ -1080,19 +1061,19 @@ namespace Default
         /// There are no comments for Contact in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        public global::Microsoft.OData.Client.DataServiceQuery<global::Lisa.Kiwi.Data.Contact> Contact
+        public global::Microsoft.OData.Client.DataServiceQuery<global::Lisa.Kiwi.WebApi.Contact> Contact
         {
             get
             {
                 if ((this._Contact == null))
                 {
-                    this._Contact = base.CreateQuery<global::Lisa.Kiwi.Data.Contact>("Contact");
+                    this._Contact = base.CreateQuery<global::Lisa.Kiwi.WebApi.Contact>("Contact");
                 }
                 return this._Contact;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        private global::Microsoft.OData.Client.DataServiceQuery<global::Lisa.Kiwi.Data.Contact> _Contact;
+        private global::Microsoft.OData.Client.DataServiceQuery<global::Lisa.Kiwi.WebApi.Contact> _Contact;
         /// <summary>
         /// There are no comments for Remark in the schema.
         /// </summary>
@@ -1139,7 +1120,7 @@ namespace Default
         /// There are no comments for Contact in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        public void AddToContact(global::Lisa.Kiwi.Data.Contact contact)
+        public void AddToContact(global::Lisa.Kiwi.WebApi.Contact contact)
         {
             base.AddObject("Contact", contact);
         }
@@ -1183,7 +1164,17 @@ namespace Default
         <Property Name=""Ip"" Type=""Edm.String"" />
         <Property Name=""Status"" Type=""Lisa.Kiwi.Data.StatusName"" Nullable=""false"" />
         <Property Name=""Type"" Type=""Lisa.Kiwi.Data.ReportType"" Nullable=""false"" />
-        <NavigationProperty Name=""Contacts"" Type=""Collection(Lisa.Kiwi.Data.Contact)"" />
+      </EntityType>
+      <EntityType Name=""Contact"">
+        <Key>
+          <PropertyRef Name=""Id"" />
+        </Key>
+        <Property Name=""Id"" Type=""Edm.Int32"" Nullable=""false"" />
+        <Property Name=""Name"" Type=""Edm.String"" />
+        <Property Name=""PhoneNumber"" Type=""Edm.String"" />
+        <Property Name=""EmailAddress"" Type=""Edm.String"" />
+        <Property Name=""StudentNumber"" Type=""Edm.Int32"" />
+        <Property Name=""Report"" Type=""Edm.Int32"" Nullable=""false"" />
       </EntityType>
       <EntityType Name=""Remark"">
         <Key>
@@ -1206,16 +1197,6 @@ namespace Default
       </EntityType>
     </Schema>
     <Schema Namespace=""Lisa.Kiwi.Data"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
-      <EntityType Name=""Contact"">
-        <Key>
-          <PropertyRef Name=""Id"" />
-        </Key>
-        <Property Name=""Id"" Type=""Edm.Int32"" Nullable=""false"" />
-        <Property Name=""Name"" Type=""Edm.String"" />
-        <Property Name=""PhoneNumber"" Type=""Edm.String"" />
-        <Property Name=""EmailAddress"" Type=""Edm.String"" />
-        <Property Name=""StudentNumber"" Type=""Edm.Int32"" />
-      </EntityType>
       <EnumType Name=""StatusName"">
         <Member Name=""Open"" Value=""0"" />
         <Member Name=""Solved"" Value=""1"" />
@@ -1236,10 +1217,8 @@ namespace Default
     </Schema>
     <Schema Namespace=""Default"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
       <EntityContainer Name=""Container"">
-        <EntitySet Name=""Report"" EntityType=""Lisa.Kiwi.WebApi.Report"">
-          <NavigationPropertyBinding Path=""Contacts"" Target=""Contact"" />
-        </EntitySet>
-        <EntitySet Name=""Contact"" EntityType=""Lisa.Kiwi.Data.Contact"" />
+        <EntitySet Name=""Report"" EntityType=""Lisa.Kiwi.WebApi.Report"" />
+        <EntitySet Name=""Contact"" EntityType=""Lisa.Kiwi.WebApi.Contact"" />
         <EntitySet Name=""Remark"" EntityType=""Lisa.Kiwi.WebApi.Remark"" />
         <EntitySet Name=""Status"" EntityType=""Lisa.Kiwi.WebApi.Status"" />
       </EntityContainer>
