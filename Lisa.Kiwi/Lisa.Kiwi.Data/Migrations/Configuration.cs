@@ -25,16 +25,7 @@ namespace Lisa.Kiwi.Data.Migrations
 				UserAgent = "Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Firefox/31.0",
 				Ip = "85.119.106.81",
 				Type = ReportType.Digital,
-				Hidden = false,
-				Contacts = new List<Contact>
-				{
-					new Contact
-					{
-						EmailAddress = "jordischarloo@gmail.com",
-						PhoneNumber = "+31642904875",
-						StudentNumber = 99016300
-					}
-				}
+				Hidden = false
 			};
 
 			Status sampleStatus = new Status

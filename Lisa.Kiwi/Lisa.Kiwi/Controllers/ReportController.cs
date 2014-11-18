@@ -35,8 +35,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
 					Status = (from s in db.Statuses
 						where s.Report == r
 						orderby s.Created descending
-						select s).FirstOrDefault().Name,
-					Contacts = r.Contacts
+						select s).FirstOrDefault().Name
 				};
 
 			return result;
@@ -64,12 +63,10 @@ namespace Lisa.Kiwi.WebApi.Controllers
 					Status = (from s in db.Statuses
 						where s.Report == r
 						orderby s.Created descending
-						select s).FirstOrDefault().Name,
-					Contacts = r.Contacts
+						select s).FirstOrDefault().Name
 				};
 
 			return new SingleResult<Report>(result);
-			;
 		}
 
 		// PUT odata/Report(5)
@@ -258,13 +255,6 @@ namespace Lisa.Kiwi.WebApi.Controllers
 			await db.SaveChangesAsync();
 
 			return StatusCode(HttpStatusCode.NoContent);
-		}
-
-		// GET odata/Report(5)/Contact
-		[EnableQuery]
-		public IQueryable<Contact> GetContact([FromODataUri] int key)
-		{
-			return db.Reports.Where(m => m.Id == key).SelectMany(m => m.Contacts);
 		}
 
 		protected override void Dispose(bool disposing)
