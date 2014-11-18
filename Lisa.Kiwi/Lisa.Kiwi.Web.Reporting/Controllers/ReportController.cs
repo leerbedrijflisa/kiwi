@@ -142,21 +142,9 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 
 				OriginalReport entity = (OriginalReport) retrievedResult.Result;
 
-                List<Contact> contacts = new List<Contact>();
-                var contact = new Contact();
-                
-                if (data.Name != null || data.PhoneNumber != null || data.Email != null || data.StudentNumber <= 0)
-                {
-                    contact.Name = data.Name;
-                    contact.PhoneNumber = data.PhoneNumber;
-                    contact.EmailAddress = data.Email;
-                    contact.StudentNumber = data.StudentNumber;
-                }
-                var test = _contactProxy.GetContacts();
-
 				if (retrievedResult != null)
 				{
-					var report = new Report
+                    var report = new WebApi.Report
 					{
 						Description = entity.Description,
 						Created = entity.Created,
@@ -165,12 +153,10 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 						Guid = entity.PartitionKey,
 						Type = (ReportType)Enum.Parse(typeof(ReportType), entity.Type)
 					};
-
 					_reportProxy.AddReport(report);
 
 					var reportEntity = _reportProxy.GetReports();
-					var getReport = reportEntity.Where(r => r.Guid == guid).FirstOrDefault();
-
+                    var getReport = reportEntity.Where(r => r.Guid == guid).FirstOrDefault();
 
 					if (getReport != null)
 					{
@@ -180,8 +166,20 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 							Name = StatusName.Open,
 							Report = getReport.Id
 						};
-
 						_statusProxy.AddStatus(status);
+
+                        if (data.Name != null && (data.Email != null || data.PhoneNumber != null || data.StudentNumber == 0))
+                        {
+                            var contact = new Contact
+                            {
+                                Name = data.Name,
+                                EmailAddress = data.Email,
+                                PhoneNumber = data.PhoneNumber,
+                                StudentNumber = data.StudentNumber,
+                                Report = getReport.Id
+                            };
+                            _contactProxy.AddContact(contact);
+                        }
 					}
 
 
