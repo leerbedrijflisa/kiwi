@@ -20,5 +20,6 @@ namespace Lisa.Kiwi.Web.Reporting.Models
 
 		[Display(Name = "Studentennummer/OV")]
 		public int StudentNumber { get; set; }
+        public int Report { get; set; }
 	}
 }

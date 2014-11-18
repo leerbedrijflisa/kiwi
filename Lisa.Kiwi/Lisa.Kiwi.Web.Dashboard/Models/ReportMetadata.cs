@@ -29,8 +29,5 @@ namespace Lisa.Kiwi.Web.Dashboard.Models
 
 		[Display(Name = "ReportType", ResourceType = typeof (DisplayNames))]
 		public ReportType Type { get; set; }
-
-		[Display(Name = "ReportContacts", ResourceType = typeof (DisplayNames))]
-		public virtual ICollection<Contact> Contacts { get; set; }
 	}
 }

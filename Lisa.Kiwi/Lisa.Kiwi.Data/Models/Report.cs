@@ -7,10 +7,6 @@ namespace Lisa.Kiwi.Data
 {
 	public class Report
 	{
-		public Report()
-		{
-			Contacts = new List<Contact>();
-		}
 
 		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 		public int Id { get; set; }
@@ -28,6 +24,5 @@ namespace Lisa.Kiwi.Data
 		public string Ip { get; set; }
 
 		public ReportType Type { get; set; }
-		public virtual ICollection<Contact> Contacts { get; set; }
 	}
 }
