@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.OData;
 using Lisa.Kiwi.Data;
+using Lisa.Kiwi.WebApi.Models;
 
 namespace Lisa.Kiwi.WebApi.Controllers
 {
@@ -17,14 +18,35 @@ namespace Lisa.Kiwi.WebApi.Controllers
 		[EnableQuery]
 		public IQueryable<Contact> GetContact()
 		{
-			return db.Contacts;
+            var result = from c in db.Contacts
+                         select new Contact
+                         {
+                             Id = c.Id,
+                             EmailAddress = c.EmailAddress,
+                             Name = c.Name,
+                             PhoneNumber = c.PhoneNumber,
+                             Report = c.Report.Id,
+                             StudentNumber = c.StudentNumber
+                         };
+			return result;
 		}
 
 		// GET odata/Contact(5)
 		[EnableQuery]
 		public SingleResult<Contact> GetContact([FromODataUri] int key)
 		{
-			return SingleResult.Create(db.Contacts.Where(contact => contact.Id == key));
+            var result = from c in db.Contacts
+                         where c.Id == key
+                         select new Contact
+                         {
+                             Id = c.Id,
+                             EmailAddress = c.EmailAddress,
+                             Name = c.Name,
+                             PhoneNumber = c.PhoneNumber,
+                             Report = c.Report.Id,
+                             StudentNumber = c.StudentNumber
+                         };
+            return new SingleResult<Contact>(result);
 		}
 
 		// PUT odata/Contact(5)
@@ -42,7 +64,17 @@ namespace Lisa.Kiwi.WebApi.Controllers
 
 			try
 			{
-				db.Contacts.Add(contact);
+                var newContact = new Data.Contact
+                {
+                    Id = contact.Id,
+                    EmailAddress = contact.EmailAddress,
+                    Name = contact.Name,
+                    PhoneNumber = contact.PhoneNumber,
+                    StudentNumber =  contact.StudentNumber,
+                    Report = db.Reports.Where(r => r.Id == contact.Report).FirstOrDefault()
+                };
+
+				db.Contacts.Add(newContact);
 
 				await db.SaveChangesAsync();
 			}
@@ -66,7 +98,17 @@ namespace Lisa.Kiwi.WebApi.Controllers
 				return BadRequest(ModelState);
 			}
 
-			db.Contacts.Add(contact);
+            var newContact = new Data.Contact
+            {
+                Id = contact.Id,
+                EmailAddress = contact.EmailAddress,
+                Name = contact.Name,
+                PhoneNumber = contact.PhoneNumber,
+                StudentNumber = contact.StudentNumber,
+                Report = db.Reports.Where(r => r.Id == contact.Report).FirstOrDefault()
+            };
+
+			db.Contacts.Add(newContact);
 			await db.SaveChangesAsync();
 
 			return Created(contact);
@@ -81,17 +123,30 @@ namespace Lisa.Kiwi.WebApi.Controllers
 				return BadRequest(ModelState);
 			}
 
-			Contact contact = await db.Contacts.FindAsync(key);
-			if (contact == null)
+            var contact = await db.Contacts.FindAsync(key);
+
+            if (contact == null)
 			{
 				return NotFound();
 			}
 
-			patch.Patch(contact);
+            var report = db.Reports.Where(r => r.Id == contact.Report.Id).FirstOrDefault();
+            var newContact = new Data.Contact
+            {
+                Id = contact.Id,
+                EmailAddress = contact.Name,
+                Name = contact.Name,
+                PhoneNumber = contact.PhoneNumber,
+                StudentNumber = contact.StudentNumber,
+                Report = report
+            };
+
+            //patch.Patch(newContact);
 
 			try
 			{
-				db.Contacts.Add(contact);
+
+				db.Contacts.Add(newContact);
 				await db.SaveChangesAsync();
 			}
 			catch (DbUpdateConcurrencyException)
@@ -109,7 +164,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
 		// DELETE odata/Contact(5)
 		public async Task<IHttpActionResult> Delete([FromODataUri] int key)
 		{
-			Contact contact = await db.Contacts.FindAsync(key);
+			Data.Contact contact = await db.Contacts.FindAsync(key);
 			if (contact == null)
 			{
 				return NotFound();

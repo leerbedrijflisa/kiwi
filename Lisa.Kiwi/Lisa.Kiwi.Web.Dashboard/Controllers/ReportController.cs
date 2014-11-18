@@ -22,7 +22,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 			}
 
 			var reports = _reportProxy.GetReports();
-			List<Report> reportsData = new List<Report>();
+            List<WebApi.Report> reportsData = new List<WebApi.Report>();
 
 			if (Session["user"].ToString() == "beveiliger")
 			{
@@ -50,7 +50,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 				return RedirectToAction("Login", "Account");
 			}
 
-            var report = _reportProxy.GetReports(ExpandOptions.ExpandContacts).Where(r => r.Id == id).FirstOrDefault();
+            var report = _reportProxy.GetReports().Where(r => r.Id == id).FirstOrDefault();
 
 			if (Session["user"].ToString() == "user")
 			{
@@ -143,33 +143,31 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 				return RedirectToAction("Login", "Account");
 			}
 
-			var contact = _contactProxy.AddContact(new Contact
-			{
-				EmailAddress = "beyonce@gijs.nl",
-				Name = "Gijs Jannssenn",
-				PhoneNumber = "0655889944",
-				StudentNumber = 99015221
-			});
-
-			var report = new Report
+            var report = _reportProxy.AddReport(new WebApi.Report
 			{
 				Created = DateTime.UtcNow,
 				Status = StatusName.Open,
-				Description = "Ik word gepest",
+				Description = "Ik word gepest - with user",
 				Ip = "244.255.63.39",
-				Location = "Arco Baleno",
+				Location = "Arco Baleno - with user",
 				Time = DateTime.Today.AddHours(3),
 				Hidden = false,
 				Type = ReportType.Bullying,
 				UserAgent = "Opera",
 				Guid = Guid.NewGuid().ToString()
-			};
+			});
 
-			report.Contacts.Add(contact);
-			_reportProxy.AddReport(report);
+            var reportId = _reportProxy.GetReports().Where(r => r.Guid == report.Guid).FirstOrDefault().Id;
+            _contactProxy.AddContact(new Contact
+            {
+                EmailAddress = "beyonce@gijs.nl",
+                Name = "Gijs Jannssenn",
+                PhoneNumber = "0655889944",
+                StudentNumber = 99015221,
+                Report = reportId
+            });
 
-
-			report = new Report
+            report = _reportProxy.AddReport(new WebApi.Report
 			{
 				Created = DateTime.UtcNow,
 				Status = StatusName.Open,
@@ -180,13 +178,10 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 				Hidden = false,
 				Type = ReportType.Bullying,
 				UserAgent = "Opera",
-				Guid = Guid.NewGuid().ToString()
-			};
+                Guid = Guid.NewGuid().ToString()
+			});
 
-			report.Contacts.Add(contact);
-			_reportProxy.AddReport(report);
-
-			report = new Report
+            report = _reportProxy.AddReport(new WebApi.Report
 			{
 				Created = DateTime.UtcNow,
 				Status = StatusName.Open,
@@ -198,12 +193,9 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 				Type = ReportType.Bullying,
 				UserAgent = "Opera",
 				Guid = Guid.NewGuid().ToString()
-			};
+			});
 
-			report.Contacts.Add(contact);
-			_reportProxy.AddReport(report);
-
-			_reportProxy.AddReport(new Report
+            report = _reportProxy.AddReport(new WebApi.Report
 			{
 				Created = DateTime.UtcNow,
 				Status = StatusName.Open,
@@ -218,7 +210,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 				//Contacts = contact
 			});
 
-			_reportProxy.AddReport(new Report
+            report = _reportProxy.AddReport(new WebApi.Report
 			{
 				Created = DateTime.UtcNow,
 				Status = StatusName.InProgress,
@@ -232,7 +224,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 				Guid = Guid.NewGuid().ToString()
 			});
 
-			_reportProxy.AddReport(new Report
+            report = _reportProxy.AddReport(new WebApi.Report
 			{
 				Created = DateTime.UtcNow,
 				Status = StatusName.Open,
@@ -246,7 +238,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 				Guid = Guid.NewGuid().ToString()
 			});
 
-			_reportProxy.AddReport(new Report
+            report = _reportProxy.AddReport(new WebApi.Report
 			{
 				Created = DateTime.UtcNow,
 				Status = StatusName.Open,
@@ -278,7 +270,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 			return result;
 		}
 
-        private List<LogBookEntry> AddStatussesToLogbook(IQueryable<Status> statusses, Report report)
+        private List<LogBookEntry> AddStatussesToLogbook(IQueryable<Status> statusses, WebApi.Report report)
 		{
             List<LogBookEntry> result = new List<LogBookEntry>();
 
@@ -298,16 +290,22 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 			return result;
 		}
 
-		private string CreateLogbookStatusDescription(Status status, string lastStatus, Report report)
+		private string CreateLogbookStatusDescription(Status status, string lastStatus, WebApi.Report report)
 		{
 			var description = "";
 			if (string.IsNullOrEmpty(lastStatus))
 			{
 				var person = "Anoniem";
-				if (report.Contacts.Count > 0)
-				{
-					person = report.Contacts[0].Name;
-				}
+                var contact = _contactProxy.GetContacts().Where(c => c.Report == report.Id).FirstOrDefault();
+                if (contact.Name != null)
+                {
+                    person = contact.Name;
+                }
+                // TODO: contacts
+                //if (report.Contacts.Count > 0)
+                //{
+                //    person = report.Contacts[0].Name;
+                //}
 				description = string.Format("Melding is aangemaakt door: {0} met de status {1}.", person,
 					status.Name.GetStatusDisplayNameFromMetadata());
 			}
