@@ -154,18 +154,18 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 						Guid = entity.PartitionKey,
 						Type = (ReportType)Enum.Parse(typeof(ReportType), entity.Type)
 					};
-					var x = await _reportProxy.AddManualReport(report);
+                    var reportEntity = await _reportProxy.AddManualReport(report);
 
-					var reportEntity = _reportProxy.GetReports();
-                    var getReport = reportEntity.Where(r => r.Guid == guid).FirstOrDefault();
+                    //var reportEntity = _reportProxy.GetReports();
+                    //var getReport = reportEntity.Where(r => r.Guid == guid).FirstOrDefault();
 
-					if (getReport != null)
+                    if (reportEntity != null)
 					{
 						var status = new Status
 						{
 							Created = entity.Created,
 							Name = StatusName.Open,
-							Report = getReport.Id
+                            Report = reportEntity.Id
 						};
 						_statusProxy.AddStatus(status);
 
@@ -177,7 +177,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
                                 EmailAddress = data.Email,
                                 PhoneNumber = data.PhoneNumber,
                                 StudentNumber = data.StudentNumber,
-                                Report = getReport.Id
+                                Report = reportEntity.Id
                             };
                             _contactProxy.AddContact(contact);
                         }
