@@ -31,9 +31,9 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 			    var authenticationReponse = await authenticationClient.Login(username, password);
                 var authenticationInformation = JObject.Parse(authenticationReponse);
 
-                Session["token"] = authenticationInformation.SelectToken("access_token");
-                Session["token_type"] = authenticationInformation.SelectToken("token_type");
-                Session["token_aliveTime"] = authenticationInformation.SelectToken("expires_in");
+                Session["token"] = authenticationInformation.SelectToken("access_token").ToString();
+                Session["token_type"] = authenticationInformation.SelectToken("token_type").ToString();
+                Session["token_aliveTime"] = authenticationInformation.SelectToken("expires_in").ToString();
 				Session["user"] = username;
 			}
 			catch(AuthenticationException)

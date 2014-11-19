@@ -15,18 +15,8 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 	{
         public ReportController()
         {
-            // != null
-            //!String.IsNullOrEmpty(Session["token"].ToString())
-            try
-            {
-                _token = System.Web.HttpContext.Current.Session["token"].ToString();
-                _tokenType = System.Web.HttpContext.Current.Session["token_type"].ToString();
-            }
-            catch (NullReferenceException)
-            {
-                _token = "";
-                _tokenType = "";
-            }
+            _token = System.Web.HttpContext.Current.Session["token"] as string ?? "";
+            _tokenType = System.Web.HttpContext.Current.Session["token_type"] as string ?? "";
 
             _statusProxy = new StatusProxy(ConfigHelper.GetODataUri(), _token, _tokenType);
             _reportProxy = new ReportProxy(ConfigHelper.GetODataUri(), _token, _tokenType);
@@ -34,7 +24,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
             _contactProxy = new ContactProxy(ConfigHelper.GetODataUri(), _token, _tokenType);
         }
 
-		public ActionResult Index(string sortBy = "Id DESC")
+		public ActionResult Index(string sortBy = "Created DESC")
 		{
 			var sessionTimeOut = Session.Timeout = 60;
 			if (Session["user"] == null || sessionTimeOut == 0)
@@ -42,25 +32,21 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 				return RedirectToAction("Login", "Account");
 			}
 
-			var reports = _reportProxy.GetReports();
-            List<WebApi.Report> reportsData = new List<WebApi.Report>();
+			IQueryable<Report> reports;
 
 			if (Session["user"].ToString() == "beveiliger")
 			{
-				reports = reports.Where(r => r.Status != StatusName.Solved);
-				foreach (var report in reports)
-				{
-					if (report.Hidden == false)
-					{
-						reportsData.Add(report);
-					}
-				}
+				reports = _reportProxy.GetReports()
+					.Where(r => r.Status != StatusName.Solved)
+					.Where(report => report.Hidden == false);
 			}
 			else
 			{
-				reportsData.AddRange(reports);
+				reports = _reportProxy.GetReports();
 			}
-			return View(reportsData.OrderByDescending(r => r.Created));
+
+			ViewBag.SortingBy = sortBy;
+			return View(reports.SortBy(sortBy).ToList());
 		}
 
 		public ActionResult Details(int id)

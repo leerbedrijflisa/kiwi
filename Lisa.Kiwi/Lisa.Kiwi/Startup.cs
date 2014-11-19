@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Data.Entity;
-using System.Web.Cors;
 using System.Web.Http;
 using Lisa.Kiwi.Data;
 using Lisa.Kiwi.WebApi.Providers;
 using Microsoft.Owin;
+using Microsoft.Owin.Cors;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
 
@@ -23,7 +23,7 @@ namespace Lisa.Kiwi.WebApi
 
 			// Set up Owin to use the WebAPI's config
 			WebApiConfig.Register(config);
-			app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
+			app.UseCors(CorsOptions.AllowAll);
 	        app.UseWebApi(config);
         }
 
