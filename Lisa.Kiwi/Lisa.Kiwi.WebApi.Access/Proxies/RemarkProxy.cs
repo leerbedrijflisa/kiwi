@@ -6,10 +6,10 @@ namespace Lisa.Kiwi.WebApi.Access
 {
 	public class RemarkProxy
 	{
-		public RemarkProxy(Uri odataUrl)
+        public RemarkProxy(Uri odataUrl, string token = null, string tokenType = null)
 		{
-			_container = new Container(odataUrl);
-		}
+            _container = new AuthenticationContainer(odataUrl, token, tokenType);
+        }
 
 		// Get an entire entity set.
 		public IQueryable<Remark> GetRemarks()
@@ -24,6 +24,6 @@ namespace Lisa.Kiwi.WebApi.Access
 			_container.SaveChanges();
 		}
 
-		private readonly Container _container;
+        private readonly AuthenticationContainer _container;
 	}
 }

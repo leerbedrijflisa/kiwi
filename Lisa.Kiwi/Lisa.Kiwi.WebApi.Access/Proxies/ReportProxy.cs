@@ -2,16 +2,15 @@
 using System.Linq;
 using Default;
 using Microsoft.OData.Client;
-using Lisa.Kiwi.WebApi.Access;
 
 namespace Lisa.Kiwi.WebApi.Access
 {
 	public class ReportProxy
 	{
-		public ReportProxy(Uri odataUrl)
+		public ReportProxy(Uri odataUrl, string token = null, string tokenType = null)
 		{
-			_container = new Container(odataUrl);
-		}
+            _container = new AuthenticationContainer(odataUrl, token, tokenType);
+        }
 
 		// Get an entire entity set.
 		public IQueryable<Report> GetReports()
@@ -34,6 +33,6 @@ namespace Lisa.Kiwi.WebApi.Access
 	        _container.SaveChanges();
 	    }
 
-		private readonly Container _container;
+        private readonly AuthenticationContainer _container;
 	}
 }

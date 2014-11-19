@@ -1,7 +1,11 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
+using System.Web.Cors;
 using System.Web.Http;
 using Lisa.Kiwi.Data;
+using Lisa.Kiwi.WebApi.Providers;
 using Microsoft.Owin;
+using Microsoft.Owin.Security.OAuth;
 using Owin;
 
 [assembly: OwinStartup(typeof(Lisa.Kiwi.WebApi.Startup))]
@@ -13,12 +17,29 @@ namespace Lisa.Kiwi.WebApi
         public void Configuration(IAppBuilder app)
         {
 			var config = new HttpConfiguration();
-
-			WebApiConfig.Register(config);
 			Database.SetInitializer<KiwiContext>(null);
 
+			ConfigureOAuth(app);
+
 			// Set up Owin to use the WebAPI's config
+			WebApiConfig.Register(config);
+			app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
 	        app.UseWebApi(config);
         }
+
+		private static void ConfigureOAuth(IAppBuilder app)
+		{
+			var serverOptions = new OAuthAuthorizationServerOptions()
+			{
+				AllowInsecureHttp = true,
+				TokenEndpointPath = new PathString("/api/oauth"),
+				AccessTokenExpireTimeSpan = TimeSpan.FromHours(2),
+				Provider = new SimpleAuthorizationServerProvider()
+			};
+
+			// Token Generation
+			app.UseOAuthAuthorizationServer(serverOptions);
+			app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
+		}
     }
 }

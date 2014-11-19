@@ -9,6 +9,7 @@ using Microsoft.WindowsAzure.Storage.Queue;
 
 namespace Lisa.Kiwi.WebApi.Controllers
 {
+	[Authorize]
 	public class ReportController : ODataController
 	{
 		private readonly CloudQueue _queue = new QueueConfig().BuildQueue();
@@ -125,6 +126,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
 		}
 
 		// POST odata/Report
+		[AllowAnonymous]
 		public async Task<IHttpActionResult> Post(Report report)
 		{
 			if (!ModelState.IsValid)

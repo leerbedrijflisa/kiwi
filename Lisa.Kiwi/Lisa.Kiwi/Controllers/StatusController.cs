@@ -10,6 +10,7 @@ using Microsoft.WindowsAzure.Storage.Queue;
 
 namespace Lisa.Kiwi.WebApi.Controllers
 {
+	[Authorize]
 	public class StatusController : ODataController
 	{
 		private readonly CloudQueue _queue = new QueueConfig().BuildQueue();

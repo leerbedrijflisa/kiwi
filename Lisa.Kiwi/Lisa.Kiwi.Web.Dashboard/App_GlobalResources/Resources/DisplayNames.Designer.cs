@@ -61,6 +61,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Geen geldig wachtwoord en/of gebruikersnaam..
+        /// </summary>
+        public static string AccountLoginInvalid {
+            get {
+                return ResourceManager.GetString("AccountLoginInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contacten.
         /// </summary>
         public static string ReportContacts {

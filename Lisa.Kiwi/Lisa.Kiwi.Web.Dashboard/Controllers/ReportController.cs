@@ -2,18 +2,39 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using Lisa.Kiwi.Data;
 using Lisa.Kiwi.Web.Dashboard.Utils;
 using Lisa.Kiwi.WebApi;
 using Lisa.Kiwi.WebApi.Access;
 using LogBookEntry = Lisa.Kiwi.Web.Dashboard.Models.LogBookEntry;
-using Lisa.Kiwi.Web.Dashboard.Models;
 
 namespace Lisa.Kiwi.Web.Dashboard.Controllers
 {
 	public class ReportController : Controller
 	{
-		public ActionResult Index()
+        public ReportController()
+        {
+            // != null
+            //!String.IsNullOrEmpty(Session["token"].ToString())
+            try
+            {
+                _token = System.Web.HttpContext.Current.Session["token"].ToString();
+                _tokenType = System.Web.HttpContext.Current.Session["token_type"].ToString();
+            }
+            catch (NullReferenceException)
+            {
+                _token = "";
+                _tokenType = "";
+            }
+
+            _statusProxy = new StatusProxy(ConfigHelper.GetODataUri(), _token, _tokenType);
+            _reportProxy = new ReportProxy(ConfigHelper.GetODataUri(), _token, _tokenType);
+            _remarkProxy = new RemarkProxy(ConfigHelper.GetODataUri(), _token, _tokenType);
+            _contactProxy = new ContactProxy(ConfigHelper.GetODataUri(), _token, _tokenType);
+        }
+
+		public ActionResult Index(string sortBy = "Id DESC")
 		{
 			var sessionTimeOut = Session.Timeout = 60;
 			if (Session["user"] == null || sessionTimeOut == 0)
@@ -297,7 +318,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 			{
 				var person = "Anoniem";
                 var contact = _contactProxy.GetContacts().Where(c => c.Report == report.Id).FirstOrDefault();
-                if (contact.Name != null)
+                if (contact != null)
                 {
                     person = contact.Name;
                 }
@@ -317,9 +338,11 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 			return description;
 		}
 
-		private readonly ContactProxy _contactProxy = new ContactProxy(ConfigHelper.GetODataUri());
-		private readonly RemarkProxy _remarkProxy = new RemarkProxy(ConfigHelper.GetODataUri());
-		private readonly ReportProxy _reportProxy = new ReportProxy(ConfigHelper.GetODataUri());
-		private readonly StatusProxy _statusProxy = new StatusProxy(ConfigHelper.GetODataUri());
+		private readonly ContactProxy _contactProxy;
+        private readonly RemarkProxy _remarkProxy;
+        private readonly ReportProxy _reportProxy;
+        private readonly StatusProxy _statusProxy;
+	    private string _token = "";
+	    private string _tokenType = "";
 	}
 }

@@ -10,6 +10,7 @@ using Lisa.Kiwi.WebApi.Models;
 
 namespace Lisa.Kiwi.WebApi.Controllers
 {
+	[Authorize]
 	public class ContactController : ODataController
 	{
 		private readonly KiwiContext db = new KiwiContext();
@@ -91,6 +92,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
 		}
 
 		// POST odata/Contact
+		[AllowAnonymous]
 		public async Task<IHttpActionResult> Post(Contact contact)
 		{
 			if (!ModelState.IsValid)
