@@ -8,11 +8,12 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>@Html.ActionLink("Melding aangemaakt", "Index", new {sortBy = SortHelper.SortBy("Created", ViewBag.SortingBy)})</th>
-                        <th>@Html.ActionLink("Datum incident", "Index", new {sortBy = SortHelper.SortBy("Time", ViewBag.SortingBy)})</th>
-                        <th>@Html.ActionLink("Type melding", "Index", new {sortBy = SortHelper.SortBy("Type", ViewBag.SortingBy)})</th>
+                        @{ var sortingBy = (string) ViewBag.SortingBy; }
+                        <th>@Html.SortLinkFor("Melding aangemaakt", sortingBy, i => i.Created)</th>
+                        <th>@Html.SortLinkFor("Datum incident", sortingBy, i => i.Time)</th>
+                        <th>@Html.SortLinkFor("Type melding", sortingBy, i => i.Type)</th>
                         <th>Beschrijving</th>
-                        <th>@Html.ActionLink("Status", "Index", new {sortBy = SortHelper.SortBy("Status", ViewBag.SortingBy)})</th>
+                        <th>@Html.SortLinkFor("Status", sortingBy, i => i.Status)</th>
                         <th>Bekijken</th>
                     </tr>
                 </thead>
