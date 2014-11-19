@@ -8,11 +8,11 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Melding aangemaakt</th>
-                        <th>Datum incident</th>
-                        <th>Type melding</th>
+                        <th>@Html.ActionLink("Melding aangemaakt", "Index", new {sortBy = SortHelper.SortBy("Created", ViewBag.SortingBy)})</th>
+                        <th>@Html.ActionLink("Datum incident", "Index", new {sortBy = SortHelper.SortBy("Time", ViewBag.SortingBy)})</th>
+                        <th>@Html.ActionLink("Type melding", "Index", new {sortBy = SortHelper.SortBy("Type", ViewBag.SortingBy)})</th>
                         <th>Beschrijving</th>
-                        <th>Status</th>
+                        <th>@Html.ActionLink("Status", "Index", new {sortBy = SortHelper.SortBy("Status", ViewBag.SortingBy)})</th>
                         <th>Bekijken</th>
                     </tr>
                 </thead>

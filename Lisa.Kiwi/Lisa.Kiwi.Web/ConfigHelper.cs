@@ -6,30 +6,27 @@ namespace Lisa.Kiwi.Web
 {
 	public static class ConfigHelper
 	{
-		public static Uri GetODataUri()
+		private static Uri GetUri(string key)
 		{
 			var config = WebConfigurationManager.OpenWebConfiguration("~");
-			var urlSetting = config.AppSettings.Settings["KiwiODataUrl"];
+			var urlSetting = config.AppSettings.Settings[key];
 
 			if (urlSetting == null)
 			{
-				throw new ConfigurationErrorsException("KiwiODataUrl is missing in given configuration.");
+				throw new ConfigurationErrorsException(key + " is missing in given configuration.");
 			}
 
 			return new Uri(urlSetting.Value);
 		}
 
+		public static Uri GetODataUri()
+		{
+			return GetUri("KiwiODataUrl");
+		}
+
         public static Uri GetAuthUri()
         {
-            var config = WebConfigurationManager.OpenWebConfiguration("~");
-            var urlSetting = config.AppSettings.Settings["KiwiAuthUrl"];
-
-            if (urlSetting == null)
-            {
-                throw new ConfigurationErrorsException("KiwiAuthUrl is missing in given configuration.");
-            }
-
-            return new Uri(urlSetting.Value);
+	        return GetUri("KiwiAuthUrl");
         }
 	}
 }
