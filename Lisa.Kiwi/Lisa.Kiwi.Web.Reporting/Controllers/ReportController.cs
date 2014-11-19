@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Lisa.Kiwi.Data;
@@ -128,7 +129,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 		}
 
 		[HttpPost]
-		public ActionResult Contactdetails(ContactMetadata data)
+		public async Task<ActionResult> Contactdetails(ContactMetadata data)
 		{
 			HttpCookie cookie = HttpContext.Request.Cookies["userReport"];
 			string guid = cookie.Values["guid"];
@@ -153,7 +154,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 						Guid = entity.PartitionKey,
 						Type = (ReportType)Enum.Parse(typeof(ReportType), entity.Type)
 					};
-					_reportProxy.AddReport(report);
+					var x = await _reportProxy.AddManualReport(report);
 
 					var reportEntity = _reportProxy.GetReports();
                     var getReport = reportEntity.Where(r => r.Guid == guid).FirstOrDefault();
