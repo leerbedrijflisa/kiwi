@@ -131,7 +131,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
                 if (reportEntity != null)
 				{
 					CreateStatus(entity.Created, reportEntity.Id);
-                    CreateContact(data, reportEntity.Id);
+                    CreateContact(data, reportEntity.Id, reportEntity.EditToken);
 				}
 				return RedirectToAction("Confirmed", "Report");
 			}
@@ -201,7 +201,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 					            _statusProxy.AddStatus(status);
         }
 
-        private void CreateContact(ContactMetadata data, int id) 
+        private void CreateContact(ContactMetadata data, int id, Guid editToken) 
         {
             if (data.Name != null && (data.Email != null || data.PhoneNumber != null || data.StudentNumber == 0))
             {
@@ -211,6 +211,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
                     EmailAddress = data.Email,
                     PhoneNumber = data.PhoneNumber,
                     StudentNumber = data.StudentNumber,
+                    EditToken = editToken,
                     Report = id
                 };
                 _contactProxy.AddContact(contact);
