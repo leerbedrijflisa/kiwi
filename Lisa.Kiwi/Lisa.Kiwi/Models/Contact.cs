@@ -1,4 +1,6 @@
-﻿namespace Lisa.Kiwi.WebApi
+﻿using System;
+
+namespace Lisa.Kiwi.WebApi
 {
 	public class Contact
 	{
@@ -8,5 +10,6 @@
 		public string EmailAddress { get; set; }
 		public int? StudentNumber { get; set; }
         public int Report { get; set; }
+		public Guid EditToken { get; set; }
 	}
 }

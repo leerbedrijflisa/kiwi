@@ -47,6 +47,7 @@ namespace Lisa.Kiwi.WebApi.Access
 	            EmailAddress = contact.EmailAddress,
 	            PhoneNumber = contact.PhoneNumber,
 	            StudentNumber = contact.StudentNumber,
+				EditToken = token,
 	            report = contact.Report,
 	            securityToken = token
 	        };

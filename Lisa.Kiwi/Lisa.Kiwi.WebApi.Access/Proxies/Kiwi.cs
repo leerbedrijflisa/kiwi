@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 11/20/2014 12:41:23 PM
+// Generation date: 11/20/2014 4:11:11 PM
 namespace Lisa.Kiwi.WebApi
 {
     /// <summary>
@@ -395,12 +395,14 @@ namespace Lisa.Kiwi.WebApi
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
         /// <param name="report">Initial value of Report.</param>
+        /// <param name="editToken">Initial value of EditToken.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        public static Contact CreateContact(int ID, int report)
+        public static Contact CreateContact(int ID, int report, global::System.Guid editToken)
         {
             Contact contact = new Contact();
             contact.Id = ID;
             contact.Report = report;
+            contact.EditToken = editToken;
             return contact;
         }
         /// <summary>
@@ -541,6 +543,29 @@ namespace Lisa.Kiwi.WebApi
         private int _Report;
         partial void OnReportChanging(int value);
         partial void OnReportChanged();
+        /// <summary>
+        /// There are no comments for Property EditToken in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
+        [global::Microsoft.OData.Client.OriginalNameAttribute("EditToken")]
+        public global::System.Guid EditToken
+        {
+            get
+            {
+                return this._EditToken;
+            }
+            set
+            {
+                this.OnEditTokenChanging(value);
+                this._EditToken = value;
+                this.OnEditTokenChanged();
+                this.OnPropertyChanged("EditToken");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
+        private global::System.Guid _EditToken;
+        partial void OnEditTokenChanging(global::System.Guid value);
+        partial void OnEditTokenChanged();
         /// <summary>
         /// This event is raised when the value of the property is changed
         /// </summary>
@@ -1202,6 +1227,7 @@ namespace Default
         <Property Name=""EmailAddress"" Type=""Edm.String"" />
         <Property Name=""StudentNumber"" Type=""Edm.Int32"" />
         <Property Name=""Report"" Type=""Edm.Int32"" Nullable=""false"" />
+        <Property Name=""EditToken"" Type=""Edm.Guid"" Nullable=""false"" />
       </EntityType>
       <EntityType Name=""Remark"">
         <Key>

@@ -99,6 +99,13 @@ namespace Lisa.Kiwi.WebApi.Controllers
 			{
 				return BadRequest(ModelState);
 			}
+			
+			var report = db.Reports.FirstOrDefault(r => r.Id == contact.Report);
+
+			if (report == null || report.EditToken != contact.EditToken)
+			{
+				return Unauthorized();
+			}
 
             var newContact = new Data.Contact
             {
@@ -107,7 +114,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
                 Name = contact.Name,
                 PhoneNumber = contact.PhoneNumber,
                 StudentNumber = contact.StudentNumber,
-                Report = db.Reports.Where(r => r.Id == contact.Report).FirstOrDefault()
+                Report = report
             };
 
 			db.Contacts.Add(newContact);
