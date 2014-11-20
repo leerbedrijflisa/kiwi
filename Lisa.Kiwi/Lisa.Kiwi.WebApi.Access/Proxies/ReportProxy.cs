@@ -33,7 +33,7 @@ namespace Lisa.Kiwi.WebApi.Access
 		}
 
 
-        public async Task<Report> AddManualReport(Report report, string editToken = "")
+        public async Task<Report> AddManualReport(Report report)
         {
             var client = new HttpClient
             {
@@ -51,8 +51,7 @@ namespace Lisa.Kiwi.WebApi.Access
                 Time = report.Time,
                 Guid = report.Guid,
                 UserAgent = report.UserAgent,
-                Ip = report.Ip,
-                EditToken = editToken
+                Ip = report.Ip
             };
 
             var serializedReport = JsonConvert.SerializeObject(mappedReport);
