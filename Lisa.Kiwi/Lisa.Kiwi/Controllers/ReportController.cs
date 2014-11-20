@@ -13,14 +13,14 @@ namespace Lisa.Kiwi.WebApi.Controllers
 	public class ReportController : ODataController
 	{
 		private readonly CloudQueue _queue = new QueueConfig().BuildQueue();
-		private readonly KiwiContext db = new KiwiContext();
+		private readonly KiwiContext _db = new KiwiContext();
 
 		// GET odata/Report
 		[EnableQuery]
 		public IQueryable<Report> GetReport()
 		{
 			var result =
-				from r in db.Reports
+				from r in _db.Reports
 				select new Report
 				{
 					Id = r.Id,
@@ -33,10 +33,11 @@ namespace Lisa.Kiwi.WebApi.Controllers
 					Type = r.Type,
 					Hidden = r.Hidden,
 					UserAgent = r.UserAgent,
-					Status = (from s in db.Statuses
+					Status = (from s in _db.Statuses
 						where s.Report == r
 						orderby s.Created descending
-						select s).FirstOrDefault().Name
+						select s).FirstOrDefault().Name,
+					EditToken = r.EditToken
 				};
 
 			return result;
@@ -47,7 +48,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
 		public SingleResult<Report> GetReport([FromODataUri] int key)
 		{
 			var result =
-				from r in db.Reports
+				from r in _db.Reports
 				where r.Id == key
 				select new Report
 				{
@@ -61,10 +62,11 @@ namespace Lisa.Kiwi.WebApi.Controllers
 					Type = r.Type,
 					Hidden = r.Hidden,
 					UserAgent = r.UserAgent,
-					Status = (from s in db.Statuses
+					Status = (from s in _db.Statuses
 						where s.Report == r
 						orderby s.Created descending
-						select s).FirstOrDefault().Name
+						select s).FirstOrDefault().Name,
+					EditToken = r.EditToken
 				};
 
 			return new SingleResult<Report>(result);
@@ -94,7 +96,8 @@ namespace Lisa.Kiwi.WebApi.Controllers
 					Guid = report.Guid,
 					UserAgent = report.UserAgent,
 					Ip = report.Ip,
-					Type = report.Type
+					Type = report.Type,
+					EditToken = report.EditToken
 				};
 
 
@@ -105,10 +108,10 @@ namespace Lisa.Kiwi.WebApi.Controllers
 					Report = dataReport
 				};
 
-				db.Statuses.Add(dataStatus);
+				_db.Statuses.Add(dataStatus);
 
-				db.Reports.Add(dataReport);
-				await db.SaveChangesAsync();
+				_db.Reports.Add(dataReport);
+				await _db.SaveChangesAsync();
 
 				report.Id = dataReport.Id;
 			}
@@ -143,7 +146,10 @@ namespace Lisa.Kiwi.WebApi.Controllers
 				Guid = report.Guid,
 				UserAgent = report.UserAgent,
 				Ip = report.Ip,
-				Type = report.Type
+				Type = report.Type,
+
+				// Used for adding contacts later
+				EditToken = Guid.NewGuid()
 			};
 
 			var dataStatus = new Data.Status
@@ -153,11 +159,11 @@ namespace Lisa.Kiwi.WebApi.Controllers
 				Report = dataReport
 			};
 
-			db.Statuses.Add(dataStatus);
+			_db.Statuses.Add(dataStatus);
 
-			db.Reports.Add(dataReport);
+			_db.Reports.Add(dataReport);
 
-			await db.SaveChangesAsync();
+			await _db.SaveChangesAsync();
 
 			report.Id = dataReport.Id;
 
@@ -173,7 +179,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
 				return BadRequest(ModelState);
 			}
 
-			Data.Report dataReport = await db.Reports.FindAsync(key);
+			Data.Report dataReport = await _db.Reports.FindAsync(key);
             if (dataReport == null)
 			{
 				return NotFound();
@@ -224,12 +230,16 @@ namespace Lisa.Kiwi.WebApi.Controllers
                     case "Visibility" :
 		                dataReport.Hidden = (bool)value;
                         break;
+
+					case "EditToken":
+				        dataReport.EditToken = new Guid(value.ToString());
+				        break;
 		        }
 		    }
 
 			try
 			{
-			    await db.SaveChangesAsync();
+			    await _db.SaveChangesAsync();
 			}
 			catch (Exception)
 			{
@@ -247,14 +257,14 @@ namespace Lisa.Kiwi.WebApi.Controllers
 		// DELETE odata/Report(5)
 		public async Task<IHttpActionResult> Delete([FromODataUri] int key)
 		{
-			Data.Report report = await db.Reports.FindAsync(key);
+			Data.Report report = await _db.Reports.FindAsync(key);
 			if (report == null)
 			{
 				return NotFound();
 			}
 
-			db.Reports.Remove(report);
-			await db.SaveChangesAsync();
+			_db.Reports.Remove(report);
+			await _db.SaveChangesAsync();
 
 			return StatusCode(HttpStatusCode.NoContent);
 		}
@@ -263,14 +273,14 @@ namespace Lisa.Kiwi.WebApi.Controllers
 		{
 			if (disposing)
 			{
-				db.Dispose();
+				_db.Dispose();
 			}
 			base.Dispose(disposing);
 		}
 
 		private bool ReportExists(int key)
 		{
-			return db.Reports.Count(e => e.Id == key) > 0;
+			return _db.Reports.Count(e => e.Id == key) > 0;
 		}
 	}
 }

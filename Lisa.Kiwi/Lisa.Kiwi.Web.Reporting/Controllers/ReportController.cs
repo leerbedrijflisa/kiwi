@@ -134,60 +134,70 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 			HttpCookie cookie = HttpContext.Request.Cookies["userReport"];
 			string guid = cookie.Values["guid"];
 
-			if (ModelState.IsValid)
+			// If the model state is invalid, go back to the form to show errors
+			if (!ModelState.IsValid)
 			{
-				CloudTable table = GetTableStorage();
-
-				TableOperation retrieveOperation = TableOperation.Retrieve<OriginalReport>(guid, "");
-				TableResult retrievedResult = table.Execute(retrieveOperation);
-
-				OriginalReport entity = (OriginalReport) retrievedResult.Result;
-
-				if (retrievedResult != null)
-				{
-                    var report = new WebApi.Report
-					{
-						Description = entity.Description,
-						Created = entity.Created,
-						Location = entity.Location,
-						Time = entity.Time,
-						Guid = entity.PartitionKey,
-						Type = (ReportType)Enum.Parse(typeof(ReportType), entity.Type)
-					};
-                    var reportEntity = await _reportProxy.AddManualReport(report);
-
-                    //var reportEntity = _reportProxy.GetReports();
-                    //var getReport = reportEntity.Where(r => r.Guid == guid).FirstOrDefault();
-
-                    if (reportEntity != null)
-					{
-						var status = new Status
-						{
-							Created = entity.Created,
-							Name = StatusName.Open,
-                            Report = reportEntity.Id
-						};
-						_statusProxy.AddStatus(status);
-
-                        if (data.Name != null && (data.Email != null || data.PhoneNumber != null || data.StudentNumber == 0))
-                        {
-                            var contact = new Contact
-                            {
-                                Name = data.Name,
-                                EmailAddress = data.Email,
-                                PhoneNumber = data.PhoneNumber,
-                                StudentNumber = data.StudentNumber,
-                                Report = reportEntity.Id
-                            };
-                            _contactProxy.AddContact(contact);
-                        }
-					}
-
-
-					return RedirectToAction("Confirmed", "Report");
-				}
+				return View();
 			}
-			return View();
+
+			CloudTable table = GetTableStorage();
+
+			TableOperation retrieveOperation = TableOperation.Retrieve<OriginalReport>(guid, "");
+			TableResult retrievedResult = table.Execute(retrieveOperation);
+
+			// This means there's an internal error, for some reason we don't have the given report stored
+			if (retrievedResult == null)
+			{
+				// TODO: Make message more friendly & translate to dutch.
+				ModelState.AddModelError("", "Report with GUID could not be retrieved, this may be a cache issue.");
+				return View();
+			}
+
+			var entity = (OriginalReport)retrievedResult.Result;
+
+			var report = new Report
+			{
+				Description = entity.Description,
+				Created = entity.Created,
+				Location = entity.Location,
+				Time = entity.Time,
+				Guid = entity.PartitionKey,
+				Type = (ReportType)Enum.Parse(typeof(ReportType), entity.Type)
+			};
+			var reportEntity = await _reportProxy.AddManualReport(report);
+
+			//var reportEntity = _reportProxy.GetReports();
+			//var getReport = reportEntity.Where(r => r.Guid == guid).FirstOrDefault();
+
+			if (reportEntity == null)
+			{
+				// TODO: Make message more friendly & translate to dutch.
+				ModelState.AddModelError("", "Report could not be created.");
+				return RedirectToAction("Index");
+			}
+
+			var status = new Status
+			{
+				Created = entity.Created,
+				Name = StatusName.Open,
+				Report = reportEntity.Id
+			};
+			_statusProxy.AddStatus(status);
+
+			if (data.Name != null && (data.Email != null || data.PhoneNumber != null || data.StudentNumber == 0))
+			{
+				var contact = new Contact
+				{
+					Name = data.Name,
+					EmailAddress = data.Email,
+					PhoneNumber = data.PhoneNumber,
+					StudentNumber = data.StudentNumber,
+					Report = reportEntity.Id
+				};
+				_contactProxy.AddContact(contact, report.EditToken);
+			}
+
+			return RedirectToAction("Confirmed", "Report");
 		}
 
 		public ActionResult Confirmed()

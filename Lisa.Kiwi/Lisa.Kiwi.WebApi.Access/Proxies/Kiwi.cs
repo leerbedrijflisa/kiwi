@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: Tue 18 Nov 14 13:21:27
+// Generation date: 11/20/2014 12:41:23 PM
 namespace Lisa.Kiwi.WebApi
 {
     /// <summary>
@@ -48,13 +48,15 @@ namespace Lisa.Kiwi.WebApi
         /// <param name="hidden">Initial value of Hidden.</param>
         /// <param name="status">Initial value of Status.</param>
         /// <param name="type">Initial value of Type.</param>
+        /// <param name="editToken">Initial value of EditToken.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
         public static Report CreateReport(int ID, 
                     global::System.DateTimeOffset created, 
                     global::System.DateTimeOffset time, 
                     bool hidden, 
                     global::Lisa.Kiwi.Data.StatusName status, 
-                    global::Lisa.Kiwi.Data.ReportType type)
+                    global::Lisa.Kiwi.Data.ReportType type, 
+                    global::System.Guid editToken)
         {
             Report report = new Report();
             report.Id = ID;
@@ -63,6 +65,7 @@ namespace Lisa.Kiwi.WebApi
             report.Hidden = hidden;
             report.Status = status;
             report.Type = type;
+            report.EditToken = editToken;
             return report;
         }
         /// <summary>
@@ -318,6 +321,29 @@ namespace Lisa.Kiwi.WebApi
         private global::Lisa.Kiwi.Data.ReportType _Type;
         partial void OnTypeChanging(global::Lisa.Kiwi.Data.ReportType value);
         partial void OnTypeChanged();
+        /// <summary>
+        /// There are no comments for Property EditToken in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
+        [global::Microsoft.OData.Client.OriginalNameAttribute("EditToken")]
+        public global::System.Guid EditToken
+        {
+            get
+            {
+                return this._EditToken;
+            }
+            set
+            {
+                this.OnEditTokenChanging(value);
+                this._EditToken = value;
+                this.OnEditTokenChanged();
+                this.OnPropertyChanged("EditToken");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
+        private global::System.Guid _EditToken;
+        partial void OnEditTokenChanging(global::System.Guid value);
+        partial void OnEditTokenChanged();
         /// <summary>
         /// This event is raised when the value of the property is changed
         /// </summary>
@@ -1164,6 +1190,7 @@ namespace Default
         <Property Name=""Ip"" Type=""Edm.String"" />
         <Property Name=""Status"" Type=""Lisa.Kiwi.Data.StatusName"" Nullable=""false"" />
         <Property Name=""Type"" Type=""Lisa.Kiwi.Data.ReportType"" Nullable=""false"" />
+        <Property Name=""EditToken"" Type=""Edm.Guid"" Nullable=""false"" />
       </EntityType>
       <EntityType Name=""Contact"">
         <Key>
