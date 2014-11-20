@@ -19,7 +19,7 @@ namespace Lisa.Kiwi.WebApi.Access
 		}
 
 		//Create a new entity
-		public Contact AddContact(Contact contact)
+		public Contact AddContact(Contact contact, Guid securityToken = new Guid())
 		{
 			_container.AddToContact(contact);
 			_container.SaveChanges();

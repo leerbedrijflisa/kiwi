@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -24,5 +23,7 @@ namespace Lisa.Kiwi.Data
 		public string Ip { get; set; }
 
 		public ReportType Type { get; set; }
+
+		public Guid EditToken { get; set; }
 	}
 }

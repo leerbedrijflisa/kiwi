@@ -20,5 +20,6 @@ namespace Lisa.Kiwi.WebApi
 		public string Ip { get; set; }
 		public StatusName Status { get; set; }
 		public ReportType Type { get; set; }
+		public Guid EditToken { get; set; }
 	}
 }
