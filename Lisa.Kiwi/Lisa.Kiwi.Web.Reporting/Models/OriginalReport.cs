@@ -12,7 +12,6 @@ namespace Lisa.Kiwi.Web.Reporting.Models
 		{
 			Created = DateTime.UtcNow;
 			UserAgent = HttpContext.Current.Request.UserAgent;
-			Priority = ReportPriority.Normaal.ToString();
 		}
 
 		public int Id { get; set; }
@@ -39,15 +38,5 @@ namespace Lisa.Kiwi.Web.Reporting.Models
 
 		[Display(Name = "Type melding")]
 		public string Type { get; set; }
-
-        public string Priority { get; set; }
-	}
-
-	public enum ReportPriority
-	{
-		// TODO: translate
-		Laag,
-		Normaal,
-		Hoog
 	}
 }
