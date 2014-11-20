@@ -102,7 +102,9 @@ namespace Lisa.Kiwi.WebApi.Controllers
 			
 			var report = db.Reports.FirstOrDefault(r => r.Id == contact.Report);
 
-			if (report == null || report.EditToken != contact.EditToken)
+			// Only allow assigning contacts to reports without a matching token if the user is an admin
+			if ((report == null || report.EditToken != contact.EditToken) &&
+				!(User == null || !User.IsInRole("Administrator")))
 			{
 				return Unauthorized();
 			}
