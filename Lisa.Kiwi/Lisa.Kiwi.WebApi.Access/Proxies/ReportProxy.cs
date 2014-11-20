@@ -4,7 +4,6 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
-using Default;
 using Microsoft.OData.Client;
 using Newtonsoft.Json;
 
@@ -34,7 +33,7 @@ namespace Lisa.Kiwi.WebApi.Access
 		}
 
 
-        public async Task<Report> AddManualReport(Report report)
+        public async Task<Report> AddManualReport(Report report, string editToken = "")
         {
             var client = new HttpClient
             {
@@ -52,7 +51,8 @@ namespace Lisa.Kiwi.WebApi.Access
                 Time = report.Time,
                 Guid = report.Guid,
                 UserAgent = report.UserAgent,
-                Ip = report.Ip
+                Ip = report.Ip,
+                EditToken = editToken
             };
 
             var serializedReport = JsonConvert.SerializeObject(mappedReport);
