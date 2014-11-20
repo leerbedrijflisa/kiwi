@@ -78,6 +78,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
 		}
 
 		// POST odata/Status
+        [AllowAnonymous]
 		public async Task<IHttpActionResult> Post(Status status)
 		{
 			if (!ModelState.IsValid)
