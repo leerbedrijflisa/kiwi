@@ -34,6 +34,7 @@ namespace Lisa.Kiwi.Web.Reporting.Models
 		public DateTime Created { get; set; }
 
 		[Required]
+        [Display(Name = "Tijd van incident")]
 		public DateTime Time { get; set; }
 
 		[Display(Name = "Type melding")]

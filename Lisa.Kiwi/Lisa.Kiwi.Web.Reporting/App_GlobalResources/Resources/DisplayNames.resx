@@ -163,7 +163,7 @@
     <value>Diefstal</value>
   </data>
   <data name="ReportTypeVehicles" xml:space="preserve">
-    <value>Voortuigen</value>
+    <value>Voertuigen</value>
   </data>
   <data name="ReportUserAgent" xml:space="preserve">
     <value>User Agent</value>
