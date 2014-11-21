@@ -91,7 +91,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 
             if (!ModelState.IsValid)
             {
-                return View();
+                return View(data);
             }
 
 			CloudTable table = GetTableStorage();
