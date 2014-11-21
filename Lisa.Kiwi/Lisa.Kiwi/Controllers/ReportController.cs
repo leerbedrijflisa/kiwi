@@ -152,15 +152,6 @@ namespace Lisa.Kiwi.WebApi.Controllers
 				EditToken = Guid.NewGuid()
 			};
 
-			var dataStatus = new Data.Status
-			{
-				Created = report.Created,
-				Name = report.Status,
-				Report = dataReport
-			};
-
-			_db.Statuses.Add(dataStatus);
-
 			_db.Reports.Add(dataReport);
 
 			await _db.SaveChangesAsync();
