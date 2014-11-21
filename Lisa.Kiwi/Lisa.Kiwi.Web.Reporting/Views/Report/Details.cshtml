@@ -24,7 +24,7 @@
                 <div class="form-group">
                     @Html.LabelFor(o => o.Time, new {@class = "col-xs-12"})
                     <div class="col-xs-12">
-                        @Html.TextBoxFor(o => o.Time, new {@required = "required", @class = "form-control"})
+                        @Html.TextBoxFor(o => o.Time, new {@value = DateTime.Now.ToString("dd-MM-yyyy HH:mm"), @required = "required", @class = "form-control"})
                     </div>
                 </div>
                 <div class="form-group">
