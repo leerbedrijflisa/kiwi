@@ -70,7 +70,8 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 
 		public ActionResult Details()
 		{
-			return View();
+			var report = new OriginalReport {Time = DateTime.Now};
+			return View(report);
 		}
 
 		[HttpPost]
@@ -81,7 +82,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 
 			if (!ModelState.IsValid)
 			{
-                return View();
+                return View(data);
             }
 			
             CloudTable table = GetTableStorage();
