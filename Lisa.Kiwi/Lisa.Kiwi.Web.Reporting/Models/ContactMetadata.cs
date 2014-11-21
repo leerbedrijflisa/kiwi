@@ -19,7 +19,7 @@ namespace Lisa.Kiwi.Web.Reporting.Models
 		public string Email { get; set; }
 
 		[Display(Name = "Studentnummer")]
-		public int StudentNumber { get; set; }
+		public int? StudentNumber { get; set; }
         public int Report { get; set; }
 	}
 }

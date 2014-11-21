@@ -1,8 +1,10 @@
 @model Lisa.Kiwi.Web.Reporting.Models.OriginalReport
 @using Lisa.Kiwi.Web.Reporting.Utils
+@using Lisa.Kiwi.Web.Reporting.Models
 
 @{
     ViewBag.Title = "Bevestigd";
+    ContactMetadata contact = (ContactMetadata)ViewBag.Contact;
 }
 
 
@@ -13,6 +15,8 @@
             <div class="form-group">
                 <p>De melding is succesvol aangemaakt.</p>
             </div>
+        </div>
+        <div class="col-xs-12 left">
             <h4>Details</h4>
             <div class="form-group">
                 <label class="col-xs-12 control-label">Type melding</label>
@@ -38,10 +42,75 @@
                     <p class="form-control-static">@Model.Description</p>
                 </div>
             </div>
-
-
-
-            <p>@Html.ActionLink("Ga terug naar de startpagina", "Index", "Report", new {@class = "btn btn-default btn-report"})</p>
         </div>
-    </div>
+        <div class="col-xs-12 right">
+            @if (contact != null)
+            {
+                <h4>Contactgegevens</h4>
+                <div class="form-group">
+                    <label class="col-xs-12 control-label">Naam</label>
+                    <div class="col-xs-12">
+                        <p class="form-control-static">
+                            @if (contact.Name == null)
+                            {
+                                <span>n.v.t</span>
+                            }
+                            else
+                            {
+                                <span>@contact.Name</span>
+                            }
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 control-label">E-mail adres</label>
+                    <div class="col-xs-12">
+                        <p class="form-control-static">
+                            @if (contact.Email == null)
+                            {
+                                <span>n.v.t</span>
+                            }
+                            else
+                            {
+                                <span>@contact.Email</span>
+                            }
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 control-label">Telefoonnummer</label>
+                    <div class="col-xs-12">
+                        <p class="form-control-static">
+                            @if (contact.PhoneNumber == null)
+                            {
+                                <span>n.v.t</span>
+                            }
+                            else
+                            {
+                                <span>@contact.PhoneNumber</span>
+                            }
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 control-label">Studentnummer</label>
+                    <div class="col-xs-12">
+                        <p class="form-control-static">
+                            @if (contact.StudentNumber == null)
+                            {
+                                <span>n.v.t</span>
+                            }
+                            else
+                            {
+                                <span>@contact.StudentNumber</span>
+                            }
+                        </p>
+                    </div>
+                </div>
+                }
+
+                <p>@Html.ActionLink("Ga terug naar de startpagina", "Index", "Report", new { @class = "btn btn-default btn-report" })</p>
+            </div>
+            <div class="clear"></div>
+        </div>
 </div>
