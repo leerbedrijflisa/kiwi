@@ -1,36 +1,46 @@
 ﻿using System;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using System.Web;
+using Newtonsoft.Json.Linq;
 
 namespace Lisa.Kiwi.WebApi.Access
 {
-    public class AuthenticationProxy
+	public class AuthenticationProxy
     {
-        public async Task<string> Login(string username, string password)
-        {
-            try
-            {
-               HttpResponseMessage response = await _client.PostAsync("", new StringContent("grant_type=password&username=" + username + "&password=" + password));
+	    public async Task<LoginResult> Login(string username, string password)
+	    {
+		    var result = new LoginResult();
+		    var response = await _client.PostAsync("", new StringContent(
+					"grant_type=password&username=" + HttpUtility.UrlEncode(username) +
+					"&password=" + HttpUtility.UrlEncode(password)));
 
-                try
-                {
-                    string token = await response.Content.ReadAsStringAsync();
+		    if (response.StatusCode != HttpStatusCode.OK)
+			{
+				result.Status = LoginStatus.ConnectionError;
+				return result;
+			}
 
-                    return token;
-                }
-                catch (NullReferenceException)
-                {
-                    throw new Exception("WebApi did not respond to login request.");
-                }
-            } 
-            catch (Exception)
-            {
-                throw new Exception("Failed to login. Please check your credentials.");
-            }
-        }
+		    var content = await response.Content.ReadAsStringAsync();
+			var authInfo = JObject.Parse(content);
+		    var authTokenJobj = authInfo.SelectToken("access_token");
 
-        public AuthenticationProxy(Uri authUri)
+		    if (authTokenJobj == null)
+		    {
+			    result.Status = LoginStatus.UserPassMismatch;
+			    return result;
+		    }
+
+			result.Token = authTokenJobj.ToString();
+			result.TokenType = authInfo.SelectToken("token_type").ToString();
+			result.TokenExpiresIn = authInfo.SelectToken("expires_in").ToString();
+
+		    return result;
+	    }
+
+	    public AuthenticationProxy(Uri authUri)
         {
             _client = new HttpClient
             {

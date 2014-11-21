@@ -83,16 +83,16 @@ namespace Lisa.Kiwi.Data.Migrations
 			}
 
 			// Add a test "beveiliger" account (name=beveiliger pass=hello)
-			var beveiliger = new IdentityUser("beveiliger");
-			userManager.Create(beveiliger, "hello");
+			var dashboardUser = new IdentityUser("beveiliger");
+            userManager.Create(dashboardUser, "hello");
 
 			// Add a test "hoofbeveiliger" account (name=hoofbeveiliger pass=masterpass)
-			var hoofbeveiliger = new IdentityUser("hoofbeveiliger");
-			var hoofbeveiligerResult = userManager.Create(hoofbeveiliger, "masterpass");
+            var headOfSecurity = new IdentityUser("hoofdbeveiliger");
+            var headOfSecurityResult = userManager.Create(headOfSecurity, "masterpass");
 
-			if (hoofbeveiligerResult.Succeeded)
+            if (headOfSecurityResult.Succeeded)
 			{
-				userManager.AddToRole(hoofbeveiliger.Id, "Administrator");
+                userManager.AddToRole(headOfSecurity.Id, "Administrator");
 			}
 		}
 	}
