@@ -54,23 +54,46 @@ namespace Lisa.Kiwi.Data.Migrations
 			context.Statuses.AddOrUpdate(sampleStatus2);
 			context.Remarks.AddOrUpdate(sampleRemark);
 
-			var userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>(context));
+			// Set up our accounts
+			CreateRoles(context);
+			CreateUsers(context);
+			
+			base.Seed(context);
+		}
+
+		private void CreateRoles(KiwiContext context)
+		{
 			var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
 
 			// Create our Administrator role
 			roleManager.Create(new IdentityRole("Administrator"));
-			
-			// Add a test administrator account (name=admin pass=toor42)
-			var user = new IdentityUser("admin");
-			var adminresult = userManager.Create(user, "toor42");
+		}
 
-			// Add User Admin to Role Admin
-			if (adminresult.Succeeded)
+		private void CreateUsers(KiwiContext context)
+		{
+			var userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>(context));
+
+			// Add a test administrator account (name=admin pass=toor42)
+			var admin = new IdentityUser("admin");
+			var adminResult = userManager.Create(admin, "toor42");
+
+			if (adminResult.Succeeded)
 			{
-				var result = userManager.AddToRole(user.Id, "Administrator");
+				userManager.AddToRole(admin.Id, "Administrator");
 			}
 
-			base.Seed(context);
+			// Add a test "beveiliger" account (name=beveiliger pass=hello)
+			var beveiliger = new IdentityUser("beveiliger");
+			userManager.Create(beveiliger, "hello");
+
+			// Add a test "hoofbeveiliger" account (name=hoofbeveiliger pass=masterpass)
+			var hoofbeveiliger = new IdentityUser("hoofbeveiliger");
+			var hoofbeveiligerResult = userManager.Create(hoofbeveiliger, "masterpass");
+
+			if (hoofbeveiligerResult.Succeeded)
+			{
+				userManager.AddToRole(hoofbeveiliger.Id, "Administrator");
+			}
 		}
 	}
 }
