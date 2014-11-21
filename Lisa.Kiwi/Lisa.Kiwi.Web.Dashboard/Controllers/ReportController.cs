@@ -284,7 +284,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 			var lastStatus = string.Empty;
 			foreach (var status in statusses)
 			{
-				var description = CreateLogbookStatusDescription(status, lastStatus, report);
+				var description = CreateLogbookStatusDescription(status, lastStatus, report.Id);
 				lastStatus = status.Name.ToString();
 
                 result.Add(new LogBookEntry
@@ -297,13 +297,13 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 			return result;
 		}
 
-		private string CreateLogbookStatusDescription(Status status, string lastStatus, WebApi.Report report)
+		private string CreateLogbookStatusDescription(Status status, string lastStatus, int reportId)
 		{
 			var description = "";
 			if (string.IsNullOrEmpty(lastStatus))
 			{
 				var person = "Anoniem";
-                var contact = _contactProxy.GetContacts().Where(c => c.Report == report.Id).FirstOrDefault();
+                var contact = _contactProxy.GetContacts().Where(c => c.Report == reportId).FirstOrDefault();
                 if (contact != null)
                 {
                     person = contact.Name;
