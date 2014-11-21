@@ -196,7 +196,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Voortuigen.
+        ///   Looks up a localized string similar to Voertuigen.
         /// </summary>
         public static string ReportTypeVehicles {
             get {
