@@ -193,12 +193,12 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
         private void CreateStatus(DateTime created, int id) 
         {
             var status = new Status
-					            {
-						            Created = created,
-						            Name = StatusName.Open,
-                                    Report = id
-					            };
-					            _statusProxy.AddStatus(status);
+			{
+				Created = created,
+				Name = StatusName.Open,
+                Report = id
+			};
+			_statusProxy.AddStatus(status);
         }
 
         private void CreateContact(ContactMetadata data, int id, Guid editToken) 
