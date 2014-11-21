@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -65,7 +64,7 @@ namespace Lisa.Kiwi.Data.Migrations
 		{
 			var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
 
-			// Create our Administrator role
+			// Create our roles
 			roleManager.Create(new IdentityRole("Administrator"));
 		}
 
@@ -84,9 +83,9 @@ namespace Lisa.Kiwi.Data.Migrations
 
 			// Add a test "beveiliger" account (name=beveiliger pass=hello)
 			var dashboardUser = new IdentityUser("beveiliger");
-            userManager.Create(dashboardUser, "hello");
+            userManager.Create(dashboardUser, "helloo");
 
-			// Add a test "hoofbeveiliger" account (name=hoofbeveiliger pass=masterpass)
+			// Add a test "hoofdbeveiliger" account (name=hoofdbeveiliger pass=masterpass)
             var headOfSecurity = new IdentityUser("hoofdbeveiliger");
             var headOfSecurityResult = userManager.Create(headOfSecurity, "masterpass");
 
