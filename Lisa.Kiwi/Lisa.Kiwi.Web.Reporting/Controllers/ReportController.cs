@@ -18,21 +18,6 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 {
 	public class ReportController : Controller
 	{
-		private CloudTable GetTableStorage()
-		{
-			CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-				CloudConfigurationManager.GetSetting("StorageConnectionString"));
-
-			// Create the table client.
-			CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
-
-			// Create the table if it doesn't exist.
-			CloudTable table = tableClient.GetTableReference("report");
-			table.CreateIfNotExists();
-
-			return table;
-		}
-
         public ActionResult Index()
         {
             return View();
@@ -52,9 +37,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 			if (ModelState.IsValid)
 			{
 				CloudTable table = GetTableStorage();
-
-                var report = DefineReport(reportType);
-
+                OriginalReport report = DefineReport(reportType);
 				TableOperation insertOperation = TableOperation.Insert(report);
 				table.Execute(insertOperation);
 
@@ -131,9 +114,25 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
                 if (reportEntity != null)
 				{
 					CreateStatus(entity.Created, reportEntity.Id);
-                    CreateContact(data, reportEntity.Id, reportEntity.EditToken);
+                    var newContact = CreateContact(data, reportEntity.Id, reportEntity.EditToken);
+                    var entityContact = new ContactMetadata
+                    {
+                        Id = newContact.Id,
+                        Name = newContact.Name,
+                        Email = newContact.EmailAddress,
+                        PhoneNumber = newContact.PhoneNumber,
+                        StudentNumber = newContact.StudentNumber,
+                        Report = newContact.Report,
+                        PartitionKey = entity.PartitionKey,
+                        RowKey = ""
+                    };
+
+                    CloudTable tableContact = GetContactTableStorage();
+                    TableOperation insertOperation = TableOperation.Insert(entityContact);
+                    tableContact.Execute(insertOperation);
+
+                    return RedirectToAction("Confirmed", "Report");
 				}
-				return RedirectToAction("Confirmed", "Report");
 			}
             return View();
 		}
@@ -148,6 +147,12 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             TableResult retrievedResult = table.Execute(retrieveOperation);
             OriginalReport entity = (OriginalReport)retrievedResult.Result;
 
+            CloudTable tableContact = GetContactTableStorage();
+            retrieveOperation = TableOperation.Retrieve<ContactMetadata>(guid, "");
+            retrievedResult = tableContact.Execute(retrieveOperation);
+            ContactMetadata contact = (ContactMetadata)retrievedResult.Result;
+
+            ViewBag.Contact = contact;
 			return View(entity);
 		}
 
@@ -201,7 +206,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 			_statusProxy.AddStatus(status);
         }
 
-        private void CreateContact(ContactMetadata data, int id, Guid editToken) 
+        private Contact CreateContact(ContactMetadata data, int id, Guid editToken) 
         {
             if (data.Name != null && (data.Email != null || data.PhoneNumber != null || data.StudentNumber == 0))
             {
@@ -215,7 +220,38 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
                     Report = id
                 };
                 _contactProxy.AddContact(contact);
+                return contact;
             }
+            return null;
+        }
+
+        private CloudTable GetTableStorage()
+        {
+            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+                CloudConfigurationManager.GetSetting("StorageConnectionString"));
+
+            // Create the table client.
+            CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
+
+            // Create the table if it doesn't exist.
+            CloudTable table = tableClient.GetTableReference("report");
+            table.CreateIfNotExists();
+
+            return table;
+        }
+
+        private CloudTable GetContactTableStorage()
+        {
+            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+                CloudConfigurationManager.GetSetting("StorageConnectionString"));
+
+            // Create the table client.
+            CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
+
+            CloudTable tableContact = tableClient.GetTableReference("contact");
+            tableContact.CreateIfNotExists();
+
+            return tableContact;
         }
 
 		private readonly ReportProxy _reportProxy = new ReportProxy(ConfigHelper.GetODataUri());
