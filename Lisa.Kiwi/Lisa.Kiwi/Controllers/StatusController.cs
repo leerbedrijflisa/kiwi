@@ -26,6 +26,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
 					Id = s.Id,
 					Name = s.Name,
 					Created = s.Created,
+                    User = s.User.Id,
 					Report = s.Report.Id
 				};
 			return result;
@@ -60,6 +61,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
 					Id = status.Id,
 					Name = status.Name,
 					Created = status.Created,
+                    User = db.Users.Find(status.User),
 					Report = db.Reports.Find(status.Report)
 				});
 
@@ -91,7 +93,8 @@ namespace Lisa.Kiwi.WebApi.Controllers
 				Id = status.Id,
 				Name = status.Name,
 				Created = status.Created,
-				Report = db.Reports.Find(status.Report)
+                User = db.Users.Find(status.User),
+                Report = db.Reports.Find(status.Report)
 			});
 
 			await db.SaveChangesAsync();
@@ -121,6 +124,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
 				Id = dataStatus.Id,
 				Created = dataStatus.Created,
 				Name = dataStatus.Name,
+                User = dataStatus.User.Id,
 				Report = dataStatus.Report.Id
 			};
 
@@ -129,6 +133,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
 			dataStatus.Id = status.Id;
 			dataStatus.Created = status.Created;
 			dataStatus.Name = status.Name;
+		    dataStatus.User = db.Users.Find(status.User);
 			dataStatus.Report = db.Reports.Find(status.Report);
 
 			try

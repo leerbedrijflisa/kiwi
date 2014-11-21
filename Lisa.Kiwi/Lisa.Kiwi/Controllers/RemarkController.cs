@@ -23,6 +23,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
 				{
 					Id = r.Id,
 					Description = r.Description,
+                    User = r.User.Id,
 					Report = r.Report.Id,
 					Created = r.Created
 				};
@@ -58,7 +59,8 @@ namespace Lisa.Kiwi.WebApi.Controllers
 					Id = remark.Id,
 					Created = remark.Created,
 					Description = remark.Description,
-					Report = db.Reports.Find(remark.Report)
+					Report = db.Reports.Find(remark.Report),
+                    User = db.Users.Find(remark.User),
 				});
 
 				await db.SaveChangesAsync();
@@ -88,6 +90,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
 				Id = remark.Id,
 				Created = remark.Created,
 				Description = remark.Description,
+                User = db.Users.Find(remark.User),
 				Report = db.Reports.Find(remark.Report)
 			};
 
@@ -121,6 +124,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
 				Id = dataRemark.Id,
 				Created = dataRemark.Created,
 				Description = dataRemark.Description,
+                User = dataRemark.User.Id,
 				Report = dataRemark.Report.Id
 			};
 
@@ -129,6 +133,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
 			dataRemark.Id = remark.Id;
 			dataRemark.Created = remark.Created;
 			dataRemark.Description = remark.Description;
+            dataRemark.User = db.Users.Find(remark.User);
 			dataRemark.Report = db.Reports.Find(remark.Report);
 
 			try
