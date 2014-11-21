@@ -79,7 +79,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 			HttpCookie cookie = HttpContext.Request.Cookies["userReport"];
 			string guid = cookie.Values["guid"];
 
-			if (ModelState.IsValid)
+			if (!ModelState.IsValid)
 			{
                 return View();
             }
@@ -100,12 +100,12 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 		}
 
 		[HttpPost]
-		public async Task<ActionResult> Contactdetails(ContactMetadata data)
+		public async Task<ActionResult> ContactDetails(ContactMetadata data)
 		{
 			HttpCookie cookie = HttpContext.Request.Cookies["userReport"];
 			string guid = cookie.Values["guid"];
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return View();
             }
