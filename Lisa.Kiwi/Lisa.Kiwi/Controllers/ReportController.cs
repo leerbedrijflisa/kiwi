@@ -154,9 +154,19 @@ namespace Lisa.Kiwi.WebApi.Controllers
 
 			_db.Reports.Add(dataReport);
 
+
 			await _db.SaveChangesAsync();
 
-			report.Id = dataReport.Id;
+            report.Id = dataReport.Id;
+            var status = new Data.Status
+            {
+                Name = StatusName.Open,
+                Created = report.Created,
+                Visible = true,
+                Report = dataReport
+            };
+
+            _db.Statuses.Add(status);
 
 			return Created(report);
 		}

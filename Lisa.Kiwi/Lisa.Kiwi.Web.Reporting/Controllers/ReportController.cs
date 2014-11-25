@@ -114,8 +114,6 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
                 var reportEntity = await _reportProxy.AddManualReport(report);
                 if (reportEntity != null)
 				{
-					CreateStatus(entity.Created, reportEntity.Id);
-
                     if (data.Name != null && (data.Email != null || data.PhoneNumber != null || data.StudentNumber == 0))
                     {
                         var newContact = CreateContact(data, reportEntity.Id, reportEntity.EditToken);
