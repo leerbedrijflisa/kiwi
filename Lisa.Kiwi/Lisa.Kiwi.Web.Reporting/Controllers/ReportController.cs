@@ -91,7 +91,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 
             if (!ModelState.IsValid)
             {
-                return View();
+                return View(data);
             }
 
 			CloudTable table = GetTableStorage();
@@ -114,23 +114,25 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
                 var reportEntity = await _reportProxy.AddManualReport(report);
                 if (reportEntity != null)
 				{
-					CreateStatus(entity.Created, reportEntity.Id);
-                    var newContact = CreateContact(data, reportEntity.Id, reportEntity.EditToken);
-                    var entityContact = new ContactMetadata
+                    if (data.Name != null && (data.Email != null || data.PhoneNumber != null || data.StudentNumber == 0))
                     {
-                        Id = newContact.Id,
-                        Name = newContact.Name,
-                        Email = newContact.EmailAddress,
-                        PhoneNumber = newContact.PhoneNumber,
-                        StudentNumber = newContact.StudentNumber,
-                        Report = newContact.Report,
-                        PartitionKey = entity.PartitionKey,
-                        RowKey = ""
-                    };
+                        var newContact = CreateContact(data, reportEntity.Id, reportEntity.EditToken);
+                        var entityContact = new ContactMetadata
+                        {
+                            Id = newContact.Id,
+                            Name = newContact.Name,
+                            Email = newContact.EmailAddress,
+                            PhoneNumber = newContact.PhoneNumber,
+                            StudentNumber = newContact.StudentNumber,
+                            Report = newContact.Report,
+                            PartitionKey = entity.PartitionKey,
+                            RowKey = ""
+                        };
 
-                    CloudTable tableContact = GetContactTableStorage();
-                    TableOperation insertOperation = TableOperation.Insert(entityContact);
-                    tableContact.Execute(insertOperation);
+                        CloudTable tableContact = GetContactTableStorage();
+                        TableOperation insertOperation = TableOperation.Insert(entityContact);
+                        tableContact.Execute(insertOperation);
+                    }
 
                     return RedirectToAction("Confirmed", "Report");
 				}
@@ -209,21 +211,17 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 
         private Contact CreateContact(ContactMetadata data, int id, Guid editToken) 
         {
-            if (data.Name != null && (data.Email != null || data.PhoneNumber != null || data.StudentNumber == 0))
+            var contact = new Contact
             {
-                var contact = new Contact
-                {
-                    Name = data.Name,
-                    EmailAddress = data.Email,
-                    PhoneNumber = data.PhoneNumber,
-                    StudentNumber = data.StudentNumber,
-                    EditToken = editToken,
-                    Report = id
-                };
-                _contactProxy.AddContact(contact);
-                return contact;
-            }
-            return null;
+                Name = data.Name,
+                EmailAddress = data.Email,
+                PhoneNumber = data.PhoneNumber,
+                StudentNumber = data.StudentNumber,
+                EditToken = editToken,
+                Report = id
+            };
+            _contactProxy.AddContact(contact);
+            return contact;
         }
 
         private CloudTable GetTableStorage()
