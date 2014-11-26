@@ -23,6 +23,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 		}
 
 		[HttpPost]
+        [ValidateInput(false)]
 		public async Task<ActionResult> Login(string username, string password)
 		{
 

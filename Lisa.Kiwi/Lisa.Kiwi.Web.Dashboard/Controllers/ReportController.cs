@@ -89,6 +89,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 
 		[HttpPost]
 		[ValidateAntiForgeryToken]
+        [ValidateInput(false)]
 		public ActionResult Details(int id, StatusName? status, string remark, bool visibility = true)
 		{
 			var sessionTimeOut = Session.Timeout = 60;
