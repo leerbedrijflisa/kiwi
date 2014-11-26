@@ -5,6 +5,7 @@
 @{
     ViewBag.Title = "Bevestigd";
     ContactMetadata contact = (ContactMetadata)ViewBag.Contact;
+    ReportTypeMetadata type = (ReportTypeMetadata) Enum.Parse(typeof(ReportTypeMetadata), Model.Type);
 }
 
 
@@ -21,7 +22,7 @@
             <div class="form-group">
                 <label class="col-xs-12 control-label">Type melding</label>
                 <div class="col-xs-12">
-                    <p class="form-control-static">@Model.Type</p>
+                    <p class="form-control-static">@type.GetReportTypeDisplayNameFromMetadata()</p>
                 </div>
             </div>
             <div class="form-group">
@@ -33,7 +34,7 @@
             <div class="form-group">
                 <label class="col-xs-12 control-label">Tijdstip</label>
                 <div class="col-xs-12">
-                    <p class="form-control-static">@Model.Time.ToString("dddd dd MMM yyyy")</p>
+                    <p class="form-control-static">@Model.Time.ToString("dddd dd MMM yyyy HH:mm")</p>
                 </div>
             </div>
             <div class="form-group">
@@ -109,8 +110,10 @@
                 </div>
                 }
 
-                <p>@Html.ActionLink("Ga terug naar de startpagina", "Index", "Report", new { @class = "btn btn-default btn-report" })</p>
             </div>
             <div class="clear"></div>
+            <div class="col-xs-12">
+                <p>@Html.ActionLink("Ga terug naar de startpagina", "Index", "Report", new { @class = "btn btn-default btn-report" })</p>
+            </div>
         </div>
 </div>
