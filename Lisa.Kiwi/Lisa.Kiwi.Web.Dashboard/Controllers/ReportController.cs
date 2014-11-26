@@ -13,6 +13,8 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 {
 	public class ReportController : Controller
 	{
+		private const string DefaultSortBy = "Created DESC";
+
         public ReportController()
         {
             _token = System.Web.HttpContext.Current.Session["token"] as string ?? "";
@@ -24,7 +26,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
             _contactProxy = new ContactProxy(ConfigHelper.GetODataUri(), _token, _tokenType);
         }
 
-		public ActionResult Index(string sortBy = "Created DESC")
+		public ActionResult Index(string sortBy = DefaultSortBy)
 		{
 			var sessionTimeOut = Session.Timeout = 60;
 			if (Session["user"] == null || sessionTimeOut == 0)
@@ -45,8 +47,17 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 				reports = _reportProxy.GetReports();
 			}
 
-			ViewBag.SortingBy = sortBy;
-			return View(reports.SortBy(sortBy).ToList());
+			try
+			{
+				ViewBag.SortingBy = sortBy;
+				return View(reports.SortBy(sortBy).ToList());
+			}
+			catch (ArgumentException)
+			{
+				// sortBy was invalid, use the default
+				ViewBag.SortingBy = DefaultSortBy;
+				return View(reports.SortBy(DefaultSortBy));
+			}
 		}
 
 		public ActionResult Details(int id)
