@@ -32,6 +32,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 		}
 
 		[HttpPost]
+        [ValidateInput(false)]
 		public ActionResult Type(ReportType reportType)
 		{
 			if (ModelState.IsValid)
@@ -58,6 +59,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 		}
 
 		[HttpPost]
+        [ValidateInput(false)]
 		public ActionResult Details(OriginalReport data)
 		{
 			HttpCookie cookie = HttpContext.Request.Cookies["userReport"];
@@ -84,6 +86,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 		}
 
 		[HttpPost]
+        [ValidateInput(false)]
 		public async Task<ActionResult> ContactDetails(ContactMetadata data)
 		{
 			HttpCookie cookie = HttpContext.Request.Cookies["userReport"];

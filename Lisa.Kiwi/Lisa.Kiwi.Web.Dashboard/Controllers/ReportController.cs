@@ -100,6 +100,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 
 		[HttpPost]
 		[ValidateAntiForgeryToken]
+        [ValidateInput(false)]
 		public ActionResult Details(int id, StatusName? status, string remark, bool visibility = true)
 		{
 			var sessionTimeOut = Session.Timeout = 60;
@@ -291,12 +292,12 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
         private List<LogBookEntry> AddStatussesToLogbook(IQueryable<Status> statusses, WebApi.Report report)
 		{
             List<LogBookEntry> result = new List<LogBookEntry>();
+            Status lastStatus = null;
 
-			var lastStatus = string.Empty;
 			foreach (var status in statusses)
 			{
-				var description = CreateLogbookStatusDescription(status, lastStatus, report.Id);
-				lastStatus = status.Name.ToString();
+                var description = CreateLogbookStatusDescription(status, report.Id, lastStatus);
+				lastStatus = status;
 
                 result.Add(new LogBookEntry
 				{
@@ -308,10 +309,10 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 			return result;
 		}
 
-		private string CreateLogbookStatusDescription(Status status, string lastStatus, int reportId)
+        private string CreateLogbookStatusDescription(Status status, int reportId, Status lastStatus = null)
 		{
 			var description = "";
-			if (string.IsNullOrEmpty(lastStatus))
+			if (lastStatus == null)
 			{
 				var person = "Anoniem";
                 var contact = _contactProxy.GetContacts().Where(c => c.Report == reportId).FirstOrDefault();
@@ -329,7 +330,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 			}
 			else
 			{
-				description = string.Format("The Status {0} is changed to {1}.", lastStatus,
+				description = string.Format("The Status {0} is changed to {1}.", lastStatus.Name.GetStatusDisplayNameFromMetadata(),
 					status.Name.GetStatusDisplayNameFromMetadata());
 			}
 			return description;
