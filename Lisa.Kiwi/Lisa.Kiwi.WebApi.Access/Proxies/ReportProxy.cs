@@ -51,7 +51,8 @@ namespace Lisa.Kiwi.WebApi.Access
                 Time = report.Time,
                 Guid = report.Guid,
                 UserAgent = report.UserAgent,
-                Ip = report.Ip
+                Ip = report.Ip,
+                Type = report.Type
             };
 
             var serializedReport = JsonConvert.SerializeObject(mappedReport);

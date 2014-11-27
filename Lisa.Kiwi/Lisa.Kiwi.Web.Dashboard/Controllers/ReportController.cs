@@ -171,7 +171,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 				Location = "Arco Baleno - with user",
 				Time = DateTime.Today.AddHours(3),
 				Hidden = false,
-				Type = ReportType.Bullying,
+				Type = "Pesten",
 				UserAgent = "Opera",
 				Guid = Guid.NewGuid().ToString()
 			});
@@ -195,7 +195,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 				Location = "Azurro",
 				Time = DateTime.Today.AddHours(4),
 				Hidden = false,
-				Type = ReportType.Bullying,
+				Type = "Pesten",
 				UserAgent = "Opera",
                 Guid = Guid.NewGuid().ToString()
 			});
@@ -209,7 +209,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 				Location = "Arco Baleno",
 				Time = DateTime.Today.AddHours(7),
 				Hidden = false,
-				Type = ReportType.Bullying,
+				Type = "Pesten",
 				UserAgent = "Opera",
 				Guid = Guid.NewGuid().ToString()
 			});
@@ -223,7 +223,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 				Location = "Arco Baleno",
 				Time = DateTime.Today.AddHours(8),
 				Hidden = false,
-				Type = ReportType.Drugs,
+				Type = "Drugs",
 				UserAgent = "Opera",
 				Guid = Guid.NewGuid().ToString() //,
 				//Contacts = contact
@@ -238,7 +238,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 				Location = "Sportcentrum",
 				Time = DateTime.Today.AddHours(3).AddMinutes(34),
 				Hidden = false,
-				Type = ReportType.Drugs,
+				Type = "Drugs",
 				UserAgent = "Chrome",
 				Guid = Guid.NewGuid().ToString()
 			});
@@ -252,7 +252,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 				Location = "Ocra",
 				Time = DateTime.Today.AddHours(7).AddMinutes(21),
 				Hidden = false,
-				Type = ReportType.Fire,
+				Type = "Brand",
 				UserAgent = "Chrome",
 				Guid = Guid.NewGuid().ToString()
 			});
@@ -266,7 +266,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 				Location = "Bianco begane grond",
 				Time = DateTime.Today.AddHours(11).AddMinutes(30),
 				Hidden = false,
-				Type = ReportType.Theft,
+				Type = "Diefstal",
 				UserAgent = "Chrome",
 				Guid = Guid.NewGuid().ToString()
 			});

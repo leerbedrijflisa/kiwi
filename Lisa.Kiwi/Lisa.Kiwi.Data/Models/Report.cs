@@ -22,7 +22,7 @@ namespace Lisa.Kiwi.Data
 		[MaxLength(45)]
 		public string Ip { get; set; }
 
-		public ReportType Type { get; set; }
+		public string Type { get; set; }
 
 		public Guid EditToken { get; set; }
 	}

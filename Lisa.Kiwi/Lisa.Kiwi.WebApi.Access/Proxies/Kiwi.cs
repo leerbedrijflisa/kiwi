@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 11/20/2014 4:11:11 PM
+// Generation date: 27/11/2014 15:52:03
 namespace Lisa.Kiwi.WebApi
 {
     /// <summary>
@@ -47,7 +47,6 @@ namespace Lisa.Kiwi.WebApi
         /// <param name="time">Initial value of Time.</param>
         /// <param name="hidden">Initial value of Hidden.</param>
         /// <param name="status">Initial value of Status.</param>
-        /// <param name="type">Initial value of Type.</param>
         /// <param name="editToken">Initial value of EditToken.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
         public static Report CreateReport(int ID, 
@@ -55,7 +54,6 @@ namespace Lisa.Kiwi.WebApi
                     global::System.DateTimeOffset time, 
                     bool hidden, 
                     global::Lisa.Kiwi.Data.StatusName status, 
-                    global::Lisa.Kiwi.Data.ReportType type, 
                     global::System.Guid editToken)
         {
             Report report = new Report();
@@ -64,7 +62,6 @@ namespace Lisa.Kiwi.WebApi
             report.Time = time;
             report.Hidden = hidden;
             report.Status = status;
-            report.Type = type;
             report.EditToken = editToken;
             return report;
         }
@@ -276,6 +273,29 @@ namespace Lisa.Kiwi.WebApi
         partial void OnIpChanging(string value);
         partial void OnIpChanged();
         /// <summary>
+        /// There are no comments for Property Type in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
+        [global::Microsoft.OData.Client.OriginalNameAttribute("Type")]
+        public string Type
+        {
+            get
+            {
+                return this._Type;
+            }
+            set
+            {
+                this.OnTypeChanging(value);
+                this._Type = value;
+                this.OnTypeChanged();
+                this.OnPropertyChanged("Type");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
+        private string _Type;
+        partial void OnTypeChanging(string value);
+        partial void OnTypeChanged();
+        /// <summary>
         /// There are no comments for Property Status in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
@@ -298,29 +318,6 @@ namespace Lisa.Kiwi.WebApi
         private global::Lisa.Kiwi.Data.StatusName _Status;
         partial void OnStatusChanging(global::Lisa.Kiwi.Data.StatusName value);
         partial void OnStatusChanged();
-        /// <summary>
-        /// There are no comments for Property Type in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        [global::Microsoft.OData.Client.OriginalNameAttribute("Type")]
-        public global::Lisa.Kiwi.Data.ReportType Type
-        {
-            get
-            {
-                return this._Type;
-            }
-            set
-            {
-                this.OnTypeChanging(value);
-                this._Type = value;
-                this.OnTypeChanged();
-                this.OnPropertyChanged("Type");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        private global::Lisa.Kiwi.Data.ReportType _Type;
-        partial void OnTypeChanging(global::Lisa.Kiwi.Data.ReportType value);
-        partial void OnTypeChanged();
         /// <summary>
         /// There are no comments for Property EditToken in the schema.
         /// </summary>
@@ -978,31 +975,6 @@ namespace Lisa.Kiwi.Data
         Transferred = 3
     }
     /// <summary>
-    /// There are no comments for ReportType in the schema.
-    /// </summary>
-    [global::Microsoft.OData.Client.OriginalNameAttribute("ReportType")]
-    public enum ReportType
-    {
-        [global::Microsoft.OData.Client.OriginalNameAttribute("Drugs")]
-        Drugs = 0,
-        [global::Microsoft.OData.Client.OriginalNameAttribute("Nuisance")]
-        Nuisance = 1,
-        [global::Microsoft.OData.Client.OriginalNameAttribute("Vehicles")]
-        Vehicles = 2,
-        [global::Microsoft.OData.Client.OriginalNameAttribute("Burglary")]
-        Burglary = 3,
-        [global::Microsoft.OData.Client.OriginalNameAttribute("Theft")]
-        Theft = 4,
-        [global::Microsoft.OData.Client.OriginalNameAttribute("Intimidation")]
-        Intimidation = 5,
-        [global::Microsoft.OData.Client.OriginalNameAttribute("Bullying")]
-        Bullying = 6,
-        [global::Microsoft.OData.Client.OriginalNameAttribute("Digital")]
-        Digital = 7,
-        [global::Microsoft.OData.Client.OriginalNameAttribute("Fire")]
-        Fire = 8
-    }
-    /// <summary>
     /// Class containing all extension methods
     /// </summary>
     public static class ExtensionMethods
@@ -1213,8 +1185,8 @@ namespace Default
         <Property Name=""Guid"" Type=""Edm.String"" />
         <Property Name=""UserAgent"" Type=""Edm.String"" />
         <Property Name=""Ip"" Type=""Edm.String"" />
+        <Property Name=""Type"" Type=""Edm.String"" />
         <Property Name=""Status"" Type=""Lisa.Kiwi.Data.StatusName"" Nullable=""false"" />
-        <Property Name=""Type"" Type=""Lisa.Kiwi.Data.ReportType"" Nullable=""false"" />
         <Property Name=""EditToken"" Type=""Edm.Guid"" Nullable=""false"" />
       </EntityType>
       <EntityType Name=""Contact"">
@@ -1255,17 +1227,6 @@ namespace Default
         <Member Name=""Solved"" Value=""1"" />
         <Member Name=""InProgress"" Value=""2"" />
         <Member Name=""Transferred"" Value=""3"" />
-      </EnumType>
-      <EnumType Name=""ReportType"">
-        <Member Name=""Drugs"" Value=""0"" />
-        <Member Name=""Nuisance"" Value=""1"" />
-        <Member Name=""Vehicles"" Value=""2"" />
-        <Member Name=""Burglary"" Value=""3"" />
-        <Member Name=""Theft"" Value=""4"" />
-        <Member Name=""Intimidation"" Value=""5"" />
-        <Member Name=""Bullying"" Value=""6"" />
-        <Member Name=""Digital"" Value=""7"" />
-        <Member Name=""Fire"" Value=""8"" />
       </EnumType>
     </Schema>
     <Schema Namespace=""Default"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
