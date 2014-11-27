@@ -36,7 +36,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
 					Status = (from s in _db.Statuses
 						where s.Report == r
 						orderby s.Created descending
-						select s).FirstOrDefault().Name
+						select s.Name).FirstOrDefault()
 					// Do not give back edit token, that's not visible after creation
 				};
 
@@ -65,7 +65,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
 					Status = (from s in _db.Statuses
 						where s.Report == r
 						orderby s.Created descending
-						select s).FirstOrDefault().Name,
+						select s.Name).FirstOrDefault()
 					// Do not give back edit token, that's not visible after creation
 				};
 
