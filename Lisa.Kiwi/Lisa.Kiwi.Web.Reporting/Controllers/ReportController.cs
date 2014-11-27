@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using Lisa.Kiwi.Data;
 using Lisa.Kiwi.Web.Reporting.Models;
 using Lisa.Kiwi.Web.Reporting.Utils;
 using Lisa.Kiwi.WebApi;
