@@ -144,7 +144,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 				_remarkProxy.AddRemark(newRemark);
 			}
             
-			if (Session["user"].ToString() == "hoofd beveiliger")
+			if ((bool)Session["is_admin"])
 			{
 				report.Hidden = visibility;                
 

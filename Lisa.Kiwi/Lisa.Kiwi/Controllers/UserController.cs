@@ -1,5 +1,11 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Linq;
+using System.Net.Http;
+using System.Security.Claims;
+using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Security;
+using Lisa.Kiwi.Data;
 using Lisa.Kiwi.WebApi.Models;
 using Microsoft.AspNet.Identity;
 
@@ -25,6 +31,15 @@ namespace Lisa.Kiwi.WebApi.Controllers
 			return GetErrorResult(result) ?? Ok();
 		}
 
+		[Authorize]
+		[Route("is_admin")]
+		[HttpGet]
+		public async Task<IHttpActionResult> IsAdmin()
+		{
+			var user = (ClaimsIdentity)User.Identity;
+			return Ok(user.Claims.Any(c => c.Type == "is_admin" && bool.Parse(c.Value)));
+		}
+		
 		[Authorize]
 		[Route("test_auth")]
 		[HttpGet]
@@ -61,5 +76,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
 
 			return BadRequest(ModelState);
 		}
+
+		private readonly KiwiContext _db = new KiwiContext();
 	}
 }

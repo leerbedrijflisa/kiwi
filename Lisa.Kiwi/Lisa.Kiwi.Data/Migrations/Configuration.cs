@@ -1,5 +1,7 @@
 using System;
 using System.Data.Entity.Migrations;
+using System.Linq;
+using System.Security.Claims;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
@@ -72,27 +74,36 @@ namespace Lisa.Kiwi.Data.Migrations
 		{
 			var userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>(context));
 
-			// Add a test administrator account (name=admin pass=toor42)
-			var admin = new IdentityUser("admin");
-			var adminResult = userManager.Create(admin, "toor42");
-
-			if (adminResult.Succeeded)
+			// Goodbye all users
+			foreach (var user in userManager.Users.ToList())
 			{
-				userManager.AddToRole(admin.Id, "Administrator");
+				userManager.Delete(user);
 			}
 
+			// Add a test administrator account (name=admin pass=toor42)
+			var admin = new IdentityUser("admin");
+			ThrowIfFailed(userManager.Create(admin, "toor42"));
+			userManager.AddToRole(admin.Id, "Administrator");
+			
 			// Add a test "beveiliger" account (name=beveiliger pass=hello)
 			var dashboardUser = new IdentityUser("beveiliger");
             userManager.Create(dashboardUser, "helloo");
-
+			
 			// Add a test "hoofdbeveiliger" account (name=hoofdbeveiliger pass=masterpass)
             var headOfSecurity = new IdentityUser("hoofdbeveiliger");
-            var headOfSecurityResult = userManager.Create(headOfSecurity, "masterpass");
+			ThrowIfFailed(userManager.Create(headOfSecurity, "masterpass"));
+			userManager.AddToRole(headOfSecurity.Id, "Administrator");
+		}
 
-            if (headOfSecurityResult.Succeeded)
-			{
-                userManager.AddToRole(headOfSecurity.Id, "Administrator");
-			}
+		private void ThrowIfFailed(IdentityResult result)
+		{
+			if (result.Succeeded)
+				return;
+
+			var msg = result.Errors.Aggregate(
+				"Failed to create user!",
+				(current, error) => current + ("\n" + error));
+			throw new Exception(msg);
 		}
 	}
 }
