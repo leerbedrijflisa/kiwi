@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Lisa.Kiwi.Data;
 using Lisa.Kiwi.WebApi.Models;
@@ -41,6 +42,12 @@ namespace Lisa.Kiwi.WebApi
 			var user = await _userManager.FindAsync(userName, password);
 
 			return user;
+		}
+
+		public async Task<bool> HasRole(IdentityUser user, string roleName)
+		{
+			var role = _ctx.Roles.First(r => r.Name == roleName);
+			return user.Roles.Any(r => r.RoleId == role.Id);
 		}
 	}
 }

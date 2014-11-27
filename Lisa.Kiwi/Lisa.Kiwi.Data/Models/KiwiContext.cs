@@ -3,7 +3,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Lisa.Kiwi.Data
 {
-	public class KiwiContext : IdentityDbContext<IdentityUser>
+	public class KiwiContext : IdentityDbContext
 	{
 		public KiwiContext()
 			: base("KiwiContext")

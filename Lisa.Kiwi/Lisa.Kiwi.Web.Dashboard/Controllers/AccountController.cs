@@ -1,8 +1,6 @@
-﻿using System.Security.Authentication;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Web.Mvc;
 using Lisa.Kiwi.WebApi.Access;
-using Newtonsoft.Json.Linq;
 using Resources;
 
 namespace Lisa.Kiwi.Web.Dashboard.Controllers
@@ -32,7 +30,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 				return View();
 			}
 
-			var authenticationClient = new AuthenticationProxy(ConfigHelper.GetAuthUri());
+			var authenticationClient = new AuthenticationProxy(ConfigHelper.GetAuthUri(), ConfigHelper.GetUserControllerUri());
 			var authResponse = await authenticationClient.Login(username, password);
 
 			if (authResponse.Status != LoginStatus.Success)
@@ -45,6 +43,8 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 			Session["token_type"] = authResponse.TokenType;
 			Session["token_aliveTime"] = authResponse.TokenExpiresIn;
 			Session["user"] = username;
+
+			Session["is_admin"] = await authenticationClient.GetIsAdmin(authResponse.TokenType, authResponse.Token);
 
 			return RedirectToAction("Index", "Report");
 		}

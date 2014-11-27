@@ -85,7 +85,7 @@ else
                             </select>
                         </div>
                     </div>
-                    if (Session["user"].ToString() == "hoofdbeveiliger")
+                    if ((bool)Session["is_admin"])
                     {
                         <div class="form-group">
                             <label class="col-sm-4 control-label">Zichtbaarheid</label>
@@ -97,13 +97,8 @@ else
                                         visible = "selected";
                                     }
                                     <option value="false" @visible>Zichtbaar</option>
-                                    @if (ViewBag.Visible)
-                                    {
-                                        visible = "selected";
-                                    }
-                                    else
-                                    {
-                                        visible = "";
+                                    @{
+                                        visible = ViewBag.Visible ? "selected" : "";
                                     }
                                     <option value="true" @visible>Onzichtbaar</option>
                                 </select>

@@ -1,4 +1,5 @@
-﻿using System.Security.Claims;
+﻿using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.Owin.Security.OAuth;
 
@@ -22,13 +23,16 @@ namespace Lisa.Kiwi.WebApi.Providers
 					context.SetError("invalid_grant", "The user name or password is incorrect.");
 					return;
 				}
+
+				var identity = new ClaimsIdentity(context.Options.AuthenticationType);
+				identity.AddClaim(new Claim("sub", context.UserName));
+				identity.AddClaim(new Claim("role", "user"));
+
+				var isAdmin = await repo.HasRole(user, "Administrator");
+				identity.AddClaim(new Claim("is_admin", isAdmin.ToString()));
+
+				context.Validated(identity);
 			}
-
-			var identity = new ClaimsIdentity(context.Options.AuthenticationType);
-			identity.AddClaim(new Claim("sub", context.UserName));
-			identity.AddClaim(new Claim("role", "user"));
-
-			context.Validated(identity);
 		}
 	}
 }
