@@ -1,11 +1,8 @@
-@model Lisa.Kiwi.Web.Reporting.Models.OriginalReport
-@using Lisa.Kiwi.Web.Reporting.Utils
-@using Lisa.Kiwi.Web.Reporting.Models
-
+@model OriginalReport
 @{
     ViewBag.Title = "Bevestigd";
-    ContactMetadata contact = (ContactMetadata)ViewBag.Contact;
-    ReportTypeMetadata type = (ReportTypeMetadata) Enum.Parse(typeof(ReportTypeMetadata), Model.Type);
+    var contact = (ContactMetadata)ViewBag.Contact;
+    var type = (ReportTypeMetadata) Enum.Parse(typeof(ReportTypeMetadata), Model.Type);
 }
 
 
