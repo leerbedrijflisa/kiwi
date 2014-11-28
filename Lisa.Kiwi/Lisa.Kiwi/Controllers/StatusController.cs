@@ -2,18 +2,17 @@
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.OData;
 using Lisa.Kiwi.Data;
-using Microsoft.WindowsAzure.Storage.Queue;
 
 namespace Lisa.Kiwi.WebApi.Controllers
 {
 	[Authorize]
 	public class StatusController : ODataController
 	{
-		private readonly CloudQueue _queue = new QueueConfig().BuildQueue();
 		private readonly KiwiContext db = new KiwiContext();
 
 		// GET odata/Status
@@ -26,6 +25,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
 					Id = s.Id,
 					Name = s.Name,
 					Created = s.Created,
+                    User = s.User.UserName,
 					Report = s.Report.Id
 				};
 			return result;
@@ -55,12 +55,16 @@ namespace Lisa.Kiwi.WebApi.Controllers
 
 			try
 			{
+                var user = (ClaimsIdentity)User.Identity;
+                var userId = user.Claims.First(c => c.Type == "id").Value;
+
 				db.Statuses.Add(new Data.Status
 				{
 					Id = status.Id,
 					Name = status.Name,
 					Created = status.Created,
-					Report = db.Reports.Find(status.Report)
+                    User = db.Users.Where(u => u.Id == userId).FirstOrDefault(),
+                    Report = db.Reports.Find(status.Report)
 				});
 
 				await db.SaveChangesAsync();
@@ -86,12 +90,16 @@ namespace Lisa.Kiwi.WebApi.Controllers
 				return BadRequest(ModelState);
 			}
 
+            var user = (ClaimsIdentity)User.Identity;
+            var userId = user.Claims.First(c => c.Type == "id").Value;
+
 			db.Statuses.Add(new Data.Status
 			{
 				Id = status.Id,
 				Name = status.Name,
 				Created = status.Created,
-				Report = db.Reports.Find(status.Report)
+                User = db.Users.Where(u => u.Id == userId).FirstOrDefault(),
+                Report = db.Reports.Find(status.Report)
 			});
 
 			await db.SaveChangesAsync();
@@ -121,14 +129,19 @@ namespace Lisa.Kiwi.WebApi.Controllers
 				Id = dataStatus.Id,
 				Created = dataStatus.Created,
 				Name = dataStatus.Name,
+                User = dataStatus.User.Id,
 				Report = dataStatus.Report.Id
 			};
 
 			patch.Patch(status);
 
+            var user = (ClaimsIdentity)User.Identity;
+            var userId = user.Claims.First(c => c.Type == "id").Value;
+
 			dataStatus.Id = status.Id;
 			dataStatus.Created = status.Created;
 			dataStatus.Name = status.Name;
+            dataStatus.User = db.Users.Where(u => u.Id == userId).FirstOrDefault();
 			dataStatus.Report = db.Reports.Find(status.Report);
 
 			try

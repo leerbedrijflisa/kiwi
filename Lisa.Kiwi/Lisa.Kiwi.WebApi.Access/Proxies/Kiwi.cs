@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 27/11/2014 15:52:03
+// Generation date: 21/11/2014 12:36:14
 namespace Lisa.Kiwi.WebApi
 {
     /// <summary>
@@ -694,6 +694,29 @@ namespace Lisa.Kiwi.WebApi
         partial void OnDescriptionChanging(string value);
         partial void OnDescriptionChanged();
         /// <summary>
+        /// There are no comments for Property User in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
+        [global::Microsoft.OData.Client.OriginalNameAttribute("User")]
+        public string User
+        {
+            get
+            {
+                return this._User;
+            }
+            set
+            {
+                this.OnUserChanging(value);
+                this._User = value;
+                this.OnUserChanged();
+                this.OnPropertyChanged("User");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
+        private string _User;
+        partial void OnUserChanging(string value);
+        partial void OnUserChanged();
+        /// <summary>
         /// There are no comments for Property Report in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
@@ -850,6 +873,29 @@ namespace Lisa.Kiwi.WebApi
         private global::Lisa.Kiwi.Data.StatusName _Name;
         partial void OnNameChanging(global::Lisa.Kiwi.Data.StatusName value);
         partial void OnNameChanged();
+        /// <summary>
+        /// There are no comments for Property User in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
+        [global::Microsoft.OData.Client.OriginalNameAttribute("User")]
+        public string User
+        {
+            get
+            {
+                return this._User;
+            }
+            set
+            {
+                this.OnUserChanging(value);
+                this._User = value;
+                this.OnUserChanged();
+                this.OnPropertyChanged("User");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
+        private string _User;
+        partial void OnUserChanging(string value);
+        partial void OnUserChanged();
         /// <summary>
         /// There are no comments for Property Report in the schema.
         /// </summary>
@@ -1208,6 +1254,7 @@ namespace Default
         <Property Name=""Id"" Type=""Edm.Int32"" Nullable=""false"" />
         <Property Name=""Created"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""Description"" Type=""Edm.String"" />
+        <Property Name=""User"" Type=""Edm.String"" />
         <Property Name=""Report"" Type=""Edm.Int32"" Nullable=""false"" />
       </EntityType>
       <EntityType Name=""Status"">
@@ -1217,6 +1264,7 @@ namespace Default
         <Property Name=""Id"" Type=""Edm.Int32"" Nullable=""false"" />
         <Property Name=""Created"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""Name"" Type=""Lisa.Kiwi.Data.StatusName"" Nullable=""false"" />
+        <Property Name=""User"" Type=""Edm.String"" />
         <Property Name=""Report"" Type=""Edm.Int32"" Nullable=""false"" />
         <Property Name=""Visible"" Type=""Edm.Boolean"" Nullable=""false"" />
       </EntityType>

@@ -285,7 +285,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 				{
 					Created = remark.Created,
 					Description = remark.Description,
-					User = Session["user"].ToString()
+                    User = remark.User
 				});
 			}
 			return result;
@@ -305,7 +305,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 				{
 					Created = status.Created,
 					Description = description,
-					User = Session["user"].ToString()
+                    User = status.User
 				});
 			}
 			return result;
