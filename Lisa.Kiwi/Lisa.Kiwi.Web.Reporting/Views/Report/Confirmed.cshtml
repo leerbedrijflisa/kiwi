@@ -1,11 +1,8 @@
-@model Lisa.Kiwi.Web.Reporting.Models.OriginalReport
-@using Lisa.Kiwi.Web.Reporting.Utils
-@using Lisa.Kiwi.Web.Reporting.Models
-
+@model OriginalReport
 @{
     ViewBag.Title = "Bevestigd";
-    ContactMetadata contact = (ContactMetadata)ViewBag.Contact;
-    ReportTypeMetadata type = (ReportTypeMetadata) Enum.Parse(typeof(ReportTypeMetadata), Model.Type);
+    var contact = (ContactMetadata)ViewBag.Contact;
+    string type = Model.Type;
 }
 
 
@@ -22,7 +19,7 @@
             <div class="form-group">
                 <label class="col-xs-12 control-label">Type melding</label>
                 <div class="col-xs-12">
-                    <p class="form-control-static">@type.GetReportTypeDisplayNameFromMetadata()</p>
+                    <p class="form-control-static">@type</p>
                 </div>
             </div>
             <div class="form-group">
@@ -108,12 +105,12 @@
                         </p>
                     </div>
                 </div>
-                }
+            }
 
-            </div>
-            <div class="clear"></div>
-            <div class="col-xs-12">
-                <p>@Html.ActionLink("Ga terug naar de startpagina", "Index", "Report", new { @class = "btn btn-default btn-report" })</p>
-            </div>
         </div>
+        <div class="clear"></div>
+        <div class="col-xs-12">
+            <p>@Html.ActionLink("Ga terug naar de startpagina", "Index", "Report", null, new { @class = "btn btn-default btn-report" })</p>
+        </div>
+    </div>
 </div>

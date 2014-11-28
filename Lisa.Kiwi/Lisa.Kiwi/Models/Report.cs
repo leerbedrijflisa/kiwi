@@ -18,8 +18,8 @@ namespace Lisa.Kiwi.WebApi
 		public string Guid { get; set; }
 		public string UserAgent { get; set; }
 		public string Ip { get; set; }
+        public string Type { get; set; }
 		public StatusName Status { get; set; }
-		public ReportType Type { get; set; }
 		public Guid EditToken { get; set; }
 	}
 }

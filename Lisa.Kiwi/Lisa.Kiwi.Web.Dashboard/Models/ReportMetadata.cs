@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using Lisa.Kiwi.Data;
 using Resources;
 
 namespace Lisa.Kiwi.Web.Dashboard.Models
@@ -28,6 +26,6 @@ namespace Lisa.Kiwi.Web.Dashboard.Models
 		public string Ip { get; set; }
 
 		[Display(Name = "ReportType", ResourceType = typeof (DisplayNames))]
-		public ReportType Type { get; set; }
+		public string Type { get; set; }
 	}
 }

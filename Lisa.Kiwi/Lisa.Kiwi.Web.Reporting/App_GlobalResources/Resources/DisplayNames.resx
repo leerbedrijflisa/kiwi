@@ -133,7 +133,7 @@
     <value>Locatie</value>
   </data>
   <data name="ReportTime" xml:space="preserve">
-    <value>Datum incident</value>
+    <value>Tijd</value>
   </data>
   <data name="ReportType" xml:space="preserve">
     <value>Type</value>
@@ -179,5 +179,8 @@
   </data>
   <data name="StatusTransferred" xml:space="preserve">
     <value>Overgedragen</value>
+  </data>
+  <data name="Time" xml:space="preserve">
+    <value>Tijd</value>
   </data>
 </root>

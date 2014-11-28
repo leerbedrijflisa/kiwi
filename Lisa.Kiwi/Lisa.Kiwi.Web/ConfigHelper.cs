@@ -28,5 +28,10 @@ namespace Lisa.Kiwi.Web
         {
 	        return GetUri("KiwiAuthUrl");
         }
+
+		public static Uri GetUserControllerUri()
+		{
+			return GetUri("KiwiUserControllerUrl");
+		}
 	}
 }

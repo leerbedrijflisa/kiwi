@@ -4,7 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+
+// Onderstaande Data referentie klopt wel, want deze namespace word gehandhaafd door de Odata Client.
 using Lisa.Kiwi.Data;
+
 using Lisa.Kiwi.Web.Reporting.Models;
 using Lisa.Kiwi.Web.Reporting.Utils;
 using Lisa.Kiwi.WebApi;
@@ -12,7 +15,7 @@ using Lisa.Kiwi.WebApi.Access;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Table;
-using Status = Lisa.Kiwi.WebApi.Status;
+using Resources;
 
 namespace Lisa.Kiwi.Web.Reporting.Controllers
 {
@@ -32,7 +35,8 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 		}
 
 		[HttpPost]
-		public ActionResult Type(ReportType reportType)
+        [ValidateInput(false)]
+		public ActionResult Type(string reportType)
 		{
 			if (ModelState.IsValid)
 			{
@@ -58,6 +62,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 		}
 
 		[HttpPost]
+        [ValidateInput(false)]
 		public ActionResult Details(OriginalReport data)
 		{
 			HttpCookie cookie = HttpContext.Request.Cookies["userReport"];
@@ -84,6 +89,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 		}
 
 		[HttpPost]
+        [ValidateInput(false)]
 		public async Task<ActionResult> ContactDetails(ContactMetadata data)
 		{
 			HttpCookie cookie = HttpContext.Request.Cookies["userReport"];
@@ -108,7 +114,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 					Location = entity.Location,
 					Time = entity.Time,
 					Guid = entity.PartitionKey,
-					Type = (ReportType)Enum.Parse(typeof(ReportType), entity.Type)
+					Type = entity.Type
 				};
 
                 var reportEntity = await _reportProxy.AddManualReport(report);
@@ -161,20 +167,61 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 
         private List<SelectListItem> GetReportTypes()
         {
-            var types = Enum.GetValues(typeof(ReportType)).Cast<ReportType>();
+
             List<SelectListItem> reportTypes = new List<SelectListItem>();
-            foreach (var reportType in types)
+
+            reportTypes.Add(new SelectListItem
             {
-                reportTypes.Add(new SelectListItem
-                {
-                    Text = reportType.GetReportTypeDisplayNameFromMetadata(),
-                    Value = reportType.ToString()
-                });
-            }
+                Text = DisplayNames.ReportTypeDrugs,
+                Value = "Drugs"
+            });
+
+            reportTypes.Add(new SelectListItem
+            {
+                Text = DisplayNames.ReportTypeNuisance,
+                Value = "Overlast"
+            });
+
+            reportTypes.Add(new SelectListItem
+            {
+                Text = DisplayNames.ReportTypeTheft,
+                Value = "Diefstal"
+            });
+
+            reportTypes.Add(new SelectListItem
+            {
+                Text = DisplayNames.ReportTypeFire,
+                Value = "Brand"
+            });
+
+            reportTypes.Add(new SelectListItem
+            {
+                Text = DisplayNames.ReportTypeBurglary,
+                Value = "Inbraak"
+            });
+
+            reportTypes.Add(new SelectListItem
+            {
+                Text = DisplayNames.ReportTypeDigital,
+                Value = "Digitaal"
+            });
+
+            reportTypes.Add(new SelectListItem
+            {
+                Text = DisplayNames.ReportTypeBullying,
+                Value = "Pesten"
+            });
+
+            reportTypes.Add(new SelectListItem
+            {
+                Text = DisplayNames.ReportTypeVehicles,
+                Value = "Voertuigen"
+            });
+
             return reportTypes;
         }
 
-        private OriginalReport DefineReport(ReportType reportType)
+        private OriginalReport DefineReport(string reportType)
         {
             OriginalReport report = new OriginalReport();
             var guid = Guid.NewGuid().ToString();
@@ -196,17 +243,6 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 
             TableOperation insertOrReplaceOperation = TableOperation.InsertOrReplace(updateEntity);
             table.Execute(insertOrReplaceOperation);
-        }
-
-        private void CreateStatus(DateTime created, int id) 
-        {
-            var status = new Status
-			{
-				Created = created,
-				Name = StatusName.Open,
-                Report = id
-			};
-			_statusProxy.AddStatus(status);
         }
 
         private Contact CreateContact(ContactMetadata data, int id, Guid editToken) 

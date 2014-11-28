@@ -106,7 +106,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Datum incident.
+        ///   Looks up a localized string similar to Tijd.
         /// </summary>
         public static string ReportTime {
             get {
@@ -246,6 +246,15 @@ namespace Resources {
         public static string StatusTransferred {
             get {
                 return ResourceManager.GetString("StatusTransferred", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tijd.
+        /// </summary>
+        public static string Time {
+            get {
+                return ResourceManager.GetString("Time", resourceCulture);
             }
         }
     }
