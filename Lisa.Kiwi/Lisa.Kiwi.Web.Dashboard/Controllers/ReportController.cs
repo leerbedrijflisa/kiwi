@@ -4,9 +4,11 @@ using System.Linq;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
 using Lisa.Kiwi.Data;
+using Lisa.Kiwi.Web.Dashboard.Models;
 using Lisa.Kiwi.Web.Dashboard.Utils;
 using Lisa.Kiwi.WebApi;
 using Lisa.Kiwi.WebApi.Access;
+using Resources;
 using LogBookEntry = Lisa.Kiwi.Web.Dashboard.Models.LogBookEntry;
 
 namespace Lisa.Kiwi.Web.Dashboard.Controllers
@@ -17,13 +19,13 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 
         public ReportController()
         {
-            _token = System.Web.HttpContext.Current.Session["token"] as string ?? "";
-            _tokenType = System.Web.HttpContext.Current.Session["token_type"] as string ?? "";
+	        var token = System.Web.HttpContext.Current.Session["token"] as string ?? "";
+            var tokenType = System.Web.HttpContext.Current.Session["token_type"] as string ?? "";
 
-            _statusProxy = new StatusProxy(ConfigHelper.GetODataUri(), _token, _tokenType);
-            _reportProxy = new ReportProxy(ConfigHelper.GetODataUri(), _token, _tokenType);
-            _remarkProxy = new RemarkProxy(ConfigHelper.GetODataUri(), _token, _tokenType);
-            _contactProxy = new ContactProxy(ConfigHelper.GetODataUri(), _token, _tokenType);
+            _statusProxy = new StatusProxy(ConfigHelper.GetODataUri(), token, tokenType);
+            _reportProxy = new ReportProxy(ConfigHelper.GetODataUri(), token, tokenType);
+            _remarkProxy = new RemarkProxy(ConfigHelper.GetODataUri(), token, tokenType);
+            _contactProxy = new ContactProxy(ConfigHelper.GetODataUri(), token, tokenType);
         }
 
 		public ActionResult Index(string sortBy = DefaultSortBy)
@@ -36,7 +38,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 
 			IQueryable<Report> reports;
 
-			if (Session["user"].ToString() == "beveiliger")
+			if (!(bool) Session["is_admin"])
 			{
 				reports = _reportProxy.GetReports()
 					.Where(r => r.Status != StatusName.Solved)
@@ -336,11 +338,112 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 			return description;
 		}
 
+		[HttpPost]
+		public ActionResult Search(SearchModel model)
+		{
+			if (!ModelState.IsValid)
+			{
+				throw new NotImplementedException("No error handling for invalid search model has been implemented!");
+			}
+
+			if (string.IsNullOrWhiteSpace(model.SearchText))
+			{
+				return RedirectToAction("Index");
+			}
+
+			Session["search_text"] = model.SearchText;
+
+			return RedirectToAction("Search");
+		}
+
+		[HttpGet]
+		public ActionResult Search(string sortBy = DefaultSortBy)
+		{
+			var sessionTimeOut = Session.Timeout = 60;
+			if (Session["user"] == null || sessionTimeOut == 0)
+			{
+				return RedirectToAction("Login", "Account");
+			}
+
+			// If we don't have a session search query, just go to index
+			if (Session["search_text"] == null)
+			{
+				return RedirectToAction("Index");
+			}
+
+			var searchText = (string) Session["search_text"];
+			ViewBag.SearchText = searchText;
+
+			IQueryable<Report> reports;
+
+			if (!(bool)Session["is_admin"])
+			{
+				reports = _reportProxy.GetReports()
+					.Where(r => r.Status != StatusName.Solved)
+					.Where(report => report.Hidden == false);
+			}
+			else
+			{
+				reports = _reportProxy.GetReports();
+			}
+
+			// This is the best way I could find to do status searching with localized strings.
+			// I'm so so sorry for this atrocety.
+			var statusDict = new Dictionary<string, StatusName>
+			{
+				{DisplayNames.StatusInProgress.ToLower(), StatusName.InProgress},
+				{DisplayNames.StatusOpen.ToLower(), StatusName.Open},
+				{DisplayNames.StatusSolved.ToLower(), StatusName.Solved},
+				{DisplayNames.StatusTransferred.ToLower(), StatusName.Transferred}
+			};
+			StatusName searchStatus;
+			var foundSearchStatus = statusDict.TryGetValue(searchText.ToLower(), out searchStatus);
+
+			// And now for the hack to get datetimes working for now, this will have to be improved
+			// to be a more full featured search query system later on.
+			int searchNumber;
+			var isNumber = int.TryParse(searchText, out searchNumber);
+
+			// Filter by the search query
+			reports = reports.Where(r =>
+				// Description
+				r.Description.Contains(searchText) ||
+
+				// Type and Status
+				r.Type.Contains(searchText) ||
+				(foundSearchStatus && r.Status == searchStatus) ||
+
+				// Anything for which the search needs to be a number
+				(isNumber &&(
+					// Created and Time
+					r.Created.Year == searchNumber ||
+					r.Created.Month == searchNumber ||
+					r.Created.Day == searchNumber ||
+					r.Time.Year == searchNumber ||
+					r.Time.Month == searchNumber ||
+					r.Time.Day == searchNumber
+				)));
+
+			// Collapse it into a list
+			List<Report> reportsList;
+			try
+			{
+				ViewBag.SortingBy = sortBy;
+				reportsList = reports.SortBy(sortBy).ToList();
+			}
+			catch (ArgumentException)
+			{
+				// sortBy was invalid, use the default
+				ViewBag.SortingBy = DefaultSortBy;
+				reportsList = reports.SortBy(DefaultSortBy).ToList();
+			}
+
+			return View("Index", reportsList);
+		}
+
 		private readonly ContactProxy _contactProxy;
         private readonly RemarkProxy _remarkProxy;
         private readonly ReportProxy _reportProxy;
         private readonly StatusProxy _statusProxy;
-	    private string _token = "";
-	    private string _tokenType = "";
 	}
 }

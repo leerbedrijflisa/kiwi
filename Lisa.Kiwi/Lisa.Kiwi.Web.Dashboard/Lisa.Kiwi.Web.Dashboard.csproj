@@ -143,6 +143,7 @@
     <Compile Include="Models\LogBookEntry.cs" />
     <Compile Include="Models\ReportMetadata.cs" />
     <Compile Include="Models\ReportTypeMetadata.cs" />
+    <Compile Include="Models\SearchModel.cs" />
     <Compile Include="Models\StatusNameMetadata.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\EnumDisplayNames.cs" />
@@ -159,6 +160,7 @@
     <Content Include="Views\Report\Details.cshtml" />
     <Content Include="Views\Shared\_404.cshtml" />
     <Content Include="Scripts\jquery-2.1.1.min.map" />
+    <Content Include="Views\Report\SearchPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
