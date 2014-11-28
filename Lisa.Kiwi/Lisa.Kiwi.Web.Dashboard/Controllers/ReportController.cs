@@ -283,7 +283,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 				{
 					Created = remark.Created,
 					Description = remark.Description,
-					User = User.Identity.Name
+                    User = remark.User
 				});
 			}
 			return result;
@@ -303,7 +303,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 				{
 					Created = status.Created,
 					Description = description,
-                    User = User.Identity.Name
+                    User = status.User
 				});
 			}
 			return result;

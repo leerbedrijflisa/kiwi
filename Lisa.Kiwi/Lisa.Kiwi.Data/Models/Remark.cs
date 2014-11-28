@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Lisa.Kiwi.Data

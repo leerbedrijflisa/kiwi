@@ -1,10 +1,7 @@
-﻿using System;
-using System.Linq;
-using System.Net.Http;
+﻿using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web.Http;
-using System.Web.Security;
 using Lisa.Kiwi.Data;
 using Lisa.Kiwi.WebApi.Models;
 using Microsoft.AspNet.Identity;

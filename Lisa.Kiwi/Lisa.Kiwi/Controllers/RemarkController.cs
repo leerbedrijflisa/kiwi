@@ -2,6 +2,7 @@
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.OData;
@@ -23,7 +24,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
 				{
 					Id = r.Id,
 					Description = r.Description,
-                    User = r.User.Id,
+                    User = r.User.UserName,
 					Report = r.Report.Id,
 					Created = r.Created
 				};
@@ -54,13 +55,17 @@ namespace Lisa.Kiwi.WebApi.Controllers
 
 			try
 			{
+			    var user = (ClaimsIdentity) User.Identity;
+                var userId = user.Claims.First(c => c.Type == "id").Value;
+
 				db.Remarks.Add(new Data.Remark
 				{
 					Id = remark.Id,
 					Created = remark.Created,
 					Description = remark.Description,
 					Report = db.Reports.Find(remark.Report),
-                    User = db.Users.Find(remark.User),
+                    User = db.Users.Where(u => u.Id == userId).FirstOrDefault(),
+                    //Claims.Any(c => c.Type == "is_admin" && bool.Parse(c.Value))
 				});
 
 				await db.SaveChangesAsync();
@@ -85,14 +90,17 @@ namespace Lisa.Kiwi.WebApi.Controllers
 				return BadRequest(ModelState);
 			}
 
+            var user = (ClaimsIdentity)User.Identity;
+            var userId = user.Claims.First(c => c.Type == "id").Value;
+
 			var dataRemark = new Data.Remark
 			{
 				Id = remark.Id,
 				Created = remark.Created,
 				Description = remark.Description,
-                User = db.Users.Find(remark.User),
 				Report = db.Reports.Find(remark.Report)
 			};
+            dataRemark.User = db.Users.Where(u => u.Id == userId).FirstOrDefault();
 
 			db.Remarks.Add(dataRemark);
 
@@ -130,10 +138,13 @@ namespace Lisa.Kiwi.WebApi.Controllers
 
 			patch.Patch(remark);
 
+            var user = (ClaimsIdentity)User.Identity;
+            var userId = user.Claims.First(c => c.Type == "id").Value;
+
 			dataRemark.Id = remark.Id;
 			dataRemark.Created = remark.Created;
 			dataRemark.Description = remark.Description;
-            dataRemark.User = db.Users.Find(remark.User);
+            dataRemark.User = db.Users.Where(u => u.Id == userId).FirstOrDefault();
 			dataRemark.Report = db.Reports.Find(remark.Report);
 
 			try

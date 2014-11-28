@@ -116,9 +116,14 @@ else
                 <h3>Logboek</h3>
                 @foreach (var remark in ViewBag.Remarks)
                 {
+                    if (String.IsNullOrEmpty(remark.User))
+                    {
+                        remark.User = "Anoniem";
+                    }
+                    
                     <div class="form-group remark-head">
-                        <div class="col-sm-6">By: <span>@remark.User</span></div>
-                        <div class="col-sm-6">Created: <span>@remark.Created.ToLocalTime().ToString("ddd dd MMM yy HH:mm")</span></div>
+                        <div class="col-sm-6">Wie: <span>@remark.User</span></div>
+                        <div class="col-sm-6">Wanneer: <span>@remark.Created.ToLocalTime().ToString("ddd dd MMM yy HH:mm")</span></div>
                     </div>
                     <div class="form-group remark-bottom">
                         <div class="col-sm-12">
