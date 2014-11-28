@@ -23,7 +23,7 @@
                         <tr>
                             <td>@item.Created.ToLocalTime().ToString("dd-MM-yy HH:mm:ss")</td>
                             <td>@item.Time.ToString("dd-MM-yy HH:mm")</td>
-                            <td>@item.Type.GetReportTypeDisplayNameFromMetadata()</td>
+                            <td>@item.Type</td>
                             <td>@item.Description</td>
                             <td>@item.Status.GetStatusDisplayNameFromMetadata()</td>
                             <td><a href="@Url.Action("Details", new {id = item.Id})">Bekijk</a></td>

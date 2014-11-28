@@ -25,7 +25,7 @@ namespace Lisa.Kiwi.Data.Migrations
 				Guid = Guid.NewGuid().ToString(),
 				UserAgent = "Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Firefox/31.0",
 				Ip = "85.119.106.81",
-				Type = ReportType.Digital,
+				Type = "Digital",
 				Hidden = false
 			};
 

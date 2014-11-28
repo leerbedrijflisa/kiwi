@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.Web;
-using Lisa.Kiwi.Data;
 using Microsoft.WindowsAzure.Storage.Table;
 
 namespace Lisa.Kiwi.Web.Reporting.Models

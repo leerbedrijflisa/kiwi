@@ -5,14 +5,12 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.OData;
 using Lisa.Kiwi.Data;
-using Microsoft.WindowsAzure.Storage.Queue;
 
 namespace Lisa.Kiwi.WebApi.Controllers
 {
 	[Authorize]
 	public class ReportController : ODataController
 	{
-		private readonly CloudQueue _queue = new QueueConfig().BuildQueue();
 		private readonly KiwiContext _db = new KiwiContext();
 
 		// GET odata/Report
@@ -36,7 +34,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
 					Status = (from s in _db.Statuses
 						where s.Report == r
 						orderby s.Created descending
-						select s).FirstOrDefault().Name
+						select s.Name).FirstOrDefault()
 					// Do not give back edit token, that's not visible after creation
 				};
 
@@ -65,7 +63,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
 					Status = (from s in _db.Statuses
 						where s.Report == r
 						orderby s.Created descending
-						select s).FirstOrDefault().Name,
+						select s.Name).FirstOrDefault()
 					// Do not give back edit token, that's not visible after creation
 				};
 
@@ -224,7 +222,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
                         break;
 
                     case "Type" :
-		                dataReport.Type = (ReportType)value;
+		                dataReport.Type = value.ToString();
                         break;
 
                     case "Hidden" :
