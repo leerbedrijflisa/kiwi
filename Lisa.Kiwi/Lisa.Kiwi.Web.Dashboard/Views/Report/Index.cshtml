@@ -2,13 +2,24 @@
 @model IEnumerable<Lisa.Kiwi.WebApi.Report>
 
 <div class="block-container">
-    <h2>Meldingen</h2>
+    <div class="row">
+        <div class="col-sm-8">
+            <h2>Meldingen</h2>
+        </div>
+        <div class="col-sm-4">
+            @Html.Partial("SearchPartial", new SearchModel())
+        </div>
+    </div>
+    @if (ViewBag.SearchText != null)
+    {
+        <p>Resultaten voor "@ViewBag.SearchText"...</p>
+    }
     <div class="row">
         <div class="col-sm-12">
             <table class="table">
                 <thead>
                     <tr>
-                        @{ var sortingBy = (string) ViewBag.SortingBy; }
+                        @{ var sortingBy = (string)ViewBag.SortingBy; }
                         <th>@Html.SortLinkFor("Melding aangemaakt", sortingBy, i => i.Created)</th>
                         <th>@Html.SortLinkFor("Datum incident", sortingBy, i => i.Time)</th>
                         <th>@Html.SortLinkFor("Type melding", sortingBy, i => i.Type)</th>
