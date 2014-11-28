@@ -346,6 +346,11 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 				throw new NotImplementedException("No error handling for invalid search model has been implemented!");
 			}
 
+			if (string.IsNullOrWhiteSpace(model.SearchText))
+			{
+				return RedirectToAction("Index");
+			}
+
 			Session["search_text"] = model.SearchText;
 
 			return RedirectToAction("Search");
@@ -394,11 +399,30 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 			StatusName searchStatus;
 			var foundSearchStatus = statusDict.TryGetValue(searchText.ToLower(), out searchStatus);
 
+			// And now for the hack to get datetimes working for now, this will have to be improved
+			// to be a more full featured search query system later on.
+			int searchNumber;
+			var isNumber = int.TryParse(searchText, out searchNumber);
+
 			// Filter by the search query
 			reports = reports.Where(r =>
-				r.Type.Contains(searchText) ||
+				// Description
 				r.Description.Contains(searchText) ||
-				(foundSearchStatus && r.Status == searchStatus));
+
+				// Type and Status
+				r.Type.Contains(searchText) ||
+				(foundSearchStatus && r.Status == searchStatus) ||
+
+				// Anything for which the search needs to be a number
+				(isNumber &&(
+					// Created and Time
+					r.Created.Year == searchNumber ||
+					r.Created.Month == searchNumber ||
+					r.Created.Day == searchNumber ||
+					r.Time.Year == searchNumber ||
+					r.Time.Month == searchNumber ||
+					r.Time.Day == searchNumber
+				)));
 
 			// Collapse it into a list
 			List<Report> reportsList;
