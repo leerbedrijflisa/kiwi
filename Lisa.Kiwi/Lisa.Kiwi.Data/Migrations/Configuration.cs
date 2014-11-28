@@ -88,6 +88,10 @@ namespace Lisa.Kiwi.Data.Migrations
 			// Add a test "beveiliger" account (name=beveiliger pass=hello)
 			var dashboardUser = new IdentityUser("beveiliger");
             userManager.Create(dashboardUser, "helloo");
+
+			// Add a test "beveiliger2" account (name=beveiliger2 pass=hello2)
+			var dashboardUser2 = new IdentityUser("beveiliger2");
+            userManager.Create(dashboardUser2, "helloo2");
 			
 			// Add a test "hoofdbeveiliger" account (name=hoofdbeveiliger pass=masterpass)
             var headOfSecurity = new IdentityUser("hoofdbeveiliger");
