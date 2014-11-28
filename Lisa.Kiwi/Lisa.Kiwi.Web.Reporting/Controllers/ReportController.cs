@@ -105,7 +105,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 			TableResult retrievedResult = table.Execute(retrieveOperation);
 			OriginalReport entity = (OriginalReport) retrievedResult.Result;
 
-			if (retrievedResult != null)
+			if (entity != null)
 			{
                 var report = new WebApi.Report
 				{
@@ -120,7 +120,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
                 var reportEntity = await _reportProxy.AddManualReport(report);
                 if (reportEntity != null)
 				{
-                    if (data.Name != null && (data.Email != null || data.PhoneNumber != null || data.StudentNumber == 0))
+                    if (data.Name != null || data.Email != null || data.PhoneNumber != null || data.StudentNumber != null)
                     {
                         var newContact = CreateContact(data, reportEntity.Id, reportEntity.EditToken);
                         var entityContact = new ContactMetadata
