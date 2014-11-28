@@ -12,7 +12,7 @@ namespace Lisa.Kiwi.Web.Reporting.Models
 		public string Name { get; set; }
 
 		[Display(Name = "Telefoon")]
-		[StringLength(10, ErrorMessage = "Het telefoonnummer klopt niet.")]
+		[RegularExpression(@"[0-9()+\- ]+", ErrorMessage = "Het telefoonnummer mag alleen bestaan uit nummers, +, -, (, ) en spaties.")]
 		public string PhoneNumber { get; set; }
 
 		[EmailAddress(ErrorMessage = "Dit is geen geldig e-mailadres.")]
