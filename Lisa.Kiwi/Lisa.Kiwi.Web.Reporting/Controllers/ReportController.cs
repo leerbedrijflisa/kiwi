@@ -105,45 +105,48 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 			TableResult retrievedResult = table.Execute(retrieveOperation);
 			OriginalReport entity = (OriginalReport) retrievedResult.Result;
 
-			if (entity != null)
+			if (entity == null)
 			{
-                var report = new WebApi.Report
+				return View();
+			}
+
+			var report = new WebApi.Report
+			{
+				Description = entity.Description,
+				Created = entity.Created,
+				Location = entity.Location,
+				Time = entity.Time,
+				Guid = entity.PartitionKey,
+				Type = entity.Type
+			};
+
+			var reportEntity = await _reportProxy.AddManualReport(report);
+			if (reportEntity == null)
+			{
+				return View();
+			}
+
+			if (data.Name != null || data.Email != null || data.PhoneNumber != null || data.StudentNumber != null)
+			{
+				var newContact = CreateContact(data, reportEntity.Id, reportEntity.EditToken);
+				var entityContact = new ContactMetadata
 				{
-					Description = entity.Description,
-					Created = entity.Created,
-					Location = entity.Location,
-					Time = entity.Time,
-					Guid = entity.PartitionKey,
-					Type = entity.Type
+					Id = newContact.Id,
+					Name = newContact.Name,
+					Email = newContact.EmailAddress,
+					PhoneNumber = newContact.PhoneNumber,
+					StudentNumber = newContact.StudentNumber,
+					Report = newContact.Report,
+					PartitionKey = entity.PartitionKey,
+					RowKey = ""
 				};
 
-                var reportEntity = await _reportProxy.AddManualReport(report);
-                if (reportEntity != null)
-				{
-                    if (data.Name != null || data.Email != null || data.PhoneNumber != null || data.StudentNumber != null)
-                    {
-                        var newContact = CreateContact(data, reportEntity.Id, reportEntity.EditToken);
-                        var entityContact = new ContactMetadata
-                        {
-                            Id = newContact.Id,
-                            Name = newContact.Name,
-                            Email = newContact.EmailAddress,
-                            PhoneNumber = newContact.PhoneNumber,
-                            StudentNumber = newContact.StudentNumber,
-                            Report = newContact.Report,
-                            PartitionKey = entity.PartitionKey,
-                            RowKey = ""
-                        };
-
-                        CloudTable tableContact = GetContactTableStorage();
-                        TableOperation insertOperation = TableOperation.Insert(entityContact);
-                        tableContact.Execute(insertOperation);
-                    }
-
-                    return RedirectToAction("Confirmed", "Report");
-				}
+				CloudTable tableContact = GetContactTableStorage();
+				TableOperation insertOperation = TableOperation.Insert(entityContact);
+				tableContact.Execute(insertOperation);
 			}
-            return View();
+
+			return RedirectToAction("Confirmed", "Report");
 		}
 
 		public ActionResult Confirmed()
