@@ -8,6 +8,7 @@ namespace Lisa.Kiwi.WebApi
 		public int Id { get; set; }
 		public DateTimeOffset Created { get; set; }
 		public StatusName Name { get; set; }
+        public string User { get; set; }
 		public int Report { get; set; }
 		public bool Visible { get; set; }
 	}
