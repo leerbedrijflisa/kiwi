@@ -80,6 +80,9 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 				}
 			}
 
+            var contact = _contactProxy.GetContacts().Where(c => c.Report == report.Id).FirstOrDefault();
+            ViewBag.contact = contact;
+
 			var statuses = Enum.GetValues(typeof (StatusName)).Cast<StatusName>().ToList();
 			ViewBag.Statuses = statuses;
 			ViewBag.Visible = report.Hidden;

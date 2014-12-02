@@ -1,6 +1,6 @@
 ﻿@model Lisa.Kiwi.WebApi.Report
+@using Lisa.Kiwi.WebApi
 @{
-
     ViewBag.Title = "Report";
     Layout = "~/Views/Shared/_layout.cshtml";
 }
@@ -52,6 +52,48 @@ else
                         <p class="form-control-static">@Model.Status.GetStatusDisplayNameFromMetadata()</p>
                     </div>
                 </div>
+                @{ 
+                    if (ViewBag.contact != null) 
+                    {
+                        Contact contact = (Contact)ViewBag.contact;
+                        
+                        <h3>Contact Details</h3>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Naam</label>
+                            <div class="col-sm-8">
+                                <p class="form-control-static">@contact.Name</p>
+                            </div>
+                        </div>
+                        if (contact.EmailAddress != null)
+                        {
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">E-mail adres</label>
+                            <div class="col-sm-8">
+                                <p class="form-control-static">@contact.EmailAddress</p>
+                            </div>
+                        </div>
+                        }
+                        if (contact.PhoneNumber != null)
+                        {
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Telefoonnummer</label>
+                                <div class="col-sm-8">
+                                    <p class="form-control-static">@contact.PhoneNumber</p>
+                                </div>
+                            </div>
+                        }
+                        if (contact.StudentNumber != null)
+                        {
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Studentnummer</label>
+                                <div class="col-sm-8">
+                                    <p class="form-control-static">@contact.StudentNumber</p>
+                                </div>
+                            </div>
+                        }
+                    }
+
+}
                 
                 <h3>Acties</h3>
                 @using (Html.BeginForm("Details", "Report"))
