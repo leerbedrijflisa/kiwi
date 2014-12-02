@@ -152,9 +152,6 @@ namespace Lisa.Kiwi.WebApi.Controllers
 
 			_db.Reports.Add(dataReport);
 
-
-			await _db.SaveChangesAsync();
-
             report.Id = dataReport.Id;
             var status = new Data.Status
             {
@@ -165,6 +162,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
             };
 
             _db.Statuses.Add(status);
+            await _db.SaveChangesAsync();
 
 			return Created(report);
 		}
