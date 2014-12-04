@@ -15,7 +15,7 @@ namespace Lisa.Kiwi.Web.Reporting.Models
 
 		public int Id { get; set; }
 
-		[Required(ErrorMessage = "U vergeet de Locatie")]
+		[Required(ErrorMessage = "U vergeet de locatie")]
 		[Display(Name = "Locatie")]
 		[StringLength(60, ErrorMessage = "De locatie mag niet langer zijn dan 60 karakters.")]
 		public string Location { get; set; }
@@ -32,7 +32,8 @@ namespace Lisa.Kiwi.Web.Reporting.Models
 
 		public DateTime Created { get; set; }
 
-		[Required]
+        [Required(ErrorMessage = "U vergeet de tijd")]
+        [DataType(DataType.DateTime, ErrorMessage = "Dit is geen geldige tijd. DD-MM-YYYY HH:MM:SS")]
         [Display(Name = "Tijd van incident")]
 		public DateTime Time { get; set; }
 
