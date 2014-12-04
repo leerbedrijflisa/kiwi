@@ -19,7 +19,8 @@ namespace Lisa.Kiwi.Web.Reporting.Models
 		public string Email { get; set; }
 
 		[Display(Name = "Studentnummer")]
-		public int? StudentNumber { get; set; }
+        [RegularExpression(@"[0-9]+", ErrorMessage = "Een studentnummer bestaat enkel uit cijfers.")]
+        public int? StudentNumber { get; set; }
         public int Report { get; set; }
 	}
 }
