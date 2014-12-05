@@ -117,7 +117,10 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 				Location = entity.Location,
 				Time = entity.Time,
 				Guid = entity.PartitionKey,
-				Type = entity.Type
+				Type = entity.Type,
+
+				Ip = Request.UserHostAddress,
+				UserAgent = Request.UserAgent
 			};
 
 			var reportEntity = await _reportProxy.AddManualReport(report);
