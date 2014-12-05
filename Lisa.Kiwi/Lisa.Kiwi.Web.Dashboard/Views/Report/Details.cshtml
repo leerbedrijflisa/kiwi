@@ -19,7 +19,7 @@ else
                 <div class="form-group">
                     <label class="col-sm-4 control-label">Tijd incident</label>
                     <div class="col-sm-8">
-                        <p class="form-control-static">@Model.Time.ToString("dd-MM-yyyy HH:mm")</p>
+                        <p class="form-control-static convertIncidentTime">@Model.Time.ToString("MMMM dd, yyyy HH:mm:ss")</p>
                     </div>
                 </div>
                 <div class="form-group">
@@ -159,10 +159,9 @@ else
                     {
                         remark.User = "Anoniem";
                     }
-                    
                     <div class="form-group remark-head">
-                        <div class="col-sm-6">Wie: <span>@remark.User</span></div>
-                        <div class="col-sm-6">Wanneer: <span>@remark.Created.ToLocalTime().ToString("ddd dd MMM yy HH:mm")</span></div>
+                        <div class="col-sm-4">Wie: <span>@remark.User</span></div>
+                        <div class="col-sm-8" style="text-align:right;">Wanneer:  <span class="convertLogbookTime">@remark.Created.ToString("MMMM dd, yyyy HH:mm:ss")</span></div>
                     </div>
                     <div class="form-group remark-bottom">
                         <div class="col-sm-12">
@@ -174,3 +173,10 @@ else
         </div>
     </div>
 }
+
+<script>
+    var timeClass = $('.convertLogbookTime');
+    timeClass.text($.format.toBrowserTimeZone(timeClass.text(), "ddd dd MMM yyyy HH:mm"));
+    timeClass = $('.convertIncidentTime');
+    timeClass.text($.format.date(timeClass.text(), "ddd dd MMM yyyy HH:mm"));
+</script>
