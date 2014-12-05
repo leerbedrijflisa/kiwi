@@ -10,7 +10,8 @@
 
     @using (Html.BeginForm("Contactdetails", "Report"))
     {
-        //@Html.ValidationSummary()
+        // Temporarily with validation summary while we test it
+        @Html.ValidationSummary()
         @Html.AntiForgeryToken()
         
 
