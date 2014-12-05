@@ -116,7 +116,6 @@
 
                 // Make sure that if it changes value, we update it as well
                 enabler.on('change', function () {
-                    console.log("Change! " + $(this));
                     updateEnabler(enabler, target);
                 });
             });
