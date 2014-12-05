@@ -13,6 +13,7 @@
         <div class="body-content">
             @RenderBody()
         </div>
+
         <script src="~/Scripts/jquery-2.1.1.min.js"></script>
         <script src="~/Scripts/bootstrap.min.js"></script>
         <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
@@ -23,5 +24,7 @@
             //$(".datefield").data("data-msg-date").val("Dit is geen geldige tijd. DD-MM-YYYY HH:MM:SS");
         </script>
 
+        @*Use the scripts section to define page specific scripts*@
+        @RenderSection("scripts", false)
     </body>
 </html>

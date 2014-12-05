@@ -66,7 +66,7 @@
                     isChecked = false;
                     value = "";
                 }
-                @Html.CheckBox("emailCheck", isChecked, new { @Value = "Mail mij!", OnChange = "disabledCheck('emailCheck', 'Email'); " })
+                @Html.CheckBox("emailCheck", isChecked, new { @Value = "Mail mij!", OnChange = "disabledCheck('emailCheck', 'Email');" })
                 E-mailadres
             </label>
             <div class="col-xs-12">
@@ -100,21 +100,23 @@
     }
 </div>
 
-<script type="text/javascript">
-    function disabledCheck(checkboxId, inputId) {
-        var checkbox = document.getElementById(checkboxId);
-        var input = document.getElementById(inputId);
-        if (checkbox.checked) {
-            input.disabled = false;
-        } else {
-            input.disabled = true;
+@section scripts {
+    <script type="text/javascript">
+        function disabledCheck(checkboxId, inputId) {
+            var checkbox = document.getElementById(checkboxId);
+            var input = document.getElementById(inputId);
+            if (checkbox.checked) {
+                input.disabled = false;
+            } else {
+                input.disabled = true;
+            }
         }
-    }
 
-    //function RemoveSpace(inputId) {
-    //    var input = document.getElementById(inputId);
-    //    input.value = input.value.replace(' ', '');
-    //}
-
-
-</script>
+        $(document).ready(function() {
+            disabledCheck('nameCheck', 'Name');
+            disabledCheck('phoneCheck', 'PhoneNumber');
+            disabledCheck('emailCheck', 'Email');
+            disabledCheck('studentCheck', 'StudentNumber');
+        });
+    </script>
+}
