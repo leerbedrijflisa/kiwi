@@ -416,8 +416,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 			// Prevent searching for the king james bible
 			if (searchText.Length > 500)
 			{
-				// TODO: Localize me
-				ModelState.AddModelError("", "Can not search for more than 500 characters.");
+				ModelState.AddModelError("", "Kan niet zoeken voor meer dan 500 karakters.");
 				return View("Index", new List<Report>());
 			}
 
@@ -462,8 +461,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 
 			if (reportsList.Count == 0)
 			{
-				// TODO: Localize me
-				ModelState.AddModelError("", "Found no results.");
+				ModelState.AddModelError("", "Geen resultaten gevonden.");
 			}
 
 			return View("Index", reportsList);
