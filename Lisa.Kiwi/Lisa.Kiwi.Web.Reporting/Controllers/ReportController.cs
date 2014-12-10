@@ -135,7 +135,6 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 				 (data.UseStudentNumber && data.StudentNumber == null)))
 			{
 				ModelState.AddModelError("", "Selected fields can not be empty, unselect them if you do not want to submit them.");
-				return View(data);
 			}
 
 			if (!ModelState.IsValid)
