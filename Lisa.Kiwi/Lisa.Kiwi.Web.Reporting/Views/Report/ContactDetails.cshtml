@@ -1,8 +1,6 @@
 ﻿@model ContactMetadata
 @{
     ViewBag.Title = "Contact details";
-    bool isChecked = false;
-    var value = "";
 }
 
 <div class="center-box">
@@ -13,7 +11,7 @@
         // Temporarily with validation summary while we test it
         @Html.ValidationSummary()
         @Html.AntiForgeryToken()
-        
+
 
         <div class="form-group">
             <label class="control-label">Als we contact met u op mogen nemen, vul dan hier uw contactgevens in.</label><br />
@@ -21,81 +19,42 @@
 
         <div class="form-group">
             <label class="checkbox-inline">
-                @if (Model != null && Model.Name != null)
-                {
-                    isChecked = true;
-                    value = Model.Name;
-                    
-                } 
-                @Html.CheckBox("nameCheck", isChecked, new { @Value = "Naam", @class = "enabler", data_enabler_for = "Name" })
+                @Html.CheckBoxFor(c => c.UseName, new { @class = "enabler", data_enabler_for = "Name" })
                 Naam
             </label>
             <div class="col-xs-12">
-                @Html.TextBoxFor(c => c.Name, true, htmlAttributes: new {@Disabled = "Disabled", Value = value, @class = "form-control"})
+                @Html.TextBoxFor(c => c.Name, true, htmlAttributes: new { @Disabled = "Disabled", @class = "form-control" })
             </div>
         </div>
         <div class="form-group">
             <label class="checkbox-inline">
-                @if (Model != null && Model.PhoneNumber != null)
-                {
-                    isChecked = true;
-                    value = Model.PhoneNumber;
-
-                }
-                else
-                {
-                    isChecked = false;
-                    value = "";
-                }
-                @Html.CheckBox("phoneCheck", isChecked, new { @Value = "Bel mij!", @class = "enabler", data_enabler_for = "PhoneNumber" })
+                @Html.CheckBoxFor(c => c.UsePhoneNumber, new { @class = "enabler", data_enabler_for = "PhoneNumber" })
                 Telefoon
             </label>
             <div class="col-xs-12">
-                @Html.TextBoxFor(c => c.PhoneNumber, true, htmlAttributes: new { @Disabled = "Disabled", Value = value, @class = "form-control" })
+                @Html.TextBoxFor(c => c.PhoneNumber, true, htmlAttributes: new { @Disabled = "Disabled", @class = "form-control" })
             </div>
         </div>
         <div class="form-group">
             <label class="checkbox-inline">
-                @if (Model != null && Model.Email != null)
-                {
-                    isChecked = true;
-                    value = Model.Email;
-
-                }
-                else
-                {
-                    isChecked = false;
-                    value = "";
-                }
-                @Html.CheckBox("emailCheck", isChecked, new { @Value = "Mail mij!", @class = "enabler", data_enabler_for = "Email" })
+                @Html.CheckBoxFor(c => c.UseEmail, new { @class = "enabler", data_enabler_for = "Email" })
                 E-mailadres
             </label>
             <div class="col-xs-12">
-                @Html.TextBoxFor(c => c.Email, true, htmlAttributes: new { @Disabled = "Disabled", Value = value, @class = "form-control" })
+                @Html.TextBoxFor(c => c.Email, true, htmlAttributes: new { @Disabled = "Disabled", @class = "form-control" })
             </div>
         </div>
         <div class="form-group">
             <label class="checkbox-inline">
-                @if (Model != null && Model.StudentNumber != null)
-                {
-                    isChecked = true;
-                    value = Model.StudentNumber.ToString();
-
-                }
-                else
-                {
-                    isChecked = false;
-                    value = "";
-                }
-                @Html.CheckBox("studentCheck", isChecked, new { @Value = "Neem contact op met mijn begleider/mentor", @class = "enabler", data_enabler_for = "StudentNumber" })
+                @Html.CheckBoxFor(c => c.UseStudentNumber, new { @class = "enabler", data_enabler_for = "StudentNumber" })
                 Studentnummer
             </label>
             <div class="col-xs-12">
-                @Html.TextBoxFor(c => c.StudentNumber, true, htmlAttributes: new { @Disabled = "Disabled", Value = value, @class = "form-control" })
+                @Html.TextBoxFor(c => c.StudentNumber, true, htmlAttributes: new { @Disabled = "Disabled", @class = "form-control" })
             </div>
         </div>
         <div class="form-group">
-            @Html.Hidden("guid", new {@Value = ViewBag.Guid})
+            @Html.Hidden("guid", new { @Value = ViewBag.Guid })
             <input type="submit" value="Afronden" class="btn btn-default btn-report" />
         </div>
     }

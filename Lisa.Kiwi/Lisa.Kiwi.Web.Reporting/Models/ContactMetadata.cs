@@ -7,6 +7,11 @@ namespace Lisa.Kiwi.Web.Reporting.Models
 	{
 		public int Id { get; set; }
 
+		public bool UseName { get; set; }
+		public bool UsePhoneNumber { get; set; }
+		public bool UseEmail { get; set; }
+		public bool UseStudentNumber { get; set; }
+
 		[Display(Name = "Naam")]
 		[StringLength(255, ErrorMessage = "De naam mag niet langer zijn dan 255 karakters.")]
 		public string Name { get; set; }

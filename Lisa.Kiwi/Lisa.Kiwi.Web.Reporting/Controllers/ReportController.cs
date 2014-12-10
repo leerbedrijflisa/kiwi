@@ -126,10 +126,22 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 			HttpCookie cookie = HttpContext.Request.Cookies["userReport"];
 			string guid = cookie.Values["guid"];
 
-            if (!ModelState.IsValid)
-            {
-                return View(data);
-            }
+			// Make sure that if a checkmark was checked but no value is given it gives an error
+			// TODO: Localize me
+			if (data != null &&
+				((data.UseName && data.Name == null) ||
+				 (data.UsePhoneNumber && data.PhoneNumber == null) ||
+				 (data.UseEmail && data.Email == null) ||
+				 (data.UseStudentNumber && data.StudentNumber == null)))
+			{
+				ModelState.AddModelError("", "Selected fields can not be empty, unselect them if you do not want to submit them.");
+				return View(data);
+			}
+
+			if (!ModelState.IsValid)
+			{
+				return View(data);
+			}
 
 			CloudTable table = GetTableStorage();
 			TableOperation retrieveOperation = TableOperation.Retrieve<OriginalReport>(guid, "");
