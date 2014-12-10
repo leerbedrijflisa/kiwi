@@ -135,7 +135,6 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 				 (data.UseStudentNumber && data.StudentNumber == null)))
 			{
 				ModelState.AddModelError("", "Een geselecteerd veld mag niet leeg zijn, deselecteer het veld als u niks w");
-				return View(data);
 			}
 
 			if (!ModelState.IsValid)
