@@ -44,6 +44,15 @@
                     }
                 </tbody>
             </table>
+            @if (!ViewData.ModelState.IsValid)
+            {
+                <div class="text-center">
+                    @foreach (var error in ViewData.ModelState.SelectMany(e => e.Value.Errors))
+                    {
+                        @error.ErrorMessage
+                    }
+                </div>
+            }
         </div>
     </div>
 </div>

@@ -402,6 +402,14 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 			StatusName searchStatus;
 			var foundSearchStatus = statusDict.TryGetValue(searchText.ToLower(), out searchStatus);
 
+			// Prevent searching for the king james bible
+			if (searchText.Length > 500)
+			{
+				// TODO: Localize me
+				ModelState.AddModelError("", "Can not search for more than 500 characters.");
+				return View("Index", new List<Report>());
+			}
+
 			// And now for the hack to get datetimes working for now, this will have to be improved
 			// to be a more full featured search query system later on.
 			int searchNumber;
@@ -439,6 +447,12 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 				// sortBy was invalid, use the default
 				ViewBag.SortingBy = DefaultSortBy;
 				reportsList = reports.SortBy(DefaultSortBy).ToList();
+			}
+
+			if (reportsList.Count == 0)
+			{
+				// TODO: Localize me
+				ModelState.AddModelError("", "Found no results.");
 			}
 
 			return View("Index", reportsList);
