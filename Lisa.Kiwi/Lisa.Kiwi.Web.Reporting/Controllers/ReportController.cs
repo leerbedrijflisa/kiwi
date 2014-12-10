@@ -57,6 +57,19 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 
 		public ActionResult Details()
 		{
+            HttpCookie cookie = HttpContext.Request.Cookies["userReport"];
+            string guid = cookie.Values["guid"];
+
+            CloudTable table = GetTableStorage();
+            TableOperation retrieveOperation = TableOperation.Retrieve<OriginalReport>(guid, "");
+            TableResult retrievedResult = table.Execute(retrieveOperation);
+            OriginalReport entity = (OriginalReport)retrievedResult.Result;
+
+            if (entity == null)
+            {
+                return RedirectToAction("Index");
+            }
+
 			var report = new OriginalReport {Time = DateTime.Now};
 			return View(report);
 		}
@@ -78,6 +91,11 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 			TableResult retrievedResult = table.Execute(retrieveOperation);
 			OriginalReport updateEntity = (OriginalReport) retrievedResult.Result;
 
+            if (updateEntity == null)
+            {
+                return RedirectToAction("Index");
+            }
+
             UpdateDetails(updateEntity, data, table);
 
             return RedirectToAction("ContactDetails", "Report");
@@ -85,8 +103,21 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 
 		public ActionResult ContactDetails()
 		{
-			return View();
-		}
+            HttpCookie cookie = HttpContext.Request.Cookies["userReport"];
+            string guid = cookie.Values["guid"];
+
+            CloudTable table = GetTableStorage();
+            TableOperation retrieveOperation = TableOperation.Retrieve<OriginalReport>(guid, "");
+            TableResult retrievedResult = table.Execute(retrieveOperation);
+            OriginalReport entity = (OriginalReport)retrievedResult.Result;
+
+            if(entity == null)
+            {
+    			return RedirectToAction("Index");
+            }
+
+            return View();
+        }
 
 		[HttpPost]
         [ValidateInput(false)]
@@ -107,7 +138,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 
 			if (entity == null)
 			{
-				return View();
+				return RedirectToAction("Index");
 			}
 
 			var report = new WebApi.Report
@@ -162,10 +193,22 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             TableResult retrievedResult = table.Execute(retrieveOperation);
             OriginalReport entity = (OriginalReport)retrievedResult.Result;
 
+            if (entity != null)
+            {
+                TableOperation deleteOperation = TableOperation.Delete(entity);
+                table.Execute(deleteOperation);
+            }
+
             CloudTable tableContact = GetContactTableStorage();
             retrieveOperation = TableOperation.Retrieve<ContactMetadata>(guid, "");
             retrievedResult = tableContact.Execute(retrieveOperation);
             ContactMetadata contact = (ContactMetadata)retrievedResult.Result;
+
+            if (contact != null)
+            {
+                TableOperation deleteOperation = TableOperation.Delete(contact);
+                tableContact.Execute(deleteOperation);
+            }
 
             ViewBag.Contact = contact;
 			return View(entity);
