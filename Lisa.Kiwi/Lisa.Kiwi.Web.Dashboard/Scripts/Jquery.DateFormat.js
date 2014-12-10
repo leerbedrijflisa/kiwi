@@ -22,7 +22,8 @@ var DateFormat = {};
     var shortDaysInWeek = [];
     var shortMonthsInYear = [];
     var longMonthsInYear = [];
-    var shortMonthsToNumber = [];
+    var shortMonthsToNumber = {};
+    var longAgoNames = {};
 
     var language = window.navigator.userLanguage || window.navigator.language;
     switch (language) {
@@ -37,6 +38,11 @@ var DateFormat = {};
                 'jan': '01', 'feb': '02', 'mrt': '03', 'apr': '04', 'mei': '05', 'jun': '06',
                 'jul': '07', 'aug': '08', 'sep': '09', 'okt': '10', 'nov': '11', 'dec': '12'
             };
+            longAgoNames = {
+                'now': 'zojuist', 'minute': '1 minuut geleden', 'minutes': 'minuten geleden', 'hour': '1 uur geleden',
+                'hours': 'uren geleden', 'yesterday': 'gisteren', 'days': 'dagen geleden', 'weeks': 'weken geleden', 'more': 'meer dan 5 weken geleden'
+            };
+
             break;
         default:
             daysInWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -49,6 +55,11 @@ var DateFormat = {};
                 'Jan': '01', 'Feb': '02', 'Mar': '03', 'Apr': '04', 'May': '05', 'Jun': '06',
                 'Jul': '07', 'Aug': '08', 'Sep': '09', 'Oct': '10', 'Nov': '11', 'Dec': '12'
             };
+            longAgoNames = {
+                'now': 'just now', 'minute': '1 minute ago', 'minutes': 'minutes ago', 'hour': '1 hour ago',
+                'hours': 'hours ago', 'yesterday': 'yesterday', 'days': 'days ago', 'weeks': 'weeks ago', 'more': 'more then 5 weeks ago'
+            };
+
             break;
     }
 
@@ -477,24 +488,29 @@ var DateFormat = {};
                     return;
                 }
 
+                //var longAgoNames = {
+                //    'now': 'just now', 'minute': '1 minute ago', 'minutes': 'minutes ago', 'hour': '1 hour ago',
+                //    'hours': 'hours ago', 'yesterday': 'yesterday', 'days': 'days ago', 'weeks': 'weeks ago', 'more': 'more then 5 weeks ago'
+                //};
+
                 if (diff < 60) {
-                    return 'just now';
+                    return longAgoNames['now'];
                 } else if (diff < 120) {
-                    return '1 minute ago';
+                    return longAgoNames['minute'];
                 } else if (diff < 3600) {
-                    return Math.floor(diff / 60) + ' minutes ago';
+                    return Math.floor(diff / 60) + ' ' + longAgoNames['minutes'];
                 } else if (diff < 7200) {
-                    return '1 hour ago';
+                    return longAgoNames['hour'];
                 } else if (diff < 86400) {
-                    return Math.floor(diff / 3600) + ' hours ago';
+                    return Math.floor(diff / 3600) + ' ' + longAgoNames['hours'];
                 } else if (day_diff === 1) {
-                    return 'Yesterday';
+                    return longAgoNames['yesterday'];
                 } else if (day_diff < 7) {
-                    return day_diff + ' days ago';
+                    return day_diff + ' ' + longAgoNames['days'];
                 } else if (day_diff < 31) {
-                    return Math.ceil(day_diff / 7) + ' weeks ago';
+                    return Math.ceil(day_diff / 7) + ' ' + longAgoNames['weeks'];
                 } else if (day_diff >= 31) {
-                    return 'more than 5 weeks ago';
+                    return longAgoNames['more'];
                 }
             },
             toBrowserTimeZone: function (value, format) {
