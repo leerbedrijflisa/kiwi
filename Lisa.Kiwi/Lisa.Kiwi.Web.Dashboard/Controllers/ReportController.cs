@@ -79,11 +79,15 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 
 			if (Session["user"].ToString() == "user")
 			{
-				if (report.Status == StatusName.Solved || report.Hidden)
-				{
+				if (report.Status == StatusName.Solved || report.Hidden) 
+ 				{
 					return RedirectToAction("Index", "Report");
 				}
 			}
+            if (!(bool)Session["is_admin"] && report.Hidden)
+            {
+                return RedirectToAction("Index", "Report");
+            }
 
             var contact = _contactProxy.GetContacts().Where(c => c.Report == report.Id).FirstOrDefault();
             ViewBag.contact = contact;
