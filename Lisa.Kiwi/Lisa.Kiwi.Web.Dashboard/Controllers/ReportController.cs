@@ -62,13 +62,18 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 			}
 		}
 
-		public ActionResult Details(int id)
+		public ActionResult Details(int? id)
 		{
 			var sessionTimeOut = Session.Timeout = 60;
 			if (Session["user"] == null || sessionTimeOut == 0)
 			{
 				return RedirectToAction("Login", "Account");
 			}
+
+            if (id == null)
+            {
+                return View("Error404");
+            }
 
             var report = _reportProxy.GetReports().Where(r => r.Id == id).FirstOrDefault();
 
@@ -286,6 +291,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 			{
                 result.Add(new LogBookEntry
 				{
+                    Id = (remark.Id * 13),
 					Created = remark.Created,
 					Description = remark.Description,
                     User = remark.User
@@ -306,6 +312,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 
                 result.Add(new LogBookEntry
 				{
+                    Id = (status.Id * 10),
 					Created = status.Created,
 					Description = description,
                     User = status.User
