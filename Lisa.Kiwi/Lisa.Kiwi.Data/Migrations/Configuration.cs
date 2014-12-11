@@ -16,44 +16,264 @@ namespace Lisa.Kiwi.Data.Migrations
 
 		protected override void Seed(KiwiContext context)
 		{
+            /* REPORT 1 */
 			Report sampleReport = new Report
 			{
-				Description = "Dit is een test report. Lorem Lorem Kaasaus.",
-				Created = DateTime.UtcNow,
-				Location = "Het Lisa lokaal",
+				Description = "Een zakje drugs gevonden.",
+				Created = DateTime.UtcNow.AddDays(-1),
+				Location = "Fietsenstalling Azurro",
 				Time = DateTime.UtcNow.AddDays(-1),
 				Guid = Guid.NewGuid().ToString(),
 				UserAgent = "Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Firefox/31.0",
 				Ip = "85.119.106.81",
-				Type = "Digital",
+				Type = "Drugs",
 				Hidden = false
 			};
 
 			Status sampleStatus = new Status
 			{
-				Created = DateTime.UtcNow,
-				Name = StatusName.InProgress,
+				Created = DateTime.UtcNow.AddDays(-1),
+				Name = StatusName.Open,
 				Report = sampleReport
 			};
 
-			Status sampleStatus2 = new Status
-			{
-				Created = DateTime.UtcNow,
-				Name = StatusName.InProgress,
-				Report = sampleReport
-			};
+            Status sampleStatus2 = new Status
+            {
+                Created = DateTime.UtcNow.AddHours(-20),
+                Name = StatusName.Solved,
+                Report = sampleReport
+            };
 
 			Remark sampleRemark = new Remark
 			{
-				Created = DateTime.UtcNow,
-				Description = "Laanaamaakai. Cheese is da bawm.",
+				Created = DateTime.UtcNow.AddHours(-20),
+				Description = "Er waren meerdere drugs zakjes gevonden door de beveiliging.",
 				Report = sampleReport
 			};
 
 			context.Reports.AddOrUpdate(sampleReport);
 			context.Statuses.AddOrUpdate(sampleStatus);
-			context.Statuses.AddOrUpdate(sampleStatus2);
 			context.Remarks.AddOrUpdate(sampleRemark);
+            context.Statuses.AddOrUpdate(sampleStatus2);
+            /* EIND REPORT 1 */
+
+            /* REPORT 2 */
+            sampleReport = new Report
+            {
+                Description = "Mijn mobieltje is gestolen.",
+                Created = DateTime.UtcNow,
+                Location = "Lilla",
+                Time = DateTime.UtcNow.AddHours(-19),
+                Guid = Guid.NewGuid().ToString(),
+                UserAgent = "Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Firefox/31.0",
+                Ip = "85.119.106.81",
+                Type = "Diefstal",
+                Hidden = false
+            };
+
+            sampleStatus = new Status
+            {
+                Created = DateTime.UtcNow,
+                Name = StatusName.Open,
+                Report = sampleReport
+            };
+
+            Contact sampleContact = new Contact
+            {
+                Name = "John Doe",
+                EmailAddress = "JohnDoe@mydavinci.nl",
+                PhoneNumber = "0622885793",
+                StudentNumber = 69007345,
+                Report = sampleReport,
+                EditToken = Guid.NewGuid()
+            };
+
+            context.Reports.AddOrUpdate(sampleReport);
+            context.Contacts.AddOrUpdate(sampleContact);
+            context.Statuses.AddOrUpdate(sampleStatus);
+            /* EIND REPORT 2 */
+
+            /* REPORT 3 */
+            sampleReport = new Report
+            {
+                Description = "Auto met gebroken ruit.",
+                Created = DateTime.UtcNow,
+                Location = "Achter brandweer parkeerplaats.",
+                Time = DateTime.UtcNow,
+                Guid = Guid.NewGuid().ToString(),
+                UserAgent = "Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Firefox/31.0",
+                Ip = "85.119.106.81",
+                Type = "Voertuigen",
+                Hidden = false
+            };
+
+            sampleStatus = new Status
+            {
+                Created = DateTime.UtcNow,
+                Name = StatusName.Open,
+                Report = sampleReport
+            };
+
+
+            context.Reports.AddOrUpdate(sampleReport);
+            context.Statuses.AddOrUpdate(sampleStatus);
+            /* EIND REPORT 3 */
+
+            /* REPORT 4 */
+            sampleReport = new Report
+            {
+                Description = "BRAND Romboutslaan!!!!!",
+                Created = DateTime.UtcNow,
+                Location = "ROMBOUTSLAAN",
+                Time = DateTime.UtcNow,
+                Guid = Guid.NewGuid().ToString(),
+                UserAgent = "Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Firefox/31.0",
+                Ip = "85.119.106.81",
+                Type = "Brand",
+                Hidden = false
+            };
+
+            sampleStatus = new Status
+            {
+                Created = DateTime.UtcNow,
+                Name = StatusName.Open,
+                Report = sampleReport
+            };
+
+            context.Reports.AddOrUpdate(sampleReport);
+            context.Statuses.AddOrUpdate(sampleStatus);
+            /* EIND REPORT 4 */
+
+            /* REPORT 5 */
+            sampleReport = new Report
+            {
+                Description = "Drugs zakjes gevonden",
+                Created = DateTime.UtcNow.AddHours(-2),
+                Location = "Azurro",
+                Time = DateTime.UtcNow.AddHours(-3),
+                Guid = Guid.NewGuid().ToString(),
+                UserAgent = "Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Firefox/31.0",
+                Ip = "85.119.106.81",
+                Type = "Drugs",
+                Hidden = false
+            };
+
+            sampleStatus = new Status
+            {
+                Created = DateTime.UtcNow.AddHours(-2),
+                Name = StatusName.Open,
+                Report = sampleReport
+            };
+
+            sampleRemark = new Remark
+            {
+                Created = DateTime.UtcNow,
+                Description = "Dit lijkt vaker voor te komen, heeft meer onderzoek nodig.",
+                Report = sampleReport
+            };
+
+            sampleStatus2 = new Status
+            {
+                Created = DateTime.UtcNow,
+                Name = StatusName.Solved,
+                Report = sampleReport
+            };
+            
+            context.Reports.AddOrUpdate(sampleReport);
+            context.Statuses.AddOrUpdate(sampleStatus);
+            context.Remarks.AddOrUpdate(sampleRemark);
+            context.Statuses.AddOrUpdate(sampleStatus2);
+            /* EIND REPORT 5 */
+
+            /* REPORT 6 */
+            sampleReport = new Report
+            {
+                Description = "Auto fout geparkeerd. Hij blokeerd de toegang tot de fietsenstalling.",
+                Created = DateTime.UtcNow,
+                Location = "Azurro fietsenstalling",
+                Time = DateTime.UtcNow,
+                Guid = Guid.NewGuid().ToString(),
+                UserAgent = "Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Firefox/31.0",
+                Ip = "85.119.106.81",
+                Type = "Drugs",
+                Hidden = false
+            };
+
+            sampleStatus = new Status
+            {
+                Created = DateTime.UtcNow,
+                Name = StatusName.Open,
+                Report = sampleReport
+            };
+
+            context.Reports.AddOrUpdate(sampleReport);
+            context.Statuses.AddOrUpdate(sampleStatus);
+            /* EIND REPORT 6 */
+
+            /* REPORT 7 */
+            sampleReport = new Report
+            {
+                Description = "Er word veel gescholden en geintimideerd.",
+                Created = DateTime.UtcNow.AddMinutes(-25),
+                Location = "Ocra kantine",
+                Time = DateTime.UtcNow.AddMinutes(-25),
+                Guid = Guid.NewGuid().ToString(),
+                UserAgent = "Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Firefox/31.0",
+                Ip = "85.119.106.81",
+                Type = "Intimidatie",
+                Hidden = false
+            };
+
+            sampleStatus = new Status
+            {
+                Created = DateTime.UtcNow.AddMinutes(-25),
+                Name = StatusName.Open,
+                Report = sampleReport
+            };
+
+            sampleRemark = new Remark
+            {
+                Created = DateTime.UtcNow.AddMinutes(-15),
+                Description = "Er is met de personen gepraat en en ze zouden verder rustig door gaan met hun pauze.",
+                Report = sampleReport
+            };
+
+            sampleStatus2 = new Status 
+            {
+                Created = DateTime.UtcNow.AddMinutes(-15),
+                Report = sampleReport
+            };
+
+            context.Reports.AddOrUpdate(sampleReport);
+            context.Statuses.AddOrUpdate(sampleStatus);
+            context.Remarks.AddOrUpdate(sampleRemark);
+            context.Statuses.AddOrUpdate(sampleStatus2);
+            /* EIND REPORT 7 */
+
+            /* REPORT 8 */
+            sampleReport = new Report
+            {
+                Description = "Een vechtpartij! 2 jongens en 2 damens zijn aan het vechten en schelden!",
+                Created = DateTime.UtcNow,
+                Location = "Ocra kantine",
+                Time = DateTime.UtcNow,
+                Guid = Guid.NewGuid().ToString(),
+                UserAgent = "Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Firefox/31.0",
+                Ip = "85.119.106.81",
+                Type = "Pesten",
+                Hidden = false
+            };
+
+            sampleStatus = new Status
+            {
+                Created = DateTime.UtcNow,
+                Name = StatusName.Open,
+                Report = sampleReport
+            };
+
+            context.Reports.AddOrUpdate(sampleReport);
+            context.Statuses.AddOrUpdate(sampleStatus);
+            /* EIND REPORT 8 */
 
 			// Set up our accounts
 			CreateRoles(context);
