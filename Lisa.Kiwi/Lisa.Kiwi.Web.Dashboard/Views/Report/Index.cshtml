@@ -23,6 +23,7 @@
                         <th>@Html.SortLinkFor("Melding aangemaakt", sortingBy, i => i.Created)</th>
                         <th>@Html.SortLinkFor("Datum incident", sortingBy, i => i.Time)</th>
                         <th>@Html.SortLinkFor("Type melding", sortingBy, i => i.Type)</th>
+                        <th>@Html.SortLinkFor("Locatie", sortingBy, i => i.Location)</th>
                         <th>Beschrijving</th>
                         <th>@Html.SortLinkFor("Status", sortingBy, i => i.Status)</th>
                         <th>Bekijken</th>
@@ -36,6 +37,7 @@
                             <td><span class="convertCreatedTime-@item.Id">@item.Created.ToString("MMMM dd, yyyy HH:mm:ss")</span></td>
                             <td><span class="convertIncidentTime-@item.Id">@item.Time.ToString("MMMM dd, yyyy HH:mm:ss")</span></td>
                             <td>@item.Type</td>
+                            <td>@item.Location</td>
                             <td>@item.Description</td>
                             <td>@item.Status.GetStatusDisplayNameFromMetadata()</td>
                             <td><a href="@Url.Action("Details", new {id = item.Id})">Bekijk</a></td>
