@@ -196,7 +196,6 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
                 EmailAddress = "beyonce@gijs.nl",
                 Name = "Gijs Jannssenn",
                 PhoneNumber = "0655889944",
-                StudentNumber = 99015221,
                 Report = reportId
             });
 

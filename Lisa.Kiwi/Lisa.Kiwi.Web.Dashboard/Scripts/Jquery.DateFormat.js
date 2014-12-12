@@ -26,6 +26,7 @@ var DateFormat = {};
     var longAgoNames = {};
 
     var language = window.navigator.userLanguage || window.navigator.language;
+    language = 'nl';
     switch (language) {
         case 'nl':
             daysInWeek = ['zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag'];
