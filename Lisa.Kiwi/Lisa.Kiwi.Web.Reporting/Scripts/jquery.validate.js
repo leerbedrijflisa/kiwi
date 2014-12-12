@@ -1140,18 +1140,11 @@ $.extend($.validator, {
 
 		regex: function (value, element, param) {
 
-		    if (this.optional(element)) {
-		        return "dependency-mismatch";
+		    if (typeof param.pattern === "string") {
+		        param = new RegExp(param.pattern);
 		    }
 
-		    var regex = new RegExp(param.pattern);
-
-		    // run a regex test against given value
-		    if (!regex.test(value)) {
-		        return false;
-		    }
-
-		    return this.optional(element);
+		    return param.test(value)
 		},
 
 		// http://docs.jquery.com/Plugins/Validation/Methods/equalTo
