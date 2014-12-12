@@ -83,7 +83,6 @@ namespace Lisa.Kiwi.Data.Migrations
                 Name = "John Doe",
                 EmailAddress = "JohnDoe@mydavinci.nl",
                 PhoneNumber = "0622885793",
-                StudentNumber = 69007345,
                 Report = sampleReport,
                 EditToken = Guid.NewGuid()
             };

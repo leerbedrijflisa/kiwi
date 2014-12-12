@@ -10,7 +10,6 @@ namespace Lisa.Kiwi.Web.Reporting.Models
 		public bool UseName { get; set; }
 		public bool UsePhoneNumber { get; set; }
 		public bool UseEmail { get; set; }
-		public bool UseStudentNumber { get; set; }
 
 		[Display(Name = "Naam")]
 		[StringLength(255, ErrorMessage = "De naam mag niet langer zijn dan 255 karakters.")]
@@ -22,10 +21,6 @@ namespace Lisa.Kiwi.Web.Reporting.Models
 
 		[EmailAddress(ErrorMessage = "Dit is geen geldig e-mailadres.")]
 		public string Email { get; set; }
-
-		[Display(Name = "Studentnummer")]
-		[RegularExpression(@"[0-9]{8}", ErrorMessage = "Een studentnummer bestaat enkel uit cijfers en is 8 lang.")]
-        public int? StudentNumber { get; set; }
 
         public int Report { get; set; }
 	}

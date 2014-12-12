@@ -27,7 +27,6 @@ namespace Lisa.Kiwi.WebApi.Controllers
                              Name = c.Name,
                              PhoneNumber = c.PhoneNumber,
                              Report = c.Report.Id,
-                             StudentNumber = c.StudentNumber
                          };
 			return result;
 		}
@@ -45,7 +44,6 @@ namespace Lisa.Kiwi.WebApi.Controllers
                              Name = c.Name,
                              PhoneNumber = c.PhoneNumber,
                              Report = c.Report.Id,
-                             StudentNumber = c.StudentNumber
                          };
             return new SingleResult<Contact>(result);
 		}
@@ -71,7 +69,6 @@ namespace Lisa.Kiwi.WebApi.Controllers
                     EmailAddress = contact.EmailAddress,
                     Name = contact.Name,
                     PhoneNumber = contact.PhoneNumber,
-                    StudentNumber =  contact.StudentNumber,
                     Report = db.Reports.Where(r => r.Id == contact.Report).FirstOrDefault()
                 };
 
@@ -115,7 +112,6 @@ namespace Lisa.Kiwi.WebApi.Controllers
                 EmailAddress = contact.EmailAddress,
                 Name = contact.Name,
                 PhoneNumber = contact.PhoneNumber,
-                StudentNumber = contact.StudentNumber,
                 Report = report
             };
 
@@ -148,7 +144,6 @@ namespace Lisa.Kiwi.WebApi.Controllers
                 EmailAddress = contact.Name,
                 Name = contact.Name,
                 PhoneNumber = contact.PhoneNumber,
-                StudentNumber = contact.StudentNumber,
                 Report = report
             };
 

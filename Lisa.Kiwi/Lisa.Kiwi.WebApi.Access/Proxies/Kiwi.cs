@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 21/11/2014 12:36:14
+// Generation date: Fri 12 Dec 14 10:09:14
 namespace Lisa.Kiwi.WebApi
 {
     /// <summary>
@@ -494,29 +494,6 @@ namespace Lisa.Kiwi.WebApi
         private string _EmailAddress;
         partial void OnEmailAddressChanging(string value);
         partial void OnEmailAddressChanged();
-        /// <summary>
-        /// There are no comments for Property StudentNumber in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        [global::Microsoft.OData.Client.OriginalNameAttribute("StudentNumber")]
-        public global::System.Nullable<int> StudentNumber
-        {
-            get
-            {
-                return this._StudentNumber;
-            }
-            set
-            {
-                this.OnStudentNumberChanging(value);
-                this._StudentNumber = value;
-                this.OnStudentNumberChanged();
-                this.OnPropertyChanged("StudentNumber");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.0.0")]
-        private global::System.Nullable<int> _StudentNumber;
-        partial void OnStudentNumberChanging(global::System.Nullable<int> value);
-        partial void OnStudentNumberChanged();
         /// <summary>
         /// There are no comments for Property Report in the schema.
         /// </summary>
@@ -1243,7 +1220,6 @@ namespace Default
         <Property Name=""Name"" Type=""Edm.String"" />
         <Property Name=""PhoneNumber"" Type=""Edm.String"" />
         <Property Name=""EmailAddress"" Type=""Edm.String"" />
-        <Property Name=""StudentNumber"" Type=""Edm.Int32"" />
         <Property Name=""Report"" Type=""Edm.Int32"" Nullable=""false"" />
         <Property Name=""EditToken"" Type=""Edm.Guid"" Nullable=""false"" />
       </EntityType>

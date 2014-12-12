@@ -131,8 +131,8 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 			if (data != null &&
 				((data.UseName && data.Name == null) ||
 				 (data.UsePhoneNumber && data.PhoneNumber == null) ||
-				 (data.UseEmail && data.Email == null) ||
-				 (data.UseStudentNumber && data.StudentNumber == null)))
+				 (data.UseEmail && data.Email == null) 
+				 ))
 			{
 				ModelState.AddModelError("", "Een geselecteerd veld mag niet leeg zijn, deselecteer het veld als u niks w");
 			}
@@ -171,7 +171,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 				return View();
 			}
 
-			if (data.Name != null || data.Email != null || data.PhoneNumber != null || data.StudentNumber != null)
+			if (data.Name != null || data.Email != null || data.PhoneNumber != null)
 			{
 				var newContact = CreateContact(data, reportEntity.Id, reportEntity.EditToken);
 				var entityContact = new ContactMetadata
@@ -180,7 +180,6 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 					Name = newContact.Name,
 					Email = newContact.EmailAddress,
 					PhoneNumber = newContact.PhoneNumber,
-					StudentNumber = newContact.StudentNumber,
 					Report = newContact.Report,
 					PartitionKey = entity.PartitionKey,
 					RowKey = ""
@@ -312,7 +311,6 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
                 Name = data.Name,
                 EmailAddress = data.Email,
                 PhoneNumber = data.PhoneNumber,
-                StudentNumber = data.StudentNumber,
                 EditToken = editToken,
                 Report = id
             };
