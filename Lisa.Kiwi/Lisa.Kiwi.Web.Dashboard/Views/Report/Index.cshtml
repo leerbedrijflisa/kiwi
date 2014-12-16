@@ -34,8 +34,8 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td><span class="convertCreatedTime-@item.Id">@item.Created.ToString("MMMM dd, yyyy HH:mm:ss")</span></td>
-                            <td><span class="convertIncidentTime-@item.Id">@item.Time.ToString("MMMM dd, yyyy HH:mm:ss")</span></td>
+                            <td><span class="convertCreatedTime-@item.Id">@item.Created.ToString("yyyy-MM-dd HH:mm:ss")</span></td>
+                            <td><span class="convertIncidentTime-@item.Id">@item.Time.ToString("yyyy-MM-dd HH:mm:ss")</span></td>
                             <td>@item.Type</td>
                             <td>@item.Location</td>
                             <td>@item.Description</td>
@@ -58,16 +58,26 @@
         </div>
     </div>
 </div>
-
+<h1>@TimeZoneInfo.Local</h1>
 <script type="text/javascript">
     idsArray.forEach(function (id) {
         var timeClass = $('.convertIncidentTime-' + id);
-        var newTime = $.format.toBrowserTimeZone(timeClass.text(), "E dd MMM yyyy HH:mm");
+        var m = timeClass.text().match(/(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})/);
+        var date = new Date(Date.UTC(m[1], m[2] - 1, m[3], m[4], m[5], m[6]));
+
+        var options = { weekday: 'short', day: 'numeric', month: 'long', year: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
+        var newTime = date.toLocaleString('nl-NL', options);
+
         timeClass.text(newTime);
 
         var createdClass = $('.convertCreatedTime-' + id);
-        newTime = $.format.toBrowserTimeZone(createdClass.text(), "MMMM dd, yyyy HH:mm:ss");
-        newTime = $.format.prettyDate(newTime);
-        createdClass.text(newTime);
+        m = createdClass.text().match(/(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})/);
+        date = new Date(Date.UTC(m[1], m[2] - 1, m[3], m[4], m[5], m[6]));
+
+        options = { weekday: 'short', day: 'numeric', month: 'long', year: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
+        newTime = date.toLocaleString('nl-NL', options);
+
+        var result = $.format.prettyDate(newTime);
+        createdClass.text(result);
     });
 </script>

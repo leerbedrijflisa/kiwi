@@ -37,7 +37,7 @@ else
                 <div class="form-group">
                     <label class="col-sm-4 control-label">Tijd incident</label>
                     <div class="col-sm-8">
-                        <p class="form-control-static convertIncidentTime">@Model.Time.ToString("MMMM dd, yyyy HH:mm:ss")</p>
+                        <p class="form-control-static convertIncidentTime">@Model.Time.ToString("yyyy-MM-dd HH:mm:ss")</p>
                     </div>
                 </div>
                 @if ((bool)Session["is_admin"])
@@ -164,7 +164,7 @@ else
                     }
                     <div class="form-group remark-head">
                         <div class="col-sm-4">Wie: <span>@remark.User</span></div>
-                        <div class="col-sm-8" style="text-align:right;">Wanneer:  <span class="convertLogbookTime-@remark.Id">@remark.Created.ToString("MMMM dd, yyyy HH:mm:ss")</span></div>
+                        <div class="col-sm-8" style="text-align:right;">Wanneer:  <span class="convertLogbookTime-@remark.Id">@remark.Created.ToString("yyyy-MM-dd HH:mm:ss")</span></div>
                     </div>
                     <div class="form-group remark-bottom">
                         <div class="col-sm-12">
@@ -180,11 +180,22 @@ else
 
 <script>
     var timeClass;
-    idsArray.forEach(function (id) {
+    logbookIds.forEach(function (id) {
         timeClass = $('.convertLogbookTime-' + id);
-        timeClass.text($.format.toBrowserTimeZone(timeClass.text(), "ddd dd MMM yyyy HH:mm"));
+        var m = timeClass.text().match(/(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})/);
+
+        var date = new Date(Date.UTC(m[1], m[2] - 1, m[3], m[4], m[5], m[6]));
+        var options = { weekday: 'short', day: 'numeric', month: 'long', year: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
+        var newTime = date.toLocaleString('nl-NL', options);
+        timeClass.text(newTime);
     });
 
     timeClass = $('.convertIncidentTime');
-    timeClass.text($.format.date(timeClass.text(), "ddd dd MMM yyyy HH:mm"));
+    var m = timeClass.text().match(/(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})/);
+
+    var date = new Date(Date.UTC(m[1], m[2] - 1, m[3], m[4], m[5], m[6]));
+    var options = { weekday: 'short', day: 'numeric', month: 'long', year: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
+    var newTime = date.toLocaleString('nl-NL', options);
+
+    timeClass.text(newTime);
 </script>
