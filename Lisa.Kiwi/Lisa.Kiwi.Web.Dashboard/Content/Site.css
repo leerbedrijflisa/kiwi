@@ -112,3 +112,22 @@ h2 {
     background: #e2e2e2;
     margin-bottom: 10px;
 }
+
+/* Pagination for dashboard */
+.pagination-item {
+    display:inline-block;
+    padding:5px;
+    border:1px solid #306086;
+    color:#428bca;
+}
+
+.pagination-item.current {
+    background:#306086 !important;
+    color:#fff !important;
+}
+
+.pagination-item:hover a, .pagination-item:hover {
+    background:#306086;
+    color:#fff;
+    text-decoration:none;
+}

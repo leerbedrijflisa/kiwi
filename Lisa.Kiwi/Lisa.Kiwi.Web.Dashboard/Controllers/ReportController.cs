@@ -15,8 +15,6 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 {
 	public class ReportController : Controller
 	{
-		private const string DefaultSortBy = "Created DESC";
-
         public ReportController()
         {
 	        var token = System.Web.HttpContext.Current.Session["token"] as string ?? "";
@@ -28,7 +26,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
             _contactProxy = new ContactProxy(ConfigHelper.GetODataUri(), token, tokenType);
         }
 
-		public ActionResult Index(string sortBy = DefaultSortBy)
+		public ActionResult Index(int id = 1, string sortBy = DefaultSortBy)
 		{
 			var sessionTimeOut = Session.Timeout = 60;
 			if (Session["user"] == null || sessionTimeOut == 0)
@@ -36,29 +34,40 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 				return RedirectToAction("Login", "Account");
 			}
 
+            int page = 0;
+            if (id > 0)
+            {
+                page = id - 1;
+            }
+            
+            int items = DefaultItems;
+
 			IQueryable<Report> reports;
 
 			if (!(bool) Session["is_admin"])
 			{
-				reports = _reportProxy.GetReports()
-					.Where(r => r.Status != StatusName.Solved)
-					.Where(report => report.Hidden == false);
+                reports = _reportProxy.GetReports()
+                    .Where(r => r.Status != StatusName.Solved)
+                    .Where(report => report.Hidden == false);
 			}
 			else
 			{
 				reports = _reportProxy.GetReports();
 			}
 
+            ViewBag.pages = (int)Math.Ceiling((double)reports.Count() / (double)items);
+            ViewBag.currentPage = page;
+
 			try
 			{
 				ViewBag.SortingBy = sortBy;
-				return View(reports.SortBy(sortBy).ToList());
+                return View(reports.SortBy(sortBy).ToList().Skip(items * page).Take(items));
 			}
 			catch (ArgumentException)
 			{
 				// sortBy was invalid, use the default
 				ViewBag.SortingBy = DefaultSortBy;
-				return View(reports.SortBy(DefaultSortBy));
+				return View(reports.SortBy(DefaultSortBy).Skip(items * page).Take(items));
 			}
 		}
 
@@ -465,6 +474,9 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 
 			return View("Index", reportsList);
 		}
+        
+        private const string DefaultSortBy = "Created DESC";
+        private const int DefaultItems = 15;
 
 		private readonly ContactProxy _contactProxy;
         private readonly RemarkProxy _remarkProxy;

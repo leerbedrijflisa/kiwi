@@ -46,6 +46,29 @@
                     }
                 </tbody>
             </table>
+            <div class="text-center">
+                @for (int i = 0; i < ViewBag.pages; i++)
+                {
+                    if (ViewBag.currentPage == i)
+                    {
+                        <div class="pagination-item current">@(i + 1)</div>
+                    }
+                    else
+                    {
+                        var pageUrl = "";
+                        if (sortingBy == "Created DESC")
+                        {
+                           pageUrl = string.Format("/Report/Index/{0}", (i + 1).ToString());
+                        }
+                        else
+                        {
+                            pageUrl = string.Format("/Report/Index/{0}?sortBy={1}", (i + 1).ToString(), sortingBy);
+                        }
+                        
+                        <div class="pagination-item"><a href="@pageUrl">@(i + 1)</a></div>
+                    }
+                }
+            </div>
             @if (!ViewData.ModelState.IsValid)
             {
                 <div class="text-center">
@@ -58,7 +81,6 @@
         </div>
     </div>
 </div>
-<h1>@TimeZoneInfo.Local</h1>
 <script type="text/javascript">
     idsArray.forEach(function (id) {
         var options = { day: 'numeric', month: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric' };
