@@ -85,6 +85,18 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 			{
                 return View(data);
             }
+
+            int timeZoneDifference = 0;
+            if (data.Offset < 0)
+            {
+                timeZoneDifference = data.Offset / 60;
+                data.Time = data.Time.AddHours(timeZoneDifference);
+            }
+            else
+            {
+                timeZoneDifference = data.Offset / 60;
+                data.Time = data.Time.AddHours(timeZoneDifference);
+            }
 			
             CloudTable table = GetTableStorage();
 			TableOperation retrieveOperation = TableOperation.Retrieve<OriginalReport>(guid, "");

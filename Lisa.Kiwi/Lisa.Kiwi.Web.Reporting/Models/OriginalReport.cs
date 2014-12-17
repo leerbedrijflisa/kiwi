@@ -36,6 +36,7 @@ namespace Lisa.Kiwi.Web.Reporting.Models
         [DataType(DataType.DateTime, ErrorMessage = "Dit is geen geldige tijd. DD-MM-YYYY HH:MM:SS")]
         [Display(Name = "Tijd van incident")]
 		public DateTime Time { get; set; }
+        public int Offset { get; set; }
 
 		[Display(Name = "Type melding")]
 		public string Type { get; set; }
