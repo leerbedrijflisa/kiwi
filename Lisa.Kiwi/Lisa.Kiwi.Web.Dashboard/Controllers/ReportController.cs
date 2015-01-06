@@ -39,7 +39,6 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
             {
                 page = id - 1;
             }
-            
             int items = DefaultItems;
 
 			IQueryable<Report> reports;
@@ -379,7 +378,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 		}
 
 		[HttpGet]
-		public ActionResult Search(string sortBy = DefaultSortBy)
+		public ActionResult Search(int id = 0, string sortBy = DefaultSortBy)
 		{
 			var sessionTimeOut = Session.Timeout = 60;
 			if (Session["user"] == null || sessionTimeOut == 0)
@@ -392,6 +391,13 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 			{
 				return RedirectToAction("Index");
 			}
+
+            int page = 0;
+            if (id > 0)
+            {
+                page = id - 1;
+            }
+            int items = DefaultItems;
 
 			var searchText = (string) Session["search_text"];
 			ViewBag.SearchText = searchText;
@@ -408,6 +414,9 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 			{
 				reports = _reportProxy.GetReports();
 			}
+
+            ViewBag.pages = (int)Math.Ceiling((double)reports.Count() / (double)items);
+            ViewBag.currentPage = page;
 
 			// This is the best way I could find to do status searching with localized strings.
 			// I'm so so sorry for this atrocety.
@@ -458,7 +467,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 			try
 			{
 				ViewBag.SortingBy = sortBy;
-				reportsList = reports.SortBy(sortBy).ToList();
+                reportsList = reports.SortBy(sortBy).ToList();
 			}
 			catch (ArgumentException)
 			{
@@ -472,11 +481,11 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 				ModelState.AddModelError("", "Geen resultaten gevonden.");
 			}
 
-			return View("Index", reportsList);
+            return View("Index", reportsList.Skip(items * page).Take(items));
 		}
         
         private const string DefaultSortBy = "Created DESC";
-        private const int DefaultItems = 15;
+        private const int DefaultItems = 3;
 
 		private readonly ContactProxy _contactProxy;
         private readonly RemarkProxy _remarkProxy;

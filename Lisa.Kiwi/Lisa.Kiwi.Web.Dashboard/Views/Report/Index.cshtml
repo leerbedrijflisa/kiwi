@@ -56,13 +56,14 @@
                     else
                     {
                         var pageUrl = "";
+                        var action = ViewContext.Controller.ValueProvider.GetValue("action").RawValue;
                         if (sortingBy == "Created DESC")
                         {
-                           pageUrl = string.Format("/Report/Index/{0}", (i + 1).ToString());
+                           pageUrl = string.Format("/Report/{0}/{1}", action, (i + 1).ToString());
                         }
                         else
                         {
-                            pageUrl = string.Format("/Report/Index/{0}?sortBy={1}", (i + 1).ToString(), sortingBy);
+                            pageUrl = string.Format("/Report/{0}/{1}?sortBy={2}", action, (i + 1).ToString(), sortingBy);
                         }
                         
                         <div class="pagination-item"><a href="@pageUrl">@(i + 1)</a></div>
