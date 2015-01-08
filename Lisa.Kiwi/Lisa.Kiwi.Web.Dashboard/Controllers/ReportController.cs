@@ -485,7 +485,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 		}
         
         private const string DefaultSortBy = "Created DESC";
-        private const int DefaultItems = 3;
+        private const int DefaultItems = 15;
 
 		private readonly ContactProxy _contactProxy;
         private readonly RemarkProxy _remarkProxy;
