@@ -1094,7 +1094,9 @@ $.extend($.validator, {
 		// http://docs.jquery.com/Plugins/Validation/Methods/date
 		date: function(value, element) {
 
-		    var Date = new RegExp(/^(\d{2}).(\d{2}).(\d{4}).(\d{2}).(\d{2}).(\d{2})$/);
+		    //var Date = new RegExp(/^(\d{2}).(\d{2}).(\d{4}).(\d{2}).(\d{2}).(\d{2})$/);
+		    var Date = new RegExp(/^(\d{1,2}).(\d{1,2}).(\d{4}).(\d{1,2}).(\d{1,2}).(\d{1,2})$/);
+
 
 		    if (Date.test(value) == true) {
 		        return true;

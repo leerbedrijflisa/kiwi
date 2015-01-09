@@ -1,4 +1,5 @@
-﻿@model OriginalReport
+﻿@using System.Drawing
+@model OriginalReport
 @{
     ViewBag.Title = "Report";
 }
@@ -23,7 +24,7 @@
                     @Html.LabelFor(o => o.Time, new {@class = "col-xs-12"})
                     <div class="col-xs-12">
                         @Html.TextBoxFor(o => o.Time, true, htmlAttributes: new { @value = DateTime.Now.ToString("dd-MM-yyyy HH:mm"), @required = "required", @class = "form-control datefield" })
-                        @Html.HiddenFor(o => o.Offset);
+                        @Html.HiddenFor(o => o.Offset)
                     </div>
                 </div>
                 <div class="form-group">
