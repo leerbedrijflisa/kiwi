@@ -21,11 +21,6 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 {
 	public class ReportController : Controller
 	{
-        public ActionResult Index()
-        {
-            return View();
-        }
-
 		public ActionResult Type()
 		{
             var reportTypes = GetReportTypes();

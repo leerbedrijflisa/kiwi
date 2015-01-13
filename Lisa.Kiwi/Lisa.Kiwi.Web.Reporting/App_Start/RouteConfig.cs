@@ -10,7 +10,7 @@ namespace Lisa.Kiwi.Web.Reporting
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
 			routes.MapRoute("Default", "{controller}/{action}/{guid}",
-				new {controller = "Report", action = "Index", guid = UrlParameter.Optional}
+				new {controller = "Report", action = "Type", guid = UrlParameter.Optional}
 				);
 		}
 	}
