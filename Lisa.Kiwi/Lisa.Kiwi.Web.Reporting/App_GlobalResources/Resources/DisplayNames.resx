@@ -150,11 +150,20 @@
   <data name="ReportTypeDrugs" xml:space="preserve">
     <value>Drugs</value>
   </data>
+  <data name="ReportTypeEHBO" xml:space="preserve">
+    <value>EHBO</value>
+  </data>
+  <data name="ReportTypeFighting" xml:space="preserve">
+    <value>Vechtpartij</value>
+  </data>
   <data name="ReportTypeFire" xml:space="preserve">
     <value>Brand</value>
   </data>
   <data name="ReportTypeIntimidation" xml:space="preserve">
     <value>Intimidatie</value>
+  </data>
+  <data name="ReportTypeMisc" xml:space="preserve">
+    <value>Overig</value>
   </data>
   <data name="ReportTypeNuisance" xml:space="preserve">
     <value>Overlast</value>
@@ -182,5 +191,89 @@
   </data>
   <data name="Time" xml:space="preserve">
     <value>Tijd</value>
+  </data>
+  <data name="ReportController_Details_Azurro" xml:space="preserve">
+    <value>Azurro</value>
+  </data>
+  <data name="ReportController_Details_Romboutslaan" xml:space="preserve">
+    <value>Romboutslaan</value>
+  </data>
+  <data name="ReportController_Details_Syndion" xml:space="preserve">
+    <value>Syndion</value>
+  </data>
+  <data name="ReportController_Details_Samenwerkingsgebouw" xml:space="preserve">
+    <value>Samenwerkingsgebouw</value>
+  </data>
+  <data name="ReportController_Details_Drechsteden_College" xml:space="preserve">
+    <value>Drechsteden College</value>
+  </data>
+  <data name="ReportController_Details_Appartementen" xml:space="preserve">
+    <value>Appartementen</value>
+  </data>
+  <data name="ReportController_Details_Brandweerkazerne" xml:space="preserve">
+    <value>Brandweerkazerne</value>
+  </data>
+  <data name="ReportController_Details_Lilla" xml:space="preserve">
+    <value>Lilla</value>
+  </data>
+  <data name="ReportController_Details_Marrone" xml:space="preserve">
+    <value>Marrone</value>
+  </data>
+  <data name="ReportController_Details_Rosa" xml:space="preserve">
+    <value>Rosa</value>
+  </data>
+  <data name="ReportController_Details_Verde" xml:space="preserve">
+    <value>Verde</value>
+  </data>
+  <data name="ReportController_Details_Giallo" xml:space="preserve">
+    <value>Giallo</value>
+  </data>
+  <data name="ReportController_Details_Indaco" xml:space="preserve">
+    <value>Indaco</value>
+  </data>
+  <data name="ReportController_Details_Bianco" xml:space="preserve">
+    <value>Bianco</value>
+  </data>
+  <data name="ReportController_Details_Orca" xml:space="preserve">
+    <value>Orca</value>
+  </data>
+  <data name="ReportController_Details_Arcobaleno" xml:space="preserve">
+    <value>Arcobaleno</value>
+  </data>
+  <data name="ReportController_Details_Celeste" xml:space="preserve">
+    <value>Celeste</value>
+  </data>
+  <data name="ReportController_Details_Duurzaamheidsfabriek" xml:space="preserve">
+    <value>Duurzaamheidsfabriek</value>
+  </data>
+  <data name="ReportController_Details_Betaalde_parkeerplaats" xml:space="preserve">
+    <value>Betaalde parkeerplaats</value>
+  </data>
+  <data name="ReportController_Details_Schippersinternaat" xml:space="preserve">
+    <value>Schippersinternaat</value>
+  </data>
+  <data name="ReportController_Details_Sporthal" xml:space="preserve">
+    <value>Sporthal</value>
+  </data>
+  <data name="ReportController_Details_Tennisvereniging_D_L_T_C" xml:space="preserve">
+    <value>Tennisvereniging D.L.T.C</value>
+  </data>
+  <data name="ReportController_Details_Bogermanschool" xml:space="preserve">
+    <value>Bogermanschool</value>
+  </data>
+  <data name="ReportController_Details_Wartburg_College" xml:space="preserve">
+    <value>Wartburg College</value>
+  </data>
+  <data name="ReportController_Details_Villa_Volta" xml:space="preserve">
+    <value>Villa Volta</value>
+  </data>
+  <data name="ReportController_Details_Eljakim" xml:space="preserve">
+    <value>Eljakim</value>
+  </data>
+  <data name="ReportController_Details_Jubal" xml:space="preserve">
+    <value>Jubal</value>
+  </data>
+  <data name="ReportController_Details_Buiten" xml:space="preserve">
+    <value>Buiten</value>
   </data>
 </root>

@@ -43,7 +43,7 @@ namespace Lisa.Kiwi.Web.Reporting
                         "~/Scripts/bootstrap.js",
                         "~/Scripts/kiwi.js"));
 
-            BundleTable.EnableOptimizations = true;
+            BundleTable.EnableOptimizations = false;
         }
     }
 }

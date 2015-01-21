@@ -1,15 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-
-// Onderstaande Data referentie klopt wel, want deze namespace word gehandhaafd door de Odata Client.
-using Lisa.Kiwi.Data;
-
 using Lisa.Kiwi.Web.Reporting.Models;
-using Lisa.Kiwi.Web.Reporting.Utils;
 using Lisa.Kiwi.WebApi;
 using Lisa.Kiwi.WebApi.Access;
 using Microsoft.WindowsAzure;
@@ -55,6 +49,39 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             HttpCookie cookie = HttpContext.Request.Cookies["userReport"];
             string guid = cookie.Values["guid"];
 
+            ViewData["buildings"] = new List<SelectListItem>
+            {
+                new SelectListItem { Text = "" , Value = "" },
+                new SelectListItem { Text = DisplayNames.ReportController_Details_Buiten , Value = "Buiten" },
+                new SelectListItem { Text = DisplayNames.ReportController_Details_Azurro , Value = "Azurro" },
+                new SelectListItem { Text = DisplayNames.ReportController_Details_Romboutslaan , Value = "Romboutslaan" },
+                new SelectListItem { Text = DisplayNames.ReportController_Details_Syndion , Value = "Syndion" },
+                new SelectListItem { Text = DisplayNames.ReportController_Details_Samenwerkingsgebouw , Value = "Samenwerkingsgebouw" },
+                new SelectListItem { Text = DisplayNames.ReportController_Details_Drechsteden_College , Value = "Drechsteden College" },
+                new SelectListItem { Text = DisplayNames.ReportController_Details_Appartementen , Value = "Appartementen" },
+                new SelectListItem { Text = DisplayNames.ReportController_Details_Brandweerkazerne , Value = "Brandweerkazerne" },
+                new SelectListItem { Text = DisplayNames.ReportController_Details_Lilla , Value = "Lilla" },
+                new SelectListItem { Text = DisplayNames.ReportController_Details_Marrone , Value = "Marrone" },
+                new SelectListItem { Text = DisplayNames.ReportController_Details_Rosa , Value = "Rosa" },
+                new SelectListItem { Text = DisplayNames.ReportController_Details_Verde , Value = "Verde" },
+                new SelectListItem { Text = DisplayNames.ReportController_Details_Giallo , Value = "Giallo" },
+                new SelectListItem { Text = DisplayNames.ReportController_Details_Indaco , Value = "Indaco" },
+                new SelectListItem { Text = DisplayNames.ReportController_Details_Bianco , Value = "Bianco" },
+                new SelectListItem { Text = DisplayNames.ReportController_Details_Orca , Value = "Orca" },
+                new SelectListItem { Text = DisplayNames.ReportController_Details_Arcobaleno , Value = "Arcobaleno" },
+                new SelectListItem { Text = DisplayNames.ReportController_Details_Celeste , Value = "Celeste" },
+                new SelectListItem { Text = DisplayNames.ReportController_Details_Duurzaamheidsfabriek , Value = "Duurzaamheidsfabriek" },
+                new SelectListItem { Text = DisplayNames.ReportController_Details_Betaalde_parkeerplaats , Value = "Betaalde parkeerplaats" },
+                new SelectListItem { Text = DisplayNames.ReportController_Details_Schippersinternaat , Value = "Schippersinternaat" },
+                new SelectListItem { Text = DisplayNames.ReportController_Details_Sporthal , Value = "Sporthal" },
+                new SelectListItem { Text = DisplayNames.ReportController_Details_Tennisvereniging_D_L_T_C , Value = "Tennisvereniging D.L.T.C" },
+                new SelectListItem { Text = DisplayNames.ReportController_Details_Bogermanschool , Value = "Bogermanschool" },
+                new SelectListItem { Text = DisplayNames.ReportController_Details_Wartburg_College , Value = "Wartburg College" },
+                new SelectListItem { Text = DisplayNames.ReportController_Details_Villa_Volta , Value = "Villa Volta" },
+                new SelectListItem { Text = DisplayNames.ReportController_Details_Eljakim , Value = "Eljakim" },
+                new SelectListItem { Text = DisplayNames.ReportController_Details_Jubal , Value = "Jubal" },
+            };
+
             CloudTable table = GetTableStorage();
             TableOperation retrieveOperation = TableOperation.Retrieve<OriginalReport>(guid, "");
             TableResult retrievedResult = table.Execute(retrieveOperation);
@@ -66,13 +93,15 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             }
 
 			var report = new OriginalReport {Time = DateTime.Now};
-			return View(report);
+            return View(report);
 		}
 
 		[HttpPost]
         [ValidateInput(false)]
-		public ActionResult Details(OriginalReport data)
+        public ActionResult Details(OriginalReport data, string buildings)
 		{
+		    data.Building = buildings;
+
 			HttpCookie cookie = HttpContext.Request.Cookies["userReport"];
 			string guid = cookie.Values["guid"];
 
@@ -141,7 +170,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 				 (data.UseEmail && data.Email == null) 
 				 ))
 			{
-				ModelState.AddModelError("", "Een geselecteerd veld mag niet leeg zijn, deselecteer het veld als u niks w");
+				ModelState.AddModelError("", "Een geselecteerd veld mag niet leeg zijn, deselecteer het veld als u niks wenst in te voeren.");
 			}
 
 			if (!ModelState.IsValid)
@@ -238,14 +267,20 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 
             reportTypes.Add(new SelectListItem
             {
-                Text = DisplayNames.ReportTypeDrugs,
-                Value = "Drugs"
+                Text = DisplayNames.ReportTypeEHBO,
+                Value = "EHBO"
             });
 
             reportTypes.Add(new SelectListItem
             {
-                Text = DisplayNames.ReportTypeNuisance,
-                Value = "Overlast"
+                Text = DisplayNames.ReportTypeFighting,
+                Value = "Vechtpartij"
+            });
+
+            reportTypes.Add(new SelectListItem
+            {
+                Text = DisplayNames.ReportTypeDrugs,
+                Value = "Drugs"
             });
 
             reportTypes.Add(new SelectListItem
@@ -256,32 +291,8 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 
             reportTypes.Add(new SelectListItem
             {
-                Text = DisplayNames.ReportTypeFire,
-                Value = "Brand"
-            });
-
-            reportTypes.Add(new SelectListItem
-            {
-                Text = DisplayNames.ReportTypeBurglary,
-                Value = "Inbraak"
-            });
-
-            reportTypes.Add(new SelectListItem
-            {
-                Text = DisplayNames.ReportTypeDigital,
-                Value = "Digitaal"
-            });
-
-            reportTypes.Add(new SelectListItem
-            {
-                Text = DisplayNames.ReportTypeBullying,
-                Value = "Pesten"
-            });
-
-            reportTypes.Add(new SelectListItem
-            {
-                Text = DisplayNames.ReportTypeVehicles,
-                Value = "Voertuigen"
+                Text = DisplayNames.ReportTypeMisc,
+                Value = "Overig"
             });
 
             return reportTypes;
@@ -303,7 +314,15 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 
         private void UpdateDetails(OriginalReport updateEntity, OriginalReport data, CloudTable table)
         {
-            updateEntity.Location = data.Location;
+            if (string.IsNullOrEmpty(data.Building))
+            {
+                updateEntity.Location = data.Location;
+            }
+            else
+            {
+                updateEntity.Location = data.Building + " - " + data.Location;
+            }
+
             updateEntity.Time = data.Time;
             updateEntity.Description = data.Description;
 
