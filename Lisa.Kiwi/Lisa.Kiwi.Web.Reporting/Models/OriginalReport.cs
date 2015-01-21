@@ -20,6 +20,9 @@ namespace Lisa.Kiwi.Web.Reporting.Models
 		[StringLength(60, ErrorMessage = "De locatie mag niet langer zijn dan 60 karakters.")]
 		public string Location { get; set; }
 
+        [Display(Name = "Gebouw")]
+        public string Building { get; set; }
+
 		[StringLength(36)]
 		public string Guid { get; set; }
 
