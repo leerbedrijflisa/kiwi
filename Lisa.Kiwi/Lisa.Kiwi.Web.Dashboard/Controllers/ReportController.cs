@@ -56,6 +56,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 
             ViewBag.pages = (int)Math.Ceiling((double)reports.Count() / (double)items);
             ViewBag.currentPage = page;
+            ViewBag.SignalRUrl = ConfigHelper.GetSignalRUri();
 
 			try
 			{

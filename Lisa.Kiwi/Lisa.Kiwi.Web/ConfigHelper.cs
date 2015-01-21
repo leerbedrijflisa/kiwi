@@ -24,6 +24,11 @@ namespace Lisa.Kiwi.Web
 			return GetUri("KiwiODataUrl");
 		}
 
+        public static Uri GetSignalRUri()
+        {
+            return GetUri("KiwiSignelRUrl");
+        }
+
         public static Uri GetAuthUri()
         {
 	        return GetUri("KiwiAuthUrl");
