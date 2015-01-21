@@ -7,6 +7,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Cors;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
+using Microsoft.AspNet.SignalR;
 
 [assembly: OwinStartup(typeof(Lisa.Kiwi.WebApi.Startup))]
 
@@ -16,6 +17,12 @@ namespace Lisa.Kiwi.WebApi
     {
         public void Configuration(IAppBuilder app)
         {
+            var signalRConfig = new HubConfiguration()
+            {
+                EnableJSONP = true
+            };
+            app.MapSignalR("/signalr/signalr", signalRConfig);
+
 			var config = new HttpConfiguration();
 			Database.SetInitializer<KiwiContext>(null);
 

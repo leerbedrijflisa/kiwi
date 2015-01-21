@@ -5,14 +5,16 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.OData;
 using Lisa.Kiwi.Data;
+using Microsoft.AspNet.SignalR;
+using Lisa.Kiwi.WebApi.Hubs;
 
 namespace Lisa.Kiwi.WebApi.Controllers
 {
-	[Authorize]
+    [System.Web.Http.Authorize]
 	public class ReportController : ODataController
 	{
 		private readonly KiwiContext _db = new KiwiContext();
-
+       
 		// GET odata/Report
 		[EnableQuery]
 		public IQueryable<Report> GetReport()
@@ -164,6 +166,9 @@ namespace Lisa.Kiwi.WebApi.Controllers
 
             _db.Statuses.Add(status);
             await _db.SaveChangesAsync();
+
+            var context = GlobalHost.ConnectionManager.GetHubContext<ReportHub>();
+            context.Clients.All.newReportItem(report.Id, report.Created.ToString("yyyy-MM-dd HH:mm:ss"), report.Time.ToString("yyyy-MM-dd HH:mm:ss"), report.Type, report.Location, report.Description, report.Status.ToString());
 
 			return Created(report);
 		}

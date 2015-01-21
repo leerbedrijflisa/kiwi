@@ -83,6 +83,7 @@
                             <div class="pagination-item"><a href="@pageUrl">@(i + 1)</a></div>
                         }
                     }
+                    <div class="connection">Not connected.</div>
                 </div>
                 @if (!ViewData.ModelState.IsValid)
                 {
@@ -96,24 +97,65 @@
             </div>
         </div>
     </div>
-<script type="text/javascript">
-    idsArray.forEach(function (id) {
-        var options = { day: 'numeric', month: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric' };
 
+<script src="Scripts/jquery.signalR-2.2.0.min.js"></script>
+<script src="http://localhost:20151/signalr/signalr/hubs"></script>
+
+<script type="text/javascript">
+
+    $.connection.hub.url = "http://localhost:20151/signalr/signalr";
+    var hub = $.connection.reportHub;
+
+    var isChrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+    $.connection.hub.start({
+        jsonp: isChrome
+    });
+
+    hub.client.newReportItem = function (id, created, time, type, location, beschrijving, status) {
+        var table = $('.table tbody');
+        table.prepend(
+            '<tr class="new">' +
+            '<td><span class="convertCreatedTime-' + id + '">' + created + '</span></td>' +
+            '<td><span class="convertIncidentTime-' + id + '">' + time + '</span></td>' +
+            '<td>' + type + '</td>' +
+            '<td>' + location + '</td>' +
+            '<td>' + beschrijving + '</td>' +
+            '<td>' + status + '</td>' +
+            '<td><a href="Report/Details/' + id + '">Bekijk</a></td>' +
+            '</tr>'
+        );
+
+        convertCreatedTime(id);
+        convertIncidentTime(id)
+    }
+
+    $.connection.hub.start().done(function () {
+        $('.connection').text('Connected.');
+        hub.server.send(1, "2015-01-06 09:46:00", "2015-01-06 09:46:00", "Testen", "Test Lisa", "Test beschrijving", "Open Test");
+    });
+
+    idsArray.forEach(function (id) {
+        convertIncidentTime(id)
+        convertCreatedTime(id);
+        
+    });
+
+    function convertIncidentTime(id) {
+        var options = { day: 'numeric', month: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric' };
         var timeClass = $('.convertIncidentTime-' + id);
         var m = timeClass.text().match(/(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})/);
         var date = new Date(Date.UTC(m[1], m[2] - 1, m[3], m[4], m[5], m[6]));
         var newTime = date.toLocaleString('nl-NL', options);
         timeClass.text(newTime);
+    }
 
-
-        options = { weekday: 'short', day: 'numeric', month: 'long', year: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
-
+    function convertCreatedTime(id) {
+        var options = { weekday: 'short', day: 'numeric', month: 'long', year: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
         var createdClass = $('.convertCreatedTime-' + id);
-        m = createdClass.text().match(/(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})/);
-        date = new Date(Date.UTC(m[1], m[2] - 1, m[3], m[4], m[5], m[6]));
-        newTime = date.toLocaleString('nl-NL', options);
+        var m = createdClass.text().match(/(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})/);
+        var date = new Date(Date.UTC(m[1], m[2] - 1, m[3], m[4], m[5], m[6]));
+        var newTime = date.toLocaleString('nl-NL', options);
         var result = $.format.prettyDate(newTime);
         createdClass.text(result);
-    });
+    }
 </script>
