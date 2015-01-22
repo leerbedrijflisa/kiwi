@@ -98,12 +98,12 @@
         </div>
     </div>
 
-<script src="Scripts/jquery.signalR-2.2.0.min.js"></script>
-<script src="@ViewBag.SignalRUrl"></script>
+<script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
+<script src="@ViewBag.SignalRUrl/hubs"></script>
 
 <script type="text/javascript">
 
-    $.connection.hub.url = "http://localhost:20151/signalr/signalr";
+    $.connection.hub.url = "@ViewBag.SignalRUrl";
     var hub = $.connection.reportHub;
 
     var isChrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
@@ -137,7 +137,7 @@
     idsArray.forEach(function (id) {
         convertIncidentTime(id)
         convertCreatedTime(id);
-        
+
     });
 
     function convertIncidentTime(id) {
