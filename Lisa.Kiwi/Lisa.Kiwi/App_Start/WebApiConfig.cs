@@ -18,6 +18,7 @@ namespace Lisa.Kiwi.WebApi
 			builder.EntitySet<Contact>("Contact");
 			builder.EntitySet<Remark>("Remark");
 			builder.EntitySet<Status>("Status");
+            builder.EntitySet<Vehicle>("Vehicles");
 
 			config.MapODataServiceRoute("ODataRoute", "odata", builder.GetEdmModel());
 		}

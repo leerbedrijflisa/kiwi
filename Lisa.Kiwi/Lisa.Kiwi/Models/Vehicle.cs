@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using Lisa.Kiwi.Data;
 
-namespace Lisa.Kiwi.WebApi.Models
+namespace Lisa.Kiwi.WebApi
 {
     public class Vehicle
     {

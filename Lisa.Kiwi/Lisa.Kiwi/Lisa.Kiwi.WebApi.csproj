@@ -158,6 +158,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.2\lib\net45\System.Web.Http.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.Http.OData">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.OData.5.3.1\lib\net45\System.Web.Http.OData.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Http.Owin">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.2.2\lib\net45\System.Web.Http.Owin.dll</HintPath>
     </Reference>
@@ -188,6 +191,7 @@
   <ItemGroup>
     <Compile Include="AuthRepository.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\VehiclesController.cs" />
     <Compile Include="Hubs\ReportHub.cs" />
     <Compile Include="Models\AddUserModel.cs" />
     <Compile Include="Models\Vehicle.cs" />
