@@ -202,6 +202,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
+    <Compile Include="Controllers\DrugsController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -227,6 +228,10 @@
     <Content Include="Views\Report\ContactDetails.cshtml" />
     <Content Include="Views\Report\Confirmed.cshtml" />
     <Content Include="Scripts\jquery-2.1.1.min.map" />
+    <Content Include="Views\Drugs\Details.cshtml" />
+    <Content Include="Views\Drugs\Confirmed.cshtml" />
+    <Content Include="Views\Drugs\ContactDetails.cshtml" />
+    <Content Include="Views\Drugs\Vehicle.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

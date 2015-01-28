@@ -13,53 +13,10 @@ using Resources;
 
 namespace Lisa.Kiwi.Web.Reporting.Controllers
 {
-	public class ReportController : Controller
-	{
-		public ActionResult Type()
-		{
-            var reportTypes = GetReportTypes();
-			ViewData["reportType"] = reportTypes;
-
-			return View();
-		}
-
-		[HttpPost]
-        [ValidateInput(false)]
-		public ActionResult Type(string reportType)
-		{
-			if (!ModelState.IsValid)
-			{
-                return View();
-            }
-			
-            CloudTable table = GetTableStorage();
-            OriginalReport report = DefineReport(reportType);
-			TableOperation insertOperation = TableOperation.Insert(report);
-			table.Execute(insertOperation);
-
-			// Cookie stays alive until user closes browser
-			HttpCookie userReport = new HttpCookie("userReport");
-			userReport["guid"] = report.Guid;
-			Response.Cookies.Add(userReport);
-
-            string controller;
-            switch(reportType) {
-                case "Drugs":
-                    controller = "Drugs";
-                    break;
-                default:
-                    controller = null;
-                    break;
-            }
-
-            if (controller != null)
-            {
-                return RedirectToAction("Details", controller);
-            }
-            return RedirectToAction("Details");			
-		}
-
-		public ActionResult Details()
+    public class DrugsController : Controller
+    {
+        // GET: Drugs
+        public ActionResult Details()
 		{
             HttpCookie cookie = HttpContext.Request.Cookies["userReport"];
             string guid = cookie.Values["guid"];
@@ -104,7 +61,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 
             if (entity == null)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Report");
             }
 
 			var report = new OriginalReport {Time = DateTime.Now};
@@ -113,7 +70,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 
 		[HttpPost]
         [ValidateInput(false)]
-        public ActionResult Details(OriginalReport data, string buildings)
+        public ActionResult Details(OriginalReport data, string buildings, bool vehicle)
 		{
 		    data.Building = buildings;
 
@@ -144,12 +101,19 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 
             if (updateEntity == null)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Report");
             }
 
             UpdateDetails(updateEntity, data, table);
 
-            return RedirectToAction("Vehicle");
+            if (vehicle)
+            {
+                return RedirectToAction("Vehicle");
+            }
+            else
+            {
+                return RedirectToAction("ContactDetails");
+            }
 		}
 
         public ActionResult Vehicle()
@@ -169,7 +133,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 
             if(entity == null)
             {
-    			return RedirectToAction("Index");
+    			return RedirectToAction("Index", "Report");
             }
 
             return View();
@@ -205,7 +169,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 
 			if (entity == null)
 			{
-				return RedirectToAction("Index");
+				return RedirectToAction("Index", "Report");
 			}
 
 			var report = new WebApi.Report
@@ -246,7 +210,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 				tableContact.Execute(insertOperation);
 			}
 
-			return RedirectToAction("Confirmed", "Report");
+			return RedirectToAction("Confirmed");
 		}
 
 		public ActionResult Confirmed()

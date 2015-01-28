@@ -14,5 +14,6 @@ namespace Lisa.Kiwi.Data
 		public DbSet<Status> Statuses { get; set; }
 		public DbSet<Remark> Remarks { get; set; }
 		public DbSet<Contact> Contacts { get; set; }
+        public DbSet<Vehicle> Vehicles { get; set; }
 	}
 }

@@ -87,6 +87,7 @@
     <Compile Include="Models\Report.cs" />
     <Compile Include="Models\Status.cs" />
     <Compile Include="Models\StatusName.cs" />
+    <Compile Include="Models\Vehicle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

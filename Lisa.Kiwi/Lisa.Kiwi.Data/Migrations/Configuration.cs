@@ -37,6 +37,14 @@ namespace Lisa.Kiwi.Data.Migrations
 				Report = sampleReport
 			};
 
+            Vehicle sampleVehicle = new Vehicle
+            {
+                Brand = "Mazda",
+                Color = "Black",
+                LicensePlate = "ADE 23 SAD",
+                Report = sampleReport
+            };
+
             Status sampleStatus2 = new Status
             {
                 Created = DateTime.UtcNow.AddHours(-20),
@@ -55,6 +63,7 @@ namespace Lisa.Kiwi.Data.Migrations
 			context.Statuses.AddOrUpdate(sampleStatus);
 			context.Remarks.AddOrUpdate(sampleRemark);
             context.Statuses.AddOrUpdate(sampleStatus2);
+            context.Vehicles.AddOrUpdate(sampleVehicle);
             /* EIND REPORT 1 */
 
             /* REPORT 2 */
