@@ -93,7 +93,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 					return RedirectToAction("Index", "Report");
 				}
 			}
-            if (!(bool)Session["is_admin"] && report.Hidden)
+            if (!(bool)Session["is_admin"] && report.Hidden || report.Status == StatusName.Solved)
             {
                 return RedirectToAction("Index", "Report");
             }
