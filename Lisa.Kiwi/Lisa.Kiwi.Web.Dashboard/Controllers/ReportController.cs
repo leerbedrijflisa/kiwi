@@ -400,6 +400,8 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
             }
             int items = DefaultItems;
 
+
+            // SearchText holds the text given from the view.
 			var searchText = (string) Session["search_text"];
 			ViewBag.SearchText = searchText;
 
@@ -444,12 +446,7 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
 			var isNumber = int.TryParse(searchText, out searchNumber);
 
 			// Filter by the search query
-			reports = reports.Where(r =>
-				// Description
-				r.Description.Contains(searchText) ||
-
-				// Type and Status
-				r.Type.Contains(searchText) ||
+			reports = reports.Where(r => r.Description.Contains(searchText) ||r.Type.Contains(searchText) || r.Location.Contains(searchText)||
 				(foundSearchStatus && r.Status == searchStatus) ||
 
 				// Anything for which the search needs to be a number
