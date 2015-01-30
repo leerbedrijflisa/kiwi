@@ -279,4 +279,7 @@
   <data name="DrugsController_Details_Mediacentrum" xml:space="preserve">
     <value>Mediacentrum</value>
   </data>
+  <data name="ReportTypeDestruction" xml:space="preserve">
+    <value>Vernieling</value>
+  </data>
 </root>

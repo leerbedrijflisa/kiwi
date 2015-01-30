@@ -403,6 +403,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Vernieling.
+        /// </summary>
+        public static string ReportTypeDestruction {
+            get {
+                return ResourceManager.GetString("ReportTypeDestruction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Digitaal.
         /// </summary>
         public static string ReportTypeDigital {

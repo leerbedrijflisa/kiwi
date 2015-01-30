@@ -311,6 +311,18 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 
             reportTypes.Add(new SelectListItem
             {
+                Text = DisplayNames.ReportTypeBullying,
+                Value = "Pesten"
+            });
+
+            reportTypes.Add(new SelectListItem
+            {
+                Text = DisplayNames.ReportTypeDestruction,
+                Value = "Vernieling"
+            });
+
+            reportTypes.Add(new SelectListItem
+            {
                 Text = DisplayNames.ReportTypeMisc,
                 Value = "Overig"
             });
