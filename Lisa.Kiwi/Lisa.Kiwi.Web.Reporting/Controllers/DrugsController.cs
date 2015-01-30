@@ -24,7 +24,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             ViewData["buildings"] = new List<SelectListItem>
             {
                 new SelectListItem { Text = "" , Value = "" },
-                new SelectListItem { Text = DisplayNames.ReportController_Details_Buiten , Value = "Buiten" },
+                new SelectListItem { Text = DisplayNames.ReportController_Details_Buiten , Value = "Buiten (Openbare Weg)" },
                 new SelectListItem { Text = DisplayNames.ReportController_Details_Azurro , Value = "Azurro" },
                 new SelectListItem { Text = DisplayNames.ReportController_Details_Romboutslaan , Value = "Romboutslaan" },
                 new SelectListItem { Text = DisplayNames.ReportController_Details_Syndion , Value = "Syndion" },
@@ -43,6 +43,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
                 new SelectListItem { Text = DisplayNames.ReportController_Details_Arcobaleno , Value = "Arcobaleno" },
                 new SelectListItem { Text = DisplayNames.ReportController_Details_Celeste , Value = "Celeste" },
                 new SelectListItem { Text = DisplayNames.ReportController_Details_Duurzaamheidsfabriek , Value = "Duurzaamheidsfabriek" },
+                new SelectListItem { Text = DisplayNames.DrugsController_Details_Mediacentrum , Value = "Mediacentrum" },
                 new SelectListItem { Text = DisplayNames.ReportController_Details_Betaalde_parkeerplaats , Value = "Betaalde parkeerplaats" },
                 new SelectListItem { Text = DisplayNames.ReportController_Details_Schippersinternaat , Value = "Schippersinternaat" },
                 new SelectListItem { Text = DisplayNames.ReportController_Details_Sporthal , Value = "Sporthal" },

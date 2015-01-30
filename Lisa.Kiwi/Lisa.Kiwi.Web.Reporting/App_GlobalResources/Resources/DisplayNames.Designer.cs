@@ -61,6 +61,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mediacentrum.
+        /// </summary>
+        public static string DrugsController_Details_Mediacentrum {
+            get {
+                return ResourceManager.GetString("DrugsController_Details_Mediacentrum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contacten.
         /// </summary>
         public static string ReportContacts {
@@ -133,7 +142,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Buiten.
+        ///   Looks up a localized string similar to Buiten (Openbare Weg).
         /// </summary>
         public static string ReportController_Details_Buiten {
             get {

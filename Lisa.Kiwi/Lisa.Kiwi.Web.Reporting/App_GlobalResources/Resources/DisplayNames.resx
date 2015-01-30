@@ -274,6 +274,9 @@
     <value>Jubal</value>
   </data>
   <data name="ReportController_Details_Buiten" xml:space="preserve">
-    <value>Buiten</value>
+    <value>Buiten (Openbare Weg)</value>
+  </data>
+  <data name="DrugsController_Details_Mediacentrum" xml:space="preserve">
+    <value>Mediacentrum</value>
   </data>
 </root>
