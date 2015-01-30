@@ -322,7 +322,7 @@ namespace Lisa.Kiwi.Data.Migrations
             userManager.Create(dashboardUser2, "helloo2");
 			
 			// Add a test "hoofdbeveiliger" account (name=hoofdbeveiliger pass=masterpass)
-            var headOfSecurity = new IdentityUser("hoofdbeveiliger");
+            var headOfSecurity = new IdentityUser("Hoofdbeveiliging");
 			ThrowIfFailed(userManager.Create(headOfSecurity, "masterpass"));
 			userManager.AddToRole(headOfSecurity.Id, "Administrator");
 		}
