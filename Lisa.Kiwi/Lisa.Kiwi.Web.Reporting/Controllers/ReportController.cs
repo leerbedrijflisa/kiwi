@@ -44,9 +44,9 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 
             string controller;
             switch(reportType) {
-                case "Drugs":
-                    controller = "Drugs";
-                    break;
+                //case "Drugs":
+                //    controller = "Drugs";
+                //    break;
                 default:
                     controller = null;
                     break;
@@ -149,13 +149,8 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 
             UpdateDetails(updateEntity, data, table);
 
-            return RedirectToAction("Vehicle");
+            return RedirectToAction("ContactDetails");
 		}
-
-        public ActionResult Vehicle()
-        {
-            return View();
-        }
 
 		public ActionResult ContactDetails()
 		{
