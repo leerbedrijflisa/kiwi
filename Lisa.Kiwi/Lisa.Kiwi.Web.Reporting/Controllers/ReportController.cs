@@ -89,12 +89,8 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
                 new SelectListItem { Text = DisplayNames.ReportController_Details_Betaalde_parkeerplaats , Value = "Betaalde parkeerplaats" },
                 new SelectListItem { Text = DisplayNames.ReportController_Details_Schippersinternaat , Value = "Schippersinternaat" },
                 new SelectListItem { Text = DisplayNames.ReportController_Details_Sporthal , Value = "Sporthal" },
-                new SelectListItem { Text = DisplayNames.ReportController_Details_Tennisvereniging_D_L_T_C , Value = "Tennisvereniging D.L.T.C" },
                 new SelectListItem { Text = DisplayNames.ReportController_Details_Bogermanschool , Value = "Bogermanschool" },
                 new SelectListItem { Text = DisplayNames.ReportController_Details_Wartburg_College , Value = "Wartburg College" },
-                new SelectListItem { Text = DisplayNames.ReportController_Details_Villa_Volta , Value = "Villa Volta" },
-                new SelectListItem { Text = DisplayNames.ReportController_Details_Eljakim , Value = "Eljakim" },
-                new SelectListItem { Text = DisplayNames.ReportController_Details_Jubal , Value = "Jubal" },
             };
 
             CloudTable table = GetTableStorage();
