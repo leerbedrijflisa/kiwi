@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lisa.Kiwi.WebApi", "Lisa.Kiwi\Lisa.Kiwi.WebApi.csproj", "{72704C37-7BC2-4474-A720-24355545408C}"
 EndProject
@@ -22,7 +22,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{24DE5F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lisa.Kiwi.Web", "Lisa.Kiwi.Web\Lisa.Kiwi.Web.csproj", "{C064977D-F3EA-4519-BAE5-BEABE666E8F5}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Lisa.Kiwi.WebApi.Models", "Lisa.Kiwi.WebApi.Models\Lisa.Kiwi.WebApi.Models.shproj", "{D3D6EF51-DEAA-4D75-B8F4-DDC6ACB17E49}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Lisa.Kiwi.WebApi.Models\Lisa.Kiwi.WebApi.Models.projitems*{d3d6ef51-deaa-4d75-b8f4-ddc6acb17e49}*SharedItemsImports = 13
+		Lisa.Kiwi.WebApi.Models\Lisa.Kiwi.WebApi.Models.projitems*{72704c37-7bc2-4474-a720-24355545408c}*SharedItemsImports = 4
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU

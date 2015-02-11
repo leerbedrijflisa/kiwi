@@ -1,199 +1,199 @@
-﻿using System;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using System.Web.Http;
-using System.Web.OData;
-using Lisa.Kiwi.Data;
+﻿//using System;
+//using System.Data.Entity;
+//using System.Linq;
+//using System.Net;
+//using System.Security.Claims;
+//using System.Threading.Tasks;
+//using System.Web.Http;
+//using System.Web.OData;
+//using Lisa.Kiwi.Data;
 
-namespace Lisa.Kiwi.WebApi.Controllers
-{
-	[Authorize]
-	public class StatusController : ODataController
-	{
-		private readonly KiwiContext db = new KiwiContext();
+//namespace Lisa.Kiwi.WebApi.Controllers
+//{
+//    [Authorize]
+//    public class StatusController : ODataController
+//    {
+//        private readonly KiwiContext db = new KiwiContext();
 
-		// GET odata/Status
-		[EnableQuery]
-		public IQueryable<Status> GetStatus()
-		{
-			var result = from s in db.Statuses
-				select new Status
-				{
-					Id = s.Id,
-					Name = s.Name,
-					Created = s.Created,
-                    User = s.User.UserName,
-					Report = s.Report.Id
-				};
-			return result;
-		}
+//        // GET odata/Status
+//        [EnableQuery]
+//        public IQueryable<Status> GetStatus()
+//        {
+//            var result = from s in db.Statuses
+//                select new Status
+//                {
+//                    Id = s.Id,
+//                    Name = s.Name,
+//                    Created = s.Created,
+//                    User = s.User.UserName,
+//                    Report = s.Report.Id
+//                };
+//            return result;
+//        }
 
-		// GET odata/Status(5)
-		[EnableQuery]
-		public SingleResult<Data.Status> GetStatus([FromODataUri] int key)
-		{
-			return SingleResult.Create(db.Statuses.Where(status => status.Id == key));
-		}
+//        // GET odata/Status(5)
+//        [EnableQuery]
+//        public SingleResult<Data.Status> GetStatus([FromODataUri] int key)
+//        {
+//            return SingleResult.Create(db.Statuses.Where(status => status.Id == key));
+//        }
 
-		// PUT odata/Status(5)
-		public async Task<IHttpActionResult> Put([FromODataUri] int key, Status status)
-		{
-			if (!ModelState.IsValid)
-			{
-				return BadRequest(ModelState);
-			}
+//        // PUT odata/Status(5)
+//        public async Task<IHttpActionResult> Put([FromODataUri] int key, Status status)
+//        {
+//            if (!ModelState.IsValid)
+//            {
+//                return BadRequest(ModelState);
+//            }
 
-			if (key != status.Id)
-			{
-				return BadRequest();
-			}
+//            if (key != status.Id)
+//            {
+//                return BadRequest();
+//            }
 
-			db.Entry(status).State = EntityState.Modified;
+//            db.Entry(status).State = EntityState.Modified;
 
-			try
-			{
-                var user = (ClaimsIdentity)User.Identity;
-                var userId = user.Claims.First(c => c.Type == "id").Value;
+//            try
+//            {
+//                var user = (ClaimsIdentity)User.Identity;
+//                var userId = user.Claims.First(c => c.Type == "id").Value;
 
-				db.Statuses.Add(new Data.Status
-				{
-					Id = status.Id,
-					Name = status.Name,
-					Created = status.Created,
-                    User = db.Users.Where(u => u.Id == userId).FirstOrDefault(),
-                    Report = db.Reports.Find(status.Report)
-				});
+//                db.Statuses.Add(new Data.Status
+//                {
+//                    Id = status.Id,
+//                    Name = status.Name,
+//                    Created = status.Created,
+//                    User = db.Users.Where(u => u.Id == userId).FirstOrDefault(),
+//                    Report = db.Reports.Find(status.Report)
+//                });
 
-				await db.SaveChangesAsync();
-			}
-			catch (Exception)
-			{
-				if (!StatusExists(key))
-				{
-					return NotFound();
-				}
-				throw;
-			}
+//                await db.SaveChangesAsync();
+//            }
+//            catch (Exception)
+//            {
+//                if (!StatusExists(key))
+//                {
+//                    return NotFound();
+//                }
+//                throw;
+//            }
 
-			return Updated(status);
-		}
+//            return Updated(status);
+//        }
 
-		// POST odata/Status
-        [AllowAnonymous]
-		public async Task<IHttpActionResult> Post(Status status)
-		{
-			if (!ModelState.IsValid)
-			{
-				return BadRequest(ModelState);
-			}
+//        // POST odata/Status
+//        [AllowAnonymous]
+//        public async Task<IHttpActionResult> Post(Status status)
+//        {
+//            if (!ModelState.IsValid)
+//            {
+//                return BadRequest(ModelState);
+//            }
 
-            var user = (ClaimsIdentity)User.Identity;
-            var userId = user.Claims.First(c => c.Type == "id").Value;
+//            var user = (ClaimsIdentity)User.Identity;
+//            var userId = user.Claims.First(c => c.Type == "id").Value;
 
-			db.Statuses.Add(new Data.Status
-			{
-				Id = status.Id,
-				Name = status.Name,
-				Created = status.Created,
-                User = db.Users.Where(u => u.Id == userId).FirstOrDefault(),
-                Report = db.Reports.Find(status.Report)
-			});
+//            db.Statuses.Add(new Data.Status
+//            {
+//                Id = status.Id,
+//                Name = status.Name,
+//                Created = status.Created,
+//                User = db.Users.Where(u => u.Id == userId).FirstOrDefault(),
+//                Report = db.Reports.Find(status.Report)
+//            });
 
-			await db.SaveChangesAsync();
+//            await db.SaveChangesAsync();
 
-			return Created(status);
-		}
+//            return Created(status);
+//        }
 
-		// PATCH odata/Status(5)
-		[AcceptVerbs("PATCH", "MERGE")]
-		public async Task<IHttpActionResult> Patch([FromODataUri] int key, Delta<Status> patch)
-		{
-			if (!ModelState.IsValid)
-			{
-				return BadRequest(ModelState);
-			}
+//        // PATCH odata/Status(5)
+//        [AcceptVerbs("PATCH", "MERGE")]
+//        public async Task<IHttpActionResult> Patch([FromODataUri] int key, Delta<Status> patch)
+//        {
+//            if (!ModelState.IsValid)
+//            {
+//                return BadRequest(ModelState);
+//            }
 
-			//map Data.Status to WebApi.Status
-			Data.Status dataStatus = await db.Statuses.FindAsync(key);
+//            //map Data.Status to WebApi.Status
+//            Data.Status dataStatus = await db.Statuses.FindAsync(key);
 
-			if (dataStatus == null)
-			{
-				return NotFound();
-			}
+//            if (dataStatus == null)
+//            {
+//                return NotFound();
+//            }
 
-			var status = new Status
-			{
-				Id = dataStatus.Id,
-				Created = dataStatus.Created,
-				Name = dataStatus.Name,
-                User = dataStatus.User.Id,
-				Report = dataStatus.Report.Id
-			};
+//            var status = new Status
+//            {
+//                Id = dataStatus.Id,
+//                Created = dataStatus.Created,
+//                Name = dataStatus.Name,
+//                User = dataStatus.User.Id,
+//                Report = dataStatus.Report.Id
+//            };
 
-			patch.Patch(status);
+//            patch.Patch(status);
 
-            var user = (ClaimsIdentity)User.Identity;
-            var userId = user.Claims.First(c => c.Type == "id").Value;
+//            var user = (ClaimsIdentity)User.Identity;
+//            var userId = user.Claims.First(c => c.Type == "id").Value;
 
-			dataStatus.Id = status.Id;
-			dataStatus.Created = status.Created;
-			dataStatus.Name = status.Name;
-            dataStatus.User = db.Users.Where(u => u.Id == userId).FirstOrDefault();
-			dataStatus.Report = db.Reports.Find(status.Report);
+//            dataStatus.Id = status.Id;
+//            dataStatus.Created = status.Created;
+//            dataStatus.Name = status.Name;
+//            dataStatus.User = db.Users.Where(u => u.Id == userId).FirstOrDefault();
+//            dataStatus.Report = db.Reports.Find(status.Report);
 
-			try
-			{
-				await db.SaveChangesAsync();
-			}
-			catch (Exception)
-			{
-				if (!StatusExists(key))
-				{
-					return NotFound();
-				}
-				throw;
-			}
+//            try
+//            {
+//                await db.SaveChangesAsync();
+//            }
+//            catch (Exception)
+//            {
+//                if (!StatusExists(key))
+//                {
+//                    return NotFound();
+//                }
+//                throw;
+//            }
 
-			return Updated(status);
-		}
+//            return Updated(status);
+//        }
 
-		// DELETE odata/Status(5)
-		public async Task<IHttpActionResult> Delete([FromODataUri] int key)
-		{
-			Data.Status status = await db.Statuses.FindAsync(key);
-			if (status == null)
-			{
-				return NotFound();
-			}
+//        // DELETE odata/Status(5)
+//        public async Task<IHttpActionResult> Delete([FromODataUri] int key)
+//        {
+//            Data.Status status = await db.Statuses.FindAsync(key);
+//            if (status == null)
+//            {
+//                return NotFound();
+//            }
 
-			db.Statuses.Remove(status);
-			await db.SaveChangesAsync();
+//            db.Statuses.Remove(status);
+//            await db.SaveChangesAsync();
 
-			return StatusCode(HttpStatusCode.NoContent);
-		}
+//            return StatusCode(HttpStatusCode.NoContent);
+//        }
 
-		// GET odata/Status(5)/Report
-		[EnableQuery]
-		public SingleResult<Data.Report> GetReport([FromODataUri] int key)
-		{
-			return SingleResult.Create(db.Statuses.Where(m => m.Id == key).Select(m => m.Report));
-		}
+//        // GET odata/Status(5)/Report
+//        [EnableQuery]
+//        public SingleResult<Data.Report> GetReport([FromODataUri] int key)
+//        {
+//            return SingleResult.Create(db.Statuses.Where(m => m.Id == key).Select(m => m.Report));
+//        }
 
-		protected override void Dispose(bool disposing)
-		{
-			if (disposing)
-			{
-				db.Dispose();
-			}
-			base.Dispose(disposing);
-		}
+//        protected override void Dispose(bool disposing)
+//        {
+//            if (disposing)
+//            {
+//                db.Dispose();
+//            }
+//            base.Dispose(disposing);
+//        }
 
-		private bool StatusExists(int key)
-		{
-			return db.Statuses.Count(e => e.Id == key) > 0;
-		}
-	}
-}
+//        private bool StatusExists(int key)
+//        {
+//            return db.Statuses.Count(e => e.Id == key) > 0;
+//        }
+//    }
+//}
