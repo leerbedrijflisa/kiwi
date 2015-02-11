@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Locatie</title>
+<link rel="stylesheet" type="text/css" href="../style/style.css">
+<link rel="stylesheet" type="text/css" href="locatie.css">
+<link href='http://fonts.googleapis.com/css?family=Ubuntu:700' rel='stylesheet' type='text/css'>
+<script src="http://maps.googleapis.com/maps/api/js"></script>
+<script>
+function initialize() {
+  var mapProp = {
+    center:new google.maps.LatLng(51.508742,-0.120850),
+    zoom:5,
+    mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+  var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+}
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+</head>
+
+<body>
+	<button id="picture" type="button">Foto</button>
+    <button id="picture" type="button">Galerij</button>
+	<h1>Wat is uw locatie?</h1>
+	<div id="gps"><h3> Bepaal uw locatie nauwkeurig met GPS </h3>
+    <div id="googleMap"></div>
+	
+  <div class="location">
+	<form>
+		<h3> Of selecteer een gebouw: 
+			<select>
+				<option value="bianco">Bianco</option>
+				<option value="celeste">Celeste</option>
+				<option value="lila">Lilla</option>
+				<option value="marrone">Marrone</option>
+				<option value="ocra">Ocra</option>
+				<option value="duurzaamheids-fabriek">Duurzaamheids-fabriek</option>
+				<option value="Rosa">Rosa</option>
+				<option value="verde">Verde</option>
+				<option value="giallo">Giallo</option>
+				<option value="indaco">Indaco</option>
+			</select>
+		</h3> 
+		<textarea id="info" rows="4" cols="50" placeholder="Eventuele extra informatie over de locatie"></textarea>
+	
+		<button id="next" onclick="myFunction()">Volgende</button>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+    var x;
+    if (confirm("Is het slachtoffer bij bewust zijn?") == true) {
+        x = "You pressed OK!";
+    } else {
+        x = "You pressed Cancel!";
+    }
+    document.getElementById("demo").innerHTML = x;
+}
+</script>
+	</form> 
+  </div>
+</body>
+</html>
