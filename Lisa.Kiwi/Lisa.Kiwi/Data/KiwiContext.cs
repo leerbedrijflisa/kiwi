@@ -12,5 +12,6 @@ namespace Lisa.Kiwi.WebApi
 
         public DbSet<ReportData> Reports { get; set; }
         public DbSet<StatusChangeData> StatusChanges { get; set; }
+        public DbSet<RemarkData> Remarks { get; set; }
     }
 }

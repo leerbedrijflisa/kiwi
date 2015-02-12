@@ -31,5 +31,22 @@ namespace Lisa.Kiwi.WebApi
 
             reportData.StatusChanges.Add(statusChangeData);
         }
+
+        public RemarkData Create(Remark remark)
+        {
+            var remarkData = new RemarkData
+            {
+                Id = remark.Id,
+                Created = remark.Created,
+                Description = remark.Description
+            };
+
+            return remarkData;
+        }
+
+        public void Modify(RemarkData remarkData, JToken json)
+        {
+            remarkData.Description = json.Value<string>("description");
+        }
     }
 }

@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Net;
-using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.OData;
-using Lisa.Kiwi.Data;
-using Microsoft.AspNet.SignalR;
-using Lisa.Kiwi.WebApi.Hubs;
 using Newtonsoft.Json.Linq;
 
 namespace Lisa.Kiwi.WebApi.Controllers
@@ -14,7 +10,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
     //[System.Web.Http.Authorize]
 	public class ReportsController : ApiController
 	{
-		// GET odata/Report
+		// GET Report
 		[EnableQuery]
 		public IQueryable<Report> Get()
 		{

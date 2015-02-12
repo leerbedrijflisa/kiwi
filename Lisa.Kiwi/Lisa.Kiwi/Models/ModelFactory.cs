@@ -33,6 +33,19 @@ namespace Lisa.Kiwi.WebApi
             return report;
         }
 
+        public Remark Create(RemarkData remarkData)
+        {
+            var remark = new Remark
+            {
+                Id = remarkData.Id,
+                Created = remarkData.Created,
+                Description = remarkData.Description,
+                Report = remarkData.Report.Id
+            };
+
+            return remark;
+        }
+
         private Status ToStatus(string status)
         {
             switch (status.ToLower())
