@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace Lisa.Kiwi.WebApi.Controllers
@@ -16,9 +17,9 @@ namespace Lisa.Kiwi.WebApi.Controllers
             return contacts;
         }
 
-        public IHttpActionResult Get(int id)
+        public async Task<IHttpActionResult> Get(int id)
         {
-            var contact = _db.Contacts.Find(id);
+            var contact = await _db.Contacts.FindAsync(id);
 
             if (contact == null)
             {
@@ -28,7 +29,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
             return Ok(_modelFactory.Create(contact));
         }
 
-        public IHttpActionResult Post([FromBody] Contact contact)
+        public async Task<IHttpActionResult> Post([FromBody] Contact contact)
         {
             if (!ModelState.IsValid)
             {
@@ -36,12 +37,12 @@ namespace Lisa.Kiwi.WebApi.Controllers
             }
 
             var contactData = _dataFactory.Create(contact);
-            var reportData = _db.Reports.Find(contact.Report);
+            var reportData = await _db.Reports.FindAsync(contact.Report);
 
             contactData.Report = reportData;
 
             _db.Contacts.Add(contactData);
-            _db.SaveChanges();
+            await _db.SaveChangesAsync();
 
             contact = _modelFactory.Create(contactData);
             var url = String.Format("/contacts/{0}", contactData.Id);

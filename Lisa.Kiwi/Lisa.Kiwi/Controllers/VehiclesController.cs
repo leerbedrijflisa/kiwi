@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace Lisa.Kiwi.WebApi.Controllers
@@ -16,9 +17,9 @@ namespace Lisa.Kiwi.WebApi.Controllers
             return vehicles;
         }
 
-        public IHttpActionResult Get(int id)
+        public async Task<IHttpActionResult> Get(int id)
         {
-            var vehicle = _db.Vehicles.Find(id);
+            var vehicle = await _db.Vehicles.FindAsync(id);
 
             if (vehicle == null)
             {
@@ -28,7 +29,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
             return Ok(_modelFactory.Create(vehicle));
         }
 
-        public IHttpActionResult Post([FromBody] Vehicle vehicle)
+        public async Task<IHttpActionResult> Post([FromBody] Vehicle vehicle)
         {
             if (!ModelState.IsValid)
             {
@@ -36,12 +37,12 @@ namespace Lisa.Kiwi.WebApi.Controllers
             }
 
             var vehicleData = _dataFactory.Create(vehicle);
-            var reportData = _db.Reports.Find(vehicle.Report);
+            var reportData = await _db.Reports.FindAsync(vehicle.Report);
 
             vehicleData.Report = reportData;
 
             _db.Vehicles.Add(vehicleData);
-            _db.SaveChanges();
+            await _db.SaveChangesAsync();
 
             vehicle = _modelFactory.Create(vehicleData);
 

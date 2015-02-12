@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.OData;
 using Newtonsoft.Json.Linq;
@@ -22,9 +23,9 @@ namespace Lisa.Kiwi.WebApi.Controllers
             return reports;
 		}
 
-        public IHttpActionResult Get(int? id)
+        public async Task<IHttpActionResult> Get(int? id)
         {
-            var reportData = _db.Reports.Find(id);
+            var reportData = await _db.Reports.FindAsync(id);
             if (reportData == null)
             {
                 return NotFound();
@@ -34,7 +35,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
             return Ok(report);
         }
 
-        public IHttpActionResult Post([FromBody] Report report)
+        public async Task<IHttpActionResult> Post([FromBody] Report report)
         {
             if (!ModelState.IsValid)
             {
@@ -51,16 +52,16 @@ namespace Lisa.Kiwi.WebApi.Controllers
             reportData.StatusChanges.Add(statusChangeData);
 
             _db.Reports.Add(reportData);
-            _db.SaveChanges();
+            await _db.SaveChangesAsync();
 
             report = _modelFactory.Create(reportData);
             var url = Url.Route("DefaultApi", new { controller = "reports", id = reportData.Id });
             return Created(url, report);
         }
 
-        public IHttpActionResult Patch(int? id, [FromBody] JToken json)
+        public async Task<IHttpActionResult> Patch(int? id, [FromBody] JToken json)
         {
-            var reportData = _db.Reports.Find(id);
+            var reportData = await _db.Reports.FindAsync(id);
             if (reportData == null)
             {
                 return NotFound();
@@ -70,7 +71,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
             if (json["isVisible"] != null || json["currentStatus"] != null)
             {
                 _dataFactory.Modify(reportData, json);
-                _db.SaveChanges();
+                await _db.SaveChangesAsync();
 
                 var report = _modelFactory.Create(reportData);
                 return Ok(report);

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web.Http;
 using Newtonsoft.Json.Linq;
 
@@ -18,9 +19,9 @@ namespace Lisa.Kiwi.WebApi.Controllers
             return remarks;
         }
 
-        public IHttpActionResult Get(int id)
+        public async Task<IHttpActionResult> Get(int id)
         {
-            var remark = _db.Remarks.Find(id);
+            var remark = await _db.Remarks.FindAsync(id);
 
             if (remark == null)
             {
@@ -30,7 +31,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
             return Ok(_modelFactory.Create(remark));
         }
 
-        public IHttpActionResult Post([FromBody] Remark remark)
+        public async Task<IHttpActionResult> Post([FromBody] Remark remark)
         {
             if (!ModelState.IsValid)
             {
@@ -38,12 +39,12 @@ namespace Lisa.Kiwi.WebApi.Controllers
             }
 
             var remarkData = _dataFactory.Create(remark);
-            var report = _db.Reports.Find(remark.Report);
+            var report = await _db.Reports.FindAsync(remark.Report);
 
             remarkData.Report = report;
 
             _db.Remarks.Add(remarkData);
-            _db.SaveChanges();
+            await _db.SaveChangesAsync();
 
             remark = _modelFactory.Create(remarkData);
 
@@ -52,9 +53,9 @@ namespace Lisa.Kiwi.WebApi.Controllers
 
         }
 
-        public IHttpActionResult Patch(int id, [FromBody] JToken json)
+        public async Task<IHttpActionResult> Patch(int id, [FromBody] JToken json)
         {
-            var remarkData = _db.Remarks.Find(id);
+            var remarkData = await _db.Remarks.FindAsync(id);
             if (remarkData == null)
             {
                 return NotFound();
@@ -63,7 +64,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
             if (json["description"] != null)
             {
                 _dataFactory.Modify(remarkData, json);
-                _db.SaveChanges();
+                await _db.SaveChangesAsync();
 
                 var remark = _modelFactory.Create(remarkData);
                 return Ok(remark);
