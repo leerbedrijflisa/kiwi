@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Lisa.Kiwi.WebApi
 {
+    [Table("Reports")]
     public class ReportData
     {
         public ReportData()
