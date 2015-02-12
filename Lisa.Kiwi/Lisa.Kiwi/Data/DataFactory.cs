@@ -62,5 +62,19 @@ namespace Lisa.Kiwi.WebApi
 
             return vehicleData;
         }
+
+        public ContactData Create(Contact contact)
+        {
+            var contactData = new ContactData
+            {
+                Id = contact.Id,
+                EditToken = contact.EditToken,
+                EmailAddress = contact.EmailAddress,
+                Name = contact.Name,
+                PhoneNumber = contact.PhoneNumber
+            };
+
+            return contactData;
+        }
     }
 }
