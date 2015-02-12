@@ -230,12 +230,6 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Lisa.Kiwi.Data\Lisa.Kiwi.Data.csproj">
-      <Project>{99cddda2-be43-4aad-8714-11cbef17c904}</Project>
-      <Name>Lisa.Kiwi.Data</Name>
-    </ProjectReference>
-  </ItemGroup>
   <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
