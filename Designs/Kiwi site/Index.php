@@ -7,9 +7,11 @@
 		<link href='http://fonts.googleapis.com/css?family=Ubuntu:400,700' rel='stylesheet' type='text/css'>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 		<script src="script/Reporter.js"></script>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
 	</head>
 	<body>
-		<form action="location.html" method="post">
+		<form action="location.php" method="post">
 			<header id="toolbar">
 				<h1>Meldingen Applicatie</h1>
 				<div id="attachPicture">
