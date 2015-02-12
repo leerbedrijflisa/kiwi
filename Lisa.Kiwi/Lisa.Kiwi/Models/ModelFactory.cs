@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using Lisa.Kiwi.WebApi.Models;
 
 namespace Lisa.Kiwi.WebApi
 {
@@ -44,6 +45,21 @@ namespace Lisa.Kiwi.WebApi
             };
 
             return remark;
+        }
+
+        public Vehicle Create(VehicleData vehicleData)
+        {
+            var vehicle = new Vehicle
+            {
+                Id = vehicleData.Id,
+                Brand = vehicleData.Brand,
+                Color = vehicleData.Color,
+                LicensePlate = vehicleData.LicensePlate,
+                Model = vehicleData.Model,
+                Report = vehicleData.Report.Id
+            };
+
+            return vehicle;
         }
 
         private Status ToStatus(string status)

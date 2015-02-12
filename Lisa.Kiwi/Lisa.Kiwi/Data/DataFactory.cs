@@ -48,5 +48,19 @@ namespace Lisa.Kiwi.WebApi
         {
             remarkData.Description = json.Value<string>("description");
         }
+
+        public VehicleData Create(Vehicle vehicle)
+        {
+            var vehicleData = new VehicleData
+            {
+                Id = vehicle.Id,
+                Brand = vehicle.Brand,
+                Color = vehicle.Color,
+                LicensePlate = vehicle.LicensePlate,
+                Model = vehicle.Model
+            };
+
+            return vehicleData;
+        }
     }
 }
