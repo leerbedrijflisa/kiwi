@@ -1,13 +1,12 @@
-﻿@using System.Web.Optimization
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>@ViewBag.Title</title>
-    @Styles.Render("~/bundles/googlefont")
-    @Styles.Render("~/bundles/style")
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/reporter")
+    <link rel="stylesheet" type="text/css" href="~/Content/style.css">
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,700' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="~/Scripts/Reporter.js"></script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -18,10 +17,8 @@
             <div id="attachPicture">
                 <input class="overlayInput" type="file" accept="image/*">
             </div>
-        </header>
-        <section class="icons">
-            @RenderBody()
-        </section>
+        </header>  
+        @RenderBody()
     </form>
 </body>
 </html>
