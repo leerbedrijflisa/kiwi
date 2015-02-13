@@ -46,7 +46,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
 
             vehicle = _modelFactory.Create(vehicleData);
 
-            string url = String.Format("/vehicles/{0}", vehicleData.Id);
+            var url = Url.Route("DefaultApi", new { controller = "vehicles", id = vehicleData.Id });
             return Created(url, vehicle);
         }
 

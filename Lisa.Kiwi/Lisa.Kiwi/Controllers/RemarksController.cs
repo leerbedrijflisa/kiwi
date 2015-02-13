@@ -48,7 +48,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
 
             remark = _modelFactory.Create(remarkData);
 
-            string url = String.Format("/remarks/{0}", remarkData.Id);
+            var url = Url.Route("DefaultApi", new { controller = "remarks", id = remarkData.Id });
             return Created(url, remark);
 
         }

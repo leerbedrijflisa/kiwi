@@ -45,7 +45,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
             await _db.SaveChangesAsync();
 
             contact = _modelFactory.Create(contactData);
-            var url = String.Format("/contacts/{0}", contactData.Id);
+            var url = Url.Route("DefaultApi", new { controller = "contacts", id = contactData.Id });
 
             return Created(url, contact);
         }
