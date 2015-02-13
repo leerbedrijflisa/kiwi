@@ -1,0 +1,10 @@
+﻿<ul>
+  @foreach (var report in Model)
+  {
+    <li>
+      <a href="@Url.Action("Details", new { id = report.Id })">
+        @report.Description
+      </a>
+    </li>
+  }
+</ul>
