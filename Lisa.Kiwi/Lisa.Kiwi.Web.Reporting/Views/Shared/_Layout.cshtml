@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@{
+    string FietsventielDopjesDoosjesFabrieksDeurRuitjesMakelaarsBureautafel = ViewBag.FietsventielDopjesDoosjesFabrieksDeurRuitjesMakelaarsBureautafel;
+}
+
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -11,7 +16,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-    <form action="" method="post">
+    @using (Html.BeginForm(FietsventielDopjesDoosjesFabrieksDeurRuitjesMakelaarsBureautafel, "Report", FormMethod.Post))
+    {
         <header id="toolbar">
             <h1>Meldingen Applicatie</h1>
             <div id="attachPicture">
@@ -19,6 +25,6 @@
             </div>
         </header>  
         @RenderBody()
-    </form>
+    }  
 </body>
 </html>
