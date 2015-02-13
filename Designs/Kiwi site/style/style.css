@@ -114,3 +114,23 @@ body{
 				height: 250px;
 			}
 		}
+
+	#map-suggestions {
+	    width: 90%;
+	    max-width: 800px;
+	    margin: 10px auto;
+	}
+
+		#map-suggestions button {
+		    width: 33.333%;
+		    border: none;
+		    background-color: rgb(200, 200, 200);
+		    font-size: 11pt;
+		    color: rgb(20, 152, 173);
+		    font-weight: 700;
+		}
+
+		#map-suggestions button:nth-child(2) {
+		    border-left: 2px solid rgb(41, 159, 178);
+		    border-right: 2px solid rgb(41, 159, 178);    
+		}

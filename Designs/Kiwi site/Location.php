@@ -24,10 +24,9 @@
 			</header>
 			<section>
 				<div id="map-canvas"></div>
-				<ul id="suggestions">
-				</ul>
+				<ul id="map-suggestions"></ul>
+				<select name="building" id="buildingSelect"></select>
 			</section>
-
 		</form>
 	</body>
 </html>
