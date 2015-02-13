@@ -7,6 +7,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.FietsventielDopjesDoosjesFabrieksDeurRuitjesMakelaarsBureautafel = "Location";
             return View();
         }
     }
