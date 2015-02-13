@@ -10,5 +10,11 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             ViewBag.FietsventielDopjesDoosjesFabrieksDeurRuitjesMakelaarsBureautafel = "Location";
             return View();
         }
+
+        [HttpPost]
+        public ActionResult Location()
+        {
+            
+        }
     }
 }
