@@ -39,8 +39,14 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
         {
             var report = (Report)Session["Report"];
 
-            ViewBag.ActionName = report.Type;
+            ViewBag.ActionName = "SenderDetails";
 
+
+            return View();
+        }
+
+        public ActionResult SenderDetails()
+        {
 
             return View();
         }
