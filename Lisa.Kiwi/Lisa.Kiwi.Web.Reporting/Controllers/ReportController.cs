@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 using Lisa.Kiwi.Web.Reporting.Models;
 
 
@@ -48,25 +49,15 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 
             ViewBag.Report = report;
 
-            return View(report.Type);
+            if (report.Type == "Drugs" || report.Type == "Overig" || report.Type == "EHBO")
+                return RedirectToAction("Advanced", new { guid = report.Type });
 
-            switch (report.Type)
-            {
-                case "Drugs":
-                    ViewBag.ActionName = "Advanced";
-                    break;
-                case "Overig":
-                    ViewBag.ActionName = "Advanced";
-                    break;
-                default:
-                    ViewBag.ActionName = "SenderDetails";
-                    break;
-            }
+           return View("SenderDetails");
+        }
 
-            ViewBag.ActionName = "SenderDetails";
-
-
-            return View();
+        public ActionResult Advanced(string guid)
+        {
+            return View(guid);
         }
 
         public ActionResult SenderDetails()
