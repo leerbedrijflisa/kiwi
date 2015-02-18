@@ -17,8 +17,17 @@
     <select name="building" id="buildingSelect">
         <option value="Lilla">Lilla</option>
     </select>
-    <input type="submit" name="submit" value="Verzenden" />
+
+    @if (ViewBag.ActionName == "EHBO")
+    {
+        <div>
+            Is het slachtoffer buiten bewust zijn?
+            <input type="submit" name="BuitenBewust" value="Ja" />
+            <input type="submit" name="NietBuitenBewust" value="Nee" />
+        </div>
+    }
+    else
+    {
+        <input type="submit" name="submit" value="Verzenden"/>
+    }
 </section>
-
-
-@if()
