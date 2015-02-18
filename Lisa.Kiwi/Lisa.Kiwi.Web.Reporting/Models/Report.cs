@@ -13,6 +13,7 @@ namespace Lisa.Kiwi.Web.Reporting.Models
 		}
 
 		public int Id { get; set; }
+	    public string Type { get; set; }
 		public string Building { get; set; }
         public string DetailedLocation { get; set; }
 		public DateTime CreatedAt { get; set; }

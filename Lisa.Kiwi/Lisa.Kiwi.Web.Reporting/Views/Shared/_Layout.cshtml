@@ -1,5 +1,5 @@
 ﻿@{
-    string FietsventielDopjesDoosjesFabrieksDeurRuitjesMakelaarsBureautafel = ViewBag.FietsventielDopjesDoosjesFabrieksDeurRuitjesMakelaarsBureautafel;
+    string actionName = ViewBag.ActionName;
 }
 
 
@@ -17,7 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-    @using (Html.BeginForm(FietsventielDopjesDoosjesFabrieksDeurRuitjesMakelaarsBureautafel, "Report", FormMethod.Post))
+    @using (Html.BeginForm(actionName, "Report", FormMethod.Post))
     {
         <header id="toolbar">
             <h1>Meldingen Applicatie</h1>
