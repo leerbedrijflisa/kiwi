@@ -17,6 +17,7 @@ namespace Lisa.Kiwi.WebApi
         public string Description { get; set; }
 
         public DateTimeOffset Created { get; set; }
+        public string Building { get; set; }
         public string Location { get; set; }
         public DateTimeOffset Time { get; set; }          // should we remove this?
         public string Guid { get; set; }            // what does this do?

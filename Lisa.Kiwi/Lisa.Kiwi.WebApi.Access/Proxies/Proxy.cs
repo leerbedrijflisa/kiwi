@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using System.Net.Http.Formatting;
 
 namespace Lisa.Kiwi.WebApi
 {
@@ -10,8 +11,8 @@ namespace Lisa.Kiwi.WebApi
     {
         public Proxy(string baseUrl, string resourceUrl)
         {
-            _baseUrl = baseUrl;
-            _resourceUrl = resourceUrl;
+            _baseUrl = baseUrl.Trim('/');
+            _resourceUrl = resourceUrl.Trim('/');
         }
 
         public async Task<IEnumerable<T>> GetAsync()
@@ -46,6 +47,26 @@ namespace Lisa.Kiwi.WebApi
                 client.BaseAddress = new Uri(_baseUrl);
 
                 var result = await client.PostAsJsonAsync(_resourceUrl, model);
+                var json = await result.Content.ReadAsStringAsync();
+
+                return JsonConvert.DeserializeObject<T>(json);
+            }
+        }
+
+        public async Task<T> PatchAsync(int id, T model)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(_baseUrl);
+
+                var request = new HttpRequestMessage
+                {
+                    Method = new HttpMethod("PATCH"),
+                    RequestUri = new Uri(String.Format("{0}/{1}/{2}", _baseUrl, _resourceUrl, id)),
+                    Content = new ObjectContent<T>(model, new JsonMediaTypeFormatter())
+                };
+
+                var result = await client.SendAsync(request);
                 var json = await result.Content.ReadAsStringAsync();
 
                 return JsonConvert.DeserializeObject<T>(json);

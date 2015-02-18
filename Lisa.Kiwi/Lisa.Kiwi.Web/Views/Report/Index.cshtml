@@ -1,0 +1,9 @@
+﻿@model CategoryViewModel
+
+<h2>Wat wil je melden?</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.DropDownListFor(m => m.Category, Model.Categories)
+    <button type="submit">Volgende</button>
+}

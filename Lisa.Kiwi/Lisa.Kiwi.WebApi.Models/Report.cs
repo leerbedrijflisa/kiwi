@@ -16,14 +16,9 @@ namespace Lisa.Kiwi.WebApi
         public bool IsVisible { get; set; }
         public DateTimeOffset Created { get; set; }
         public Status CurrentStatus { get; set; }
-        
-        [Required]
 		public string Description { get; set; }
-
-        [Required]
+        public string Building { get; set; }
 		public string Location { get; set; }
-
-        [Required]
         public string Category { get; set; }
 	}
 }

@@ -14,6 +14,57 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 {
 	public class ReportController : Controller
 	{
+        public ActionResult Index()
+        {
+            return View(new CategoryViewModel());
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Index(CategoryViewModel viewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
+
+            var report = _modelFactory.Create(viewModel);
+            report = await _reportProxy.PostAsync(report);
+
+            var cookie = new HttpCookie("report", report.Id.ToString());
+            Response.SetCookie(cookie);
+
+            return RedirectToAction("Location");
+        }
+
+        public ActionResult Location()
+        {
+            return View(new LocationViewModel());
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Location(LocationViewModel viewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
+
+            var cookie = Request.Cookies["report"];
+            int reportId = Int32.Parse(cookie.Value);
+
+            var report = await _reportProxy.GetAsync(reportId);
+            _modelFactory.Modify(report, viewModel);
+            await _reportProxy.PatchAsync(reportId, report);
+
+            return RedirectToAction("Done");
+        }
+
+        public ActionResult Done()
+        {
+            return View();
+        }
+
+
 		public ActionResult Type()
 		{
             var reportTypes = GetReportTypes();
@@ -391,7 +442,8 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
         }
 
         private readonly Proxy<Contact> _contactProxy = new Proxy<Contact>("http://localhost:20151", "/contacts/");
-        private readonly Proxy<Report> _reportProxy = new Proxy<Report>("http://localhost:20151", "/reports/");
-        private readonly Proxy<WebApi.Remark> _remarkProxy = new Proxy<WebApi.Remark>("http://localhost:20151", "/remarks/"); 
+        private readonly Proxy<Report> _reportProxy = new Proxy<Report>("http://localhost.fiddler:20151/", "/reports/");
+        private readonly Proxy<WebApi.Remark> _remarkProxy = new Proxy<WebApi.Remark>("http://localhost:20151", "/remarks/");
+        private readonly ModelFactory _modelFactory = new ModelFactory();
 	}
 }

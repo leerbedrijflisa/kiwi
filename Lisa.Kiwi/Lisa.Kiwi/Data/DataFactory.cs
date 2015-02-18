@@ -11,6 +11,7 @@ namespace Lisa.Kiwi.WebApi
             return new ReportData
             {
                 Description = report.Description,
+                Building = report.Building,
                 Location = report.Location,
                 Type = report.Category
             };
