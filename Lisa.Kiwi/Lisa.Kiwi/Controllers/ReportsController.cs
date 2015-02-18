@@ -67,17 +67,11 @@ namespace Lisa.Kiwi.WebApi.Controllers
                 return NotFound();
             }
 
-            // You are allowed to change status information only.
-            if (json["isVisible"] != null || json["currentStatus"] != null)
-            {
-                _dataFactory.Modify(reportData, json);
-                await _db.SaveChangesAsync();
+            _dataFactory.Modify(reportData, json);
+            await _db.SaveChangesAsync();
 
-                var report = _modelFactory.Create(reportData);
-                return Ok(report);
-            }
-
-            return StatusCode(HttpStatusCode.Forbidden);
+            var report = _modelFactory.Create(reportData);
+            return Ok(report);
         }
 
         private readonly KiwiContext _db = new KiwiContext();

@@ -19,6 +19,11 @@ namespace Lisa.Kiwi.WebApi
 
         public void Modify(ReportData reportData, JToken json)
         {
+            reportData.Type = json.Value<string>("category") ?? reportData.Type;
+            reportData.Building = json.Value<string>("building") ?? reportData.Building;
+            reportData.Location = json.Value<string>("location") ?? reportData.Location;
+            reportData.Description = json.Value<string>("description") ?? reportData.Description;
+
             var currentStatus = reportData.StatusChanges
                 .OrderByDescending(s => s.Created)
                 .FirstOrDefault();

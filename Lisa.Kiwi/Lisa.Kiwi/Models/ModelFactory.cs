@@ -13,6 +13,7 @@ namespace Lisa.Kiwi.WebApi
                 Id = reportData.Id,
                 Description = reportData.Description,
                 Created = reportData.Created,
+                Building = reportData.Building,
                 Location = reportData.Location,
                 Category = reportData.Type,
                 IsVisible = true,

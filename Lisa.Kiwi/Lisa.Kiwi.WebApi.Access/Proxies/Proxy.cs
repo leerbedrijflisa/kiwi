@@ -4,6 +4,9 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.Net.Http.Formatting;
+using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json.Converters;
+using System.Text;
 
 namespace Lisa.Kiwi.WebApi
 {
@@ -13,6 +16,18 @@ namespace Lisa.Kiwi.WebApi
         {
             _baseUrl = baseUrl.Trim('/');
             _resourceUrl = resourceUrl.Trim('/');
+            _settings = new JsonSerializerSettings
+            {
+                ContractResolver = new CamelCasePropertyNamesContractResolver(),
+                NullValueHandling = NullValueHandling.Ignore,
+                Converters = new List<JsonConverter>
+                {
+                    new StringEnumConverter
+                    {
+                        CamelCaseText = true
+                    }
+                }
+            };
         }
 
         public async Task<IEnumerable<T>> GetAsync()
@@ -23,7 +38,7 @@ namespace Lisa.Kiwi.WebApi
                 var result = await client.GetAsync(_resourceUrl);
 
                 var json = await result.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<IEnumerable<T>>(json);
+                return JsonConvert.DeserializeObject<IEnumerable<T>>(json, _settings);
             }
         }
 
@@ -36,7 +51,7 @@ namespace Lisa.Kiwi.WebApi
                 var result = await client.GetAsync(url);
 
                 var json = await result.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<T>(json);
+                return JsonConvert.DeserializeObject<T>(json, _settings);
             }
         }
 
@@ -49,7 +64,7 @@ namespace Lisa.Kiwi.WebApi
                 var result = await client.PostAsJsonAsync(_resourceUrl, model);
                 var json = await result.Content.ReadAsStringAsync();
 
-                return JsonConvert.DeserializeObject<T>(json);
+                return JsonConvert.DeserializeObject<T>(json, _settings);
             }
         }
 
@@ -63,17 +78,18 @@ namespace Lisa.Kiwi.WebApi
                 {
                     Method = new HttpMethod("PATCH"),
                     RequestUri = new Uri(String.Format("{0}/{1}/{2}", _baseUrl, _resourceUrl, id)),
-                    Content = new ObjectContent<T>(model, new JsonMediaTypeFormatter())
+                    Content = new StringContent(JsonConvert.SerializeObject(model, _settings), Encoding.UTF8, "application/json")
                 };
 
                 var result = await client.SendAsync(request);
                 var json = await result.Content.ReadAsStringAsync();
 
-                return JsonConvert.DeserializeObject<T>(json);
+                return JsonConvert.DeserializeObject<T>(json, _settings);
             }
         }
 
         private string _baseUrl;
         private string _resourceUrl;
+        private JsonSerializerSettings _settings;
     }
 }
