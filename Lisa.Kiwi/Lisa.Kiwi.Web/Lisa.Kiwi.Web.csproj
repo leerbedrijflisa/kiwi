@@ -172,19 +172,25 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\DrugsController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ContactMetadata.cs" />
+    <Compile Include="Models\LogBookEntry.cs" />
     <Compile Include="Models\OriginalReport.cs" />
     <Compile Include="Models\Remark.cs" />
+    <Compile Include="Models\ReportMetadata.cs" />
     <Compile Include="Models\ReportTypeMetadata.cs" />
+    <Compile Include="Models\SearchModel.cs" />
     <Compile Include="Models\Status.cs" />
     <Compile Include="Models\StatusNameMetadata.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\ConfigHelper.cs" />
     <Compile Include="Utils\EnumDisplayNames.cs" />
+    <Compile Include="Utils\SortHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -200,6 +206,9 @@
     <Content Include="Views\Report\Type.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Dashboard\Details.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="Views\Dashboard\SearchPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

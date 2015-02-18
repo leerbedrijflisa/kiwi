@@ -13,9 +13,9 @@ using LogBookEntry = Lisa.Kiwi.Web.Dashboard.Models.LogBookEntry;
 
 namespace Lisa.Kiwi.Web.Dashboard.Controllers
 {
-	public class ReportController : Controller
+	public class DashboardController : Controller
 	{
-        public ReportController()
+        public DashboardController()
         {
 	        var token = System.Web.HttpContext.Current.Session["token"] as string ?? "";
             var tokenType = System.Web.HttpContext.Current.Session["token_type"] as string ?? "";
@@ -485,9 +485,8 @@ namespace Lisa.Kiwi.Web.Dashboard.Controllers
         private const string DefaultSortBy = "Created DESC";
         private const int DefaultItems = 15;
 
-		private readonly ContactProxy _contactProxy;
-        private readonly RemarkProxy _remarkProxy;
-        private readonly ReportProxy _reportProxy;
-        private readonly StatusProxy _statusProxy;
+		private readonly Proxy<Contact> _contactProxy;
+        private readonly Proxy<Remark> _remarkProxy;
+        private readonly Proxy<Report> _reportProxy;
 	}
 }
