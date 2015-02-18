@@ -144,6 +144,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -172,7 +173,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
-    <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\_DashboardController.cs" />
     <Compile Include="Controllers\DrugsController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Global.asax.cs">
@@ -209,6 +210,8 @@
     <Content Include="Views\Dashboard\Details.cshtml" />
     <Content Include="Views\Dashboard\Index.cshtml" />
     <Content Include="Views\Dashboard\SearchPartial.cshtml" />
+    <Content Include="Views\Dashboard\Index - Copy 1.cshtml" />
+    <Content Include="Views\Dashboard\Details - Copy 1.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,0 +1,201 @@
+﻿@model Lisa.Kiwi.WebApi.Report
+@using Lisa.Kiwi.WebApi
+@{
+    ViewBag.Title = "Report";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+@if (Model == null)
+{
+    @Html.Partial("_404")
+}
+else
+{
+    <div class="block-container">
+        <h2>Report</h2>
+        <div class="row">
+            <div class="col-sm-6 form-horizontal">
+                <h3>Details</h3>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Type melding</label>
+                    <div class="col-sm-8">
+                        <p class="form-control-static">@Model.Type</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Locatie</label>
+                    <div class="col-sm-8">
+                        <p class="form-control-static">@Model.Location</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Beschrijving</label>
+                    <div class="col-sm-8">
+                        <p class="form-control-static">@Model.Description</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Tijd incident</label>
+                    <div class="col-sm-8">
+                        <p class="form-control-static convertIncidentTime">@Model.Time.ToString("yyyy-MM-dd HH:mm:ss")</p>
+                    </div>
+                </div>
+                @if ((bool)Session["is_admin"])
+                {
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Ip adres</label>
+                        <div class="col-sm-8">
+                            <p class="form-control-static">@Model.Ip</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">User agent</label>
+                        <div class="col-sm-8">
+                            <p class="form-control-static">@Model.UserAgent</p>
+                        </div>
+                    </div>
+                }
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Status</label>
+                    <div class="col-sm-8">
+                        <p class="form-control-static">@Model.Status.GetStatusDisplayNameFromMetadata()</p>
+                    </div>
+                </div>
+                @{ 
+                    if (ViewBag.contact != null) 
+                    {
+                        var contact = (Contact)ViewBag.contact;
+                        
+                        <h3>Contact Details</h3>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Naam</label>
+                            <div class="col-sm-8">
+                                <p class="form-control-static">@contact.Name</p>
+                            </div>
+                        </div>
+                        if (contact.EmailAddress != null)
+                        {
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">E-mail adres</label>
+                            <div class="col-sm-8">
+                                <p class="form-control-static">@contact.EmailAddress</p>
+                            </div>
+                        </div>
+                        }
+                        if (contact.PhoneNumber != null)
+                        {
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Telefoonnummer</label>
+                                <div class="col-sm-8">
+                                    <p class="form-control-static">@contact.PhoneNumber</p>
+                                </div>
+                            </div>
+                        }
+                    }
+                  
+}
+                
+                <h3>Acties</h3>
+                @using (Html.BeginForm("Details", "Report"))
+                {
+                    @Html.ValidationSummary()
+                    @Html.AntiForgeryToken()
+                    @Html.Hidden("guid", Model.Guid)
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Opmerking</label>
+                        <div class="col-sm-8">
+                            <textarea name="remark" class="col-sm-8 form-control report-comment" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Nieuwe status</label>
+                        <div class="col-sm-8">
+                            <select name="Status" class="col-sm-8">
+                                @foreach (var item in Enum.GetValues(typeof (StatusNameMetadata)).Cast<StatusNameMetadata>().ToList())
+                                {
+                                    var selected = "";
+                                    if (item.ToString() == Model.Status.ToString())
+                                    {
+                                        selected = "selected";
+                                    }
+
+                                    <option value="@item" @selected>@item.GetDisplayName()</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    if ((bool)Session["is_admin"])
+                    {
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Zichtbaarheid</label>
+                            <div class="col-sm-8">
+                                <select name="Visibility" class="col-sm-8">
+                                    @{ var visible = ""; }
+                                    @if (!ViewBag.Visible)
+                                    {
+                                        visible = "selected";
+                                    }
+                                    <option value="false" @visible>Zichtbaar</option>
+                                    @{
+                                        visible = ViewBag.Visible ? "selected" : "";
+                                    }
+                                    <option value="true" @visible>Onzichtbaar</option>
+                                </select>
+                            </div>
+                        </div>
+                    }
+                    <div class="form-group">
+                        <div class="col-sm-8 col-md-push-8">
+                            <input class="col-sm-4 report-submit-comment" type="submit" value="Toevoegen" />
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="col-sm-6">
+                <h3>Logboek</h3>
+                <script>
+                    var logbookIds = [];
+                </script>
+                @foreach (var remark in ViewBag.Remarks)
+                {
+                    if (String.IsNullOrEmpty(remark.User))
+                    {
+                        remark.User = "Anoniem";
+                    }
+                    <div class="form-group remark-head">
+                        <div class="col-sm-4">Wie: <span>@remark.User</span></div>
+                        <div class="col-sm-8" style="text-align:right;">Wanneer:  <span class="convertLogbookTime-@remark.Id">@remark.Created.ToString("yyyy-MM-dd HH:mm:ss")</span></div>
+                    </div>
+                    <div class="form-group remark-bottom">
+                        <div class="col-sm-12">
+                            @remark.Description
+                        </div>
+                    </div>
+                    <script>logbookIds.push(@remark.Id)</script>
+                }
+            </div>
+        </div>
+    </div>
+}
+
+<script>
+    var timeClass;
+    logbookIds.forEach(function (id) {
+        timeClass = $('.convertLogbookTime-' + id);
+        var m = timeClass.text().match(/(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})/);
+
+        var date = new Date(Date.UTC(m[1], m[2] - 1, m[3], m[4], m[5], m[6]));
+        var options = { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric', hour: 'numeric', minute: 'numeric' };
+        var newTime = date.toLocaleString('nl-NL', options);
+        timeClass.text(newTime);
+    });
+
+    timeClass = $('.convertIncidentTime');
+    var m = timeClass.text().match(/(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})/);
+
+    var date = new Date(Date.UTC(m[1], m[2] - 1, m[3], m[4], m[5], m[6]));
+    var options = { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric', hour: 'numeric', minute: 'numeric' };
+    var newTime = date.toLocaleString('nl-NL', options);
+
+    timeClass.text(newTime);
+</script>

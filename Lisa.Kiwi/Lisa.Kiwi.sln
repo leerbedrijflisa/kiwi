@@ -18,8 +18,6 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Lisa.Kiwi.WebApi.Models", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lisa.Kiwi.Web", "Lisa.Kiwi.Web\Lisa.Kiwi.Web.csproj", "{16CC3674-2B55-4CFA-97F7-8C3F2AF582F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lisa.Kiwi.Web.Dashboard", "Lisa.Kiwi.Web.Dashboard\Lisa.Kiwi.Web.Dashboard.csproj", "{476282DB-8AF0-4C06-B47F-FEB896B4D2FB}"
-EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Lisa.Kiwi.WebApi.Models\Lisa.Kiwi.WebApi.Models.projitems*{d3d6ef51-deaa-4d75-b8f4-ddc6acb17e49}*SharedItemsImports = 13
@@ -43,10 +41,6 @@ Global
 		{16CC3674-2B55-4CFA-97F7-8C3F2AF582F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16CC3674-2B55-4CFA-97F7-8C3F2AF582F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16CC3674-2B55-4CFA-97F7-8C3F2AF582F6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{476282DB-8AF0-4C06-B47F-FEB896B4D2FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{476282DB-8AF0-4C06-B47F-FEB896B4D2FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{476282DB-8AF0-4C06-B47F-FEB896B4D2FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{476282DB-8AF0-4C06-B47F-FEB896B4D2FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -22,6 +22,7 @@ namespace Lisa.Kiwi.WebApi
 
         [Required]
 		public string Location { get; set; }
+
         [Required]
         public string Category { get; set; }
 	}
