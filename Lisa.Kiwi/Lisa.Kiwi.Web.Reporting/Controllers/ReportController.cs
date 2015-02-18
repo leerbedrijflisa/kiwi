@@ -14,7 +14,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
         [HttpPost]
         public ActionResult Location()
         {
-            
+            return View();
         }
     }
 }
