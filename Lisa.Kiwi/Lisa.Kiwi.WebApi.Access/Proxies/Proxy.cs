@@ -39,6 +39,19 @@ namespace Lisa.Kiwi.WebApi
             }
         }
 
+        public async Task<T> PostAsync(T model)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(_baseUrl);
+
+                var result = await client.PostAsJsonAsync(_resourceUrl, model);
+                var json = await result.Content.ReadAsStringAsync();
+
+                return JsonConvert.DeserializeObject<T>(json);
+            }
+        }
+
         private string _baseUrl;
         private string _resourceUrl;
     }
