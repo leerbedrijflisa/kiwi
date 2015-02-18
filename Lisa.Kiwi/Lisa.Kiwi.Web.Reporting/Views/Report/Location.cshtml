@@ -1,6 +1,8 @@
-﻿
+﻿@using Lisa.Kiwi.Web.Reporting.Models
+
 @{
     ViewBag.Title = "Location";
+    Report report = ViewBag.Report;
 }
 <header id="toolbar">
     <h1>Meldingen Applicatie</h1>
@@ -17,16 +19,5 @@
     <select name="building" id="buildingSelect">
         <option value="Lilla">Lilla</option>
     </select>
-    @if (ViewBag.ActionName == "EHBO")
-    {
-        <div>
-            Is het slachtoffer buiten bewust zijn?
-            <input type="submit" name="BuitenBewust" value="Ja" />
-            <input type="submit" name="NietBuitenBewust" value="Nee" />
-        </div>
-    }
-    else
-    {
-        <input type="submit" name="submit" value="Verzenden"/>
-    }
+    <input type="submit" name="submit" value="Verzenden"/>  
 </section>

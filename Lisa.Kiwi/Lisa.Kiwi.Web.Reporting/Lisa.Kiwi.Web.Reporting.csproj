@@ -226,6 +226,13 @@
     <Content Include="Views\Report\Index.cshtml" />
     <Content Include="Views\Report\Location.cshtml" />
     <Content Include="Views\Report\SenderDetails.cshtml" />
+    <Content Include="Views\Report\Types\EHBO.cshtml" />
+    <Content Include="Views\Report\Types\Diefstal.cshtml" />
+    <Content Include="Views\Report\Types\Drugs.cshtml" />
+    <Content Include="Views\Report\Types\Geweld.cshtml" />
+    <Content Include="Views\Report\Types\Overig.cshtml" />
+    <Content Include="Views\Report\Types\Overlast.cshtml" />
+    <Content Include="Views\Report\Types\Wapens.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
