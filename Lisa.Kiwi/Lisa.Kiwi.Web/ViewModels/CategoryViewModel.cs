@@ -29,6 +29,12 @@ namespace Lisa.Kiwi.Web
 
                     new SelectListItem
                     {
+                        Text = "Wapens",
+                        Value = "Weapons"
+                    },
+
+                    new SelectListItem
+                    {
                         Text = "Drugs",
                         Value = "Drugs"
                     },
@@ -47,8 +53,8 @@ namespace Lisa.Kiwi.Web
 
                     new SelectListItem
                     {
-                        Text = "Vernieling",
-                        Value = "Destruction"
+                        Text = "Overlast",
+                        Value = "Nuisance"
                     },
 
                     new SelectListItem
