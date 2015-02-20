@@ -16,8 +16,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-    @using (Html.BeginForm(actionName, "Report", FormMethod.Post))
-    {
         <header id="toolbar">
             <h1>@Html.ActionLink("Meldingen Applicatie", "Index", "Report")</h1>
             <div id="attachPicture">
@@ -25,6 +23,5 @@
             </div>
         </header>
         @RenderBody()
-    }
 </body>
 </html>

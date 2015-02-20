@@ -79,7 +79,7 @@ body{
 		margin: 100px auto 0 auto;
 	}
 
-		.icons > div{
+		.icons > form > div{
 			float:left;
 			background-color: rgb(239,239,239);
 			max-width: 150px;
@@ -94,17 +94,17 @@ body{
 			position: relative;
 		}
 
-		.icons > div:hover{
+		.icons > form > div:hover{
 			background-color: rgb(200,200,200);
 		}
 
-			.icons > div > img{
+			.icons > form > div > img{
 				max-width: 150px;
 				max-height: 150px;
 				float: left;
 			}
 
-			.icons > div > span{
+			.icons > form > div > span{
 				float: left;
 				width: 100%;
 				text-align: center;
