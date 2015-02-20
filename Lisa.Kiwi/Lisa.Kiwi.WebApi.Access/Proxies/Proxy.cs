@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using System.Net.Http.Formatting;
 using Newtonsoft.Json.Serialization;
 using Newtonsoft.Json.Converters;
 using System.Text;
