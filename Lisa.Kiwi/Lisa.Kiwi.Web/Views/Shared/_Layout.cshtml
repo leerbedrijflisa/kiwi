@@ -1,33 +1,65 @@
-﻿@using System.Web.Optimization
+﻿@{
+    string actionName = ViewBag.ActionName;
+}
+
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>@ViewBag.Title</title>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" type="text/css" href="~/Content/style.css">
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,700' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=geometry"></script>
+    <script src="~/Scripts/Reporter.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    @using (Html.BeginForm(actionName, "Report", FormMethod.Post))
+    {
+        <header id="toolbar">
+            <h1>@Html.ActionLink("Meldingen Applicatie", "Index", "Report")</h1>
+            <div id="attachPicture">
+                <input class="overlayInput" type="file" accept="image/*">
+            </div>
+        </header>
+        @RenderBody()
+    }
+</body>
+</html>
 
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-        @Styles.Render("~/bundles/css")
-        @Scripts.Render("~/bundles/modernizr")
-    </head>
-    <body>
+@*
+    @using System.Web.Optimization
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>@ViewBag.Title</title>
 
-        <div class="body-content">
-            @RenderBody()
-        </div>
-        
-        @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/jqueryval")
-        @Scripts.Render("~/bundles/bottom")
-        
-        <script>
-            // One godlike solution for a nasty problem, just for you!
-            $(".datefield").attr({ "data-msg-date": "Dit is geen geldige tijd. DD-MM-YYYY HH:MM:SS" });
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+            @Styles.Render("~/bundles/css")
+            @Scripts.Render("~/bundles/modernizr")
+        </head>
+        <body>
 
-            $("form").validate();
-        </script>
+            <div class="body-content">
+                @RenderBody()
+            </div>
 
-        @*Use the scripts section to define page specific scripts*@
+            @Scripts.Render("~/bundles/jquery")
+            @Scripts.Render("~/bundles/jqueryval")
+            @Scripts.Render("~/bundles/bottom")
+
+            <script>
+                // One godlike solution for a nasty problem, just for you!
+                $(".datefield").attr({ "data-msg-date": "Dit is geen geldige tijd. DD-MM-YYYY HH:MM:SS" });
+
+                $("form").validate();
+            </script>
+
+            @*Use the scripts section to define page specific scripts
         @RenderSection("scripts", false)
     </body>
 </html>
