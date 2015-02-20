@@ -43,7 +43,7 @@
 
 //            IQueryable<Report> reports;
 
-//            if (!(bool) Session["is_admin"])
+//            if (!(bool)Session["is_admin"])
 //            {
 //                reports = _reportProxy.GetReports()
 //                    .Where(r => r.Status != StatusName.Solved)
@@ -88,7 +88,7 @@
 
 //            if (Session["user"].ToString() == "user")
 //            {
-//                if (report.Status == StatusName.Solved || report.Hidden) 
+//                if (report.Status == StatusName.Solved || report.Hidden)
 //                {
 //                    return RedirectToAction("Index", "Report");
 //                }
@@ -101,7 +101,7 @@
 //            var contact = _contactProxy.GetContacts().Where(c => c.Report == report.Id).FirstOrDefault();
 //            ViewBag.contact = contact;
 
-//            var statuses = Enum.GetValues(typeof (StatusName)).Cast<StatusName>().ToList();
+//            var statuses = Enum.GetValues(typeof(StatusName)).Cast<StatusName>().ToList();
 //            ViewBag.Statuses = statuses;
 //            ViewBag.Visible = report.Hidden;
 
@@ -147,7 +147,7 @@
 //                    var newStatus = new Status
 //                    {
 //                        Created = DateTimeOffset.UtcNow,
-//                        Name = (StatusName) status,
+//                        Name = (StatusName)status,
 //                        Report = report.Id
 //                    };
 
@@ -166,15 +166,15 @@
 
 //                _remarkProxy.AddRemark(newRemark);
 //            }
-            
+
 //            if ((bool)Session["is_admin"])
 //            {
-//                report.Hidden = visibility;                
+//                report.Hidden = visibility;
 
 //                _reportProxy.SaveReport(report);
 //            }
 
-//            return RedirectToAction("Details", new {id});
+//            return RedirectToAction("Details", new { id });
 //        }
 
 //        public ActionResult Fill()
@@ -402,7 +402,7 @@
 
 
 //            // SearchText holds the text given from the view.
-//            var searchText = (string) Session["search_text"];
+//            var searchText = (string)Session["search_text"];
 //            ViewBag.SearchText = searchText;
 
 //            IQueryable<Report> reports;
@@ -446,12 +446,12 @@
 //            var isNumber = int.TryParse(searchText, out searchNumber);
 
 //            // Filter by the search query
-//            reports = reports.Where(r => r.Description.Contains(searchText) ||r.Type.Contains(searchText) || r.Location.Contains(searchText)||
+//            reports = reports.Where(r => r.Description.Contains(searchText) || r.Type.Contains(searchText) || r.Location.Contains(searchText) ||
 //                (foundSearchStatus && r.Status == searchStatus) ||
 
 //                // Anything for which the search needs to be a number
-//                (isNumber &&(
-//                    // Created and Time
+//                (isNumber && (
+//                // Created and Time
 //                    r.Created.Year == searchNumber ||
 //                    r.Created.Month == searchNumber ||
 //                    r.Created.Day == searchNumber ||
@@ -481,7 +481,7 @@
 
 //            return View("Index", reportsList.Skip(items * page).Take(items));
 //        }
-        
+
 //        private const string DefaultSortBy = "Created DESC";
 //        private const int DefaultItems = 15;
 

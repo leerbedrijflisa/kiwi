@@ -1,38 +1,42 @@
 ﻿@model IEnumerable<Lisa.Kiwi.WebApi.Report>
 @{
-  Layout = null;
+    Layout = null;
 }
 
 <!doctype html>
 
 <html>
-  <head>
+<head>
     <title>Leerpark</title>
     <link href="~/Content/main.css" rel="stylesheet" type="text/css">
-  </head>
+</head>
 
-  <body>
+<body>
     <table>
-      <tr>
-        <th>Datum</th>
-        <th>Melding</th>
-        <th>Locatie</th>
-      </tr>
-
-      
-      @foreach (var report in Model)
-      {
         <tr>
-          <td>
-              @report.Category<br>
-              @report.Created.ToString("ddd d MMM HH:mm")
-          </td>
-          <td>
-            <a href="@Url.Action("Details", new { id= report.Id })">@report.Description</a>
-          </td>
-          <td>@report.Location</td>
+            <th>Datum</th>
+            <th>Categorie</th>
+            <th>Melding</th>
+            <th>Locatie</th>
+            <th>Status</th>
         </tr>
-      }    
+
+        @foreach (var report in Model)
+        {
+            <tr>
+                <td>
+                    @report.Created.ToString("ddd d MMM HH:mm")
+                </td>
+                <td>
+                    @report.Category
+                </td>
+                <td>
+                    <a href="@Url.Action("Details", new { id= report.Id })">@report.Description</a>
+                </td>
+                <td>@report.Location</td>
+                <td>@report.CurrentStatus</td>
+            </tr>
+        }
     </table>
-  </body>
+</body>
 </html>

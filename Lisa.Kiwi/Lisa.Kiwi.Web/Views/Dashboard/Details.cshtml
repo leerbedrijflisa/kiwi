@@ -6,40 +6,58 @@
 <!doctype html>
 
 <html>
-  <head>
-    <title>Leerpark</title>
-    <link href="~/Content/main.css" rel="stylesheet" type="text/css">
-  </head>
+<head>
+  <title>Leerpark</title>
+  <link href="~/Content/main.css" rel="stylesheet" type="text/css">
+</head>
 
-  <body>
-    <h1>@Model.Category</h1>
+<body>
+  <h1>@Model.Category</h1>
 
+  <dl>
+    <dt>Type</dt>
+    <dd>@Model.Category</dd>
+
+    <dt>Datum</dt>
+    <dd>@Model.Created.ToString("dddd d MMMM HH:mm")</dd>
+
+    <dt>Omschrijving</dt>
+    <dd>@Model.Description</dd>
+
+    <dt>Locatie</dt>
+    <dd>@Model.Location</dd>
+  </dl>
+
+  @if (ViewBag.Contact != null)
+  {
+    <h2>Contact:</h2>
     <dl>
-      <dt>Datum</dt>
-      <dd>@Model.Created.ToString("dddd d MMMM HH:mm")</dd>
+      <dt>Naam</dt>
+      <dd>@ViewBag.Contact.Name</dd>
 
-      <dt>Omschrijving</dt>
-      <dd>@Model.Description</dd>
+      <dt>Telefoonnummer</dt>
+      <dd>@ViewBag.Contact.PhoneNumber</dd>
 
-      <dt>Locatie</dt>
-      <dd>@Model.Location</dd>
+      <dt>E-mailadres</dt>
+      <dd>@ViewBag.Contact.EmailAddress</dd>
     </dl>
+  }
 
-    <form method="post">
-      <dl>
-        <dt>Status</dt>
-        <dd>
-          <select>
-            <option>open</option>
-            <option>gesloten</option>
-            <option>doorverwezen</option>
-          </select>
-        </dd>
+<form method="post">
+    <dl>
+      <dt>Status</dt>
+      <dd>
+        <select>
+          <option>open</option>
+          <option>gesloten</option>
+          <option>doorverwezen</option>
+        </select>
+      </dd>
 
-        <dd>
-          <button type="submit">Opslaan</button>
-        </dd>
-      </dl>
-    </form>
-  </body>
+      <dd>
+        <button type="submit">Opslaan</button>
+      </dd>
+    </dl>
+  </form>
+</body>
 </html>
