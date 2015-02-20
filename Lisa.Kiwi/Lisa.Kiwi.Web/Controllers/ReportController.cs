@@ -73,6 +73,10 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 			return View();
 		}
 
+
+
+        //Staph right here
+
 		[HttpPost]
         [ValidateInput(false)]
 		public ActionResult Type(string reportType)
