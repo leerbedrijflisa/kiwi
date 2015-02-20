@@ -1,20 +1,26 @@
 ﻿@model LocationViewModel
 
+@{
+    ViewBag.Title = "Location";
+}
+
 <h1>Waar is het gebeurd?</h1>
 
 @using (Html.BeginForm())
 {
-    <p>
-        @Html.LabelFor(m => m.Building)
-        @Html.DropDownListFor(m => m.Building, Model.Buildings)
-    </p>
-    
-    <p>
-        @Html.LabelFor(m => m.Location)
-        @Html.TextAreaFor(m => m.Location)
-    </p>
-    
-    <p>
-        <button type="submit">Volgende</button>
-    </p>
+    <section>
+        <div id="map-canvas"></div>
+        <ul id="map-suggestions"></ul>
+        <div id="middle-container">
+            <p>
+                @Html.LabelFor(m => m.Building)
+                @Html.DropDownListFor(m => m.Building, Model.Buildings)
+            </p>
+            <p>
+                @Html.LabelFor(m => m.Location)
+                @Html.TextAreaFor(m => m.Location)
+            </p>
+            <input type="submit" value="Verzenden" />
+        </div>
+    </section>
 }
