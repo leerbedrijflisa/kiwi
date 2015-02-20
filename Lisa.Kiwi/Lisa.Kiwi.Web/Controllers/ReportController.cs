@@ -64,7 +64,6 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             return View();
         }
 
-
 		public ActionResult Type()
 		{
             var reportTypes = GetReportTypes();
@@ -72,8 +71,6 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 
 			return View();
 		}
-
-
 
         //Staph right here
 

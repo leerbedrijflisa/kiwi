@@ -68,6 +68,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
             }
 
             _dataFactory.Modify(reportData, json);
+
             await _db.SaveChangesAsync();
 
             var report = _modelFactory.Create(reportData);
