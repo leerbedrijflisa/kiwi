@@ -20,5 +20,7 @@ namespace Lisa.Kiwi.WebApi
         public string Building { get; set; }
 		public string Location { get; set; }
         public string Category { get; set; }
+
+        public Contact Contact { get; set; }
 	}
 }

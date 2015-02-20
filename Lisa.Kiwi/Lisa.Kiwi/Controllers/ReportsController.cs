@@ -11,11 +11,12 @@ namespace Lisa.Kiwi.WebApi.Controllers
     //[System.Web.Http.Authorize]
 	public class ReportsController : ApiController
 	{
-		// GET Report
 		[EnableQuery]
 		public IQueryable<Report> Get()
 		{
-            var reports = _db.Reports.Include("StatusChanges")
+            var reports = _db.Reports
+                .Include("StatusChanges")
+                .Include("Contact")
                 .ToList()
                 .Select(reportData => _modelFactory.Create(reportData))
                 .AsQueryable();

@@ -30,5 +30,6 @@ namespace Lisa.Kiwi.WebApi
         public Guid EditToken { get; set; }         // has to do with security
 
         public virtual ICollection<StatusChangeData> StatusChanges { get; set; }
+        public virtual ContactData Contact { get; set; }
     }
 }

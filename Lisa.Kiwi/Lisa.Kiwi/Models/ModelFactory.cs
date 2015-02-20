@@ -17,7 +17,8 @@ namespace Lisa.Kiwi.WebApi
                 Location = reportData.Location,
                 Category = reportData.Type,
                 IsVisible = true,
-                CurrentStatus = Status.Open
+                CurrentStatus = Status.Open,
+                Contact = reportData.Contact != null ? Create(reportData.Contact) : null
             };
 
             // Add information about the most recent status change only, because
