@@ -60,21 +60,9 @@ namespace Lisa.Kiwi.Web
         {
             var statusChange = new Report
             {
-                IsVisible = model.IsVisible
+                IsVisible = model.IsVisible,
+                CurrentStatus = (WebApi.Status) Enum.Parse(typeof(WebApi.Status), model.Status)
             };
-
-            switch (model.Status)
-            {
-                case "Open":
-                    statusChange.CurrentStatus = WebApi.Status.Open;
-                    break;
-                case "Solved":
-                    statusChange.CurrentStatus = WebApi.Status.Solved;
-                    break;
-                case "Transferred":
-                    statusChange.CurrentStatus = WebApi.Status.Transferred;
-                    break;
-            }
 
             await _reportProxy.PatchAsync(model.Id, statusChange);
 
