@@ -1,4 +1,5 @@
-﻿@model Lisa.Kiwi.WebApi.Report
+﻿@using System.Runtime.InteropServices.ComTypes
+@model Lisa.Kiwi.WebApi.Report
 @{
   Layout = null;
 }
@@ -26,6 +27,12 @@
 
     <dt>Locatie</dt>
     <dd>@Model.Location</dd>
+
+    <dt>Huidige status</dt>
+    <dd>@Model.CurrentStatus</dd>
+
+    <dt>Zichtbaar?</dt>
+    <dd>@Model.IsVisible</dd>
   </dl>
 
   @if (ViewBag.Contact != null)
@@ -43,21 +50,21 @@
     </dl>
   }
 
-<form method="post">
+<hr/>
+
+@using (Html.BeginForm())
+  {
     <dl>
       <dt>Status</dt>
       <dd>
-        <select>
-          <option>open</option>
-          <option>gesloten</option>
-          <option>doorverwezen</option>
-        </select>
+        @Html.DropDownList("status", (IEnumerable<SelectListItem>) ViewBag.StatusNames)
       </dd>
-
+      <dt>Zichtbaar?</dt>
       <dd>
-        <button type="submit">Opslaan</button>
+        @Html.CheckBox("IsVisible")
       </dd>
+      <dd><input type="submit" value="Opslaan"/></dd>
     </dl>
-  </form>
+  }
 </body>
 </html>
