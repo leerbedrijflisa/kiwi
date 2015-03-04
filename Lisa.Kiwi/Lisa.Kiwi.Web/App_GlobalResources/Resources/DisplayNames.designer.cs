@@ -61,6 +61,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to EHBO.
+        /// </summary>
+        internal static string Category_FirstAid {
+            get {
+                return ResourceManager.GetString("Category_FirstAid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mediacentrum.
         /// </summary>
         internal static string DrugsController_Details_Mediacentrum {
