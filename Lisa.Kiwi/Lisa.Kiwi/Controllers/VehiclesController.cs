@@ -1,10 +1,10 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace Lisa.Kiwi.WebApi.Controllers
 {
+    [Authorize]
     public class VehiclesController : ApiController
     {
         public IQueryable<Vehicle> Get()

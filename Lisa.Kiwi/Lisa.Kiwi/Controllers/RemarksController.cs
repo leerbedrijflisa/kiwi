@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -7,6 +6,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Lisa.Kiwi.WebApi.Controllers
 {
+    [Authorize]
     public class RemarksController : ApiController
     {
         public IQueryable<Remark> Get()

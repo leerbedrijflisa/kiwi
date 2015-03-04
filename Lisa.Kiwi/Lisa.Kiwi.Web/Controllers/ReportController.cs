@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Lisa.Kiwi.Web.App_GlobalResources.Resources;
 using Lisa.Kiwi.Web.Models;
 using Lisa.Kiwi.WebApi;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Table;
-using Resources;
 
 namespace Lisa.Kiwi.Web.Reporting.Controllers
 {

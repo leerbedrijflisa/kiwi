@@ -2,12 +2,12 @@
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using Lisa.Kiwi.Web.App_GlobalResources.Resources;
 using Lisa.Kiwi.WebApi;
-using Resources;
-using Status = Lisa.Kiwi.Web.Models.Status;
 
 namespace Lisa.Kiwi.Web
 {
+    [Authorize]
     public class DashboardController : Controller
     {
         public async Task<ActionResult> Index()
