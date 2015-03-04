@@ -8,19 +8,20 @@ namespace Lisa.Kiwi.Web.ViewModels
 {
     public class PerpetratorViewModel
     {
-        public string PerpetratorName { get; set; }
+        public string Name { get; set; }
 
         [Required]
-        public char PerpetratorGender { get; set; }
+        public int Sex { get; set; }
 
-        public string PerpetratorSkinColor { get; set; }
-
-        [Required]
-        public string PerpetratorClothing { get; set; }
-
-        public int PerpetratorAge { get; set; }
+        public string SkinColor { get; set; }
 
         [Required]
-        public string PerpetratorUniqueProperties { get; set; }
+        public string Clothing { get; set; }
+
+        public int MinimumAge { get; set; }
+        public int MaximumAge { get; set; }
+
+        [Required]
+        public string UniqueProperties { get; set; }
     }
 }
