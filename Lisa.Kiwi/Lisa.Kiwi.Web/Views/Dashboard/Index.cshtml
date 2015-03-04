@@ -28,10 +28,10 @@
                     @report.Created.ToString("ddd d MMM HH:mm")
                 </td>
                 <td>
-                    @report.Category
+                    <a href="@Url.Action("Details", new { id= report.Id })"> @Resources.Categories.ResourceManager.GetString("FirstAid")</a>
                 </td>
                 <td>
-                    <a href="@Url.Action("Details", new { id= report.Id })">@report.Description</a>
+                   @report.Description
                 </td>
                 <td>@report.Location</td>
                 <td>@report.CurrentStatus</td>

@@ -140,6 +140,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\ModelFactory.cs" />
+    <Compile Include="App_GlobalResources\Resources\Categories.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Categories.resx</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\CategoryViewModel.cs" />
     <Compile Include="ViewModels\LocationViewModel.cs" />
     <Compile Include="ViewModels\StatusChangeViewModel.cs" />
@@ -253,6 +258,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="App_GlobalResources\Resources\Categories.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Categories.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
