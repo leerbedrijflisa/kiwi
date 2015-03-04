@@ -11,8 +11,8 @@ namespace Lisa.Kiwi.WebApi
             return new ReportData
             {
                 Description = report.Description,
-                Building = report.Building,
-                Location = report.Location,
+                Building = report.Location.Building,
+                Location = report.Location.Description,
                 Type = report.Category
             };
         }
@@ -73,7 +73,6 @@ namespace Lisa.Kiwi.WebApi
         {
             var contactData = new ContactData
             {
-                Id = contact.Id,
                 EditToken = contact.EditToken,
                 EmailAddress = contact.EmailAddress,
                 Name = contact.Name,

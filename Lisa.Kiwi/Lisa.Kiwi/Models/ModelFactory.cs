@@ -8,13 +8,19 @@ namespace Lisa.Kiwi.WebApi
     {
         public Report Create(ReportData reportData)
         {
+
+            var location = new Location
+            {
+                Building = reportData.Building,
+                Description = reportData.Description
+            };
+
             var report = new Report
             {
                 Id = reportData.Id,
                 Description = reportData.Description,
                 Created = reportData.Created,
-                Building = reportData.Building,
-                Location = reportData.Location,
+                Location = location,
                 Category = reportData.Type,
                 IsVisible = true,
                 CurrentStatus = Status.Open,
@@ -69,7 +75,6 @@ namespace Lisa.Kiwi.WebApi
             {
                 EmailAddress = contactData.EmailAddress,
                 EditToken = contactData.EditToken,
-                Id = contactData.Id,
                 Name = contactData.Name,
                 PhoneNumber = contactData.PhoneNumber,
                 Report = contactData.Report.Id

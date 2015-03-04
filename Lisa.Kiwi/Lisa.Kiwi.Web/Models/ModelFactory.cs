@@ -13,8 +13,8 @@ namespace Lisa.Kiwi.Web
 
         public void Modify(Report report, LocationViewModel viewModel)
         {
-            report.Building = viewModel.Building;
-            report.Location = viewModel.Location;
+            report.Location.Building = viewModel.Building;
+            report.Location.Description = viewModel.Location;
         }
     }
 }

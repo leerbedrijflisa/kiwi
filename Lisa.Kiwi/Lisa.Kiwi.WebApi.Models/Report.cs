@@ -9,6 +9,8 @@ namespace Lisa.Kiwi.WebApi
 			Created = DateTimeOffset.Now;
 			IsVisible = true;
 			CurrentStatus = Status.Open;
+            Location = new Location();
+
 		}
 
 		public int Id { get; set; }
