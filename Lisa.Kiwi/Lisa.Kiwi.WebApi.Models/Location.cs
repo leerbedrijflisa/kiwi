@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Lisa.Kiwi.WebApi.Models
+namespace Lisa.Kiwi.WebApi
 {
-    class Location
+    public class Location
     {
+        public float Latitude { get; set; }
+        public float Longitude { get; set; }
         public string Building { get; set; }
         public string Description { get; set; }
     }

@@ -57,8 +57,7 @@ namespace Lisa.Kiwi.WebApi
                 Brand = vehicleData.Brand,
                 Color = vehicleData.Color,
                 LicensePlate = vehicleData.LicensePlate,
-                Model = vehicleData.Model,
-                Report = vehicleData.Report.Id
+                Model = vehicleData.Model
             };
 
             return vehicle;
