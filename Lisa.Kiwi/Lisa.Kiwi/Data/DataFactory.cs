@@ -8,20 +8,33 @@ namespace Lisa.Kiwi.WebApi
     {
         public ReportData Create(Report report)
         {
+            var location = new LocationData
+            {
+                Building = report.Location.Building,
+                Description = report.Location.Description
+            };
+
             return new ReportData
             {
                 Description = report.Description,
-                Building = report.Location.Building,
-                Location = report.Location.Description,
-                Type = report.Category
+                Location = location,
+                Category = report.Category
             };
         }
 
         public void Modify(ReportData reportData, JToken json)
         {
-            reportData.Type = json.Value<string>("category") ?? reportData.Type;
-            reportData.Building = json.Value<string>("building") ?? reportData.Building;
-            reportData.Location = json.Value<string>("location") ?? reportData.Location;
+
+            reportData.Category = json.Value<string>("category") ?? reportData.Category;
+
+            var location = new LocationData
+            {
+                Building = json.Value<string>("building") ?? reportData.Location.Building,
+                Description = json.Value<string>("location") ?? reportData.Location.Description
+            };
+
+
+            reportData.Location = location;
             reportData.Description = json.Value<string>("description") ?? reportData.Description;
 
             var currentStatus = reportData.StatusChanges
@@ -59,7 +72,6 @@ namespace Lisa.Kiwi.WebApi
         {
             var vehicleData = new VehicleData
             {
-                Id = vehicle.Id,
                 Brand = vehicle.Brand,
                 Color = vehicle.Color,
                 LicensePlate = vehicle.LicensePlate,

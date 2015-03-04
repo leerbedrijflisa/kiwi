@@ -31,10 +31,10 @@
                     <a href="@Url.Action("Details", new { id= report.Id })">@report.Category</a>
                 </td>
                 <td>
-                    @report.Building
+                    @report.Location.Building
                 </td>
 
-                <td>@report.Location</td>
+                <td>@report.Location.Description</td>
                 <td>@report.CurrentStatus</td>
             </tr>
         }
