@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -17,6 +18,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
             var reports = _db.Reports
                 .Include("StatusChanges")
                 .Include("Contact")
+                .Include("Vehicle")
                 .ToList()
                 .Select(reportData => _modelFactory.Create(reportData))
                 .AsQueryable();
@@ -26,7 +28,12 @@ namespace Lisa.Kiwi.WebApi.Controllers
 
         public async Task<IHttpActionResult> Get(int? id)
         {
-            var reportData = await _db.Reports.FindAsync(id);
+            var reportData = await _db.Reports
+                .Include("StatusChanges")
+                .Include("Contact")
+                .Include("Vehicle")
+                .SingleOrDefaultAsync(r => id == r.Id);
+            
             if (reportData == null)
             {
                 return NotFound();
