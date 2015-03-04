@@ -65,8 +65,15 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
                     action = "Done";
                     break;
             }
-            return RedirectToAction(action);
+            return View(action);
         }
+
+        [HttpPost]
+	    public ActionResult FirstAid()
+	    {
+	        return View("FirstAid");
+	    }
+
 
         public ActionResult Done()
         {

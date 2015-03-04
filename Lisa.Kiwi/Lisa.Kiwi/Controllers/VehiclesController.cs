@@ -29,26 +29,26 @@ namespace Lisa.Kiwi.WebApi.Controllers
             return Ok(_modelFactory.Create(vehicle));
         }
 
-        public async Task<IHttpActionResult> Post([FromBody] Vehicle vehicle)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest();
-            }
+        //public async Task<IHttpActionResult> Post([FromBody] Vehicle vehicle)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest();
+        //    }
 
-            var vehicleData = _dataFactory.Create(vehicle);
-            var reportData = await _db.Reports.FindAsync(vehicle.Report);
+        //    var vehicleData = _dataFactory.Create(vehicle);
+        //    var reportData = await _db.Reports.FindAsync(vehicle.Report);
 
-            vehicleData.Report = reportData;
+        //    vehicleData.Report = reportData;
 
-            _db.Vehicles.Add(vehicleData);
-            await _db.SaveChangesAsync();
+        //    _db.Vehicles.Add(vehicleData);
+        //    await _db.SaveChangesAsync();
 
-            vehicle = _modelFactory.Create(vehicleData);
+        //    vehicle = _modelFactory.Create(vehicleData);
 
-            var url = Url.Route("DefaultApi", new { controller = "vehicles", id = vehicleData.Id });
-            return Created(url, vehicle);
-        }
+        //    var url = Url.Route("DefaultApi", new { controller = "vehicles", id = vehicleData.Id });
+        //    return Created(url, vehicle);
+        //}
 
         private readonly KiwiContext _db = new KiwiContext();
         private readonly ModelFactory _modelFactory = new ModelFactory();

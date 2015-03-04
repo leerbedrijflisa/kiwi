@@ -282,4 +282,7 @@
   <data name="ReportTypeDestruction" xml:space="preserve">
     <value>Vernieling</value>
   </data>
+  <data name="Category_FirstAid" xml:space="preserve">
+    <value>EHBO</value>
+  </data>
 </root>
