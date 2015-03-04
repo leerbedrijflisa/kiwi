@@ -24,17 +24,13 @@ namespace Lisa.Kiwi.WebApi
 
         public void Modify(ReportData reportData, JToken json)
         {
-
             reportData.Category = json.Value<string>("category") ?? reportData.Category;
-
-            var location = new LocationData
+            
+            if (json["location"] != null)
             {
-                Building = json.Value<string>("building") ?? reportData.Location.Building,
-                Description = json.Value<string>("location") ?? reportData.Location.Description
-            };
+                reportData.Location = Modify(reportData.Location, json["location"]);
+            }
 
-
-            reportData.Location = location;
             reportData.Description = json.Value<string>("description") ?? reportData.Description;
 
             var currentStatus = reportData.StatusChanges
@@ -92,6 +88,14 @@ namespace Lisa.Kiwi.WebApi
             };
 
             return contactData;
+        }
+
+        public LocationData Modify(LocationData locationData, JToken json)
+        {
+            var data = locationData ?? new LocationData();
+            data.Building = json["building"] != null ? json.Value<string>("building") : data.Building;
+            data.Description = json["description"] != null ? json.Value<string>("description") : data.Description;
+            return data;
         }
     }
 }
