@@ -51,12 +51,22 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 
             var cookie = Request.Cookies["report"];
             int reportId = Int32.Parse(cookie.Value);
-
+            var reportType = cookie.Name;
             var report = await _reportProxy.GetAsync(reportId);
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(reportId, report);
 
-            return RedirectToAction("Done");
+            string action;
+            switch (reportType)
+            {
+                case "EHBO":
+                    action = "EHBO";
+                    break;
+                default:
+                    action = "Done";
+                    break;
+            }
+            return RedirectToAction(action);
         }
 
         public ActionResult Done()
