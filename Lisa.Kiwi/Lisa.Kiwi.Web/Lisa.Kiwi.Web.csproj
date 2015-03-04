@@ -140,11 +140,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\ModelFactory.cs" />
+    <Compile Include="ViewModels\BullyingViewModel.cs" />
     <Compile Include="ViewModels\CategoryViewModel.cs" />
+    <Compile Include="ViewModels\ContactViewModel.cs" />
+    <Compile Include="ViewModels\DrugsViewModel.cs" />
+    <Compile Include="ViewModels\FightViewModel.cs" />
     <Compile Include="ViewModels\FirstAidViewModel.cs" />
     <Compile Include="ViewModels\LocationViewModel.cs" />
+    <Compile Include="ViewModels\NuisanceViewModel.cs" />
+    <Compile Include="ViewModels\OtherViewModel.cs" />
+    <Compile Include="ViewModels\PerpetratorViewModel.cs" />
     <Compile Include="ViewModels\StatusChangeViewModel.cs" />
     <Compile Include="ViewModels\TheftViewModel.cs" />
+    <Compile Include="ViewModels\WeaponViewModel.cs" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
