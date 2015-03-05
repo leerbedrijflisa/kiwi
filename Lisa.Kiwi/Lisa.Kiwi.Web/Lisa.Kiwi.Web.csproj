@@ -139,6 +139,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Models\ModelFactory.cs" />
     <Compile Include="App_GlobalResources\Resources\Categories.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -156,6 +157,7 @@
     <Compile Include="ViewModels\NuisanceViewModel.cs" />
     <Compile Include="ViewModels\OtherViewModel.cs" />
     <Compile Include="ViewModels\PerpetratorViewModel.cs" />
+    <Compile Include="ViewModels\LoginModel.cs" />
     <Compile Include="ViewModels\StatusChangeViewModel.cs" />
     <Compile Include="ViewModels\TheftViewModel.cs" />
     <Compile Include="ViewModels\WeaponViewModel.cs" />
@@ -253,6 +255,7 @@
     <Content Include="Views\Dashboard\_PartialDetailsFirstAid.cshtml" />
     <Content Include="Views\Report\Contact.cshtml" />
     <Content Include="Views\FirstAid\FirstAid.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -261,10 +264,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_GlobalResources\Resources\DisplayNames.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
+    <EmbeddedResource Include="App_GlobalResources\Resources\DisplayNames.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>DisplayNames.designer.cs</LastGenOutput>
-    </Content>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Lisa.Kiwi.WebApi.Access\Lisa.Kiwi.WebApi.Access.csproj">

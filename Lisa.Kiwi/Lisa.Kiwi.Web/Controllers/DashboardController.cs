@@ -1,16 +1,35 @@
 ﻿using System;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using System.Web.Routing;
+using Lisa.Kiwi.Web.App_GlobalResources.Resources;
 using Lisa.Kiwi.WebApi;
-using Lisa.Kiwi.Web.Models;
-using Resources;
-using Status = Lisa.Kiwi.Web.Models.Status;
 
 namespace Lisa.Kiwi.Web
 {
     public class DashboardController : Controller
     {
+        protected override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+            var tokenCookie = Request.Cookies["token"];
+            if (tokenCookie!= null)
+            {
+                var token = Request.Cookies["token"].Value;
+                var tokenType = Request.Cookies["token_type"].Value;
+
+                _reportProxy = new Proxy<Report>("http://localhost:20151/", "/reports", token, tokenType);
+                _contactProxy = new Proxy<Contact>("http://localhost:20151/", "/contacts", token, tokenType);
+            }
+            else
+            {
+                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary { { "controller", "Account" }, { "action", "Login" } });
+                return;
+            }
+
+            
+            base.OnActionExecuting(filterContext);
+        }
+
         public async Task<ActionResult> Index()
         {
             var reports = await _reportProxy.GetAsync();
@@ -70,7 +89,7 @@ namespace Lisa.Kiwi.Web
             return RedirectToAction("Details", new {id = model.Id});
         }
 
-        private readonly Proxy<Report> _reportProxy = new Proxy<Report>("http://localhost:20151/", "/reports");
-        private readonly Proxy<Contact> _contactProxy = new Proxy<Contact>("http://localhost:20151/", "/contacts");
+        private Proxy<Report> _reportProxy;
+        private Proxy<Contact> _contactProxy;
     }
 }

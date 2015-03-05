@@ -1,0 +1,22 @@
+﻿@model Lisa.Kiwi.Web.ViewModels.LoginModel
+@{
+	ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+
+@using (Html.BeginForm())
+{
+	<p>
+		@Html.LabelFor(m => m.UserName)
+		@Html.TextBoxFor(m => m.UserName)
+	</p>
+	<p>
+		@Html.LabelFor(m => m.Password)
+		@Html.PasswordFor(m => m.Password)
+		@Html.ValidationMessageFor(m => m.Password)
+	</p>
+	<p>
+		<button type="submit">@DisplayNames.LogIn</button>
+	</p>
+}

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Data.Entity;
 using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.OData;
@@ -9,7 +8,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Lisa.Kiwi.WebApi.Controllers
 {
-    //[System.Web.Http.Authorize]
+    [Authorize]
 	public class ReportsController : ApiController
 	{
 		[EnableQuery]
