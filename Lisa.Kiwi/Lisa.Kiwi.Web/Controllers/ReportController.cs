@@ -481,10 +481,10 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
         private readonly Proxy<Contact> _contactProxy = new Proxy<Contact>("http://localhost:20151", "/contacts/");
 
         // Fiddler version
-        private readonly Proxy<Report> _reportProxy = new Proxy<Report>("http://localhost.fiddler:20151/", "/reports/");
+        //private readonly Proxy<Report> _reportProxy = new Proxy<Report>("http://localhost.fiddler:20151/", "/reports/");
 
         // Normal version
-        //private readonly Proxy<Report> _reportProxy = new Proxy<Report>("http://localhost:20151/", "/reports/");
+        private readonly Proxy<Report> _reportProxy = new Proxy<Report>("http://localhost:20151/", "/reports/");
 
 
         private readonly Proxy<WebApi.Remark> _remarkProxy = new Proxy<WebApi.Remark>("http://localhost:20151", "/remarks/");
