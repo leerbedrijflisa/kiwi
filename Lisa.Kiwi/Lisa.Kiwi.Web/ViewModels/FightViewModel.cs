@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
@@ -8,10 +9,12 @@ namespace Lisa.Kiwi.Web
 {
     public class FightViewModel
     {
-        [Required]
+        [Required(ErrorMessage = ErrorMessages.RequiredError)]
+        [DisplayName("Hoeveel zijn er aan het vechten?")]
         public int FighterCount { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = ErrorMessages.RequiredError)]
+        [DisplayName("Zijn er wapens bij betrokken?")]
         public bool IsWeaponPresent { get; set; }
     }
 }

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
@@ -6,10 +8,12 @@ namespace Lisa.Kiwi.Web
 {
     public class LocationViewModel
     {
-        [Required]
+        [Required(ErrorMessage = ErrorMessages.RequiredError)]
+        [DisplayName("Gebouw")]
         public string Building { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = ErrorMessages.RequiredError)]
+        [DisplayName("Locatie")]
         public string Location { get; set; }
 
         public IEnumerable<SelectListItem> Buildings
