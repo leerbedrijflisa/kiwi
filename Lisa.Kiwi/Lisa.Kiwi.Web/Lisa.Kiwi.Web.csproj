@@ -140,15 +140,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\ModelFactory.cs" />
-<<<<<<< HEAD
     <Compile Include="App_GlobalResources\Resources\Categories.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Categories.resx</DependentUpon>
     </Compile>
-=======
     <Compile Include="ViewModels\BullyingViewModel.cs" />
->>>>>>> origin/refactor
     <Compile Include="ViewModels\CategoryViewModel.cs" />
     <Compile Include="ViewModels\ContactViewModel.cs" />
     <Compile Include="ViewModels\DrugsViewModel.cs" />
