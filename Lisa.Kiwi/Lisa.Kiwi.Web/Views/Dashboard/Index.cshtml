@@ -16,7 +16,7 @@
         <tr>
             <th>Datum</th>
             <th>Categorie</th>
-            <th>Melding</th>
+            <th>Gebouw</th>
             <th>Locatie</th>
             <th>Status</th>
         </tr>
@@ -30,9 +30,7 @@
                 <td>
                     <a href="@Url.Action("Details", new { id= report.Id })"> @Resources.Categories.ResourceManager.GetString(report.Category)</a>
                 </td>
-                <td>
-                   @report.Description
-                </td>
+                <td> @report.Building</td>
                 <td>@report.Location</td>
                 <td>@report.CurrentStatus</td>
             </tr>

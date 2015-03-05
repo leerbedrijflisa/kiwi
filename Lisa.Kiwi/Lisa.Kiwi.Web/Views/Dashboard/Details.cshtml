@@ -13,7 +13,7 @@
 </head>
 
 <body>
-  <h1>@Model.Category</h1>
+  <h1>@Resources.Categories.ResourceManager.GetString("FirstAid")</h1>
 
   <dl>
     <dt>Type</dt>
@@ -66,5 +66,6 @@
       <dd><input type="submit" value="Opslaan"/></dd>
     </dl>
   }
+    <p>@Html.ActionLink("Ga terug naar de startpagina", "Index", "Dashboard", null, new { @class = "btn btn-default btn-report" })</p>
 </body>
 </html>
