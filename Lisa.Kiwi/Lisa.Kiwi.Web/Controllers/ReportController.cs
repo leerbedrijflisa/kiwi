@@ -49,11 +49,9 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
                 return View(viewModel);
             }
 
-            var cookie = Request.Cookies["report"];
-            int reportId = Int32.Parse(cookie.Value);
-            var report = await _reportProxy.GetAsync(reportId);
+            var report = await GetCurrentReport();
             _modelFactory.Modify(report, viewModel);
-            await _reportProxy.PatchAsync(reportId, report);
+            await _reportProxy.PatchAsync(report.Id, report);
 
             string action;
             switch (report.Category)
@@ -69,9 +67,12 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
         }
 
         [HttpPost]
-	    public ActionResult FirstAid()
+	    public async Task<ActionResult> FirstAid(FirstAidViewModel viewModel)
 	    {
-	        return View("FirstAid");
+            var report = await GetCurrentReport();
+            _modelFactory.Modify(report, viewModel);
+            await _reportProxy.PatchAsync(report.Id, report);
+	        return View("Done");
 	    }
 
 
@@ -80,6 +81,12 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             return View();
         }
 
+        private async Task<Report> GetCurrentReport()
+        {
+            var cookie = Request.Cookies["report"];
+            int reportId = Int32.Parse(cookie.Value);
+            return await _reportProxy.GetAsync(reportId);
+        }
         //public ActionResult Type()
         //{
         //    var reportTypes = GetReportTypes();

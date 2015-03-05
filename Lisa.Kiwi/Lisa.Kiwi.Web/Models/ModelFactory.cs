@@ -16,5 +16,10 @@ namespace Lisa.Kiwi.Web
             report.Location.Building = viewModel.Building;
             report.Location.Description = viewModel.Location;
         }
+
+        public void Modify(Report report, FirstAidViewModel viewModel)
+        {
+            report.IsUnconscious = viewModel.IsUnconscious;
+        }
     }
 }

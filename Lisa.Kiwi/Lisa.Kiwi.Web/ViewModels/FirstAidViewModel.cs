@@ -9,6 +9,6 @@ namespace Lisa.Kiwi.Web
     public class FirstAidViewModel
     {
         [Required]
-        public bool? IsUnconcious { get; set; }
+        public bool IsUnconscious { get; set; }
     }
 }
