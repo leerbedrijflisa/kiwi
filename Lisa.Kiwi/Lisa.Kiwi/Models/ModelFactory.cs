@@ -15,6 +15,7 @@ namespace Lisa.Kiwi.WebApi
                 Created = reportData.Created,
                 Category = reportData.Category,
                 IsVisible = true,
+                IsUnconscious = reportData.IsUnconscious,
                 CurrentStatus = Status.Open,
                 Contact = reportData.Contact != null ? Create(reportData.Contact) : null
             };
