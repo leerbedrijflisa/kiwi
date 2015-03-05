@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace Lisa.Kiwi.Web.ViewModels
+namespace Lisa.Kiwi.Web
 {
     public class TheftViewModel
     {

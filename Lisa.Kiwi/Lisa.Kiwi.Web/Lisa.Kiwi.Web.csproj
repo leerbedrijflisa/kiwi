@@ -242,6 +242,7 @@
     <Content Include="Views\Report\Index.cshtml" />
     <Content Include="Views\Report\Done.cshtml" />
     <Content Include="Views\Report\Location.cshtml" />
+    <Content Include="Views\Report\FirstAid.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
