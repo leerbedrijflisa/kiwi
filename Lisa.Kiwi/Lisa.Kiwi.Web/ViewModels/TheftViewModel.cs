@@ -12,6 +12,6 @@ namespace Lisa.Kiwi.Web
         public string StolenObject { get; set; }
 
         [Required]
-        public DateTime? DateOfTheft { get; set; }
+        public DateTime DateOfTheft { get; set; }
     }
 }

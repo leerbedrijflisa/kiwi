@@ -6,12 +6,13 @@ using System.Web;
 
 namespace Lisa.Kiwi.Web
 {
-    public class FightViewModel
+    public class ContactRequiredViewModel
     {
         [Required]
-        public int FighterCount { get; set; }
-
+        public string Name { get; set; }
         [Required]
-        public bool IsWeaponPresent { get; set; }
+        public string PhoneNumber { get; set; }
+        [Required]
+        public string EmailAddress { get; set; }
     }
 }

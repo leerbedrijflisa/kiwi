@@ -32,6 +32,7 @@ namespace Lisa.Kiwi.WebApi
             }
 
             reportData.Description = json.Value<string>("description") ?? reportData.Description;
+            reportData.IsUnconscious = json.Value<bool?>("isUnconscious") ?? reportData.IsUnconscious;
 
             var currentStatus = reportData.StatusChanges
                 .OrderByDescending(s => s.Created)

@@ -147,6 +147,7 @@
     </Compile>
     <Compile Include="ViewModels\BullyingViewModel.cs" />
     <Compile Include="ViewModels\CategoryViewModel.cs" />
+    <Compile Include="ViewModels\ContactRequiredViewModel.cs" />
     <Compile Include="ViewModels\ContactViewModel.cs" />
     <Compile Include="ViewModels\DrugsViewModel.cs" />
     <Compile Include="ViewModels\FightViewModel.cs" />
@@ -248,6 +249,7 @@
     <Content Include="Views\Report\Done.cshtml" />
     <Content Include="Views\Report\Location.cshtml" />
     <Content Include="Views\Report\FirstAid.cshtml" />
+    <Content Include="Views\Report\ContactRequired.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
