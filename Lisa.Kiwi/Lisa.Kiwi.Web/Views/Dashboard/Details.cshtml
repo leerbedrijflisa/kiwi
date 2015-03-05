@@ -22,9 +22,6 @@
     <dt>Datum</dt>
     <dd>@Model.Created.ToString("dddd d MMMM HH:mm")</dd>
 
-    <dt>Omschrijving</dt>
-    <dd>@Model.Description</dd>
-
     <dt>Locatie</dt>
     <dd>@Model.Location.Building - @Model.Location.Description</dd>
 
@@ -34,12 +31,7 @@
     <dt>Zichtbaar?</dt>
     <dd>@Model.IsVisible</dd>
     
-    @if (Model.Category == "FirstAid")
-    {
-        <dt>Is het slachtoffer bewusteloos?</dt>
-        <dd>@Model.IsUnconscious</dd>
-    }
-
+    @Html.Partial("_PartialDetails" + Model.Category, Model)
 
   </dl>
 
