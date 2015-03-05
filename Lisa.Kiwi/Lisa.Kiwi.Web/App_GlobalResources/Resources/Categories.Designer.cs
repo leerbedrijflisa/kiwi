@@ -61,11 +61,74 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pesten.
+        /// </summary>
+        internal static string Bullying {
+            get {
+                return ResourceManager.GetString("Bullying", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Drugs.
+        /// </summary>
+        internal static string Drugs {
+            get {
+                return ResourceManager.GetString("Drugs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vechtpartij.
+        /// </summary>
+        internal static string Fight {
+            get {
+                return ResourceManager.GetString("Fight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to EHBO.
         /// </summary>
         internal static string FirstAid {
             get {
                 return ResourceManager.GetString("FirstAid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overlast.
+        /// </summary>
+        internal static string Nuisance {
+            get {
+                return ResourceManager.GetString("Nuisance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overige.
+        /// </summary>
+        internal static string Other {
+            get {
+                return ResourceManager.GetString("Other", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Diefstal.
+        /// </summary>
+        internal static string Theft {
+            get {
+                return ResourceManager.GetString("Theft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wapens.
+        /// </summary>
+        internal static string Weapons {
+            get {
+                return ResourceManager.GetString("Weapons", resourceCulture);
             }
         }
     }
