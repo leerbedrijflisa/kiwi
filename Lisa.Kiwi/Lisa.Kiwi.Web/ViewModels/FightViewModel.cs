@@ -9,9 +9,9 @@ namespace Lisa.Kiwi.Web
     public class FightViewModel
     {
         [Required]
-        public int? FighterCount { get; set; }
+        public int FighterCount { get; set; }
 
         [Required]
-        public bool? IsWeaponPresent { get; set; }
+        public bool IsWeaponPresent { get; set; }
     }
 }
