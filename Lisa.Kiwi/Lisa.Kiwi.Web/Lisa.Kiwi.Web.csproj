@@ -235,7 +235,7 @@
     <Content Include="Views\Drugs\Details.cshtml" />
     <Content Include="Views\Drugs\Vehicle.cshtml" />
     <Content Include="Views\Report\Confirmed.cshtml" />
-    <Content Include="Views\Report\ContactDetails.cshtml" />
+    <Content Include="Views\Report\Contact.cshtml" />
     <Content Include="Views\Report\Details.cshtml" />
     <Content Include="Views\Report\Type.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -251,6 +251,8 @@
     <Content Include="Views\Report\FirstAid.cshtml" />
     <Content Include="Views\Report\ContactRequired.cshtml" />
     <Content Include="Views\Dashboard\_PartialDetailsFirstAid.cshtml" />
+    <Content Include="Views\Report\Contact.cshtml" />
+    <Content Include="Views\FirstAid\FirstAid.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

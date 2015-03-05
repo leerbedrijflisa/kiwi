@@ -10,6 +10,7 @@ namespace Lisa.Kiwi.WebApi
 			IsVisible = true;
 			CurrentStatus = Status.Open;
             Location = new Location();
+            Contact = new Contact();
 
 		}
 

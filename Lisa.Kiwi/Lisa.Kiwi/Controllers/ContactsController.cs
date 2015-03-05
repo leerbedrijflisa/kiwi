@@ -1,57 +1,56 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web.Http;
+﻿//using System;
+//using System.Linq;
+//using System.Threading.Tasks;
+//using System.Web.Http;
 
-namespace Lisa.Kiwi.WebApi.Controllers
-{
-    public class ContactsController : ApiController
-    {
-        public IQueryable<Contact> Get()
-        {
-            var contacts = _db.Contacts
-                .ToList()
-                .Select(contact => _modelFactory.Create(contact))
-                .AsQueryable();
+//namespace Lisa.Kiwi.WebApi.Controllers
+//{
+//    public class ContactsController : ApiController
+//    {
+//        public IQueryable<Contact> Get()
+//        {
+//            var contacts = _db.Contacts
+//                .ToList()
+//                .Select(contact => _modelFactory.Create(contact))
+//                .AsQueryable();
 
-            return contacts;
-        }
+//            return contacts;
+//        }
 
-        public async Task<IHttpActionResult> Get(int id)
-        {
-            var contact = await _db.Contacts.FindAsync(id);
+//        public async Task<IHttpActionResult> Get(int id)
+//        {
+//            var contact = await _db.Contacts.FindAsync(id);
 
-            if (contact == null)
-            {
-                return NotFound();
-            }
+//            if (contact == null)
+//            {
+//                return NotFound();
+//            }
 
-            return Ok(_modelFactory.Create(contact));
-        }
+//            return Ok(_modelFactory.Create(contact));
+//        }
 
-        public async Task<IHttpActionResult> Post([FromBody] Contact contact)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest();
-            }
+//        public async Task<IHttpActionResult> Post([FromBody] Contact contact)
+//        {
+//            if (!ModelState.IsValid)
+//            {
+//                return BadRequest();
+//            }
 
-            var contactData = _dataFactory.Create(contact);
-            var reportData = await _db.Reports.FindAsync(contact.Report);
+//            var contactData = _dataFactory.Create(contact);
+//            var reportData = await _db.Reports.FindAsync(contact.Report);
+//            //_db.Reports.Single(r => r.Contact.Id == ontact.Id) = reportData;
 
-            contactData.Report = reportData;
+//            _db.Contacts.Add(contactData);
+//            await _db.SaveChangesAsync();
 
-            _db.Contacts.Add(contactData);
-            await _db.SaveChangesAsync();
+//            contact = _modelFactory.Create(contactData);
+//            var url = Url.Route("DefaultApi", new { controller = "contacts", id = contactData.Id });
 
-            contact = _modelFactory.Create(contactData);
-            var url = Url.Route("DefaultApi", new { controller = "contacts", id = contactData.Id });
+//            return Created(url, contact);
+//        }
 
-            return Created(url, contact);
-        }
-
-        private readonly KiwiContext _db = new KiwiContext();
-        private readonly ModelFactory _modelFactory = new ModelFactory();
-        private readonly DataFactory _dataFactory = new DataFactory();
-    }
-}
+//        private readonly KiwiContext _db = new KiwiContext();
+//        private readonly ModelFactory _modelFactory = new ModelFactory();
+//        private readonly DataFactory _dataFactory = new DataFactory();
+//    }
+//}

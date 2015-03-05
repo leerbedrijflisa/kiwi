@@ -21,5 +21,16 @@ namespace Lisa.Kiwi.Web
         {
             report.IsUnconscious = viewModel.IsUnconscious;
         }
+
+        public void Modify(Report report, ContactViewModel viewModel)
+        {
+             if(report.Contact == null)
+             {
+                 report.Contact = new Contact();
+             }
+             report.Contact.Name = viewModel.Name;
+             report.Contact.PhoneNumber = viewModel.PhoneNumber;
+             report.Contact.EmailAddress = viewModel.EmailAddress;
+        }
     }
 }

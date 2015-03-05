@@ -17,7 +17,7 @@ namespace Lisa.Kiwi.WebApi
                 IsVisible = true,
                 IsUnconscious = reportData.IsUnconscious,
                 CurrentStatus = Status.Open,
-                Contact = reportData.Contact != null ? Create(reportData.Contact) : null
+                Contact = reportData.Contact != null ? CreateContact(reportData) : null
             };
 
             if (reportData.Location != null)
@@ -28,6 +28,16 @@ namespace Lisa.Kiwi.WebApi
                     Description = reportData.Location.Description
                 };
                 
+            }
+
+            if (reportData.Contact != null)
+            {
+                report.Contact = new Contact
+                {
+                    Name = reportData.Contact.Name,
+                    PhoneNumber = reportData.Contact.PhoneNumber,
+                    EmailAddress = reportData.Contact.EmailAddress
+                };
             }
          
 
@@ -73,15 +83,13 @@ namespace Lisa.Kiwi.WebApi
             return vehicle;
         }
 
-        public Contact Create(ContactData contactData)
+        public Contact CreateContact(ReportData reportData)
         {
             var contact = new Contact
             {
-                EmailAddress = contactData.EmailAddress,
-                EditToken = contactData.EditToken,
-                Name = contactData.Name,
-                PhoneNumber = contactData.PhoneNumber,
-                Report = contactData.Report.Id
+                EmailAddress = reportData.Contact.EmailAddress,
+                Name = reportData.Contact.Name,
+                PhoneNumber = reportData.Contact.PhoneNumber
             };
 
             return contact;
