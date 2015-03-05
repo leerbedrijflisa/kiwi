@@ -49,6 +49,8 @@ namespace Lisa.Kiwi.WebApi
         {
             using (var client = new HttpClient())
             {
+                Authorize(client);
+
                 client.BaseAddress = new Uri(_baseUrl);
                 var url = String.Format("{0}/{1}", _resourceUrl, id);
                 var result = await client.GetAsync(url);
@@ -63,6 +65,7 @@ namespace Lisa.Kiwi.WebApi
             using (var client = new HttpClient())
             {
                 Authorize(client);
+
                 client.BaseAddress = new Uri(_baseUrl);
 
                 var result = await client.PostAsJsonAsync(_resourceUrl, model);

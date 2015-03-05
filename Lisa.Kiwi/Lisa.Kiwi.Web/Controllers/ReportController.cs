@@ -12,8 +12,8 @@ using Microsoft.WindowsAzure.Storage.Table;
 
 namespace Lisa.Kiwi.Web.Reporting.Controllers
 {
-	public class ReportController : Controller
-	{
+    public class ReportController : Controller
+    {
         public ActionResult Index()
         {
             return View(new CategoryViewModel());
@@ -64,37 +64,38 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             return View();
         }
 
-		public ActionResult Type()
-		{
+        public ActionResult Type()
+        {
             var reportTypes = GetReportTypes();
-			ViewData["reportType"] = reportTypes;
+            ViewData["reportType"] = reportTypes;
 
-			return View();
-		}
+            return View();
+        }
 
         //Staph right here
 
-		[HttpPost]
+        [HttpPost]
         [ValidateInput(false)]
-		public ActionResult Type(string reportType)
-		{
-			if (!ModelState.IsValid)
-			{
+        public ActionResult Type(string reportType)
+        {
+            if (!ModelState.IsValid)
+            {
                 return View();
             }
-			
+
             CloudTable table = GetTableStorage();
             OriginalReport report = DefineReport(reportType);
-			TableOperation insertOperation = TableOperation.Insert(report);
-			table.Execute(insertOperation);
+            TableOperation insertOperation = TableOperation.Insert(report);
+            table.Execute(insertOperation);
 
-			// Cookie stays alive until user closes browser
-			HttpCookie userReport = new HttpCookie("userReport");
-			userReport["guid"] = report.Guid;
-			Response.Cookies.Add(userReport);
+            // Cookie stays alive until user closes browser
+            HttpCookie userReport = new HttpCookie("userReport");
+            userReport["guid"] = report.Guid;
+            Response.Cookies.Add(userReport);
 
             string controller;
-            switch(reportType) {
+            switch (reportType)
+            {
                 //case "Drugs":
                 //    controller = "Drugs";
                 //    break;
@@ -107,11 +108,11 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             {
                 return RedirectToAction("Details", controller);
             }
-            return RedirectToAction("Details");			
-		}
+            return RedirectToAction("Details");
+        }
 
-		public ActionResult Details()
-		{
+        public ActionResult Details()
+        {
             HttpCookie cookie = HttpContext.Request.Cookies["userReport"];
             string guid = cookie.Values["guid"];
 
@@ -154,21 +155,21 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
                 return RedirectToAction("Index");
             }
 
-			var report = new OriginalReport {Time = DateTime.Now};
+            var report = new OriginalReport { Time = DateTime.Now };
             return View(report);
-		}
+        }
 
-		[HttpPost]
+        [HttpPost]
         [ValidateInput(false)]
         public ActionResult Details(OriginalReport data, string buildings)
-		{
-		    data.Building = buildings;
+        {
+            data.Building = buildings;
 
-			HttpCookie cookie = HttpContext.Request.Cookies["userReport"];
-			string guid = cookie.Values["guid"];
+            HttpCookie cookie = HttpContext.Request.Cookies["userReport"];
+            string guid = cookie.Values["guid"];
 
-			if (!ModelState.IsValid)
-			{
+            if (!ModelState.IsValid)
+            {
                 return View(data);
             }
 
@@ -183,11 +184,11 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
                 timeZoneDifference = data.Offset / 60;
                 data.Time = data.Time.AddHours(timeZoneDifference);
             }
-			
+
             CloudTable table = GetTableStorage();
-			TableOperation retrieveOperation = TableOperation.Retrieve<OriginalReport>(guid, "");
-			TableResult retrievedResult = table.Execute(retrieveOperation);
-			OriginalReport updateEntity = (OriginalReport) retrievedResult.Result;
+            TableOperation retrieveOperation = TableOperation.Retrieve<OriginalReport>(guid, "");
+            TableResult retrievedResult = table.Execute(retrieveOperation);
+            OriginalReport updateEntity = (OriginalReport)retrievedResult.Result;
 
             if (updateEntity == null)
             {
@@ -197,10 +198,10 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             UpdateDetails(updateEntity, data, table);
 
             return RedirectToAction("ContactDetails");
-		}
+        }
 
-		public ActionResult ContactDetails()
-		{
+        public ActionResult ContactDetails()
+        {
             HttpCookie cookie = HttpContext.Request.Cookies["userReport"];
             string guid = cookie.Values["guid"];
 
@@ -209,85 +210,85 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             TableResult retrievedResult = table.Execute(retrieveOperation);
             OriginalReport entity = (OriginalReport)retrievedResult.Result;
 
-            if(entity == null)
+            if (entity == null)
             {
-    			return RedirectToAction("Index");
+                return RedirectToAction("Index");
             }
 
             return View();
         }
 
-		[HttpPost]
+        [HttpPost]
         [ValidateInput(false)]
-		public async Task<ActionResult> ContactDetails(ContactMetadata data)
-		{
-			HttpCookie cookie = HttpContext.Request.Cookies["userReport"];
-			string guid = cookie.Values["guid"];
+        public async Task<ActionResult> ContactDetails(ContactMetadata data)
+        {
+            HttpCookie cookie = HttpContext.Request.Cookies["userReport"];
+            string guid = cookie.Values["guid"];
 
-			// Make sure that if a checkmark was checked but no value is given it gives an error
-			// TODO: Localize me
-			if (data != null &&
-				((data.UseName && data.Name == null) ||
-				 (data.UsePhoneNumber && data.PhoneNumber == null) ||
-				 (data.UseEmail && data.Email == null) 
-				 ))
-			{
-				ModelState.AddModelError("", "Een geselecteerd veld mag niet leeg zijn, deselecteer het veld als u niks wenst in te voeren.");
-			}
+            // Make sure that if a checkmark was checked but no value is given it gives an error
+            // TODO: Localize me
+            if (data != null &&
+                ((data.UseName && data.Name == null) ||
+                 (data.UsePhoneNumber && data.PhoneNumber == null) ||
+                 (data.UseEmail && data.Email == null)
+                 ))
+            {
+                ModelState.AddModelError("", "Een geselecteerd veld mag niet leeg zijn, deselecteer het veld als u niks wenst in te voeren.");
+            }
 
-			if (!ModelState.IsValid)
-			{
-				return View(data);
-			}
+            if (!ModelState.IsValid)
+            {
+                return View(data);
+            }
 
-			CloudTable table = GetTableStorage();
-			TableOperation retrieveOperation = TableOperation.Retrieve<OriginalReport>(guid, "");
-			TableResult retrievedResult = table.Execute(retrieveOperation);
-			OriginalReport entity = (OriginalReport) retrievedResult.Result;
+            CloudTable table = GetTableStorage();
+            TableOperation retrieveOperation = TableOperation.Retrieve<OriginalReport>(guid, "");
+            TableResult retrievedResult = table.Execute(retrieveOperation);
+            OriginalReport entity = (OriginalReport)retrievedResult.Result;
 
-			if (entity == null)
-			{
-				return RedirectToAction("Index");
-			}
+            if (entity == null)
+            {
+                return RedirectToAction("Index");
+            }
 
-			var report = new Report
-			{
-				Description = entity.Description,
-				Created = entity.Created,
-				Location = entity.Location,
+            var report = new Report
+            {
+                Description = entity.Description,
+                Created = entity.Created,
+                Location = entity.Location,
                 Category = entity.Type
-			};
+            };
 
-			var reportEntity = await _reportProxy.PostAsync(report);
-			if (reportEntity == null)
-			{
-				return View();
-			}
+            var reportEntity = await _reportProxy.PostAsync(report);
+            if (reportEntity == null)
+            {
+                return View();
+            }
 
-			if (data.Name != null || data.Email != null || data.PhoneNumber != null)
-			{
-				var newContact = await CreateContact(data, reportEntity.Id, new Guid());
-				var entityContact = new ContactMetadata
-				{
-					Id = newContact.Id,
-					Name = newContact.Name,
-					Email = newContact.EmailAddress,
-					PhoneNumber = newContact.PhoneNumber,
-					Report = newContact.Report,
-					PartitionKey = entity.PartitionKey,
-					RowKey = ""
-				};
+            if (data.Name != null || data.Email != null || data.PhoneNumber != null)
+            {
+                var newContact = await CreateContact(data, reportEntity.Id, new Guid());
+                var entityContact = new ContactMetadata
+                {
+                    Id = newContact.Id,
+                    Name = newContact.Name,
+                    Email = newContact.EmailAddress,
+                    PhoneNumber = newContact.PhoneNumber,
+                    Report = newContact.Report,
+                    PartitionKey = entity.PartitionKey,
+                    RowKey = ""
+                };
 
-				CloudTable tableContact = GetContactTableStorage();
-				TableOperation insertOperation = TableOperation.Insert(entityContact);
-				tableContact.Execute(insertOperation);
-			}
+                CloudTable tableContact = GetContactTableStorage();
+                TableOperation insertOperation = TableOperation.Insert(entityContact);
+                tableContact.Execute(insertOperation);
+            }
 
-			return RedirectToAction("Confirmed", "Report");
-		}
+            return RedirectToAction("Confirmed", "Report");
+        }
 
-		public ActionResult Confirmed()
-		{
+        public ActionResult Confirmed()
+        {
             HttpCookie cookie = HttpContext.Request.Cookies["userReport"];
             string guid = cookie.Values["guid"];
 
@@ -314,8 +315,8 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             }
 
             ViewBag.Contact = contact;
-			return View(entity);
-		}
+            return View(entity);
+        }
 
         private List<SelectListItem> GetReportTypes()
         {
@@ -399,7 +400,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             table.Execute(insertOrReplaceOperation);
         }
 
-        private async Task<Contact> CreateContact(ContactMetadata data, int id, Guid editToken) 
+        private async Task<Contact> CreateContact(ContactMetadata data, int id, Guid editToken)
         {
             var contact = new Contact
             {
@@ -447,5 +448,5 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
         private readonly Proxy<Report> _reportProxy = new Proxy<Report>("http://localhost:20151/", "/reports/");
         private readonly Proxy<WebApi.Remark> _remarkProxy = new Proxy<WebApi.Remark>("http://localhost:20151", "/remarks/");
         private readonly ModelFactory _modelFactory = new ModelFactory();
-	}
+    }
 }

@@ -44,6 +44,7 @@ namespace Lisa.Kiwi.WebApi.Access
 
                 result.Token = token.ToString();
                 result.TokenType = authInfo.SelectToken("token_type").ToString();
+                result.TokenExpiresIn = authInfo.SelectToken("expires_in").Value<int>();
 
                 return result;
             }
