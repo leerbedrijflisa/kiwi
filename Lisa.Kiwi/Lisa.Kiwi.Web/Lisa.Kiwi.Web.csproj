@@ -142,6 +142,7 @@
     <Compile Include="Models\ModelFactory.cs" />
     <Compile Include="ViewModels\BullyingViewModel.cs" />
     <Compile Include="ViewModels\CategoryViewModel.cs" />
+    <Compile Include="ViewModels\ContactRequiredViewModel.cs" />
     <Compile Include="ViewModels\ContactViewModel.cs" />
     <Compile Include="ViewModels\DrugsViewModel.cs" />
     <Compile Include="ViewModels\FightViewModel.cs" />
@@ -229,7 +230,7 @@
     <Content Include="Views\Drugs\Details.cshtml" />
     <Content Include="Views\Drugs\Vehicle.cshtml" />
     <Content Include="Views\Report\Confirmed.cshtml" />
-    <Content Include="Views\Report\ContactDetails.cshtml" />
+    <Content Include="Views\Report\Contact.cshtml" />
     <Content Include="Views\Report\Details.cshtml" />
     <Content Include="Views\Report\Type.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />

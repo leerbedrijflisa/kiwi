@@ -8,16 +8,27 @@ namespace Lisa.Kiwi.WebApi
     {
         public ReportData Create(Report report)
         {
-            var location = new LocationData
-            {
-                Building = report.Location.Building,
-                Description = report.Location.Description
-            };
+            //var location = report.Location != null ? new LocationData
+            //{
+            //    Building = report.Location.Building,
+            //    Description = report.Location.Description
+            //} : new LocationData();
+
+            //var contact = report.Contact != null ? new ContactData
+            //{
+            //    EmailAddress = report.Contact.EmailAddress,
+            //    Name = report.Contact.Name,
+            //    PhoneNumber = report.Contact.PhoneNumber
+            //} : new ContactData();
+
+            var locationData = new LocationData();
+            var contactData = new ContactData();
 
             return new ReportData
             {
                 Description = report.Description,
-                Location = location,
+                Location = locationData,
+                Contact = contactData,
                 Category = report.Category
             };
         }
@@ -29,6 +40,10 @@ namespace Lisa.Kiwi.WebApi
             if (json["location"] != null)
             {
                 reportData.Location = Modify(reportData.Location, json["location"]);
+            }
+            if (json["contact"] != null)
+            {
+                reportData.Contact = Modify(reportData.Contact, json["contact"]);
             }
 
             reportData.Description = json.Value<string>("description") ?? reportData.Description;
@@ -82,7 +97,6 @@ namespace Lisa.Kiwi.WebApi
         {
             var contactData = new ContactData
             {
-                EditToken = contact.EditToken,
                 EmailAddress = contact.EmailAddress,
                 Name = contact.Name,
                 PhoneNumber = contact.PhoneNumber
@@ -96,6 +110,15 @@ namespace Lisa.Kiwi.WebApi
             var data = locationData ?? new LocationData();
             data.Building = json["building"] != null ? json.Value<string>("building") : data.Building;
             data.Description = json["description"] != null ? json.Value<string>("description") : data.Description;
+            return data;
+        }
+
+        public ContactData Modify(ContactData contactData, JToken json)
+        {
+            var data = contactData ?? new ContactData();
+            data.Name = json["name"] != null ? json.Value<string>("name") : data.Name;
+            data.PhoneNumber = json["phoneNumber"] != null ? json.Value<string>("phoneNumber") : data.PhoneNumber;
+            data.EmailAddress = json["emailAddress"] != null ? json.Value<string>("emailAddress") : data.EmailAddress;
             return data;
         }
     }
