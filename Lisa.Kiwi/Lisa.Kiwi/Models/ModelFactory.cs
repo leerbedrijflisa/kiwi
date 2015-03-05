@@ -13,13 +13,23 @@ namespace Lisa.Kiwi.WebApi
                 Id = reportData.Id,
                 Description = reportData.Description,
                 Created = reportData.Created,
-                Building = reportData.Building,
-                Location = reportData.Location,
-                Category = reportData.Type,
+                Category = reportData.Category,
                 IsVisible = true,
                 CurrentStatus = Status.Open,
                 Contact = reportData.Contact != null ? Create(reportData.Contact) : null
             };
+
+            if (reportData.Location != null)
+            {
+                report.Location = new Location
+                {
+                    Building = reportData.Location.Building,
+                    Description = reportData.Location.Description
+                };
+                
+            }
+         
+
 
             // Add information about the most recent status change only, because
             // that's the current status of the report.
@@ -53,12 +63,10 @@ namespace Lisa.Kiwi.WebApi
         {
             var vehicle = new Vehicle
             {
-                Id = vehicleData.Id,
                 Brand = vehicleData.Brand,
                 Color = vehicleData.Color,
                 LicensePlate = vehicleData.LicensePlate,
-                Model = vehicleData.Model,
-                Report = vehicleData.Report.Id
+                Model = vehicleData.Model
             };
 
             return vehicle;
@@ -70,7 +78,6 @@ namespace Lisa.Kiwi.WebApi
             {
                 EmailAddress = contactData.EmailAddress,
                 EditToken = contactData.EditToken,
-                Id = contactData.Id,
                 Name = contactData.Name,
                 PhoneNumber = contactData.PhoneNumber,
                 Report = contactData.Report.Id

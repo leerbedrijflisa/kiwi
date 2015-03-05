@@ -140,14 +140,27 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\ModelFactory.cs" />
+<<<<<<< HEAD
     <Compile Include="App_GlobalResources\Resources\Categories.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Categories.resx</DependentUpon>
     </Compile>
+=======
+    <Compile Include="ViewModels\BullyingViewModel.cs" />
+>>>>>>> origin/refactor
     <Compile Include="ViewModels\CategoryViewModel.cs" />
+    <Compile Include="ViewModels\ContactViewModel.cs" />
+    <Compile Include="ViewModels\DrugsViewModel.cs" />
+    <Compile Include="ViewModels\FightViewModel.cs" />
+    <Compile Include="ViewModels\FirstAidViewModel.cs" />
     <Compile Include="ViewModels\LocationViewModel.cs" />
+    <Compile Include="ViewModels\NuisanceViewModel.cs" />
+    <Compile Include="ViewModels\OtherViewModel.cs" />
+    <Compile Include="ViewModels\PerpetratorViewModel.cs" />
     <Compile Include="ViewModels\StatusChangeViewModel.cs" />
+    <Compile Include="ViewModels\TheftViewModel.cs" />
+    <Compile Include="ViewModels\WeaponViewModel.cs" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -237,6 +250,7 @@
     <Content Include="Views\Report\Index.cshtml" />
     <Content Include="Views\Report\Done.cshtml" />
     <Content Include="Views\Report\Location.cshtml" />
+    <Content Include="Views\Report\FirstAid.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -265,6 +279,7 @@
       <LastGenOutput>Categories.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

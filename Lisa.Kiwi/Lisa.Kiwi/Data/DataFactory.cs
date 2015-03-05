@@ -8,20 +8,29 @@ namespace Lisa.Kiwi.WebApi
     {
         public ReportData Create(Report report)
         {
+            var location = new LocationData
+            {
+                Building = report.Location.Building,
+                Description = report.Location.Description
+            };
+
             return new ReportData
             {
                 Description = report.Description,
-                Building = report.Building,
-                Location = report.Location,
-                Type = report.Category
+                Location = location,
+                Category = report.Category
             };
         }
 
         public void Modify(ReportData reportData, JToken json)
         {
-            reportData.Type = json.Value<string>("category") ?? reportData.Type;
-            reportData.Building = json.Value<string>("building") ?? reportData.Building;
-            reportData.Location = json.Value<string>("location") ?? reportData.Location;
+            reportData.Category = json.Value<string>("category") ?? reportData.Category;
+            
+            if (json["location"] != null)
+            {
+                reportData.Location = Modify(reportData.Location, json["location"]);
+            }
+
             reportData.Description = json.Value<string>("description") ?? reportData.Description;
 
             var currentStatus = reportData.StatusChanges
@@ -59,7 +68,6 @@ namespace Lisa.Kiwi.WebApi
         {
             var vehicleData = new VehicleData
             {
-                Id = vehicle.Id,
                 Brand = vehicle.Brand,
                 Color = vehicle.Color,
                 LicensePlate = vehicle.LicensePlate,
@@ -73,7 +81,6 @@ namespace Lisa.Kiwi.WebApi
         {
             var contactData = new ContactData
             {
-                Id = contact.Id,
                 EditToken = contact.EditToken,
                 EmailAddress = contact.EmailAddress,
                 Name = contact.Name,
@@ -81,6 +88,14 @@ namespace Lisa.Kiwi.WebApi
             };
 
             return contactData;
+        }
+
+        public LocationData Modify(LocationData locationData, JToken json)
+        {
+            var data = locationData ?? new LocationData();
+            data.Building = json["building"] != null ? json.Value<string>("building") : data.Building;
+            data.Description = json["description"] != null ? json.Value<string>("description") : data.Description;
+            return data;
         }
     }
 }
