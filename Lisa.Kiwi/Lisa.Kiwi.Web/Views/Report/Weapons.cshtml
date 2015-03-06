@@ -8,7 +8,12 @@
 @using (Html.BeginForm())
 {
     <p>
-
+        @Html.LabelFor(m => m.Type)
+        @Html.TextBoxFor(m => m.Type)
+        @Html.ValidationMessageFor(m => m.Type)
+        @Html.LabelFor(m => m.Location)
+        @Html.TextBoxFor(m => m.Location)
+        @Html.ValidationMessageFor(m => m.Location)
     </p>
     <input type="submit" value="Verzenden" />
 }
