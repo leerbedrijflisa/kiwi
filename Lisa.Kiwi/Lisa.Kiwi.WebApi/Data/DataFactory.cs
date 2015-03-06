@@ -63,7 +63,7 @@ namespace Lisa.Kiwi.WebApi
             reportData.FighterCount = json.Value<int?>("fighterCount") ?? reportData.FighterCount;
             reportData.IsWeaponPresent = json.Value<bool?>("isWeaponPresent") ?? reportData.IsWeaponPresent;
 
-            reportData.WeaponType = json.Value<string>("WeaponType") ?? reportData.WeaponType;
+            reportData.WeaponType = json.Value<string>("weaponType") ?? reportData.WeaponType;
             reportData.WeaponLocation = json.Value<string>("weaponLocation") ?? reportData.WeaponLocation;
 
             reportData.Victim = json.Value<string>("victim") ?? reportData.Victim;
