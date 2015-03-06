@@ -22,10 +22,37 @@ namespace Lisa.Kiwi.Web
             report.IsUnconscious = viewModel.IsUnconscious;
         }
 
+        public void Modify(Report report, DrugsViewModel viewModel)
+        {
+            report.DrugsAction = viewModel.Action;
+            report.Description = viewModel.Description;
+        }
         public void Modify(Report report, FightViewModel viewModel)
         {
             report.FighterCount = viewModel.FighterCount;
             report.IsWeaponPresent = viewModel.IsWeaponPresent;
+        }
+
+        public void Modify(Report report, WeaponViewModel viewModel)
+        {
+            report.WeaponType = viewModel.Type;
+            report.WeaponLocation = viewModel.Location;
+        }
+        public void Modify(Report report, BullyingViewModel viewModel)
+        {
+            report.Victim = viewModel.Victim;
+            report.Description = viewModel.Description;
+        }
+
+        public void Modify(Report report, PerpetratorViewModel viewModel)
+        {
+            report.Perpetrator.Name = viewModel.Name;
+            report.Perpetrator.Clothing = viewModel.Clothing;
+            report.Perpetrator.MinimumAge = viewModel.MinimumAge;
+            report.Perpetrator.MaximumAge = viewModel.MaximumAge;
+            report.Perpetrator.Sex = viewModel.Sex;
+            report.Perpetrator.SkinColor = viewModel.SkinColor;
+            report.Perpetrator.UniqueProperties = viewModel.UniqueProperties;
         }
 
         public void Modify(Report report, ContactViewModel viewModel)
@@ -38,5 +65,7 @@ namespace Lisa.Kiwi.Web
              report.Contact.PhoneNumber = viewModel.PhoneNumber;
              report.Contact.EmailAddress = viewModel.EmailAddress;
         }
+
+
     }
 }

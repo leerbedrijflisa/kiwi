@@ -92,6 +92,66 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             return RedirectToAction("Contact");
         }
 
+        public ActionResult Drugs()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Drugs(DrugsViewModel viewModel)
+        {
+            var report = await GetCurrentReport();
+            _modelFactory.Modify(report, viewModel);
+            await _reportProxy.PatchAsync(report.Id, report);
+
+            return RedirectToAction("Perpetrator");
+        }
+
+        public ActionResult Weapons()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Weapons(WeaponViewModel viewModel)
+        {
+            var report = await GetCurrentReport();
+            _modelFactory.Modify(report, viewModel);
+            await _reportProxy.PatchAsync(report.Id, report);
+
+            return View("Perpetrator");
+        }
+
+        public ActionResult Bullying()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Bullying(BullyingViewModel viewModel)
+        {
+            var report = await GetCurrentReport();
+            _modelFactory.Modify(report, viewModel);
+            await _reportProxy.PatchAsync(report.Id, report);
+
+            return View("Perpetrator");
+        }
+
+        public ActionResult Perpetrator()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Perpetrator(PerpetratorViewModel viewModel)
+        {
+            var report = await GetCurrentReport();
+            _modelFactory.Modify(report, viewModel);
+            await _reportProxy.PatchAsync(report.Id, report);
+
+            return RedirectToAction("Contact");
+        }
+
         public ActionResult Contact()
         {
             return View();

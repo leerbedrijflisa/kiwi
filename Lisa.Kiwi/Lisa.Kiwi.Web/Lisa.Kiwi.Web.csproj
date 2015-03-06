@@ -251,6 +251,9 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Report\Fight.cshtml" />
     <Content Include="Views\Report\Drugs.cshtml" />
+    <Content Include="Views\Report\Weapons.cshtml" />
+    <Content Include="Views\Report\Bullying.cshtml" />
+    <Content Include="Views\Report\Perpetrator.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -291,7 +294,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>53288</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
