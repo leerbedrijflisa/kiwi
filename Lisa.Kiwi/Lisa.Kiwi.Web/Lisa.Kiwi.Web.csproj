@@ -250,6 +250,7 @@
     <Content Include="Views\Report\Contact.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Report\Fight.cshtml" />
+    <Content Include="Views\Report\Drugs.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
