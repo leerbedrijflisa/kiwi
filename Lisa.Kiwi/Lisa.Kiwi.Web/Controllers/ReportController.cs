@@ -97,7 +97,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(report.Id, report);
 
-            return View("ContactRequired");
+            return RedirectToAction("ContactRequired");
         }
 
         public ActionResult Drugs()
@@ -159,7 +159,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(report.Id, report);
 
-            return View("Perpetrator");
+            return RedirectToAction("Perpetrator");
         }
 
 		public ActionResult Nuisance()
@@ -179,7 +179,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(report.Id, report);
 
-            return View("ContactRequired");
+            return RedirectToAction("ContactRequired");
         }
 
         public ActionResult Bullying()
@@ -199,7 +199,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(report.Id, report);
 
-            return View("Perpetrator");
+            return RedirectToAction("Perpetrator");
         }
 
         public ActionResult Other()
@@ -219,7 +219,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(report.Id, report);
 
-            return View("ContactRequired");
+            return RedirectToAction("ContactRequired");
         }
 
         public ActionResult Perpetrator()

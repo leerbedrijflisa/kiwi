@@ -15,7 +15,7 @@ namespace Lisa.Kiwi.Web
         [DisplayName("Telefoonnummer")]
         public string PhoneNumber { get; set; }
 
-        [DisplayName("Email-Adres")]
+        [DisplayName("E-mail Address")]
         public string EmailAddress { get; set; }
     }
 }
