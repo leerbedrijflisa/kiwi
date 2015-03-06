@@ -11,6 +11,7 @@ namespace Lisa.Kiwi.WebApi
 			CurrentStatus = Status.Open;
             Location = new Location();
             Contact = new Contact();
+            Perpetrator = new Perpetrator();
 
 		}
 
