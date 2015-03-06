@@ -257,6 +257,8 @@
     <Content Include="Views\Report\Bullying.cshtml" />
     <Content Include="Views\Report\Perpetrator.cshtml" />
     <Content Include="Views\Report\Theft.cshtml" />
+    <Content Include="Views\Report\Other.cshtml" />
+    <Content Include="Views\Report\Nuisance.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

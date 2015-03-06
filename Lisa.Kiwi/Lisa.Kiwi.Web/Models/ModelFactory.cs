@@ -47,7 +47,7 @@ namespace Lisa.Kiwi.Web
 
         public void Modify(Report report, NuisanceViewModel viewModel)
         {
-
+            report.Description = viewModel.Description;
         }
 
         public void Modify(Report report, BullyingViewModel viewModel)
@@ -58,6 +58,7 @@ namespace Lisa.Kiwi.Web
 
         public void Modify(Report report, OtherViewModel viewModel)
         {
+            report.Description = viewModel.Description;
 
         }
 
