@@ -296,6 +296,10 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
         private async Task<Report> GetCurrentReport()
         {
             var cookie = Request.Cookies["report"];
+            if (cookie == null)
+            {
+                return null;
+            }
             int reportId = Int32.Parse(cookie.Value);
             return await _reportProxy.GetAsync(reportId);
         }
