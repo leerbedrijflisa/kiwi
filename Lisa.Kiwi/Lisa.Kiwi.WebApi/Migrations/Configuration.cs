@@ -264,10 +264,10 @@ namespace Lisa.Kiwi.WebApi.Migrations
             ///* EIND REPORT 8 */
 
             //// Set up our accounts
-            //CreateRoles(context);
-            //CreateUsers(context);
+            CreateRoles(context);
+            CreateUsers(context);
 
-            //base.Seed(context);
+            base.Seed(context);
         }
 
         private void CreateRoles(KiwiContext context)
@@ -302,7 +302,7 @@ namespace Lisa.Kiwi.WebApi.Migrations
             userManager.Create(dashboardUser2, "helloo2");
 
             // Add a test "hoofdbeveiliger" account (name=hoofdbeveiliger pass=masterpass)
-            var headOfSecurity = new IdentityUser("Hoofdbeveiliging");
+            var headOfSecurity = new IdentityUser("HBD");
             ThrowIfFailed(userManager.Create(headOfSecurity, "masterpass"));
             userManager.AddToRole(headOfSecurity.Id, "Administrator");
         }
