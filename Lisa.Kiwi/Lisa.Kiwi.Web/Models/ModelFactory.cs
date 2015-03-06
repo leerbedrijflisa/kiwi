@@ -45,12 +45,6 @@ namespace Lisa.Kiwi.Web
             report.WeaponLocation = viewModel.Location;
         }
 
-        public void Modify(Report report, BullyingViewModel viewModel)
-        {
-            report.Victim = viewModel.Victim;
-            report.Description = viewModel.Description;
-        }
-
         public void Modify(Report report, NuisanceViewModel viewModel)
         {
 
@@ -58,7 +52,8 @@ namespace Lisa.Kiwi.Web
 
         public void Modify(Report report, BullyingViewModel viewModel)
         {
-
+            report.Victim = viewModel.Victim;
+            report.Description = viewModel.Description;
         }
 
         public void Modify(Report report, OtherViewModel viewModel)
