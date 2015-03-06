@@ -34,7 +34,7 @@
                 </td>
                 <td>@report.Location.Building</td>
                 <td>@report.Location.Description</td>
-                <td>@report.CurrentStatus</td>
+                <td>@Resources.Statuses.ResourceManager.GetString("Status"+report.CurrentStatus.ToString())</td>
             </tr>
         }
     </table>
