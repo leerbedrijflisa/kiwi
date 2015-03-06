@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lisa.Kiwi.WebApi", "Lisa.Kiwi\Lisa.Kiwi.WebApi.csproj", "{72704C37-7BC2-4474-A720-24355545408C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lisa.Kiwi.WebApi", "Lisa.Kiwi.WebApi\Lisa.Kiwi.WebApi.csproj", "{72704C37-7BC2-4474-A720-24355545408C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lisa.Kiwi.WebApi.Access", "Lisa.Kiwi.WebApi.Access\Lisa.Kiwi.WebApi.Access.csproj", "{2587C3B3-925F-4D00-96C7-535C57F90675}"
 EndProject
