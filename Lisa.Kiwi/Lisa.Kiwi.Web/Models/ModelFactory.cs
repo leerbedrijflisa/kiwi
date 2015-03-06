@@ -28,6 +28,12 @@ namespace Lisa.Kiwi.Web
             report.IsWeaponPresent = viewModel.IsWeaponPresent;
         }
 
+        public void Modify(Report report, TheftViewModel viewModel)
+        {
+            report.StolenObject = viewModel.StolenObject ;
+            report.DateOfTheft = viewModel.DateOfTheft.Add(viewModel.TimeOfTheft.TimeOfDay);
+        }
+
         public void Modify(Report report, ContactViewModel viewModel)
         {
              if(report.Contact == null)
@@ -37,6 +43,13 @@ namespace Lisa.Kiwi.Web
              report.Contact.Name = viewModel.Name;
              report.Contact.PhoneNumber = viewModel.PhoneNumber;
              report.Contact.EmailAddress = viewModel.EmailAddress;
+        }
+
+        public void Modify(Report report, ContactRequiredViewModel viewModel)
+        {
+            report.Contact.Name = viewModel.Name;
+            report.Contact.PhoneNumber = viewModel.PhoneNumber;
+            report.Contact.EmailAddress = viewModel.EmailAddress;
         }
     }
 }

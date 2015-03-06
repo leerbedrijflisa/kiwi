@@ -14,7 +14,13 @@ namespace Lisa.Kiwi.Web
         public string StolenObject { get; set; }
 
         [Required(ErrorMessage = ErrorMessages.RequiredError)]
-        [DisplayName("Hoe laat is het gestolen?")]
+        [DataType(DataType.Date)]
+        [DisplayName("Op welke datum is het gestolen?")]
         public DateTime DateOfTheft { get; set; }
+
+        [Required(ErrorMessage = ErrorMessages.RequiredError)]
+        [DataType(DataType.Time)]
+        [DisplayName("Hoe laat is het gestolen?")]
+        public DateTime TimeOfTheft { get; set; }
     }
 }

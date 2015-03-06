@@ -291,4 +291,3 @@ function setBuildingSelectValue(building) {
     console.log(building);
     $('#Building').val(building.value);
 }
-
