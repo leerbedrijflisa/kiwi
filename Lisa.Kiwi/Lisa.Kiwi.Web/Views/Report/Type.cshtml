@@ -1,0 +1,17 @@
+﻿@model OriginalReport
+@{
+    ViewBag.Title = "Type melding";
+}
+
+<div class="center-box">
+    <div class="row">
+        <div class="col-xs-12">
+            <h2>Wat wil je melden?</h2>
+            @using (Html.BeginForm("Type", "Report"))
+            {
+                @Html.DropDownList("reportType", null, new {@class = "form-control"})
+                <input type="submit" name="typeBtn" value="Volgende" class="btn btn-default btn-report" />
+            }
+        </div>
+    </div>
+</div>

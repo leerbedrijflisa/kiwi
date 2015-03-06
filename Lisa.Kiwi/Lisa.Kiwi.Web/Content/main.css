@@ -1,0 +1,17 @@
+﻿body {
+  font-family: Open Sans, Verdana, sans-serif;
+}
+
+table {
+  width: 100%;
+}
+
+table tr * {
+  text-align: left;
+  vertical-align: top;
+  padding-bottom: 1em;
+}
+
+dl dt {
+  margin-top: 1em;
+}

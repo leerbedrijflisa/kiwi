@@ -1,0 +1,15 @@
+﻿@model FirstAidViewModel
+
+@{
+    ViewBag.Title = "FirstAid";
+}
+
+<h2>FirstAid</h2>
+@using (Html.BeginForm())
+{
+    <p>
+        @Html.LabelFor(m => m.IsUnconscious)
+        @Html.CheckBoxFor(m => m.IsUnconscious)
+    </p>
+    <input type="submit" value="Verzenden" />
+}

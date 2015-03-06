@@ -1,77 +1,77 @@
 ﻿using System;
 using System.Net;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web;
 using Newtonsoft.Json.Linq;
 
 namespace Lisa.Kiwi.WebApi.Access
 {
-	public class AuthenticationProxy
+    public class AuthenticationProxy
     {
-		public AuthenticationProxy(Uri authUri, Uri userControllerUri)
+        public AuthenticationProxy(string baseUrl, string resourceUrl, string userResourceUrl)
         {
-            _authClient = new HttpClient
-            {
-                BaseAddress = authUri
-            };
-
-            _authClient.DefaultRequestHeaders.Accept.Clear();
-            _authClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/x-www-form-urlencoded"));
-
-			_userControllerClient = new HttpClient
-			{
-				BaseAddress = userControllerUri
-			};
+            _baseUrl = baseUrl;
+            _resourceUrl = resourceUrl;
+            _userResourceUrl = userResourceUrl;
         }
 
-	    public async Task<LoginResult> Login(string username, string password)
-	    {
-		    var result = new LoginResult();
-		    var response = await _authClient.PostAsync("", new StringContent(
-					"grant_type=password&username=" + HttpUtility.UrlEncode(username) +
-					"&password=" + HttpUtility.UrlEncode(password)));
+        public async Task<LoginResult> Login(string userName, string password)
+        {
+            using (var client = new HttpClient())
+            {
+                var result = new LoginResult();
+                client.BaseAddress = new Uri(_baseUrl);
 
-		    if (response.StatusCode != HttpStatusCode.OK)
-			{
-				result.Status = LoginStatus.ConnectionError;
-				return result;
-			}
+                var response = await client.PostAsync(_resourceUrl,
+                    new StringContent(String.Format("grant_type=password&username={0}&password={1}", HttpUtility.UrlEncode(userName), HttpUtility.UrlEncode(password))));
 
-		    var content = await response.Content.ReadAsStringAsync();
-			var authInfo = JObject.Parse(content);
-		    var authTokenJobj = authInfo.SelectToken("access_token");
+                if (response.StatusCode != HttpStatusCode.OK)
+                {
+                    result.Status = LoginStatus.ConnectionError;
+                    return result;
+                }
+                
+                var content = await response.Content.ReadAsStringAsync();
+                var authInfo = JObject.Parse(content);
+                var token = authInfo.SelectToken("access_token");
 
-		    if (authTokenJobj == null)
-		    {
-			    result.Status = LoginStatus.UserPassMismatch;
-			    return result;
-		    }
+                if (token == null)
+                {
+                    result.Status = LoginStatus.UserPassMismatch;
+                    return result;
+                }
 
-			result.Token = authTokenJobj.ToString();
-			result.TokenType = authInfo.SelectToken("token_type").ToString();
-			result.TokenExpiresIn = authInfo.SelectToken("expires_in").ToString();
+                result.Token = token.ToString();
+                result.TokenType = authInfo.SelectToken("token_type").ToString();
+                result.TokenExpiresIn = authInfo.SelectToken("expires_in").Value<int>();
 
-		    return result;
-	    }
+                return result;
+            }
+        }
 
+        public async Task<bool> GetIsAdmin(string tokenType, string token)
+        {
+            using (var client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Add("Authorize", String.Format("{0} {1}", tokenType, token));
 
-		public async Task<bool> GetIsAdmin(string tokenType, string token)
-		{
-			_userControllerClient.DefaultRequestHeaders.Add("Authorization", tokenType + " " + token);
-			var response = await _userControllerClient.GetAsync("is_admin");
+                var response = await client.GetAsync("is_admin");
 
-			if (response.StatusCode != HttpStatusCode.OK)
-			{
-				throw new HttpException(string.Format("Unable to retrieve data from the web API, received status code {0}!", response.StatusCode));
-			}
+                if (response.StatusCode != HttpStatusCode.OK)
+                {
+                    throw new HttpException();
+                }
 
-			var content = await response.Content.ReadAsStringAsync();
-			return bool.Parse(content);
-		}
+                var content = await response.Content.ReadAsStringAsync();
+                return Boolean.Parse(content);
+            }
+        }
 
-        private readonly HttpClient _authClient;
-		private readonly HttpClient _userControllerClient;
+        private readonly string _baseUrl;
+        private readonly string _resourceUrl;
+        private readonly string _userResourceUrl;
     }
+
+    
 }

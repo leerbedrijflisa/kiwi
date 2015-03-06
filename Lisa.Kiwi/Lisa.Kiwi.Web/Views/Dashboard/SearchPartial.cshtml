@@ -1,0 +1,10 @@
+﻿@model SearchModel
+
+@using (Html.BeginForm("Search", "Report"))
+{
+    @Html.TextBoxFor(m => m.SearchText, new
+    {
+        placeholder = "Zoeken...",
+        style = "width: 100%; float: right;"
+    })
+}

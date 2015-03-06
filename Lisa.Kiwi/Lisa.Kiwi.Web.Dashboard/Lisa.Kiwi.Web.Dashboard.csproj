@@ -161,8 +161,9 @@
     <Compile Include="App_Start\LanguageConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
+    <Compile Include="ConfigHelper.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\ReportController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -179,14 +180,14 @@
     <Content Include="Views\web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Report\Index.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Report\Details.cshtml" />
+    <Content Include="Views\Dashboard\Details.cshtml" />
     <Content Include="Views\Shared\_404.cshtml" />
     <Content Include="Scripts\jquery-2.1.1.min.map" />
-    <Content Include="Views\Report\SearchPartial.cshtml" />
+    <Content Include="Views\Dashboard\SearchPartial.cshtml" />
     <Content Include="Views\Shared\Error404.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -202,10 +203,6 @@
     <ProjectReference Include="..\Lisa.Kiwi.WebApi.Access\Lisa.Kiwi.WebApi.Access.csproj">
       <Project>{2587c3b3-925f-4d00-96c7-535c57f90675}</Project>
       <Name>Lisa.Kiwi.WebApi.Access</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Lisa.Kiwi.Web\Lisa.Kiwi.Web.csproj">
-      <Project>{C064977D-F3EA-4519-BAE5-BEABE666E8F5}</Project>
-      <Name>Lisa.Kiwi.Web</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

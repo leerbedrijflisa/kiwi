@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Data.Entity;
 using System.Web.Http;
-using Lisa.Kiwi.Data;
 using Lisa.Kiwi.WebApi.Providers;
 using Microsoft.Owin;
 using Microsoft.Owin.Cors;

@@ -1,7 +1,8 @@
-﻿using System.Web.Http;
-using System.Web.OData.Builder;
-using System.Web.OData.Extensions;
-using Lisa.Kiwi.Data;
+﻿using System.Collections.Generic;
+using System.Web.Http;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Serialization;
 
 namespace Lisa.Kiwi.WebApi
 {
@@ -9,18 +10,27 @@ namespace Lisa.Kiwi.WebApi
 	{
 		public static void Register(HttpConfiguration config)
 		{
-			// Enable Web API Attribute routing (used in non-REST controllers)
-			config.MapHttpAttributeRoutes();
+            config.Formatters.JsonFormatter.SerializerSettings = new JsonSerializerSettings
+            {
+                ContractResolver = new CamelCasePropertyNamesContractResolver(),
+                NullValueHandling = NullValueHandling.Ignore,
+                Converters = new List<JsonConverter>
+                {
+                    new StringEnumConverter
+                    {
+                        CamelCaseText = true
+                    }
+                }
+            };
 
-			ODataModelBuilder builder = new ODataConventionModelBuilder();
+            // Web API routes
+            config.MapHttpAttributeRoutes();
 
-			builder.EntitySet<Report>("Report");
-			builder.EntitySet<Contact>("Contact");
-			builder.EntitySet<Remark>("Remark");
-			builder.EntitySet<Status>("Status");
-            builder.EntitySet<Vehicle>("Vehicles");
-
-			config.MapODataServiceRoute("ODataRoute", "odata", builder.GetEdmModel());
+            config.Routes.MapHttpRoute(
+                name: "DefaultApi",
+                routeTemplate: "{controller}/{id}",
+                defaults: new { id = RouteParameter.Optional }
+            );
 		}
 	}
 }
