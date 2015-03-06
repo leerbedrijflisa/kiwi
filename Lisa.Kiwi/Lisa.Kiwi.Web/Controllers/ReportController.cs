@@ -66,6 +66,11 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
         [HttpPost]
 	    public async Task<ActionResult> FirstAid(FirstAidViewModel viewModel)
 	    {
+            if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
+
             var report = await GetCurrentReport();
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(report.Id, report);
@@ -75,6 +80,46 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 	        return RedirectToAction("Contact");
 	    }
 
+
+        public ActionResult Theft()
+        {
+            return View();
+        }
+
+		public async Task<ActionResult> Theft(TheftViewModel viewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
+
+            var report = await GetCurrentReport();
+            _modelFactory.Modify(report, viewModel);
+            await _reportProxy.PatchAsync(report.Id, report);
+
+            return View("ContactRequired");
+        }
+
+        public ActionResult Drugs()
+	    {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Drugs(DrugsViewModel viewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
+
+            var report = await GetCurrentReport();
+            _modelFactory.Modify(report, viewModel);
+            await _reportProxy.PatchAsync(report.Id, report);
+
+            return RedirectToAction("Perpetrator");
+        }
+
         public ActionResult Fight()
         {
             return View();
@@ -83,6 +128,11 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
         [HttpPost]
         public async Task<ActionResult> Fight(FightViewModel viewModel)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
+
             var report = await GetCurrentReport();
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(report.Id, report);
@@ -90,21 +140,6 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             // TODO: add error handling
 
             return RedirectToAction("Contact");
-        }
-
-        public ActionResult Drugs()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public async Task<ActionResult> Drugs(DrugsViewModel viewModel)
-        {
-            var report = await GetCurrentReport();
-            _modelFactory.Modify(report, viewModel);
-            await _reportProxy.PatchAsync(report.Id, report);
-
-            return RedirectToAction("Perpetrator");
         }
 
         public ActionResult Weapons()
@@ -115,11 +150,36 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
         [HttpPost]
         public async Task<ActionResult> Weapons(WeaponViewModel viewModel)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
+
             var report = await GetCurrentReport();
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(report.Id, report);
 
             return View("Perpetrator");
+        }
+
+		public ActionResult Nuisance()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Nuisance(NuisanceViewModel viewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
+
+            var report = await GetCurrentReport();
+            _modelFactory.Modify(report, viewModel);
+            await _reportProxy.PatchAsync(report.Id, report);
+
+            return View("ContactRequired");
         }
 
         public ActionResult Bullying()
@@ -130,11 +190,36 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
         [HttpPost]
         public async Task<ActionResult> Bullying(BullyingViewModel viewModel)
         {
+        	if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
+
             var report = await GetCurrentReport();
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(report.Id, report);
 
             return View("Perpetrator");
+        }
+
+        public ActionResult Other()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Other(OtherViewModel viewModel)
+        {
+        	if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
+
+            var report = await GetCurrentReport();
+            _modelFactory.Modify(report, viewModel);
+            await _reportProxy.PatchAsync(report.Id, report);
+
+            return View("ContactRequired");
         }
 
         public ActionResult Perpetrator()
@@ -145,10 +230,16 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
         [HttpPost]
         public async Task<ActionResult> Perpetrator(PerpetratorViewModel viewModel)
         {
+        	if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
+        	
             var report = await GetCurrentReport();
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(report.Id, report);
 
+            // TODO: add error handling
             return RedirectToAction("Contact");
         }
 
@@ -160,6 +251,11 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
         [HttpPost]
         public async Task<ActionResult> Contact(ContactViewModel viewModel)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
+
             var report = await GetCurrentReport();
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(report.Id, report);
@@ -169,6 +265,27 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             return RedirectToAction("Done");
         }
 
+        public ActionResult ContactRequired()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> ContactRequired(ContactRequiredViewModel viewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
+
+            var report = await GetCurrentReport();
+            _modelFactory.Modify(report, viewModel);
+            await _reportProxy.PatchAsync(report.Id, report);
+
+            // TODO: add error handling
+
+            return RedirectToAction("Done");
+        }
         public ActionResult Done()
         {
             // TODO: show report

@@ -22,6 +22,12 @@ namespace Lisa.Kiwi.Web
             report.IsUnconscious = viewModel.IsUnconscious;
         }
 
+        public void Modify(Report report, TheftViewModel viewModel)
+        {
+            report.StolenObject = viewModel.StolenObject ;
+            report.DateOfTheft = viewModel.DateOfTheft.Add(viewModel.TimeOfTheft.TimeOfDay);
+        }
+
         public void Modify(Report report, DrugsViewModel viewModel)
         {
             report.DrugsAction = viewModel.Action;
@@ -38,10 +44,26 @@ namespace Lisa.Kiwi.Web
             report.WeaponType = viewModel.Type;
             report.WeaponLocation = viewModel.Location;
         }
+
         public void Modify(Report report, BullyingViewModel viewModel)
         {
             report.Victim = viewModel.Victim;
             report.Description = viewModel.Description;
+        }
+
+        public void Modify(Report report, NuisanceViewModel viewModel)
+        {
+
+        }
+
+        public void Modify(Report report, BullyingViewModel viewModel)
+        {
+
+        }
+
+        public void Modify(Report report, OtherViewModel viewModel)
+        {
+
         }
 
         public void Modify(Report report, PerpetratorViewModel viewModel)
@@ -66,6 +88,11 @@ namespace Lisa.Kiwi.Web
              report.Contact.EmailAddress = viewModel.EmailAddress;
         }
 
-
+        public void Modify(Report report, ContactRequiredViewModel viewModel)
+        {
+            report.Contact.Name = viewModel.Name;
+            report.Contact.PhoneNumber = viewModel.PhoneNumber;
+            report.Contact.EmailAddress = viewModel.EmailAddress;
+        }
     }
 }

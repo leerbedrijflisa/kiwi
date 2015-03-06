@@ -47,7 +47,14 @@ namespace Lisa.Kiwi.WebApi
             }
 
             reportData.Description = json.Value<string>("description") ?? reportData.Description;
+
             reportData.IsUnconscious = json.Value<bool?>("isUnconscious") ?? reportData.IsUnconscious;
+
+            reportData.FighterCount = json.Value<int?>("fighterCount") ?? reportData.FighterCount;
+            reportData.IsWeaponPresent = json.Value<bool?>("isWeaponPresent") ?? reportData.IsWeaponPresent;
+
+            reportData.StolenObject = json.Value<string>("stolenObject") ?? reportData.StolenObject;
+            reportData.DateOfTheft = json.Value<DateTime?>("dateOfTheft") ?? reportData.DateOfTheft;
 
             var currentStatus = reportData.StatusChanges
                 .OrderByDescending(s => s.Created)
