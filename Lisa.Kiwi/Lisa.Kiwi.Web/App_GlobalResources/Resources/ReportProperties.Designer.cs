@@ -22,14 +22,14 @@ namespace Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Web.Application.StronglyTypedResourceProxyBuilder", "12.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Statuses {
+    internal class ReportProperties {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Statuses() {
+        internal ReportProperties() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Resources.Statuses", global::System.Reflection.Assembly.Load("App_GlobalResources"));
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Resources.ReportProperties", global::System.Reflection.Assembly.Load("App_GlobalResources"));
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,47 +61,20 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Open.
-        /// </summary>
-        internal static string StatusOpen {
-            get {
-                return ResourceManager.GetString("StatusOpen", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Opgelost.
-        /// </summary>
-        internal static string StatusSolved {
-            get {
-                return ResourceManager.GetString("StatusSolved", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Overgedragen.
-        /// </summary>
-        internal static string StatusTransferred {
-            get {
-                return ResourceManager.GetString("StatusTransferred", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Nee.
         /// </summary>
-        internal static string VisibleFalse {
+        internal static string UnconsciousFalse {
             get {
-                return ResourceManager.GetString("VisibleFalse", resourceCulture);
+                return ResourceManager.GetString("UnconsciousFalse", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Ja.
         /// </summary>
-        internal static string VisibleTrue {
+        internal static string UnconsciousTrue {
             get {
-                return ResourceManager.GetString("VisibleTrue", resourceCulture);
+                return ResourceManager.GetString("UnconsciousTrue", resourceCulture);
             }
         }
     }

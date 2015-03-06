@@ -16,20 +16,20 @@
   <h1>@Resources.Categories.ResourceManager.GetString("FirstAid")</h1>
 
   <dl>
-    <dt>Type</dt>
+    <dt>Het Meldingstype.</dt>
     <dd>@Resources.Categories.ResourceManager.GetString("FirstAid")</dd>
 
-    <dt>Datum</dt>
+    <dt>Tijdstip vam de melding.</dt>
     <dd>@Model.Created.ToString("dddd d MMMM HH:mm")</dd>
 
-    <dt>Locatie</dt>
+    <dt>Locatie + bescheiving.</dt>
     <dd>@Model.Location.Building - @Model.Location.Description</dd>
 
-    <dt>Huidige status</dt>
-    <dd>@Model.CurrentStatus</dd>
+    <dt>Huidige status van het incident.</dt>
+    <dd>@Resources.Statuses.ResourceManager.GetString("Status" + Model.CurrentStatus.ToString())</dd>
 
-    <dt>Zichtbaar?</dt>
-    <dd>@Model.IsVisible</dd>
+    <dt>Is dit voor iedereen zichtbaar?</dt>
+    <dd>@Resources.Statuses.ResourceManager.GetString("Visible" + Model.IsVisible.ToString())</dd>
     
     @Html.Partial("_PartialDetails" + Model.Category, Model)
 
@@ -39,13 +39,13 @@
   {
     <h2>Contact:</h2>
     <dl>
-      <dt>Naam</dt>
+      <dt>Naam van de melder (Indien ingevult)</dt>
       <dd>@ViewBag.Contact.Name</dd>
 
-      <dt>Telefoonnummer</dt>
+      <dt>Telefoonnummer van de melder (Indien ingevult)</dt>
       <dd>@ViewBag.Contact.PhoneNumber</dd>
 
-      <dt>E-mailadres</dt>
+      <dt>E-mailadres van de melder (Indien ingevult)</dt>
       <dd>@ViewBag.Contact.EmailAddress</dd>
     </dl>
   }
@@ -59,7 +59,7 @@
       <dd>
         @Html.DropDownList("status", (IEnumerable<SelectListItem>) ViewBag.StatusNames)
       </dd>
-      <dt>Zichtbaar?</dt>
+      <dt>Wilt u dat dit zichtbaar is? (aangevinkt is "Ja", Leeg is "Nee".)</dt>
       <dd>
         @Html.CheckBox("IsVisible")
       </dd>

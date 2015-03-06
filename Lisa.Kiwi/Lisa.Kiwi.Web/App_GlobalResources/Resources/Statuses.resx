@@ -126,12 +126,6 @@
   <data name="StatusTransferred" xml:space="preserve">
     <value>Overgedragen</value>
   </data>
-  <data name="UnconsciousFalse" xml:space="preserve">
-    <value>Nee</value>
-  </data>
-  <data name="UnconsciousTrue" xml:space="preserve">
-    <value>Ja</value>
-  </data>
   <data name="VisibleFalse" xml:space="preserve">
     <value>Nee</value>
   </data>

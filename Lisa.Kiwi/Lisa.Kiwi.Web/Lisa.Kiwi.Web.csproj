@@ -140,6 +140,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_GlobalResources\Resources\ReportProperties.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReportProperties.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_GlobalResources\Resources\Statuses.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -270,6 +275,10 @@
     <Content Include="App_GlobalResources\Resources\Statuses.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Statuses.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\Resources\ReportProperties.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>ReportProperties.Designer.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

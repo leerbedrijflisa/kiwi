@@ -2,7 +2,7 @@
 @if (Model.Category == "FirstAid")
 {
     <dt>Is het slachtoffer bewusteloos?</dt>
-    <dd>@Model.IsUnconscious</dd>
+    <dd>@Resources.ReportProperties.ResourceManager.GetString("Unconscious" + Model.IsUnconscious.ToString())</dd>
 }
 
 
