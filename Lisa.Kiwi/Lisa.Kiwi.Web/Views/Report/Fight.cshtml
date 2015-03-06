@@ -1,0 +1,19 @@
+﻿@model FightViewModel
+
+@{
+    ViewBag.Title = "Gevecht";
+}
+
+<h2>Fight</h2>
+@using (Html.BeginForm())
+{
+    <p>
+        @Html.LabelFor(m => m.FighterCount)
+        @Html.TextBoxFor(m => m.FighterCount, new { @type = "number" }) 
+    </p>
+    <p>
+        @Html.LabelFor(m => m.IsWeaponPresent)
+        @Html.CheckBoxFor(m => m.IsWeaponPresent)
+    </p>
+    <input type="submit" value="Verzenden" />
+}

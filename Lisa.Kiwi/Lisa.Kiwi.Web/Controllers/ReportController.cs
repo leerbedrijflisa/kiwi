@@ -75,6 +75,23 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 	        return RedirectToAction("Contact");
 	    }
 
+        public ActionResult Fight()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Fight(FightViewModel viewModel)
+        {
+            var report = await GetCurrentReport();
+            _modelFactory.Modify(report, viewModel);
+            await _reportProxy.PatchAsync(report.Id, report);
+
+            // TODO: add error handling
+
+            return RedirectToAction("Contact");
+        }
+
         public ActionResult Contact()
         {
             return View();
@@ -107,10 +124,10 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
         }
 
         // Fiddler version
-        private readonly Proxy<Report> _reportProxy = new Proxy<Report>("http://localhost.fiddler:20151/", "/reports/");
+        //private readonly Proxy<Report> _reportProxy = new Proxy<Report>("http://localhost.fiddler:20151/", "/reports/");
 
         // Normal version
-        //private readonly Proxy<Report> _reportProxy = new Proxy<Report>("http://localhost:20151/", "/reports/");
+        private readonly Proxy<Report> _reportProxy = new Proxy<Report>("http://localhost:20151/", "/reports/");
 
         private readonly ModelFactory _modelFactory = new ModelFactory();
 	}

@@ -22,6 +22,12 @@ namespace Lisa.Kiwi.Web
             report.IsUnconscious = viewModel.IsUnconscious;
         }
 
+        public void Modify(Report report, FightViewModel viewModel)
+        {
+            report.FighterCount = viewModel.FighterCount;
+            report.IsWeaponPresent = viewModel.IsWeaponPresent;
+        }
+
         public void Modify(Report report, ContactViewModel viewModel)
         {
              if(report.Contact == null)
