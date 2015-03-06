@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Resources;
+using Lisa.Kiwi.Web.App_GlobalResources.Resources;
 
 namespace Lisa.Kiwi.Web.Models
 {

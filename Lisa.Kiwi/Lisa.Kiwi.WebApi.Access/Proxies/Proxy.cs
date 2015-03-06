@@ -11,10 +11,12 @@ namespace Lisa.Kiwi.WebApi
 {
     public class Proxy<T>
     {
-        public Proxy(string baseUrl, string resourceUrl)
+        public Proxy(string baseUrl, string resourceUrl, string token = null, string tokenType = null)
         {
             _baseUrl = baseUrl.Trim('/');
             _resourceUrl = resourceUrl.Trim('/');
+            _token = token;
+            _tokenType = tokenType;
             _settings = new JsonSerializerSettings
             {
                 ContractResolver = new CamelCasePropertyNamesContractResolver(),
@@ -33,6 +35,8 @@ namespace Lisa.Kiwi.WebApi
         {
             using (var client = new HttpClient())
             {
+                Authorize(client);
+
                 client.BaseAddress = new Uri(_baseUrl);
                 var result = await client.GetAsync(_resourceUrl);
 
@@ -45,6 +49,8 @@ namespace Lisa.Kiwi.WebApi
         {
             using (var client = new HttpClient())
             {
+                Authorize(client);
+
                 client.BaseAddress = new Uri(_baseUrl);
                 var url = String.Format("{0}/{1}", _resourceUrl, id);
                 var result = await client.GetAsync(url);
@@ -58,6 +64,8 @@ namespace Lisa.Kiwi.WebApi
         {
             using (var client = new HttpClient())
             {
+                Authorize(client);
+
                 client.BaseAddress = new Uri(_baseUrl);
 
                 var result = await client.PostAsJsonAsync(_resourceUrl, model);
@@ -71,6 +79,8 @@ namespace Lisa.Kiwi.WebApi
         {
             using (var client = new HttpClient())
             {
+                Authorize(client);
+
                 client.BaseAddress = new Uri(_baseUrl);
 
                 var request = new HttpRequestMessage
@@ -87,8 +97,18 @@ namespace Lisa.Kiwi.WebApi
             }
         }
 
-        private string _baseUrl;
-        private string _resourceUrl;
-        private JsonSerializerSettings _settings;
+        private void Authorize(HttpClient client)
+        {
+            if (_token != null && _tokenType != null)
+            {
+                client.DefaultRequestHeaders.Add("Authorization", String.Format("{0} {1}", _tokenType, _token));
+            }
+        }
+
+        private readonly string _baseUrl;
+        private readonly string _resourceUrl;
+        private readonly string _token;
+        private readonly string _tokenType;
+        private readonly JsonSerializerSettings _settings;
     }
 }
