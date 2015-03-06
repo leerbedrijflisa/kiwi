@@ -2,19 +2,19 @@
 
 
 @{
-    ViewBag.Title = "Index";
+	ViewBag.Title = "Index";
 }
 
 <section class="icons">
-@using (Html.BeginForm())
-{
-        foreach (var item in Model.Categories)
-        {
-            <div id="Category">
-                <img src="~/Content/@item.Text-icon.png" />
-                <span>@item.Text</span>
-                <input class="overlayInput" type="submit" name="Category" value="@item.Value" />
-            </div>
-        }
-}    
+	@using (Html.BeginForm())
+	{
+		foreach (var item in Model.Categories)
+		{
+			<div id="Category">
+				<img src="~/Content/@item.Text-icon.png">
+				<span>@item.Text</span>
+				<input class="overlayInput" type="submit" name="Category" value="@item.Value">
+			</div>
+		}
+	}
 </section>

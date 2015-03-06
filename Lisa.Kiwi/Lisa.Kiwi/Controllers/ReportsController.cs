@@ -25,6 +25,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
             return reports;
 		}
 
+        [AllowAnonymous]
         public async Task<IHttpActionResult> Get(int? id)
         {
             var reportData = await _db.Reports
@@ -42,6 +43,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
             return Ok(report);
         }
 
+        [AllowAnonymous]
         public async Task<IHttpActionResult> Post([FromBody] Report report)
         {
             if (!ModelState.IsValid)
@@ -66,6 +68,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
             return Created(url, report);
         }
 
+        [AllowAnonymous]
         public async Task<IHttpActionResult> Patch(int? id, [FromBody] JToken json)
         {
             var reportData = await _db.Reports.FindAsync(id);

@@ -5,6 +5,8 @@ namespace Lisa.Kiwi.Web.ViewModels
 {
     public class LoginModel
     {
+        // TODO: add error messages
+
         [Required]
         [Display(Name = "UserName", ResourceType = typeof(DisplayNames))]
         public string UserName { get; set; }

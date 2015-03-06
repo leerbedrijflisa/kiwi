@@ -32,7 +32,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
         [HttpGet]
         public async Task<IHttpActionResult> IsAdmin()
         {
-            var user = (ClaimsIdentity)User.Identity;
+            var user = (ClaimsIdentity) User.Identity;
             return Ok(user.Claims.Any(c => c.Type == "is_admin" && bool.Parse(c.Value)));
         }
 

@@ -190,9 +190,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AuthRepository.cs" />
-    <Compile Include="Controllers\RemarksController.cs" />
     <Compile Include="Controllers\UserController.cs" />
-    <Compile Include="Controllers\VehiclesController.cs" />
     <Compile Include="Data\ContactData.cs" />
     <Compile Include="Data\DataFactory.cs" />
     <Compile Include="Data\KiwiContext.cs" />
@@ -210,7 +208,6 @@
     <Compile Include="Startup.cs" />
     <Compile Include="App_Start\QueueConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\ContactsController.cs" />
     <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

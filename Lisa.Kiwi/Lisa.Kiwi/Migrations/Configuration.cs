@@ -15,6 +15,8 @@ namespace Lisa.Kiwi.WebApi.Migrations
 
         protected override void Seed(KiwiContext context)
         {
+            // TODO: add default accounts
+
             ///* REPORT 1 */
             //ReportData sampleReport = new ReportData
             //{

@@ -15,6 +15,7 @@ namespace Lisa.Kiwi.Web
             {
                 return new SelectListItem[]
                 {
+                    // TODO: use resource files for Text-fields
                     new SelectListItem
                     {
                         Text = "EHBO",

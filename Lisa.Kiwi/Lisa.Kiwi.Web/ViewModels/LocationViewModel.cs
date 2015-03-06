@@ -8,6 +8,8 @@ namespace Lisa.Kiwi.Web
 {
     public class LocationViewModel
     {
+        // TODO: use resource files for error messages and display names
+
         [Required(ErrorMessage = ErrorMessages.RequiredError)]
         [DisplayName("Gebouw")]
         public string Building { get; set; }
@@ -20,6 +22,7 @@ namespace Lisa.Kiwi.Web
         {
             get
             {
+                // TODO: use resource files for Text-field
                 return new SelectListItem[]
                 {
                     new SelectListItem
