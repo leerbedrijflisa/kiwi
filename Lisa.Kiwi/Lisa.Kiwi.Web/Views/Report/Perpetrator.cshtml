@@ -17,7 +17,8 @@
     </p>
     <p>
         @Html.LabelFor(m => m.SkinColor)
-        @Html.TextBoxFor(m => m.SkinColor)
+        @Html.DropDownListFor(m => m.SkinColor, Model.SkinColors)
+        @Html.ValidationMessageFor(m => m.SkinColor)
     </p>
     <p>
         @Html.LabelFor(m => m.Clothing)

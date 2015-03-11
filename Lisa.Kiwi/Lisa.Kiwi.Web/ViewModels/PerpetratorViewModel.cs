@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace Lisa.Kiwi.Web
 {
@@ -30,5 +31,31 @@ namespace Lisa.Kiwi.Web
         [Required(ErrorMessage = ErrorMessages.RequiredError)]
         [DisplayName("Zijn er opvallende dingen te zien aan de dader?")]
         public string UniqueProperties { get; set; }
+
+        public IEnumerable<SelectListItem> SkinColors
+        {
+            get
+            {
+                // TODO: use resource files for Text-field
+                return new SelectListItem[]
+                {
+                    new SelectListItem
+                    {
+                        Text = "Blank",
+                        Value = "Light"
+                    },
+                    new SelectListItem
+                    {
+                        Text = "Licht getint",
+                        Value = "Tanned"
+                    },
+                    new SelectListItem
+                    {
+                        Text = "Donker",
+                        Value = "Dark"
+                    },
+                };
+            }
+        }
     }
 }
