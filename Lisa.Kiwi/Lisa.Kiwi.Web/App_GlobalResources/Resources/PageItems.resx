@@ -123,13 +123,43 @@
   <data name="Category" xml:space="preserve">
     <value>Categorie</value>
   </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="ContactEmail" xml:space="preserve">
+    <value>E-mailadres van de melder (Indien ingevult).</value>
+  </data>
+  <data name="ContactName" xml:space="preserve">
+    <value>Naam van de melder (Indien ingevult).</value>
+  </data>
+  <data name="ContactPhoneNumber" xml:space="preserve">
+    <value>Telefoonnummer van de melder (Indien ingevult).</value>
+  </data>
   <data name="Date" xml:space="preserve">
     <value>Datum</value>
+  </data>
+  <data name="DateDescription" xml:space="preserve">
+    <value>Tijdstip van de melding.</value>
   </data>
   <data name="Location" xml:space="preserve">
     <value>Locatie</value>
   </data>
+  <data name="LocationDescription" xml:space="preserve">
+    <value>Locatie en beschrijving.</value>
+  </data>
   <data name="Status" xml:space="preserve">
     <value>Status</value>
+  </data>
+  <data name="StatusDescription" xml:space="preserve">
+    <value>Huidige status van het incident.</value>
+  </data>
+  <data name="TypeDescription" xml:space="preserve">
+    <value>Het Meldingstype.</value>
+  </data>
+  <data name="VisibleChange" xml:space="preserve">
+    <value>Wilt u dat dit zichtbaar is? (aangevinkt is "Ja", Leeg is "Nee".)</value>
+  </data>
+  <data name="VisibleDescription" xml:space="preserve">
+    <value>Is dit voor iedereen zichtbaar?</value>
   </data>
 </root>

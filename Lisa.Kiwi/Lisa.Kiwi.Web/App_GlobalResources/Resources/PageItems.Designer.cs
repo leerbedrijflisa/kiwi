@@ -79,11 +79,56 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Contact.
+        /// </summary>
+        internal static string Contact {
+            get {
+                return ResourceManager.GetString("Contact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to E-mailadres van de melder (Indien ingevult)..
+        /// </summary>
+        internal static string ContactEmail {
+            get {
+                return ResourceManager.GetString("ContactEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Naam van de melder (Indien ingevult)..
+        /// </summary>
+        internal static string ContactName {
+            get {
+                return ResourceManager.GetString("ContactName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Telefoonnummer van de melder (Indien ingevult)..
+        /// </summary>
+        internal static string ContactPhoneNumber {
+            get {
+                return ResourceManager.GetString("ContactPhoneNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Datum.
         /// </summary>
         internal static string Date {
             get {
                 return ResourceManager.GetString("Date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tijdstip van de melding..
+        /// </summary>
+        internal static string DateDescription {
+            get {
+                return ResourceManager.GetString("DateDescription", resourceCulture);
             }
         }
         
@@ -97,11 +142,56 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Locatie en beschrijving..
+        /// </summary>
+        internal static string LocationDescription {
+            get {
+                return ResourceManager.GetString("LocationDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Status.
         /// </summary>
         internal static string Status {
             get {
                 return ResourceManager.GetString("Status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Huidige status van het incident..
+        /// </summary>
+        internal static string StatusDescription {
+            get {
+                return ResourceManager.GetString("StatusDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Het Meldingstype..
+        /// </summary>
+        internal static string TypeDescription {
+            get {
+                return ResourceManager.GetString("TypeDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wilt u dat dit zichtbaar is? (aangevinkt is &quot;Ja&quot;, Leeg is &quot;Nee&quot;.).
+        /// </summary>
+        internal static string VisibleChange {
+            get {
+                return ResourceManager.GetString("VisibleChange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Is dit voor iedereen zichtbaar?.
+        /// </summary>
+        internal static string VisibleDescription {
+            get {
+                return ResourceManager.GetString("VisibleDescription", resourceCulture);
             }
         }
     }
