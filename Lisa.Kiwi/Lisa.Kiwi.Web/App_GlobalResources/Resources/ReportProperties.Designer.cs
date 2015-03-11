@@ -61,6 +61,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Is het slachtoffer bewusteloos?.
+        /// </summary>
+        internal static string IsUnconsious {
+            get {
+                return ResourceManager.GetString("IsUnconsious", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nee.
         /// </summary>
         internal static string UnconsciousFalse {
@@ -75,6 +84,33 @@ namespace Resources {
         internal static string UnconsciousTrue {
             get {
                 return ResourceManager.GetString("UnconsciousTrue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nee.
+        /// </summary>
+        internal static string WeaponPresentFalse {
+            get {
+                return ResourceManager.GetString("WeaponPresentFalse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ja.
+        /// </summary>
+        internal static string WeaponPresentTrue {
+            get {
+                return ResourceManager.GetString("WeaponPresentTrue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hier is geen waarde voor ingevult..
+        /// </summary>
+        internal static string _null {
+            get {
+                return ResourceManager.GetString("_null", resourceCulture);
             }
         }
     }
