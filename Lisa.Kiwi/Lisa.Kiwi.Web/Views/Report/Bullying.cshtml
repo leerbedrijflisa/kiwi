@@ -1,0 +1,18 @@
+﻿@model BullyingViewModel
+
+@{
+    ViewBag.Title = "Bullying";
+}
+
+@using (Html.BeginForm())
+{
+    <p>
+        @Html.LabelFor(m => m.Description)
+        @Html.TextBoxFor(m => m.Description)
+    </p>
+    <p>
+        @Html.LabelFor(m => m.Victim)
+        @Html.TextBoxFor(m => m.Victim)
+    </p>
+    <input type="submit" value="Verzenden" />
+}

@@ -27,7 +27,26 @@ namespace Lisa.Kiwi.WebApi
 
         public string Description { get; set; }
         
+        //First Aid
         public bool? IsUnconscious { get; set; }
+
+        //Bullying
+        public string Victim { get; set; }
+
+        //Weapons
+        public string WeaponType { get; set; }
+        public string WeaponLocation { get; set; }
+
+        //Fight
+        public int? FighterCount { get; set; }
+        public bool? IsWeaponPresent { get; set; }
+
+        //Drugs
+        public string DrugsAction { get; set; }
+
+        //Theft
+        public string StolenObject { get; set; }
+        public DateTime? DateOfTheft { get; set; }
 
         public Guid EditToken { get; set; }
 

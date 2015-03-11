@@ -11,6 +11,7 @@ namespace Lisa.Kiwi.WebApi
 			CurrentStatus = Status.Open;
             Location = new Location();
             Contact = new Contact();
+            Perpetrator = new Perpetrator();
 
 		}
 
@@ -26,25 +27,25 @@ namespace Lisa.Kiwi.WebApi
 		//FirstAid
 		public bool? IsUnconscious { get; set; }
 
-        ////Theft
-        //public string StolenObject { get; set; }
-        //public DateTime? DateOfTheft { get; set; }
+        //Theft
+        public string StolenObject { get; set; }
+        public DateTime? DateOfTheft { get; set; }
 
-        ////Drugs
-        //public string DrugsAction { get; set; }
+        //Drugs
+        public string DrugsAction { get; set; }
 
-        ////Fight
-        //public int? FighterCount { get; set; }
-        //public bool? IsWeaponPresent { get; set; }
+        //Fight
+        public int? FighterCount { get; set; }
+        public bool? IsWeaponPresent { get; set; }
 
-        ////Weapons
-        //public string WeaponType { get; set; }
-        //public string WeaponLocation { get; set; }
+        //Weapons
+        public string WeaponType { get; set; }
+        public string WeaponLocation { get; set; }
 
-        ////Nuisance
+        //Nuisance
 		
-        ////Bullying
-        //public string Victim { get; set; }
+        //Bullying
+        public string Victim { get; set; }
 
 		//Other
 

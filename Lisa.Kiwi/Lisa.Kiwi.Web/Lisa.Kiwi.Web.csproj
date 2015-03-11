@@ -181,6 +181,7 @@
     <Content Include="Content\Diefstal-Icon.png" />
     <Content Include="Content\Drugs-Icon.png" />
     <Content Include="Content\EHBO-Icon.png" />
+    <Content Include="Content\jquery.datetimepicker.css" />
     <Content Include="Content\Vechtpartij-Icon.png" />
     <Content Include="Content\main.css" />
     <Content Include="Content\Overlast-Icon.png" />
@@ -205,6 +206,7 @@
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.datetimepicker.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\npm.js" />
@@ -260,6 +262,14 @@
     <Content Include="Views\Dashboard\_PartialDetailsFirstAid.cshtml" />
     <Content Include="Views\Report\Contact.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Report\Fight.cshtml" />
+    <Content Include="Views\Report\Drugs.cshtml" />
+    <Content Include="Views\Report\Weapons.cshtml" />
+    <Content Include="Views\Report\Bullying.cshtml" />
+    <Content Include="Views\Report\Perpetrator.cshtml" />
+    <Content Include="Views\Report\Theft.cshtml" />
+    <Content Include="Views\Report\Other.cshtml" />
+    <Content Include="Views\Report\Nuisance.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -308,7 +318,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>53288</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
