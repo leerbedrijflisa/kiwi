@@ -14,24 +14,13 @@ namespace Lisa.Kiwi.WebApi.Controllers
 		[EnableQuery]
 		public IQueryable<Report> Get()
 		{
-            var reports = _db.Reports
-                .Include("StatusChanges")
-                .Include("Contact")
-                .Include("Vehicle")
-                .ToList()
-                .Select(reportData => _modelFactory.Create(reportData))
-                .AsQueryable();
-
-            return reports;
+           return GetCompleteReports();
 		}
 
         [AllowAnonymous]
         public async Task<IHttpActionResult> Get(int? id)
         {
-            var reportData = await _db.Reports
-                .Include("StatusChanges")
-                .Include("Contact")
-                .Include("Vehicle")
+            var reportData = await GetCompleteReportDatas()
                 .SingleOrDefaultAsync(r => id == r.Id);
             
             if (reportData == null)
@@ -84,6 +73,24 @@ namespace Lisa.Kiwi.WebApi.Controllers
             var report = _modelFactory.Create(reportData);
             return Ok(report);
         }
+
+        private IQueryable<ReportData> GetCompleteReportDatas()
+        {
+            return _db.Reports
+                .Include("StatusChanges")
+                .Include("Location")
+                .Include("Perpetrator")
+                .Include("Contact")
+                .Include("Vehicle");
+        }
+
+        private IQueryable<Report> GetCompleteReports()
+        {
+            return GetCompleteReportDatas()
+                .ToList()
+                .Select(reportData => _modelFactory.Create(reportData))
+                .AsQueryable();
+        } 
 
         private readonly KiwiContext _db = new KiwiContext();
         private readonly ModelFactory _modelFactory = new ModelFactory();
