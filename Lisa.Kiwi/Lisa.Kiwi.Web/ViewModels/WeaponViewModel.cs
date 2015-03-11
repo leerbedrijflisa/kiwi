@@ -31,17 +31,17 @@ namespace Lisa.Kiwi.Web
                     new SelectListItem
                     {
                         Text = "Mes",
-                        Value = "Knife"
+                        Value = "Mes"
                     },
                     new SelectListItem
                     {
                         Text = "Boksbeugel",
-                        Value = "Brass Knuckles"
+                        Value = "Boksbeugel"
                     },
                     new SelectListItem
                     {
                         Text = "Vuurwapen",
-                        Value = "Firearm"
+                        Value = "Vuurwapen"
                     },
                     new SelectListItem
                     {
@@ -51,7 +51,7 @@ namespace Lisa.Kiwi.Web
                     new SelectListItem
                     {
                         Text = "Anders",
-                        Value = "Other"
+                        Value = "Anders"
                     },
                 };
             }
