@@ -276,6 +276,12 @@
     <Content Include="Views\Report\Other.cshtml" />
     <Content Include="Views\Report\Nuisance.cshtml" />
     <Content Include="Views\Dashboard\CategoryPartials\_PartialDetailsWeapons.cshtml" />
+    <Content Include="Views\Dashboard\CategoryPartials\_PartialDetailsBullying.cshtml" />
+    <Content Include="Views\Dashboard\CategoryPartials\_PartialDetailsDrugs.cshtml" />
+    <Content Include="Views\Dashboard\CategoryPartials\_PartialDetailsFight.cshtml" />
+    <Content Include="Views\Dashboard\CategoryPartials\_PartialDetailsOther.cshtml" />
+    <Content Include="Views\Dashboard\CategoryPartials\_PartialDetailsNuisance.cshtml" />
+    <Content Include="Views\Dashboard\CategoryPartials\_PartialDetailsTheft.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
