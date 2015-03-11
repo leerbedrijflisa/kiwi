@@ -8,103 +8,81 @@ namespace Lisa.Kiwi.WebApi
     {
         public Report Create(ReportData reportData)
         {
-            var report = new Report
+            return new Report
             {
                 Id = reportData.Id,
-                Description = reportData.Description,
-                Created = reportData.Created,
                 Category = reportData.Category,
-                IsVisible = true,
+                IsVisible = reportData.IsVisible,
+                Created = reportData.Created,
+                Description = reportData.Description,
                 IsUnconscious = reportData.IsUnconscious,
-                CurrentStatus = Status.Open,
-                Contact = reportData.Contact != null ? CreateContact(reportData) : null
-            };
-
-            if (reportData.Location != null)
-            {
-                report.Location = new Location
-                {
-                    Building = reportData.Location.Building,
-                    Description = reportData.Location.Description
-                };
                 
-            }
+                Victim = reportData.Victim,
 
-            if (reportData.Contact != null)
-            {
-                report.Contact = new Contact
-                {
-                    Name = reportData.Contact.Name,
-                    PhoneNumber = reportData.Contact.PhoneNumber,
-                    EmailAddress = reportData.Contact.EmailAddress
-                };
-            }
-         
+                WeaponType = reportData.WeaponType,
+                WeaponLocation = reportData.WeaponLocation,
 
+                FighterCount = reportData.FighterCount,
+                IsWeaponPresent = reportData.IsWeaponPresent,
 
-            // Add information about the most recent status change only, because
-            // that's the current status of the report.
-            var statusChangeData = reportData.StatusChanges
-                .OrderByDescending(s => s.Created)
-                .FirstOrDefault();
+                DrugsAction = reportData.DrugsAction,
 
-            if (statusChangeData != null)
-            {
-                report.IsVisible = statusChangeData.IsVisible;
-                report.CurrentStatus = ToStatus(statusChangeData.Status);
-            }
+                StolenObject = reportData.StolenObject,
+                DateOfTheft = reportData.DateOfTheft,
 
-            return report;
+                Location = reportData.Location != null ? Create(reportData.Location) : null,
+                Perpetrator = reportData.Perpetrator != null ? Create(reportData.Perpetrator) : null,
+                Contact = reportData.Contact != null ? Create(reportData.Contact) : null,
+                Vehicle = reportData.Vehicle != null ? Create(reportData.Vehicle) : null
+            };
         }
 
-        public Remark Create(RemarkData remarkData)
+        public Location Create(LocationData locationData)
         {
-            var remark = new Remark
+            return new Location
             {
-                Id = remarkData.Id,
-                Created = remarkData.Created,
-                Description = remarkData.Description,
-                Report = remarkData.Report.Id
+                Building = locationData.Building,
+                Description = locationData.Description,
+                Latitude = locationData.Latitude,
+                Longitude = locationData.Longitude
             };
+        }
 
-            return remark;
+        public Perpetrator Create(PerpetratorData perpetratorData)
+        {
+            return new Perpetrator
+            {
+                Clothing = perpetratorData.Clothing,
+                MaximumAge = perpetratorData.MaximumAge,
+                MinimumAge = perpetratorData.MinimumAge,
+                Name = perpetratorData.Name,
+                Sex = perpetratorData.Sex,
+                SkinColor = perpetratorData.SkinColor,
+                UniqueProperties = perpetratorData.UniqueProperties,
+            };
         }
 
         public Vehicle Create(VehicleData vehicleData)
         {
-            var vehicle = new Vehicle
+            return new Vehicle
             {
                 Brand = vehicleData.Brand,
                 Color = vehicleData.Color,
                 LicensePlate = vehicleData.LicensePlate,
                 Model = vehicleData.Model
             };
-
-            return vehicle;
         }
 
-        public Contact CreateContact(ReportData reportData)
+        public Contact Create(ContactData contactData)
         {
             var contact = new Contact
             {
-                EmailAddress = reportData.Contact.EmailAddress,
-                Name = reportData.Contact.Name,
-                PhoneNumber = reportData.Contact.PhoneNumber
+                EmailAddress = contactData.EmailAddress,
+                Name = contactData.Name,
+                PhoneNumber = contactData.PhoneNumber
             };
 
             return contact;
-        }
-
-        private Status ToStatus(string status)
-        {
-            switch (status.ToLower())
-            {
-                case "open": return Status.Open;
-                case "solved": return Status.Solved;
-                case "inprogress": return Status.InProgress;
-                case "transferred": return Status.Transferred;
-                default: throw new ArgumentException();
-            }
         }
     }
 }
