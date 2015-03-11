@@ -7,7 +7,7 @@ namespace Lisa.Kiwi.WebApi
     public class Perpetrator
     {
         public string Name { get; set; }
-        public int? Sex { get; set; }
+        public SexEnum? Sex { get; set; }
         public string SkinColor { get; set; }
         public string Clothing { get; set; }
         public int? MinimumAge { get; set; }
