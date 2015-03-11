@@ -264,7 +264,7 @@
     <Content Include="Views\Report\Location.cshtml" />
     <Content Include="Views\Report\FirstAid.cshtml" />
     <Content Include="Views\Report\ContactRequired.cshtml" />
-    <Content Include="Views\Dashboard\_PartialDetailsFirstAid.cshtml" />
+    <Content Include="Views\Dashboard\CategoryPartials\_PartialDetailsFirstAid.cshtml" />
     <Content Include="Views\Report\Contact.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Report\Fight.cshtml" />
@@ -275,6 +275,7 @@
     <Content Include="Views\Report\Theft.cshtml" />
     <Content Include="Views\Report\Other.cshtml" />
     <Content Include="Views\Report\Nuisance.cshtml" />
+    <Content Include="Views\Dashboard\CategoryPartials\_PartialDetailsWeapons.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

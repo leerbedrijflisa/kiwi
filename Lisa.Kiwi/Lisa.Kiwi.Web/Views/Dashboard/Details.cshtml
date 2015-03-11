@@ -31,7 +31,7 @@
     <dt>@Resources.PageItems.ResourceManager.GetString("VisibleDescription")</dt>
     <dd>@Resources.Statuses.ResourceManager.GetString("Visible" + Model.IsVisible.ToString())</dd>
     
-    @Html.Partial("_PartialDetails" + Model.Category, Model)
+    @Html.Partial("CategoryPartials/" + "_PartialDetails" + Model.Category, Model)
 
   </dl>
     @* TODO: Find a better solution than this, as it makes and empty Contact.*@
