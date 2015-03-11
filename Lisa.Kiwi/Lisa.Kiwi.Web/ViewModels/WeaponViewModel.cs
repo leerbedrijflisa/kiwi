@@ -13,6 +13,8 @@ namespace Lisa.Kiwi.Web
         [Required(ErrorMessage = ErrorMessages.RequiredError)]
         [DisplayName("Wat voor wapen is het?")]
         public string Type { get; set; }
+
+        public string OtherType { get; set; }
         
 
         [Required(ErrorMessage = ErrorMessages.RequiredError)]

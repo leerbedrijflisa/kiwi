@@ -1,5 +1,4 @@
 ﻿$(function () {
-    alert("I changed!");
     $("#Sub").css("display", "none");
     $("#Type").change(function () {
         
