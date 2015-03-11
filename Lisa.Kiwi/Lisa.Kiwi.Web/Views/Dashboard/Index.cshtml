@@ -15,11 +15,11 @@
 <body>
     <table class="sortable">
         <tr>
-            <th>Datum</th>
-            <th>Categorie</th>
-            <th>Gebouw</th>
-            <th>Locatie</th>
-            <th>Status</th>
+            <th>@Resources.PageItems.ResourceManager.GetString("Date")</th>
+            <th>@Resources.PageItems.ResourceManager.GetString("Category")</th>
+            <th>@Resources.PageItems.ResourceManager.GetString("Building")</th>
+            <th>@Resources.PageItems.ResourceManager.GetString("Location")</th>
+            <th>@Resources.PageItems.ResourceManager.GetString("Status")</th>
         </tr>
 
         @foreach (var report in Model)
