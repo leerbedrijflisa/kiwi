@@ -13,11 +13,11 @@
 </head>
 
 <body>
-  <h1>@Resources.Categories.ResourceManager.GetString("FirstAid")</h1>
+  <h1>@Resources.Categories.ResourceManager.GetString(Model.Category)</h1>
 
   <dl>
     <dt>@Resources.PageItems.ResourceManager.GetString("TypeDescription")</dt>
-    <dd>@Resources.Categories.ResourceManager.GetString("FirstAid")</dd>
+    <dd>@Resources.Categories.ResourceManager.GetString(Model.Category)</dd>
 
     <dt>@Resources.PageItems.ResourceManager.GetString("DateDescription")</dt>
     <dd>@Model.Created.ToString("dddd d MMMM HH:mm")</dd>
@@ -34,8 +34,8 @@
     @Html.Partial("_PartialDetails" + Model.Category, Model)
 
   </dl>
-
-  @if (ViewBag.Contact != null)
+    @* TODO: Find a better solution than this, as it makes and empty Contact.*@
+  @if (ViewBag.Contact.EmailAddress != null || ViewBag.Contact.Name != null || ViewBag.Contact.PhoneNumber != null)
   {
     <h2>@Resources.PageItems.ResourceManager.GetString("Contact")</h2>
     <dl>
