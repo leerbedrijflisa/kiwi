@@ -13,39 +13,39 @@
 </head>
 
 <body>
-  <h1>@Resources.Categories.ResourceManager.GetString("FirstAid")</h1>
+  <h1>@Resources.Categories.ResourceManager.GetString(Model.Category)</h1>
 
   <dl>
-    <dt>Type</dt>
-    <dd>@Resources.Categories.ResourceManager.GetString("FirstAid")</dd>
+    <dt>@Resources.PageItems.ResourceManager.GetString("TypeDescription")</dt>
+    <dd>@Resources.Categories.ResourceManager.GetString(Model.Category)</dd>
 
-    <dt>Datum</dt>
+    <dt>@Resources.PageItems.ResourceManager.GetString("DateDescription")</dt>
     <dd>@Model.Created.ToString("dddd d MMMM HH:mm")</dd>
 
-    <dt>Locatie</dt>
+    <dt>@Resources.PageItems.ResourceManager.GetString("LocationDescription")</dt>
     <dd>@Model.Location.Building - @Model.Location.Description</dd>
 
-    <dt>Huidige status</dt>
-    <dd>@Model.CurrentStatus</dd>
+    <dt>@Resources.PageItems.ResourceManager.GetString("StatusDescription")</dt>
+    <dd>@Resources.Statuses.ResourceManager.GetString("Status" + Model.CurrentStatus.ToString())</dd>
 
-    <dt>Zichtbaar?</dt>
-    <dd>@Model.IsVisible</dd>
+    <dt>@Resources.PageItems.ResourceManager.GetString("VisibleDescription")</dt>
+    <dd>@Resources.Statuses.ResourceManager.GetString("Visible" + Model.IsVisible.ToString())</dd>
     
-    @Html.Partial("_PartialDetails" + Model.Category, Model)
+    @Html.Partial("CategoryPartials/" + "_PartialDetails" + Model.Category, Model)
 
   </dl>
-
-  @if (ViewBag.Contact != null)
+    @* TODO: Find a better solution than this, as it makes and empty Contact.*@
+  @if (ViewBag.Contact.EmailAddress != null || ViewBag.Contact.Name != null || ViewBag.Contact.PhoneNumber != null)
   {
-    <h2>Contact:</h2>
+    <h2>@Resources.PageItems.ResourceManager.GetString("Contact")</h2>
     <dl>
-      <dt>Naam</dt>
+      <dt>@Resources.PageItems.ResourceManager.GetString("ContactName")</dt>
       <dd>@ViewBag.Contact.Name</dd>
 
-      <dt>Telefoonnummer</dt>
+      <dt>@Resources.PageItems.ResourceManager.GetString("ContactPhoneNumber")</dt>
       <dd>@ViewBag.Contact.PhoneNumber</dd>
 
-      <dt>E-mailadres</dt>
+      <dt>@Resources.PageItems.ResourceManager.GetString("ContactEmail")</dt>
       <dd>@ViewBag.Contact.EmailAddress</dd>
     </dl>
   }
@@ -55,11 +55,11 @@
 @using (Html.BeginForm())
   {
     <dl>
-      <dt>Status</dt>
+      <dt>@Resources.PageItems.ResourceManager.GetString("Status")</dt>
       <dd>
         @Html.DropDownList("status", (IEnumerable<SelectListItem>) ViewBag.StatusNames)
       </dd>
-      <dt>Zichtbaar?</dt>
+      <dt>@Resources.PageItems.ResourceManager.GetString("VisibleChange")</dt>
       <dd>
         @Html.CheckBox("IsVisible")
       </dd>

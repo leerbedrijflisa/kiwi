@@ -31,6 +31,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -139,6 +140,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_GlobalResources\Resources\PageItems.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PageItems.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Resources\ReportProperties.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReportProperties.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Resources\Statuses.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Statuses.resx</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Models\ModelFactory.cs" />
     <Compile Include="App_GlobalResources\Resources\Categories.Designer.cs">
@@ -170,6 +186,7 @@
     <Content Include="Content\Diefstal-Icon.png" />
     <Content Include="Content\Drugs-Icon.png" />
     <Content Include="Content\EHBO-Icon.png" />
+    <Content Include="Content\jquery.datetimepicker.css" />
     <Content Include="Content\Vechtpartij-Icon.png" />
     <Content Include="Content\main.css" />
     <Content Include="Content\Overlast-Icon.png" />
@@ -194,6 +211,7 @@
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.datetimepicker.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\npm.js" />
@@ -246,9 +264,18 @@
     <Content Include="Views\Report\Location.cshtml" />
     <Content Include="Views\Report\FirstAid.cshtml" />
     <Content Include="Views\Report\ContactRequired.cshtml" />
-    <Content Include="Views\Dashboard\_PartialDetailsFirstAid.cshtml" />
+    <Content Include="Views\Dashboard\CategoryPartials\_PartialDetailsFirstAid.cshtml" />
     <Content Include="Views\Report\Contact.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Report\Fight.cshtml" />
+    <Content Include="Views\Report\Drugs.cshtml" />
+    <Content Include="Views\Report\Weapons.cshtml" />
+    <Content Include="Views\Report\Bullying.cshtml" />
+    <Content Include="Views\Report\Perpetrator.cshtml" />
+    <Content Include="Views\Report\Theft.cshtml" />
+    <Content Include="Views\Report\Other.cshtml" />
+    <Content Include="Views\Report\Nuisance.cshtml" />
+    <Content Include="Views\Dashboard\CategoryPartials\_PartialDetailsWeapons.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -261,6 +288,18 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>DisplayNames.designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Content Include="App_GlobalResources\Resources\Statuses.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Statuses.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\Resources\ReportProperties.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>ReportProperties.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\Resources\PageItems.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>PageItems.Designer.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Lisa.Kiwi.WebApi.Access\Lisa.Kiwi.WebApi.Access.csproj">
@@ -289,7 +328,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>53288</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
