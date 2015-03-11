@@ -23,7 +23,7 @@
             </p>
             <p>
                 @Html.LabelFor(m => m.Location)
-                @Html.TextAreaFor(m => m.Location)
+                @Html.TextAreaFor(m => m.Location, new { placeholder = "Voer hier een duidelijke beschrijving, of een huisnummer in." } )
                 @Html.ValidationMessageFor(m => m.Location)
             </p>
             <input type="submit" value="Verzenden" />
