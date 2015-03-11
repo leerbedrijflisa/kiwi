@@ -1,9 +1,12 @@
-﻿$("#Sub").hide();
-$("#subject").change(function () {
-    if ($(this).val() === "Other") {
-        $("#Sub").show();
-        $("#subject").hide();
-    } else {
-        $("#Sub").hide();
-    }
-});
+﻿$(function () {
+    alert("I changed!");
+    $("#Sub").css("display", "none");
+    $("#Type").change(function () {
+        
+        if ($(this).val() === "Other") {
+            $("#Sub").css("display", "block");
+        } else {
+            $("#Sub").css("display", "none");
+        }
+    });
+})
