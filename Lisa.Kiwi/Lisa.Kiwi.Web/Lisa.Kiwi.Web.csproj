@@ -199,8 +199,8 @@
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\npm.js" />
-    <Content Include="Scripts\Reporter.js" />
-    <Content Include="Scripts\ShowHideOther.js" />
+    <Content Include="Scripts\Location.js" />
+    <Content Include="Scripts\Weapons.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
