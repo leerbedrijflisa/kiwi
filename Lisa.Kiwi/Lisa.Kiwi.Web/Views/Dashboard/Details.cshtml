@@ -35,7 +35,8 @@
 
   </dl>
     @* TODO: Find a better solution than this, as it makes and empty Contact.*@
-  @if (ViewBag.Contact.EmailAddress != null || ViewBag.Contact.Name != null || ViewBag.Contact.PhoneNumber != null)
+  @if (ViewBag.Contact.EmailAddress != null || ViewBag.Contact.Name != null || 
+      ViewBag.Contact.PhoneNumber != null)
   {
     <h2>@Resources.PageItems.ResourceManager.GetString("Contact")</h2>
     <dl>
@@ -49,6 +50,37 @@
       <dd>@ViewBag.Contact.EmailAddress</dd>
     </dl>
   }
+
+    @if (ViewBag.Perpetrators.Name != null || ViewBag.Perpetrators.Sex != null || 
+        ViewBag.Perpetrators.SkinColor != null || ViewBag.Perpetrators.Clothing != null 
+        || ViewBag.Perpetrators.MinimumAge != null ||
+        ViewBag.Perpetrators.MaximumAge != null 
+        || ViewBag.Perpetrators.UniqueProperty != null)
+    {
+        <h2>Misdadiger</h2>
+        <dl>
+            <dt>Naam</dt>
+            <dd>@ViewBag.Perpetrators.Name</dd>
+
+            <dt>Geslacht</dt>
+            <dd>@ViewBag.Perpetrators.Sex</dd>
+
+            <dt>Huidskleur</dt>
+            <dd>@ViewBag.Perpetrators.SkinColor</dd>
+
+            <dt>Kleding</dt>
+            <dd>@ViewBag.Perpetrators.Clothing</dd>
+
+            <dt>Minimale Leeftijd</dt>
+            <dd>@ViewBag.Perpetrators.MinimumAge</dd>
+
+            <dt>Maximale Leeftijd</dt>
+            <dd>@ViewBag.Perpetrators.MaximumAge</dd>
+
+            <dt>Uniek kenmerk</dt>
+            <dd>@ViewBag.Perpetrators.UniqueProperty</dd>
+        </dl>
+    }
 
 <hr/>
 
