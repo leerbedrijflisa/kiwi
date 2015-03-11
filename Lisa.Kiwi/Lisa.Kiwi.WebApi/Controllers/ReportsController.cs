@@ -70,7 +70,6 @@ namespace Lisa.Kiwi.WebApi.Controllers
         private IQueryable<ReportData> GetCompleteReportDatas()
         {
             return _db.Reports
-                .Include("StatusChanges")
                 .Include("Location")
                 .Include("Perpetrator")
                 .Include("Contact")

@@ -14,13 +14,13 @@ namespace Lisa.Kiwi.WebApi
             {
                 ContractResolver = new CamelCasePropertyNamesContractResolver(),
                 NullValueHandling = NullValueHandling.Ignore,
-                Converters = new List<JsonConverter>
-                {
-                    new StringEnumConverter
-                    {
-                        CamelCaseText = true
-                    }
-                }
+                //Converters = new List<JsonConverter>
+                //{
+                //    new StringEnumConverter
+                //    {
+                //        CamelCaseText = true
+                //    }
+                //}
             };
 
             // Web API routes
