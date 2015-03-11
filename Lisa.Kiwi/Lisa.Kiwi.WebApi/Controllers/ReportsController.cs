@@ -41,13 +41,6 @@ namespace Lisa.Kiwi.WebApi.Controllers
             }
 
             var reportData = _dataFactory.Create(report);
-            var statusChangeData = new StatusChangeData
-            {
-                Created = DateTimeOffset.Now,
-                IsVisible = report.IsVisible,
-                Status = report.CurrentStatus.ToString()
-            };
-            reportData.StatusChanges.Add(statusChangeData);
 
             _db.Reports.Add(reportData);
             await _db.SaveChangesAsync();
