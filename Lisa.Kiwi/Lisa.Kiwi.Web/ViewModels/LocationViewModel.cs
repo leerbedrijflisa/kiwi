@@ -34,62 +34,62 @@ namespace Lisa.Kiwi.Web
                     new SelectListItem
                     {
                         Text = "DVC Lilla",
-                        Value = "Lilla"
+                        Value = "DVC Lilla"
                     },
                     new SelectListItem
                     {
                         Text = "DVC Marrone",
-                        Value = "Marrone"
+                        Value = "DVC Marrone"
                     },
                     new SelectListItem
                     {
                         Text = "DVC Rosa",
-                        Value = "Rosa"
+                        Value = "DVC Rosa"
                     },
                     new SelectListItem
                     {
                         Text = "DVC Verde",
-                        Value = "Verde"
+                        Value = "DVC Verde"
                     },
                     new SelectListItem
                     {
                         Text = "DVC Giallo",
-                        Value = "Giallo"
+                        Value = "DVC Giallo"
                     },
                     new SelectListItem
                     {
                         Text = "DVC Indaco",
-                        Value = "Indaco"
+                        Value = "DVC Indaco"
                     },
                     new SelectListItem
                     {
                         Text = "DVC Bianco",
-                        Value = "Bianco"
+                        Value = "DVC Bianco"
                     },
                     new SelectListItem
                     {
                         Text = "DVC Ocra",
-                        Value = "Ocra"
+                        Value = "DVC Ocra"
                     },
                     new SelectListItem
                     {
                         Text = "DVC Arcobaleno",
-                        Value = "Arcobaleno"
+                        Value = "DVC Arcobaleno"
                     },
                     new SelectListItem
                     {
                         Text = "DVC Celeste",
-                        Value = "Celeste"
+                        Value = "DVC Celeste"
                     },
                     new SelectListItem
                     {
                         Text = "DVC Azzurro",
-                        Value = "Azzurro"
+                        Value = "DVC Azzurro"
                     },
                     new SelectListItem
                     {
                         Text = "DVC Romboutslaan 40",
-                        Value = "Romboutslaan"
+                        Value = "DVC Romboutslaan"
                     },
                     new SelectListItem
                     {
@@ -98,8 +98,13 @@ namespace Lisa.Kiwi.Web
                     },
                     new SelectListItem
                     {
+                        Text = "Appartementen",
+                        Value = "Appartementen"
+                    },
+                    new SelectListItem
+                    {
                         Text = "Drechtsteden college",
-                        Value = "Drechtsteden"
+                        Value = "Drechtsteden college"
                     },
                     new SelectListItem
                     {
@@ -128,7 +133,7 @@ namespace Lisa.Kiwi.Web
                     },
                     new SelectListItem
                     {
-                        Text = "SchippersinternaatAppartementen",
+                        Text = "Schippersinternaat",
                         Value = "Schippersinternaat"
                     },
                     new SelectListItem
@@ -155,6 +160,21 @@ namespace Lisa.Kiwi.Web
                     {
                         Text = "Orthodontist",
                         Value = "Orthodontist"
+                    },
+                    new SelectListItem
+                    {
+                        Text = "Parkeerplaats Ocra",
+                        Value = "Parkeerplaats Ocra"
+                    },
+                    new SelectListItem
+                    {
+                        Text = "Parkeerplaats Duurzaamheidsfabriek",
+                        Value = "Parkeerplaats Duurzaamheidsfabriek"
+                    },
+                    new SelectListItem
+                    {
+                        Text = "Parkeerplaats Brandweerkazerne",
+                        Value = "Parkeerplaats Brandweerkazerne"
                     },
                 };
             }

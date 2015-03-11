@@ -1,5 +1,9 @@
 ﻿@model WeaponViewModel
 
+@section Scripts{
+    <script src="~/Scripts/Weapons.js"></script>
+}
+
 @{
     ViewBag.Title = "title";
 }
@@ -9,8 +13,15 @@
 {
     <p>
         @Html.LabelFor(m => m.Type)
-        @Html.TextBoxFor(m => m.Type)
+        @Html.DropDownListFor(m => m.Type, Model.Types)
         @Html.ValidationMessageFor(m => m.Type)
+    </p>
+    <p id="Sub">
+        <label>Wat voor wapen is het dan?</label>
+        @Html.TextBoxFor(m => m.OtherType)
+        @Html.ValidationMessageFor(m => m.OtherType)
+    </p>
+    <p>
         @Html.LabelFor(m => m.Location)
         @Html.TextBoxFor(m => m.Location)
         @Html.ValidationMessageFor(m => m.Location)

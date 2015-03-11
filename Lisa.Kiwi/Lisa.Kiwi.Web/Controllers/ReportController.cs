@@ -144,7 +144,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 
         public ActionResult Weapons()
         {
-            return View();
+            return View(new WeaponViewModel());
         }
 
         [HttpPost]
@@ -224,7 +224,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 
         public ActionResult Perpetrator()
         {
-            return View();
+            return View(new PerpetratorViewModel());
         }
 
         [HttpPost]

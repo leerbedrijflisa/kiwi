@@ -8,8 +8,8 @@
 @using (Html.BeginForm())
 {
     <p>
-        @Html.LabelFor(m => m.IsUnconscious)
-        @Html.CheckBoxFor(m => m.IsUnconscious)
+        Is het slachtoffer bewusteloos?
     </p>
-    <input type="submit" value="Verzenden" />
+    <input type="submit" name="IsUnconscious" value="Ja" />
+    <input type="submit" name="IsNotUnconscious" value="Nee" />
 }

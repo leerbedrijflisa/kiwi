@@ -9,8 +9,7 @@ namespace Lisa.Kiwi.Web
 {
     public class FirstAidViewModel
     {
-        [Required(ErrorMessage = ErrorMessages.RequiredError)]
-        [DisplayName("Is het slachtoffer bewusteloos?")]
-        public bool IsUnconscious { get; set; }
+        public string IsUnconscious { get; set; }
+        public string IsNotUnconscious { get; set; }
     }
 }
