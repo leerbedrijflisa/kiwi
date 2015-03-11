@@ -20,7 +20,7 @@ namespace Lisa.Kiwi.Web
         public string SkinColor { get; set; }
 
         [Required(ErrorMessage = ErrorMessages.RequiredError)]
-        [DisplayName("Wat voor kleiding draagt de dader?")]
+        [DisplayName("Wat voor kleding draagt de dader?")]
         public string Clothing { get; set; }
 
         [DisplayName("Tussen welke leeftijd is de dader?")]
