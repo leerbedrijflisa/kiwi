@@ -18,245 +18,245 @@ namespace Lisa.Kiwi.WebApi.Migrations
         {
             /* REPORT 1 */
 
-            ReportData sampleReport = new ReportData
-            {
-                Description = "Een zakje drugs gevonden.",
-                Created = DateTime.UtcNow.AddDays(-1),
-                Location = new LocationData
-                {
-                    Building = "Azurro",
-                    Description = "Fietsenstalling",
-                    Latitude = 0f,
-                    Longitude = 0f
-                },
-                Guid = Guid.NewGuid().ToString(),
-                Category = "Drugs",
-                Vehicle = new VehicleData
-                {
-                    Brand = "Mazda",
-                    Color = "Black",
-                    LicensePlate = "ADE 23 SAD"
-                },
-                StatusChanges = new List<StatusChangeData>
-                {
-                    new StatusChangeData
-                    {
-                        Created = DateTime.UtcNow.AddDays(-1),
-                        Status = Status.Open.ToString()
-                    },
-                    new StatusChangeData
-                    {
-                        Created = DateTime.UtcNow.AddHours(-20),
-                        Status = Status.Solved.ToString()
-                    }
-                }
-            };
+            //ReportData sampleReport = new ReportData
+            //{
+            //    Description = "Een zakje drugs gevonden.",
+            //    Created = DateTime.UtcNow.AddDays(-1),
+            //    Location = new LocationData
+            //    {
+            //        Building = "Azurro",
+            //        Description = "Fietsenstalling",
+            //        Latitude = 0f,
+            //        Longitude = 0f
+            //    },
+            //    Guid = Guid.NewGuid().ToString(),
+            //    Category = "Drugs",
+            //    Vehicle = new VehicleData
+            //    {
+            //        Brand = "Mazda",
+            //        Color = "Black",
+            //        LicensePlate = "ADE 23 SAD"
+            //    },
+            //    StatusChanges = new List<StatusChangeData>
+            //    {
+            //        new StatusChangeData
+            //        {
+            //            Created = DateTime.UtcNow.AddDays(-1),
+            //            Status = Status.Open.ToString()
+            //        },
+            //        new StatusChangeData
+            //        {
+            //            Created = DateTime.UtcNow.AddHours(-20),
+            //            Status = Status.Solved.ToString()
+            //        }
+            //    }
+            //};
 
-            RemarkData sampleRemark = new RemarkData
-            {
-                Created = DateTime.UtcNow.AddHours(-20),
-                Description = "Er waren meerdere drugs zakjes gevonden door de beveiliging.",
-                Report = sampleReport
-            };
+            //RemarkData sampleRemark = new RemarkData
+            //{
+            //    Created = DateTime.UtcNow.AddHours(-20),
+            //    Description = "Er waren meerdere drugs zakjes gevonden door de beveiliging.",
+            //    Report = sampleReport
+            //};
 
-            context.Reports.AddOrUpdate(sampleReport);
-            context.Remarks.AddOrUpdate(sampleRemark);
-            /* EIND REPORT 1 */
+            //context.Reports.AddOrUpdate(sampleReport);
+            //context.Remarks.AddOrUpdate(sampleRemark);
+            ///* EIND REPORT 1 */
 
-            /* REPORT 2 */
-            sampleReport = new ReportData
-            {
-                Description = "Mijn mobieltje is gestolen.",
-                Created = DateTime.UtcNow,
-                Location = new LocationData
-                {
-                    Building = "Lilla",
-                    Description = "Plaza",
-                    Latitude = 0f,
-                    Longitude = 0f
-                },
-                Guid = Guid.NewGuid().ToString(),
-                Category = "Theft",
-                Contact = new ContactData
-                {
-                    Name = "John Doe",
-                    EmailAddress = "JohnDoe@mydavinci.nl",
-                    PhoneNumber = "0622885793"
-                },
-                StatusChanges = new List<StatusChangeData>
-                {
-                    new StatusChangeData
-                    {
-                        Created = DateTime.UtcNow,
-                        Status = Status.Open.ToString()
-                    }
-                }
-            };
+            ///* REPORT 2 */
+            //sampleReport = new ReportData
+            //{
+            //    Description = "Mijn mobieltje is gestolen.",
+            //    Created = DateTime.UtcNow,
+            //    Location = new LocationData
+            //    {
+            //        Building = "Lilla",
+            //        Description = "Plaza",
+            //        Latitude = 0f,
+            //        Longitude = 0f
+            //    },
+            //    Guid = Guid.NewGuid().ToString(),
+            //    Category = "Theft",
+            //    Contact = new ContactData
+            //    {
+            //        Name = "John Doe",
+            //        EmailAddress = "JohnDoe@mydavinci.nl",
+            //        PhoneNumber = "0622885793"
+            //    },
+            //    StatusChanges = new List<StatusChangeData>
+            //    {
+            //        new StatusChangeData
+            //        {
+            //            Created = DateTime.UtcNow,
+            //            Status = Status.Open.ToString()
+            //        }
+            //    }
+            //};
 
-            context.Reports.AddOrUpdate(sampleReport);
-            /* EIND REPORT 2 */
+            //context.Reports.AddOrUpdate(sampleReport);
+            ///* EIND REPORT 2 */
 
-            /* REPORT 3 */
-            sampleReport = new ReportData
-            {
-                Description = "Auto met gebroken ruit.",
-                Created = DateTime.UtcNow,
-                Location = new LocationData
-                {
-                    Building = "Brandweer",
-                    Description = "Parkeerplaats",
-                    Latitude = 0f,
-                    Longitude = 0f
-                },
-                Guid = Guid.NewGuid().ToString(),
-                Category = "Other",
-                StatusChanges = new List<StatusChangeData>
-                {
-                    new StatusChangeData
-                    {
-                        Created = DateTime.UtcNow,
-                        Status = Status.Open.ToString()
-                    }
-                }
-            };
-            context.Reports.AddOrUpdate(sampleReport);
-            /* EIND REPORT 3 */
+            ///* REPORT 3 */
+            //sampleReport = new ReportData
+            //{
+            //    Description = "Auto met gebroken ruit.",
+            //    Created = DateTime.UtcNow,
+            //    Location = new LocationData
+            //    {
+            //        Building = "Brandweer",
+            //        Description = "Parkeerplaats",
+            //        Latitude = 0f,
+            //        Longitude = 0f
+            //    },
+            //    Guid = Guid.NewGuid().ToString(),
+            //    Category = "Other",
+            //    StatusChanges = new List<StatusChangeData>
+            //    {
+            //        new StatusChangeData
+            //        {
+            //            Created = DateTime.UtcNow,
+            //            Status = Status.Open.ToString()
+            //        }
+            //    }
+            //};
+            //context.Reports.AddOrUpdate(sampleReport);
+            ///* EIND REPORT 3 */
 
-            /* REPORT 5 */
-            sampleReport = new ReportData
-            {
-                Description = "Drugs zakjes gevonden",
-                Created = DateTime.UtcNow.AddHours(-2),
-                Location = new LocationData
-                {
-                    Building = "Azzurro",
-                    Description = "Fietsenstalling",
-                    Latitude = 0f,
-                    Longitude = 0f
-                },
-                Guid = Guid.NewGuid().ToString(),
-                Category = "Drugs",
-                StatusChanges = new List<StatusChangeData>
-                {
-                    new StatusChangeData
-                    {
-                        Created = DateTime.UtcNow.AddHours(-2),
-                        Status = Status.Open.ToString()
-                    },
-                    new StatusChangeData
-                    {
-                        Created = DateTime.UtcNow,
-                        Status = Status.Solved.ToString()
-                    }
-                }
-            };
+            ///* REPORT 5 */
+            //sampleReport = new ReportData
+            //{
+            //    Description = "Drugs zakjes gevonden",
+            //    Created = DateTime.UtcNow.AddHours(-2),
+            //    Location = new LocationData
+            //    {
+            //        Building = "Azzurro",
+            //        Description = "Fietsenstalling",
+            //        Latitude = 0f,
+            //        Longitude = 0f
+            //    },
+            //    Guid = Guid.NewGuid().ToString(),
+            //    Category = "Drugs",
+            //    StatusChanges = new List<StatusChangeData>
+            //    {
+            //        new StatusChangeData
+            //        {
+            //            Created = DateTime.UtcNow.AddHours(-2),
+            //            Status = Status.Open.ToString()
+            //        },
+            //        new StatusChangeData
+            //        {
+            //            Created = DateTime.UtcNow,
+            //            Status = Status.Solved.ToString()
+            //        }
+            //    }
+            //};
 
-            sampleRemark = new RemarkData
-            {
-                Created = DateTime.UtcNow,
-                Description = "Dit lijkt vaker voor te komen, heeft meer onderzoek nodig.",
-                Report = sampleReport
-            };
+            //sampleRemark = new RemarkData
+            //{
+            //    Created = DateTime.UtcNow,
+            //    Description = "Dit lijkt vaker voor te komen, heeft meer onderzoek nodig.",
+            //    Report = sampleReport
+            //};
 
-            context.Reports.AddOrUpdate(sampleReport);
-            context.Remarks.AddOrUpdate(sampleRemark);
-            /* EIND REPORT 5 */
+            //context.Reports.AddOrUpdate(sampleReport);
+            //context.Remarks.AddOrUpdate(sampleRemark);
+            ///* EIND REPORT 5 */
 
-            /* REPORT 6 */
-            sampleReport = new ReportData
-            {
-                Description = "Auto fout geparkeerd. Hij blokeert de toegang tot de fietsenstalling.",
-                Created = DateTime.UtcNow,
-                Guid = Guid.NewGuid().ToString(),
-                Category = "Other",
-                Location = new LocationData
-                {
-                    Building = "Azurro",
-                    Description = "Fietsenstalling",
-                    Latitude = 0f,
-                    Longitude = 0f
-                },
-                StatusChanges = new List<StatusChangeData>
-                {
-                    new StatusChangeData
-                    {
-                        Created = DateTime.UtcNow,
-                        Status = Status.Open.ToString()
-                    }
-                }
-            };
+            ///* REPORT 6 */
+            //sampleReport = new ReportData
+            //{
+            //    Description = "Auto fout geparkeerd. Hij blokeert de toegang tot de fietsenstalling.",
+            //    Created = DateTime.UtcNow,
+            //    Guid = Guid.NewGuid().ToString(),
+            //    Category = "Other",
+            //    Location = new LocationData
+            //    {
+            //        Building = "Azurro",
+            //        Description = "Fietsenstalling",
+            //        Latitude = 0f,
+            //        Longitude = 0f
+            //    },
+            //    StatusChanges = new List<StatusChangeData>
+            //    {
+            //        new StatusChangeData
+            //        {
+            //            Created = DateTime.UtcNow,
+            //            Status = Status.Open.ToString()
+            //        }
+            //    }
+            //};
 
-            context.Reports.AddOrUpdate(sampleReport);
-            /* EIND REPORT 6 */
+            //context.Reports.AddOrUpdate(sampleReport);
+            ///* EIND REPORT 6 */
 
-            /* REPORT 7 */
-            sampleReport = new ReportData
-            {
-                Description = "Er word veel gescholden en geintimideerd.",
-                Created = DateTime.UtcNow.AddMinutes(-25),
-                Guid = Guid.NewGuid().ToString(),
-                Category = "Fight",
-                Location = new LocationData
-                {
-                    Building = "Ocra",
-                    Description = "Kantine",
-                    Latitude = 0f,
-                    Longitude = 0f
-                },
-                StatusChanges = new List<StatusChangeData>
-                {
-                    new StatusChangeData
-                    {
-                        Created = DateTime.UtcNow.AddMinutes(-25),
-                        Status = Status.Open.ToString()
-                    },
-                    new StatusChangeData
-                    {
-                        Created = DateTime.UtcNow.AddMinutes(-15),
-                        Status = Status.InProgress.ToString()
-                    }
-                }
-            };
+            ///* REPORT 7 */
+            //sampleReport = new ReportData
+            //{
+            //    Description = "Er word veel gescholden en geintimideerd.",
+            //    Created = DateTime.UtcNow.AddMinutes(-25),
+            //    Guid = Guid.NewGuid().ToString(),
+            //    Category = "Fight",
+            //    Location = new LocationData
+            //    {
+            //        Building = "Ocra",
+            //        Description = "Kantine",
+            //        Latitude = 0f,
+            //        Longitude = 0f
+            //    },
+            //    StatusChanges = new List<StatusChangeData>
+            //    {
+            //        new StatusChangeData
+            //        {
+            //            Created = DateTime.UtcNow.AddMinutes(-25),
+            //            Status = Status.Open.ToString()
+            //        },
+            //        new StatusChangeData
+            //        {
+            //            Created = DateTime.UtcNow.AddMinutes(-15),
+            //            Status = Status.InProgress.ToString()
+            //        }
+            //    }
+            //};
 
-            sampleRemark = new RemarkData
-            {
-                Created = DateTime.UtcNow.AddMinutes(-15),
-                Description = "Er is met de personen gepraat en en ze zouden verder rustig door gaan met hun pauze.",
-                Report = sampleReport
-            };
+            //sampleRemark = new RemarkData
+            //{
+            //    Created = DateTime.UtcNow.AddMinutes(-15),
+            //    Description = "Er is met de personen gepraat en en ze zouden verder rustig door gaan met hun pauze.",
+            //    Report = sampleReport
+            //};
 
-            context.Reports.AddOrUpdate(sampleReport);
-            context.Remarks.AddOrUpdate(sampleRemark);
-            /* EIND REPORT 7 */
+            //context.Reports.AddOrUpdate(sampleReport);
+            //context.Remarks.AddOrUpdate(sampleRemark);
+            ///* EIND REPORT 7 */
 
-            /* REPORT 8 */
-            sampleReport = new ReportData
-            {
-                Description = "Een vechtpartij! 2 jongens en 2 damens zijn aan het vechten en schelden!",
-                Created = DateTime.UtcNow,
-                Location = new LocationData
-                {
-                    Building = "Ocra",
-                    Description = "Kantine",
-                    Latitude = 100f,
-                    Longitude = 100f
-                },
-                Guid = Guid.NewGuid().ToString(),
-                Category = "Bullying",
-                StatusChanges = new List<StatusChangeData>
-                {
-                    new StatusChangeData
-                    {
-                        Created = DateTime.UtcNow,
-                        Status = Status.Open.ToString()
-                    }
-                }
-            };
+            ///* REPORT 8 */
+            //sampleReport = new ReportData
+            //{
+            //    Description = "Een vechtpartij! 2 jongens en 2 damens zijn aan het vechten en schelden!",
+            //    Created = DateTime.UtcNow,
+            //    Location = new LocationData
+            //    {
+            //        Building = "Ocra",
+            //        Description = "Kantine",
+            //        Latitude = 100f,
+            //        Longitude = 100f
+            //    },
+            //    Guid = Guid.NewGuid().ToString(),
+            //    Category = "Bullying",
+            //    StatusChanges = new List<StatusChangeData>
+            //    {
+            //        new StatusChangeData
+            //        {
+            //            Created = DateTime.UtcNow,
+            //            Status = Status.Open.ToString()
+            //        }
+            //    }
+            //};
 
-            context.Reports.AddOrUpdate(sampleReport);
-            /* EIND REPORT 8 */
+            //context.Reports.AddOrUpdate(sampleReport);
+            ///* EIND REPORT 8 */
 
-            // Set up our accounts
+            //// Set up our accounts
             CreateRoles(context);
             CreateUsers(context);
 

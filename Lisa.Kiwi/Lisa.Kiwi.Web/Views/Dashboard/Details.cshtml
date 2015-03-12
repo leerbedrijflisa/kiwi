@@ -26,7 +26,7 @@
     <dd>@Model.Location.Building - @Model.Location.Description</dd>
 
     <dt>@Resources.PageItems.ResourceManager.GetString("StatusDescription")</dt>
-    <dd>@Resources.Statuses.ResourceManager.GetString("Status" + Model.CurrentStatus.ToString())</dd>
+    <dd>Open</dd>
 
     <dt>@Resources.PageItems.ResourceManager.GetString("VisibleDescription")</dt>
     <dd>@Resources.Statuses.ResourceManager.GetString("Visible" + Model.IsVisible.ToString())</dd>
@@ -35,7 +35,8 @@
 
   </dl>
     @* TODO: Find a better solution than this, as it makes and empty Contact.*@
-  @if (ViewBag.Contact.EmailAddress != null || ViewBag.Contact.Name != null || ViewBag.Contact.PhoneNumber != null)
+  @if (ViewBag.Contact.EmailAddress != null || ViewBag.Contact.Name != null || 
+      ViewBag.Contact.PhoneNumber != null)
   {
     <h2>@Resources.PageItems.ResourceManager.GetString("Contact")</h2>
     <dl>
@@ -49,6 +50,39 @@
       <dd>@ViewBag.Contact.EmailAddress</dd>
     </dl>
   }
+    @*TODO: Please, somebody....fix...this...*@
+    @* TODO: Make it so that Females can steal wallets too *@ 
+
+    @if (Model.Perpetrator.Name != null || Model.Perpetrator.Sex.HasValue || 
+        Model.Perpetrator.SkinColor != null || Model.Perpetrator.Clothing != null 
+        || Model.Perpetrator.MinimumAge != 0 ||
+        Model.Perpetrator.MaximumAge != 0 
+        || Model.Perpetrator.UniqueProperties != null)
+    {
+        <h2>Misdadiger</h2>
+        <dl>
+            <dt>Naam</dt>
+            <dd>@Model.Perpetrator.Name</dd>
+
+            <dt>Geslacht</dt>
+            <dd>@Model.Perpetrator.Sex</dd>
+
+            <dt>Huidskleur</dt>
+            <dd>@Model.Perpetrator.SkinColor</dd>
+
+            <dt>Kleding</dt>
+            <dd>@Model.Perpetrator.Clothing</dd>
+
+            <dt>Minimale Leeftijd</dt>
+            <dd>@Model.Perpetrator.MinimumAge</dd>
+
+            <dt>Maximale Leeftijd</dt>
+            <dd>@Model.Perpetrator.MaximumAge</dd>
+
+            <dt>Uniek kenmerk</dt>
+            <dd>@Model.Perpetrator.UniqueProperties</dd>
+        </dl>
+    }
 
 <hr/>
 
