@@ -61,6 +61,33 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Verdere beschijving:.
+        /// </summary>
+        internal static string Description {
+            get {
+                return ResourceManager.GetString("Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Het wordt verhandelt..
+        /// </summary>
+        internal static string DrugsDealing {
+            get {
+                return ResourceManager.GetString("DrugsDealing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Het wordt gebruikt..
+        /// </summary>
+        internal static string DrugsUsing {
+            get {
+                return ResourceManager.GetString("DrugsUsing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Is het slachtoffer bewusteloos?.
         /// </summary>
         internal static string IsUnconsious {
@@ -84,6 +111,15 @@ namespace Resources {
         internal static string UnconsciousTrue {
             get {
                 return ResourceManager.GetString("UnconsciousTrue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Word de drugs gebruikt of verhandeld:.
+        /// </summary>
+        internal static string UsingOrDealing {
+            get {
+                return ResourceManager.GetString("UsingOrDealing", resourceCulture);
             }
         }
         

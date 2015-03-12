@@ -117,6 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Description" xml:space="preserve">
+    <value>Verdere beschijving:</value>
+  </data>
+  <data name="DrugsDealing" xml:space="preserve">
+    <value>Het wordt verhandelt.</value>
+  </data>
+  <data name="DrugsUsing" xml:space="preserve">
+    <value>Het wordt gebruikt.</value>
+  </data>
   <data name="IsUnconsious" xml:space="preserve">
     <value>Is het slachtoffer bewusteloos?</value>
   </data>
@@ -125,6 +134,9 @@
   </data>
   <data name="UnconsciousTrue" xml:space="preserve">
     <value>Ja</value>
+  </data>
+  <data name="UsingOrDealing" xml:space="preserve">
+    <value>Word de drugs gebruikt of verhandeld:</value>
   </data>
   <data name="WeaponPresentFalse" xml:space="preserve">
     <value>Nee</value>
