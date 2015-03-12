@@ -33,21 +33,21 @@ namespace Lisa.Kiwi.WebApi.Controllers
         }
 
         [AllowAnonymous]
-        public async Task<IHttpActionResult> Post([FromBody] Report report)
+        public async Task<IHttpActionResult> Post([FromBody] JToken json)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
 
-            var reportData = _dataFactory.Create(report);
+            var reportData = _dataFactory.Create(json);
 
             _db.Reports.Add(reportData);
             await _db.SaveChangesAsync();
 
-            report = _modelFactory.Create(reportData);
+            json = _modelFactory.Create(reportData);
             var url = Url.Route("DefaultApi", new { controller = "reports", id = reportData.Id });
-            return Created(url, report);
+            return Created(url, json);
         }
 
         [AllowAnonymous]
