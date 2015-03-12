@@ -144,3 +144,7 @@ body{
 		    border-left: 2px solid rgb(41, 159, 178);
 		    border-right: 2px solid rgb(41, 159, 178);    
 		}
+
+        #Sub {
+            display: none;
+        }

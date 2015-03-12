@@ -12,12 +12,14 @@
         @Html.TextBoxFor(m => m.Name)
     </p>
     <p>
+        <label>@Html.RadioButtonFor(m => m.Sex, 0) Onbekend</label>
         <label>@Html.RadioButtonFor(m => m.Sex, 1) Man</label>
         <label>@Html.RadioButtonFor(m => m.Sex, 2) Vrouw</label>
     </p>
     <p>
         @Html.LabelFor(m => m.SkinColor)
-        @Html.TextBoxFor(m => m.SkinColor)
+        @Html.DropDownListFor(m => m.SkinColor, Model.SkinColors)
+        @Html.ValidationMessageFor(m => m.SkinColor)
     </p>
     <p>
         @Html.LabelFor(m => m.Clothing)

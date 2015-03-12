@@ -3,86 +3,87 @@ var buildingList = [
 	    "name": "Wartburg College",
 	    "lng": 4.679397940635681,
 	    "lat": 51.801330542575634,
-        "value": "Wartburg"
+        "value": "Wartburg College"
 	}, {
-	    "name": "DVC Azzuro",
+	    "name": "DVC Azzurro",
 	    "lng": 4.683828949928284,
 	    "lat": 51.79900173555325,
-	    "value": "Azzuro"
+	    "value": "DVC Azzurro"
 	}, {
 	    "name": "DVC Romboutslaan",
 	    "lng": 4.683378338813782,
 	    "lat": 51.79811927867567,
-        "value": "Romboutslaan"
+        "value": "DVC Romboutslaan"
 	}, {
 	    "name": "Samenwerkingsgebouw",
 	    "lng": 4.682798981666565,
 	    "lat": 51.79846430146596,
 	    "value": "Samenwerkingsgebouw"
 	}, {
-	    "name": "Drechtstedencollege",
+	    "name": "Drechtsteden college",
 	    "lng": 4.681704640388489,
 	    "lat": 51.798484206546384,
-	    "value": "Drechtsteden"
+	    "value": "Drechtsteden college"
 	}, {
 	    "name": "Appartementen",
 	    "lng": 4.680696129798889,
-	    "lat": 51.799180878825474
+	    "lat": 51.799180878825474,
+        "value": "Appartementen"
 	}, {
 	    "name": "Brandweerkazerne",
 	    "lng": 4.681532979011536,
 	    "lat": 51.79763491530391,
 	    "value": "Brandweerkazerne"
 	}, {
-	    "name": "Lilla",
+	    "name": "DVC Lilla",
 	    "lng": 4.680996537208557,
 	    "lat": 51.7982387099403,
-	    "value": "Lilla"
+	    "value": "DVC Lilla"
 	}, {
-	    "name": "Marrone",
+	    "name": "DVC Marrone",
 	    "lng": 4.680749773979187,
 	    "lat": 51.7980330225656,
-	    "value": "Marrone"
+	    "value": "DVC Marrone"
 	}, {
-	    "name": "Rosa",
+	    "name": "DVC Rosa",
 	    "lng": 4.680739045143127,
 	    "lat": 51.79775434785147,
-	    "value": "Rosa"
+	    "value": "DVC Rosa"
 	}, {
-	    "name": "Verde",
+	    "name": "DVC Verde",
 	    "lng": 4.6806639432907104,
 	    "lat": 51.79754202310376,
-	    "value": "Verde"
+	    "value": "DVC Verde"
 	}, {
-	    "name": "Giallo",
+	    "name": "DVC Giallo",
 	    "lng": 4.680610299110413,
 	    "lat": 51.79737614369895,
-	    "value": "Giallo"
+	    "value": "DVC Giallo"
 	}, {
-	    "name": "Indaco",
+	    "name": "DVC Indaco",
 	    "lng": 4.6802884340286255,
 	    "lat": 51.7973628733202,
-	    "value": "Indaco"
+	    "value": "DVC Indaco"
 	}, {
-	    "name": "Bianco",
+	    "name": "DVC Bianco",
 	    "lng": 4.680127501487732,
 	    "lat": 51.79819226448608,
-	    "value": "Bianco"
+	    "value": "DVC Bianco"
 	}, {
-	    "name": "Ocra",
+	    "name": "DVC Ocra",
 	    "lng": 4.679741263389587,
 	    "lat": 51.797774253245315,
-	    "value": "Ocra"
+	    "value": "DVC Ocra"
 	}, {
-	    "name": "Arcobaleno",
+	    "name": "DVC Arcobaleno",
 	    "lng": 4.679580330848694,
 	    "lat": 51.79809273835169,
-	    "value": "Arcobaleno"
+	    "value": "DVC Arcobaleno"
 	}, {
-	    "name": "Celeste",
+	    "name": "DVC Celeste",
 	    "lng": 4.679784178733826,
 	    "lat": 51.798424491278745,
-	    "value": "Celeste"
+	    "value": "DVC Celeste"
 	}, {
 	    "name": "Duurzaamheidsfabriek",
 	    "lng": 4.679387211799622,
@@ -92,15 +93,17 @@ var buildingList = [
 	    "name": "Parkeerplaats Brandweerkazerne",
 	    "lng": 4.681801199913025,
 	    "lat": 51.79740931962874,
+	    "value": "Parkeerplaats Brandweerkazerne"
 	}, {
 	    "name": "Parkeerplaats Ocra",
 	    "lng": 4.678518176078796,
-	    "lat": 51.7980330225656
+	    "lat": 51.7980330225656,
+	    "value": "Parkeerplaats Ocra"
 	}, {
-	    "name": "SchippersinternaatAppartementen",
+	    "name": "Schippersinternaat Appartementen",
 	    "lng": 4.678046107292175,
 	    "lat": 51.79689177234445,
-        "value": "Schippersinternaat"
+        "value": "Schippersinternaat Appartementen"
 	}, {
 	    "name": "Sporthal",
 	    "lng": 4.679022431373596,
@@ -115,7 +118,8 @@ var buildingList = [
 	}, {
 	    "name": "Parkeerplaats Duurzaamheidsfabriek",
 	    "lng": 4.680191874504089,
-	    "lat": 51.79716381717036
+	    "lat": 51.79716381717036,
+	    "value": "Parkeerplaats Duurzaamheidsfabriek"
 	}];
 	
 	var markersArray = [],

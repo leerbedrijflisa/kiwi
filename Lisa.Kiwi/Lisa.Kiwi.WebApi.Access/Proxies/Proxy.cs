@@ -21,13 +21,13 @@ namespace Lisa.Kiwi.WebApi
             {
                 ContractResolver = new CamelCasePropertyNamesContractResolver(),
                 NullValueHandling = NullValueHandling.Ignore,
-                Converters = new List<JsonConverter>
-                {
-                    new StringEnumConverter
-                    {
-                        CamelCaseText = true
-                    }
-                }
+                //Converters = new List<JsonConverter>
+                //{
+                //    new StringEnumConverter
+                //    {
+                //        CamelCaseText = true
+                //    }
+                //}
             };
         }
 
@@ -68,7 +68,14 @@ namespace Lisa.Kiwi.WebApi
 
                 client.BaseAddress = new Uri(_baseUrl);
 
-                var result = await client.PostAsJsonAsync(_resourceUrl, model);
+                var request = new HttpRequestMessage
+                {
+                    Method = HttpMethod.Post,
+                    RequestUri = new Uri(string.Format("{0}/{1}", _baseUrl, _resourceUrl)),
+                    Content = new StringContent(JsonConvert.SerializeObject(model, _settings), Encoding.UTF8, "Application/json")
+                };
+
+                var result = await client.SendAsync(request);
                 var json = await result.Content.ReadAsStringAsync();
 
                 return JsonConvert.DeserializeObject<T>(json, _settings);

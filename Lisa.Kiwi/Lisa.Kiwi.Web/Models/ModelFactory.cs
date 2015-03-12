@@ -13,13 +13,17 @@ namespace Lisa.Kiwi.Web
 
         public void Modify(Report report, LocationViewModel viewModel)
         {
+            if (report.Location == null)
+            {
+                report.Location = new Location();
+            }
             report.Location.Building = viewModel.Building;
             report.Location.Description = viewModel.Location;
         }
 
         public void Modify(Report report, FirstAidViewModel viewModel)
         {
-            report.IsUnconscious = viewModel.IsUnconscious;
+            report.IsUnconscious = viewModel.IsUnconscious == "Ja";
         }
 
         public void Modify(Report report, TheftViewModel viewModel)
@@ -42,6 +46,10 @@ namespace Lisa.Kiwi.Web
         public void Modify(Report report, WeaponViewModel viewModel)
         {
             report.WeaponType = viewModel.Type;
+            if (viewModel.Type == "Other")
+            {
+                report.WeaponType = viewModel.OtherType;
+            }
             report.WeaponLocation = viewModel.Location;
         }
 
@@ -64,6 +72,10 @@ namespace Lisa.Kiwi.Web
 
         public void Modify(Report report, PerpetratorViewModel viewModel)
         {
+            if (report.Perpetrator == null)
+            {
+                report.Perpetrator = new Perpetrator();
+            }
             report.Perpetrator.Name = viewModel.Name;
             report.Perpetrator.Clothing = viewModel.Clothing;
             report.Perpetrator.MinimumAge = viewModel.MinimumAge;
@@ -86,6 +98,10 @@ namespace Lisa.Kiwi.Web
 
         public void Modify(Report report, ContactRequiredViewModel viewModel)
         {
+            if (report.Contact == null)
+            {
+                report.Contact = new Contact();
+            }
             report.Contact.Name = viewModel.Name;
             report.Contact.PhoneNumber = viewModel.PhoneNumber;
             report.Contact.EmailAddress = viewModel.EmailAddress;

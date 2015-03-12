@@ -78,13 +78,7 @@ namespace Lisa.Kiwi.Web
         [HttpPost]
         public async Task<ActionResult> Details(StatusChangeViewModel model)
         {
-            var statusChange = new Report
-            {
-                IsVisible = model.IsVisible,
-                CurrentStatus = (WebApi.Status) Enum.Parse(typeof(WebApi.Status), model.Status)
-            };
-
-            await _reportProxy.PatchAsync(model.Id, statusChange);
+            //await _reportProxy.PatchAsync(model.Id, statusChange);
 
             return RedirectToAction("Details", new {id = model.Id});
         }

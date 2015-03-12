@@ -86,6 +86,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             return View();
         }
 
+        [HttpPost]
 		public async Task<ActionResult> Theft(TheftViewModel viewModel)
         {
             if (!ModelState.IsValid)
@@ -144,7 +145,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 
         public ActionResult Weapons()
         {
-            return View();
+            return View(new WeaponViewModel());
         }
 
         [HttpPost]
@@ -224,7 +225,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 
         public ActionResult Perpetrator()
         {
-            return View();
+            return View(new PerpetratorViewModel());
         }
 
         [HttpPost]
@@ -305,10 +306,10 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
         }
 
         // Fiddler version
-        //private readonly Proxy<Report> _reportProxy = new Proxy<Report>("http://localhost.fiddler:20151/", "/reports/");
+        private readonly Proxy<Report> _reportProxy = new Proxy<Report>("http://localhost.fiddler:20151/", "/reports/");
 
         // Normal version
-        private readonly Proxy<Report> _reportProxy = new Proxy<Report>("http://localhost:20151/", "/reports/");
+        //private readonly Proxy<Report> _reportProxy = new Proxy<Report>("http://localhost:20151/", "/reports/");
 
         private readonly ModelFactory _modelFactory = new ModelFactory();
 	}

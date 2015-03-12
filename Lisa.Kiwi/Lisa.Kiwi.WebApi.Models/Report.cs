@@ -8,18 +8,12 @@ namespace Lisa.Kiwi.WebApi
 		{
 			Created = DateTimeOffset.Now;
 			IsVisible = true;
-			CurrentStatus = Status.Open;
-            Location = new Location();
-            Contact = new Contact();
-            Perpetrator = new Perpetrator();
-
 		}
 
 		public int Id { get; set; }
 		public string Category { get; set; }
 		public bool IsVisible { get; set; }
 		public DateTimeOffset Created { get; set; }
-		public Status CurrentStatus { get; set; }
 		
 		//Shared
 		public string Description { get; set; }

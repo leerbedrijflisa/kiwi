@@ -6,31 +6,11 @@ namespace Lisa.Kiwi.WebApi
 {
     internal class DataFactory
     {
-        public ReportData Create(Report report)
+        public ReportData Create(JToken json)
         {
-            //var location = report.Location != null ? new LocationData
-            //{
-            //    Building = report.Location.Building,
-            //    Description = report.Location.Description
-            //} : new LocationData();
-
-            //var contact = report.Contact != null ? new ContactData
-            //{
-            //    EmailAddress = report.Contact.EmailAddress,
-            //    Name = report.Contact.Name,
-            //    PhoneNumber = report.Contact.PhoneNumber
-            //} : new ContactData();
-
-            var locationData = new LocationData();
-            var contactData = new ContactData();
-
-            return new ReportData
-            {
-                Description = report.Description,
-                Location = locationData,
-                Contact = contactData,
-                Category = report.Category
-            };
+            var reportData = new ReportData();
+            Modify(reportData, json);
+            return reportData;
         }
 
         public void Modify(ReportData reportData, JToken json)
@@ -83,23 +63,6 @@ namespace Lisa.Kiwi.WebApi
             //reportData.StatusChanges.Add(statusChangeData);
         }
 
-        public RemarkData Create(Remark remark)
-        {
-            var remarkData = new RemarkData
-            {
-                Id = remark.Id,
-                Created = remark.Created,
-                Description = remark.Description
-            };
-
-            return remarkData;
-        }
-
-        public void Modify(RemarkData remarkData, JToken json)
-        {
-            remarkData.Description = json.Value<string>("description");
-        }
-
         public VehicleData Create(Vehicle vehicle)
         {
             var vehicleData = new VehicleData
@@ -145,7 +108,7 @@ namespace Lisa.Kiwi.WebApi
         {
             var data = perpetratorData ?? new PerpetratorData();
             data.Name = json["name"] != null ? json.Value<string>("name") : data.Name;
-            data.Sex = json["sex"] != null ? json.Value<int>("sex") : data.Sex;
+            data.Sex = json["sex"] != null ? (SexEnum)json.Value<int>("sex") : data.Sex;
             data.SkinColor = json["skinColor"] != null ? json.Value<string>("skinColor") : data.SkinColor;
             data.Clothing = json["clothing"] != null ? json.Value<string>("clothing") : data.Clothing;
             data.MinimumAge = json["minimumAge"] != null ? json.Value<int>("minimumAge") : data.MinimumAge;

@@ -5,11 +5,10 @@ using System.Text;
 
 namespace Lisa.Kiwi.WebApi
 {
-    public enum GenderEnum
+    public enum SexEnum
     {
         Unknown,
         Male,
         Female
-        
     }
 }
