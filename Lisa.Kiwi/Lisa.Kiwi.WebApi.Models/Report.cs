@@ -8,9 +8,6 @@ namespace Lisa.Kiwi.WebApi
 		{
 			Created = DateTimeOffset.Now;
 			IsVisible = true;
-            Location = new Location();
-            Contact = new Contact();
-            Perpetrator = new Perpetrator();
 
 		}
 
