@@ -2,8 +2,8 @@
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Web.Routing;
-using Lisa.Kiwi.Web.App_GlobalResources.Resources;
 using Lisa.Kiwi.WebApi;
+using Resources;
 
 namespace Lisa.Kiwi.Web
 {
@@ -58,17 +58,17 @@ namespace Lisa.Kiwi.Web
                 new SelectListItem()
                 {
                     Value = "Open",
-                    Text = DisplayNames.StatusOpen
+                    Text = Statuses.StatusOpen
                 },
                 new SelectListItem
                 {
                     Value = "Solved",
-                    Text = DisplayNames.StatusSolved
+                    Text = Statuses.StatusSolved
                 },
                 new SelectListItem
                 {
                     Value = "Transferred",
-                    Text = DisplayNames.StatusTransferred
+                    Text = Statuses.StatusTransferred
                 }
             };
 

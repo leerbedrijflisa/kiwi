@@ -117,97 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ReportContacts" xml:space="preserve">
-    <value>Contacten</value>
+  <data name="Building" xml:space="preserve">
+    <value>Gebouw</value>
   </data>
-  <data name="ReportCreated" xml:space="preserve">
-    <value>Aangemaakt</value>
+  <data name="Category" xml:space="preserve">
+    <value>Categorie</value>
   </data>
-  <data name="ReportDescription" xml:space="preserve">
-    <value>Beschrijving</value>
+  <data name="Contact" xml:space="preserve">
+    <value>Contact</value>
   </data>
-  <data name="ReportIp" xml:space="preserve">
-    <value>Ip</value>
+  <data name="ContactEmail" xml:space="preserve">
+    <value>E-mailadres van de melder (Indien ingevult).</value>
   </data>
-  <data name="ReportLocation" xml:space="preserve">
+  <data name="ContactName" xml:space="preserve">
+    <value>Naam van de melder (Indien ingevult).</value>
+  </data>
+  <data name="ContactPhoneNumber" xml:space="preserve">
+    <value>Telefoonnummer van de melder (Indien ingevult).</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Datum</value>
+  </data>
+  <data name="DateDescription" xml:space="preserve">
+    <value>Tijdstip van de melding.</value>
+  </data>
+  <data name="Location" xml:space="preserve">
     <value>Locatie</value>
   </data>
-  <data name="ReportTime" xml:space="preserve">
-    <value>Tijd</value>
+  <data name="LocationDescription" xml:space="preserve">
+    <value>Locatie en beschrijving.</value>
   </data>
-  <data name="ReportType" xml:space="preserve">
-    <value>Type</value>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
   </data>
-  <data name="ReportTypeBullying" xml:space="preserve">
-    <value>Pesten</value>
+  <data name="StatusDescription" xml:space="preserve">
+    <value>Huidige status van het incident.</value>
   </data>
-  <data name="ReportTypeBurglary" xml:space="preserve">
-    <value>Inbraak</value>
+  <data name="TypeDescription" xml:space="preserve">
+    <value>Het Meldingstype.</value>
   </data>
-  <data name="ReportTypeDigital" xml:space="preserve">
-    <value>Digitaal</value>
+  <data name="VisibleChange" xml:space="preserve">
+    <value>Wilt u dat dit zichtbaar is? (aangevinkt is "Ja", Leeg is "Nee".)</value>
   </data>
-  <data name="ReportTypeDrugs" xml:space="preserve">
-    <value>Drugs</value>
-  </data>
-  <data name="ReportTypeEHBO" xml:space="preserve">
-    <value>EHBO</value>
-  </data>
-  <data name="ReportTypeFighting" xml:space="preserve">
-    <value>Vechtpartij</value>
-  </data>
-  <data name="ReportTypeFire" xml:space="preserve">
-    <value>Brand</value>
-  </data>
-  <data name="ReportTypeIntimidation" xml:space="preserve">
-    <value>Intimidatie</value>
-  </data>
-  <data name="ReportTypeMisc" xml:space="preserve">
-    <value>Overig</value>
-  </data>
-  <data name="ReportTypeNuisance" xml:space="preserve">
-    <value>Overlast</value>
-  </data>
-  <data name="ReportTypeTheft" xml:space="preserve">
-    <value>Diefstal</value>
-  </data>
-  <data name="ReportTypeVehicles" xml:space="preserve">
-    <value>Voertuigen</value>
-  </data>
-  <data name="ReportUserAgent" xml:space="preserve">
-    <value>User Agent</value>
-  </data>
-  <data name="StatusInProgress" xml:space="preserve">
-    <value>Lopende</value>
-  </data>
-  <data name="StatusOpen" xml:space="preserve">
-    <value>Open</value>
-  </data>
-  <data name="StatusSolved" xml:space="preserve">
-    <value>Opgelost</value>
-  </data>
-  <data name="StatusTransferred" xml:space="preserve">
-    <value>Overgedragen</value>
-  </data>
-  <data name="Time" xml:space="preserve">
-    <value>Tijd</value>
-  </data>
-  <data name="DrugsController_Details_Mediacentrum" xml:space="preserve">
-    <value>Mediacentrum</value>
-  </data>
-  <data name="ReportTypeDestruction" xml:space="preserve">
-    <value>Vernieling</value>
-  </data>
-  <data name="Category_FirstAid" xml:space="preserve">
-    <value>EHBO</value>
-  </data>
-  <data name="LogIn" xml:space="preserve">
-    <value>Inloggen</value>
-  </data>
-  <data name="Password" xml:space="preserve">
-    <value>Wachtwoord</value>
-  </data>
-  <data name="UserName" xml:space="preserve">
-    <value>Gebruikersnaam</value>
+  <data name="VisibleDescription" xml:space="preserve">
+    <value>Is dit voor iedereen zichtbaar?</value>
   </data>
 </root>

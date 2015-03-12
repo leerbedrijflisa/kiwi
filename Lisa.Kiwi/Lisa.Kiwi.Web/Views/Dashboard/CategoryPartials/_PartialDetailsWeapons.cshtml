@@ -1,0 +1,18 @@
+﻿
+<dt>Om wat voor wapen gaat het?</dt>
+<dd>
+    @if (Model.WeaponType == null)
+    {
+        @Resources.ReportProperties.ResourceManager.GetString("_null")
+    }
+    @Model.WeaponType
+</dd>
+
+<dt>Waar bevind het wapen zich nu?</dt>
+<dd>
+    @if (Model.WeaponLocation == null)
+    {
+        @Resources.ReportProperties.ResourceManager.GetString("_null")
+    }
+    @Model.WeaponLocation
+</dd>

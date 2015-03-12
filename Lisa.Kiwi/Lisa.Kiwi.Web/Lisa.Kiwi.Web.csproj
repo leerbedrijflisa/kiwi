@@ -31,6 +31,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -139,6 +140,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_GlobalResources\Resources\PageItems.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PageItems.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Resources\ReportProperties.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReportProperties.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Resources\Statuses.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Statuses.resx</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Models\ModelFactory.cs" />
     <Compile Include="App_GlobalResources\Resources\Categories.Designer.cs">
@@ -250,7 +266,7 @@
     <Content Include="Views\Report\Location.cshtml" />
     <Content Include="Views\Report\FirstAid.cshtml" />
     <Content Include="Views\Report\ContactRequired.cshtml" />
-    <Content Include="Views\Dashboard\_PartialDetailsFirstAid.cshtml" />
+    <Content Include="Views\Dashboard\CategoryPartials\_PartialDetailsFirstAid.cshtml" />
     <Content Include="Views\Report\Contact.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Report\Fight.cshtml" />
@@ -261,6 +277,13 @@
     <Content Include="Views\Report\Theft.cshtml" />
     <Content Include="Views\Report\Other.cshtml" />
     <Content Include="Views\Report\Nuisance.cshtml" />
+    <Content Include="Views\Dashboard\CategoryPartials\_PartialDetailsWeapons.cshtml" />
+    <Content Include="Views\Dashboard\CategoryPartials\_PartialDetailsBullying.cshtml" />
+    <Content Include="Views\Dashboard\CategoryPartials\_PartialDetailsDrugs.cshtml" />
+    <Content Include="Views\Dashboard\CategoryPartials\_PartialDetailsFight.cshtml" />
+    <Content Include="Views\Dashboard\CategoryPartials\_PartialDetailsOther.cshtml" />
+    <Content Include="Views\Dashboard\CategoryPartials\_PartialDetailsNuisance.cshtml" />
+    <Content Include="Views\Dashboard\CategoryPartials\_PartialDetailsTheft.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -273,6 +296,18 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>DisplayNames.designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Content Include="App_GlobalResources\Resources\Statuses.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Statuses.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\Resources\ReportProperties.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>ReportProperties.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\Resources\PageItems.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>PageItems.Designer.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Lisa.Kiwi.WebApi.Access\Lisa.Kiwi.WebApi.Access.csproj">

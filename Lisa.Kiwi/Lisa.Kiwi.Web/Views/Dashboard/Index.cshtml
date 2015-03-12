@@ -9,16 +9,17 @@
 <head>
     <title>Leerpark</title>
     <link href="~/Content/main.css" rel="stylesheet" type="text/css">
+    <script src="http://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
 </head>
 
 <body>
-    <table>
+    <table class="sortable">
         <tr>
-            <th>Datum</th>
-            <th>Categorie</th>
-            <th>Gebouw</th>
-            <th>Locatie</th>
-            <th>Status</th>
+            <th>@Resources.PageItems.ResourceManager.GetString("Date")</th>
+            <th>@Resources.PageItems.ResourceManager.GetString("Category")</th>
+            <th>@Resources.PageItems.ResourceManager.GetString("Building")</th>
+            <th>@Resources.PageItems.ResourceManager.GetString("Location")</th>
+            <th>@Resources.PageItems.ResourceManager.GetString("Status")</th>
         </tr>
 
         @foreach (var report in Model)
@@ -28,13 +29,13 @@
                     @report.Created.ToString("ddd d MMM HH:mm")
                 </td>
                 <td>
-                    <a href="@Url.Action("Details", new { id= report.Id })"> 
-                    @Resources.Categories.ResourceManager.GetString(report.Category)
+                    <a href="@Url.Action("Details", new { id= report.Id })">
+                        @Resources.Categories.ResourceManager.GetString(report.Category)
                     </a>
                 </td>
                 <td>@report.Location.Building</td>
                 <td>@report.Location.Description</td>
-                <td>@report.CurrentStatus</td>
+                <td>@*Resources.Statuses.ResourceManager.GetString("Status" + report.CurrentStatus.ToString())*@open</td>
             </tr>
         }
     </table>

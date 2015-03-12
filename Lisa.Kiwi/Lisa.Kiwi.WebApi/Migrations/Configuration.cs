@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -15,36 +16,40 @@ namespace Lisa.Kiwi.WebApi.Migrations
 
         protected override void Seed(KiwiContext context)
         {
-            // TODO: add default accounts
+            /* REPORT 1 */
 
-            ///* REPORT 1 */
             //ReportData sampleReport = new ReportData
             //{
             //    Description = "Een zakje drugs gevonden.",
             //    Created = DateTime.UtcNow.AddDays(-1),
-            //    Location.Building = "Fietsenstalling Azurro",
+            //    Location = new LocationData
+            //    {
+            //        Building = "Azurro",
+            //        Description = "Fietsenstalling",
+            //        Latitude = 0f,
+            //        Longitude = 0f
+            //    },
             //    Guid = Guid.NewGuid().ToString(),
-            //    Category = "Drugs"
-            //};
-
-            //StatusChangeData sampleStatus = new StatusChangeData
-            //{
-            //    Created = DateTime.UtcNow.AddDays(-1),
-            //    Status = Status.Open.ToString()
-            //};
-
-            //VehicleData sampleVehicle = new VehicleData
-            //{
-            //    Brand = "Mazda",
-            //    Color = "Black",
-            //    LicensePlate = "ADE 23 SAD",
-            //    Report = sampleReport
-            //};
-
-            //StatusChangeData sampleStatus2 = new StatusChangeData
-            //{
-            //    Created = DateTime.UtcNow.AddHours(-20),
-            //    Status = Status.Solved.ToString()
+            //    Category = "Drugs",
+            //    Vehicle = new VehicleData
+            //    {
+            //        Brand = "Mazda",
+            //        Color = "Black",
+            //        LicensePlate = "ADE 23 SAD"
+            //    },
+            //    StatusChanges = new List<StatusChangeData>
+            //    {
+            //        new StatusChangeData
+            //        {
+            //            Created = DateTime.UtcNow.AddDays(-1),
+            //            Status = Status.Open.ToString()
+            //        },
+            //        new StatusChangeData
+            //        {
+            //            Created = DateTime.UtcNow.AddHours(-20),
+            //            Status = Status.Solved.ToString()
+            //        }
+            //    }
             //};
 
             //RemarkData sampleRemark = new RemarkData
@@ -55,10 +60,7 @@ namespace Lisa.Kiwi.WebApi.Migrations
             //};
 
             //context.Reports.AddOrUpdate(sampleReport);
-            //context.StatusChanges.AddOrUpdate(sampleStatus);
             //context.Remarks.AddOrUpdate(sampleRemark);
-            //context.StatusChanges.AddOrUpdate(sampleStatus2);
-            //context.Vehicles.AddOrUpdate(sampleVehicle);
             ///* EIND REPORT 1 */
 
             ///* REPORT 2 */
@@ -66,32 +68,32 @@ namespace Lisa.Kiwi.WebApi.Migrations
             //{
             //    Description = "Mijn mobieltje is gestolen.",
             //    Created = DateTime.UtcNow,
-            //    Location = "Lilla",
-            //    Time = DateTime.UtcNow.AddHours(-19),
+            //    Location = new LocationData
+            //    {
+            //        Building = "Lilla",
+            //        Description = "Plaza",
+            //        Latitude = 0f,
+            //        Longitude = 0f
+            //    },
             //    Guid = Guid.NewGuid().ToString(),
-            //    UserAgent = "Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Firefox/31.0",
-            //    Ip = "85.119.106.81",
-            //    Type = "Diefstal"
-            //};
-
-            //sampleStatus = new StatusChangeData
-            //{
-            //    Created = DateTime.UtcNow,
-            //    Status = Status.Open.ToString()
-            //};
-
-            //ContactData sampleContact = new ContactData
-            //{
-            //    Name = "John Doe",
-            //    EmailAddress = "JohnDoe@mydavinci.nl",
-            //    PhoneNumber = "0622885793",
-            //    Report = sampleReport,
-            //    EditToken = Guid.NewGuid()
+            //    Category = "Theft",
+            //    Contact = new ContactData
+            //    {
+            //        Name = "John Doe",
+            //        EmailAddress = "JohnDoe@mydavinci.nl",
+            //        PhoneNumber = "0622885793"
+            //    },
+            //    StatusChanges = new List<StatusChangeData>
+            //    {
+            //        new StatusChangeData
+            //        {
+            //            Created = DateTime.UtcNow,
+            //            Status = Status.Open.ToString()
+            //        }
+            //    }
             //};
 
             //context.Reports.AddOrUpdate(sampleReport);
-            //context.Contacts.AddOrUpdate(sampleContact);
-            //context.StatusChanges.AddOrUpdate(sampleStatus);
             ///* EIND REPORT 2 */
 
             ///* REPORT 3 */
@@ -99,65 +101,54 @@ namespace Lisa.Kiwi.WebApi.Migrations
             //{
             //    Description = "Auto met gebroken ruit.",
             //    Created = DateTime.UtcNow,
-            //    Location = "Achter brandweer parkeerplaats.",
-            //    Time = DateTime.UtcNow,
+            //    Location = new LocationData
+            //    {
+            //        Building = "Brandweer",
+            //        Description = "Parkeerplaats",
+            //        Latitude = 0f,
+            //        Longitude = 0f
+            //    },
             //    Guid = Guid.NewGuid().ToString(),
-            //    UserAgent = "Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Firefox/31.0",
-            //    Ip = "85.119.106.81",
-            //    Type = "Voertuigen"
+            //    Category = "Other",
+            //    StatusChanges = new List<StatusChangeData>
+            //    {
+            //        new StatusChangeData
+            //        {
+            //            Created = DateTime.UtcNow,
+            //            Status = Status.Open.ToString()
+            //        }
+            //    }
             //};
-
-            //sampleStatus = new StatusChangeData
-            //{
-            //    Created = DateTime.UtcNow,
-            //    Status = Status.Open.ToString()
-            //};
-
-
             //context.Reports.AddOrUpdate(sampleReport);
-            //context.StatusChanges.AddOrUpdate(sampleStatus);
             ///* EIND REPORT 3 */
-
-            ///* REPORT 4 */
-            //sampleReport = new ReportData
-            //{
-            //    Description = "BRAND Romboutslaan!!!!!",
-            //    Created = DateTime.UtcNow,
-            //    Location = "ROMBOUTSLAAN",
-            //    Time = DateTime.UtcNow,
-            //    Guid = Guid.NewGuid().ToString(),
-            //    UserAgent = "Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Firefox/31.0",
-            //    Ip = "85.119.106.81",
-            //    Type = "Brand"
-            //};
-
-            //sampleStatus = new StatusChangeData
-            //{
-            //    Created = DateTime.UtcNow,
-            //    Status = Status.Open.ToString()
-            //};
-
-            //context.Reports.AddOrUpdate(sampleReport);
-            //context.StatusChanges.AddOrUpdate(sampleStatus);
-            ///* EIND REPORT 4 */
 
             ///* REPORT 5 */
             //sampleReport = new ReportData
             //{
             //    Description = "Drugs zakjes gevonden",
             //    Created = DateTime.UtcNow.AddHours(-2),
-            //    Location = "Azurro",
-            //    Time = DateTime.UtcNow.AddHours(-3),
+            //    Location = new LocationData
+            //    {
+            //        Building = "Azzurro",
+            //        Description = "Fietsenstalling",
+            //        Latitude = 0f,
+            //        Longitude = 0f
+            //    },
             //    Guid = Guid.NewGuid().ToString(),
-            //    UserAgent = "Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Firefox/31.0",
-            //    Ip = "85.119.106.81",
-            //    Type = "Drugs"
-            //};
-
-            //sampleStatus = new StatusChangeData
-            //{
-            //    Created = DateTime.UtcNow.AddHours(-2),
-            //    Status = Status.Open.ToString()
+            //    Category = "Drugs",
+            //    StatusChanges = new List<StatusChangeData>
+            //    {
+            //        new StatusChangeData
+            //        {
+            //            Created = DateTime.UtcNow.AddHours(-2),
+            //            Status = Status.Open.ToString()
+            //        },
+            //        new StatusChangeData
+            //        {
+            //            Created = DateTime.UtcNow,
+            //            Status = Status.Solved.ToString()
+            //        }
+            //    }
             //};
 
             //sampleRemark = new RemarkData
@@ -167,39 +158,35 @@ namespace Lisa.Kiwi.WebApi.Migrations
             //    Report = sampleReport
             //};
 
-            //sampleStatus2 = new StatusChangeData
-            //{
-            //    Created = DateTime.UtcNow,
-            //    Status = Status.Solved.ToString()
-            //};
-
             //context.Reports.AddOrUpdate(sampleReport);
-            //context.StatusChanges.AddOrUpdate(sampleStatus);
             //context.Remarks.AddOrUpdate(sampleRemark);
-            //context.StatusChanges.AddOrUpdate(sampleStatus2);
             ///* EIND REPORT 5 */
 
             ///* REPORT 6 */
             //sampleReport = new ReportData
             //{
-            //    Description = "Auto fout geparkeerd. Hij blokeerd de toegang tot de fietsenstalling.",
+            //    Description = "Auto fout geparkeerd. Hij blokeert de toegang tot de fietsenstalling.",
             //    Created = DateTime.UtcNow,
-            //    Location = "Azurro fietsenstalling",
-            //    Time = DateTime.UtcNow,
             //    Guid = Guid.NewGuid().ToString(),
-            //    UserAgent = "Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Firefox/31.0",
-            //    Ip = "85.119.106.81",
-            //    Type = "Drugs"
-            //};
-
-            //sampleStatus = new StatusChangeData
-            //{
-            //    Created = DateTime.UtcNow,
-            //    Status = Status.Open.ToString()
+            //    Category = "Other",
+            //    Location = new LocationData
+            //    {
+            //        Building = "Azurro",
+            //        Description = "Fietsenstalling",
+            //        Latitude = 0f,
+            //        Longitude = 0f
+            //    },
+            //    StatusChanges = new List<StatusChangeData>
+            //    {
+            //        new StatusChangeData
+            //        {
+            //            Created = DateTime.UtcNow,
+            //            Status = Status.Open.ToString()
+            //        }
+            //    }
             //};
 
             //context.Reports.AddOrUpdate(sampleReport);
-            //context.StatusChanges.AddOrUpdate(sampleStatus);
             ///* EIND REPORT 6 */
 
             ///* REPORT 7 */
@@ -207,18 +194,28 @@ namespace Lisa.Kiwi.WebApi.Migrations
             //{
             //    Description = "Er word veel gescholden en geintimideerd.",
             //    Created = DateTime.UtcNow.AddMinutes(-25),
-            //    Location = "Ocra kantine",
-            //    Time = DateTime.UtcNow.AddMinutes(-25),
             //    Guid = Guid.NewGuid().ToString(),
-            //    UserAgent = "Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Firefox/31.0",
-            //    Ip = "85.119.106.81",
-            //    Type = "Intimidatie"
-            //};
-
-            //sampleStatus = new StatusChangeData
-            //{
-            //    Created = DateTime.UtcNow.AddMinutes(-25),
-            //    Status = Status.Open.ToString()
+            //    Category = "Fight",
+            //    Location = new LocationData
+            //    {
+            //        Building = "Ocra",
+            //        Description = "Kantine",
+            //        Latitude = 0f,
+            //        Longitude = 0f
+            //    },
+            //    StatusChanges = new List<StatusChangeData>
+            //    {
+            //        new StatusChangeData
+            //        {
+            //            Created = DateTime.UtcNow.AddMinutes(-25),
+            //            Status = Status.Open.ToString()
+            //        },
+            //        new StatusChangeData
+            //        {
+            //            Created = DateTime.UtcNow.AddMinutes(-15),
+            //            Status = Status.InProgress.ToString()
+            //        }
+            //    }
             //};
 
             //sampleRemark = new RemarkData
@@ -228,16 +225,8 @@ namespace Lisa.Kiwi.WebApi.Migrations
             //    Report = sampleReport
             //};
 
-            //sampleStatus2 = new StatusChangeData
-            //{
-            //    Created = DateTime.UtcNow.AddMinutes(-15),
-            //    Status = Status.InProgress.ToString()
-            //};
-
             //context.Reports.AddOrUpdate(sampleReport);
-            //context.StatusChanges.AddOrUpdate(sampleStatus);
             //context.Remarks.AddOrUpdate(sampleRemark);
-            //context.StatusChanges.AddOrUpdate(sampleStatus2);
             ///* EIND REPORT 7 */
 
             ///* REPORT 8 */
@@ -245,29 +234,33 @@ namespace Lisa.Kiwi.WebApi.Migrations
             //{
             //    Description = "Een vechtpartij! 2 jongens en 2 damens zijn aan het vechten en schelden!",
             //    Created = DateTime.UtcNow,
-            //    Location = "Ocra kantine",
-            //    Time = DateTime.UtcNow,
+            //    Location = new LocationData
+            //    {
+            //        Building = "Ocra",
+            //        Description = "Kantine",
+            //        Latitude = 100f,
+            //        Longitude = 100f
+            //    },
             //    Guid = Guid.NewGuid().ToString(),
-            //    UserAgent = "Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Firefox/31.0",
-            //    Ip = "85.119.106.81",
-            //    Type = "Pesten"
-            //};
-
-            //sampleStatus = new StatusChangeData
-            //{
-            //    Created = DateTime.UtcNow,
-            //    Status = Status.Open.ToString()
+            //    Category = "Bullying",
+            //    StatusChanges = new List<StatusChangeData>
+            //    {
+            //        new StatusChangeData
+            //        {
+            //            Created = DateTime.UtcNow,
+            //            Status = Status.Open.ToString()
+            //        }
+            //    }
             //};
 
             //context.Reports.AddOrUpdate(sampleReport);
-            //context.StatusChanges.AddOrUpdate(sampleStatus);
             ///* EIND REPORT 8 */
 
             //// Set up our accounts
-            //CreateRoles(context);
-            //CreateUsers(context);
+            CreateRoles(context);
+            CreateUsers(context);
 
-            //base.Seed(context);
+            base.Seed(context);
         }
 
         private void CreateRoles(KiwiContext context)
@@ -302,7 +295,7 @@ namespace Lisa.Kiwi.WebApi.Migrations
             userManager.Create(dashboardUser2, "helloo2");
 
             // Add a test "hoofdbeveiliger" account (name=hoofdbeveiliger pass=masterpass)
-            var headOfSecurity = new IdentityUser("Hoofdbeveiliging");
+            var headOfSecurity = new IdentityUser("HBD");
             ThrowIfFailed(userManager.Create(headOfSecurity, "masterpass"));
             userManager.AddToRole(headOfSecurity.Id, "Administrator");
         }

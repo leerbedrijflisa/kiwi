@@ -1,0 +1,5 @@
+﻿<dt>Er waren zoveel mensen betrokken:</dt>
+<dd>@Model.FighterCount</dd>
+
+<dt>Was er een wapen bij betrokken?</dt>
+<dd>@Resources.ReportProperties.ResourceManager.GetString("WeaponPresent"+Model.IsWeaponPresent.ToString() ?? "_null")</dd>
