@@ -86,6 +86,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             return View();
         }
 
+        [HttpPost]
 		public async Task<ActionResult> Theft(TheftViewModel viewModel)
         {
             if (!ModelState.IsValid)
