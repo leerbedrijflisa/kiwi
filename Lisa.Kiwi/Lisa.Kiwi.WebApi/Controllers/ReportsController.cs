@@ -71,7 +71,6 @@ namespace Lisa.Kiwi.WebApi.Controllers
 
             report.AnonymousToken = CreateAnonymousToken(report.Id);
             
-
             var url = Url.Route("DefaultApi", new { controller = "reports", id = reportData.Id });
             return Created(url, report);
         }
@@ -107,9 +106,6 @@ namespace Lisa.Kiwi.WebApi.Controllers
         private string CreateAnonymousToken(int reportId)
         {
             var anonymousToken = String.Format("{0}‼{1}", reportId, DateTime.Now.AddMinutes(1));
-            
-            var purpose = "AnonymousToken";
-
             var value = MachineKey.Protect(Encoding.UTF8.GetBytes(anonymousToken));
 
             return HttpServerUtility.UrlTokenEncode(value);

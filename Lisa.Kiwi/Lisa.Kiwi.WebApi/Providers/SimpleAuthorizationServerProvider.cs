@@ -26,18 +26,23 @@ namespace Lisa.Kiwi.WebApi.Providers
 
                 var anonymousToken = Encoding.UTF8.GetString(MachineKey.Unprotect(protectedToken));
 
-                
-
-                int reportId = 0;
-                DateTime time;
-
                 var tokenArray = anonymousToken.Split('‼');
 
-                if (tokenArray.Count() != 2 && Int32.TryParse(tokenArray[0], out reportId) && DateTime.TryParse(tokenArray[1], out time))
+                int reportId = Int32.Parse(tokenArray[0]);
+                DateTime time = DateTime.Parse(tokenArray[1]);
+
+                if (tokenArray.Count() != 2 && reportId != 0 && time != new DateTime())
                 {
                     context.SetError("invalid_grant", "This token is invalid");
                     return;
                 }
+
+                if (time < DateTime.Now)
+                {
+                    context.SetError("invalid_grant", "This token has expired");
+                    return;
+                }
+
                 if (db.Reports.Find(reportId) == null)
                 {
                     context.SetError("invalid_grant", "No report found with that ID");
@@ -49,7 +54,7 @@ namespace Lisa.Kiwi.WebApi.Providers
                 identity.AddClaim(new Claim(ClaimTypes.Role, "Anonymous"));
                 identity.AddClaim(new Claim("reportId", reportId.ToString()));
 
-                context.Validated();
+                context.Validated(identity);
 
             }
         }

@@ -26,7 +26,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             report = await _reportProxy.PostAsync(report);
 
             // anonymous login
-            var anonymousLoginProxy = new AuthenticationProxy("http://localhost.fiddler:20151/", "/api/oauth", String.Empty);
+            var anonymousLoginProxy = new AuthenticationProxy("http://localhost:20151/", "/api/oauth", String.Empty);
 
             var loginResult = await anonymousLoginProxy.LoginAnonymous(report.AnonymousToken);
 
