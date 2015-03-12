@@ -6,31 +6,11 @@ namespace Lisa.Kiwi.WebApi
 {
     internal class DataFactory
     {
-        public ReportData Create(Report report)
+        public ReportData Create(JToken json)
         {
-            //var location = report.Location != null ? new LocationData
-            //{
-            //    Building = report.Location.Building,
-            //    Description = report.Location.Description
-            //} : new LocationData();
-
-            //var contact = report.Contact != null ? new ContactData
-            //{
-            //    EmailAddress = report.Contact.EmailAddress,
-            //    Name = report.Contact.Name,
-            //    PhoneNumber = report.Contact.PhoneNumber
-            //} : new ContactData();
-
-            var locationData = new LocationData();
-            var contactData = new ContactData();
-
-            return new ReportData
-            {
-                Description = report.Description,
-                Location = locationData,
-                Contact = contactData,
-                Category = report.Category
-            };
+            var reportData = new ReportData();
+            Modify(reportData, json);
+            return reportData;
         }
 
         public void Modify(ReportData reportData, JToken json)
