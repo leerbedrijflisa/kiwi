@@ -59,27 +59,27 @@
         Model.Perpetrator.MaximumAge != 0 
         || Model.Perpetrator.UniqueProperties != null)
     {
-        <h2>Misdadiger</h2>
+        <h2>@Resources.Perpetrator.ResourceManager.GetString("Perpetrators")</h2>
         <dl>
-            <dt>Naam</dt>
+            <dt>@Resources.Perpetrator.ResourceManager.GetString("Name")</dt>
             <dd>@Model.Perpetrator.Name</dd>
 
-            <dt>Geslacht</dt>
-            <dd>@Model.Perpetrator.Sex</dd>
+            <dt>@Resources.Perpetrator.ResourceManager.GetString("Sex")</dt>
+            <dd>@Resources.Sex.ResourceManager.GetString(Model.Perpetrator.Sex.ToString())</dd>
 
-            <dt>Huidskleur</dt>
+            <dt>@Resources.Perpetrator.ResourceManager.GetString("SkinColor")</dt>
             <dd>@Model.Perpetrator.SkinColor</dd>
 
-            <dt>Kleding</dt>
+            <dt>@Resources.Perpetrator.ResourceManager.GetString("Clothing")</dt>
             <dd>@Model.Perpetrator.Clothing</dd>
 
-            <dt>Minimale Leeftijd</dt>
+            <dt>@Resources.Perpetrator.ResourceManager.GetString("MinAge")</dt>
             <dd>@Model.Perpetrator.MinimumAge</dd>
 
-            <dt>Maximale Leeftijd</dt>
+            <dt>@Resources.Perpetrator.ResourceManager.GetString("MaxAge")</dt>
             <dd>@Model.Perpetrator.MaximumAge</dd>
 
-            <dt>Uniek kenmerk</dt>
+            <dt>@Resources.Perpetrator.ResourceManager.GetString("UniqueProp")</dt>
             <dd>@Model.Perpetrator.UniqueProperties</dd>
         </dl>
     }
