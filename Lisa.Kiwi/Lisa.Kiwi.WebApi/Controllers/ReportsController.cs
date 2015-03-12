@@ -45,9 +45,9 @@ namespace Lisa.Kiwi.WebApi.Controllers
             _db.Reports.Add(reportData);
             await _db.SaveChangesAsync();
 
-            json = _modelFactory.Create(reportData);
+            var reportJson = _modelFactory.Create(reportData);
             var url = Url.Route("DefaultApi", new { controller = "reports", id = reportData.Id });
-            return Created(url, json);
+            return Created(url, reportJson);
         }
 
         [AllowAnonymous]
