@@ -50,8 +50,9 @@
       <dd>@ViewBag.Contact.EmailAddress</dd>
     </dl>
   }
-    @* TODO: Please, somebody....fix...this...*@
-    @* TODO: Make it so that Females can steal wallets too *@
+    @*TODO: Please, somebody....fix...this...*@
+    @* TODO: Make it so that Females can steal wallets too *@ 
+
     @if (Model.Perpetrator.Name != null || Model.Perpetrator.Sex.ToString() != "Male" || 
         Model.Perpetrator.SkinColor != null || Model.Perpetrator.Clothing != null 
         || Model.Perpetrator.MinimumAge != 0 ||
