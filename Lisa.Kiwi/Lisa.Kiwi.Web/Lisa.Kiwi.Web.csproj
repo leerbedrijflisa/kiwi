@@ -200,6 +200,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\npm.js" />
     <Content Include="Scripts\Location.js" />
+    <Content Include="Scripts\Theft.js" />
     <Content Include="Scripts\Weapons.js" />
     <Content Include="Web.config" />
   </ItemGroup>

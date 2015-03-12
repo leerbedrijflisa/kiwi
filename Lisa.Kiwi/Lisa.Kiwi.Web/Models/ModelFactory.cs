@@ -42,7 +42,7 @@ namespace Lisa.Kiwi.Web
         public void Modify(Report report, WeaponViewModel viewModel)
         {
             report.WeaponType = viewModel.Type;
-            if (viewModel.Type == "Other")
+            if (viewModel.Type == "Anders")
             {
                 report.WeaponType = viewModel.OtherType;
             }
