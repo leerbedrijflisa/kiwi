@@ -50,35 +50,36 @@
       <dd>@ViewBag.Contact.EmailAddress</dd>
     </dl>
   }
-
-    @if (ViewBag.Perpetrators.Name != null || ViewBag.Perpetrators.Sex != null || 
-        ViewBag.Perpetrators.SkinColor != null || ViewBag.Perpetrators.Clothing != null 
-        || ViewBag.Perpetrators.MinimumAge != null ||
-        ViewBag.Perpetrators.MaximumAge != null 
-        || ViewBag.Perpetrators.UniqueProperty != null)
+    @* TODO: Please, somebody....fix...this...*@
+    @* TODO: Make it so that Females can steal wallets too *@
+    @if (Model.Perpetrator.Name != null || Model.Perpetrator.Sex.ToString() != "Male" || 
+        Model.Perpetrator.SkinColor != null || Model.Perpetrator.Clothing != null 
+        || Model.Perpetrator.MinimumAge != 0 ||
+        Model.Perpetrator.MaximumAge != 0 
+        || Model.Perpetrator.UniqueProperties != null)
     {
         <h2>Misdadiger</h2>
         <dl>
             <dt>Naam</dt>
-            <dd>@ViewBag.Perpetrators.Name</dd>
+            <dd>@Model.Perpetrator.Name</dd>
 
             <dt>Geslacht</dt>
-            <dd>@ViewBag.Perpetrators.Sex</dd>
+            <dd>@Model.Perpetrator.Sex</dd>
 
             <dt>Huidskleur</dt>
-            <dd>@ViewBag.Perpetrators.SkinColor</dd>
+            <dd>@Model.Perpetrator.SkinColor</dd>
 
             <dt>Kleding</dt>
-            <dd>@ViewBag.Perpetrators.Clothing</dd>
+            <dd>@Model.Perpetrator.Clothing</dd>
 
             <dt>Minimale Leeftijd</dt>
-            <dd>@ViewBag.Perpetrators.MinimumAge</dd>
+            <dd>@Model.Perpetrator.MinimumAge</dd>
 
             <dt>Maximale Leeftijd</dt>
-            <dd>@ViewBag.Perpetrators.MaximumAge</dd>
+            <dd>@Model.Perpetrator.MaximumAge</dd>
 
             <dt>Uniek kenmerk</dt>
-            <dd>@ViewBag.Perpetrators.UniqueProperty</dd>
+            <dd>@Model.Perpetrator.UniqueProperties</dd>
         </dl>
     }
 
