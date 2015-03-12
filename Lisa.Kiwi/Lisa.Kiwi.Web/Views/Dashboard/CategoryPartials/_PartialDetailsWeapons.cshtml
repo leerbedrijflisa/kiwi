@@ -1,5 +1,5 @@
 ﻿
-<dt>Om wat voor wapen gaat het?</dt>
+<dt>@Resources.ReportProperties.ResourceManager.GetString("WeaponType")</dt>
 <dd>
     @if (Model.WeaponType == null)
     {
@@ -8,7 +8,7 @@
     @Model.WeaponType
 </dd>
 
-<dt>Waar bevind het wapen zich nu?</dt>
+<dt>@Resources.ReportProperties.ResourceManager.GetString("WeaponLocation")</dt>
 <dd>
     @if (Model.WeaponLocation == null)
     {
