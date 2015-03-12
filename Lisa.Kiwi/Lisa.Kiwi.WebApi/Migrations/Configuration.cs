@@ -257,10 +257,10 @@ namespace Lisa.Kiwi.WebApi.Migrations
             ///* EIND REPORT 8 */
 
             //// Set up our accounts
-            //CreateRoles(context);
-            //CreateUsers(context);
+            CreateRoles(context);
+            CreateUsers(context);
 
-            //base.Seed(context);
+            base.Seed(context);
         }
 
         private void CreateRoles(KiwiContext context)
