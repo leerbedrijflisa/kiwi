@@ -8,7 +8,6 @@ namespace Lisa.Kiwi.WebApi
 		{
 			Created = DateTimeOffset.Now;
 			IsVisible = true;
-
 		}
 
 		public int Id { get; set; }
