@@ -306,10 +306,10 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
         }
 
         // Fiddler version
-        //private readonly Proxy<Report> _reportProxy = new Proxy<Report>("http://localhost.fiddler:20151/", "/reports/");
+        private readonly Proxy<Report> _reportProxy = new Proxy<Report>("http://localhost.fiddler:20151/", "/reports/");
 
         // Normal version
-        private readonly Proxy<Report> _reportProxy = new Proxy<Report>("http://localhost:20151/", "/reports/");
+        //private readonly Proxy<Report> _reportProxy = new Proxy<Report>("http://localhost:20151/", "/reports/");
 
         private readonly ModelFactory _modelFactory = new ModelFactory();
 	}
