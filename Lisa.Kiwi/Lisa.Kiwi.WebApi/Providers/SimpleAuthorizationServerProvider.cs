@@ -22,11 +22,11 @@ namespace Lisa.Kiwi.WebApi.Providers
             {
                 var db = new KiwiContext();
 
-                var anonymousTokenByteArray = HttpServerUtility.UrlTokenDecode(context.Parameters.Get("token"));
+                var protectedToken = HttpServerUtility.UrlTokenDecode(context.Parameters.Get("token"));
 
-                //anonymousTokenByteArray = MachineKey.Unprotect(anonymousTokenByteArray);
+                var anonymousToken = Encoding.UTF8.GetString(MachineKey.Unprotect(protectedToken));
 
-                var anonymousToken = Encoding.UTF8.GetString(anonymousTokenByteArray);
+                
 
                 int reportId = 0;
                 DateTime time;

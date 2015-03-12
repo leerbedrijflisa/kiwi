@@ -69,27 +69,8 @@ namespace Lisa.Kiwi.WebApi.Controllers
 
             report = _modelFactory.Create(reportData);
 
-
-            var anonymousToken = String.Format("{0}‼{1}", report.Id, DateTime.Now.AddMinutes(1));
-
+            report.AnonymousToken = CreateAnonymousToken(report.Id);
             
-
-            var purpose = "AnonymousToken";
-
-            //var value = , purpose);
-            var value = Encoding.UTF8.GetBytes(anonymousToken);
-
-            value = MachineKey.Protect(Encoding.UTF8.GetBytes(anonymousToken));
-
-            report.AnonymousToken = HttpServerUtility.UrlTokenEncode(value);
-
-
-
-            var decryptedTokenByteArray = Convert.FromBase64String(report.AnonymousToken);
-
-            decryptedTokenByteArray = MachineKey.Unprotect(decryptedTokenByteArray);
-
-            var decryptedToken = Encoding.UTF8.GetString(decryptedTokenByteArray);
 
             var url = Url.Route("DefaultApi", new { controller = "reports", id = reportData.Id });
             return Created(url, report);
@@ -121,6 +102,17 @@ namespace Lisa.Kiwi.WebApi.Controllers
 
             var report = _modelFactory.Create(reportData);
             return Ok(report);
+        }
+
+        private string CreateAnonymousToken(int reportId)
+        {
+            var anonymousToken = String.Format("{0}‼{1}", reportId, DateTime.Now.AddMinutes(1));
+            
+            var purpose = "AnonymousToken";
+
+            var value = MachineKey.Protect(Encoding.UTF8.GetBytes(anonymousToken));
+
+            return HttpServerUtility.UrlTokenEncode(value);
         }
 
         private readonly KiwiContext _db = new KiwiContext();
