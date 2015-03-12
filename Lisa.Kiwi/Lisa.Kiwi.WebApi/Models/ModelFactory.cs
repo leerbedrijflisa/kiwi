@@ -8,7 +8,7 @@ namespace Lisa.Kiwi.WebApi
     {
         public Report Create(ReportData reportData)
         {
-            return new Report
+            var report = new Report
             {
                 Id = reportData.Id,
                 Category = reportData.Category,
@@ -35,6 +35,7 @@ namespace Lisa.Kiwi.WebApi
                 Contact = reportData.Contact != null ? Create(reportData.Contact) : null,
                 Vehicle = reportData.Vehicle != null ? Create(reportData.Vehicle) : null
             };
+            return report;
         }
 
         public Location Create(LocationData locationData)

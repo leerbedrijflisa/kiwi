@@ -13,7 +13,7 @@ namespace Lisa.Kiwi.Web
         [DisplayName("Word er gedeald of gebruikt?")]
         public string Action { get; set; }
 
-        [DisplayName("Overige informatie")]
+        [DisplayName("Heeft u nog overige informatie die u wilt melden?")]
         public string Description { get; set; }
     }
 }

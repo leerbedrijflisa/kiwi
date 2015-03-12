@@ -8,12 +8,12 @@
 @using (Html.BeginForm())
 {
     <p>
-        @Html.LabelFor(m => m.Description)
-        @Html.TextBoxFor(m => m.Description)
+        <label>@Html.RadioButtonFor(m => m.Action, "Using") Er wordt drugs gebruikt</label><br />
+        <label>@Html.RadioButtonFor(m => m.Action, "Dealing") Er wordt drugs gedeald</label>
     </p>
     <p>
-        <label>@Html.RadioButtonFor(m => m.Action, "Using") Er wordt drugs gebruikt</label>
-        <label>@Html.RadioButtonFor(m => m.Action, "Dealing") Er wordt drugs gedeald</label>
+        @Html.LabelFor(m => m.Description)
+        @Html.TextBoxFor(m => m.Description)
     </p>
     <input type="submit" value="Verzenden" />
 }
