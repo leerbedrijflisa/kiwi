@@ -197,7 +197,6 @@
     <Compile Include="Data\KiwiContext.cs" />
     <Compile Include="Data\LocationData.cs" />
     <Compile Include="Data\PerpetratorData.cs" />
-    <Compile Include="Data\RemarkData.cs" />
     <Compile Include="Data\ReportData.cs" />
     <Compile Include="Data\StatusChangeData.cs" />
     <Compile Include="Data\VehicleData.cs" />

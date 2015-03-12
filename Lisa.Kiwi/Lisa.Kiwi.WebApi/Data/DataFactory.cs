@@ -83,23 +83,6 @@ namespace Lisa.Kiwi.WebApi
             //reportData.StatusChanges.Add(statusChangeData);
         }
 
-        public RemarkData Create(Remark remark)
-        {
-            var remarkData = new RemarkData
-            {
-                Id = remark.Id,
-                Created = remark.Created,
-                Description = remark.Description
-            };
-
-            return remarkData;
-        }
-
-        public void Modify(RemarkData remarkData, JToken json)
-        {
-            remarkData.Description = json.Value<string>("description");
-        }
-
         public VehicleData Create(Vehicle vehicle)
         {
             var vehicleData = new VehicleData
@@ -145,7 +128,7 @@ namespace Lisa.Kiwi.WebApi
         {
             var data = perpetratorData ?? new PerpetratorData();
             data.Name = json["name"] != null ? json.Value<string>("name") : data.Name;
-            data.Sex = json["sex"] != null ? json.Value<int>("sex") : data.Sex;
+            data.Sex = json["sex"] != null ? (SexEnum)json.Value<int>("sex") : data.Sex;
             data.SkinColor = json["skinColor"] != null ? json.Value<string>("skinColor") : data.SkinColor;
             data.Clothing = json["clothing"] != null ? json.Value<string>("clothing") : data.Clothing;
             data.MinimumAge = json["minimumAge"] != null ? json.Value<int>("minimumAge") : data.MinimumAge;

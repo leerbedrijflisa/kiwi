@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Lisa.Kiwi.WebApi;
 
 namespace Lisa.Kiwi.Web
 {
@@ -15,7 +16,7 @@ namespace Lisa.Kiwi.Web
 
         [Required(ErrorMessage = ErrorMessages.RequiredError)]
         [DisplayName("Wat is het geslacht van de dader?")]
-        public int Sex { get; set; }
+        public SexEnum Sex { get; set; }
 
         [DisplayName("Wat is de huidskleur van de dader?")]
         public string SkinColor { get; set; }
