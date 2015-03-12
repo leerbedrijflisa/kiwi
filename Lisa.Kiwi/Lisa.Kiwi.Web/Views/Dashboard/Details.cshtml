@@ -53,7 +53,7 @@
     @*TODO: Please, somebody....fix...this...*@
     @* TODO: Make it so that Females can steal wallets too *@ 
 
-    @if (Model.Perpetrator.Name != null || Model.Perpetrator.Sex.ToString() != "Male" || 
+    @if (Model.Perpetrator.Name != null || Model.Perpetrator.Sex.HasValue || 
         Model.Perpetrator.SkinColor != null || Model.Perpetrator.Clothing != null 
         || Model.Perpetrator.MinimumAge != 0 ||
         Model.Perpetrator.MaximumAge != 0 
