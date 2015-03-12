@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Linq;
 using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
+using System.Web;
+using System.Web.Security;
 using Microsoft.Owin.Security.OAuth;
 
 namespace Lisa.Kiwi.WebApi.Providers
@@ -11,6 +14,44 @@ namespace Lisa.Kiwi.WebApi.Providers
         public override async Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
         {
             context.Validated();
+        }
+
+        public override async Task GrantCustomExtension(OAuthGrantCustomExtensionContext context)
+        {
+            if (context.GrantType == "anonymous")
+            {
+                var db = new KiwiContext();
+
+                var anonymousTokenByteArray = HttpServerUtility.UrlTokenDecode(context.Parameters.Get("token"));
+
+                //anonymousTokenByteArray = MachineKey.Unprotect(anonymousTokenByteArray);
+
+                var anonymousToken = Encoding.UTF8.GetString(anonymousTokenByteArray);
+
+                int reportId = 0;
+                DateTime time;
+
+                var tokenArray = anonymousToken.Split('‼');
+
+                if (tokenArray.Count() != 2 && Int32.TryParse(tokenArray[0], out reportId) && DateTime.TryParse(tokenArray[1], out time))
+                {
+                    context.SetError("invalid_grant", "This token is invalid");
+                    return;
+                }
+                if (db.Reports.Find(reportId) == null)
+                {
+                    context.SetError("invalid_grant", "No report found with that ID");
+                    return;
+                }
+
+                var identity = new ClaimsIdentity(context.Options.AuthenticationType);
+                
+                identity.AddClaim(new Claim(ClaimTypes.Role, "Anonymous"));
+                identity.AddClaim(new Claim("reportId", reportId.ToString()));
+
+                context.Validated();
+
+            }
         }
 
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)

@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using Lisa.Kiwi.Web.Models;
 using Lisa.Kiwi.WebApi;
-using Microsoft.WindowsAzure;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Table;
-using Resources;
+using Lisa.Kiwi.WebApi.Access;
 
 namespace Lisa.Kiwi.Web.Reporting.Controllers
 {
@@ -30,10 +25,19 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             var report = _modelFactory.Create(viewModel);
             report = await _reportProxy.PostAsync(report);
 
-            // TODO: add error handling
+            // anonymous login
+            var anonymousLoginProxy = new AuthenticationProxy("http://localhost.fiddler:20151/", "/api/oauth", String.Empty);
 
+            var loginResult = await anonymousLoginProxy.LoginAnonymous(report.AnonymousToken);
+
+            // TODO: add error handling
+            var authCookie = new HttpCookie("token", String.Format("{0} {1}", loginResult.TokenType, loginResult.Token))
+            {
+                Expires = DateTime.Now.AddMinutes(10)
+            };
             var cookie = new HttpCookie("report", report.Id.ToString());
             Response.SetCookie(cookie);
+            Response.SetCookie(authCookie);
 
             return RedirectToAction("Location");
         }
