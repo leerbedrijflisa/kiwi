@@ -26,12 +26,9 @@
         @Html.TextAreaFor(m => m.Clothing)
     </p>
     <p>
-        @Html.LabelFor(m => m.MinimumAge)
-        @Html.TextBoxFor(m => m.MinimumAge)
-    </p>
-    <p>
-        @Html.LabelFor(m => m.MaximumAge)
-        @Html.TextBoxFor(m => m.MaximumAge)
+        @Html.LabelFor(m => m.AgeRange)
+        @Html.DropDownListFor(m => m.AgeRange, Model.AgeRanges)
+        @Html.ValidationMessageFor(m => m.AgeRange)
     </p>
     <p>
         @Html.LabelFor(m => m.UniqueProperties)

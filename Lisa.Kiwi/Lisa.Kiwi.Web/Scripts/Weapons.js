@@ -1,11 +1,10 @@
 ﻿$(function () {
-    $("#Sub").css("display", "none");
+    $("#Sub").hide();
     $("#Type").change(function () {
-        
-        if ($(this).val() === "Other") {
-            $("#Sub").css("display", "block");
+        if ($(this).val() === "Anders") {
+            $("#Sub").show();
         } else {
-            $("#Sub").css("display", "none");
+            $("#Sub").hide();
         }
     });
 })

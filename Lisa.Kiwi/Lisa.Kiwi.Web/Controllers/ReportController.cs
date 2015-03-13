@@ -1,19 +1,36 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using Lisa.Kiwi.Web.Models;
 using Lisa.Kiwi.WebApi;
-using Microsoft.WindowsAzure;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Table;
-using Resources;
+using Lisa.Kiwi.WebApi.Access;
 
 namespace Lisa.Kiwi.Web.Reporting.Controllers
 {
-	public class ReportController : Controller
-	{
+    public class ReportController : Controller
+    {
+        protected override void OnActionExecuting(ActionExecutingContext context)
+        {
+            // the user can't be authorized on Index Action
+            if (context.ActionDescriptor.ActionName.ToLower() == "index")
+            {
+                _reportProxy = new Proxy<Report>("http://localhost:20151/", "/reports/");
+            }
+            else
+            {
+                var tokenCookie = Request.Cookies["token"];
+                if (tokenCookie != null)
+                {
+                    var tokenType = tokenCookie.Value.Split(' ')[0];
+                    var token = tokenCookie.Value.Split(' ')[1];
+
+                    _reportProxy = new Proxy<Report>("http://localhost:20151", "/reports/", token, tokenType);
+                }
+            }
+
+            base.OnActionExecuting(context);
+        }
+
         public ActionResult Index()
         {
             return View(new CategoryViewModel());
@@ -30,10 +47,19 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             var report = _modelFactory.Create(viewModel);
             report = await _reportProxy.PostAsync(report);
 
-            // TODO: add error handling
+            var loginProxy = new AuthenticationProxy("http://localhost:20151/", "/api/oauth", String.Empty);
 
+            var loginResult = await loginProxy.LoginAnonymous(report.AnonymousToken);
+
+            // TODO: add error handling
+            var authCookie = new HttpCookie("token", String.Join(" ", loginResult.TokenType, loginResult.Token))
+            {
+                Expires = DateTime.Now.AddMinutes(10)
+            };
             var cookie = new HttpCookie("report", report.Id.ToString());
-            Response.SetCookie(cookie);
+
+            Response.Cookies.Add(cookie);
+            Response.Cookies.Add(authCookie);
 
             return RedirectToAction("Location");
         }
@@ -70,15 +96,14 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             {
                 return View(viewModel);
             }
-
             var report = await GetCurrentReport();
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(report.Id, report);
 
             // TODO: add error handling
 
-	        return RedirectToAction("Contact");
-	    }
+            return RedirectToAction("Contact");
+        }
 
 
         public ActionResult Theft()
@@ -306,11 +331,11 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
         }
 
         // Fiddler version
-        //private readonly Proxy<Report> _reportProxy = new Proxy<Report>("http://localhost.fiddler:20151/", "/reports/");
+        //private  Proxy<Report> _reportProxy = new Proxy<Report>("http://localhost.fiddler:20151/", "/reports/");
 
         // Normal version
-        private readonly Proxy<Report> _reportProxy = new Proxy<Report>("http://localhost:20151/", "/reports/");
+        private  Proxy<Report> _reportProxy;
 
         private readonly ModelFactory _modelFactory = new ModelFactory();
-	}
+    }
 }
