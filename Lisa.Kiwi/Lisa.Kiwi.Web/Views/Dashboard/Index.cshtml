@@ -1,8 +1,9 @@
 ﻿@model IEnumerable<Lisa.Kiwi.WebApi.Report>
 @{
     Layout = null;
+    
 }
-
+@using Resources;
 <!doctype html>
 
 <html>
@@ -15,11 +16,11 @@
 <body>
     <table class="sortable">
         <tr>
-            <th>@Resources.PageItems.ResourceManager.GetString("Date")</th>
-            <th>@Resources.PageItems.ResourceManager.GetString("Category")</th>
-            <th>@Resources.PageItems.ResourceManager.GetString("Building")</th>
-            <th>@Resources.PageItems.ResourceManager.GetString("Location")</th>
-            <th>@Resources.PageItems.ResourceManager.GetString("Status")</th>
+            <th>@PageItems.ResourceManager.GetString("Date")</th>
+            <th>@PageItems.ResourceManager.GetString("Category")</th>
+            <th>@PageItems.ResourceManager.GetString("Building")</th>
+            <th>@PageItems.ResourceManager.GetString("Location")</th>
+            <th>@PageItems.ResourceManager.GetString("Status")</th>
         </tr>
 
         @foreach (var report in Model)
@@ -33,9 +34,12 @@
                         @Resources.Categories.ResourceManager.GetString(report.Category)
                     </a>
                 </td>
-                <td>@report.Location.Building</td>
-                <td>@report.Location.Description</td>
-                <td>@*Resources.Statuses.ResourceManager.GetString("Status" + report.CurrentStatus.ToString())*@open</td>
+                @if (report.Location != null)
+                {
+                    <td>@DashboardHelpers.NullCheck(report.Location.Building)</td>
+                    <td>@DashboardHelpers.NullCheck(report.Location.Description)</td>
+                    <td>@*Resources.Statuses.ResourceManager.GetString("Status" + report.CurrentStatus.ToString())*@open</td>
+                }    
             </tr>
         }
     </table>
