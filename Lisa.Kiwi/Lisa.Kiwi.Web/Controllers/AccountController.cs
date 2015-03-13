@@ -41,7 +41,7 @@ namespace Lisa.Kiwi.Web.Controllers
 
             Response.Cookies.Add(tokenCookie);
 
-            // dont store isAdmin value in cookies as it be unsafe
+            // dont store isAdmin value in cookies as it is unsafe
 
             return RedirectToAction("Index", "Dashboard");
         }
