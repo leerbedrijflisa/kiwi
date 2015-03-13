@@ -133,24 +133,6 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nee.
-        /// </summary>
-        internal static string UnconsciousFalse {
-            get {
-                return ResourceManager.GetString("UnconsciousFalse", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Ja.
-        /// </summary>
-        internal static string UnconsciousTrue {
-            get {
-                return ResourceManager.GetString("UnconsciousTrue", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Word de drugs gebruikt of verhandeld:.
         /// </summary>
         internal static string UsingOrDealing {
@@ -178,24 +160,6 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nee.
-        /// </summary>
-        internal static string WeaponPresentFalse {
-            get {
-                return ResourceManager.GetString("WeaponPresentFalse", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Ja.
-        /// </summary>
-        internal static string WeaponPresentTrue {
-            get {
-                return ResourceManager.GetString("WeaponPresentTrue", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Om wat voor wapen is het:.
         /// </summary>
         internal static string WeaponType {
@@ -205,11 +169,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nee.
+        /// </summary>
+        internal static string _False {
+            get {
+                return ResourceManager.GetString("_False", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hier is geen waarde voor ingevult..
         /// </summary>
         internal static string _null {
             get {
                 return ResourceManager.GetString("_null", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ja.
+        /// </summary>
+        internal static string _True {
+            get {
+                return ResourceManager.GetString("_True", resourceCulture);
             }
         }
     }

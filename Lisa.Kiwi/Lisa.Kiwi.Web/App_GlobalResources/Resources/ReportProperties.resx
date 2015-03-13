@@ -141,12 +141,6 @@
   <data name="StolenObject" xml:space="preserve">
     <value>Gestolen Voorwerp:</value>
   </data>
-  <data name="UnconsciousFalse" xml:space="preserve">
-    <value>Nee</value>
-  </data>
-  <data name="UnconsciousTrue" xml:space="preserve">
-    <value>Ja</value>
-  </data>
   <data name="UsingOrDealing" xml:space="preserve">
     <value>Word de drugs gebruikt of verhandeld:</value>
   </data>
@@ -156,16 +150,16 @@
   <data name="WeaponPresent" xml:space="preserve">
     <value>Het betrokken wapen is een:</value>
   </data>
-  <data name="WeaponPresentFalse" xml:space="preserve">
-    <value>Nee</value>
-  </data>
-  <data name="WeaponPresentTrue" xml:space="preserve">
-    <value>Ja</value>
-  </data>
   <data name="WeaponType" xml:space="preserve">
     <value>Om wat voor wapen is het:</value>
   </data>
+  <data name="_False" xml:space="preserve">
+    <value>Nee</value>
+  </data>
   <data name="_null" xml:space="preserve">
     <value>Hier is geen waarde voor ingevult.</value>
+  </data>
+  <data name="_True" xml:space="preserve">
+    <value>Ja</value>
   </data>
 </root>
