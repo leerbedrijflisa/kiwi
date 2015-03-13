@@ -26,8 +26,7 @@ namespace Lisa.Kiwi.Web
         public string Clothing { get; set; }
 
         [DisplayName("Tussen welke leeftijd is de dader?")]
-        public int MinimumAge { get; set; }
-        public int MaximumAge { get; set; }
+        public string AgeRange { get; set; }
 
         [Required(ErrorMessage = ErrorMessages.RequiredError)]
         [DisplayName("Zijn er opvallende dingen te zien aan de dader?")]
@@ -54,6 +53,42 @@ namespace Lisa.Kiwi.Web
                     {
                         Text = "Donker",
                         Value = "Dark"
+                    },
+                };
+            }
+        }
+
+        public IEnumerable<SelectListItem> AgeRanges
+        {
+            get
+            {
+                // TODO: use resource files for Text-field
+                return new SelectListItem[]
+                {
+                    new SelectListItem
+                    {
+                        Text = "12-16",
+                        Value = "12-16"
+                    },
+                    new SelectListItem
+                    {
+                        Text = "16-18",
+                        Value = "16-18"
+                    },
+                    new SelectListItem
+                    {
+                        Text = "18-20",
+                        Value = "18-20"
+                    },
+                    new SelectListItem
+                    {
+                        Text = "20-22",
+                        Value = "20-22"
+                    },
+                    new SelectListItem
+                    {
+                        Text = "22-30",
+                        Value = "22-30"
                     },
                 };
             }

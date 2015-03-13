@@ -1,4 +1,5 @@
 ﻿using Lisa.Kiwi.WebApi;
+using System;
 namespace Lisa.Kiwi.Web
 {
     public class ModelFactory
@@ -76,10 +77,16 @@ namespace Lisa.Kiwi.Web
             {
                 report.Perpetrator = new Perpetrator();
             }
+            if (viewModel.AgeRange != null)
+            {
+                string[] values = viewModel.AgeRange.Split('-');
+                int MinimumAge = Convert.ToInt32(values[0]);
+                int MaximumAge = Convert.ToInt32(values[1]);
+                report.Perpetrator.MinimumAge = MinimumAge;
+                report.Perpetrator.MaximumAge = MaximumAge;
+            }
             report.Perpetrator.Name = viewModel.Name;
             report.Perpetrator.Clothing = viewModel.Clothing;
-            report.Perpetrator.MinimumAge = viewModel.MinimumAge;
-            report.Perpetrator.MaximumAge = viewModel.MaximumAge;
             report.Perpetrator.Sex = viewModel.Sex;
             report.Perpetrator.SkinColor = viewModel.SkinColor;
             report.Perpetrator.UniqueProperties = viewModel.UniqueProperties;
