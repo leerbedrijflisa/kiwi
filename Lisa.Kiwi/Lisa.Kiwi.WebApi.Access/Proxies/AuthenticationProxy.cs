@@ -9,11 +9,10 @@ namespace Lisa.Kiwi.WebApi.Access
 {
     public class AuthenticationProxy
     {
-        public AuthenticationProxy(string baseUrl, string resourceUrl, string userResourceUrl)
+        public AuthenticationProxy(string baseUrl, string resourceUrl)
         {
             _baseUrl = baseUrl;
             _resourceUrl = resourceUrl;
-            _userResourceUrl = userResourceUrl;
         }
 
         public async Task<LoginResult> Login(string userName, string password)
@@ -103,8 +102,5 @@ namespace Lisa.Kiwi.WebApi.Access
 
         private readonly string _baseUrl;
         private readonly string _resourceUrl;
-        private readonly string _userResourceUrl;
     }
-
-    
 }

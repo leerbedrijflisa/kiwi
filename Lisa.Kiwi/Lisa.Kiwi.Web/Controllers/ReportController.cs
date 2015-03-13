@@ -47,7 +47,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             var report = _modelFactory.Create(viewModel);
             report = await _reportProxy.PostAsync(report);
 
-            var loginProxy = new AuthenticationProxy("http://localhost:20151/", "/api/oauth", String.Empty);
+            var loginProxy = new AuthenticationProxy("http://localhost:20151/", "/api/oauth");
 
             var loginResult = await loginProxy.LoginAnonymous(report.AnonymousToken);
 
@@ -112,7 +112,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
         }
 
         [HttpPost]
-		public async Task<ActionResult> Theft(TheftViewModel viewModel)
+        public async Task<ActionResult> Theft(TheftViewModel viewModel)
         {
             if (!ModelState.IsValid)
             {
@@ -127,7 +127,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
         }
 
         public ActionResult Drugs()
-	    {
+        {
             return View();
         }
 
