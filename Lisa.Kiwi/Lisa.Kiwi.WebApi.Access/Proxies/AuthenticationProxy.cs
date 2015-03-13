@@ -68,6 +68,39 @@ namespace Lisa.Kiwi.WebApi.Access
             }
         }
 
+        public async Task<LoginResult> LoginAnonymous(string anonymousToken)
+        {
+            using (var client = new HttpClient())
+            {
+                var result = new LoginResult();
+                client.BaseAddress = new Uri(_baseUrl);
+
+                var response = await client.PostAsync(_resourceUrl, new StringContent(String.Format("grant_type=anonymous&token={0}", anonymousToken)));
+                
+                if (response.StatusCode != HttpStatusCode.OK)
+                {
+                    result.Status = LoginStatus.ConnectionError;
+                    return result;
+                }
+
+                var content = await response.Content.ReadAsStringAsync();
+                var authInfo = JObject.Parse(content);
+                var token = authInfo.SelectToken("access_token");
+
+                if (token == null)
+                {
+                    result.Status = LoginStatus.UserPassMismatch;
+                    return result;
+                }
+
+                result.Token = token.ToString();
+                result.TokenType = authInfo.SelectToken("token_type").ToString();
+                result.TokenExpiresIn = authInfo.SelectToken("expires_in").Value<int>();
+
+                return result;
+            }
+        }
+
         private readonly string _baseUrl;
         private readonly string _resourceUrl;
         private readonly string _userResourceUrl;

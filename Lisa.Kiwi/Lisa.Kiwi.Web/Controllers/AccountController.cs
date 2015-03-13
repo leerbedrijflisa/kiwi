@@ -33,18 +33,13 @@ namespace Lisa.Kiwi.Web.Controllers
                 return View();
             }
 
-            var tokenCookie = new HttpCookie("token", response.Token);
-            var tokenTypeCookie = new HttpCookie("token_type", response.TokenType);
-
-            var dateToSet = DateTime.Now.AddMinutes(response.TokenExpiresIn);
-
-            tokenCookie.Expires = dateToSet;
-            tokenTypeCookie.Expires = dateToSet;
-            tokenCookie.HttpOnly = true;
-            tokenTypeCookie.HttpOnly = true;
+            var tokenCookie = new HttpCookie("token", String.Join(" ", response.TokenType, response.Token))
+            {
+                Expires = DateTime.Now.AddMinutes(response.TokenExpiresIn),
+                HttpOnly = true
+            };
 
             Response.Cookies.Add(tokenCookie);
-            Response.Cookies.Add(tokenTypeCookie);
 
             // dont store isAdmin value in cookies as it be unsafe
 

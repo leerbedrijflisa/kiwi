@@ -14,8 +14,8 @@ namespace Lisa.Kiwi.Web
             var tokenCookie = Request.Cookies["token"];
             if (tokenCookie!= null)
             {
-                var token = Request.Cookies["token"].Value;
-                var tokenType = Request.Cookies["token_type"].Value;
+                var tokenType = tokenCookie.Value.Split(' ')[0];
+                var token = tokenCookie.Value.Split(' ')[1];
 
                 _reportProxy = new Proxy<Report>("http://localhost:20151/", "/reports", token, tokenType);
                 _contactProxy = new Proxy<Contact>("http://localhost:20151/", "/contacts", token, tokenType);

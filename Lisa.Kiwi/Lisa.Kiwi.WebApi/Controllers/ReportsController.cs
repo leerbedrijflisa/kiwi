@@ -1,28 +1,31 @@
 ﻿using System;
 using System.Data.Entity;
 using System.Linq;
+using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
 using System.Web.OData;
+using System.Web.Security;
 using Newtonsoft.Json.Linq;
 
 namespace Lisa.Kiwi.WebApi.Controllers
 {
     [Authorize]
-	public class ReportsController : ApiController
-	{
-		[EnableQuery]
-		public IQueryable<Report> Get()
-		{
-           return GetCompleteReports();
-		}
+    public class ReportsController : ApiController
+    {
+        [EnableQuery]
+        public IQueryable<Report> Get()
+        {
+            return GetCompleteReports();
+        }
 
-        [AllowAnonymous]
         public async Task<IHttpActionResult> Get(int? id)
         {
             var reportData = await GetCompleteReportDatas()
                 .SingleOrDefaultAsync(r => id == r.Id);
-            
+
             if (reportData == null)
             {
                 return NotFound();
@@ -46,13 +49,27 @@ namespace Lisa.Kiwi.WebApi.Controllers
             await _db.SaveChangesAsync();
 
             var reportJson = _modelFactory.Create(reportData);
+
+            reportJson.AnonymousToken = CreateAnonymousToken(reportJson.Id);
+
             var url = Url.Route("DefaultApi", new { controller = "reports", id = reportData.Id });
             return Created(url, reportJson);
         }
 
-        [AllowAnonymous]
         public async Task<IHttpActionResult> Patch(int? id, [FromBody] JToken json)
         {
+            var claimsIdentity = User.Identity as ClaimsIdentity;
+
+            if (claimsIdentity.HasClaim(ClaimTypes.Role, "anonymous"))
+            {
+                var reportIdFromClaim = Int32.Parse(claimsIdentity.Claims.FirstOrDefault(c => c.ValueType == "reportId").Value);
+
+                if (id != reportIdFromClaim)
+                {
+                    return NotFound();
+                }
+            }
+
             var reportData = await _db.Reports.FindAsync(id);
             if (reportData == null)
             {
@@ -82,11 +99,17 @@ namespace Lisa.Kiwi.WebApi.Controllers
                 .ToList()
                 .Select(reportData => _modelFactory.Create(reportData))
                 .AsQueryable();
-        } 
+        }
+        private string CreateAnonymousToken(int reportId)
+        {
+            var anonymousToken = String.Format("{0}‼{1}", reportId, DateTime.Now.AddMinutes(1));
+            var value = MachineKey.Protect(Encoding.UTF8.GetBytes(anonymousToken));
+
+            return HttpServerUtility.UrlTokenEncode(value);
+        }
 
         private readonly KiwiContext _db = new KiwiContext();
         private readonly ModelFactory _modelFactory = new ModelFactory();
         private readonly DataFactory _dataFactory = new DataFactory();
-
-	}
+    }
 }
