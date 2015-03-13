@@ -1,5 +1,5 @@
 ﻿<dt>@Resources.ReportProperties.ResourceManager.GetString("FightCount")</dt>
-<dd>@Model.FighterCount</dd>
+<dd>@DashboardHelpers.NullCheck(Model.FighterCount)</dd>
 
 <dt>@Resources.ReportProperties.ResourceManager.GetString("WeaponPresent")</dt>
-<dd>@Resources.ReportProperties.ResourceManager.GetString("WeaponPresent"+Model.IsWeaponPresent.ToString() ?? "_null")</dd>
+<dd>@DashboardHelpers.NullCheck(Model.IsWeaponPresent)</dd>

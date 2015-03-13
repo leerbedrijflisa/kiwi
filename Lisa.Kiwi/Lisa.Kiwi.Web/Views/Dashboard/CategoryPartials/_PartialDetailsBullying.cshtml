@@ -1,6 +1,6 @@
 ﻿
 <dt>@Resources.ReportProperties.ResourceManager.GetString("BullyVictim")</dt>
-<dd>@Model.Victim</dd>
+<dd>@DashboardHelpers.NullCheck(Model.Victim)</dd>
 
 <dt>@Resources.ReportProperties.ResourceManager.GetString("Description")</dt>
-<dd>@Model.Description</dd>
+<dd>@DashboardHelpers.NullCheck(Model.Description)</dd>

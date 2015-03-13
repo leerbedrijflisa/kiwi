@@ -1,18 +1,8 @@
 ﻿
 
 <dt>@Resources.ReportProperties.ResourceManager.GetString("StolenObject")</dt>
-<dd>
-    @if (Model.StolenObject == null)
-    {
-        @Resources.ReportProperties.ResourceManager.GetString("_null")
-    }
-    @Model.StolenObject</dd>
+<dd>@DashboardHelpers.NullCheck(Model.StolenObject)</dd>
 
 
 <dt>@Resources.ReportProperties.ResourceManager.GetString("DateOfTheft")</dt>
-<dd>
-    @if (Model.DateOfTheft == null)
-    {
-        @Resources.ReportProperties.ResourceManager.GetString("_null")
-    }
-    @Model.DateOfTheft</dd>
+<dd>@DashboardHelpers.NullCheck(Model.DateOfTheft)</dd>
