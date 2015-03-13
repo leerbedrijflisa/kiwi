@@ -1,4 +1,4 @@
 ﻿
 
-<dt>Verdere beschijving:</dt>
-<dd>@Model.Description</dd>
+<dt>@Resources.ReportProperties.ResourceManager.GetString("Description")</dt>
+<dd>@DashboardHelpers.NullCheck(Model.Description)</dd>

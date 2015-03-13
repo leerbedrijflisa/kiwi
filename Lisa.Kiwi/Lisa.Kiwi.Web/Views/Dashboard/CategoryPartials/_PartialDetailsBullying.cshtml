@@ -1,6 +1,6 @@
 ﻿
-<dt>Wie is het slachtoffer?</dt>
-<dd>@Model.Victim</dd>
+<dt>@Resources.ReportProperties.ResourceManager.GetString("BullyVictim")</dt>
+<dd>@DashboardHelpers.NullCheck(Model.Victim)</dd>
 
-<dt>Waar bevind het wapen zich nu?</dt>
-<dd>@Model.Description</dd>
+<dt>@Resources.ReportProperties.ResourceManager.GetString("Description")</dt>
+<dd>@DashboardHelpers.NullCheck(Model.Description)</dd>

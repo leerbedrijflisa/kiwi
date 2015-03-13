@@ -3,6 +3,6 @@
 
 <dd>@Resources.ReportProperties.ResourceManager.GetString("Drugs" + Model.DrugsAction ?? "_null")</dd>
 
-<dt>Verdere beschijving:</dt>
+<dt>@Resources.ReportProperties.ResourceManager.GetString("Description")</dt>
 
-<dd>@Model.Description</dd>
+<dd>@DashboardHelpers.NullCheck(Model.Description)</dd>

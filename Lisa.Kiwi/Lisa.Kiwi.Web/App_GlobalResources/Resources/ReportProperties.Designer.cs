@@ -61,6 +61,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Het slachtoffer is:.
+        /// </summary>
+        internal static string BullyVictim {
+            get {
+                return ResourceManager.GetString("BullyVictim", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tijd van overval:.
+        /// </summary>
+        internal static string DateOfTheft {
+            get {
+                return ResourceManager.GetString("DateOfTheft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Verdere beschijving:.
         /// </summary>
         internal static string Description {
@@ -88,6 +106,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Er waren zoveel mensen betrokken:.
+        /// </summary>
+        internal static string FightCount {
+            get {
+                return ResourceManager.GetString("FightCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Is het slachtoffer bewusteloos?.
         /// </summary>
         internal static string IsUnconsious {
@@ -97,20 +124,11 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nee.
+        ///   Looks up a localized string similar to Gestolen Voorwerp:.
         /// </summary>
-        internal static string UnconsciousFalse {
+        internal static string StolenObject {
             get {
-                return ResourceManager.GetString("UnconsciousFalse", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Ja.
-        /// </summary>
-        internal static string UnconsciousTrue {
-            get {
-                return ResourceManager.GetString("UnconsciousTrue", resourceCulture);
+                return ResourceManager.GetString("StolenObject", resourceCulture);
             }
         }
         
@@ -124,20 +142,38 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nee.
+        ///   Looks up a localized string similar to Hier is het wapen:.
         /// </summary>
-        internal static string WeaponPresentFalse {
+        internal static string WeaponLocation {
             get {
-                return ResourceManager.GetString("WeaponPresentFalse", resourceCulture);
+                return ResourceManager.GetString("WeaponLocation", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ja.
+        ///   Looks up a localized string similar to Het betrokken wapen is een:.
         /// </summary>
-        internal static string WeaponPresentTrue {
+        internal static string WeaponPresent {
             get {
-                return ResourceManager.GetString("WeaponPresentTrue", resourceCulture);
+                return ResourceManager.GetString("WeaponPresent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Om wat voor wapen is het:.
+        /// </summary>
+        internal static string WeaponType {
+            get {
+                return ResourceManager.GetString("WeaponType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nee.
+        /// </summary>
+        internal static string _False {
+            get {
+                return ResourceManager.GetString("_False", resourceCulture);
             }
         }
         
@@ -147,6 +183,15 @@ namespace Resources {
         internal static string _null {
             get {
                 return ResourceManager.GetString("_null", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ja.
+        /// </summary>
+        internal static string _True {
+            get {
+                return ResourceManager.GetString("_True", resourceCulture);
             }
         }
     }
