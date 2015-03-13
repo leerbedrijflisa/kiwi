@@ -50,9 +50,6 @@ namespace Lisa.Kiwi.Web
                 return HttpNotFound();
             }
 
-            //var contacts = await _contactProxy.GetAsync(); // No00O!
-            ViewBag.Contact = report.Contact; //contacts.FirstOrDefault(s => s.Report == report.Id);
-             
             ViewBag.StatusNames = new []
             {
                 new SelectListItem()
