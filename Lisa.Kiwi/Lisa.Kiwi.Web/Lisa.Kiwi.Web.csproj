@@ -145,10 +145,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PageItems.resx</DependentUpon>
     </Compile>
+    <Compile Include="App_GlobalResources\Resources\Perpetrator.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Perpetrator.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_GlobalResources\Resources\ReportProperties.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ReportProperties.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Resources\Sex.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Sex.resx</DependentUpon>
     </Compile>
     <Compile Include="App_GlobalResources\Resources\Statuses.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -205,6 +215,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Scripts\Buildings.json" />
+    <Content Include="App_Code\DashboardHelpers.cshtml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -306,6 +317,14 @@
     <Content Include="App_GlobalResources\Resources\PageItems.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>PageItems.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\Resources\Sex.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Sex.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\Resources\Perpetrator.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Perpetrator.Designer.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

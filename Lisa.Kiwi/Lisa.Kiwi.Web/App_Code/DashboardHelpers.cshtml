@@ -1,0 +1,17 @@
+﻿@helper NullCheck(object content)
+{
+    if(content == null)
+    {
+        <dd>Dit is niet ingevuld.</dd>
+    }
+
+    else if (content.GetType() == typeof(bool))
+    {
+        <dd>@Resources.ReportProperties.ResourceManager.GetString("_" + content.ToString())</dd>
+    }
+
+    else
+    {
+        <dd>@content</dd>
+    }
+}
