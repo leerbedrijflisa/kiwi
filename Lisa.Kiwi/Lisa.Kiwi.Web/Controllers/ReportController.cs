@@ -287,11 +287,29 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 
             return RedirectToAction("Done");
         }
-        public ActionResult Done()
-        {
-            // TODO: show report
 
-            return View();
+        public async Task<ActionResult> Done()
+        {
+            var report = await GetCurrentReport();
+            return View(report);
+        }
+
+        public async Task<ActionResult> Redirect()
+        {
+            string link = null;
+            var report = await GetCurrentReport();
+            switch (report.Category){
+                case "Theft":
+                    link = "Police";
+                    break;
+                case "Bullying":
+                    link = "Help";
+                    break;
+                default:
+                    link = "End";
+                    break;
+            }
+            return View(link);
         }
 
         private async Task<Report> GetCurrentReport()

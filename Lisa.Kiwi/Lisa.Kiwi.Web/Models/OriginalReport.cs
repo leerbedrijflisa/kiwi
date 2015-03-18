@@ -10,7 +10,6 @@ namespace Lisa.Kiwi.Web.Models
 		public OriginalReport()
 		{
 			Created = DateTime.UtcNow;
-			UserAgent = HttpContext.Current.Request.UserAgent;
 		}
 
 		public int Id { get; set; }
@@ -22,12 +21,6 @@ namespace Lisa.Kiwi.Web.Models
 
         [Display(Name = "Gebouw")]
         public string Building { get; set; }
-
-		[StringLength(36)]
-		public string Guid { get; set; }
-
-		public string UserAgent { get; set; }
-		public string Ip { get; set; }
 
 		[Display(Name = "Beschrijving")]
 		[StringLength(1000, ErrorMessage = "De beschrijving mag niet langer zijn dan 1000 karakters.")]
