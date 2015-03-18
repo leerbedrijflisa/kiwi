@@ -36,22 +36,21 @@ namespace Lisa.Kiwi.Web
         {
             get
             {
-                // TODO: use resource files for Text-field
                 return new SelectListItem[]
                 {
                     new SelectListItem
                     {
-                        Text = "Blank",
+                        Text = Resources.SkinColor.Light,
                         Value = "Light"
                     },
                     new SelectListItem
                     {
-                        Text = "Licht getint",
+                        Text = Resources.SkinColor.Tanned,
                         Value = "Tanned"
                     },
                     new SelectListItem
                     {
-                        Text = "Donker",
+                        Text = Resources.SkinColor.Dark,
                         Value = "Dark"
                     },
                 };
@@ -62,7 +61,7 @@ namespace Lisa.Kiwi.Web
         {
             get
             {
-                // TODO: use resource files for Text-field
+                // TODO: use resource files for Text-field, no.
                 return new SelectListItem[]
                 {
                     new SelectListItem

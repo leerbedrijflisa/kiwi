@@ -15,52 +15,51 @@ namespace Lisa.Kiwi.Web
             {
                 return new SelectListItem[]
                 {
-                    // TODO: use resource files for Text-fields
                     new SelectListItem
                     {
-                        Text = "EHBO",
+                        Text = Resources.Categories.FirstAid,
                         Value = "FirstAid"
                     },
 
                     new SelectListItem
                     {
-                        Text = "Vechtpartij",
+                        Text = Resources.Categories.Fight,
                         Value = "Fight"
                     },
 
                     new SelectListItem
                     {
-                        Text = "Wapens",
+                        Text = Resources.Categories.Weapons,
                         Value = "Weapons"
                     },
 
                     new SelectListItem
                     {
-                        Text = "Drugs",
+                        Text = Resources.Categories.Drugs,
                         Value = "Drugs"
                     },
 
                     new SelectListItem
                     {
-                        Text = "Diefstal",
+                        Text = Resources.Categories.Theft,
                         Value = "Theft"
                     },
 
                     new SelectListItem
                     {
-                        Text = "Pesten",
+                        Text = Resources.Categories.Bullying,
                         Value = "Bullying"
                     },
 
                     new SelectListItem
                     {
-                        Text = "Overlast",
+                        Text = Resources.Categories.Nuisance,
                         Value = "Nuisance"
                     },
 
                     new SelectListItem
                     {
-                        Text = "Overige",
+                        Text = Resources.Categories.Other,
                         Value = "Other"
                     }
                 };

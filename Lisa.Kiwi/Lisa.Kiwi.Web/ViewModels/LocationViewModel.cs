@@ -22,158 +22,158 @@ namespace Lisa.Kiwi.Web
         {
             get
             {
-                // TODO: use resource files for Text-field
                 return new SelectListItem[]
                 {
                     new SelectListItem
                     {
-                        Text = "Buiten (Openbare Weg)",
+                        
+                        Text = Resources.Buildings.Buiten,
                         Value = "Buiten"
                     },
 
                     new SelectListItem
                     {
-                        Text = "DVC Lilla",
+                        Text = Resources.Buildings.DVCLilla,
                         Value = "DVC Lilla"
                     },
                     new SelectListItem
                     {
-                        Text = "DVC Marrone",
+                        Text = Resources.Buildings.DVCMarrone,
                         Value = "DVC Marrone"
                     },
                     new SelectListItem
                     {
-                        Text = "DVC Rosa",
+                        Text = Resources.Buildings.DVCRosa,
                         Value = "DVC Rosa"
                     },
                     new SelectListItem
                     {
-                        Text = "DVC Verde",
+                        Text = Resources.Buildings.DVCVerde,
                         Value = "DVC Verde"
                     },
                     new SelectListItem
                     {
-                        Text = "DVC Giallo",
+                        Text = Resources.Buildings.DVCGiallo,
                         Value = "DVC Giallo"
                     },
                     new SelectListItem
                     {
-                        Text = "DVC Indaco",
+                        Text = Resources.Buildings.DVCIndaco,
                         Value = "DVC Indaco"
                     },
                     new SelectListItem
                     {
-                        Text = "DVC Bianco",
+                        Text = Resources.Buildings.DVCBianco,
                         Value = "DVC Bianco"
                     },
                     new SelectListItem
                     {
-                        Text = "DVC Ocra",
+                        Text = Resources.Buildings.DVCOcra,
                         Value = "DVC Ocra"
                     },
                     new SelectListItem
                     {
-                        Text = "DVC Arcobaleno",
+                        Text = Resources.Buildings.DVCArcobaleno,
                         Value = "DVC Arcobaleno"
                     },
                     new SelectListItem
                     {
-                        Text = "DVC Celeste",
+                        Text = Resources.Buildings.DVCCeleste,
                         Value = "DVC Celeste"
                     },
                     new SelectListItem
                     {
-                        Text = "DVC Azzurro",
+                        Text = Resources.Buildings.DVCAzzurro,
                         Value = "DVC Azzurro"
                     },
                     new SelectListItem
                     {
-                        Text = "DVC Romboutslaan 40",
+                        Text = Resources.Buildings.DVCRomboutslaan,
                         Value = "DVC Romboutslaan"
                     },
                     new SelectListItem
                     {
-                        Text = "Duurzaamheidsfabriek",
+                        Text = Resources.Buildings.Duurzaamheidsfabriek,
                         Value = "Duurzaamheidsfabriek"
                     },
                     new SelectListItem
                     {
-                        Text = "Appartementen",
+                        Text = Resources.Buildings.Appartementen,
                         Value = "Appartementen"
                     },
                     new SelectListItem
                     {
-                        Text = "Drechtsteden college",
+                        Text = Resources.Buildings.Drechtstedencollege,
                         Value = "Drechtsteden college"
                     },
                     new SelectListItem
                     {
-                        Text = "Samenwerkingsgebouw",
+                        Text = Resources.Buildings.Samenwerkingsgebouw,
                         Value = "Samenwerkingsgebouw"
                     },
                     new SelectListItem
                     {
-                        Text = "Wartburg college",
+                        Text = Resources.Buildings.Wartburg,
                         Value = "Wartburg"
                     },
                     new SelectListItem
                     {
-                        Text = "Sporthal",
+                        Text = Resources.Buildings.Sporthal,
                         Value = "Sporthal"
                     },
                     new SelectListItem
                     {
-                        Text = "Klimhal",
+                        Text = Resources.Buildings.Klimhal,
                         Value = "Klimhal"
                     },
                     new SelectListItem
                     {
-                        Text = "Ds. Bogermanschool",
+                        Text = Resources.Buildings.Bogermanschool,
                         Value = "Bogermanschool"
                     },
                     new SelectListItem
                     {
-                        Text = "Schippersinternaat",
+                        Text = Resources.Buildings.Schippersinternaat,
                         Value = "Schippersinternaat"
                     },
                     new SelectListItem
                     {
-                        Text = "Brandweerkazerne",
+                        Text = Resources.Buildings.Brandweerkazerne,
                         Value = "Brandweerkazerne"
                     },
                     new SelectListItem
                     {
-                        Text = "Veiligheidsregio",
+                        Text = Resources.Buildings.Veiligheidsregio,
                         Value = "Veiligheidsregio"
                     },
                     new SelectListItem
                     {
-                        Text = "Betaalde parkeerplaats",
+                        Text = Resources.Buildings.Parkeerplaats,
                         Value = "Parkeerplaats"
                     },
                     new SelectListItem
                     {
-                        Text = "DVC media",
+                        Text = Resources.Buildings.DVCmedia,
                         Value = "DVC media"
                     },
                     new SelectListItem
                     {
-                        Text = "Orthodontist",
+                        Text = Resources.Buildings.Orthodontist,
                         Value = "Orthodontist"
                     },
                     new SelectListItem
                     {
-                        Text = "Parkeerplaats Ocra",
+                        Text = Resources.Buildings.ParkeerplaatsOcra,
                         Value = "Parkeerplaats Ocra"
                     },
                     new SelectListItem
                     {
-                        Text = "Parkeerplaats Duurzaamheidsfabriek",
+                        Text = Resources.Buildings.ParkeerplaatsDuurzaamheidsfabriek,
                         Value = "Parkeerplaats Duurzaamheidsfabriek"
                     },
                     new SelectListItem
                     {
-                        Text = "Parkeerplaats Brandweerkazerne",
+                        Text = Resources.Buildings.ParkeerplaatsBrandweerkazerne,
                         Value = "Parkeerplaats Brandweerkazerne"
                     },
                 };
