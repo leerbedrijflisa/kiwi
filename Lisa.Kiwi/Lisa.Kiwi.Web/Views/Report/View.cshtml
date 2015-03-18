@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Lisa.Kiwi.WebApi.Report>
+
+@{
+    ViewBag.Title = "View";
+}
+
+<h2>View</h2>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsVisible)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Created)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsUnconscious)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StolenObject)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateOfTheft)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DrugsAction)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FighterCount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsWeaponPresent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WeaponType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WeaponLocation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Victim)
+        </td>
+    </tr>
+}

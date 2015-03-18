@@ -5,13 +5,13 @@ using Microsoft.WindowsAzure.Storage.Table;
 
 namespace Lisa.Kiwi.Web.Models
 {
-    public class OriginalReport : TableEntity
-    {
-        public OriginalReport()
-        {
-            Created = DateTime.UtcNow;
+	public class OriginalReport : TableEntity
+	{
+		public OriginalReport()
+		{
+			Created = DateTime.UtcNow;
             UserAgent = HttpContext.Current.Request.UserAgent;
-        }
+		}
 
         public int Id { get; set; }
 
@@ -39,6 +39,7 @@ namespace Lisa.Kiwi.Web.Models
         [DataType(DataType.DateTime, ErrorMessage = "Dit is geen geldige tijd. DD-MM-YYYY HH:MM:SS")]
         [Display(Name = "Tijd van incident")]
         public DateTime Time { get; set; }
+
         public int Offset { get; set; }
 
         [Display(Name = "Type melding")]

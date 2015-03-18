@@ -295,6 +295,10 @@
     <Content Include="Views\Dashboard\CategoryPartials\_PartialDetailsOther.cshtml" />
     <Content Include="Views\Dashboard\CategoryPartials\_PartialDetailsNuisance.cshtml" />
     <Content Include="Views\Dashboard\CategoryPartials\_PartialDetailsTheft.cshtml" />
+    <Content Include="Views\Report\View.cshtml" />
+    <Content Include="Views\Report\End.cshtml" />
+    <Content Include="Views\Report\Police.cshtml" />
+    <Content Include="Views\Report\Help.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
