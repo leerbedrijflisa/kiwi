@@ -26,6 +26,7 @@ namespace Lisa.Kiwi.Web
             get
             {
                 // TODO: use resource files for Text-field
+                // Can't make a resource file, atleast a functional one, as this is saved in dutch
                 return new SelectListItem[]
                 {
                     new SelectListItem
