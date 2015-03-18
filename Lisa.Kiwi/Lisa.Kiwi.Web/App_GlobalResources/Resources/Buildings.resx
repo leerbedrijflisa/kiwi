@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Appartementen" xml:space="preserve">
+    <value>Appartementen</value>
+  </data>
+  <data name="Bogermanschool" xml:space="preserve">
+    <value>Ds. Bogermanschool</value>
+  </data>
+  <data name="Brandweerkazerne" xml:space="preserve">
+    <value>Brandweerkazerne</value>
+  </data>
+  <data name="Buiten" xml:space="preserve">
+    <value>Buiten (Openbare Weg)</value>
+  </data>
+  <data name="Drechtstedencollege" xml:space="preserve">
+    <value>Drechtsteden college</value>
+  </data>
+  <data name="Duurzaamheidsfabriek" xml:space="preserve">
+    <value>Duurzaamheidsfabriek</value>
+  </data>
+  <data name="DVCArcobaleno" xml:space="preserve">
+    <value>DVC Arcobaleno</value>
+  </data>
+  <data name="DVCAzzurro" xml:space="preserve">
+    <value>DVC Azzurro</value>
+  </data>
+  <data name="DVCBianco" xml:space="preserve">
+    <value>DVC Bianco</value>
+  </data>
+  <data name="DVCCeleste" xml:space="preserve">
+    <value>DVC Celeste</value>
+  </data>
+  <data name="DVCGiallo" xml:space="preserve">
+    <value>DVC Giallo</value>
+  </data>
+  <data name="DVCIndaco" xml:space="preserve">
+    <value>DVC Indaco</value>
+  </data>
+  <data name="DVCLilla" xml:space="preserve">
+    <value>DVC Lilla</value>
+  </data>
+  <data name="DVCMarrone" xml:space="preserve">
+    <value>DVC Marrone</value>
+  </data>
+  <data name="DVCmedia" xml:space="preserve">
+    <value>DVC media</value>
+  </data>
+  <data name="DVCOcra" xml:space="preserve">
+    <value>DVC Ocra</value>
+  </data>
+  <data name="DVCRomboutslaan" xml:space="preserve">
+    <value>DVC Romboutslaan 40</value>
+  </data>
+  <data name="DVCRosa" xml:space="preserve">
+    <value>DVC Rosa</value>
+  </data>
+  <data name="DVCVerde" xml:space="preserve">
+    <value>DVC Verde</value>
+  </data>
+  <data name="Klimhal" xml:space="preserve">
+    <value>Klimhal</value>
+  </data>
+  <data name="Orthodontist" xml:space="preserve">
+    <value>Orthodontist</value>
+  </data>
+  <data name="Parkeerplaats" xml:space="preserve">
+    <value>Betaalde parkeerplaats</value>
+  </data>
+  <data name="ParkeerplaatsBrandweerkazerne" xml:space="preserve">
+    <value>Parkeerplaats Brandweerkazerne</value>
+  </data>
+  <data name="ParkeerplaatsDuurzaamheidsfabriek" xml:space="preserve">
+    <value>Parkeerplaats Duurzaamheidsfabriek</value>
+  </data>
+  <data name="ParkeerplaatsOcra" xml:space="preserve">
+    <value>Parkeerplaats Ocra</value>
+  </data>
+  <data name="Samenwerkingsgebouw" xml:space="preserve">
+    <value>Samenwerkingsgebouw</value>
+  </data>
+  <data name="Schippersinternaat" xml:space="preserve">
+    <value>Schippersinternaat</value>
+  </data>
+  <data name="Sporthal" xml:space="preserve">
+    <value>Sporthal</value>
+  </data>
+  <data name="Veiligheidsregio" xml:space="preserve">
+    <value>Veiligheidsregio</value>
+  </data>
+  <data name="Wartburg" xml:space="preserve">
+    <value>Wartburg college</value>
+  </data>
+</root>
