@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Lisa.Kiwi.WebApi;
@@ -13,8 +14,19 @@ namespace Lisa.Kiwi.Web
             var tokenCookie = Request.Cookies["token"];
             if (tokenCookie!= null)
             {
-                var tokenType = tokenCookie.Value.Split(' ')[0];
-                var token = tokenCookie.Value.Split(' ')[1];
+                string tokenType;
+                string token;
+
+                try
+                {
+                    tokenType = tokenCookie.Value.Split(' ')[0];
+                    token = tokenCookie.Value.Split(' ')[1];
+                }
+                catch (IndexOutOfRangeException e)
+                {
+                    filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary { { "controller", "Account" }, { "action", "Login" } });
+                    return;
+                }
 
                 _reportProxy = new Proxy<Report>("http://localhost:20151/", "/reports", token, tokenType);
             }
