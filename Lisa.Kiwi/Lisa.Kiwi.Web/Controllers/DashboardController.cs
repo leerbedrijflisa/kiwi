@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Lisa.Kiwi.WebApi;
@@ -18,7 +17,6 @@ namespace Lisa.Kiwi.Web
                 var token = tokenCookie.Value.Split(' ')[1];
 
                 _reportProxy = new Proxy<Report>("http://localhost:20151/", "/reports", token, tokenType);
-                _contactProxy = new Proxy<Contact>("http://localhost:20151/", "/contacts", token, tokenType);
             }
             else
             {
@@ -83,7 +81,6 @@ namespace Lisa.Kiwi.Web
             return RedirectToAction("Details", new {id = model.Id});
         }
 
-        private Proxy<Report> _reportProxy;
-        private Proxy<Contact> _contactProxy;
+        private Proxy<Report> _reportProxy = new Proxy<Report>("http://localhost:20151/", "/reports/");
     }
 }

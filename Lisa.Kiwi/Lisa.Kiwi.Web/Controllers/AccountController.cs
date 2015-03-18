@@ -22,7 +22,7 @@ namespace Lisa.Kiwi.Web.Controllers
                 return View();
             }
 
-            var authProxy = new AuthenticationProxy("http://localhost:20151", "/api/oauth", "/api/users/");
+            var authProxy = new AuthenticationProxy("http://localhost:20151", "/api/oauth");
 
             var response = await authProxy.Login(model.UserName, model.Password);
 
@@ -41,7 +41,7 @@ namespace Lisa.Kiwi.Web.Controllers
 
             Response.Cookies.Add(tokenCookie);
 
-            // dont store isAdmin value in cookies as it be unsafe
+            // dont store isAdmin value in cookies as it is unsafe
 
             return RedirectToAction("Index", "Dashboard");
         }
