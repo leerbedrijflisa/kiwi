@@ -1,15 +1,15 @@
 ﻿@model OtherViewModel
 
 @{
-    ViewBag.Title = "Other";
+	ViewBag.Title = "Other";
 }
 
 <h2>Other</h2>
 @using (Html.BeginForm())
 {
-    <p>
-        @Html.LabelFor(m => m.Description)
-        @Html.TextBoxFor(m => m.Description)
-    </p>
-    <input type="submit" value="Verzenden" />
+	<p>
+		@Html.LabelFor(m => m.Description)
+		@Html.TextBoxFor(m => m.Description)
+	</p>
+	<input type="submit" value="Verzenden" />
 }

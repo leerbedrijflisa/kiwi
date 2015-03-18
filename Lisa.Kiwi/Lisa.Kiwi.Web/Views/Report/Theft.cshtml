@@ -1,23 +1,23 @@
 ﻿@model TheftViewModel
 
 @section Scripts{
-    <script src="~/Scripts/Theft.js"></script>
+	<script src="~/Scripts/Theft.js"></script>
 }
 
 @{
-    ViewBag.Title = "Theft";
+	ViewBag.Title = "Theft";
 }
 
 <h2>Theft</h2>
 @using (Html.BeginForm())
 {
-    <p>
-        @Html.LabelFor(m => m.StolenObject)
-        @Html.TextBoxFor(m => m.StolenObject)
-    </p>
-    <p>
-        @Html.LabelFor(m => m.DateOfTheft)
-        @Html.TextBoxFor(m => m.DateOfTheft)
-    </p>
-    <input type="submit" value="Verzenden" />
+	<p>
+		@Html.LabelFor(m => m.StolenObject)
+		@Html.TextBoxFor(m => m.StolenObject)
+	</p>
+	<p>
+		@Html.LabelFor(m => m.DateOfTheft)
+		@Html.TextBoxFor(m => m.DateOfTheft)
+	</p>
+	<input type="submit" value="Verzenden" />
 }

@@ -1,40 +1,39 @@
 ﻿@model PerpetratorViewModel
 
 @{
-    ViewBag.Title = "title";
+	ViewBag.Title = "title";
 }
 
 <h2>title</h2>
 @using (Html.BeginForm())
 {
-    <p>
-        @Html.LabelFor(m => m.Name)
-        @Html.TextBoxFor(m => m.Name)
-    </p>
-    <p>
-        <label>@Html.RadioButtonFor(m => m.Sex, 0) Onbekend</label>
-        <label>@Html.RadioButtonFor(m => m.Sex, 1) Man</label>
-        <label>@Html.RadioButtonFor(m => m.Sex, 2) Vrouw</label>
-    </p>
-    <p>
-        @Html.LabelFor(m => m.SkinColor)
-        @Html.DropDownListFor(m => m.SkinColor, Model.SkinColors)
-        @Html.ValidationMessageFor(m => m.SkinColor)
-    </p>
-    <p>
-        @Html.LabelFor(m => m.Clothing)
-        @Html.TextAreaFor(m => m.Clothing)
-    </p>
-    <p>
-        @Html.LabelFor(m => m.AgeRange)
-        @Html.DropDownListFor(m => m.AgeRange, Model.AgeRanges)
-        @Html.ValidationMessageFor(m => m.AgeRange)
-    </p>
-    <p>
-        @Html.LabelFor(m => m.UniqueProperties)
-        @Html.TextAreaFor(m => m.UniqueProperties)
-    </p>
+	<p>
+		@Html.LabelFor(m => m.Name)
+		@Html.TextBoxFor(m => m.Name)
+	</p>
+	<p>
+		<label>@Html.RadioButtonFor(m => m.Sex, 0) Onbekend</label>
+		<label>@Html.RadioButtonFor(m => m.Sex, 1) Man</label>
+		<label>@Html.RadioButtonFor(m => m.Sex, 2) Vrouw</label>
+	</p>
+	<p>
+		@Html.LabelFor(m => m.SkinColor)
+		@Html.DropDownListFor(m => m.SkinColor, Model.SkinColors)
+		@Html.ValidationMessageFor(m => m.SkinColor)
+	</p>
+	<p>
+		@Html.LabelFor(m => m.Clothing)
+		@Html.TextAreaFor(m => m.Clothing)
+	</p>
+	<p>
+		@Html.LabelFor(m => m.AgeRange)
+		@Html.DropDownListFor(m => m.AgeRange, Model.AgeRanges)
+		@Html.ValidationMessageFor(m => m.AgeRange)
+	</p>
+	<p>
+		@Html.LabelFor(m => m.UniqueProperties)
+		@Html.TextAreaFor(m => m.UniqueProperties)
+	</p>
 
-
-    <input type="submit" value="Verzenden" />
+	<input type="submit" value="Verzenden" />
 }
