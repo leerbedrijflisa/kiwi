@@ -1,30 +1,30 @@
 ﻿@model WeaponViewModel
 
 @section Scripts{
-    <script src="~/Scripts/Weapons.js"></script>
+	<script src="~/Scripts/Weapons.js"></script>
 }
 
 @{
-    ViewBag.Title = "title";
+	ViewBag.Title = "title";
 }
 
 <h2>title</h2>
 @using (Html.BeginForm())
 {
-    <p>
-        @Html.LabelFor(m => m.Type)
-        @Html.DropDownListFor(m => m.Type, Model.Types)
-        @Html.ValidationMessageFor(m => m.Type)
-    </p>
-    <p id="Sub">
-        <label>Wat voor wapen is het dan?</label>
-        @Html.TextBoxFor(m => m.OtherType)
-        @Html.ValidationMessageFor(m => m.OtherType)
-    </p>
-    <p>
-        @Html.LabelFor(m => m.Location)
-        @Html.TextBoxFor(m => m.Location)
-        @Html.ValidationMessageFor(m => m.Location)
-    </p>
-    <input type="submit" value="Verzenden" />
+	<p>
+		@Html.LabelFor(m => m.Type)
+		@Html.DropDownListFor(m => m.Type, Model.Types)
+		@Html.ValidationMessageFor(m => m.Type)
+	</p>
+	<p id="Sub">
+		<label>Wat voor wapen is het dan?</label>
+		@Html.TextBoxFor(m => m.OtherType)
+		@Html.ValidationMessageFor(m => m.OtherType)
+	</p>
+	<p>
+		@Html.LabelFor(m => m.Location)
+		@Html.TextBoxFor(m => m.Location)
+		@Html.ValidationMessageFor(m => m.Location)
+	</p>
+	<input type="submit" value="Verzenden" />
 }

@@ -47,7 +47,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             var report = _modelFactory.Create(viewModel);
             report = await _reportProxy.PostAsync(report);
 
-            var loginProxy = new AuthenticationProxy("http://localhost:20151/", "/api/oauth", String.Empty);
+            var loginProxy = new AuthenticationProxy("http://localhost:20151/", "/api/oauth");
 
             var loginResult = await loginProxy.LoginAnonymous(report.AnonymousToken);
 
@@ -90,8 +90,8 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
         }
 
         [HttpPost]
-	    public async Task<ActionResult> FirstAid(FirstAidViewModel viewModel)
-	    {
+        public async Task<ActionResult> FirstAid(FirstAidViewModel viewModel)
+        {
             if (!ModelState.IsValid)
             {
                 return View(viewModel);
@@ -112,7 +112,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
         }
 
         [HttpPost]
-		public async Task<ActionResult> Theft(TheftViewModel viewModel)
+        public async Task<ActionResult> Theft(TheftViewModel viewModel)
         {
             if (!ModelState.IsValid)
             {
@@ -127,7 +127,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
         }
 
         public ActionResult Drugs()
-	    {
+        {
             return View();
         }
 
@@ -188,7 +188,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             return RedirectToAction("Perpetrator");
         }
 
-		public ActionResult Nuisance()
+        public ActionResult Nuisance()
         {
             return View();
         }
@@ -216,7 +216,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
         [HttpPost]
         public async Task<ActionResult> Bullying(BullyingViewModel viewModel)
         {
-        	if (!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return View(viewModel);
             }
@@ -236,7 +236,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
         [HttpPost]
         public async Task<ActionResult> Other(OtherViewModel viewModel)
         {
-        	if (!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return View(viewModel);
             }
@@ -256,11 +256,11 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
         [HttpPost]
         public async Task<ActionResult> Perpetrator(PerpetratorViewModel viewModel)
         {
-        	if (!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return View(viewModel);
             }
-        	
+
             var report = await GetCurrentReport();
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(report.Id, report);
@@ -312,11 +312,29 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 
             return RedirectToAction("Done");
         }
-        public ActionResult Done()
-        {
-            // TODO: show report
 
-            return View();
+        public async Task<ActionResult> Done()
+        {
+            var report = await GetCurrentReport();
+            return View(report);
+        }
+
+        public async Task<ActionResult> Redirect()
+        {
+            string link = null;
+            var report = await GetCurrentReport();
+            switch (report.Category){
+                case "Theft":
+                    link = "Police";
+                    break;
+                case "Bullying":
+                    link = "Help";
+                    break;
+                default:
+                    link = "End";
+                    break;
+            }
+            return View(link);
         }
 
         private async Task<Report> GetCurrentReport()

@@ -61,7 +61,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Gebouw.
+        ///   Looks up a localized string similar to Gebouw:.
         /// </summary>
         internal static string Building {
             get {
@@ -70,7 +70,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Categorie.
+        ///   Looks up a localized string similar to Categorie:.
         /// </summary>
         internal static string Category {
             get {
@@ -79,7 +79,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Contact.
+        ///   Looks up a localized string similar to Contact:.
         /// </summary>
         internal static string Contact {
             get {
@@ -88,7 +88,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to E-mailadres van de melder (Indien ingevult)..
+        ///   Looks up a localized string similar to E-mailadres van de melder (Indien ingevult):.
         /// </summary>
         internal static string ContactEmail {
             get {
@@ -97,7 +97,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Naam van de melder (Indien ingevult)..
+        ///   Looks up a localized string similar to Naam van de melder (Indien ingevult):.
         /// </summary>
         internal static string ContactName {
             get {
@@ -106,7 +106,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Telefoonnummer van de melder (Indien ingevult)..
+        ///   Looks up a localized string similar to Telefoonnummer van de melder (Indien ingevult):.
         /// </summary>
         internal static string ContactPhoneNumber {
             get {
@@ -115,7 +115,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Datum.
+        ///   Looks up a localized string similar to Datum:.
         /// </summary>
         internal static string Date {
             get {
@@ -124,7 +124,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tijdstip van de melding..
+        ///   Looks up a localized string similar to Tijdstip van de melding:.
         /// </summary>
         internal static string DateDescription {
             get {
@@ -133,7 +133,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Locatie.
+        ///   Looks up a localized string similar to Locatie:.
         /// </summary>
         internal static string Location {
             get {
@@ -142,7 +142,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Locatie en beschrijving..
+        ///   Looks up a localized string similar to Locatie en beschrijving:.
         /// </summary>
         internal static string LocationDescription {
             get {
@@ -151,7 +151,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Status.
+        ///   Looks up a localized string similar to Status:.
         /// </summary>
         internal static string Status {
             get {
@@ -160,7 +160,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Huidige status van het incident..
+        ///   Looks up a localized string similar to Huidige status van het incident:.
         /// </summary>
         internal static string StatusDescription {
             get {
@@ -169,7 +169,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Het Meldingstype..
+        ///   Looks up a localized string similar to Het Meldingstype:.
         /// </summary>
         internal static string TypeDescription {
             get {

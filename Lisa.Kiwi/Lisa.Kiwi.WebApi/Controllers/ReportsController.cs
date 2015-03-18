@@ -58,7 +58,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
 
         public async Task<IHttpActionResult> Patch(int? id, [FromBody] JToken json)
         {
-            var claimsIdentity = User.Identity as ClaimsIdentity;
+            var claimsIdentity = (ClaimsIdentity) User.Identity;
 
             if (claimsIdentity.HasClaim(ClaimTypes.Role, "anonymous"))
             {

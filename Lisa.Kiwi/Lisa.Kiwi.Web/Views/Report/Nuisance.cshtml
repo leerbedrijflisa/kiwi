@@ -1,16 +1,15 @@
 ﻿@model NuisanceViewModel
 
 @{
-    ViewBag.Title = "Nuisance";
+	ViewBag.Title = "Nuisance";
 }
 
 <h2>Nuisance</h2>
 @using (Html.BeginForm())
 {
-    <p>
-        @Html.LabelFor(m => m.Description)
-        @Html.TextBoxFor(m => m.Description)
-    </p>
-    <input type="submit" value="Verzenden" />
+	<p>
+		@Html.LabelFor(m => m.Description)
+		@Html.TextBoxFor(m => m.Description)
+	</p>
+	<input type="submit" value="Verzenden" />
 }
-

@@ -1,15 +1,13 @@
-﻿using System.Collections.Generic;
-using System.Web.Http;
+﻿using System.Web.Http;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 
 namespace Lisa.Kiwi.WebApi
 {
-	public static class WebApiConfig
-	{
-		public static void Register(HttpConfiguration config)
-		{
+    public static class WebApiConfig
+    {
+        public static void Register(HttpConfiguration config)
+        {
             config.Formatters.JsonFormatter.SerializerSettings = new JsonSerializerSettings
             {
                 ContractResolver = new CamelCasePropertyNamesContractResolver(),
@@ -31,6 +29,6 @@ namespace Lisa.Kiwi.WebApi
                 routeTemplate: "{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-		}
-	}
+        }
+    }
 }

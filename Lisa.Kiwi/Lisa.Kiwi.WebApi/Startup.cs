@@ -22,30 +22,30 @@ namespace Lisa.Kiwi.WebApi
             };
             app.MapSignalR("/signalr/signalr", signalRConfig);
 
-			var config = new HttpConfiguration();
-			Database.SetInitializer<KiwiContext>(null);
+            var config = new HttpConfiguration();
+            Database.SetInitializer<KiwiContext>(null);
 
-			ConfigureOAuth(app);
+            ConfigureOAuth(app);
 
-			// Set up Owin to use the WebAPI's config
-			WebApiConfig.Register(config);
-			app.UseCors(CorsOptions.AllowAll);
-	        app.UseWebApi(config);
+            // Set up Owin to use the WebAPI's config
+            WebApiConfig.Register(config);
+            app.UseCors(CorsOptions.AllowAll);
+            app.UseWebApi(config);
         }
 
-		private static void ConfigureOAuth(IAppBuilder app)
-		{
-			var serverOptions = new OAuthAuthorizationServerOptions()
-			{
-				AllowInsecureHttp = true,
-				TokenEndpointPath = new PathString("/api/oauth"),
-				AccessTokenExpireTimeSpan = TimeSpan.FromHours(2),
-				Provider = new SimpleAuthorizationServerProvider()
-			};
+        private static void ConfigureOAuth(IAppBuilder app)
+        {
+            var serverOptions = new OAuthAuthorizationServerOptions()
+            {
+                AllowInsecureHttp = true,
+                TokenEndpointPath = new PathString("/api/oauth"),
+                AccessTokenExpireTimeSpan = TimeSpan.FromHours(2),
+                Provider = new SimpleAuthorizationServerProvider()
+            };
 
-			// Token Generation
-			app.UseOAuthAuthorizationServer(serverOptions);
-			app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
-		}
+            // Token Generation
+            app.UseOAuthAuthorizationServer(serverOptions);
+            app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
+        }
     }
 }

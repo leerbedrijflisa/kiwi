@@ -1,8 +1,4 @@
-﻿using System;
-using System.Linq;
-using Lisa.Kiwi.WebApi.Models;
-
-namespace Lisa.Kiwi.WebApi
+﻿namespace Lisa.Kiwi.WebApi
 {
     internal class ModelFactory
     {

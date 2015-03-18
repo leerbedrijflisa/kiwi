@@ -1,17 +1,15 @@
 ﻿@helper NullCheck(object content)
 {
-    if(content == null)
-    {
-        <dd>@Resources.ReportProperties.ResourceManager.GetString("_null")</dd>
-    }
-
-    else if (content.GetType() == typeof(bool))
-    {
-        <dd>@Resources.ReportProperties.ResourceManager.GetString("_" + content.ToString())</dd>
-    }
-
-    else
-    {
-        <dd>@content</dd>
-    }
+	if (content == null)
+	{
+		<dd>@Resources.ReportProperties.ResourceManager.GetString("_null")</dd>
+	}
+	else if (content.GetType() == typeof(bool))
+	{
+		<dd>@Resources.ReportProperties.ResourceManager.GetString("_" + content.ToString())</dd>
+	}
+	else
+	{
+		<dd>@content</dd>
+	}
 }

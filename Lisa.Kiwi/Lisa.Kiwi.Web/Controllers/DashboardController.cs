@@ -14,11 +14,21 @@ namespace Lisa.Kiwi.Web
             var tokenCookie = Request.Cookies["token"];
             if (tokenCookie!= null)
             {
-                var tokenType = tokenCookie.Value.Split(' ')[0];
-                var token = tokenCookie.Value.Split(' ')[1];
+                string tokenType;
+                string token;
+
+                try
+                {
+                    tokenType = tokenCookie.Value.Split(' ')[0];
+                    token = tokenCookie.Value.Split(' ')[1];
+                }
+                catch (IndexOutOfRangeException e)
+                {
+                    filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary { { "controller", "Account" }, { "action", "Login" } });
+                    return;
+                }
 
                 _reportProxy = new Proxy<Report>("http://localhost:20151/", "/reports", token, tokenType);
-                _contactProxy = new Proxy<Contact>("http://localhost:20151/", "/contacts", token, tokenType);
             }
             else
             {
@@ -80,7 +90,6 @@ namespace Lisa.Kiwi.Web
             return RedirectToAction("Details", new {id = model.Id});
         }
 
-        private Proxy<Report> _reportProxy;
-        private Proxy<Contact> _contactProxy;
+        private Proxy<Report> _reportProxy = new Proxy<Report>("http://localhost:20151/", "/reports/");
     }
 }

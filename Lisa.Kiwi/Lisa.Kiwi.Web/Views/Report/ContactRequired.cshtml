@@ -1,27 +1,27 @@
 ﻿@model ContactRequiredViewModel
 
 @{
-    ViewBag.Title = "ContactRequired";
+	ViewBag.Title = "ContactRequired";
 }
 
 <h2>ContactRequired</h2>
 
 @using (Html.BeginForm())
 {
-    <p>
-        @Html.LabelFor(m => m.Name)
-        @Html.TextBoxFor(m => m.Name)
-        @Html.ValidationMessageFor(m => m.Name)
-    </p>
-    <p>
-        @Html.LabelFor(m => m.PhoneNumber)
-        @Html.TextBoxFor(m => m.PhoneNumber)
-        @Html.ValidationMessageFor(m => m.PhoneNumber)
-    </p>
-    <p>
-        @Html.LabelFor(m => m.EmailAddress)
-        @Html.TextBoxFor(m => m.EmailAddress)
-        @Html.ValidationMessageFor(m => m.EmailAddress)
-    </p>
-    <input type="submit" />
+	<p>
+		@Html.LabelFor(m => m.Name)
+		@Html.TextBoxFor(m => m.Name)
+		@Html.ValidationMessageFor(m => m.Name)
+	</p>
+	<p>
+		@Html.LabelFor(m => m.PhoneNumber)
+		@Html.TextBoxFor(m => m.PhoneNumber)
+		@Html.ValidationMessageFor(m => m.PhoneNumber)
+	</p>
+	<p>
+		@Html.LabelFor(m => m.EmailAddress)
+		@Html.TextBoxFor(m => m.EmailAddress)
+		@Html.ValidationMessageFor(m => m.EmailAddress)
+	</p>
+	<input type="submit" />
 }
