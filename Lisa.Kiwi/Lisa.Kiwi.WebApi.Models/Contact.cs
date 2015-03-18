@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Lisa.Kiwi.WebApi
+﻿namespace Lisa.Kiwi.WebApi
 {
     public class Contact
     {
