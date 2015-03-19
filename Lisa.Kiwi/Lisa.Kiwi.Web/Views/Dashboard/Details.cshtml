@@ -1,4 +1,4 @@
-﻿@using System.Runtime.InteropServices.ComTypes
+﻿@using Resources;
 @model Lisa.Kiwi.WebApi.Report
 @{
 	Layout = null;
@@ -12,23 +12,23 @@
       <link href="~/Content/main.css" rel="stylesheet" type="text/css">
     </head>
     <body>
-	    <h1>@Resources.Categories.ResourceManager.GetString(Model.Category)</h1>
+	    <h1>@Categories.ResourceManager.GetString(Model.Category)</h1>
 
 	    <dl>
-		    <dt>@Resources.PageItems.ResourceManager.GetString("TypeDescription")</dt>
-		    <dd>@Resources.Categories.ResourceManager.GetString(Model.Category)</dd>
+		    <dt>@PageItems.ResourceManager.GetString("TypeDescription")</dt>
+		    <dd>@Categories.ResourceManager.GetString(Model.Category)</dd>
 
-		    <dt>@Resources.PageItems.ResourceManager.GetString("DateDescription")</dt>
+		    <dt>@PageItems.ResourceManager.GetString("DateDescription")</dt>
 		    <dd>@Model.Created.ToString("dddd d MMMM HH:mm")</dd>
 
-		    <dt>@Resources.PageItems.ResourceManager.GetString("LocationDescription")</dt>
+		    <dt>@PageItems.ResourceManager.GetString("LocationDescription")</dt>
 		    <dd>@Model.Location.Building - @Model.Location.Description</dd>
 
-		    <dt>@Resources.PageItems.ResourceManager.GetString("StatusDescription")</dt>
+		    <dt>@PageItems.ResourceManager.GetString("StatusDescription")</dt>
 		    <dd>Open</dd>
 
-		    <dt>@Resources.PageItems.ResourceManager.GetString("VisibleDescription")</dt>
-		    <dd>@Resources.Statuses.ResourceManager.GetString("Visible" + Model.IsVisible.ToString())</dd>
+		    <dt>@PageItems.ResourceManager.GetString("VisibleDescription")</dt>
+		    <dd>@Statuses.ResourceManager.GetString("Visible" + Model.IsVisible.ToString())</dd>
 
 		    @Html.Partial("CategoryPartials/" + "_PartialDetails" + Model.Category, Model)
 
@@ -36,41 +36,41 @@
 	    @* TODO: Find a better solution than this, as it makes and empty Contact.*@
 	    @if (ViewBag.Contact != null)
 		    {
-			    <h2>@Resources.PageItems.ResourceManager.GetString("Contact")</h2>
+			    <h2>@PageItems.ResourceManager.GetString("Contact")</h2>
 			    <dl>
-				    <dt>@Resources.PageItems.ResourceManager.GetString("ContactName")</dt>
+				    <dt>@PageItems.ResourceManager.GetString("ContactName")</dt>
 				    <dd>@DashboardHelpers.NullCheck(ViewBag.Contact.Name)</dd>
-				    <dt>@Resources.PageItems.ResourceManager.GetString("ContactPhoneNumber")</dt>
+				    <dt>@PageItems.ResourceManager.GetString("ContactPhoneNumber")</dt>
 				    <dd>@DashboardHelpers.NullCheck(ViewBag.Contact.PhoneNumber)</dd>
 
-				    <dt>@Resources.PageItems.ResourceManager.GetString("ContactEmail")</dt>
+				    <dt>@PageItems.ResourceManager.GetString("ContactEmail")</dt>
 				    <dd>@DashboardHelpers.NullCheck(ViewBag.Contact.EmailAddress)</dd>
 			    </dl>
 		    }
 
 	    @if (Model.Perpetrator != null)
 		    {
-			    <h2>@Resources.Perpetrator.ResourceManager.GetString("Perpetrators")</h2>
+			    <h2>@Perpetrator.ResourceManager.GetString("Perpetrators")</h2>
 			    <dl>
-				    <dt>@Resources.Perpetrator.ResourceManager.GetString("Name")</dt>
+				    <dt>@Perpetrator.ResourceManager.GetString("Name")</dt>
 				    <dd>@DashboardHelpers.NullCheck(Model.Perpetrator.Name)</dd>
 
-				    <dt>@Resources.Perpetrator.ResourceManager.GetString("Sex")</dt>
+				    <dt>@Perpetrator.ResourceManager.GetString("Sex")</dt>
 				    <dd>@DashboardHelpers.NullCheck(Model.Perpetrator.Sex.ToString())</dd>
 
-				    <dt>@Resources.Perpetrator.ResourceManager.GetString("SkinColor")</dt>
+				    <dt>@Perpetrator.ResourceManager.GetString("SkinColor")</dt>
 				    <dd>@DashboardHelpers.NullCheck(Model.Perpetrator.SkinColor)</dd>
 
-				    <dt>@Resources.Perpetrator.ResourceManager.GetString("Clothing")</dt>
+				    <dt>@Perpetrator.ResourceManager.GetString("Clothing")</dt>
 				    <dd>@DashboardHelpers.NullCheck(Model.Perpetrator.Clothing)</dd>
 
-				    <dt>@Resources.Perpetrator.ResourceManager.GetString("MinAge")</dt>
+				    <dt>@Perpetrator.ResourceManager.GetString("MinAge")</dt>
 				    <dd>@DashboardHelpers.NullCheck(Model.Perpetrator.MinimumAge)</dd>
 
-				    <dt>@Resources.Perpetrator.ResourceManager.GetString("MaxAge")</dt>
+				    <dt>@Perpetrator.ResourceManager.GetString("MaxAge")</dt>
 				    <dd>@DashboardHelpers.NullCheck(Model.Perpetrator.MaximumAge)</dd>
 
-				    <dt>@Resources.Perpetrator.ResourceManager.GetString("UniqueProp")</dt>
+				    <dt>@Perpetrator.ResourceManager.GetString("UniqueProp")</dt>
 				    <dd>@DashboardHelpers.NullCheck(Model.Perpetrator.UniqueProperties)</dd>
 			    </dl>
 		    }
@@ -80,14 +80,12 @@
 	    @using (Html.BeginForm())
 		    {
 			    <dl>
-				    <dt>@Resources.PageItems.ResourceManager.GetString("Status")</dt>
-				    <dd>
-					    @Html.DropDownList("status", (IEnumerable<SelectListItem>)ViewBag.StatusNames)
-				    </dd>
-				    <dt>@Resources.PageItems.ResourceManager.GetString("VisibleChange")</dt>
-				    <dd>
-					    @Html.CheckBox("IsVisible")
-				    </dd>
+				    <dt>@PageItems.ResourceManager.GetString("Status")</dt>
+				    <dd>@Html.DropDownList("status", (IEnumerable<SelectListItem>)ViewBag.StatusNames)</dd>
+
+				    <dt>@PageItems.ResourceManager.GetString("VisibleChange")</dt>
+				    <dd>@Html.CheckBox("IsVisible")</dd>
+
 				    <dd><input type="submit" value="Opslaan" /></dd>
 			    </dl>
 		    }
