@@ -16,7 +16,7 @@ namespace Lisa.Kiwi.Web
         public SexEnum Sex { get; set; }
 
         [DisplayName("Wat is de huidskleur van de dader?")]
-        public string SkinColor { get; set; }
+        public SkinColorEnum SkinColor { get; set; }
 
         [Required(ErrorMessage = ErrorMessages.RequiredError)]
         [DisplayName("Wat voor kleding draagt de dader?")]
@@ -33,7 +33,7 @@ namespace Lisa.Kiwi.Web
         {
             get
             {
-                return new SelectListItem[]
+                return new []
                 {
                     new SelectListItem
                     {
