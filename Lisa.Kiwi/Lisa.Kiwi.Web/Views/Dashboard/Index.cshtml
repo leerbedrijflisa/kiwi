@@ -28,7 +28,7 @@
 				<td>@report.Created.ToString("ddd d MMM HH:mm")</td>
 				<td>
 					<a href="@Url.Action("Details", new { id= report.Id })">
-						@Resources.Categories.ResourceManager.GetString(report.Category)
+						@Categories.ResourceManager.GetString(report.Category)
 					</a>
 				</td>
 				@if (report.Location != null)
