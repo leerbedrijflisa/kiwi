@@ -1,32 +1,28 @@
-﻿@{
-	string actionName = ViewBag.ActionName;
-}
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
-    <head>
-	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	    <title>@ViewBag.Title</title>
-	    <link rel="stylesheet" type="text/css" href="~/Content/style.css">
-	    <link rel="stylesheet" type="text/css" href="~/Content/jquery.datetimepicker.css" />
-	    <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,700' rel='stylesheet' type='text/css'>
-	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	    <script src="https://maps.googleapis.com/maps/api/js?libraries=geometry"></script>
-	    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
-	    <script src="~/Scripts/jquery.datetimepicker.js"></script>
-	    @RenderSection("Scripts", required: false)
-	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	    <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-    <body>
-        <header id="toolbar">
-            <h1>@Html.ActionLink("Meldingen Applicatie", "Index", "Report")</h1>
-            <div id="attachPicture">
-                <input class="overlayInput" type="file" accept="image/*">
-            </div>
-        </header>
-        <div class="content">
-            @RenderBody()
-        </div>
-    </body>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>@ViewBag.Title</title>
+	<link rel="stylesheet" type="text/css" href="~/Content/style.css">
+	<link rel="stylesheet" type="text/css" href="~/Content/jquery.datetimepicker.css" />
+	<link href="//fonts.googleapis.com/css?family=Ubuntu:400,700" rel="stylesheet" type="text/css">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="//maps.googleapis.com/maps/api/js?libraries=geometry"></script>
+	<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+	<script src="~/Scripts/jquery.datetimepicker.js"></script>
+	@RenderSection("Scripts", required: false)
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<header id="toolbar">
+		<h1>@Html.ActionLink("Meldingen Applicatie", "Index", "Report")</h1>
+		<div id="attachPicture">
+			<input class="overlayInput" type="file" accept="image/*">
+		</div>
+	</header>
+	<div class="content">
+		@RenderBody()
+	</div>
+</body>
 </html>
