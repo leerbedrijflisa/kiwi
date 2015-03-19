@@ -12,7 +12,7 @@
       <link href="~/Content/main.css" rel="stylesheet" type="text/css">
     </head>
     <body>
-	    <h1>@Categories.ResourceManager.GetString(Model.Category)</h1>
+	    <h1>@Categories.ResourceManager.GetString(Model.Category):</h1>
 
 	    <dl>
 		    <dt>@PageItems.ResourceManager.GetString("TypeDescription")</dt>
@@ -34,17 +34,17 @@
 
 	    </dl>
 	    @* TODO: Find a better solution than this, as it makes and empty Contact.*@
-	    @if (ViewBag.Contact != null)
+	    @if (Model.Contact != null)
 		    {
 			    <h2>@PageItems.ResourceManager.GetString("Contact")</h2>
 			    <dl>
 				    <dt>@PageItems.ResourceManager.GetString("ContactName")</dt>
-				    <dd>@DashboardHelpers.NullCheck(ViewBag.Contact.Name)</dd>
+				    <dd>@DashboardHelpers.NullCheck(Model.Contact.Name)</dd>
 				    <dt>@PageItems.ResourceManager.GetString("ContactPhoneNumber")</dt>
-				    <dd>@DashboardHelpers.NullCheck(ViewBag.Contact.PhoneNumber)</dd>
+				    <dd>@DashboardHelpers.NullCheck(Model.Contact.PhoneNumber)</dd>
 
 				    <dt>@PageItems.ResourceManager.GetString("ContactEmail")</dt>
-				    <dd>@DashboardHelpers.NullCheck(ViewBag.Contact.EmailAddress)</dd>
+				    <dd>@DashboardHelpers.NullCheck(Model.Contact.EmailAddress)</dd>
 			    </dl>
 		    }
 
