@@ -10,12 +10,9 @@ namespace Lisa.Kiwi.WebApi.Controllers
     [RoutePrefix("api/users")]
     public class UserController : ApiController
     {
-        private readonly AuthRepository _auth = new AuthRepository();
-
         [Authorize(Roles = "Administrator")]
-        [Route("add_user")]
         [HttpPost]
-        public async Task<IHttpActionResult> AddUser(AddUserModel userModel)
+        public async Task<IHttpActionResult> Post(AddUserModel userModel)
         {
             if (!ModelState.IsValid)
             {
@@ -30,18 +27,10 @@ namespace Lisa.Kiwi.WebApi.Controllers
         [Authorize]
         [Route("is_admin")]
         [HttpGet]
-        public async Task<IHttpActionResult> IsAdmin()
+        public IHttpActionResult IsAdmin()
         {
             var user = (ClaimsIdentity) User.Identity;
             return Ok(user.Claims.Any(c => c.Type == "is_admin" && bool.Parse(c.Value)));
-        }
-
-        [Authorize]
-        [Route("test_auth")]
-        [HttpGet]
-        public IHttpActionResult TestAuth()
-        {
-            return Ok("Success!");
         }
 
         private IHttpActionResult GetErrorResult(IdentityResult result)
@@ -73,6 +62,6 @@ namespace Lisa.Kiwi.WebApi.Controllers
             return BadRequest(ModelState);
         }
 
-        private readonly KiwiContext _db = new KiwiContext();
+        private readonly AuthRepository _auth = new AuthRepository();
     }
 }

@@ -1,58 +1,61 @@
 ﻿@model Lisa.Kiwi.WebApi.Report
-@using System.Runtime.InteropServices.ComTypes
 
 <h1 class="doneTitle">Melding</h1>
 <dl>
-    <dt>@Resources.PageItems.ResourceManager.GetString("TypeDescription")</dt>
-    <dd>@Resources.Categories.ResourceManager.GetString(Model.Category)</dd>
+	<dt>@PageItems.TypeDescription</dt>
+	<dd>@Categories.ResourceManager.GetString(Model.Category)</dd>
 
-    <dt>@Resources.PageItems.ResourceManager.GetString("LocationDescription")</dt>
-    <dd>@Model.Location.Building - @Model.Location.Description</dd>
+	<dt>@PageItems.LocationDescription</dt>
+	<dd>@Model.Location.Building - @Model.Location.Description</dd>
 
-    @Html.Partial("~/Views/Dashboard/CategoryPartials/_PartialDetails" + Model.Category + ".cshtml", Model)
+	@Html.Partial("~/Views/Dashboard/CategoryPartials/_PartialDetails" + Model.Category + ".cshtml", Model)
 </dl>
 @* TODO: Find a better solution than this, as it makes and empty Contact.*@
 
 @if (Model.Perpetrator != null)
 {
-    <br /><h2>@Resources.Perpetrator.ResourceManager.GetString("Perpetrators")</h2>
-    <dl>
-        <dt>@Resources.Perpetrator.ResourceManager.GetString("Name")</dt>
-        <dd>@DashboardHelpers.NullCheck(Model.Perpetrator.Name)</dd>
+	<br/>
+	<h2>@Perpetrator.Perpetrators</h2>
+	<dl>
+		<dt>@Perpetrator.Name</dt>
+		<dd>@DashboardHelpers.NullCheck(Model.Perpetrator.Name)</dd>
 
-        <dt>@Resources.Perpetrator.ResourceManager.GetString("Sex")</dt>
-        <dd>@DashboardHelpers.NullCheck(Model.Perpetrator.Sex.ToString())</dd>
+		<dt>@Perpetrator.Sex</dt>
+		<dd>@DashboardHelpers.NullCheck(Model.Perpetrator.Sex.ToString())</dd>
 
-        <dt>@Resources.Perpetrator.ResourceManager.GetString("SkinColor")</dt>
-        <dd>@DashboardHelpers.NullCheck(Model.Perpetrator.SkinColor)</dd>
+		<dt>@Perpetrator.SkinColor</dt>
+		<dd>@DashboardHelpers.NullCheck(Model.Perpetrator.SkinColor)</dd>
 
-        <dt>@Resources.Perpetrator.ResourceManager.GetString("Clothing")</dt>
-        <dd>@DashboardHelpers.NullCheck(Model.Perpetrator.Clothing)</dd>
+		<dt>@Perpetrator.Clothing</dt>
+		<dd>@DashboardHelpers.NullCheck(Model.Perpetrator.Clothing)</dd>
 
-        <dt>@Resources.Perpetrator.ResourceManager.GetString("MinAge")</dt>
-        <dd>@DashboardHelpers.NullCheck(Model.Perpetrator.MinimumAge)</dd>
+		<dt>@Perpetrator.MinAge</dt>
+		<dd>@DashboardHelpers.NullCheck(Model.Perpetrator.MinimumAge)</dd>
 
-        <dt>@Resources.Perpetrator.ResourceManager.GetString("MaxAge")</dt>
-        <dd>@DashboardHelpers.NullCheck(Model.Perpetrator.MaximumAge)</dd>
+		<dt>@Perpetrator.MaxAge</dt>
+		<dd>@DashboardHelpers.NullCheck(Model.Perpetrator.MaximumAge)</dd>
 
-        <dt>@Resources.Perpetrator.ResourceManager.GetString("UniqueProp")</dt>
-        <dd>@DashboardHelpers.NullCheck(Model.Perpetrator.UniqueProperties)</dd>
-    </dl>
+		<dt>@Perpetrator.UniqueProp</dt>
+		<dd>@DashboardHelpers.NullCheck(Model.Perpetrator.UniqueProperties)</dd>
+	</dl>
 }
 
 @if (Model.Contact != null)
 {
-    <br /><h2>@Resources.PageItems.ResourceManager.GetString("Contact")</h2>
-    <dl>
-        <dt>@Resources.PageItems.ResourceManager.GetString("ContactName")</dt>
-        <dd>@DashboardHelpers.NullCheck(Model.Contact.Name)</dd>
-        <dt>@Resources.PageItems.ResourceManager.GetString("ContactPhoneNumber")</dt>
-        <dd>@DashboardHelpers.NullCheck(Model.Contact.PhoneNumber)</dd>
+	<br/>
+	<h2>@PageItems.Contact</h2>
+	<dl>
+		<dt>@PageItems.ContactName</dt>
+		<dd>@DashboardHelpers.NullCheck(Model.Contact.Name)</dd>
+		<dt>@PageItems.ContactPhoneNumber</dt>
+		<dd>@DashboardHelpers.NullCheck(Model.Contact.PhoneNumber)</dd>
 
-        <dt>@Resources.PageItems.ResourceManager.GetString("ContactEmail")</dt>
-        <dd>@DashboardHelpers.NullCheck(Model.Contact.EmailAddress)</dd>
-    </dl>
+		<dt>@PageItems.ContactEmail</dt>
+		<dd>@DashboardHelpers.NullCheck(Model.Contact.EmailAddress)</dd>
+	</dl>
 }
 
-<hr />
-<a href="/Report/Redirect"><button>Ga verder</button></a>
+<hr/>
+<a href="/Report/Redirect">
+	<button>Ga verder</button>
+</a>

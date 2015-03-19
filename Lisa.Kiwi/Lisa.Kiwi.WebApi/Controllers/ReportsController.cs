@@ -23,7 +23,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
 
         public async Task<IHttpActionResult> Get(int? id)
         {
-            var reportData = await GetCompleteReportDatas()
+            var reportData = await GetCompleteReportData()
                 .SingleOrDefaultAsync(r => id == r.Id);
 
             if (reportData == null)
@@ -62,7 +62,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
 
             if (claimsIdentity.HasClaim(ClaimTypes.Role, "anonymous"))
             {
-                var reportIdFromClaim = Int32.Parse(claimsIdentity.Claims.FirstOrDefault(c => c.ValueType == "reportId").Value);
+                var reportIdFromClaim = Int32.Parse(claimsIdentity.Claims.First(c => c.ValueType == "reportId").Value);
 
                 if (id != reportIdFromClaim)
                 {
@@ -84,7 +84,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
             return Ok(report);
         }
 
-        private IQueryable<ReportData> GetCompleteReportDatas()
+        private IQueryable<ReportData> GetCompleteReportData()
         {
             return _db.Reports
                 .Include("Location")
@@ -95,7 +95,7 @@ namespace Lisa.Kiwi.WebApi.Controllers
 
         private IQueryable<Report> GetCompleteReports()
         {
-            return GetCompleteReportDatas()
+            return GetCompleteReportData()
                 .ToList()
                 .Select(reportData => _modelFactory.Create(reportData))
                 .AsQueryable();

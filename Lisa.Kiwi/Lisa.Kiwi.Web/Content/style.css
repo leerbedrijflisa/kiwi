@@ -151,6 +151,6 @@ body{
         }
 
         div.content {
-            position: relative;
-            top: 65px;
+            margin-top: 65px;
+            padding-left: 1em;
         }

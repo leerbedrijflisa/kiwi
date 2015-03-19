@@ -2,24 +2,23 @@
 @{
 	Layout = null;
 }
-@using Resources;
 <!doctype html>
 
 <html>
 <head>
 	<title>Leerpark</title>
 	<link href="~/Content/main.css" rel="stylesheet" type="text/css">
-	<script src="http://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
+	<script src="//www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
 </head>
 
 <body>
 	<table class="sortable">
 		<tr>
-			<th>@PageItems.ResourceManager.GetString("Date")</th>
-			<th>@PageItems.ResourceManager.GetString("Category")</th>
-			<th>@PageItems.ResourceManager.GetString("Building")</th>
-			<th>@PageItems.ResourceManager.GetString("Location")</th>
-			<th>@PageItems.ResourceManager.GetString("Status")</th>
+			<th>@PageItems.Date</th>
+			<th>@PageItems.Category</th>
+			<th>@PageItems.Building</th>
+			<th>@PageItems.Location</th>
+			<th>@PageItems.Status</th>
 		</tr>
 
 		@foreach (var report in Model)

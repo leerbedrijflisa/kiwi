@@ -272,16 +272,10 @@
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
-    <Content Include="Views\Report\Confirmed.cshtml" />
-    <Content Include="Views\Report\Details.cshtml" />
-    <Content Include="Views\Report\Type.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Dashboard\Details.cshtml" />
     <Content Include="Views\Dashboard\Index.cshtml" />
-    <Content Include="Views\Dashboard\SearchPartial.cshtml" />
-    <Content Include="Views\Dashboard\Index - Copy 1.cshtml" />
-    <Content Include="Views\Dashboard\Details - Copy 1.cshtml" />
     <Content Include="Views\Report\Index.cshtml" />
     <Content Include="Views\Report\Done.cshtml" />
     <Content Include="Views\Report\Location.cshtml" />
