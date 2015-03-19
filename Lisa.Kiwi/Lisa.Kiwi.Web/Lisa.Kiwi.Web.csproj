@@ -140,6 +140,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_GlobalResources\Resources\Buildings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Buildings.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_GlobalResources\Resources\PageItems.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -159,6 +164,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Sex.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Resources\SkinColor.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SkinColor.resx</DependentUpon>
     </Compile>
     <Compile Include="App_GlobalResources\Resources\Statuses.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -307,6 +317,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_GlobalResources\Resources\Buildings.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Buildings.Designer.cs</LastGenOutput>
+    </Content>
     <EmbeddedResource Include="App_GlobalResources\Resources\DisplayNames.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>DisplayNames.designer.cs</LastGenOutput>
@@ -330,6 +344,10 @@
     <Content Include="App_GlobalResources\Resources\Perpetrator.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Perpetrator.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\Resources\SkinColor.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>SkinColor.Designer.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
