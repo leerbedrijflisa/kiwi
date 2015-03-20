@@ -1,4 +1,5 @@
-﻿namespace Lisa.Kiwi.WebApi
+﻿using System.Runtime.Serialization;
+namespace Lisa.Kiwi.WebApi
 {
     public class Perpetrator
     {
