@@ -96,7 +96,9 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             {
                 return View(viewModel);
             }
+
             var report = await GetCurrentReport();
+
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(report.Id, report);
 
@@ -120,6 +122,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             }
 
             var report = await GetCurrentReport();
+
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(report.Id, report);
 
@@ -140,6 +143,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             }
 
             var report = await GetCurrentReport();
+
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(report.Id, report);
 
@@ -160,6 +164,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             }
 
             var report = await GetCurrentReport();
+
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(report.Id, report);
 
@@ -182,6 +187,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             }
 
             var report = await GetCurrentReport();
+
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(report.Id, report);
 
@@ -202,6 +208,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             }
 
             var report = await GetCurrentReport();
+
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(report.Id, report);
 

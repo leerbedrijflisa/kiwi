@@ -21,7 +21,7 @@ namespace Lisa.Kiwi.Web
         {
             get
             {
-                return new SelectListItem[]
+                return new []
                 {
                     new SelectListItem
                     {
@@ -29,7 +29,6 @@ namespace Lisa.Kiwi.Web
                         Text = Resources.Buildings.Buiten,
                         Value = "Buiten"
                     },
-
                     new SelectListItem
                     {
                         Text = Resources.Buildings.DVCLilla,

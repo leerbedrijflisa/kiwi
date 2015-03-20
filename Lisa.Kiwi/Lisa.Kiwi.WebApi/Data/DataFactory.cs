@@ -107,8 +107,8 @@ namespace Lisa.Kiwi.WebApi
         {
             var data = perpetratorData ?? new PerpetratorData();
             data.Name = json["name"] != null ? json.Value<string>("name") : data.Name;
-            data.Sex = json["sex"] != null ? (SexEnum)json.Value<int>("sex") : data.Sex;
-            data.SkinColor = json["skinColor"] != null ? json.Value<string>("skinColor") : data.SkinColor;
+            data.Sex = json["sex"] != null ? (SexEnum) json.Value<int>("sex") : data.Sex;
+            data.SkinColor = json["skinColor"] != null ? (SkinColorEnum) json.Value<int>("skinColor") : data.SkinColor;
             data.Clothing = json["clothing"] != null ? json.Value<string>("clothing") : data.Clothing;
             data.MinimumAge = json["minimumAge"] != null ? json.Value<int>("minimumAge") : data.MinimumAge;
             data.MaximumAge = json["maximumAge"] != null ? json.Value<int>("maximumAge") : data.MaximumAge;
