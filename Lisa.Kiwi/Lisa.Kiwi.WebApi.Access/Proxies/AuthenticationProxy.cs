@@ -12,10 +12,8 @@ namespace Lisa.Kiwi.WebApi.Access
         public AuthenticationProxy(string baseUrl, string resourceUrl)
         {
             _resourceUrl = resourceUrl;
-            _client = new HttpClient
-            {
-                BaseAddress = new Uri(baseUrl)
-            };
+            _client = new HttpClient {BaseAddress = new Uri(baseUrl)};
+
         }
 
         public async Task<LoginResult> Login(string userName, string password)
@@ -50,7 +48,7 @@ namespace Lisa.Kiwi.WebApi.Access
 
         public async Task<bool> GetIsAdmin(string tokenType, string token)
         {
-            _client.DefaultRequestHeaders.Add("Authorize", String.Format("{0} {1}", tokenType, token));
+            _client.DefaultRequestHeaders.Add("Authorization", String.Format("{0} {1}", tokenType, token));
 
             var response = await _client.GetAsync("is_admin");
 
@@ -60,6 +58,22 @@ namespace Lisa.Kiwi.WebApi.Access
             }
 
             var content = await response.Content.ReadAsStringAsync();
+            return Boolean.Parse(content);
+        }
+
+        public async Task<bool> GetIsAnonymous(string tokenType, string token)
+        {
+            _client.DefaultRequestHeaders.Add("Authorization", String.Join(" ", tokenType, token));
+
+            var response = await _client.GetAsync("/api/users/is_anonymous");
+
+            if (response.StatusCode != HttpStatusCode.OK)
+            {
+                throw new HttpException();
+            }
+
+            var content = await response.Content.ReadAsStringAsync();
+
             return Boolean.Parse(content);
         }
 

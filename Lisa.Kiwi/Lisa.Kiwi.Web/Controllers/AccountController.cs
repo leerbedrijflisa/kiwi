@@ -22,7 +22,7 @@ namespace Lisa.Kiwi.Web.Controllers
                 return View();
             }
 
-            var authProxy = new AuthenticationProxy("http://localhost:20151", "/api/oauth");
+            var authProxy = new AuthenticationProxy("http://localhost.fiddler:20151", "/api/oauth");
 
             var response = await authProxy.Login(model.UserName, model.Password);
 

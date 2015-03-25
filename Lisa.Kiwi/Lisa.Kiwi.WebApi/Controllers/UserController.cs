@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Lisa.Kiwi.WebApi.Models;
@@ -31,6 +32,16 @@ namespace Lisa.Kiwi.WebApi.Controllers
         {
             var user = (ClaimsIdentity) User.Identity;
             return Ok(user.Claims.Any(c => c.Type == "is_admin" && bool.Parse(c.Value)));
+        }
+
+        [Authorize]
+        [Route("is_anonymous")]
+        [HttpGet]
+        public IHttpActionResult IsAnonymous()
+        {
+            var user = (ClaimsIdentity) User.Identity;
+
+            return Ok(user.Claims.Any(c => c.Type == "is_anonymous" && Boolean.Parse(c.Value)));
         }
 
         private IHttpActionResult GetErrorResult(IdentityResult result)

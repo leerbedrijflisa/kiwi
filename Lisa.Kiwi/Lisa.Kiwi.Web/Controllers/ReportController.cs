@@ -14,7 +14,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             // the user can't be authorized on Index Action
             if (context.ActionDescriptor.ActionName.ToLower() == "index")
             {
-                _reportProxy = new Proxy<Report>("http://localhost:20151/", "/reports/");
+                _reportProxy = new Proxy<Report>("http://localhost.fiddler:20151/", "/reports/");
             }
             else
             {
@@ -24,7 +24,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
                     var tokenType = tokenCookie.Value.Split(' ')[0];
                     var token = tokenCookie.Value.Split(' ')[1];
 
-                    _reportProxy = new Proxy<Report>("http://localhost:20151", "/reports/", token, tokenType);
+                    _reportProxy = new Proxy<Report>("http://localhost.fiddler:20151", "/reports/", token, tokenType);
                 }
             }
 

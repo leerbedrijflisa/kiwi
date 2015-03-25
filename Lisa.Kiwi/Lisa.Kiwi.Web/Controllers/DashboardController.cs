@@ -3,13 +3,14 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Lisa.Kiwi.WebApi;
+using Lisa.Kiwi.WebApi.Access;
 using Resources;
 
 namespace Lisa.Kiwi.Web
 {
     public class DashboardController : Controller
     {
-        protected override void OnActionExecuting(ActionExecutingContext filterContext)
+        protected async override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             var tokenCookie = Request.Cookies["token"];
             if (tokenCookie!= null)
@@ -28,7 +29,15 @@ namespace Lisa.Kiwi.Web
                     return;
                 }
 
-                _reportProxy = new Proxy<Report>("http://localhost:20151/", "/reports", token, tokenType);
+                var authProxy = new AuthenticationProxy("http://localhost.fiddler:20151", "");
+
+                if (await authProxy.GetIsAnonymous(tokenType, token))
+                {
+                    filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary { { "controller", "Account" }, { "action", "Login" } });
+                    return;
+                }
+
+                _reportProxy = new Proxy<Report>("http://localhost.fiddler:20151/", "/reports", token, tokenType);
             }
             else
             {
@@ -90,6 +99,6 @@ namespace Lisa.Kiwi.Web
             return RedirectToAction("Details", new {id = model.Id});
         }
 
-        private Proxy<Report> _reportProxy = new Proxy<Report>("http://localhost:20151/", "/reports/");
+        private Proxy<Report> _reportProxy;
     }
 }
