@@ -15,20 +15,9 @@ namespace Lisa.Kiwi.WebApi
         public void Modify(ReportData reportData, JToken json)
         {
             reportData.Category = json.Value<string>("category") ?? reportData.Category;
-            
-            if (json["location"] != null)
-            {
-                reportData.Location = Modify(reportData.Location, json["location"]);
-            }
-            if (json["contact"] != null)
-            {
-                reportData.Contact = Modify(reportData.Contact, json["contact"]);
-            }
-            if (json["perpetrator"] != null)
-            {
-                reportData.Perpetrator = Modify(reportData.Perpetrator, json["perpetrator"]);
-            }
 
+            reportData.IsVisible = json.Value<bool?>("isVisible") ?? reportData.IsVisible;
+            
             var statusString = json["status"] != null ? json.Value<string>("status") : null;
             reportData.Status = statusString != null ? (StatusEnum)Enum.Parse(typeof(StatusEnum), statusString, true) : reportData.Status;
 
@@ -50,18 +39,18 @@ namespace Lisa.Kiwi.WebApi
             reportData.Victim = json.Value<string>("victim") ?? reportData.Victim;
 
 
-            //var currentStatus = reportData.StatusChanges
-            //    .OrderByDescending(s => s.Created)
-            //    .FirstOrDefault();
-
-            //var statusChangeData = new StatusChangeData
-            //{
-            //    Created = DateTimeOffset.Now,
-            //    IsVisible = json.Value<bool?>("isVisible") ?? currentStatus.IsVisible,
-            //    Status = json.Value<string>("currentStatus") ?? currentStatus.Status
-            //};
-
-            //reportData.StatusChanges.Add(statusChangeData);
+            if (json["location"] != null)
+            {
+                reportData.Location = Modify(reportData.Location, json["location"]);
+            }
+            if (json["contact"] != null)
+            {
+                reportData.Contact = Modify(reportData.Contact, json["contact"]);
+            }
+            if (json["perpetrator"] != null)
+            {
+                reportData.Perpetrator = Modify(reportData.Perpetrator, json["perpetrator"]);
+            }
         }
 
         public VehicleData Create(Vehicle vehicle)
