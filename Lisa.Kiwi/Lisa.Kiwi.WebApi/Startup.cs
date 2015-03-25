@@ -25,11 +25,6 @@ namespace Lisa.Kiwi.WebApi
 
             var config = new HttpConfiguration();
 
-            // Make sure the database is updated to the latest version. This effectively runs Update-Database, even when running in Azure.
-            var configuration = new Migrations.Configuration();
-            var migrator = new DbMigrator(configuration);
-            migrator.Update();
-
             ConfigureOAuth(app);
 
             // Set up Owin to use the WebAPI's config
