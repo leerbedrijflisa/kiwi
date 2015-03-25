@@ -48,4 +48,11 @@ namespace Lisa.Kiwi.WebApi
         public Perpetrator Perpetrator { get; set; }
         public Vehicle Vehicle { get; set; }
     }
+
+    public enum Status
+    {
+        Open,
+        Solved,
+        Transferred
+    }
 }
