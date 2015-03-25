@@ -354,10 +354,10 @@
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="App_GlobalResources\Resources\Categories.resx">
+    <Content Include="App_GlobalResources\Resources\Categories.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Categories.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+    </Content>
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>
