@@ -65,17 +65,17 @@ namespace Lisa.Kiwi.Web
                 new SelectListItem()
                 {
                     Value = "Open",
-                    Text = Statuses.StatusOpen
+                    Text = Statuses.Open
                 },
                 new SelectListItem
                 {
                     Value = "Solved",
-                    Text = Statuses.StatusSolved
+                    Text = Statuses.Solved
                 },
                 new SelectListItem
                 {
                     Value = "Transferred",
-                    Text = Statuses.StatusTransferred
+                    Text = Statuses.Transferred
                 }
             };
 
