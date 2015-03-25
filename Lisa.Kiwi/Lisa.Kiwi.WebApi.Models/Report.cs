@@ -13,6 +13,7 @@ namespace Lisa.Kiwi.WebApi
         public int Id { get; set; }
         public string Category { get; set; }
         public bool IsVisible { get; set; }
+        public Status Status { get; set; }
         public DateTimeOffset Created { get; set; }
         public string AnonymousToken { get; set; }
 
