@@ -83,13 +83,16 @@ namespace Lisa.Kiwi.Web
         }
 
         [HttpPost]
-        public async Task<ActionResult> Details(StatusChangeViewModel model)
+        public async Task<ActionResult> Details(StatusChangeViewModel viewModel)
         {
-            //await _reportProxy.PatchAsync(model.Id, statusChange);
+            var report = new Report();
+            _modelFactory.Modify(report, viewModel);
+            await _reportProxy.PatchAsync(viewModel.Id, report);
 
-            return RedirectToAction("Details", new {id = model.Id});
+            return RedirectToAction("Details", new { Id = viewModel.Id });
         }
 
+        private readonly ModelFactory _modelFactory = new ModelFactory();
         private Proxy<Report> _reportProxy = new Proxy<Report>("http://localhost:20151/", "/reports/");
     }
 }

@@ -1,5 +1,4 @@
-﻿@using Resources;
-@model Lisa.Kiwi.WebApi.Report
+﻿@model Lisa.Kiwi.WebApi.Report
 @{
 	Layout = null;
 }
@@ -33,7 +32,7 @@
 		@Html.Partial("CategoryPartials/" + "_PartialDetails" + Model.Category, Model)
 
 	</dl>
-	@* TODO: Find a better solution than this, as it makes and empty Contact.*@
+
 	@if (Model.Contact != null)
 	{
 		<h2>@PageItems.ResourceManager.GetString("Contact")</h2>
@@ -81,7 +80,11 @@
 	{
 		<dl>
 			<dt>@PageItems.Status</dt>
-			<dd>@Html.DropDownList("status", (IEnumerable<SelectListItem>)ViewBag.StatusNames)</dd>
+		    <dd>
+                <label>@Html.RadioButtonFor(m => m.Status, 0)@Statuses.Open</label><br />
+                <label>@Html.RadioButtonFor(m => m.Status, 1)@Statuses.Solved</label><br />
+                <label>@Html.RadioButtonFor(m => m.Status, 2)@Statuses.Transferred</label><br />
+		    </dd>
 
 			<dt>@PageItems.VisibleChange</dt>
 			<dd>@Html.CheckBox("IsVisible")</dd>

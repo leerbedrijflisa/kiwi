@@ -114,5 +114,11 @@ namespace Lisa.Kiwi.Web
             report.Contact.PhoneNumber = viewModel.PhoneNumber;
             report.Contact.EmailAddress = viewModel.EmailAddress;
         }
+
+        public void Modify(Report report, StatusChangeViewModel viewModel)
+        {
+            report.Status = viewModel.Status;
+            report.IsVisible = viewModel.IsVisible;
+        }
     }
 }
