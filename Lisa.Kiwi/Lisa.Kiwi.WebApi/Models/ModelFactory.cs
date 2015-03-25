@@ -9,6 +9,7 @@
                 Id = reportData.Id,
                 Category = reportData.Category,
                 IsVisible = reportData.IsVisible,
+                Status = reportData.Status,
                 Created = reportData.Created,
                 Description = reportData.Description,
                 IsUnconscious = reportData.IsUnconscious,

@@ -29,6 +29,8 @@ namespace Lisa.Kiwi.WebApi
                 reportData.Perpetrator = Modify(reportData.Perpetrator, json["perpetrator"]);
             }
 
+            var statusString = json["status"] != null ? json.Value<string>("status") : null;
+            reportData.Status = statusString != null ? (StatusEnum)Enum.Parse(typeof(StatusEnum), statusString, true) : reportData.Status;
 
             reportData.Description = json.Value<string>("description") ?? reportData.Description;
 
