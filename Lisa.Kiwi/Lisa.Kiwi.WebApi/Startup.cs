@@ -16,9 +16,6 @@ namespace Lisa.Kiwi.WebApi
     {
         public void Configuration(IAppBuilder app)
         {
-            // Make sure the database is updated to the latest version. This effectively runs Update-Database, even when running in Azure.
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<KiwiContext, Migrations.Configuration>());
-
             var signalRConfig = new HubConfiguration()
             {
                 EnableJSONP = true
@@ -26,7 +23,9 @@ namespace Lisa.Kiwi.WebApi
             app.MapSignalR("/signalr/signalr", signalRConfig);
 
             var config = new HttpConfiguration();
-            Database.SetInitializer<KiwiContext>(null);
+
+            // Make sure the database is updated to the latest version. This effectively runs Update-Database, even when running in Azure.
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<KiwiContext, Migrations.Configuration>());
 
             ConfigureOAuth(app);
 
