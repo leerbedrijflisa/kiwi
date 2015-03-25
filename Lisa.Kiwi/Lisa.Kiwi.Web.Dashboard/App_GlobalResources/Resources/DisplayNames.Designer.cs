@@ -61,11 +61,200 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Geen geldig wachtwoord en/of gebruikersnaam..
+        /// </summary>
+        public static string AccountLoginInvalid {
+            get {
+                return ResourceManager.GetString("AccountLoginInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contacten.
+        /// </summary>
+        public static string ReportContacts {
+            get {
+                return ResourceManager.GetString("ReportContacts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aangemaakt.
+        /// </summary>
+        public static string ReportCreated {
+            get {
+                return ResourceManager.GetString("ReportCreated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Beschrijving.
         /// </summary>
         public static string ReportDescription {
             get {
                 return ResourceManager.GetString("ReportDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ip.
+        /// </summary>
+        public static string ReportIp {
+            get {
+                return ResourceManager.GetString("ReportIp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Locatie.
+        /// </summary>
+        public static string ReportLocation {
+            get {
+                return ResourceManager.GetString("ReportLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Datum incident.
+        /// </summary>
+        public static string ReportTime {
+            get {
+                return ResourceManager.GetString("ReportTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type.
+        /// </summary>
+        public static string ReportType {
+            get {
+                return ResourceManager.GetString("ReportType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pesten.
+        /// </summary>
+        public static string ReportTypeBullying {
+            get {
+                return ResourceManager.GetString("ReportTypeBullying", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Inbraak.
+        /// </summary>
+        public static string ReportTypeBurglary {
+            get {
+                return ResourceManager.GetString("ReportTypeBurglary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Digitaal.
+        /// </summary>
+        public static string ReportTypeDigital {
+            get {
+                return ResourceManager.GetString("ReportTypeDigital", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Drugs.
+        /// </summary>
+        public static string ReportTypeDrugs {
+            get {
+                return ResourceManager.GetString("ReportTypeDrugs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Brand.
+        /// </summary>
+        public static string ReportTypeFire {
+            get {
+                return ResourceManager.GetString("ReportTypeFire", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Intimidatie.
+        /// </summary>
+        public static string ReportTypeIntimidation {
+            get {
+                return ResourceManager.GetString("ReportTypeIntimidation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overlast.
+        /// </summary>
+        public static string ReportTypeNuisance {
+            get {
+                return ResourceManager.GetString("ReportTypeNuisance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Diefstal.
+        /// </summary>
+        public static string ReportTypeTheft {
+            get {
+                return ResourceManager.GetString("ReportTypeTheft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Voortuigen.
+        /// </summary>
+        public static string ReportTypeVehicles {
+            get {
+                return ResourceManager.GetString("ReportTypeVehicles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User Agent.
+        /// </summary>
+        public static string ReportUserAgent {
+            get {
+                return ResourceManager.GetString("ReportUserAgent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lopende.
+        /// </summary>
+        public static string StatusInProgress {
+            get {
+                return ResourceManager.GetString("StatusInProgress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open.
+        /// </summary>
+        public static string StatusOpen {
+            get {
+                return ResourceManager.GetString("StatusOpen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Opgelost.
+        /// </summary>
+        public static string StatusSolved {
+            get {
+                return ResourceManager.GetString("StatusSolved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overgedragen.
+        /// </summary>
+        public static string StatusTransferred {
+            get {
+                return ResourceManager.GetString("StatusTransferred", resourceCulture);
             }
         }
     }

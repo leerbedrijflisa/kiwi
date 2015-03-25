@@ -1,0 +1,61 @@
+﻿@model Lisa.Kiwi.WebApi.Report
+
+<h1 class="doneTitle">Melding</h1>
+<dl>
+	<dt>@PageItems.TypeDescription</dt>
+	<dd>@Categories.ResourceManager.GetString(Model.Category)</dd>
+
+	<dt>@PageItems.LocationDescription</dt>
+	<dd>@Model.Location.Building - @Model.Location.Description</dd>
+
+	@Html.Partial("~/Views/Dashboard/CategoryPartials/_PartialDetails" + Model.Category + ".cshtml", Model)
+</dl>
+@* TODO: Find a better solution than this, as it makes and empty Contact.*@
+
+@if (Model.Perpetrator != null)
+{
+	<br />
+	<h2>@Perpetrator.Perpetrators</h2>
+	<dl>
+		<dt>@Perpetrator.Name</dt>
+		<dd>@DashboardHelpers.NullCheck(Model.Perpetrator.Name)</dd>
+
+		<dt>@Perpetrator.Sex</dt>
+		<dd>@DashboardHelpers.NullCheck(Model.Perpetrator.Sex.ToString())</dd>
+
+		<dt>@Perpetrator.SkinColor</dt>
+		<dd>@DashboardHelpers.NullCheck(Model.Perpetrator.SkinColor)</dd>
+
+		<dt>@Perpetrator.Clothing</dt>
+		<dd>@DashboardHelpers.NullCheck(Model.Perpetrator.Clothing)</dd>
+
+		<dt>@Perpetrator.MinAge</dt>
+		<dd>@DashboardHelpers.NullCheck(Model.Perpetrator.MinimumAge)</dd>
+
+		<dt>@Perpetrator.MaxAge</dt>
+		<dd>@DashboardHelpers.NullCheck(Model.Perpetrator.MaximumAge)</dd>
+
+		<dt>@Perpetrator.UniqueProp</dt>
+		<dd>@DashboardHelpers.NullCheck(Model.Perpetrator.UniqueProperties)</dd>
+	</dl>
+}
+
+@if (Model.Contact != null)
+{
+	<br/>
+	<h2>@PageItems.Contact</h2>
+	<dl>
+		<dt>@PageItems.ContactName</dt>
+		<dd>@DashboardHelpers.NullCheck(Model.Contact.Name)</dd>
+		<dt>@PageItems.ContactPhoneNumber</dt>
+		<dd>@DashboardHelpers.NullCheck(Model.Contact.PhoneNumber)</dd>
+
+		<dt>@PageItems.ContactEmail</dt>
+		<dd>@DashboardHelpers.NullCheck(Model.Contact.EmailAddress)</dd>
+	</dl>
+}
+
+<hr/>
+<a href="/Report/Redirect">
+	<button>Ga verder</button>
+</a>

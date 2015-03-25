@@ -1,0 +1,32 @@
+﻿@model LocationViewModel
+
+@section Scripts{
+	<script src="~/Scripts/Location.js"></script>
+}
+
+@{
+	ViewBag.Title = "Location";
+}
+
+<h1>Waar is het gebeurd?</h1>
+
+@using (Html.BeginForm())
+{
+	<section>
+		<div id="map-canvas"></div>
+		<ul id="map-suggestions"></ul>
+		<div id="middle-container">
+			<p>
+				@Html.LabelFor(m => m.Building)
+				@Html.DropDownListFor(m => m.Building, Model.Buildings)
+				@Html.ValidationMessageFor(m => m.Building)
+			</p>
+			<p>
+				@Html.LabelFor(m => m.Location)
+				@Html.TextAreaFor(m => m.Location, new { placeholder = "Voer hier een duidelijke beschrijving, of een huisnummer in." })
+				@Html.ValidationMessageFor(m => m.Location)
+			</p>
+			<input type="submit" value="Verzenden" />
+		</div>
+	</section>
+}

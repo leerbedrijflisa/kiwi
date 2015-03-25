@@ -1,0 +1,15 @@
+﻿@helper NullCheck(object content)
+{
+	if (content == null)
+	{
+		@Resources.ReportProperties.ResourceManager.GetString("_null")
+	}
+	else if (content.GetType() == typeof(bool))
+	{
+		@Resources.ReportProperties.ResourceManager.GetString("_" + content.ToString())
+	}
+	else
+	{
+		@content
+	}
+}
