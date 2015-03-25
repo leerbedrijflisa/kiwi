@@ -1,5 +1,4 @@
-﻿@using Resources;
-@model Lisa.Kiwi.WebApi.Report
+﻿@model Lisa.Kiwi.WebApi.Report
 @{
 	Layout = null;
 }
@@ -59,10 +58,10 @@
 			<dd>@DashboardHelpers.NullCheck(Model.Perpetrator.Name)</dd>
 
 			<dt>@Perpetrator.Sex</dt>
-			<dd>@DashboardHelpers.NullCheck(Model.Perpetrator.Sex.ToString())</dd>
+			<dd>@DashboardHelpers.NullCheck(Sex.ResourceManager.GetString(Model.Perpetrator.Sex.ToString()))</dd>
 
 			<dt>@Perpetrator.SkinColor</dt>
-			<dd>@DashboardHelpers.NullCheck(Model.Perpetrator.SkinColor)</dd>
+			<dd>@DashboardHelpers.NullCheck(SkinColor.ResourceManager.GetString(Model.Perpetrator.SkinColor.ToString()))</dd>
 
 			<dt>@Perpetrator.Clothing</dt>
 			<dd>@DashboardHelpers.NullCheck(Model.Perpetrator.Clothing)</dd>
