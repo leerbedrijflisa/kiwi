@@ -1,4 +1,6 @@
-﻿@model Lisa.Kiwi.WebApi.Report
+﻿@using Lisa.Kiwi.WebApi
+@using Perpetrator = Resources.Perpetrator
+@model Lisa.Kiwi.WebApi.Report
 @{
 	Layout = null;
 }
@@ -27,7 +29,7 @@
         }
 
 		<dt>@PageItems.StatusDescription</dt>
-		<dd>Open</dd>
+		<dd>@Statuses.ResourceManager.GetString(Enum.GetName(typeof(StatusEnum), Model.Status))</dd>
 
 		<dt>@PageItems.VisibleDescription</dt>
 		<dd>@Statuses.ResourceManager.GetString("Visible" + Model.IsVisible)</dd>
@@ -35,7 +37,7 @@
 		@Html.Partial("CategoryPartials/" + "_PartialDetails" + Model.Category, Model)
 
 	</dl>
-	@* TODO: Find a better solution than this, as it makes and empty Contact.*@
+
 	@if (Model.Contact != null)
 	{
 		<h2>@PageItems.ResourceManager.GetString("Contact")</h2>
@@ -83,10 +85,14 @@
 	{
 		<dl>
 			<dt>@PageItems.Status</dt>
-			<dd>@Html.DropDownList("status", (IEnumerable<SelectListItem>)ViewBag.StatusNames)</dd>
+		    <dd>
+                <label><input type="radio" name="Status" value="@StatusEnum.Open" @(Model.Status == StatusEnum.Open ? "checked=\"checked\"" : "") /> @Statuses.Open</label><br />
+                <label><input type="radio" name="Status" value="@StatusEnum.Transferred" @(Model.Status == StatusEnum.Transferred ? "checked=\"checked\"" : "") /> @Statuses.Transferred</label><br />
+		        <label><input type="radio" name="Status" value="@StatusEnum.Solved" @(Model.Status == StatusEnum.Solved ? "checked=\"checked\"" : "") /> @Statuses.Solved</label><br />
+		    </dd>
 
 			<dt>@PageItems.VisibleChange</dt>
-			<dd>@Html.CheckBox("IsVisible")</dd>
+			<dd>@(!Model.IsVisible ? Html.CheckBox("IsVisible") : Html.CheckBox("IsVisible", new{ @checked = "true"}))</dd>
 
 			<dd><input type="submit" value="Opslaan" /></dd>
 		</dl>

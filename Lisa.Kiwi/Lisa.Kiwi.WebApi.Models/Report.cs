@@ -8,11 +8,13 @@ namespace Lisa.Kiwi.WebApi
         {
             Created = DateTimeOffset.Now;
             IsVisible = true;
+            Status = StatusEnum.Open;
         }
 
         public int Id { get; set; }
         public string Category { get; set; }
         public bool IsVisible { get; set; }
+        public StatusEnum Status { get; set; }
         public DateTimeOffset Created { get; set; }
         public string AnonymousToken { get; set; }
 
@@ -47,5 +49,12 @@ namespace Lisa.Kiwi.WebApi
         public Contact Contact { get; set; }
         public Perpetrator Perpetrator { get; set; }
         public Vehicle Vehicle { get; set; }
+    }
+
+    public enum StatusEnum
+    {
+        Open,
+        Solved,
+        Transferred
     }
 }

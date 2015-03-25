@@ -45,17 +45,17 @@ namespace Lisa.Kiwi.Web
                 new SelectListItem()
                 {
                     Value = "Open",
-                    Text = Statuses.StatusOpen
+                    Text = Statuses.Open
                 },
                 new SelectListItem
                 {
                     Value = "Solved",
-                    Text = Statuses.StatusSolved
+                    Text = Statuses.Solved
                 },
                 new SelectListItem
                 {
                     Value = "Transferred",
-                    Text = Statuses.StatusTransferred
+                    Text = Statuses.Transferred
                 }
             };
 
@@ -63,16 +63,18 @@ namespace Lisa.Kiwi.Web
         }
 
         [HttpPost]
-        public async Task<ActionResult> Details(StatusChangeViewModel model)
+        public async Task<ActionResult> Details(StatusChangeViewModel viewModel)
         {
             if (!await CheckAuth())
             {
                 return RedirectToAction("Login", "Account");
             }
 
-            //await _reportProxy.PatchAsync(model.Id, statusChange);
+            var report = new Report();
+            _modelFactory.Modify(report, viewModel);
+            await _reportProxy.PatchAsync(viewModel.Id, report);
 
-            return RedirectToAction("Details", new {id = model.Id});
+            return RedirectToAction("Details", new { Id = viewModel.Id });
         }
 
         private async Task<bool> CheckAuth()
@@ -108,6 +110,8 @@ namespace Lisa.Kiwi.Web
             return false;
         }
 
-        private Proxy<Report> _reportProxy;
+
+        private readonly ModelFactory _modelFactory = new ModelFactory();
+        private Proxy<Report> _reportProxy = new Proxy<Report>(WebConfigurationManager.AppSettings["WebApiUrl"], "/reports/");
     }
 }

@@ -117,13 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="StatusOpen" xml:space="preserve">
+  <data name="Open" xml:space="preserve">
     <value>Open</value>
   </data>
-  <data name="StatusSolved" xml:space="preserve">
+  <data name="Solved" xml:space="preserve">
     <value>Opgelost</value>
   </data>
-  <data name="StatusTransferred" xml:space="preserve">
+  <data name="Transferred" xml:space="preserve">
     <value>Overgedragen</value>
   </data>
   <data name="VisibleFalse" xml:space="preserve">
