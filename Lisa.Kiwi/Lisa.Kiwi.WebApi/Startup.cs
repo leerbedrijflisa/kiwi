@@ -7,6 +7,7 @@ using Microsoft.Owin.Cors;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
 using Microsoft.AspNet.SignalR;
+using System.Data.Entity.Migrations;
 
 [assembly: OwinStartup(typeof(Lisa.Kiwi.WebApi.Startup))]
 
@@ -25,7 +26,9 @@ namespace Lisa.Kiwi.WebApi
             var config = new HttpConfiguration();
 
             // Make sure the database is updated to the latest version. This effectively runs Update-Database, even when running in Azure.
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<KiwiContext, Migrations.Configuration>());
+            var configuration = new Migrations.Configuration();
+            var migrator = new DbMigrator(configuration);
+            migrator.Update();
 
             ConfigureOAuth(app);
 
