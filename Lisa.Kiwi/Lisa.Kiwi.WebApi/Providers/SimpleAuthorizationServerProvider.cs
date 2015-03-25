@@ -43,7 +43,7 @@ namespace Lisa.Kiwi.WebApi.Providers
                     return;
                 }
 
-                if (db.Reports.Find(reportId) == null)
+                if (await db.Reports.FindAsync(reportId) == null)
                 {
                     context.SetError("invalid_grant", "No report found with that ID");
                     return;
@@ -51,8 +51,9 @@ namespace Lisa.Kiwi.WebApi.Providers
 
                 var identity = new ClaimsIdentity(context.Options.AuthenticationType);
                 
-                identity.AddClaim(new Claim(ClaimTypes.Role, "Anonymous"));
+                identity.AddClaim(new Claim(ClaimTypes.Role, "User"));
                 identity.AddClaim(new Claim("reportId", reportId.ToString()));
+                identity.AddClaim(new Claim("is_anonymous", "true"));
 
                 context.Validated(identity);
 

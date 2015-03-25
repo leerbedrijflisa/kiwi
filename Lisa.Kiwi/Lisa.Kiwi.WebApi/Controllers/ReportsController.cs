@@ -16,9 +16,16 @@ namespace Lisa.Kiwi.WebApi.Controllers
     public class ReportsController : ApiController
     {
         [EnableQuery]
-        public IQueryable<Report> Get()
+        public IHttpActionResult Get()
         {
-            return GetCompleteReports();
+            var claimsIdentity = (ClaimsIdentity) User.Identity;
+
+            if (claimsIdentity.HasClaim(ClaimTypes.Role, "anonymous"))
+            {
+                return Unauthorized();
+            }
+
+            return Ok(GetCompleteReports());
         }
 
         public async Task<IHttpActionResult> Get(int? id)

@@ -15,7 +15,6 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             // the user can't be authorized on Index Action
             if (context.ActionDescriptor.ActionName.ToLower() == "index")
             {
-
                 _reportProxy = new Proxy<Report>(WebConfigurationManager.AppSettings["WebApiUrl"], "/reports/");
             }
             else
