@@ -4,6 +4,7 @@ using System.Web;
 using System.Web.Mvc;
 using Lisa.Kiwi.Web.ViewModels;
 using Lisa.Kiwi.WebApi.Access;
+using System.Web.Configuration;
 
 namespace Lisa.Kiwi.Web.Controllers
 {
@@ -22,7 +23,7 @@ namespace Lisa.Kiwi.Web.Controllers
                 return View();
             }
 
-            var authProxy = new AuthenticationProxy("http://localhost:20151", "/api/oauth");
+            var authProxy = new AuthenticationProxy(WebConfigurationManager.AppSettings["WebApiUrl"], "/api/oauth");
 
             var response = await authProxy.Login(model.UserName, model.Password);
 

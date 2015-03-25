@@ -21,13 +21,16 @@
 		<dd>@Model.Created.ToString("dddd d MMMM HH:mm")</dd>
 
 		<dt>@PageItems.LocationDescription</dt>
-		<dd>@Model.Location.Building - @Model.Location.Description</dd>
+        @if (Model.Location != null)
+        {
+            <dd> @DashboardHelpers.NullCheck(Model.Location.Building) - @DashboardHelpers.NullCheck(Model.Location.Description) </dd>
+        }
 
 		<dt>@PageItems.StatusDescription</dt>
 		<dd>Open</dd>
 
 		<dt>@PageItems.VisibleDescription</dt>
-		<dd>@Statuses.ResourceManager.GetString("Visible" + Model.IsVisible))</dd>
+		<dd>@Statuses.ResourceManager.GetString("Visible" + Model.IsVisible)</dd>
 
 		@Html.Partial("CategoryPartials/" + "_PartialDetails" + Model.Category, Model)
 
@@ -55,10 +58,10 @@
 			<dd>@DashboardHelpers.NullCheck(Model.Perpetrator.Name)</dd>
 
 			<dt>@Perpetrator.Sex</dt>
-			<dd>@DashboardHelpers.NullCheck(Model.Perpetrator.Sex.ToString())</dd>
+			<dd>@DashboardHelpers.NullCheck(Sex.ResourceManager.GetString(Model.Perpetrator.Sex.ToString()))</dd>
 
 			<dt>@Perpetrator.SkinColor</dt>
-			<dd>@DashboardHelpers.NullCheck(Model.Perpetrator.SkinColor)</dd>
+			<dd>@DashboardHelpers.NullCheck(SkinColor.ResourceManager.GetString(Model.Perpetrator.SkinColor.ToString()))</dd>
 
 			<dt>@Perpetrator.Clothing</dt>
 			<dd>@DashboardHelpers.NullCheck(Model.Perpetrator.Clothing)</dd>

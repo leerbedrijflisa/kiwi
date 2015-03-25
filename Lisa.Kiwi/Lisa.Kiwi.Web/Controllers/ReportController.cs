@@ -4,6 +4,7 @@ using System.Web;
 using System.Web.Mvc;
 using Lisa.Kiwi.WebApi;
 using Lisa.Kiwi.WebApi.Access;
+using System.Web.Configuration;
 
 namespace Lisa.Kiwi.Web.Reporting.Controllers
 {
@@ -14,7 +15,8 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             // the user can't be authorized on Index Action
             if (context.ActionDescriptor.ActionName.ToLower() == "index")
             {
-                _reportProxy = new Proxy<Report>("http://localhost:20151/", "/reports/");
+
+                _reportProxy = new Proxy<Report>(WebConfigurationManager.AppSettings["WebApiUrl"], "/reports/");
             }
             else
             {
@@ -24,7 +26,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
                     var tokenType = tokenCookie.Value.Split(' ')[0];
                     var token = tokenCookie.Value.Split(' ')[1];
 
-                    _reportProxy = new Proxy<Report>("http://localhost:20151", "/reports/", token, tokenType);
+                    _reportProxy = new Proxy<Report>(WebConfigurationManager.AppSettings["WebApiUrl"], "/reports/", token, tokenType);
                 }
             }
 
@@ -47,7 +49,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             var report = _modelFactory.Create(viewModel);
             report = await _reportProxy.PostAsync(report);
 
-            var loginProxy = new AuthenticationProxy("http://localhost:20151/", "/api/oauth");
+            var loginProxy = new AuthenticationProxy(WebConfigurationManager.AppSettings["WebApiUrl"], "/api/oauth");
 
             var loginResult = await loginProxy.LoginAnonymous(report.AnonymousToken);
 
@@ -355,10 +357,6 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             return await _reportProxy.GetAsync(reportId);
         }
 
-        // Fiddler version
-        //private  Proxy<Report> _reportProxy = new Proxy<Report>("http://localhost.fiddler:20151/", "/reports/");
-
-        // Normal version
         private  Proxy<Report> _reportProxy;
 
         private readonly ModelFactory _modelFactory = new ModelFactory();
