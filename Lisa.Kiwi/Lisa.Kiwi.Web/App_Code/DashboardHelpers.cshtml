@@ -2,14 +2,14 @@
 {
 	if (content == null)
 	{
-		<dd>@Resources.ReportProperties.ResourceManager.GetString("_null")</dd>
+		@Resources.ReportProperties.ResourceManager.GetString("_null")
 	}
 	else if (content.GetType() == typeof(bool))
 	{
-		<dd>@Resources.ReportProperties.ResourceManager.GetString("_" + content.ToString())</dd>
+		@Resources.ReportProperties.ResourceManager.GetString("_" + content.ToString())
 	}
 	else
 	{
-		<dd>@content</dd>
+		@content
 	}
 }

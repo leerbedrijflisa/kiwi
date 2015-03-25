@@ -22,7 +22,10 @@
 		<dd>@Model.Created.ToString("dddd d MMMM HH:mm")</dd>
 
 		<dt>@PageItems.LocationDescription</dt>
-		<dd>@Model.Location.Building - @Model.Location.Description</dd>
+        @if (Model.Location != null)
+        {
+            <dd> @DashboardHelpers.NullCheck(Model.Location.Building) - @DashboardHelpers.NullCheck(Model.Location.Description) </dd>
+        }
 
 		<dt>@PageItems.StatusDescription</dt>
 		<dd>Open</dd>
