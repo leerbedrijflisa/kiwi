@@ -89,7 +89,7 @@ namespace Lisa.Kiwi.Web
             var report = new Report();
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(viewModel.Id, report);
-
+            
             return RedirectToAction("Details", new { Id = viewModel.Id });
         }
 
