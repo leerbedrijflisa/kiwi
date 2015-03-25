@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using Lisa.Kiwi.WebApi;
 using Resources;
+using System.Web.Configuration;
 
 namespace Lisa.Kiwi.Web
 {
@@ -28,7 +29,7 @@ namespace Lisa.Kiwi.Web
                     return;
                 }
 
-                _reportProxy = new Proxy<Report>("http://localhost:20151/", "/reports", token, tokenType);
+                _reportProxy = new Proxy<Report>(WebConfigurationManager.AppSettings["WebApiUrl"], "/reports", token, tokenType);
             }
             else
             {
@@ -90,6 +91,6 @@ namespace Lisa.Kiwi.Web
             return RedirectToAction("Details", new {id = model.Id});
         }
 
-        private Proxy<Report> _reportProxy = new Proxy<Report>("http://localhost:20151/", "/reports/");
+        private Proxy<Report> _reportProxy = new Proxy<Report>(WebConfigurationManager.AppSettings["WebApiUrl"], "/reports/");
     }
 }
