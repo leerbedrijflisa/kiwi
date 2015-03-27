@@ -1,4 +1,6 @@
-﻿@model IEnumerable<Lisa.Kiwi.WebApi.Report>
+﻿@using Lisa.Kiwi.WebApi
+@using Perpetrator = Resources.Perpetrator
+@model IEnumerable<Lisa.Kiwi.WebApi.Report>
 @{
 	Layout = null;
 }
@@ -34,7 +36,7 @@
 				{
 					<td>@DashboardHelpers.NullCheck(report.Location.Building)</td>
 					<td>@DashboardHelpers.NullCheck(report.Location.Description)</td>
-					<td>@*Statuses.ResourceManager.GetString("Status" + report.CurrentStatus.ToString())*@open</td>
+					<td>@Statuses.ResourceManager.GetString(Enum.GetName(typeof(StatusEnum), report.Status))</td>
 				}
 			</tr>
 		}
