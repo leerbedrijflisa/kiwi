@@ -14,15 +14,13 @@
 		@Html.LabelFor(m => m.Victim)
 		@Html.TextBoxFor(m => m.Victim)
 	</p>
-    <dl>
-        <dd>
-            Heeft u nog informatie over de verdachte?
-            @Html.CheckBox("Perpetrator")
-        </dd>
-        <dd>
-            Heeft u nog informatie over het slachtoffer?
-            @Html.CheckBox("Victim")
-        </dd>
-    </dl>
+    <p>
+        @Html.Label("Heeft u nog informatie over de verdachte?")
+        @Html.CheckBox("Perpetrator")
+    </p>
+    <p>
+        @Html.Label("Heeft u nog informatie over het slachtoffer?")
+        @Html.CheckBox("Victim")
+    </p>
 	<input type="submit" value="Verzenden" />
 }
