@@ -12,5 +12,8 @@ namespace Lisa.Kiwi.Web
         [Required(ErrorMessage = ErrorMessages.RequiredError)]
         [DisplayName("Wie word er gepest?")]
         public string Victim { get; set; }
+
+        public bool HasVictim { get; set; }
+        public bool HasPerpetrator { get; set; }
     }
 }
