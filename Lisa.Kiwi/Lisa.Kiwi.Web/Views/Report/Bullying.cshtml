@@ -16,11 +16,11 @@
 	</p>
     <p>
         @Html.Label("Heeft u nog informatie over de verdachte?")
-        @Html.CheckBox("Perpetrator")
+        @Html.CheckBoxFor(m => m.HasPerpetrator)
     </p>
     <p>
         @Html.Label("Heeft u nog informatie over het slachtoffer?")
-        @Html.CheckBox("Victim")
+        @Html.CheckBoxFor(m => m.HasVictim)
     </p>
 	<input type="submit" value="Verzenden" />
 }
