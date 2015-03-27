@@ -233,7 +233,20 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(report.Id, report);
 
-            return RedirectToAction("Perpetrator");
+            if ( viewModel.HasPerpetrator || viewModel.HasVictim )
+            {
+                return RedirectToAction("Perpetrator", new { Hasvictim = viewModel.HasVictim });
+            }
+            else if ( viewModel.HasPerpetrator || !viewModel.HasVictim )
+            {
+                return RedirectToAction("Perpetrator");
+            }
+            else if ( !viewModel.HasPerpetrator || viewModel.HasVictim)
+            {
+                return RedirectToAction("Victim");
+            }
+
+            return RedirectToAction("Contact");
         }
 
         public ActionResult Other()
