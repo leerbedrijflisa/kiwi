@@ -127,7 +127,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(report.Id, report);
 
-            return RedirectToAction("ContactRequired");
+            return RedirectToAction("Vehicle");
         }
 
         public ActionResult Drugs()
@@ -148,7 +148,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(report.Id, report);
 
-            return RedirectToAction("Perpetrator");
+            return RedirectToAction("Vehicle");
         }
 
         public ActionResult Fight()
@@ -171,7 +171,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 
             // TODO: add error handling
 
-            return RedirectToAction("Contact");
+            return RedirectToAction("Vehicle");
         }
 
         public ActionResult Weapons()
@@ -192,7 +192,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(report.Id, report);
 
-            return RedirectToAction("Perpetrator");
+            return RedirectToAction("Vehicle");
         }
 
         public ActionResult Nuisance()
@@ -213,7 +213,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(report.Id, report);
 
-            return RedirectToAction("ContactRequired");
+            return RedirectToAction("Vehicle");
         }
 
         public ActionResult Bullying()
@@ -233,7 +233,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(report.Id, report);
 
-            return RedirectToAction("Perpetrator");
+            return RedirectToAction("Vehicle");
         }
 
         public ActionResult Other()
@@ -253,7 +253,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(report.Id, report);
 
-            return RedirectToAction("ContactRequired");
+            return RedirectToAction("Vehicle");
         }
 
         public ActionResult Perpetrator()
@@ -274,7 +274,47 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             await _reportProxy.PatchAsync(report.Id, report);
 
             // TODO: add error handling
-            return RedirectToAction("Contact");
+            return RedirectToAction("Vehicle");
+        }
+
+        public ActionResult Vehicle()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Vehicle(VehicleViewModel viewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
+
+            if (viewModel.HasVehicle)
+            {
+                
+            }
+
+
+
+            var currentReport = await GetCurrentReport();
+
+
+            switch (currentReport.Category)
+            {
+                case "Theft":
+                case "Nuisance":
+                case "Other":
+                    return RedirectToAction("ContactRequired");
+                case "Fight":
+                case "FirstAid":
+                case "Drugs":
+                case "Weapons":
+                case "Bullying":
+                    return RedirectToAction("Contact");
+            }
+
+            return View();
         }
 
         public ActionResult Contact()

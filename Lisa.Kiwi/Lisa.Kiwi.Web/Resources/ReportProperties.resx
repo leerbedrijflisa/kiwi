@@ -162,4 +162,13 @@
   <data name="_True" xml:space="preserve">
     <value>Ja</value>
   </data>
+  <data name="VehicleColor" xml:space="preserve">
+    <value>Wat is de kleur van het voertuig?</value>
+  </data>
+  <data name="VehicleNumberPlate" xml:space="preserve">
+    <value>Wat is het kenteken van het voertuig?</value>
+  </data>
+  <data name="VehicleAdditionalFeatures" xml:space="preserve">
+    <value>Zijn er nog kenmerken aan het voertuig?</value>
+  </data>
 </root>

@@ -22,10 +22,10 @@
 		<dd>@DashboardHelpers.NullCheck(Model.Perpetrator.Name)</dd>
 
 		<dt>@perpetratorResource.Sex</dt>
-		<dd>@DashboardHelpers.NullCheck(Model.Perpetrator.Sex.ToString())</dd>
+		<dd>@DashboardHelpers.NullCheck(Sex.ResourceManager.GetString(Model.Perpetrator.Sex.ToString()))</dd>
 
 		<dt>@perpetratorResource.SkinColor</dt>
-		<dd>@DashboardHelpers.NullCheck(Model.Perpetrator.SkinColor)</dd>
+		<dd>@DashboardHelpers.NullCheck(SkinColor.ResourceManager.GetString(Model.Perpetrator.SkinColor.ToString()))</dd>
 
 		<dt>@perpetratorResource.Clothing</dt>
 		<dd>@DashboardHelpers.NullCheck(Model.Perpetrator.Clothing)</dd>

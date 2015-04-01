@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Lisa.Kiwi.Web.App_GlobalResources.Resources {
+namespace Resources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Lisa.Kiwi.Web.App_GlobalResources.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Lisa.Kiwi.Web.App_GlobalResources.Resources.DisplayNames", typeof(DisplayNames).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Lisa.Kiwi.Web.Resources.DisplayNames", typeof(DisplayNames).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
