@@ -11,6 +11,7 @@ namespace Lisa.Kiwi.WebApi.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(KiwiContext context)
