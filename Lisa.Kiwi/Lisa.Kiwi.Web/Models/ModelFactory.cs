@@ -79,11 +79,11 @@ namespace Lisa.Kiwi.Web
             }
             if (viewModel.AgeRange != null)
             {
-                string[] values = viewModel.AgeRange.Split('-');
-                int MinimumAge = Convert.ToInt32(values[0]);
-                int MaximumAge = Convert.ToInt32(values[1]);
-                report.Perpetrator.MinimumAge = MinimumAge;
-                report.Perpetrator.MaximumAge = MaximumAge;
+                var values = viewModel.AgeRange.Split('-');
+                var minimumAge = Convert.ToInt32(values[0]);
+                var maximumAge = Convert.ToInt32(values[1]);
+                report.Perpetrator.MinimumAge = minimumAge;
+                report.Perpetrator.MaximumAge = maximumAge;
             }
             report.Perpetrator.Name = viewModel.Name;
             report.Perpetrator.Clothing = viewModel.Clothing;
