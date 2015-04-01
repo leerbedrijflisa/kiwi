@@ -56,6 +56,21 @@
 	</dl>
 }
 
+@if (Model.Vehicle != null)
+{
+	<h2>@ReportProperties.Vehicle</h2>
+	<dl>
+		<dt>@ReportProperties.VehicleBrand</dt>
+		<dd>@DashboardHelpers.NullCheck(Model.Vehicle.Brand)</dd>
+		<dt>@ReportProperties.VehicleColor</dt>
+		<dd>@DashboardHelpers.NullCheck(Model.Vehicle.Color)</dd>
+		<dt>@ReportProperties.VehicleNumberPlate</dt>
+		<dd>@DashboardHelpers.NullCheck(Model.Vehicle.NumberPlate)</dd>
+		<dt>@ReportProperties.VehicleAdditionalFeatures</dt>
+		<dd>@DashboardHelpers.NullCheck(Model.Vehicle.AdditionalFeatures)</dd>
+	</dl>
+}
+
 <hr/>
 <a href="/Report/Redirect">
 	Ga verder
