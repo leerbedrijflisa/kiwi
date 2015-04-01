@@ -13,11 +13,12 @@
 {
 	<p>
 		@Html.LabelFor(m => m.StolenObject)
-		@Html.TextBoxFor(m => m.StolenObject)
+		@Html.TextBoxFor(m => m.StolenObject)*
 	</p>
 	<p>
 		@Html.LabelFor(m => m.DateOfTheft)
-		@Html.TextBoxFor(m => m.DateOfTheft)
+		@Html.TextBoxFor(m => m.DateOfTheft)*
 	</p>
-	<input type="submit" value="Verzenden" />
+	<input type="submit" value="Verzenden"/>
+	<text>*velden verplicht</text>
 }
