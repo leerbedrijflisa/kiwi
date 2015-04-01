@@ -171,4 +171,10 @@
   <data name="VehicleAdditionalFeatures" xml:space="preserve">
     <value>Zijn er nog kenmerken aan het voertuig?</value>
   </data>
+  <data name="VehicleBrand" xml:space="preserve">
+    <value>Wat is het merk van het voertuig?</value>
+  </data>
+  <data name="Vehicle" xml:space="preserve">
+    <value>Voertuig</value>
+  </data>
 </root>

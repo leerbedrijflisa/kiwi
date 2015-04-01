@@ -14,13 +14,18 @@
 	<p>
 		Is er een voertuig betrokken bij deze melding?
 		<button type="button" onclick="$('#form-content').show()">Ja</button>
-		<button type="submit">Nee</button>
+		<button type="submit" name="HasVehicle" value="false">Nee</button>
 	</p>
 	
 	<div id="form-content">
 		<p>
 			@Html.LabelFor(m => m.Color)
 			@Html.TextBoxFor(m => m.Color)
+		</p>
+		<p>
+		<p>
+			@Html.LabelFor(m => m.Brand)
+			@Html.TextBoxFor(m => m.Brand)
 		</p>
 		<p>
 			@Html.LabelFor(m => m.NumberPlate)
@@ -30,6 +35,6 @@
 			@Html.LabelFor(m => m.AdditionalFeatures)
 			@Html.TextBoxFor(m => m.AdditionalFeatures)
 		</p>
-		<input type="submit" value="opslaan"/>
+		<button type="submit" name="HasVehicle" value="true">Versturen</button>
 	</div>
 }

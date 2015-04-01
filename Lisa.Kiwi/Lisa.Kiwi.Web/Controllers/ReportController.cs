@@ -290,17 +290,15 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
                 return View(viewModel);
             }
 
+            var report = await GetCurrentReport();
+
             if (viewModel.HasVehicle)
             {
-                
+                _modelFactory.Modify(report, viewModel);
+                await _reportProxy.PatchAsync(report.Id, report);
             }
 
-
-
-            var currentReport = await GetCurrentReport();
-
-
-            switch (currentReport.Category)
+            switch (report.Category)
             {
                 case "Theft":
                 case "Nuisance":
