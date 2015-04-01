@@ -174,4 +174,7 @@
   <data name="VehicleBrand" xml:space="preserve">
     <value>Wat is het merk van het voertuig?</value>
   </data>
+  <data name="Vehicle" xml:space="preserve">
+    <value>Voertuig</value>
+  </data>
 </root>
