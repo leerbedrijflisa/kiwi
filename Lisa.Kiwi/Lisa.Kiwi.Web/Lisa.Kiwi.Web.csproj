@@ -140,44 +140,44 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_GlobalResources\Resources\Buildings.Designer.cs">
+    <Compile Include="Resources\Buildings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Buildings.resx</DependentUpon>
     </Compile>
-    <Compile Include="App_GlobalResources\Resources\PageItems.Designer.cs">
+    <Compile Include="Resources\PageItems.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PageItems.resx</DependentUpon>
     </Compile>
-    <Compile Include="App_GlobalResources\Resources\Perpetrator.Designer.cs">
+    <Compile Include="Resources\Perpetrator.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Perpetrator.resx</DependentUpon>
     </Compile>
-    <Compile Include="App_GlobalResources\Resources\ReportProperties.Designer.cs">
+    <Compile Include="Resources\ReportProperties.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ReportProperties.resx</DependentUpon>
     </Compile>
-    <Compile Include="App_GlobalResources\Resources\Sex.Designer.cs">
+    <Compile Include="Resources\Sex.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Sex.resx</DependentUpon>
     </Compile>
-    <Compile Include="App_GlobalResources\Resources\SkinColor.Designer.cs">
+    <Compile Include="Resources\SkinColor.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SkinColor.resx</DependentUpon>
     </Compile>
-    <Compile Include="App_GlobalResources\Resources\Statuses.Designer.cs">
+    <Compile Include="Resources\Statuses.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Statuses.resx</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Models\ModelFactory.cs" />
-    <Compile Include="App_GlobalResources\Resources\Categories.Designer.cs">
+    <Compile Include="Resources\Categories.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Categories.resx</DependentUpon>
@@ -197,6 +197,7 @@
     <Compile Include="ViewModels\LoginModel.cs" />
     <Compile Include="ViewModels\StatusChangeViewModel.cs" />
     <Compile Include="ViewModels\TheftViewModel.cs" />
+    <Compile Include="ViewModels\VehicleViewModel.cs" />
     <Compile Include="ViewModels\WeaponViewModel.cs" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -242,7 +243,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_GlobalResources\Resources\DisplayNames.designer.cs">
+    <Compile Include="Resources\DisplayNames.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DisplayNames.resx</DependentUpon>
@@ -303,6 +304,7 @@
     <Content Include="Views\Report\End.cshtml" />
     <Content Include="Views\Report\Police.cshtml" />
     <Content Include="Views\Report\Help.cshtml" />
+    <Content Include="Views\Report\Vehicle.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -311,38 +313,46 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_GlobalResources\Resources\Buildings.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
+    <EmbeddedResource Include="Resources\Buildings.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Buildings.Designer.cs</LastGenOutput>
-    </Content>
-    <EmbeddedResource Include="App_GlobalResources\Resources\DisplayNames.resx">
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\DisplayNames.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>DisplayNames.designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
     </EmbeddedResource>
-    <Content Include="App_GlobalResources\Resources\Statuses.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
+    <EmbeddedResource Include="Resources\Statuses.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Statuses.Designer.cs</LastGenOutput>
-    </Content>
-    <Content Include="App_GlobalResources\Resources\ReportProperties.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ReportProperties.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ReportProperties.Designer.cs</LastGenOutput>
-    </Content>
-    <Content Include="App_GlobalResources\Resources\PageItems.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\PageItems.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>PageItems.Designer.cs</LastGenOutput>
-    </Content>
-    <Content Include="App_GlobalResources\Resources\Sex.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Sex.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Sex.Designer.cs</LastGenOutput>
-    </Content>
-    <Content Include="App_GlobalResources\Resources\Perpetrator.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Perpetrator.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Perpetrator.Designer.cs</LastGenOutput>
-    </Content>
-    <Content Include="App_GlobalResources\Resources\SkinColor.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\SkinColor.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SkinColor.Designer.cs</LastGenOutput>
-    </Content>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Lisa.Kiwi.WebApi.Access\Lisa.Kiwi.WebApi.Access.csproj">
@@ -351,13 +361,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\" />
+    <Folder Include="App_GlobalResources\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_GlobalResources\Resources\Categories.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
+    <EmbeddedResource Include="Resources\Categories.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Categories.Designer.cs</LastGenOutput>
-    </Content>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>

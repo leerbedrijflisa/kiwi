@@ -1,0 +1,35 @@
+﻿@model VehicleViewModel
+@{
+    ViewBag.Title = "Vehicle";
+}
+<script>
+	$(document).ready(function() {
+		$("#form-content").hide();
+	})
+</script>
+<h2>Vehicle</h2>
+
+@using (Html.BeginForm())
+{
+	<p>
+		Is er een voertuig betrokken bij deze melding?
+		<button type="button" onclick="$('#form-content').show()">Ja</button>
+		<button type="submit">Nee</button>
+	</p>
+	
+	<div id="form-content">
+		<p>
+			@Html.LabelFor(m => m.Color)
+			@Html.TextBoxFor(m => m.Color)
+		</p>
+		<p>
+			@Html.LabelFor(m => m.NumberPlate)
+			@Html.TextBoxFor(m => m.NumberPlate)
+		</p>
+		<p>
+			@Html.LabelFor(m => m.AdditionalFeatures)
+			@Html.TextBoxFor(m => m.AdditionalFeatures)
+		</p>
+		<input type="submit" value="opslaan"/>
+	</div>
+}
