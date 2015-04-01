@@ -208,6 +208,8 @@
     <Content Include="Content\Drugs-Icon.png" />
     <Content Include="Content\EHBO-Icon.png" />
     <Content Include="Content\jquery.datetimepicker.css" />
+    <Content Include="Content\Overige-Icon.png" />
+    <Content Include="Content\Pesten-Icon.png" />
     <Content Include="Content\Vechtpartij-Icon.png" />
     <Content Include="Content\main.css" />
     <Content Include="Content\Overlast-Icon.png" />
