@@ -51,6 +51,10 @@ namespace Lisa.Kiwi.WebApi
             {
                 reportData.Perpetrator = Modify(reportData.Perpetrator, json["perpetrator"]);
             }
+            if (json["vehicle"] != null)
+            {
+                reportData.Vehicle = Modify(reportData.Vehicle, json["vehicle"]);
+            }
         }
 
         public VehicleData Create(Vehicle vehicle)
@@ -59,8 +63,8 @@ namespace Lisa.Kiwi.WebApi
             {
                 Brand = vehicle.Brand,
                 Color = vehicle.Color,
-                LicensePlate = vehicle.LicensePlate,
-                Model = vehicle.Model
+                NumberPlate = vehicle.NumberPlate,
+                AdditionalFeatures = vehicle.AdditionalFeatures
             };
 
             return vehicleData;
@@ -109,6 +113,16 @@ namespace Lisa.Kiwi.WebApi
             data.MinimumAge = json["minimumAge"] != null ? json.Value<int>("minimumAge") : data.MinimumAge;
             data.MaximumAge = json["maximumAge"] != null ? json.Value<int>("maximumAge") : data.MaximumAge;
             data.UniqueProperties = json["uniqueProperties"] != null ? json.Value<string>("uniqueProperties") : data.UniqueProperties;
+            return data;
+        }
+
+        public VehicleData Modify(VehicleData vehicleData, JToken json)
+        {
+            var data = vehicleData ?? new VehicleData();
+            data.AdditionalFeatures = json["additionalFeatures"] != null ? json.Value<string>("additionalFeatures") : data.AdditionalFeatures;
+            data.Brand = json["brand"] != null ? json.Value<string>("brand") : data.Brand;
+            data.Color = json["color"] != null ? json.Value<string>("color") : data.Color;
+            data.NumberPlate = json["numberPlate"] != null ? json.Value<string>("numberPlate") : data.NumberPlate;
             return data;
         }
     }

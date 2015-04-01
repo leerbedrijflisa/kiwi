@@ -169,11 +169,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Voertuig.
+        /// </summary>
+        public static string Vehicle {
+            get {
+                return ResourceManager.GetString("Vehicle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Zijn er nog kenmerken aan het voertuig?.
         /// </summary>
         public static string VehicleAdditionalFeatures {
             get {
                 return ResourceManager.GetString("VehicleAdditionalFeatures", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wat is het merk van het voertuig?.
+        /// </summary>
+        public static string VehicleBrand {
+            get {
+                return ResourceManager.GetString("VehicleBrand", resourceCulture);
             }
         }
         

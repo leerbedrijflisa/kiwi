@@ -69,7 +69,6 @@ namespace Lisa.Kiwi.Web
         public void Modify(Report report, OtherViewModel viewModel)
         {
             report.Description = viewModel.Description;
-
         }
 
         public void Modify(Report report, PerpetratorViewModel viewModel)
@@ -119,6 +118,17 @@ namespace Lisa.Kiwi.Web
         {
             report.Status = viewModel.Status;
             report.IsVisible = viewModel.IsVisible;
+        }
+
+        public void Modify(Report report, VehicleViewModel viewModel)
+        {
+            report.Vehicle = new Vehicle
+            {
+                Brand = viewModel.Brand,
+                Color = viewModel.Color,
+                NumberPlate = viewModel.NumberPlate,
+                AdditionalFeatures = viewModel.AdditionalFeatures
+            };
         }
     }
 }

@@ -66,8 +66,8 @@
             {
                 Brand = vehicleData.Brand,
                 Color = vehicleData.Color,
-                LicensePlate = vehicleData.LicensePlate,
-                Model = vehicleData.Model
+                NumberPlate = vehicleData.NumberPlate,
+                AdditionalFeatures = vehicleData.AdditionalFeatures
             };
         }
 
