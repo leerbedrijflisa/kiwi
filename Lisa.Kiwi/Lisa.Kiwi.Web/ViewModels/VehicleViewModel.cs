@@ -13,6 +13,9 @@ namespace Lisa.Kiwi.Web
         [Display(Name = "VehicleNumberPlate", ResourceType = typeof(ReportProperties))]
         public string NumberPlate { get; set; }
 
+        [Display(Name = "VehicleBrand", ResourceType = typeof(ReportProperties))]
+        public string Brand { get; set; }
+
         [Display(Name = "VehicleAdditionalFeatures", ResourceType = typeof(ReportProperties))]
         public string AdditionalFeatures { get; set; }
     }

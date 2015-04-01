@@ -178,6 +178,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Wat is het merk van het voertuig?.
+        /// </summary>
+        public static string VehicleBrand {
+            get {
+                return ResourceManager.GetString("VehicleBrand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Wat is de kleur van het voertuig?.
         /// </summary>
         public static string VehicleColor {
