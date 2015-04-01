@@ -285,17 +285,22 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
         [HttpPost]
         public async Task<ActionResult> Vehicle(VehicleViewModel viewModel)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return View(viewModel);
             }
 
+            if (viewModel.HasVehicle)
+            {
+                
+            }
 
 
-            var curentReport = await GetCurrentReport();
+
+            var currentReport = await GetCurrentReport();
 
 
-            switch (curentReport.Category)
+            switch (currentReport.Category)
             {
                 case "Theft":
                 case "Nuisance":
@@ -308,6 +313,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
                 case "Bullying":
                     return RedirectToAction("Contact");
             }
+
             return View();
         }
 
