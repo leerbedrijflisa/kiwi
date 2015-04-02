@@ -41,8 +41,8 @@ namespace Lisa.Kiwi.WebApi
 
         //Nuisance
         //Bullying
+        public string VictimName { get; set; }
         public string Victim { get; set; }
-
         //Other
 
         public Location Location { get; set; }

@@ -6,14 +6,17 @@
 
 @using (Html.BeginForm())
 {
-	<p>
-		@Html.LabelFor(m => m.Description)
-		@Html.TextBoxFor(m => m.Description)*
+   <p>
+		@Html.LabelFor(m => m.VictimName)
+		@Html.TextBoxFor(m => m.VictimName)
 	</p>
-	<p>
-		@Html.LabelFor(m => m.Victim)
-		@Html.TextBoxFor(m => m.Victim)*
-	</p>
-	<input type="submit" value="Verzenden"/>
-	<text>*verplicht veld</text>
+    <p>
+        @Html.Label("Heeft u nog informatie over de verdachte?")
+        @Html.CheckBoxFor(m => m.HasPerpetrator)
+    </p>
+    <p>
+        @Html.Label("Heeft u nog informatie over het slachtoffer?")
+        @Html.CheckBoxFor(m => m.HasVictim)
+    </p>
+	<input type="submit" value="Verzenden" />
 }

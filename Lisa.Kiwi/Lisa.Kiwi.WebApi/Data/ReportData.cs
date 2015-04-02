@@ -27,6 +27,7 @@ namespace Lisa.Kiwi.WebApi
 
         //Bullying
         public string Victim { get; set; }
+        public string VictimName { get; set; }
 
         //Weapons
         public string WeaponType { get; set; }
