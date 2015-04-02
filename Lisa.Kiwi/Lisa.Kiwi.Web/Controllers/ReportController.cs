@@ -148,7 +148,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(report.Id, report);
 
-            return RedirectToAction("Vehicle");
+            return RedirectToAction("Perpetrator");
         }
 
         public ActionResult Fight()
@@ -192,7 +192,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(report.Id, report);
 
-            return RedirectToAction("Vehicle");
+            return RedirectToAction("Perpetrator");
         }
 
         public ActionResult Nuisance()
