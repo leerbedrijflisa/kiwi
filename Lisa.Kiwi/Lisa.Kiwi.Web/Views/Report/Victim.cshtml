@@ -1,0 +1,15 @@
+﻿@model Lisa.Kiwi.Web.VictimViewModel
+
+@{
+    ViewBag.Title = "Victim";
+}
+
+<h2>Victim</h2>
+@using (Html.BeginForm())
+{
+    <p>
+        @Html.LabelFor(m => m.Victim)
+        @Html.TextBoxFor(m => m.Victim)
+    </p>
+    <input type="submit" value="Verzenden" />
+}
