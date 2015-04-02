@@ -162,4 +162,7 @@
   <data name="_True" xml:space="preserve">
     <value>Ja</value>
   </data>
+  <data name="VictimDescription" xml:space="preserve">
+    <value>Informatie over het slachtoffer:</value>
+  </data>
 </root>

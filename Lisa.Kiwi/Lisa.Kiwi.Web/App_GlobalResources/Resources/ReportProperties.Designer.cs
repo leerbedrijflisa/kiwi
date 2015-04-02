@@ -142,6 +142,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Informatie over het slachtoffer:.
+        /// </summary>
+        internal static string VictimDescription {
+            get {
+                return ResourceManager.GetString("VictimDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hier is het wapen:.
         /// </summary>
         internal static string WeaponLocation {
