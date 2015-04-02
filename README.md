@@ -4,8 +4,7 @@ The Kiwi Project
 
 **Getting started**
 
--  Create and fill a database using the EntityFramework ORM by selecting 'Lisa.Kiwi.Data' as project in the NuGet Package Manager Console and running 'Update-Database -Verbose' (parameter optional).
--  When making changes to the WebApi, run the Odata Client T4 template in the Access Layer project, with the WebApi running (important!) to regenerate the client containers.
+-  Create and fill a database using the EntityFramework ORM by selecting 'Lisa.Kiwi.WebApi' as project in the NuGet Package Manager Console and running 'Update-Database -Verbose' (parameter optional).
 
 **When contributing**
 
