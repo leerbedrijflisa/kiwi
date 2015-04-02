@@ -367,7 +367,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 
         public async Task<ActionResult> Redirect()
         {
-            string link = null;
+            string link;
             var report = await GetCurrentReport();
             switch (report.Category){
                 case "Theft":
@@ -390,7 +390,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             {
                 return null;
             }
-            int reportId = Int32.Parse(cookie.Value);
+            var reportId = Int32.Parse(cookie.Value);
             return await _reportProxy.GetAsync(reportId);
         }
 
