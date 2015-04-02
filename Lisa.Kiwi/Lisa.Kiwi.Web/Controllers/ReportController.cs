@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using Lisa.Kiwi.WebApi;
 using Lisa.Kiwi.WebApi.Access;
 using System.Web.Configuration;
+using Lisa.Kiwi.Web.Controllers;
 
 namespace Lisa.Kiwi.Web.Reporting.Controllers
 {
@@ -233,17 +234,17 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(report.Id, report);
 
-            if ( viewModel.HasPerpetrator || viewModel.HasVictim )
-            {
-                return RedirectToAction("Perpetrator", new { Hasvictim = viewModel.HasVictim });
-            }
-            else if ( viewModel.HasPerpetrator || !viewModel.HasVictim )
+            if ( viewModel.HasPerpetrator && !viewModel.HasVictim )
             {
                 return RedirectToAction("Perpetrator");
             }
-            else if ( !viewModel.HasPerpetrator || viewModel.HasVictim)
+            else if ( !viewModel.HasPerpetrator && viewModel.HasVictim)
             {
                 return RedirectToAction("Victim");
+            }
+            else if ( viewModel.HasPerpetrator && viewModel.HasVictim )
+            {
+                return RedirectToAction("Perpetrator", routeValues: new { Hasvictim = viewModel.HasVictim });
             }
 
             return RedirectToAction("Contact");
@@ -276,6 +277,33 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
 
         [HttpPost]
         public async Task<ActionResult> Perpetrator(PerpetratorViewModel viewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
+            var HasVictim = Request.QueryString["Hasvictim"];
+            var report = await GetCurrentReport();
+            _modelFactory.Modify(report, viewModel);
+            await _reportProxy.PatchAsync(report.Id, report);
+            // TODO: add error handling
+            if(HasVictim == "True")
+            {
+                return RedirectToAction("Victim");
+            }
+            else
+            {
+                return RedirectToAction("Contact");
+            }
+        }
+
+        public ActionResult Victim()
+        {
+            return View(new VictimViewModel());
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Victim(VictimViewModel viewModel)
         {
             if (!ModelState.IsValid)
             {
