@@ -62,10 +62,13 @@ namespace Lisa.Kiwi.Web
 
         public void Modify(Report report, BullyingViewModel viewModel)
         {
-            report.Victim = viewModel.Victim;
             report.Description = viewModel.Description;
+            report.VictimName = viewModel.VictimName;
         }
-
+        public void Modify(Report report, VictimViewModel viewModel)
+        {
+            report.Victim = viewModel.Victim;
+        }
         public void Modify(Report report, OtherViewModel viewModel)
         {
             report.Description = viewModel.Description;

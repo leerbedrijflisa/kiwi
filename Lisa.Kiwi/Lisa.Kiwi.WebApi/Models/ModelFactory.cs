@@ -15,6 +15,7 @@
                 IsUnconscious = reportData.IsUnconscious,
                 
                 Victim = reportData.Victim,
+                VictimName = reportData.VictimName,
 
                 WeaponType = reportData.WeaponType,
                 WeaponLocation = reportData.WeaponLocation,
