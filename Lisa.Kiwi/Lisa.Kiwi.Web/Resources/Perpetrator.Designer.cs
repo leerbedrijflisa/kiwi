@@ -61,6 +61,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tussen 12 en 20.
+        /// </summary>
+        public static string BetweenTwelveAndTwenty {
+            get {
+                return ResourceManager.GetString("BetweenTwelveAndTwenty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tussen 21 en 35.
+        /// </summary>
+        public static string BetweenTwentyOneAndThirtyFive {
+            get {
+                return ResourceManager.GetString("BetweenTwentyOneAndThirtyFive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Kleding:.
         /// </summary>
         public static string Clothing {
@@ -97,6 +115,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ouder dan 35.
+        /// </summary>
+        public static string OlderThanThirtyFive {
+            get {
+                return ResourceManager.GetString("OlderThanThirtyFive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Signalement:.
         /// </summary>
         public static string Perpetrators {
@@ -129,6 +156,15 @@ namespace Resources {
         public static string UniqueProp {
             get {
                 return ResourceManager.GetString("UniqueProp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Jonger dan 12.
+        /// </summary>
+        public static string YoungerThanTwelve {
+            get {
+                return ResourceManager.GetString("YoungerThanTwelve", resourceCulture);
             }
         }
     }

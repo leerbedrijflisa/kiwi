@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BetweenTwelveAndTwenty" xml:space="preserve">
+    <value>Tussen 12 en 20</value>
+  </data>
+  <data name="BetweenTwentyOneAndThirtyFive" xml:space="preserve">
+    <value>Tussen 21 en 35</value>
+  </data>
   <data name="Clothing" xml:space="preserve">
     <value>Kleding:</value>
   </data>
@@ -129,6 +135,9 @@
   <data name="Name" xml:space="preserve">
     <value>Naam:</value>
   </data>
+  <data name="OlderThanThirtyFive" xml:space="preserve">
+    <value>Ouder dan 35</value>
+  </data>
   <data name="Perpetrators" xml:space="preserve">
     <value>Signalement:</value>
   </data>
@@ -140,5 +149,8 @@
   </data>
   <data name="UniqueProp" xml:space="preserve">
     <value>Unieke kenmerken:</value>
+  </data>
+  <data name="YoungerThanTwelve" xml:space="preserve">
+    <value>Jonger dan 12</value>
   </data>
 </root>
