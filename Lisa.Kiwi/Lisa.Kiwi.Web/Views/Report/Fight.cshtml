@@ -9,11 +9,12 @@
 {
 	<p>
 		@Html.LabelFor(m => m.FighterCount)
-		@Html.TextBoxFor(m => m.FighterCount, new { @type = "number" })
+		@Html.TextBoxFor(m => m.FighterCount, new { @type = "number" })*
 	</p>
 	<p>
 		@Html.LabelFor(m => m.IsWeaponPresent)
-		@Html.CheckBoxFor(m => m.IsWeaponPresent)
+		@Html.CheckBoxFor(m => m.IsWeaponPresent)*
 	</p>
-	<input type="submit" value="Verzenden" />
+	<input type="submit" value="Verzenden"/>
+	<text>*verplicht veld</text>
 }
