@@ -82,7 +82,7 @@ namespace Lisa.Kiwi.WebApi
             return contactData;
         }
 
-        public LocationData Modify(LocationData locationData, JToken json)
+        private LocationData Modify(LocationData locationData, JToken json)
         {
             var data = locationData ?? new LocationData();
             data.Building = json["building"] != null ? json.Value<string>("building") : data.Building;
@@ -90,7 +90,7 @@ namespace Lisa.Kiwi.WebApi
             return data;
         }
 
-        public ContactData Modify(ContactData contactData, JToken json)
+        private ContactData Modify(ContactData contactData, JToken json)
         {
             var data = contactData ?? new ContactData();
             data.Name = json["name"] != null ? json.Value<string>("name") : data.Name;
@@ -98,7 +98,8 @@ namespace Lisa.Kiwi.WebApi
             data.EmailAddress = json["emailAddress"] != null ? json.Value<string>("emailAddress") : data.EmailAddress;
             return data;
         }
-        public PerpetratorData Modify(PerpetratorData perpetratorData, JToken json)
+
+        private PerpetratorData Modify(PerpetratorData perpetratorData, JToken json)
         {
             var data = perpetratorData ?? new PerpetratorData();
             data.Name = json["name"] != null ? json.Value<string>("name") : data.Name;
@@ -116,7 +117,7 @@ namespace Lisa.Kiwi.WebApi
             return data;
         }
 
-        public VehicleData Modify(VehicleData vehicleData, JToken json)
+        private VehicleData Modify(VehicleData vehicleData, JToken json)
         {
             var data = vehicleData ?? new VehicleData();
             data.AdditionalFeatures = json["additionalFeatures"] != null ? json.Value<string>("additionalFeatures") : data.AdditionalFeatures;
