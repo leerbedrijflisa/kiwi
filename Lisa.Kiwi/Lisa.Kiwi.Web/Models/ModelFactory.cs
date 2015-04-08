@@ -32,6 +32,7 @@ namespace Lisa.Kiwi.Web
         {
             report.StolenObject = viewModel.StolenObject ;
             report.DateOfTheft = viewModel.DateOfTheft.Add(viewModel.TimeOfTheft.TimeOfDay);
+            report.Description = viewModel.Description;
         }
 
         public void Modify(Report report, DrugsViewModel viewModel)
@@ -43,6 +44,7 @@ namespace Lisa.Kiwi.Web
         {
             report.FighterCount = viewModel.FighterCount;
             report.IsWeaponPresent = viewModel.IsWeaponPresent;
+            report.Description = viewModel.Description;
         }
 
         public void Modify(Report report, WeaponViewModel viewModel)
@@ -53,6 +55,7 @@ namespace Lisa.Kiwi.Web
                 report.WeaponType = viewModel.OtherType;
             }
             report.WeaponLocation = viewModel.Location;
+            report.Description = viewModel.Description;
         }
 
         public void Modify(Report report, NuisanceViewModel viewModel)

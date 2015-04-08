@@ -18,6 +18,9 @@ namespace Lisa.Kiwi.Web
         [DisplayName("Waar is het wapen?")]
         public string Location { get; set; }
 
+        [DisplayName("Wilt u nog iets toevoegen?")]
+        public string Description { get; set; }
+
         public IEnumerable<SelectListItem> Types
         {
             get
