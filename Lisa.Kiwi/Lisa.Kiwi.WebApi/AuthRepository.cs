@@ -42,7 +42,7 @@ namespace Lisa.Kiwi.WebApi
             return user;
         }
 
-        public async Task<bool> HasRole(IdentityUser user, string roleName)
+        public bool HasRole(IdentityUser user, string roleName)
         {
             var role = _ctx.Roles.First(r => r.Name == roleName);
             return user.Roles.Any(r => r.RoleId == role.Id);

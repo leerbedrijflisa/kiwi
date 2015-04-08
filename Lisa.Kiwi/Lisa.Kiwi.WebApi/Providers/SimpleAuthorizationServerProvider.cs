@@ -78,7 +78,7 @@ namespace Lisa.Kiwi.WebApi
                 identity.AddClaim(new Claim("id", user.Id));
                 identity.AddClaim(new Claim(ClaimTypes.Role, "User"));
 
-                var isAdmin = await repo.HasRole(user, "Administrator");
+                var isAdmin = repo.HasRole(user, "Administrator");
                 identity.AddClaim(new Claim("is_admin", isAdmin.ToString()));
 
                 context.Validated(identity);

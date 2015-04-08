@@ -34,7 +34,7 @@
 				{
 					<td>@DashboardHelpers.NullCheck(report.Location.Building)</td>
 					<td>@DashboardHelpers.NullCheck(report.Location.Description)</td>
-					<td>@Statuses.ResourceManager.GetString(Enum.GetName(typeof(StatusEnum), report.Status))</td>
+					<td>@Statuses.ResourceManager.GetString(Enum.GetName(typeof(StatusEnum), report.Status) ?? Enum.GetName(typeof(StatusEnum), StatusEnum.Open))</td>
 				}
 			</tr>
 		}
