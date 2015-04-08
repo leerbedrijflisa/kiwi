@@ -1,9 +1,5 @@
 ﻿@model FightViewModel
 
-@section Scripts{
-	<script src="~/Scripts/Description.js"></script>
-}
-
 @{
 	ViewBag.Title = Categories.Fight;
 }
@@ -19,10 +15,7 @@
 		@Html.LabelFor(m => m.IsWeaponPresent)
 		@Html.CheckBoxFor(m => m.IsWeaponPresent)*
 	</p>
-	<p id="Button">
-		<button type="button">Overige info</button>
-	</p>
-	<p id="Desc">
+	<p>
 		@Html.LabelFor(m => m.Description)
 		@Html.TextBoxFor(m => m.Description)
 	</p>
