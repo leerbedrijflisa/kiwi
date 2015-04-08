@@ -4,7 +4,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity.Migrations;
 
-namespace Lisa.Kiwi.WebApi.Migrations
+namespace Lisa.Kiwi.WebApi
 {
     internal sealed class Configuration : DbMigrationsConfiguration<KiwiContext>
     {

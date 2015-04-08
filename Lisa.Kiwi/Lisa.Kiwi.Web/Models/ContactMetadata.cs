@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.WindowsAzure.Storage.Table;
 
-namespace Lisa.Kiwi.Web.Models
+namespace Lisa.Kiwi.Web
 {
     public class ContactMetadata : TableEntity
     {

@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Resources;
 
-namespace Lisa.Kiwi.Web.Dashboard.Models
+namespace Lisa.Kiwi.Web
 {
     public class ReportMetadata
     {

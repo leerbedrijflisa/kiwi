@@ -6,7 +6,7 @@ using Lisa.Kiwi.WebApi;
 using Lisa.Kiwi.WebApi.Access;
 using System.Web.Configuration;
 
-namespace Lisa.Kiwi.Web.Reporting.Controllers
+namespace Lisa.Kiwi.Web
 {
     public class ReportController : Controller
     {

@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Data.Entity;
 using System.Web.Http;
-using Lisa.Kiwi.WebApi.Providers;
 using Microsoft.Owin;
 using Microsoft.Owin.Cors;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
 using Microsoft.AspNet.SignalR;
-using System.Data.Entity.Migrations;
 
 [assembly: OwinStartup(typeof(Lisa.Kiwi.WebApi.Startup))]
 

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Resources;
 
-namespace Lisa.Kiwi.Web.Models
+namespace Lisa.Kiwi.Web
 {
     public enum ReportTypeMetadata
     {

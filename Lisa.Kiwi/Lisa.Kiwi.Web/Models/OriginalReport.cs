@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Web;
 using Microsoft.WindowsAzure.Storage.Table;
 
-namespace Lisa.Kiwi.Web.Models
+namespace Lisa.Kiwi.Web
 {
 	public class OriginalReport : TableEntity
 	{

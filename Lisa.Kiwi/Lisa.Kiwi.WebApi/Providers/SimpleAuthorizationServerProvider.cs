@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.Security;
 using Microsoft.Owin.Security.OAuth;
 
-namespace Lisa.Kiwi.WebApi.Providers
+namespace Lisa.Kiwi.WebApi
 {
     public class SimpleAuthorizationServerProvider : OAuthAuthorizationServerProvider
     {

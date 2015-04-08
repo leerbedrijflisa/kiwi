@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
 
-namespace Lisa.Kiwi.Web.Dashboard.Utils
+namespace Lisa.Kiwi.Web
 {
     public static class SortHelper
     {

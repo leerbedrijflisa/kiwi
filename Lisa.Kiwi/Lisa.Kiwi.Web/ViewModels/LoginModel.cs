@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Resources;
 
-namespace Lisa.Kiwi.Web.ViewModels
+namespace Lisa.Kiwi.Web
 {
     public class LoginModel
     {
