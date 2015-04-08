@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Lisa.Kiwi.WebApi.Models
+namespace Lisa.Kiwi.WebApi
 {
     public class AddUserModel
     {

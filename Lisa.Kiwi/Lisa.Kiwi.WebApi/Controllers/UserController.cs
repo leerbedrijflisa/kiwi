@@ -2,11 +2,10 @@
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Lisa.Kiwi.WebApi.Models;
 using System.Web.Http;
 using Microsoft.AspNet.Identity;
 
-namespace Lisa.Kiwi.WebApi.Controllers
+namespace Lisa.Kiwi.WebApi
 {
     [RoutePrefix("api/users")]
     public class UserController : ApiController

@@ -1,8 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using Lisa.Kiwi.Web.Models;
 
-namespace Lisa.Kiwi.Web.Utils
+namespace Lisa.Kiwi.Web
 {
     public static class EnumDisplayNames
     {

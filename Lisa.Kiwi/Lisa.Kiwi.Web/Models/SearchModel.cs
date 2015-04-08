@@ -1,4 +1,4 @@
-﻿namespace Lisa.Kiwi.Web.Dashboard.Models
+﻿namespace Lisa.Kiwi.Web
 {
     public class SearchModel
     {

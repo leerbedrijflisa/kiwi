@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Lisa.Kiwi.Web.Models
+namespace Lisa.Kiwi.Web
 {
     public class Remark
     {

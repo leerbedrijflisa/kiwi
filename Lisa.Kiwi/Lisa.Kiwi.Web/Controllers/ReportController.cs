@@ -6,7 +6,7 @@ using Lisa.Kiwi.WebApi;
 using Lisa.Kiwi.WebApi.Access;
 using System.Web.Configuration;
 
-namespace Lisa.Kiwi.Web.Reporting.Controllers
+namespace Lisa.Kiwi.Web
 {
     public class ReportController : Controller
     {
@@ -20,7 +20,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             else
             {
                 var tokenCookie = Request.Cookies["token"];
-                if (tokenCookie != null)
+                if (tokenCookie != null && tokenCookie.Value != string.Empty)
                 {
                     var tokenType = tokenCookie.Value.Split(' ')[0];
                     var token = tokenCookie.Value.Split(' ')[1];

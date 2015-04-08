@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNet.SignalR;
 
-namespace Lisa.Kiwi.WebApi.Hubs
+namespace Lisa.Kiwi.WebApi
 {
     public class ReportHub : Hub
     {
