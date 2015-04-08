@@ -32,7 +32,7 @@ namespace Lisa.Kiwi.WebApi
 
         private static void ConfigureOAuth(IAppBuilder app)
         {
-            var serverOptions = new OAuthAuthorizationServerOptions()
+            var serverOptions = new OAuthAuthorizationServerOptions
             {
                 AllowInsecureHttp = true,
                 TokenEndpointPath = new PathString("/api/oauth"),
