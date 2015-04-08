@@ -25,7 +25,7 @@ namespace Lisa.Kiwi.Web
                     var tokenType = tokenCookie.Value.Split(' ')[0];
                     var token = tokenCookie.Value.Split(' ')[1];
 
-                    _reportProxy = new Proxy<Report>(WebConfigurationManager.AppSettings["WebApiUrl"], "/reports/", token, tokenType);
+                    _reportProxy = new Proxy<Report>(WebConfigurationManager.AppSettings["WebApiUrl"], "/reports/", tokenType, token);
                 }
             }
 

@@ -102,7 +102,7 @@ namespace Lisa.Kiwi.Web
                     return false;
                 }
 
-                _reportProxy = new Proxy<Report>(WebConfigurationManager.AppSettings["WebApiUrl"], "/reports", token, tokenType);
+                _reportProxy = new Proxy<Report>(WebConfigurationManager.AppSettings["WebApiUrl"], "/reports", tokenType, token);
 
                 return true;
             }
