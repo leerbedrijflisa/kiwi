@@ -11,6 +11,10 @@
 		@Html.TextBoxFor(m => m.VictimName)
 	</p>
     <p>
+        @Html.LabelFor(m => m.Description)
+        @Html.TextBoxFor(m => m.Description)
+    </p>
+    <p>
         @Html.Label("Heeft u nog informatie over de verdachte?")
         @Html.CheckBoxFor(m => m.HasPerpetrator)
     </p>
