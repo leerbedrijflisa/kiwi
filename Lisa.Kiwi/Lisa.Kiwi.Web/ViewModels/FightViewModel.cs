@@ -12,5 +12,8 @@ namespace Lisa.Kiwi.Web
         [Required(ErrorMessage = ErrorMessages.RequiredError)]
         [DisplayName("Zijn er wapens bij betrokken?")]
         public bool IsWeaponPresent { get; set; }
+
+        [DisplayName("Wilt u nog iets toevoegen?")]
+        public string Description { get; set; }
     }
 }

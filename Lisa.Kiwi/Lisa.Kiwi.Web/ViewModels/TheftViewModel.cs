@@ -19,5 +19,8 @@ namespace Lisa.Kiwi.Web
         [DataType(DataType.Time)]
         [DisplayName("Hoe laat is het gestolen?")]
         public DateTime TimeOfTheft { get; set; }
+
+        [DisplayName("Wilt u nog iets toevoegen?")]
+        public string Description { get; set; }
     }
 }

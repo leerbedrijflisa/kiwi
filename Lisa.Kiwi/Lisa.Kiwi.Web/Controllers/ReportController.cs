@@ -365,11 +365,11 @@ namespace Lisa.Kiwi.Web
             return View(report);
         }
 
-        public async Task<ActionResult> Redirect()
+        [HttpPost]
+        public async Task<ActionResult> Done(string category)
         {
             string link;
-            var report = await GetCurrentReport();
-            switch (report.Category){
+            switch (category){
                 case "Theft":
                     link = "Police";
                     break;
