@@ -11,16 +11,18 @@ namespace Lisa.Kiwi.WebApi
 {
     public class Proxy<T>
     {
-        public Proxy(string baseUrl, string resourceUrl, string token = null, string tokenType = null)
+        public Proxy(string baseUrl, string resourceUrl)
         {
-            _baseUrl = baseUrl.Trim('/');
-            _resourceUrl = resourceUrl.Trim('/');
-            _client = new HttpClient
+            _apiBaseUrl = baseUrl.Trim('/');
+            _proxyResourceUrl = resourceUrl.Trim('/');
+
+            _httpClient = new HttpClient
             {
-                BaseAddress = new Uri(_baseUrl)
+                BaseAddress = new Uri(_apiBaseUrl)
             };
-            _settings = new JsonSerializerSettings
-            {
+
+            _jsonSerializerSettings = new JsonSerializerSettings
+            { 
                 ContractResolver = new CamelCasePropertyNamesContractResolver(),
                 NullValueHandling = NullValueHandling.Ignore,
                 Converters = new List<JsonConverter>
@@ -31,25 +33,29 @@ namespace Lisa.Kiwi.WebApi
                     }
                 }
             };
+        }
 
-            Authorize(_client, token, tokenType);
+        public Proxy(string baseUrl, string resourceUrl, string tokenType, string token)
+            : this(baseUrl, resourceUrl)
+        {
+            if (token != null && tokenType != null)
+            {
+                _httpClient.DefaultRequestHeaders.Add("Authorization", String.Format("{0} {1}", tokenType, token));
+            }
         }
 
         public async Task<IEnumerable<T>> GetAsync()
         {
-            var result = await _client.GetAsync(_resourceUrl);
-
-            var json = await result.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<IEnumerable<T>>(json, _settings);
+            var result = await _httpClient.GetAsync(_proxyResourceUrl);
+            return await DeserializeList(result);
         }
 
         public async Task<T> GetAsync(int id)
         {
-            var url = String.Format("{0}/{1}", _resourceUrl, id);
-            var result = await _client.GetAsync(url);
+            var url = String.Format("{0}/{1}", _proxyResourceUrl, id);
 
-            var json = await result.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<T>(json, _settings);
+            var result = await _httpClient.GetAsync(url);
+            return await DeserializeSingle(result);
         }
 
         public async Task<T> PostAsync(T model)
@@ -57,14 +63,12 @@ namespace Lisa.Kiwi.WebApi
             var request = new HttpRequestMessage
             {
                 Method = HttpMethod.Post,
-                RequestUri = new Uri(string.Format("{0}/{1}", _baseUrl, _resourceUrl)),
-                Content = new StringContent(JsonConvert.SerializeObject(model, _settings), Encoding.UTF8, "Application/json")
+                RequestUri = new Uri(string.Format("{0}/{1}", _apiBaseUrl, _proxyResourceUrl)),
+                Content = new StringContent(JsonConvert.SerializeObject(model, _jsonSerializerSettings), Encoding.UTF8, "Application/json")
             };
 
-            var result = await _client.SendAsync(request);
-            var json = await result.Content.ReadAsStringAsync();
-
-            return JsonConvert.DeserializeObject<T>(json, _settings);
+            var result = await _httpClient.SendAsync(request);
+            return await DeserializeSingle(result);
         }
 
         public async Task<T> PatchAsync(int id, T model)
@@ -72,27 +76,46 @@ namespace Lisa.Kiwi.WebApi
             var request = new HttpRequestMessage
             {
                 Method = new HttpMethod("PATCH"),
-                RequestUri = new Uri(String.Format("{0}/{1}/{2}", _baseUrl, _resourceUrl, id)),
-                Content = new StringContent(JsonConvert.SerializeObject(model, _settings), Encoding.UTF8, "application/json")
+                RequestUri = new Uri(String.Format("{0}/{1}/{2}", _apiBaseUrl, _proxyResourceUrl, id)),
+                Content = new StringContent(JsonConvert.SerializeObject(model, _jsonSerializerSettings), Encoding.UTF8, "application/json")
             };
 
-            var result = await _client.SendAsync(request);
-            var json = await result.Content.ReadAsStringAsync();
-
-            return JsonConvert.DeserializeObject<T>(json, _settings);
+            var result = await _httpClient.SendAsync(request);
+            return await DeserializeSingle(result);
         }
 
-        private void Authorize(HttpClient client, string token, string tokenType)
+        public async Task<T> DeleteAsync(int id, T model)
         {
-            if (token != null && tokenType != null)
+            var request = new HttpRequestMessage
             {
-                client.DefaultRequestHeaders.Add("Authorization", String.Format("{0} {1}", tokenType, token));
-            }
+                Method = new HttpMethod("PATCH"),
+                RequestUri = new Uri(String.Format("{0}/{1}/{2}", _apiBaseUrl, _proxyResourceUrl, id)),
+                Content = new StringContent(JsonConvert.SerializeObject(model, _jsonSerializerSettings), Encoding.UTF8, "application/json")
+            };
+
+            var result = await _httpClient.SendAsync(request);
+            return await DeserializeSingle(result);
         }
 
-        private readonly HttpClient _client;
-        private readonly string _baseUrl;
-        private readonly string _resourceUrl;
-        private readonly JsonSerializerSettings _settings;
+        private async Task<T> DeserializeSingle(HttpResponseMessage response)
+        {
+            var json = await response.Content.ReadAsStringAsync();
+
+            return JsonConvert.DeserializeObject<T>(json, _jsonSerializerSettings);
+        }
+
+        private async Task<IEnumerable<T>> DeserializeList(HttpResponseMessage response)
+        {
+            var json = await response.Content.ReadAsStringAsync();
+
+            return JsonConvert.DeserializeObject<IEnumerable<T>>(json, _jsonSerializerSettings);
+        }
+
+
+
+        private readonly HttpClient _httpClient;
+        private readonly string _apiBaseUrl;
+        private readonly string _proxyResourceUrl;
+        private readonly JsonSerializerSettings _jsonSerializerSettings;
     }
 }
