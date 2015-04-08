@@ -2,6 +2,7 @@
 
 @section Scripts{
 	<script src="~/Scripts/Weapons.js"></script>
+	<script src="~/Scripts/Description.js"></script>
 }
 
 @{
@@ -26,7 +27,10 @@
 		@Html.TextBoxFor(m => m.Location)*
 		@Html.ValidationMessageFor(m => m.Location)
 	</p>
-	<p>
+	<p id="Button">
+		<button type="button">Overige info</button>
+	</p>
+	<p id="Desc">
 		@Html.LabelFor(m => m.Description)
 		@Html.TextBoxFor(m => m.Description)
 	</p>

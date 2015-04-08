@@ -2,6 +2,7 @@
 
 @section Scripts{
 	<script src="~/Scripts/Theft.js"></script>
+  <script src="~/Scripts/Description.js"></script>
 }
 
 @{
@@ -19,7 +20,10 @@
 		@Html.LabelFor(m => m.DateOfTheft)
 		@Html.TextBoxFor(m => m.DateOfTheft)*
 	</p>
-	<p>
+	<p id="Button">
+		<button type="button">Overige info</button>
+	</p>
+	<p id="Desc">
 		@Html.LabelFor(m => m.Description)
 		@Html.TextBoxFor(m => m.Description)
 	</p>
