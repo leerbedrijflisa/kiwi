@@ -20,7 +20,7 @@ namespace Lisa.Kiwi.Web
             else
             {
                 var tokenCookie = Request.Cookies["token"];
-                if (tokenCookie != null)
+                if (tokenCookie != null && tokenCookie.Value != string.Empty)
                 {
                     var tokenType = tokenCookie.Value.Split(' ')[0];
                     var token = tokenCookie.Value.Split(' ')[1];
