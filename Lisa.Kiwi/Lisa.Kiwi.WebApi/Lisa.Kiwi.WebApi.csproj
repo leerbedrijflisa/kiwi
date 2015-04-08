@@ -179,11 +179,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\kiwi-webapi.pubxml" />
-    <None Include="Scripts\jquery-1.6.4-vsdoc.js" />
-    <Content Include="Scripts\jquery-1.6.4.js" />
-    <Content Include="Scripts\jquery-1.6.4.min.js" />
-    <Content Include="Scripts\jquery.signalR-2.2.0.js" />
-    <Content Include="Scripts\jquery.signalR-2.2.0.min.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -197,14 +192,12 @@
     <Compile Include="Data\LocationData.cs" />
     <Compile Include="Data\PerpetratorData.cs" />
     <Compile Include="Data\ReportData.cs" />
-    <Compile Include="Data\StatusChangeData.cs" />
     <Compile Include="Data\VehicleData.cs" />
-    <Compile Include="Hubs\ReportHub.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AddUserModel.cs" />
     <Compile Include="Models\ModelFactory.cs" />
     <Compile Include="Providers\SimpleAuthorizationServerProvider.cs" />
-    <Compile Include="Startup.cs" />
+    <Compile Include="App_Start\Startup.cs" />
     <Compile Include="App_Start\QueueConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ReportsController.cs" />

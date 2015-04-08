@@ -28,8 +28,8 @@ namespace Lisa.Kiwi.WebApi
 
                 var tokenArray = anonymousToken.Split('‼');
 
-                int reportId = Int32.Parse(tokenArray[0]);
-                DateTime time = DateTime.Parse(tokenArray[1]);
+                var reportId = Int32.Parse(tokenArray[0]);
+                var time = DateTime.Parse(tokenArray[1]);
 
                 if (tokenArray.Count() != 2 && reportId != 0 && time != new DateTime())
                 {
