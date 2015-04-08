@@ -19,9 +19,9 @@
 		@Html.LabelFor(m => m.DateOfTheft)
 		@Html.TextBoxFor(m => m.DateOfTheft)*
 	</p>
-	<p id="Desc">
-		@Html.LabelFor(m => m.Description)
-		@Html.TextBoxFor(m => m.Description)
+	<p>
+		@Html.LabelFor(m => m.Description)<br />
+		@Html.TextAreaFor(m => m.Description, new { @class = "DescriptionBox" })
 	</p>
 	<input type="submit" value="Verzenden"/>
 	<text>*velden verplicht</text>

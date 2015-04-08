@@ -154,3 +154,7 @@ body{
             margin-top: 65px;
             padding-left: 1em;
         }
+        
+        .DescriptionBox {
+            width: 375px;
+        }

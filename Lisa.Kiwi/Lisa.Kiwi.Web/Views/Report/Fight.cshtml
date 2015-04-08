@@ -4,7 +4,7 @@
 	ViewBag.Title = Categories.Fight;
 }
 
-<h2>Fight</h2>
+<h2>@ViewBag.Title</h2>
 @using (Html.BeginForm())
 {
 	<p>
@@ -13,11 +13,11 @@
 	</p>
 	<p>
 		@Html.LabelFor(m => m.IsWeaponPresent)
-		@Html.CheckBoxFor(m => m.IsWeaponPresent)*
+		@Html.CheckBoxFor(m => m.IsWeaponPresent)
 	</p>
 	<p>
-		@Html.LabelFor(m => m.Description)
-		@Html.TextBoxFor(m => m.Description)
+		@Html.LabelFor(m => m.Description)<br />
+		@Html.TextAreaFor(m => m.Description, new {@class="DescriptionBox"})
 	</p>
 	<input type="submit" value="Verzenden"/>
 	<text>*verplicht veld</text>
