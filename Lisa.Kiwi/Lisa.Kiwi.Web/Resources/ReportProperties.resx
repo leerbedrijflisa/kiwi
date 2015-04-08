@@ -180,4 +180,10 @@
   <data name="VictimDescription" xml:space="preserve">
     <value>Informatie over het slachtoffer:</value>
   </data>
+  <data name="FalseFirstAid" xml:space="preserve">
+    <value>Het slachtoffer is niet bewusteloos.</value>
+  </data>
+  <data name="TrueFirstAid" xml:space="preserve">
+    <value>Het slachtoffer is bewusteloos.</value>
+  </data>
 </root>

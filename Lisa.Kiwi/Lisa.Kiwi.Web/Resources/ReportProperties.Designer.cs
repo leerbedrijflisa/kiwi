@@ -133,6 +133,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Het slachtoffer is niet bewusteloos..
+        /// </summary>
+        public static string FalseFirstAid {
+            get {
+                return ResourceManager.GetString("FalseFirstAid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Er waren zoveel mensen betrokken:.
         /// </summary>
         public static string FightCount {
@@ -160,20 +169,20 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Het slachtoffer is bewusteloos..
+        /// </summary>
+        public static string TrueFirstAid {
+            get {
+                return ResourceManager.GetString("TrueFirstAid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Word de drugs gebruikt of verhandeld:.
         /// </summary>
         public static string UsingOrDealing {
             get {
                 return ResourceManager.GetString("UsingOrDealing", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Informatie over het slachtoffer:.
-        /// </summary>
-        internal static string VictimDescription {
-            get {
-                return ResourceManager.GetString("VictimDescription", resourceCulture);
             }
         }
         
@@ -219,6 +228,15 @@ namespace Resources {
         public static string VehicleNumberPlate {
             get {
                 return ResourceManager.GetString("VehicleNumberPlate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Informatie over het slachtoffer:.
+        /// </summary>
+        public static string VictimDescription {
+            get {
+                return ResourceManager.GetString("VictimDescription", resourceCulture);
             }
         }
         
