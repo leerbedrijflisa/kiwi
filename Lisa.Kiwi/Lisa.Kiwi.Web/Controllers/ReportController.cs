@@ -5,7 +5,6 @@ using System.Web.Mvc;
 using Lisa.Kiwi.WebApi;
 using Lisa.Kiwi.WebApi.Access;
 using System.Web.Configuration;
-using Lisa.Kiwi.Web.Controllers;
 
 namespace Lisa.Kiwi.Web
 {
