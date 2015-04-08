@@ -4,7 +4,7 @@
 	ViewBag.Title = "Contact verplicht";
 }
 
-<h2>ContactRequired</h2>
+<h2>@ViewBag.Title</h2>
 
 @using (Html.BeginForm())
 {
@@ -23,6 +23,6 @@
 		@Html.TextBoxFor(m => m.EmailAddress)*
 		@Html.ValidationMessageFor(m => m.EmailAddress)
 	</p>
-	<input type="submit"/>
+	<input type="submit" value="Verzenden" />
 	<text>*verplicht veld</text>
 }

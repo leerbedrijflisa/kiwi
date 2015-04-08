@@ -1,6 +1,7 @@
 ﻿@using Lisa.Kiwi.WebApi
 @using Perpetrator = Resources.Perpetrator
-@model IEnumerable<Lisa.Kiwi.WebApi.Report>
+﻿@model IEnumerable<Report>
+>>>>>>> 96661fa7971429e0e7ab966ddb3cb33320484686
 @{
 	Layout = null;
 }
@@ -25,7 +26,6 @@
                         @*find a way to make this work*@
                         <p class="time">@report.Created.ToString("dddd d MMMM HH:mm")n</p>
                     </div>
-
                     <div class="building @DashboardHelpers.NullCheck(report.Location.Building)">
                         <h2>@DashboardHelpers.NullCheck(report.Location.Building)</h2>
                         <p class="location">@DashboardHelpers.NullCheck(report.Location.Description)</p>

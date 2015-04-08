@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.Security;
 using Microsoft.Owin.Security.OAuth;
 
-namespace Lisa.Kiwi.WebApi.Providers
+namespace Lisa.Kiwi.WebApi
 {
     public class SimpleAuthorizationServerProvider : OAuthAuthorizationServerProvider
     {
@@ -28,8 +28,8 @@ namespace Lisa.Kiwi.WebApi.Providers
 
                 var tokenArray = anonymousToken.Split('‼');
 
-                int reportId = Int32.Parse(tokenArray[0]);
-                DateTime time = DateTime.Parse(tokenArray[1]);
+                var reportId = Int32.Parse(tokenArray[0]);
+                var time = DateTime.Parse(tokenArray[1]);
 
                 if (tokenArray.Count() != 2 && reportId != 0 && time != new DateTime())
                 {
@@ -78,7 +78,7 @@ namespace Lisa.Kiwi.WebApi.Providers
                 identity.AddClaim(new Claim("id", user.Id));
                 identity.AddClaim(new Claim(ClaimTypes.Role, "User"));
 
-                var isAdmin = await repo.HasRole(user, "Administrator");
+                var isAdmin = repo.HasRole(user, "Administrator");
                 identity.AddClaim(new Claim("is_admin", isAdmin.ToString()));
 
                 context.Validated(identity);

@@ -1,7 +1,7 @@
 ﻿@charset "utf-8";
 /* CSS Document */
 
-*{
+html, body{
 	padding: 0;
 	margin: 0;
 	font-family: 'Ubuntu', sans-serif;
@@ -86,9 +86,9 @@ body{
 			max-height: 150px;
 			padding: 10px;
 			padding-bottom: 25px;
-			-webkit-box-shadow: 4px 1px 19px 0px rgba(50, 50, 50, 0.72);
-			-moz-box-shadow:    4px 1px 19px 0px rgba(50, 50, 50, 0.72);
-			box-shadow:         4px 1px 19px 0px rgba(50, 50, 50, 0.72);
+			-webkit-box-shadow: 4px 1px 19px 0 rgba(50, 50, 50, 0.72);
+			-moz-box-shadow:    4px 1px 19px 0 rgba(50, 50, 50, 0.72);
+			box-shadow:         4px 1px 19px 0 rgba(50, 50, 50, 0.72);
 			margin-left: 20px;
 			margin-bottom: 20px;
 			position: relative;
@@ -153,4 +153,8 @@ body{
         div.content {
             margin-top: 65px;
             padding-left: 1em;
+        }
+        
+        .DescriptionBox {
+            width: 375px;
         }

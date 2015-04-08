@@ -32,6 +32,7 @@ namespace Lisa.Kiwi.Web
         {
             report.StolenObject = viewModel.StolenObject ;
             report.DateOfTheft = viewModel.DateOfTheft.Add(viewModel.TimeOfTheft.TimeOfDay);
+            report.Description = viewModel.Description;
         }
 
         public void Modify(Report report, DrugsViewModel viewModel)
@@ -43,6 +44,7 @@ namespace Lisa.Kiwi.Web
         {
             report.FighterCount = viewModel.FighterCount;
             report.IsWeaponPresent = viewModel.IsWeaponPresent;
+            report.Description = viewModel.Description;
         }
 
         public void Modify(Report report, WeaponViewModel viewModel)
@@ -53,6 +55,7 @@ namespace Lisa.Kiwi.Web
                 report.WeaponType = viewModel.OtherType;
             }
             report.WeaponLocation = viewModel.Location;
+            report.Description = viewModel.Description;
         }
 
         public void Modify(Report report, NuisanceViewModel viewModel)
@@ -82,11 +85,11 @@ namespace Lisa.Kiwi.Web
             }
             if (viewModel.AgeRange != null)
             {
-                string[] values = viewModel.AgeRange.Split('-');
-                int MinimumAge = Convert.ToInt32(values[0]);
-                int MaximumAge = Convert.ToInt32(values[1]);
-                report.Perpetrator.MinimumAge = MinimumAge;
-                report.Perpetrator.MaximumAge = MaximumAge;
+                var values = viewModel.AgeRange.Split('-');
+                var minimumAge = Convert.ToInt32(values[0]);
+                var maximumAge = Convert.ToInt32(values[1]);
+                report.Perpetrator.MinimumAge = minimumAge;
+                report.Perpetrator.MaximumAge = maximumAge;
             }
             report.Perpetrator.Name = viewModel.Name;
             report.Perpetrator.Clothing = viewModel.Clothing;

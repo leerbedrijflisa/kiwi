@@ -7,7 +7,7 @@ using Lisa.Kiwi.WebApi.Access;
 using System.Web.Configuration;
 using Lisa.Kiwi.Web.Controllers;
 
-namespace Lisa.Kiwi.Web.Reporting.Controllers
+namespace Lisa.Kiwi.Web
 {
     public class ReportController : Controller
     {
@@ -21,12 +21,12 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             else
             {
                 var tokenCookie = Request.Cookies["token"];
-                if (tokenCookie != null)
+                if (tokenCookie != null && tokenCookie.Value != string.Empty)
                 {
                     var tokenType = tokenCookie.Value.Split(' ')[0];
                     var token = tokenCookie.Value.Split(' ')[1];
 
-                    _reportProxy = new Proxy<Report>(WebConfigurationManager.AppSettings["WebApiUrl"], "/reports/", token, tokenType);
+                    _reportProxy = new Proxy<Report>(WebConfigurationManager.AppSettings["WebApiUrl"], "/reports/", tokenType, token);
                 }
             }
 
@@ -149,7 +149,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(report.Id, report);
 
-            return RedirectToAction("Vehicle");
+            return RedirectToAction("Perpetrator");
         }
 
         public ActionResult Fight()
@@ -193,7 +193,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(report.Id, report);
 
-            return RedirectToAction("Vehicle");
+            return RedirectToAction("Perpetrator");
         }
 
         public ActionResult Nuisance()
@@ -406,11 +406,11 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             return View(report);
         }
 
-        public async Task<ActionResult> Redirect()
+        [HttpPost]
+        public async Task<ActionResult> Done(string category)
         {
-            string link = null;
-            var report = await GetCurrentReport();
-            switch (report.Category){
+            string link;
+            switch (category){
                 case "Theft":
                     link = "Police";
                     break;
@@ -431,7 +431,7 @@ namespace Lisa.Kiwi.Web.Reporting.Controllers
             {
                 return null;
             }
-            int reportId = Int32.Parse(cookie.Value);
+            var reportId = Int32.Parse(cookie.Value);
             return await _reportProxy.GetAsync(reportId);
         }
 

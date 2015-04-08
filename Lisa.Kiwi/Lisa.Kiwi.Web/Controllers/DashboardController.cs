@@ -74,7 +74,7 @@ namespace Lisa.Kiwi.Web
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(viewModel.Id, report);
 
-            return RedirectToAction("Details", new { Id = viewModel.Id });
+            return RedirectToAction("Details", new { viewModel.Id });
         }
 
         private async Task<bool> CheckAuth()
@@ -102,7 +102,7 @@ namespace Lisa.Kiwi.Web
                     return false;
                 }
 
-                _reportProxy = new Proxy<Report>(WebConfigurationManager.AppSettings["WebApiUrl"], "/reports", token, tokenType);
+                _reportProxy = new Proxy<Report>(WebConfigurationManager.AppSettings["WebApiUrl"], "/reports", tokenType, token);
 
                 return true;
             }

@@ -1,5 +1,5 @@
 ﻿@using Perpetrator = Resources.Perpetrator
-@model Lisa.Kiwi.WebApi.Report
+@model Report
 @{
 	Layout = null;
 }
@@ -28,7 +28,7 @@
 		}
 
 		<dt>@PageItems.StatusDescription</dt>
-		<dd>@Statuses.ResourceManager.GetString(Enum.GetName(typeof(StatusEnum), Model.Status))</dd>
+		<dd>@Statuses.ResourceManager.GetString(Enum.GetName(typeof(StatusEnum), Model.Status) ?? Enum.GetName(typeof(StatusEnum), StatusEnum.Open))</dd>
 
 		<dt>@PageItems.VisibleDescription</dt>
 		<dd>@Statuses.ResourceManager.GetString("Visible" + Model.IsVisible)</dd>

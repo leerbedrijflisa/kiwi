@@ -8,11 +8,11 @@ namespace Lisa.Kiwi.WebApi
     {
         public CloudQueue BuildQueue()
         {
-            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+            var storageAccount = CloudStorageAccount.Parse(
                 CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-            CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
-            CloudQueue queue = queueClient.GetQueueReference("myqueue");
+            var queueClient = storageAccount.CreateCloudQueueClient();
+            var queue = queueClient.GetQueueReference("myqueue");
 
             queue.CreateIfNotExists();
 

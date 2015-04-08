@@ -37,7 +37,6 @@ namespace Lisa.Kiwi.WebApi
             reportData.WeaponLocation = json.Value<string>("weaponLocation") ?? reportData.WeaponLocation;
 
             reportData.Victim = json.Value<string>("victim") ?? reportData.Victim;
-            reportData.VictimName = json.Value<string>("victimName") ?? reportData.VictimName;
 
 
             if (json["location"] != null)
@@ -83,7 +82,7 @@ namespace Lisa.Kiwi.WebApi
             return contactData;
         }
 
-        private LocationData Modify(LocationData locationData, JToken json)
+        public LocationData Modify(LocationData locationData, JToken json)
         {
             var data = locationData ?? new LocationData();
             data.Building = json["building"] != null ? json.Value<string>("building") : data.Building;
@@ -91,7 +90,7 @@ namespace Lisa.Kiwi.WebApi
             return data;
         }
 
-        private ContactData Modify(ContactData contactData, JToken json)
+        public ContactData Modify(ContactData contactData, JToken json)
         {
             var data = contactData ?? new ContactData();
             data.Name = json["name"] != null ? json.Value<string>("name") : data.Name;
@@ -99,8 +98,7 @@ namespace Lisa.Kiwi.WebApi
             data.EmailAddress = json["emailAddress"] != null ? json.Value<string>("emailAddress") : data.EmailAddress;
             return data;
         }
-
-        private PerpetratorData Modify(PerpetratorData perpetratorData, JToken json)
+        public PerpetratorData Modify(PerpetratorData perpetratorData, JToken json)
         {
             var data = perpetratorData ?? new PerpetratorData();
             data.Name = json["name"] != null ? json.Value<string>("name") : data.Name;
@@ -118,7 +116,7 @@ namespace Lisa.Kiwi.WebApi
             return data;
         }
 
-        private VehicleData Modify(VehicleData vehicleData, JToken json)
+        public VehicleData Modify(VehicleData vehicleData, JToken json)
         {
             var data = vehicleData ?? new VehicleData();
             data.AdditionalFeatures = json["additionalFeatures"] != null ? json.Value<string>("additionalFeatures") : data.AdditionalFeatures;

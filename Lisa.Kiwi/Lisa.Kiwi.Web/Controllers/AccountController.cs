@@ -2,11 +2,10 @@
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using Lisa.Kiwi.Web.ViewModels;
 using Lisa.Kiwi.WebApi.Access;
 using System.Web.Configuration;
 
-namespace Lisa.Kiwi.Web.Controllers
+namespace Lisa.Kiwi.Web
 {
     public class AccountController : Controller
     {

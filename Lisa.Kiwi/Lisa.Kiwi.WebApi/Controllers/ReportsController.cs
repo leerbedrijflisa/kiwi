@@ -6,16 +6,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
-using System.Web.OData;
 using System.Web.Security;
 using Newtonsoft.Json.Linq;
 
-namespace Lisa.Kiwi.WebApi.Controllers
+namespace Lisa.Kiwi.WebApi
 {
     [Authorize]
     public class ReportsController : ApiController
     {
-        [EnableQuery]
         public IHttpActionResult Get()
         {
             var claimsIdentity = (ClaimsIdentity) User.Identity;

@@ -7,6 +7,7 @@
 @using (Html.BeginForm())
 {
     @* TODO: Fix validation as it looks like shit now *@
+	<h2>@ViewBag.Title</h2>
 	<p>
 		@Html.LabelFor(m => m.Name)
 		@Html.TextBoxFor(m => m.Name)

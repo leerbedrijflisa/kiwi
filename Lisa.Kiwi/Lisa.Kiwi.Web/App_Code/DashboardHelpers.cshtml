@@ -4,9 +4,9 @@
 	{
 		@Resources.ReportProperties.ResourceManager.GetString("_null")
 	}
-	else if (content.GetType() == typeof(bool))
+	else if (content is bool)
 	{
-		@Resources.ReportProperties.ResourceManager.GetString("_" + content.ToString())
+	    @Resources.ReportProperties.ResourceManager.GetString("_" + content)
 	}
 	else
 	{

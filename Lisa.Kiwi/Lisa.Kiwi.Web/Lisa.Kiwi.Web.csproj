@@ -140,6 +140,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Resources\Buildings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -201,10 +202,6 @@
     <Compile Include="ViewModels\VictimViewModel.cs" />
     <Compile Include="ViewModels\WeaponViewModel.cs" />
     <Content Include="Content\azzurro.jpg" />
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Camera-Icon.png" />
     <Content Include="Content\dashboard.css" />
     <Content Include="Content\Diefstal-Icon.png" />
@@ -228,26 +225,12 @@
     <Content Include="Content\style.css" />
     <Content Include="Content\Wapens-Icon.png" />
     <Content Include="Content\warning.svg" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
     <Content Include="Scripts\Buildings.json" />
     <Content Include="App_Code\DashboardHelpers.cshtml" />
-    <None Include="Scripts\jquery-1.9.1.intellisense.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.datetimepicker.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\npm.js" />
     <Content Include="Scripts\Location.js" />
     <Content Include="Scripts\Theft.js" />
     <Content Include="Scripts\Weapons.js" />
@@ -259,31 +242,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DisplayNames.resx</DependentUpon>
     </Compile>
-    <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\ContactMetadata.cs" />
-    <Compile Include="Models\LogBookEntry.cs" />
-    <Compile Include="Models\OriginalReport.cs" />
-    <Compile Include="Models\Remark.cs" />
-    <Compile Include="Models\ReportMetadata.cs" />
-    <Compile Include="Models\ReportTypeMetadata.cs" />
-    <Compile Include="Models\SearchModel.cs" />
-    <Compile Include="Models\Status.cs" />
-    <Compile Include="Models\StatusNameMetadata.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utils\ConfigHelper.cs" />
-    <Compile Include="Utils\EnumDisplayNames.cs" />
-    <Compile Include="Utils\SortHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
-    <Content Include="Scripts\jquery-1.9.1.min.map" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Dashboard\Details.cshtml" />

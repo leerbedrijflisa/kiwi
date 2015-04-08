@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 using Lisa.Kiwi.WebApi;
+using Perpetrator = Resources.Perpetrator;
 
 namespace Lisa.Kiwi.Web
 {
@@ -58,33 +59,27 @@ namespace Lisa.Kiwi.Web
         {
             get
             {
-                // TODO: use resource files for Text-field, no.
-                return new SelectListItem[]
+                return new []
                 {
                     new SelectListItem
                     {
-                        Text = "12-16",
-                        Value = "12-16"
+                        Text = Perpetrator.YoungerThanTwelve,
+                        Value = "0-12"
                     },
                     new SelectListItem
                     {
-                        Text = "16-18",
-                        Value = "16-18"
+                        Text = Perpetrator.BetweenTwelveAndTwenty,
+                        Value = "12-20"
                     },
                     new SelectListItem
                     {
-                        Text = "18-20",
-                        Value = "18-20"
+                        Text = Perpetrator.BetweenTwentyOneAndThirtyFive,
+                        Value = "21-35"
                     },
                     new SelectListItem
                     {
-                        Text = "20-22",
-                        Value = "20-22"
-                    },
-                    new SelectListItem
-                    {
-                        Text = "22-30",
-                        Value = "22-30"
+                        Text = Perpetrator.OlderThanThirtyFive,
+                        Value = "35-99"
                     },
                 };
             }

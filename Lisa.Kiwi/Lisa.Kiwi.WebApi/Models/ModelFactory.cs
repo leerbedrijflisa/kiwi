@@ -36,7 +36,7 @@
             return report;
         }
 
-        public Location Create(LocationData locationData)
+        private Location Create(LocationData locationData)
         {
             return new Location
             {
@@ -47,7 +47,7 @@
             };
         }
 
-        public Perpetrator Create(PerpetratorData perpetratorData)
+        private Perpetrator Create(PerpetratorData perpetratorData)
         {
             return new Perpetrator
             {
@@ -61,7 +61,7 @@
             };
         }
 
-        public Vehicle Create(VehicleData vehicleData)
+        private Vehicle Create(VehicleData vehicleData)
         {
             return new Vehicle
             {
@@ -72,7 +72,7 @@
             };
         }
 
-        public Contact Create(ContactData contactData)
+        private Contact Create(ContactData contactData)
         {
             var contact = new Contact
             {

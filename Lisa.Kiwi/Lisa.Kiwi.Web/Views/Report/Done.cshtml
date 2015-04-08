@@ -10,6 +10,11 @@
 	<dd>@Model.Location.Building - @Model.Location.Description</dd>
 
 	@Html.Partial("~/Views/Dashboard/CategoryPartials/_PartialDetails" + Model.Category + ".cshtml", Model)
+	@if(Model.Description != null)
+	{
+		<dt>@ReportProperties.Description</dt>
+		<dd>@Model.Description</dd>		
+	}	
 </dl>
 @* TODO: Find a better solution than this, as it makes and empty Contact.*@
 
@@ -72,6 +77,8 @@
 }
 
 <hr/>
-<a href="/Report/Redirect">
-	Ga verder
-</a>
+@using (Html.BeginForm())
+{
+	<input type="hidden" name="category" value="@Model.Category" />
+	<input type="submit" value="Ga verder" />
+}

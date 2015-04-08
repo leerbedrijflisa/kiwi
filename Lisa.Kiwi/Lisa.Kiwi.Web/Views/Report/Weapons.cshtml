@@ -26,6 +26,10 @@
 		@Html.TextBoxFor(m => m.Location)*
 		@Html.ValidationMessageFor(m => m.Location)
 	</p>
+	<p>
+		@Html.LabelFor(m => m.Description)<br />
+		@Html.TextAreaFor(m => m.Description, new { @class = "DescriptionBox" })
+	</p>
 	<input type="submit" value="Verzenden"/>
 	<text>*verplichte velden</text>
 }
