@@ -1,0 +1,201 @@
+﻿@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600);
+
+body {
+  background-color: #ddd;
+  font-family: Source Sans Pro;
+}
+
+/* Full report hyperlink */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+article:hover {
+  background-color: #fff;
+  outline: 1px solid #003;
+}
+
+article:hover .category,
+article:hover .building,
+article:hover .details,
+article:hover .options {
+  opacity: 0.8;
+}
+
+/* Columns */
+article {
+  margin: auto;
+  margin-bottom: 4px;
+  width: 1200px;
+  height: 169px;
+}
+
+article .category,
+article .building,
+article .details,
+article .options {
+  float: left;
+  height: 169px;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+article .category {
+  width: 200px;
+
+  background-color: #003;
+  color: white;
+}
+
+article .building {
+  width: 600px;
+
+  background-color: #669;
+  color: white;
+}
+
+article .details {
+  width: 300px;
+
+  background-color: white;
+}
+
+article .options {
+  width: 100px;
+
+  background-color: white;
+}
+
+/* Category column */
+
+.category {
+  text-align: center;
+}
+
+.category h1 {
+  margin-top: 110px;
+}
+
+article h1,
+article h2 {
+  font-weight: normal;
+  margin: 0;
+}
+
+article h1 {
+  font-size: 16pt;
+}
+
+article h2 {
+  font-size: 36pt;
+}
+
+article p {
+  font-size: 12pt;
+  margin: 0;
+}
+
+article .time {
+  color: #999;
+  font-size: 10pt;
+}
+
+/* Building column */
+
+.building {
+  text-align: center;
+}
+
+.building h2 {
+  margin-top: 48px;
+}
+
+/* Details column */
+
+.details {
+  padding: 15px;
+}
+
+.details img {
+  height: 12pt;
+  padding-right: 6px;
+  vertical-align: -2px;
+}
+
+/* Options column */
+ul.options {
+  list-style: none;
+  position: relative;
+}
+
+.options a {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  height: 16px;
+  width: 16px;
+  padding: 8px;
+
+  display: inline-block;
+  border: 1.5px solid #999;
+  border-radius: 18px;
+
+  background-color: #ccc;
+}
+
+.options li:nth-child(2) a {
+  right: 58px;
+}
+
+.options a:hover {
+  border-color: #333;
+  background-color: #666;
+}
+
+.options a:active {
+  width: 14px;
+  height: 14px;
+  margin-right: 1px;
+  margin-bottom: 1px;
+}
+
+.options a:active img {
+  width: 14px;
+  height: 14px;
+  padding-bottom: 2px;
+}
+
+/* Closed reports */
+
+section#Solved {
+  border-top: 1px dashed black;
+  margin-top: 8px;
+  padding-top: 8px;
+  opacity: 0.3;
+}
+
+/* Categories */
+
+.category {
+  background-repeat: no-repeat;
+  background-position: center 20px;
+}
+
+.FirstAid {
+  background-image: url(first-aid-circle.png);
+}
+
+.nuisance {
+  background-image: url(nuisance-circle.png);
+}
+
+/* Buildings */
+
+.Azzurro {
+  background-image: url(azzurro.jpg);
+}
+
+.Duurzaamheidsfabriek {
+  background-image: url(duurzaamheidsfabriek.jpg);
+}
