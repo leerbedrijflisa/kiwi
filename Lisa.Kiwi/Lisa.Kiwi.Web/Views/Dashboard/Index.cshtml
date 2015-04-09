@@ -2,6 +2,7 @@
 @{
     Layout = null;
 }
+
 <!doctype html>
 
 <html>
@@ -11,132 +12,71 @@
 </head>
 
 <body>
-    @foreach (var report in Model)
-    {
-        if (report.Status == StatusEnum.Open)
-        {
-            <section id=@report.Status>
-                <article>
-                    <a href="@Url.Action("Details", new { id= report.Id })">
-                        <div class="category @report.Category">
-                            <h1>@Categories.ResourceManager.GetString(report.Category)</h1>
-                            @*find a way to make this work*@
-                            <p class="time">@report.Created.ToString("dddd d MMMM HH:mm")</p>
-                        </div>
-                        @if (report.Location != null)
-                        {
-                            <div class="building @DashboardHelpers.NullCheck(report.Location.Building)">
-                                <h2>@DashboardHelpers.NullCheck(report.Location.Building)</h2>
-                                <p class="location">@DashboardHelpers.NullCheck(report.Location.Description)</p>
-                            </div>
-                        }
-                        else
-                        {
-                            <div class="building">
-                                <h2>Locatie onbekend</h2>
-                                <p class="location">Er is nog geen locatie opgegeven, of deze bestaat niet.</p>
-                            </div>
-                        }
 
-                        @if (report.Category == "FirstAid")
-                        {
-                            <p class="details"><img src="~/Content/warning.svg">@DashboardHelpers.NullCheck(ReportProperties.ResourceManager.GetString(report.IsUnconscious + report.Category))</p>
-                        }
-                        @if (report.Category == "Theft")
-                        {
-                            <p class="details"> Er is een @DashboardHelpers.NullCheck(report.StolenObject) gestolen om @DashboardHelpers.NullCheck(report.DateOfTheft) .</p>
-                        }
-                        @if (report.Category == "Bullying")
-                        {
-                            <p class="details">@DashboardHelpers.NullCheck(report.Description)</p>
-                        }
-                        @if (report.Category == "Drugs")
-                        {
-                            <p class="details">@DashboardHelpers.NullCheck(report.Description)</p>
-                        }
-                        @if (report.Category == "Fight")
-                        {
-                            <p class="details">Er zijn @DashboardHelpers.NullCheck(report.FighterCount) aan het vechten.</p>
-                        }
-                        @if (report.Category == "Nuisance")
-                        {
-                            <p class="details">@DashboardHelpers.NullCheck(report.Description)</p>
-                        }
-                        @if (report.Category == "Other")
-                        {
-                            <p class="details">@DashboardHelpers.NullCheck(report.Description)</p>
-                        }
-                        @if (report.Category == "Weapons")
-                        {
-                            <p class="details">Het gaat om een: @DashboardHelpers.NullCheck(report.WeaponType)</p>
-                        }
-                    </a>
-                    <ul class="options">
-                        <li><a href="#"><img src="~/Content/done.svg"></a></li>
-                        <li><a href="@Url.Action("Details", new { id= report.Id })"><img src="~/Content/show.svg"></a></li>
-                    </ul>
-                </article>
-            </section>
-        }
-    }
-    @foreach (var report in Model)
+    @foreach (var report in Model.OrderBy(t => t.Status))
     {
-        if (report.Status == StatusEnum.Solved)
-        {
-            <section id=@report.Status>
-                <article>
-                    <a href="@Url.Action("Details", new { id= report.Id })">
-                        <div class="category @report.Category">
-                            <h1>@Categories.ResourceManager.GetString(report.Category)</h1>
-                            @*find a way to make this work*@
-                            <p class="time">@report.Created.ToString("dddd d MMMM HH:mm")n</p>
-                        </div>
-
+        <section id=@report.Status>
+            <article>
+                <a href="@Url.Action("Details", new { id= report.Id })">
+                    <div class="category @report.Category">
+                        <h1>@Categories.ResourceManager.GetString(report.Category)</h1>
+                        @*find a way to make this work*@
+                        <p class="time">@report.Created.ToString("dddd d MMMM HH:mm")</p>
+                    </div>
+                    @if (report.Location != null)
+                    {
                         <div class="building @DashboardHelpers.NullCheck(report.Location.Building)">
                             <h2>@DashboardHelpers.NullCheck(report.Location.Building)</h2>
                             <p class="location">@DashboardHelpers.NullCheck(report.Location.Description)</p>
                         </div>
-                        @if (report.Category == "FirstAid")
-                        {
-                            <p class="details"><img src="~/Content/warning.svg">@DashboardHelpers.NullCheck(ReportProperties.ResourceManager.GetString(report.IsUnconscious + report.Category))</p>
-                        }
-                        @if (report.Category == "Theft")
-                        {
-                            <p class="details"> Er is een @DashboardHelpers.NullCheck(report.StolenObject) gestolen om @DashboardHelpers.NullCheck(report.DateOfTheft) .</p>
-                        }
-                        @if (report.Category == "Bullying")
-                        {
-                            <p class="details">@DashboardHelpers.NullCheck(report.Description)</p>
-                        }
-                        @if (report.Category == "Drugs")
-                        {
-                            <p class="details">@DashboardHelpers.NullCheck(report.Description)</p>
-                        }
-                        @if (report.Category == "Fight")
-                        {
-                            <p class="details">Er zijn @DashboardHelpers.NullCheck(report.FighterCount) aan het vechten.</p>
-                        }
-                        @if (report.Category == "Nuisance")
-                        {
-                            <p class="details">@DashboardHelpers.NullCheck(report.Description)</p>
-                        }
-                        @if (report.Category == "Other")
-                        {
-                            <p class="details">@DashboardHelpers.NullCheck(report.Description)</p>
-                        }
-                        @if (report.Category == "Weapons")
-                        {
-                            <p class="details">Het gaat om een: @DashboardHelpers.NullCheck(report.WeaponType)</p>
-                        }
-                    </a>
+                    }
+                    else
+                    {
+                        <div class="building">
+                            <h2>Locatie onbekend</h2>
+                            <p class="location">Er is nog geen locatie opgegeven, of deze bestaat niet.</p>
+                        </div>
+                    }
 
-                    <ul class="options">
-                        <li><a href="#"><img src="~/Content/done.svg"></a></li>
-                        <li><a href="@Url.Action("Details", new { id= report.Id })"><img src="~/Content/show.svg"></a></li>
-                    </ul>
-                </article>
-            </section>
-        }
+                    @if (report.Category == "FirstAid")
+                    {
+                        <p class="details"><img src="~/Content/warning.svg">@DashboardHelpers.NullCheck(ReportProperties.ResourceManager.GetString(report.IsUnconscious + report.Category))</p>
+                    }
+                    @if (report.Category == "Theft")
+                    {
+                        <p class="details"> Er is een @DashboardHelpers.NullCheck(report.StolenObject) gestolen om @DashboardHelpers.NullCheck(report.DateOfTheft) .</p>
+                    }
+                    @if (report.Category == "Bullying")
+                    {
+                        <p class="details">@DashboardHelpers.NullCheck(report.Description)</p>
+                    }
+                    @if (report.Category == "Drugs")
+                    {
+                        <p class="details">@DashboardHelpers.NullCheck(report.Description)</p>
+                    }
+                    @if (report.Category == "Fight")
+                    {
+                        <p class="details">Er zijn @DashboardHelpers.NullCheck(report.FighterCount) aan het vechten.</p>
+                    }
+                    @if (report.Category == "Nuisance")
+                    {
+                        <p class="details">@DashboardHelpers.NullCheck(report.Description)</p>
+                    }
+                    @if (report.Category == "Other")
+                    {
+                        <p class="details">@DashboardHelpers.NullCheck(report.Description)</p>
+                    }
+                    @if (report.Category == "Weapons")
+                    {
+                        <p class="details">Het gaat om een: @DashboardHelpers.NullCheck(report.WeaponType)</p>
+                    }
+                </a>
+                <ul class="options">
+                    <li><a href="#"><img src="~/Content/done.svg"></a></li>
+                    <li><a href="@Url.Action("Details", new { id= report.Id })"><img src="~/Content/show.svg"></a></li>
+                </ul>
+            </article>
+        </section>
     }
 </body>
 </html>
