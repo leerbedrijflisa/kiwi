@@ -23,7 +23,7 @@
                         <div class="category @report.Category">
                             <h1>@Categories.ResourceManager.GetString(report.Category)</h1>
                             @*find a way to make this work*@
-                            <p class="time">@report.Created.ToString("dddd d MMMM HH:mm")n</p>
+                            <p class="time">@report.Created.ToString("dddd d MMMM HH:mm")</p>
                         </div>
                         @if (report.Location != null)
                         {
