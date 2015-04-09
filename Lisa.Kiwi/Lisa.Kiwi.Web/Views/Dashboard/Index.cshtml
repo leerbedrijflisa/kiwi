@@ -1,6 +1,4 @@
-﻿@using Lisa.Kiwi.WebApi
-@using Perpetrator = Resources.Perpetrator
-﻿@model IEnumerable<Report>
+﻿﻿@model IEnumerable<Report>
 @{
     Layout = null;
 }
@@ -22,6 +20,7 @@
                     <a href="@Url.Action("Details", new { id= report.Id })">
                         <div class="category @report.Category">
                             <h1>@Categories.ResourceManager.GetString(report.Category)</h1>
+                            @*find a way to make this work*@
                             <p class="time">@report.Created.ToString("dddd d MMMM HH:mm")</p>
                         </div>
                         @if (report.Location != null)
