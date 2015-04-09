@@ -210,4 +210,13 @@
   <data name="UserName" xml:space="preserve">
     <value>Gebruikersnaam</value>
   </data>
+  <data name="ContactRequired" xml:space="preserve">
+    <value>Contactgegevens verplicht</value>
+  </data>
+  <data name="PersonInvolved" xml:space="preserve">
+    <value>Betrokkene</value>
+  </data>
+  <data name="Victim" xml:space="preserve">
+    <value>Slachtoffer</value>
+  </data>
 </root>
