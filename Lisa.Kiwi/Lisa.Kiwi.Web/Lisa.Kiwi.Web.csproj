@@ -183,6 +183,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Categories.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\Time.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Time.resx</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\BullyingViewModel.cs" />
     <Compile Include="ViewModels\CategoryViewModel.cs" />
     <Compile Include="ViewModels\ContactRequiredViewModel.cs" />
@@ -233,6 +238,7 @@
     <Content Include="Scripts\jquery.datetimepicker.js" />
     <Content Include="Scripts\Location.js" />
     <Content Include="Scripts\Theft.js" />
+    <Content Include="Scripts\Time.js" />
     <Content Include="Scripts\Weapons.js" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -332,6 +338,11 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SkinColor.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Time.resx">
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Time.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

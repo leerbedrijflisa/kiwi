@@ -2,14 +2,75 @@
 {
 	if (content == null)
 	{
-		@Resources.ReportProperties.ResourceManager.GetString("_null")
-	}
-	else if (content is bool)
-	{
-	    @Resources.ReportProperties.ResourceManager.GetString("_" + content)
-	}
+			@Resources.ReportProperties.ResourceManager.GetString("_null")
+		}
+		else if (content is bool)
+		{
+			@Resources.ReportProperties.ResourceManager.GetString("_" + content)
+		}
 	else
 	{
 		@content
 	}
+}
+
+@helper Time(DateTimeOffset dateTime)
+{
+	string Difference;
+	
+	//Calculating difference between current time and report time	
+	TimeSpan DateTimeDifference = DateTimeOffset.Now.Subtract(dateTime);
+	var Weeks = (int)Math.Round((double)DateTimeDifference.Days / 7);
+	var RemainingDays = DateTimeDifference.Days % 7;
+	var MonthDifference = ((DateTimeOffset.Now.Year * 12) + DateTimeOffset.Now.Month) - ((dateTime.Year * 12) + dateTime.Month);
+		
+	//Callers	
+	var SecondCaller = DateTimeDifference.Seconds == 1 ? Resources.Time.Second : Resources.Time.Seconds;
+	var MinuteCaller = DateTimeDifference.Minutes == 1 ? Resources.Time.Minute : Resources.Time.Minutes;
+	var HourCaller = Resources.Time.Hour;
+	var DayCaller = DateTimeDifference.Days == 1 ? Resources.Time.Day : Resources.Time.Days;
+	var WeekCaller = Weeks == 1 ? Resources.Time.Week : Resources.Time.Weeks;
+	var RemainingDayCaller = RemainingDays == 1 ? Resources.Time.Day : Resources.Time.Days;
+	var MonthCaller = MonthDifference == 1 ? Resources.Time.Month : Resources.Time.Months;	
+		
+	//Checking what time should be shown
+	if (DateTimeDifference.Hours < 1 && DateTimeDifference.Days < 1)
+	{
+		if (DateTimeDifference.Minutes < 1)
+		{
+			Difference = string.Format("{0} {1} geleden", DateTimeDifference.Seconds, SecondCaller);
+		}
+		else
+		{
+			Difference = string.Format("{0} {1} geleden", DateTimeDifference.Minutes, MinuteCaller);
+		}
+	}
+	else if(DateTimeDifference.Hours < 12 && DateTimeDifference.Hours >= 1 && DateTimeDifference.Days < 1)
+	{
+		Difference = string.Format("{0} {1} en {2} {3} geleden", DateTimeDifference.Hours, HourCaller, DateTimeDifference.Minutes, MinuteCaller);	
+	}
+	else if (DateTimeDifference.Hours < 24 && DateTimeDifference.Hours >= 12 && DateTimeDifference.Days < 1)
+	{
+			Difference = string.Format("{0} {1} geleden", DateTimeDifference.Hours, HourCaller);
+	}
+	else if(DateTimeDifference.Days < 7)
+	{
+			Difference = string.Format("{0} {1} geleden", DateTimeDifference.Days, DayCaller);
+	}
+	else if(Weeks < 4)
+	{
+		if(RemainingDays == 0)
+		{
+				Difference = string.Format("{0} {1} geleden", Weeks, WeekCaller);
+		}
+		else
+		{
+				Difference = string.Format("{0} {1} en {2} {3} geleden", Weeks, WeekCaller, RemainingDays, RemainingDayCaller);	
+		}
+	}		
+	else
+	{
+			Difference = string.Format("{0} {1} geleden", MonthDifference, MonthCaller);
+	}		
+	@Difference;	
 }

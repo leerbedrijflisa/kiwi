@@ -8,10 +8,11 @@
 <head>
     <title>Leerpark</title>
     <link href="~/Content/dashboard.css" rel="stylesheet" type="text/css">
+		<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 </head>
 
 <body>
-    @foreach (var report in Model)
+    @foreach (var report in Model.OrderBy(t => t.Status).ThenByDescending(t => t.Created))
     {
         if (report.Status == StatusEnum.Open)
         {
@@ -21,7 +22,7 @@
                         <div class="category @report.Category">
                             <h1>@Categories.ResourceManager.GetString(report.Category)</h1>
                             @*find a way to make this work*@
-                            <p class="time">@report.Created.ToString("dddd d MMMM HH:mm")</p>
+                            <p class="time">@DashboardHelpers.Time(report.Created)</p>
                         </div>
                         @if (report.Location != null)
                         {
@@ -138,5 +139,6 @@
             </section>
         }
     }
+	<script src="~/Scripts/Time.js"></script>
 </body>
 </html>
