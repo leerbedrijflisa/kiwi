@@ -32,6 +32,13 @@
                                 <p class="location">@DashboardHelpers.NullCheck(report.Location.Description)</p>
                             </div>
                         }
+                        else
+                        {
+                            <div class="building">
+                                <h2>Locatie onbekend</h2>
+                                <p class="location">Er is nog geen locatie opgegeven, of deze bestaat niet.</p>
+                            </div>
+                        }
 
                         @if (report.Category == "FirstAid")
                         {
