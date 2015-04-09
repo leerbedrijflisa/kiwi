@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Web.Http;
 using Microsoft.Owin;
 using Microsoft.Owin.Cors;
@@ -15,7 +16,7 @@ namespace Lisa.Kiwi.WebApi
         public void Configuration(IAppBuilder app)
         {
             // Make sure the database is updated to the latest version. This effectively runs Update-Database, even when running in Azure.
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<KiwiContext, Migrations.Configuration>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<KiwiContext, Configuration>());
 
             var signalRConfig = new HubConfiguration()
             {
