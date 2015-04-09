@@ -70,6 +70,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Contactgegevens verplicht.
+        /// </summary>
+        public static string ContactRequired {
+            get {
+                return ResourceManager.GetString("ContactRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mediacentrum.
         /// </summary>
         public static string DrugsController_Details_Mediacentrum {
@@ -93,6 +102,15 @@ namespace Resources {
         public static string Password {
             get {
                 return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Betrokkene.
+        /// </summary>
+        public static string PersonInvolved {
+            get {
+                return ResourceManager.GetString("PersonInvolved", resourceCulture);
             }
         }
         
@@ -336,6 +354,15 @@ namespace Resources {
         public static string UserName {
             get {
                 return ResourceManager.GetString("UserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Slachtoffer.
+        /// </summary>
+        public static string Victim {
+            get {
+                return ResourceManager.GetString("Victim", resourceCulture);
             }
         }
     }
