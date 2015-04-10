@@ -33,7 +33,7 @@ namespace Lisa.Kiwi.Web
                 return View();
             }
 
-            var tokenCookie = new HttpCookie("token", String.Join(" ", response.TokenType, response.Token))
+            var tokenCookie = new HttpCookie("token", response.Token)
             {
                 Expires = DateTime.Now.AddMinutes(response.TokenExpiresIn),
                 HttpOnly = true

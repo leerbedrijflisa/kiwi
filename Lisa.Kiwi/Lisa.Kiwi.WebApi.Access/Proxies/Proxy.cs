@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Text;
 using Newtonsoft.Json.Converters;
+using System.Net.Http.Headers;
 
 namespace Lisa.Kiwi.WebApi
 {
@@ -35,26 +36,31 @@ namespace Lisa.Kiwi.WebApi
             };
         }
 
-        public Proxy(string baseUrl, string resourceUrl, string tokenType, string token)
-            : this(baseUrl, resourceUrl)
-        {
-            if (token != null && tokenType != null)
-            {
-                _httpClient.DefaultRequestHeaders.Add("Authorization", String.Format("{0} {1}", tokenType, token));
-            }
-        }
+        public string Token { get; set; }
 
         public async Task<IEnumerable<T>> GetAsync()
         {
-            var result = await _httpClient.GetAsync(_proxyResourceUrl);
+            var request = new HttpRequestMessage
+            {
+                Method = HttpMethod.Get,
+                RequestUri = new Uri(string.Format("{0}/{1}", _apiBaseUrl, _proxyResourceUrl)),
+            };
+            request.Headers.Add("Authorization", String.Format("Bearer {0}", Token));
+
+            var result = await _httpClient.SendAsync(request);
             return await DeserializeList(result);
         }
 
         public async Task<T> GetAsync(int id)
         {
-            var url = String.Format("{0}/{1}", _proxyResourceUrl, id);
+            var request = new HttpRequestMessage
+            {
+                Method = HttpMethod.Get,
+                RequestUri = new Uri(string.Format("{0}/{1}/{2}", _apiBaseUrl, _proxyResourceUrl, id)),
+            };
+            request.Headers.Add("Authorization", String.Format("Bearer {0}", Token));
 
-            var result = await _httpClient.GetAsync(url);
+            var result = await _httpClient.SendAsync(request);
             return await DeserializeSingle(result);
         }
 

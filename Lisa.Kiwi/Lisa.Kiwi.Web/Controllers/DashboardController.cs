@@ -10,24 +10,27 @@ namespace Lisa.Kiwi.Web
 {
     public class DashboardController : Controller
     {
-        public async Task<ActionResult> Index()
+        protected override void OnActionExecuting(ActionExecutingContext context)
         {
-            if (!await CheckAuth())
+            _reportProxy = new Proxy<Report>(WebConfigurationManager.AppSettings["WebApiUrl"], "/reports/");
+
+            var tokenCookie = Request.Cookies["token"];
+            if (tokenCookie != null)
             {
-                return RedirectToAction("Login", "Account");
+                _reportProxy.Token = tokenCookie.Value;
             }
 
+            base.OnActionExecuting(context);
+        }
+
+        public async Task<ActionResult> Index()
+        {
             var reports = await _reportProxy.GetAsync();
             return View(reports);
         }
 
         public async Task<ActionResult> Details(int id = 0)
         {
-            if (!await CheckAuth())
-            {
-                return RedirectToAction("Login", "Account");
-            }
-
             if (id == 0)
             {
                 return HttpNotFound();
@@ -65,51 +68,12 @@ namespace Lisa.Kiwi.Web
         [HttpPost]
         public async Task<ActionResult> Details(StatusChangeViewModel viewModel)
         {
-            if (!await CheckAuth())
-            {
-                return RedirectToAction("Login", "Account");
-            }
-
             var report = new Report();
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(viewModel.Id, report);
 
             return RedirectToAction("Details", new { viewModel.Id });
         }
-
-        private async Task<bool> CheckAuth()
-        {
-            var tokenCookie = Request.Cookies["token"];
-            if (tokenCookie != null)
-            {
-                string tokenType;
-                string token;
-
-                try
-                {
-                    tokenType = tokenCookie.Value.Split(' ')[0];
-                    token = tokenCookie.Value.Split(' ')[1];
-                }
-                catch (IndexOutOfRangeException)
-                {
-                    return false;
-                }
-
-                var authProxy = new AuthenticationProxy(WebConfigurationManager.AppSettings["WebApiUrl"], "");
-
-                if (await authProxy.GetIsAnonymous(tokenType, token))
-                {
-                    return false;
-                }
-
-                _reportProxy = new Proxy<Report>(WebConfigurationManager.AppSettings["WebApiUrl"], "/reports", tokenType, token);
-
-                return true;
-            }
-
-            return false;
-        }
-
 
         private readonly ModelFactory _modelFactory = new ModelFactory();
         private Proxy<Report> _reportProxy = new Proxy<Report>(WebConfigurationManager.AppSettings["WebApiUrl"], "/reports/");

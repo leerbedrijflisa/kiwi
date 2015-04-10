@@ -12,21 +12,12 @@ namespace Lisa.Kiwi.Web
     {
         protected override void OnActionExecuting(ActionExecutingContext context)
         {
-            // the user can't be authorized on Index Action
-            if (context.ActionDescriptor.ActionName.ToLower() == "index")
-            {
-                _reportProxy = new Proxy<Report>(WebConfigurationManager.AppSettings["WebApiUrl"], "/reports/");
-            }
-            else
-            {
-                var tokenCookie = Request.Cookies["token"];
-                if (tokenCookie != null && tokenCookie.Value != string.Empty)
-                {
-                    var tokenType = tokenCookie.Value.Split(' ')[0];
-                    var token = tokenCookie.Value.Split(' ')[1];
+            _reportProxy = new Proxy<Report>(WebConfigurationManager.AppSettings["WebApiUrl"], "/reports/");
 
-                    _reportProxy = new Proxy<Report>(WebConfigurationManager.AppSettings["WebApiUrl"], "/reports/", tokenType, token);
-                }
+            var tokenCookie = Request.Cookies["token"];
+            if (tokenCookie != null)
+            {
+                _reportProxy.Token = tokenCookie.Value;
             }
 
             base.OnActionExecuting(context);
@@ -53,7 +44,7 @@ namespace Lisa.Kiwi.Web
             var loginResult = await loginProxy.LoginAnonymous(report.AnonymousToken);
 
             // TODO: add error handling
-            var authCookie = new HttpCookie("token", String.Join(" ", loginResult.TokenType, loginResult.Token))
+            var authCookie = new HttpCookie("token", loginResult.Token)
             {
                 Expires = DateTime.Now.AddMinutes(10)
             };
