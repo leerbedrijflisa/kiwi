@@ -327,15 +327,10 @@ namespace Lisa.Kiwi.Web
                 case "Nuisance":
                 case "Other":
                     return RedirectToAction("ContactRequired");
-                case "Fight":
-                case "FirstAid":
-                case "Drugs":
-                case "Weapons":
-                case "Bullying":
+
+                default:
                     return RedirectToAction("Contact");
             }
-
-            return View();
         }
 
         public ActionResult Contact()
@@ -389,21 +384,20 @@ namespace Lisa.Kiwi.Web
         }
 
         [HttpPost]
-        public async Task<ActionResult> Done(string category)
+        public ActionResult Done(string category)
         {
-            string link;
-            switch (category){
+            switch (category)
+        {
                 case "Theft":
-                    link = "Police";
-                    break;
+                    return View("Police");
+
                 case "Bullying":
-                    link = "Help";
-                    break;
+                    return View("Help");
+
                 default:
-                    link = "End";
-                    break;
+                    return View("End");
             }
-            return View(link);
+        }
         }
 
         private async Task<Report> GetCurrentReport()
