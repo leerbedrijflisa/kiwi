@@ -234,7 +234,7 @@ namespace Lisa.Kiwi.Web
             }
             else if ( viewModel.HasPerpetrator && viewModel.HasVictim )
             {
-                return RedirectToAction("Perpetrator", routeValues: new { Hasvictim = viewModel.HasVictim });
+                return RedirectToAction("Perpetrator", routeValues: new { hasVictim = viewModel.HasVictim });
             }
 
             return RedirectToAction("Vehicle");
@@ -266,25 +266,17 @@ namespace Lisa.Kiwi.Web
         }
 
         [HttpPost]
-        public async Task<ActionResult> Perpetrator(PerpetratorViewModel viewModel)
+        public async Task<ActionResult> Perpetrator(PerpetratorViewModel viewModel, bool hasVictim)
         {
             if (!ModelState.IsValid)
             {
                 return View(viewModel);
             }
-            var HasVictim = Request.QueryString["Hasvictim"];
             var report = await GetCurrentReport();
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(report.Id, report);
-            // TODO: add error handling
-            if(HasVictim == "True")
-            {
-                return RedirectToAction("Vehicle");
-            }
-            else
-            {
-                return RedirectToAction("Contact");
-            }
+
+            return RedirectToAction(hasVictim ? "Victim" : "Vehicle");
         }
 
         public ActionResult Victim()
