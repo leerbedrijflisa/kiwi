@@ -31,6 +31,8 @@ namespace Lisa.Kiwi.WebApi
             var reportData = await GetCompleteReportData()
                 .SingleOrDefaultAsync(r => id == r.Id);
 
+            // TODO: add check to see if you have access right for the report
+
             if (reportData == null)
             {
                 return NotFound();

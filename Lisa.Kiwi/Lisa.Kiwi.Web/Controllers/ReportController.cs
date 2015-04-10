@@ -36,22 +36,11 @@ namespace Lisa.Kiwi.Web
                 return View(viewModel);
             }
 
+            // TODO: replace AnonymousToken in Report model by a custom HTTP header
             var report = _modelFactory.Create(viewModel);
             report = await _reportProxy.PostAsync(report);
 
-            var loginProxy = new AuthenticationProxy(WebConfigurationManager.AppSettings["WebApiUrl"], "/api/oauth");
-
-            var loginResult = await loginProxy.LoginAnonymous(report.AnonymousToken);
-
-            // TODO: add error handling
-            var authCookie = new HttpCookie("token", loginResult.Token)
-            {
-                Expires = DateTime.Now.AddMinutes(10)
-            };
-            var cookie = new HttpCookie("report", report.Id.ToString());
-
-            Response.Cookies.Add(cookie);
-            Response.Cookies.Add(authCookie);
+            await EnsureReportAccess(report);
 
             return RedirectToAction("Location");
         }
@@ -224,15 +213,15 @@ namespace Lisa.Kiwi.Web
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(report.Id, report);
 
-            if ( viewModel.HasPerpetrator && !viewModel.HasVictim )
+            if (viewModel.HasPerpetrator && !viewModel.HasVictim)
             {
                 return RedirectToAction("Perpetrator");
             }
-            else if ( !viewModel.HasPerpetrator && viewModel.HasVictim)
+            else if (!viewModel.HasPerpetrator && viewModel.HasVictim)
             {
                 return RedirectToAction("Victim");
             }
-            else if ( viewModel.HasPerpetrator && viewModel.HasVictim )
+            else if (viewModel.HasPerpetrator && viewModel.HasVictim)
             {
                 return RedirectToAction("Perpetrator", routeValues: new { hasVictim = viewModel.HasVictim });
             }
@@ -387,7 +376,7 @@ namespace Lisa.Kiwi.Web
         public ActionResult Done(string category)
         {
             switch (category)
-        {
+            {
                 case "Theft":
                     return View("Police");
 
@@ -398,6 +387,21 @@ namespace Lisa.Kiwi.Web
                     return View("End");
             }
         }
+
+        private async Task EnsureReportAccess(Report report)
+        {
+            var loginProxy = new AuthenticationProxy(WebConfigurationManager.AppSettings["WebApiUrl"], "/api/oauth");
+            var loginResult = await loginProxy.LoginAnonymous(report.AnonymousToken);
+
+            // TODO: add error handling
+            var authCookie = new HttpCookie("token", loginResult.Token)
+            {
+                Expires = DateTime.Now.AddMinutes(10)
+            };
+            var cookie = new HttpCookie("report", report.Id.ToString());
+
+            Response.Cookies.Add(cookie);
+            Response.Cookies.Add(authCookie);
         }
 
         private async Task<Report> GetCurrentReport()
