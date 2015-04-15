@@ -1,0 +1,131 @@
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600);
+
+body {
+	background-color: #ccc;
+	font-family: Source Sans Pro;	
+}
+
+/*
+	Header
+*/
+
+header {
+	background: url(banner.jpg);
+	height: 186px;
+	width: 900px;
+	margin: auto;
+}
+
+header h1 {
+	display: none;
+}
+
+/*
+	Basic structure
+	
+	The form is centered on the page. It has a blue banner across the top that contains the header and
+	a blue bar to the left side that contains the labels.
+*/
+
+form {
+	background-color: white;
+	margin: auto;
+	width: 900px;
+}
+
+form .field {
+	display: table-row;
+	width: 100%;
+}
+
+form .field > * {
+	display: table-cell;
+	vertical-align: top;
+	box-sizing: border-box;
+	padding: 15px;
+}
+
+form .field label {
+	background-color: #113;
+	color: white;
+	text-align: right;
+	width: 300px;
+}
+
+/*
+	Button lists
+*/
+
+ul.buttons {
+	padding-right: 0;
+}
+
+ul.buttons li {
+	display: inline-block;
+	width: 99px;
+	margin-right: 15px;
+}
+
+ul.buttons li button {
+	background: white;
+	border: none;
+	margin-bottom: 45px;
+	padding: 0;
+	
+	font-family: Source Sans Pro;
+	font-size: 12pt;
+}
+
+ul.buttons li button img {
+	width: 99px;
+	height: 99px;
+}
+
+/*
+	Form contents
+*/
+
+form .field p {
+	margin-top: 0;
+	font-size: 12pt;
+	font-weight: bold;
+	color: #003;
+}
+
+form .field textarea {
+	font-family: Source Sans Pro;
+	font-size: 12pt;
+	margin: 15px 30px 0;
+	width: 540px;
+}
+
+form .submit {
+	text-align: right;
+	padding: 30px;
+}
+
+form .submit button {
+	background-color: #113;
+	border: 1px solid black;
+	border-radius: 30px;
+	text-align: center;
+	vertical-align: middle;
+	width: 44px;
+	height: 44px;
+	outline: none;
+}
+
+form .submit button:hover {
+	background-color: #557;
+}
+
+form .submit button:active {
+	margin: 1px;
+	width: 42px;
+	height: 42px;
+}
+
+form .submit button:active img {
+	width: 18px;
+	height: 18px;
+}
