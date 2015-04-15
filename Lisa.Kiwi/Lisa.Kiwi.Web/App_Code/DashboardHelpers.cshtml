@@ -2,12 +2,12 @@
 {
 	if (content == null)
 	{
-			@Resources.ReportProperties.ResourceManager.GetString("_null")
-		}
-		else if (content is bool)
-		{
-			@Resources.ReportProperties.ResourceManager.GetString("_" + content)
-		}
+		@Resources.ReportProperties.ResourceManager.GetString("_null")
+	}
+	else if (content is bool)
+	{
+		@Resources.ReportProperties.ResourceManager.GetString("_" + content)
+	}
 	else
 	{
 		@content
@@ -59,14 +59,8 @@
 	}
 	else if(Weeks < 4)
 	{
-		if(RemainingDays == 0)
-		{
-				Difference = string.Format("{0} {1} geleden", Weeks, WeekCaller);
-		}
-		else
-		{
-				Difference = string.Format("{0} {1} en {2} {3} geleden", Weeks, WeekCaller, RemainingDays, RemainingDayCaller);	
-		}
+			Difference = RemainingDays == 0 ? string.Format("{0} {1} geleden", Weeks, WeekCaller) 
+							: string.Format("{0} {1} en {2} {3} geleden", Weeks, WeekCaller, RemainingDays, RemainingDayCaller);	
 	}		
 	else
 	{
