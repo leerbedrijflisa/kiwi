@@ -16,36 +16,6 @@ namespace Lisa.Kiwi.WebApi.Access
 
         }
 
-        public async Task<LoginResult> Login(string userName, string password)
-        {
-            var result = new LoginResult();
-
-            var response = await _client.PostAsync(_resourceUrl,
-                new StringContent(String.Format("grant_type=password&username={0}&password={1}", HttpUtility.UrlEncode(userName), HttpUtility.UrlEncode(password))));
-
-            if (response.StatusCode != HttpStatusCode.OK)
-            {
-                result.Status = LoginStatus.ConnectionError;
-                return result;
-            }
-                
-            var content = await response.Content.ReadAsStringAsync();
-            var authInfo = JObject.Parse(content);
-            var token = authInfo.SelectToken("access_token");
-
-            if (token == null)
-            {
-                result.Status = LoginStatus.UserPassMismatch;
-                return result;
-            }
-
-            result.Token = token.ToString();
-            result.TokenType = authInfo.SelectToken("token_type").ToString();
-            result.TokenExpiresIn = authInfo.SelectToken("expires_in").Value<int>();
-
-            return result;
-        }
-
         public async Task<bool> GetIsAdmin(string tokenType, string token)
         {
             _client.DefaultRequestHeaders.Add("Authorization", String.Format("{0} {1}", tokenType, token));
@@ -77,33 +47,54 @@ namespace Lisa.Kiwi.WebApi.Access
             return Boolean.Parse(content);
         }
 
-        public async Task<LoginResult> LoginAnonymous(string anonymousToken)
+        public async Task<Token> Login(string userName, string password)
         {
-            var result = new LoginResult();
+            var requestContent = String.Format(
+                "grant_type=password&username={0}&password={1}",
+                HttpUtility.UrlEncode(userName),
+                HttpUtility.UrlEncode(password));
 
-            var response = await _client.PostAsync(_resourceUrl, new StringContent(String.Format("grant_type=anonymous&token={0}", anonymousToken)));
-                
-            if (response.StatusCode != HttpStatusCode.OK)
+            return await Login(requestContent);
+        }
+
+        public async Task<Token> LoginAnonymous(string anonymousToken)
+        {
+            var requestContent = String.Format(
+                "grant_type=anonymous&token={0}",
+                HttpUtility.UrlEncode(anonymousToken));
+
+            return await Login(requestContent);
+        }
+
+        private async Task<Token> Login(string requestContent)
+        {
+            var response = await _client.PostAsync(_resourceUrl, new StringContent(requestContent));
+            switch (response.StatusCode)
             {
-                result.Status = LoginStatus.ConnectionError;
-                return result;
+                case HttpStatusCode.BadRequest:
+                    return null;
+
+                case HttpStatusCode.OK:
+                    var resultContent = await response.Content.ReadAsStringAsync();
+
+                    try
+                    {
+                        var authInfo = JObject.Parse(resultContent);
+                        return new Token()
+                        {
+                            Value = authInfo.SelectToken("access_token").ToString(),
+                            Type = authInfo.SelectToken("token_type").ToString(),
+                            ExpiresIn = authInfo.SelectToken("expires_in").Value<int>()
+                        };
+                    }
+                    catch (Exception e)
+                    {
+                        throw new WebApiException("The response body was malformed. Either the JSON is incorrect or a token property is missing.", response.StatusCode, e);
+                    }
+
+                default:
+                    throw new WebApiException("Unexpected HTTP status code. Only 200 OK and 400 Bad Request are acceptable.", response.StatusCode);
             }
-
-            var content = await response.Content.ReadAsStringAsync();
-            var authInfo = JObject.Parse(content);
-            var token = authInfo.SelectToken("access_token");
-
-            if (token == null)
-            {
-                result.Status = LoginStatus.UserPassMismatch;
-                return result;
-            }
-
-            result.Token = token.ToString();
-            result.TokenType = authInfo.SelectToken("token_type").ToString();
-            result.TokenExpiresIn = authInfo.SelectToken("expires_in").Value<int>();
-
-            return result;
         }
 
         private readonly HttpClient _client;

@@ -10,19 +10,6 @@ namespace Lisa.Kiwi.Web
 {
     public class ReportController : Controller
     {
-        protected override void OnActionExecuting(ActionExecutingContext context)
-        {
-            _reportProxy = new Proxy<Report>(WebConfigurationManager.AppSettings["WebApiUrl"], "/reports/");
-
-            var tokenCookie = Request.Cookies["token"];
-            if (tokenCookie != null)
-            {
-                _reportProxy.Token = tokenCookie.Value;
-            }
-
-            base.OnActionExecuting(context);
-        }
-
         public ActionResult Index()
         {
             return View(new CategoryViewModel());
@@ -388,6 +375,19 @@ namespace Lisa.Kiwi.Web
             }
         }
 
+        protected override void OnActionExecuting(ActionExecutingContext context)
+        {
+            _reportProxy = new Proxy<Report>(WebConfigurationManager.AppSettings["WebApiUrl"], "/reports/");
+
+            var tokenCookie = Request.Cookies["token"];
+            if (tokenCookie != null)
+            {
+                _reportProxy.Token = tokenCookie.Value;
+            }
+
+            base.OnActionExecuting(context);
+        }
+
         private async Task EnsureReportAccess(Report report)
         {
             var loginProxy = new AuthenticationProxy(WebConfigurationManager.AppSettings["WebApiUrl"], "/api/oauth");
@@ -415,7 +415,7 @@ namespace Lisa.Kiwi.Web
             return await _reportProxy.GetAsync(reportId);
         }
 
-        private  Proxy<Report> _reportProxy;
+        private Proxy<Report> _reportProxy;
 
         private readonly ModelFactory _modelFactory = new ModelFactory();
     }
