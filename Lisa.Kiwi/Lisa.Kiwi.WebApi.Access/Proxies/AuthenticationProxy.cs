@@ -16,6 +16,9 @@ namespace Lisa.Kiwi.WebApi.Access
 
         }
 
+        // TODO: replace the two functions underneath with a function with which you can request
+        // the claims of the current user.
+
         public async Task<bool> GetIsAdmin(string tokenType, string token)
         {
             _client.DefaultRequestHeaders.Add("Authorization", String.Format("{0} {1}", tokenType, token));
