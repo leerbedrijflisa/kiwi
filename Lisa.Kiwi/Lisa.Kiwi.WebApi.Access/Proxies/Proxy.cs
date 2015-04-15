@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Text;
 using Newtonsoft.Json.Converters;
+using System.Net.Http.Headers;
 
 namespace Lisa.Kiwi.WebApi
 {
@@ -35,26 +36,33 @@ namespace Lisa.Kiwi.WebApi
             };
         }
 
-        public Proxy(string baseUrl, string resourceUrl, string tokenType, string token)
-            : this(baseUrl, resourceUrl)
-        {
-            if (token != null && tokenType != null)
-            {
-                _httpClient.DefaultRequestHeaders.Add("Authorization", String.Format("{0} {1}", tokenType, token));
-            }
-        }
+        public string Token { get; set; }
 
         public async Task<IEnumerable<T>> GetAsync()
         {
-            var result = await _httpClient.GetAsync(_proxyResourceUrl);
+            var request = new HttpRequestMessage
+            {
+                Method = HttpMethod.Get,
+                RequestUri = new Uri(string.Format("{0}/{1}", _apiBaseUrl, _proxyResourceUrl)),
+            };
+
+            AddAuthorizationHeader(request);
+
+            var result = await _httpClient.SendAsync(request);
             return await DeserializeList(result);
         }
 
         public async Task<T> GetAsync(int id)
         {
-            var url = String.Format("{0}/{1}", _proxyResourceUrl, id);
+            var request = new HttpRequestMessage
+            {
+                Method = HttpMethod.Get,
+                RequestUri = new Uri(string.Format("{0}/{1}/{2}", _apiBaseUrl, _proxyResourceUrl, id)),
+            };
 
-            var result = await _httpClient.GetAsync(url);
+            AddAuthorizationHeader(request);
+
+            var result = await _httpClient.SendAsync(request);
             return await DeserializeSingle(result);
         }
 
@@ -66,6 +74,8 @@ namespace Lisa.Kiwi.WebApi
                 RequestUri = new Uri(string.Format("{0}/{1}", _apiBaseUrl, _proxyResourceUrl)),
                 Content = new StringContent(JsonConvert.SerializeObject(model, _jsonSerializerSettings), Encoding.UTF8, "Application/json")
             };
+
+            AddAuthorizationHeader(request);
 
             var result = await _httpClient.SendAsync(request);
             return await DeserializeSingle(result);
@@ -80,6 +90,8 @@ namespace Lisa.Kiwi.WebApi
                 Content = new StringContent(JsonConvert.SerializeObject(model, _jsonSerializerSettings), Encoding.UTF8, "application/json")
             };
 
+            AddAuthorizationHeader(request);
+
             var result = await _httpClient.SendAsync(request);
             return await DeserializeSingle(result);
         }
@@ -93,8 +105,18 @@ namespace Lisa.Kiwi.WebApi
                 Content = new StringContent(JsonConvert.SerializeObject(model, _jsonSerializerSettings), Encoding.UTF8, "application/json")
             };
 
+            AddAuthorizationHeader(request);
+
             var result = await _httpClient.SendAsync(request);
             return await DeserializeSingle(result);
+        }
+
+        private void AddAuthorizationHeader(HttpRequestMessage request)
+        {
+            if (!String.IsNullOrEmpty(Token))
+            {
+                request.Headers.Add("Authorization", String.Format("Bearer {0}", Token));
+            }
         }
 
         private async Task<T> DeserializeSingle(HttpResponseMessage response)

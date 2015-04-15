@@ -10,28 +10,6 @@ namespace Lisa.Kiwi.Web
 {
     public class ReportController : Controller
     {
-        protected override void OnActionExecuting(ActionExecutingContext context)
-        {
-            // the user can't be authorized on Index Action
-            if (context.ActionDescriptor.ActionName.ToLower() == "index")
-            {
-                _reportProxy = new Proxy<Report>(WebConfigurationManager.AppSettings["WebApiUrl"], "/reports/");
-            }
-            else
-            {
-                var tokenCookie = Request.Cookies["token"];
-                if (tokenCookie != null && tokenCookie.Value != string.Empty)
-                {
-                    var tokenType = tokenCookie.Value.Split(' ')[0];
-                    var token = tokenCookie.Value.Split(' ')[1];
-
-                    _reportProxy = new Proxy<Report>(WebConfigurationManager.AppSettings["WebApiUrl"], "/reports/", tokenType, token);
-                }
-            }
-
-            base.OnActionExecuting(context);
-        }
-
         public ActionResult Index()
         {
             return View(new CategoryViewModel());
@@ -45,22 +23,11 @@ namespace Lisa.Kiwi.Web
                 return View(viewModel);
             }
 
+            // TODO: replace AnonymousToken in Report model by a custom HTTP header
             var report = _modelFactory.Create(viewModel);
             report = await _reportProxy.PostAsync(report);
 
-            var loginProxy = new AuthenticationProxy(WebConfigurationManager.AppSettings["WebApiUrl"], "/api/oauth");
-
-            var loginResult = await loginProxy.LoginAnonymous(report.AnonymousToken);
-
-            // TODO: add error handling
-            var authCookie = new HttpCookie("token", String.Join(" ", loginResult.TokenType, loginResult.Token))
-            {
-                Expires = DateTime.Now.AddMinutes(10)
-            };
-            var cookie = new HttpCookie("report", report.Id.ToString());
-
-            Response.Cookies.Add(cookie);
-            Response.Cookies.Add(authCookie);
+            await EnsureReportAccess(report);
 
             return RedirectToAction("Location");
         }
@@ -233,17 +200,17 @@ namespace Lisa.Kiwi.Web
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(report.Id, report);
 
-            if ( viewModel.HasPerpetrator && !viewModel.HasVictim )
+            if (viewModel.HasPerpetrator && !viewModel.HasVictim)
             {
                 return RedirectToAction("Perpetrator");
             }
-            else if ( !viewModel.HasPerpetrator && viewModel.HasVictim)
+            else if (!viewModel.HasPerpetrator && viewModel.HasVictim)
             {
                 return RedirectToAction("Victim");
             }
-            else if ( viewModel.HasPerpetrator && viewModel.HasVictim )
+            else if (viewModel.HasPerpetrator && viewModel.HasVictim)
             {
-                return RedirectToAction("Perpetrator", routeValues: new { Hasvictim = viewModel.HasVictim });
+                return RedirectToAction("Perpetrator", routeValues: new { hasVictim = viewModel.HasVictim });
             }
 
             return RedirectToAction("Vehicle");
@@ -275,25 +242,17 @@ namespace Lisa.Kiwi.Web
         }
 
         [HttpPost]
-        public async Task<ActionResult> Perpetrator(PerpetratorViewModel viewModel)
+        public async Task<ActionResult> Perpetrator(PerpetratorViewModel viewModel, bool hasVictim)
         {
             if (!ModelState.IsValid)
             {
                 return View(viewModel);
             }
-            var HasVictim = Request.QueryString["Hasvictim"];
             var report = await GetCurrentReport();
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(report.Id, report);
-            // TODO: add error handling
-            if(HasVictim == "True")
-            {
-                return RedirectToAction("Vehicle");
-            }
-            else
-            {
-                return RedirectToAction("Contact");
-            }
+
+            return RedirectToAction(hasVictim ? "Victim" : "Vehicle");
         }
 
         public ActionResult Victim()
@@ -344,15 +303,10 @@ namespace Lisa.Kiwi.Web
                 case "Nuisance":
                 case "Other":
                     return RedirectToAction("ContactRequired");
-                case "Fight":
-                case "FirstAid":
-                case "Drugs":
-                case "Weapons":
-                case "Bullying":
+
+                default:
                     return RedirectToAction("Contact");
             }
-
-            return View();
         }
 
         public ActionResult Contact()
@@ -406,21 +360,51 @@ namespace Lisa.Kiwi.Web
         }
 
         [HttpPost]
-        public async Task<ActionResult> Done(string category)
+        public ActionResult Done(string category)
         {
-            string link;
-            switch (category){
+            switch (category)
+            {
                 case "Theft":
-                    link = "Police";
-                    break;
+                    return View("Police");
+
                 case "Bullying":
-                    link = "Help";
-                    break;
+                    return View("Help");
+
                 default:
-                    link = "End";
-                    break;
+                    return View("End");
             }
-            return View(link);
+        }
+
+        protected override void OnActionExecuting(ActionExecutingContext context)
+        {
+            _reportProxy = new Proxy<Report>(WebConfigurationManager.AppSettings["WebApiUrl"], "/reports/");
+
+            var tokenCookie = Request.Cookies["token"];
+            if (tokenCookie != null)
+            {
+                _reportProxy.Token = tokenCookie.Value;
+            }
+
+            base.OnActionExecuting(context);
+        }
+
+        private async Task EnsureReportAccess(Report report)
+        {
+            var loginProxy = new AuthenticationProxy(WebConfigurationManager.AppSettings["WebApiUrl"], "/api/oauth");
+            var token = await loginProxy.LoginAnonymous(report.AnonymousToken);
+
+            // TODO: add error handling
+            var authCookie = new HttpCookie("token", token.Value)
+            {
+                // TODO: let the web api determine the expiration time of the token. Right now, this doesn't
+                // work because both types of token (for the reporter and the dashboard) have the same expiration
+                // value, which is set in Startup.cs.
+                Expires = DateTime.Now.AddMinutes(10)
+            };
+            var cookie = new HttpCookie("report", report.Id.ToString());
+
+            Response.Cookies.Add(cookie);
+            Response.Cookies.Add(authCookie);
         }
 
         private async Task<Report> GetCurrentReport()
@@ -434,7 +418,7 @@ namespace Lisa.Kiwi.Web
             return await _reportProxy.GetAsync(reportId);
         }
 
-        private  Proxy<Report> _reportProxy;
+        private Proxy<Report> _reportProxy;
 
         private readonly ModelFactory _modelFactory = new ModelFactory();
     }
