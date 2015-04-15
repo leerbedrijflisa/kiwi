@@ -45,7 +45,8 @@ namespace Lisa.Kiwi.WebApi
                 Method = HttpMethod.Get,
                 RequestUri = new Uri(string.Format("{0}/{1}", _apiBaseUrl, _proxyResourceUrl)),
             };
-            request.Headers.Add("Authorization", String.Format("Bearer {0}", Token));
+
+            AddAuthorizationHeader(request);
 
             var result = await _httpClient.SendAsync(request);
             return await DeserializeList(result);
@@ -58,7 +59,8 @@ namespace Lisa.Kiwi.WebApi
                 Method = HttpMethod.Get,
                 RequestUri = new Uri(string.Format("{0}/{1}/{2}", _apiBaseUrl, _proxyResourceUrl, id)),
             };
-            request.Headers.Add("Authorization", String.Format("Bearer {0}", Token));
+
+            AddAuthorizationHeader(request);
 
             var result = await _httpClient.SendAsync(request);
             return await DeserializeSingle(result);
@@ -73,6 +75,8 @@ namespace Lisa.Kiwi.WebApi
                 Content = new StringContent(JsonConvert.SerializeObject(model, _jsonSerializerSettings), Encoding.UTF8, "Application/json")
             };
 
+            AddAuthorizationHeader(request);
+
             var result = await _httpClient.SendAsync(request);
             return await DeserializeSingle(result);
         }
@@ -85,6 +89,8 @@ namespace Lisa.Kiwi.WebApi
                 RequestUri = new Uri(String.Format("{0}/{1}/{2}", _apiBaseUrl, _proxyResourceUrl, id)),
                 Content = new StringContent(JsonConvert.SerializeObject(model, _jsonSerializerSettings), Encoding.UTF8, "application/json")
             };
+
+            AddAuthorizationHeader(request);
 
             var result = await _httpClient.SendAsync(request);
             return await DeserializeSingle(result);
@@ -99,8 +105,18 @@ namespace Lisa.Kiwi.WebApi
                 Content = new StringContent(JsonConvert.SerializeObject(model, _jsonSerializerSettings), Encoding.UTF8, "application/json")
             };
 
+            AddAuthorizationHeader(request);
+
             var result = await _httpClient.SendAsync(request);
             return await DeserializeSingle(result);
+        }
+
+        private void AddAuthorizationHeader(HttpRequestMessage request)
+        {
+            if (!String.IsNullOrEmpty(Token))
+            {
+                request.Headers.Add("Authorization", String.Format("Bearer {0}", Token));
+            }
         }
 
         private async Task<T> DeserializeSingle(HttpResponseMessage response)
