@@ -12,12 +12,15 @@ namespace Lisa.Kiwi.Web
     {
         protected override void OnActionExecuting(ActionExecutingContext context)
         {
-            _reportProxy = new Proxy<Report>(WebConfigurationManager.AppSettings["WebApiUrl"], "/reports/");
+            _reportProxy = new Proxy<Report>(WebConfigurationManager.AppSettings["WebApiUrl"] + "reports");
 
             var tokenCookie = Request.Cookies["token"];
             if (tokenCookie != null)
             {
-                _reportProxy.Token = tokenCookie.Value;
+                _reportProxy.Token = new Token
+                {
+                    Value = tokenCookie.Value
+                };
             }
 
             base.OnActionExecuting(context);
@@ -76,6 +79,6 @@ namespace Lisa.Kiwi.Web
         }
 
         private readonly ModelFactory _modelFactory = new ModelFactory();
-        private Proxy<Report> _reportProxy = new Proxy<Report>(WebConfigurationManager.AppSettings["WebApiUrl"], "/reports/");
+        private Proxy<Report> _reportProxy = new Proxy<Report>(WebConfigurationManager.AppSettings["WebApiUrl"] + "reports");
     }
 }
