@@ -391,11 +391,14 @@ namespace Lisa.Kiwi.Web
         private async Task EnsureReportAccess(Report report)
         {
             var loginProxy = new AuthenticationProxy(WebConfigurationManager.AppSettings["WebApiUrl"], "/api/oauth");
-            var loginResult = await loginProxy.LoginAnonymous(report.AnonymousToken);
+            var token = await loginProxy.LoginAnonymous(report.AnonymousToken);
 
             // TODO: add error handling
-            var authCookie = new HttpCookie("token", loginResult.Token)
+            var authCookie = new HttpCookie("token", token.Value)
             {
+                // TODO: let the web api determine the expiration time of the token. Right now, this doesn't
+                // work because both types of token (for the reporter and the dashboard) have the same expiration
+                // value, which is set in Startup.cs.
                 Expires = DateTime.Now.AddMinutes(10)
             };
             var cookie = new HttpCookie("report", report.Id.ToString());

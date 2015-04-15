@@ -24,25 +24,20 @@ namespace Lisa.Kiwi.Web
 
             var authProxy = new AuthenticationProxy(WebConfigurationManager.AppSettings["WebApiUrl"], "/api/oauth");
 
-            var response = await authProxy.Login(model.UserName, model.Password);
-
-            if (response.Status != LoginStatus.Success)
+            var token = await authProxy.Login(model.UserName, model.Password);
+            if (token == null)
             {
                 ModelState.AddModelError("password", "Wachtwoord of gebruikersnaam is onjuist");
-
                 return View();
             }
 
-            var tokenCookie = new HttpCookie("token", response.Token)
+            var tokenCookie = new HttpCookie("token", token.Value)
             {
-                Expires = DateTime.Now.AddMinutes(response.TokenExpiresIn),
+                Expires = DateTime.Now.AddMinutes(token.ExpiresIn),
                 HttpOnly = true
             };
-
             Response.Cookies.Add(tokenCookie);
-
-            // dont store isAdmin value in cookies as it is unsafe
-
+            
             return RedirectToAction("Index", "Dashboard");
         }
     }
