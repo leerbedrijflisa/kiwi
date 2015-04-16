@@ -233,10 +233,7 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\Buildings.json" />
     <Content Include="App_Code\DashboardHelpers.cshtml" />
-    <Content Include="Scripts\jquery-1.9.1.js" />
-    <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\jquery.datetimepicker.js" />
-    <Content Include="Scripts\Location.js" />
     <Content Include="Scripts\Theft.js" />
     <Content Include="Scripts\Weapons.js" />
     <Content Include="Web.config" />
