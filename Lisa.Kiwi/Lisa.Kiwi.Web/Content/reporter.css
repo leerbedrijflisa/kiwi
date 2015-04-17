@@ -56,11 +56,11 @@ form .field label {
 	Button lists
 */
 
-input[type=radio] {
+ul.buttons li input[type=radio] {
     display: none;
 }
 
-input[type=radio] + label {
+ul .buttons li input[type=radio] + label {
     background: url("category-bullying.png");
     display: block;
     padding: 0;
@@ -70,7 +70,7 @@ input[type=radio] + label {
     cursor: pointer; 
 }
 
-input[type=radio]:checked + label {
+ul.buttons li input[type=radio]:checked + label {
     background: url("category-bullying.png");
     display: block;
     padding: 0;

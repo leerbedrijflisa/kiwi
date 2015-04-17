@@ -7,36 +7,39 @@
 @using (Html.BeginForm())
 {
     @* TODO: Fix validation as it looks like shit now *@
-	<h2>@ViewBag.Title</h2>
-	<p>
+	<div class="field">
 		@Html.LabelFor(m => m.Name)
 		@Html.TextBoxFor(m => m.Name)
-	</p>
-	<p>
-		<label>@Html.RadioButtonFor(m => m.Sex, 0) Onbekend</label>*
-		<label>@Html.RadioButtonFor(m => m.Sex, 1) Man</label>*
-		<label>@Html.RadioButtonFor(m => m.Sex, 2) Vrouw</label>*
+	</div>
+	<div class="field">
+		<label>Wat is het geslacht*</label>
+		<ul>
+			<li>@Html.RadioButtonFor(m => m.Sex, 0) Onbekend</li>
+			<li>@Html.RadioButtonFor(m => m.Sex, 1) Man</li>
+			<li>@Html.RadioButtonFor(m => m.Sex, 2) Vrouw</li>
+		</ul>
 		@Html.ValidationMessageFor(m => m.Sex)
-	</p>
-	<p>
+	</div>
+	<div class="field">
 		@Html.LabelFor(m => m.SkinColor)
 		@Html.DropDownListFor(m => m.SkinColor, Model.SkinColors)
-	</p>
-	<p>
+	</div>
+	<div class="field">
 		@Html.LabelFor(m => m.Clothing)
 		@Html.TextAreaFor(m => m.Clothing)*
 		@Html.ValidationMessageFor(m => m.Clothing)
-	</p>
-	<p>
+	</div>
+	<div class="field">
 		@Html.LabelFor(m => m.AgeRange)
 		@Html.DropDownListFor(m => m.AgeRange, Model.AgeRanges)
-	</p>
-	<p>
+	</div>
+	<div class="field">
 		@Html.LabelFor(m => m.UniqueProperties)
 		@Html.TextAreaFor(m => m.UniqueProperties)*
 		@Html.ValidationMessageFor(m => m.UniqueProperties)
-	</p>
-
-	<input type="submit" value="Verzenden"/>
-	<text>*verplichte velden</text>
+	</div>
+	<div class="submit">
+		<button type="submit"><img src="@Url.Content("~/Content/next.svg")"/></button>
+		<span class="floatLeft">*verplichte velden</span>
+	</div>
 }
