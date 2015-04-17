@@ -2,14 +2,16 @@
 @using perpetratorResource = Resources.Perpetrator
 
 	<div class="body">
-		<h1 class="doneTitle">Melding</h1>
+		<div class="field">
+			<label>Melding</label>
+		</div>
 		<div class="field">
 			<label>@PageItems.TypeDescription</label>
-			<p>@Categories.ResourceManager.GetString(Model.Category)</p>
+			<p><img src='@Url.Content(string.Format("~/Content/category-{0}.png", Model.Category))'><br />@Categories.ResourceManager.GetString(Model.Category)</p>
 		</div>
 		<div class="field">
 			<label>@PageItems.LocationDescription</label>
-			<p>@Model.Location.Building - @Model.Location.Description</p>
+			<p><img src='@Url.Content(string.Format("~/Content/building-{0}.png", Model.Location.Building.ToLower()))'>- @Model.Location.Description</p>
 		</div>
 
 	@Html.Partial("~/Views/Report/CategoryPartials/_PartialDetails" + Model.Category + ".cshtml", Model)
@@ -57,7 +59,9 @@
 
 @if (Model.Contact != null)
 {
-	<h2>@PageItems.Contact</h2>
+	<div class="field">
+		<label>@PageItems.Contact</label>
+	</div>
 	<div class="field">
 		<label>@PageItems.ContactName</label>
 		<p>@DashboardHelpers.NullCheck(Model.Contact.Name)</p>
