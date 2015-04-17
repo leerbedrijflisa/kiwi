@@ -4,24 +4,25 @@
 	ViewBag.Title = Categories.Bullying;
 }
 
-<h2>@ViewBag.Title</h2>
 @using (Html.BeginForm())
 {
-   <p>
+   <div class="field">
 		@Html.LabelFor(m => m.VictimName)
 		@Html.TextBoxFor(m => m.VictimName)
-	</p>
-    <p>
+	</div>
+    <div class="field">
         @Html.LabelFor(m => m.Description)
         @Html.TextBoxFor(m => m.Description)
-    </p>
-    <p>
+    </div>
+    <div class="field">
         @Html.Label("Heeft u nog informatie over de verdachte?")
         @Html.CheckBoxFor(m => m.HasPerpetrator)
-    </p>
-    <p>
+    </div>
+    <div class="field">
         @Html.Label("Heeft u nog informatie over het slachtoffer?")
         @Html.CheckBoxFor(m => m.HasVictim)
-    </p>
-	<input type="submit" value="Verzenden" />
+    </div>
+	<div class="submit">
+		<button type="submit"><img src="@Url.Content("~/Content/next.svg")" /></button>
+	</div>
 }

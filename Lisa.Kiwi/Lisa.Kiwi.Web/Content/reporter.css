@@ -144,9 +144,15 @@ ul.buttons li button img {
     float: left;
 }
 
+
 /*
 	Form contents
 */
+
+input[type=checkbox]{
+    width: 540px;
+    margin: 30px 30px 0;
+}
 
 form .field p {
 	margin-top: 0;
