@@ -6,14 +6,20 @@
 
 <section class="icons">
 	@using (Html.BeginForm())
-	{
-		foreach (var item in Model.Categories)
 		{
-			<div id="Category">
-				<img src="~/Content/@item.Text-icon.png">
-				<span>@item.Text</span>
-				<input class="overlayInput" type="submit" name="Category" value="@item.Value">
+			<div class="field">
+				<label>Wat wilt u melden?</label>
+				<ul class="buttons">
+					@foreach (var item in Model.Categories)
+					{
+						<li>
+							<button type="submit" name="Category" value="@item.Value">
+								<img src='@string.Format("Content/category-{0}.png", item.Value)'>
+								@item.Text
+							</button>
+						</li>
+					}
+			</ul>
 			</div>
-		}
-	}
+			}
 </section>
