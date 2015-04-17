@@ -27,25 +27,32 @@ header h1 {
 	a blue bar to the left side that contains the labels.
 */
 
-form {
+form, .body {
 	background-color: white;
 	margin: auto;
 	width: 900px;
 }
 
-form .field {
+.body h1, h2{
+    margin: 0;
+    background-color: #113;
+    padding: 5px;
+    color: white;
+}
+
+form .field, .body .field {
 	display: table-row;
 	width: 100%;
 }
 
-form .field > * {
+form .field > *, .body .field > * {
 	display: table-cell;
 	vertical-align: top;
 	box-sizing: border-box;
 	padding: 15px;
 }
 
-form .field label {
+form .field label, .body .field label {
 	background-color: #113;
 	color: white;
 	text-align: right;
@@ -59,7 +66,7 @@ form .field label.radio, label.radio:checked{
     text-align: left;
     width: auto !important;
     height: 20px !important;
-    margin: 0 20 0 20;
+    margin: 0px 20px 0px 20px;
     cursor: auto;
 }
 
@@ -154,7 +161,7 @@ input[type=checkbox]{
     margin: 30px 30px 0;
 }
 
-form .field p {
+form .field p, .field p {
 	margin-top: 0;
 	font-size: 12pt;
 	font-weight: bold;

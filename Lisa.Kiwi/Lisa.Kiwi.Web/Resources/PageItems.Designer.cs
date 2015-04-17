@@ -79,7 +79,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Contact:.
+        ///   Looks up a localized string similar to Contact.
         /// </summary>
         public static string Contact {
             get {

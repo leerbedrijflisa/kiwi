@@ -1,84 +1,102 @@
 ﻿@model Report
 @using perpetratorResource = Resources.Perpetrator
 
-<h1 class="doneTitle">Melding</h1>
-<dl>
-	<dt>@PageItems.TypeDescription</dt>
-	<dd>@Categories.ResourceManager.GetString(Model.Category)</dd>
+	<div class="body">
+		<h1 class="doneTitle">Melding</h1>
+		<div class="field">
+			<label>@PageItems.TypeDescription</label>
+			<p>@Categories.ResourceManager.GetString(Model.Category)</p>
+		</div>
+		<div class="field">
+			<label>@PageItems.LocationDescription</label>
+			<p>@Model.Location.Building - @Model.Location.Description</p>
+		</div>
 
-	<dt>@PageItems.LocationDescription</dt>
-	<dd>@Model.Location.Building - @Model.Location.Description</dd>
-
-	@Html.Partial("~/Views/Dashboard/CategoryPartials/_PartialDetails" + Model.Category + ".cshtml", Model)
-	@if(Model.Description != null)
-	{
-		<dt>@ReportProperties.Description</dt>
-		<dd>@Model.Description</dd>		
-	}	
-</dl>
-@* TODO: Find a better solution than this, as it makes and empty Contact.*@
+	@Html.Partial("~/Views/Report/CategoryPartials/_PartialDetails" + Model.Category + ".cshtml", Model)
+	@if (Model.Description != null)
+		{
+			<div class="field">
+				<label>@ReportProperties.Description</label>
+				<p>@Model.Description</p>
+			</div>
+		}
+@* TODO: Find a better solution than this, as it makes an empty Contact.*@
 
 @if (Model.Perpetrator != null)
 {
-	<br />
 	<h2>@perpetratorResource.Perpetrators</h2>
-	<dl>
-		<dt>@perpetratorResource.Name</dt>
-		<dd>@DashboardHelpers.NullCheck(Model.Perpetrator.Name)</dd>
-
-		<dt>@perpetratorResource.Sex</dt>
-		<dd>@DashboardHelpers.NullCheck(Sex.ResourceManager.GetString(Model.Perpetrator.Sex.ToString()))</dd>
-
-		<dt>@perpetratorResource.SkinColor</dt>
-		<dd>@DashboardHelpers.NullCheck(SkinColor.ResourceManager.GetString(Model.Perpetrator.SkinColor.ToString()))</dd>
-
-		<dt>@perpetratorResource.Clothing</dt>
-		<dd>@DashboardHelpers.NullCheck(Model.Perpetrator.Clothing)</dd>
-
-		<dt>@perpetratorResource.MinAge</dt>
-		<dd>@DashboardHelpers.NullCheck(Model.Perpetrator.MinimumAge)</dd>
-
-		<dt>@perpetratorResource.MaxAge</dt>
-		<dd>@DashboardHelpers.NullCheck(Model.Perpetrator.MaximumAge)</dd>
-
-		<dt>@perpetratorResource.UniqueProp</dt>
-		<dd>@DashboardHelpers.NullCheck(Model.Perpetrator.UniqueProperties)</dd>
-	</dl>
+	<div class="field">
+		<label>@perpetratorResource.Name</label>
+		<p>@DashboardHelpers.NullCheck(Model.Perpetrator.Name)</p>
+	</div>
+	<div class="field">
+		<label>@perpetratorResource.Sex</label>
+		<p>@DashboardHelpers.NullCheck(Sex.ResourceManager.GetString(Model.Perpetrator.Sex.ToString()))</p>
+	</div>
+	<div class="field">
+		<label>@perpetratorResource.SkinColor</label>
+		<p>@DashboardHelpers.NullCheck(SkinColor.ResourceManager.GetString(Model.Perpetrator.SkinColor.ToString()))</p>
+	</div>
+	<div class="field">
+		<label>@perpetratorResource.Clothing</label>
+		<p>@DashboardHelpers.NullCheck(Model.Perpetrator.Clothing)</p>
+	</div>
+	<div class="field">
+		<label>@perpetratorResource.MinAge</label>
+		<p>@DashboardHelpers.NullCheck(Model.Perpetrator.MinimumAge)</p>
+	</div>
+	<div class="field">
+		<label>@perpetratorResource.MaxAge</label>
+		<p>@DashboardHelpers.NullCheck(Model.Perpetrator.MaximumAge)</p>
+	</div>
+	<div class="field">
+		<label>@perpetratorResource.UniqueProp</label>
+		<p>@DashboardHelpers.NullCheck(Model.Perpetrator.UniqueProperties)</p>
+	</div>
 }
 
 @if (Model.Contact != null)
 {
-	<br/>
 	<h2>@PageItems.Contact</h2>
-	<dl>
-		<dt>@PageItems.ContactName</dt>
-		<dd>@DashboardHelpers.NullCheck(Model.Contact.Name)</dd>
-		<dt>@PageItems.ContactPhoneNumber</dt>
-		<dd>@DashboardHelpers.NullCheck(Model.Contact.PhoneNumber)</dd>
-
-		<dt>@PageItems.ContactEmail</dt>
-		<dd>@DashboardHelpers.NullCheck(Model.Contact.EmailAddress)</dd>
-	</dl>
+	<div class="field">
+		<label>@PageItems.ContactName</label>
+		<p>@DashboardHelpers.NullCheck(Model.Contact.Name)</p>
+	</div>
+	<div class="field">
+		<label>@PageItems.ContactPhoneNumber</label>
+		<p>@DashboardHelpers.NullCheck(Model.Contact.PhoneNumber)</p>
+	</div>
+	<div class="field">
+		<label>@PageItems.ContactEmail</label>
+		<p>@DashboardHelpers.NullCheck(Model.Contact.EmailAddress)</p>
+	</div>
 }
 
 @if (Model.Vehicle != null)
 {
 	<h2>@ReportProperties.Vehicle</h2>
-	<dl>
-		<dt>@ReportProperties.VehicleBrand</dt>
-		<dd>@DashboardHelpers.NullCheck(Model.Vehicle.Brand)</dd>
-		<dt>@ReportProperties.VehicleColor</dt>
-		<dd>@DashboardHelpers.NullCheck(Model.Vehicle.Color)</dd>
-		<dt>@ReportProperties.VehicleNumberPlate</dt>
-		<dd>@DashboardHelpers.NullCheck(Model.Vehicle.NumberPlate)</dd>
-		<dt>@ReportProperties.VehicleAdditionalFeatures</dt>
-		<dd>@DashboardHelpers.NullCheck(Model.Vehicle.AdditionalFeatures)</dd>
-	</dl>
+	<div class="field">
+		<label>@ReportProperties.VehicleBrand</label>
+		<p>@DashboardHelpers.NullCheck(Model.Vehicle.Brand)</p>
+	</div>
+	<div class="field">
+		<label>@ReportProperties.VehicleColor</label>
+		<p>@DashboardHelpers.NullCheck(Model.Vehicle.Color)</p>
+	</div>
+	<div class="field">
+		<label>@ReportProperties.VehicleNumberPlate</label>
+		<p>@DashboardHelpers.NullCheck(Model.Vehicle.NumberPlate)</p>
+	</div>
+	<div class="field">
+		<label>@ReportProperties.VehicleAdditionalFeatures</label>
+		<p>@DashboardHelpers.NullCheck(Model.Vehicle.AdditionalFeatures)</p>
+	</div>
 }
-
-<hr/>
 @using (Html.BeginForm())
 {
 	<input type="hidden" name="category" value="@Model.Category" />
-	<input type="submit" value="Ga verder" />
+	<div class="submit">
+		<button type="submit"><img src="@Url.Content("~/Content/next.svg")" /></button>
+	</div>
 }
+</div>

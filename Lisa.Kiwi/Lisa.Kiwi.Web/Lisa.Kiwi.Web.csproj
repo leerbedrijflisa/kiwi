@@ -287,6 +287,14 @@
     <Content Include="Views\Report\Help.cshtml" />
     <Content Include="Views\Report\Vehicle.cshtml" />
     <Content Include="Views\Report\Victim.cshtml" />
+    <Content Include="Views\Report\CategoryPartials\_PartialDetailsBullying.cshtml" />
+    <Content Include="Views\Report\CategoryPartials\_PartialDetailsDrugs.cshtml" />
+    <Content Include="Views\Report\CategoryPartials\_PartialDetailsFight.cshtml" />
+    <Content Include="Views\Report\CategoryPartials\_PartialDetailsFirstAid.cshtml" />
+    <Content Include="Views\Report\CategoryPartials\_PartialDetailsNuisance.cshtml" />
+    <Content Include="Views\Report\CategoryPartials\_PartialDetailsOther.cshtml" />
+    <Content Include="Views\Report\CategoryPartials\_PartialDetailsTheft.cshtml" />
+    <Content Include="Views\Report\CategoryPartials\_PartialDetailsWeapons.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
