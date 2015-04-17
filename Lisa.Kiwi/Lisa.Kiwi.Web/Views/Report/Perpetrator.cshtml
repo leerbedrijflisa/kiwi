@@ -12,7 +12,7 @@
 		@Html.TextBoxFor(m => m.Name)
 	</div>
 	<div class="field">
-		<label>Wat is het geslacht*</label>
+		<label>Wat is het geslacht? *</label>
 		<ul class="radioList">
 			<li>@Html.RadioButtonFor(m => m.Sex, 0) Onbekend</li>
 			<li>@Html.RadioButtonFor(m => m.Sex, 1) Man</li>
@@ -26,7 +26,7 @@
 	</div>
 	<div class="field">
 		@Html.LabelFor(m => m.Clothing)
-		@Html.TextAreaFor(m => m.Clothing)*
+		@Html.TextAreaFor(m => m.Clothing)
 		@Html.ValidationMessageFor(m => m.Clothing)
 	</div>
 	<div class="field">
@@ -35,7 +35,7 @@
 	</div>
 	<div class="field">
 		@Html.LabelFor(m => m.UniqueProperties)
-		@Html.TextAreaFor(m => m.UniqueProperties)*
+		@Html.TextAreaFor(m => m.UniqueProperties)
 		@Html.ValidationMessageFor(m => m.UniqueProperties)
 	</div>
 	<div class="submit">
