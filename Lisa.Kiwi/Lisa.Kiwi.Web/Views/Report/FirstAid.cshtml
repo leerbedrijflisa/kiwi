@@ -3,13 +3,11 @@
 @{
 	ViewBag.Title = Categories.FirstAid;
 }
-
-<h2>@ViewBag.Title</h2>
 @using (Html.BeginForm())
 {
-	<p>
-		Is het slachtoffer bewusteloos?
-	</p>
-	<input type="submit" name="IsUnconscious" value="Ja" />
-	<input type="submit" name="IsUnconscious" value="Nee" />
+	<div class="field">
+		<label>Is het slachtoffer bewusteloos?</label>
+		<input type="submit" name="IsUnconscious" value="Ja" />
+		<input type="submit" name="IsUnconscious" value="Nee" />
+	</div>
 }
