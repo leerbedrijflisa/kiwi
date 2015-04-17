@@ -7,34 +7,37 @@
 		$("#form-content").hide();
 	})
 </script>
-<h2>Voertuig</h2>
 
 @using (Html.BeginForm())
 {
-	<p>
-		Is er een voertuig betrokken bij deze melding?
-		<button type="button" onclick="$('#form-content').show()">Ja</button>
+	<div class="field">
+		<label>
+			Is er een voertuig betrokken bij deze melding?
+		</label>
+		<button type="button" onclick=" $('#form-content').show() ">Ja</button>
 		<button type="submit" name="HasVehicle" value="false">Nee</button>
-	</p>
+	</div>
 	
 	<div id="form-content">
-		<p>
+		<div class="field">
 			@Html.LabelFor(m => m.Color)
 			@Html.TextBoxFor(m => m.Color)
-		</p>
-		<p>
-		<p>
+		</div>
+		<div class="field">
 			@Html.LabelFor(m => m.Brand)
 			@Html.TextBoxFor(m => m.Brand)
-		</p>
-		<p>
+		</div>
+		<div class="field">
 			@Html.LabelFor(m => m.NumberPlate)
 			@Html.TextBoxFor(m => m.NumberPlate)
-		</p>
-		<p>
+		</div>
+		<div class="field">
 			@Html.LabelFor(m => m.AdditionalFeatures)
 			@Html.TextBoxFor(m => m.AdditionalFeatures)
-		</p>
-		<button type="submit" name="HasVehicle" value="true">Versturen</button>
+		</div>
+		<div class="submit">
+			<button type="submit" name="HasVehicle" value="true"><img src="@Url.Content("~/Content/next.svg")"/></button>
+		</div>
+		
 	</div>
 }
