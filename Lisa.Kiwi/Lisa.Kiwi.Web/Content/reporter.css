@@ -117,7 +117,7 @@ form .field p {
 	color: #003;
 }
 
-form .field textarea {
+form .field textarea, input, select {
 	font-family: Source Sans Pro;
 	font-size: 12pt;
 	margin: 15px 30px 0;
@@ -153,4 +153,8 @@ form .submit button:active {
 form .submit button:active img {
 	width: 18px;
 	height: 18px;
+}
+
+.floatLeft {
+    float: left;
 }

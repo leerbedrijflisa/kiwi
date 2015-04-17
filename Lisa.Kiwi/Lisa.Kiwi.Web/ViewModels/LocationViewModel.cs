@@ -10,11 +10,11 @@ namespace Lisa.Kiwi.Web
         // TODO: use resource files for error messages and display names
 
         [Required(ErrorMessage = ErrorMessages.RequiredError)]
-        [DisplayName("Gebouw")]
+        [DisplayName("Gebouw *")]
         public string Building { get; set; }
 
         [Required(ErrorMessage = ErrorMessages.RequiredError)]
-        [DisplayName("Locatie")]
+        [DisplayName("Locatie *")]
         public string Location { get; set; }
     }
 }
