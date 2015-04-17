@@ -70,7 +70,8 @@ form .field label.radio, label.radio:checked{
     cursor: auto;
 }
 
-form .field .radioList li, li:first-child{
+form .field .radioList li, 
+form .field .radioList li:first-child{
     list-style: none;
     height: 30px;
     margin-left: 30px;
@@ -170,6 +171,7 @@ form .field p, .field p {
 
 form .field textarea,
 form .field input[type=text],
+form .field input[type=number],
 select {
 	font-family: Source Sans Pro;
 	font-size: 12pt;
