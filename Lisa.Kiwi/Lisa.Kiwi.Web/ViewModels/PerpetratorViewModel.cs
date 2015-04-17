@@ -13,21 +13,21 @@ namespace Lisa.Kiwi.Web
         public string Name { get; set; }
 
         [Required(ErrorMessage = ErrorMessages.RequiredError)]
-        [DisplayName("Wat is het geslacht van de dader?")]
+        [DisplayName("Wat is het geslacht van de dader? *")]
         public SexEnum Sex { get; set; }
 
         [DisplayName("Wat is de huidskleur van de dader?")]
         public SkinColorEnum SkinColor { get; set; }
 
         [Required(ErrorMessage = ErrorMessages.RequiredError)]
-        [DisplayName("Wat voor kleding draagt de dader?")]
+        [DisplayName("Wat voor kleding draagt de dader? *")]
         public string Clothing { get; set; }
 
         [DisplayName("Tussen welke leeftijd is de dader?")]
         public string AgeRange { get; set; }
 
         [Required(ErrorMessage = ErrorMessages.RequiredError)]
-        [DisplayName("Zijn er opvallende dingen te zien aan de dader?")]
+        [DisplayName("Zijn er opvallende dingen te zien aan de dader? *")]
         public string UniqueProperties { get; set; }
 
         public IEnumerable<SelectListItem> SkinColors

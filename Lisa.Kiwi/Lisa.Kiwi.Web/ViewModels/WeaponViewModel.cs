@@ -8,14 +8,14 @@ namespace Lisa.Kiwi.Web
     public class WeaponViewModel
     {
         [Required(ErrorMessage = ErrorMessages.RequiredError)]
-        [DisplayName("Wat voor wapen is het?")]
+        [DisplayName("Wat voor wapen is het? *")]
         public string Type { get; set; }
 
         public string OtherType { get; set; }
         
 
         [Required(ErrorMessage = ErrorMessages.RequiredError)]
-        [DisplayName("Waar is het wapen?")]
+        [DisplayName("Waar is het wapen? *")]
         public string Location { get; set; }
 
         [DisplayName("Wilt u nog iets toevoegen?")]

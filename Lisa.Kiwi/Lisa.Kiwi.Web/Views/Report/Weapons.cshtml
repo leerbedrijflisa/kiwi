@@ -8,28 +8,29 @@
 	ViewBag.Title = Categories.Weapons;
 }
 
-<h2>title</h2>
 @using (Html.BeginForm())
 {
-	<p>
-		@Html.LabelFor(m => m.Type)
-		@Html.DropDownListFor(m => m.Type, Model.Types)*
-		@Html.ValidationMessageFor(m => m.Type)
-	</p>
-	<p id="Sub">
-		<label>Wat voor wapen is het dan?</label>
-		@Html.TextBoxFor(m => m.OtherType)*
+	<div class="field">
+			@Html.LabelFor(m => m.Type)
+			@Html.DropDownListFor(m => m.Type, Model.Types)
+			@Html.ValidationMessageFor(m => m.Type)
+	</div>
+	<div class="field" id="Sub">
+		<label>Wat voor wapen is het dan? *</label>
+		@Html.TextBoxFor(m => m.OtherType)
 		@Html.ValidationMessageFor(m => m.OtherType)
-	</p>
-	<p>
+	</div>
+	<div class="field">
 		@Html.LabelFor(m => m.Location)
-		@Html.TextBoxFor(m => m.Location)*
+		@Html.TextBoxFor(m => m.Location)
 		@Html.ValidationMessageFor(m => m.Location)
-	</p>
-	<p>
+	</div>
+	<div class="field">
 		@Html.LabelFor(m => m.Description)<br />
 		@Html.TextAreaFor(m => m.Description, new { @class = "DescriptionBox" })
-	</p>
-	<input type="submit" value="Verzenden"/>
-	<text>*verplichte velden</text>
+	</div>
+	<div class="submit">
+		<button type="submit"><img src="@Url.Content("~/Content/next.svg")" /></button>
+	<text><span class="floatLeft">*verplichte velden</span></text>
+	</div>
 }
