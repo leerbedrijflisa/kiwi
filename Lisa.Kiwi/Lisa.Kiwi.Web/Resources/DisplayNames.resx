@@ -219,4 +219,13 @@
   <data name="Victim" xml:space="preserve">
     <value>Slachtoffer</value>
   </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>E-mail adres</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Naam</value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Telefoonnummer</value>
+  </data>
 </root>
