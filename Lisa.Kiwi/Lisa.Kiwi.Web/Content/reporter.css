@@ -52,6 +52,35 @@ form .field label {
 	width: 300px;
 }
 
+form .field label.radio, label.radio:checked{
+    background-color: white;
+    color: black;
+    background: none !important;
+    text-align: left;
+    width: auto !important;
+    height: 20px !important;
+    margin: 0 20 0 20;
+    cursor: auto;
+}
+
+form .field .radioList li, form .field .radioList li:first-child{
+    list-style: none;
+    height: 30px;
+    margin-left: 30px;
+}
+
+form .field .radioList li:first-child {
+    margin-top: 15px;
+}
+
+form .field ul.radioList{
+    padding: 0px;
+}
+
+.floatLeft {
+    float: left;
+}
+
 /*
 	Button lists
 */
@@ -60,7 +89,7 @@ ul.buttons li input[type=radio] {
     display: none;
 }
 
-ul .buttons li input[type=radio] + label {
+ul.buttons li input[type=radio] + label {
     background: url("category-bullying.png");
     display: block;
     padding: 0;
@@ -106,9 +135,24 @@ ul.buttons li button img {
 	height: 99px;
 }
 
+.radioButton input[type=radio]{
+    display: inline;
+    width: auto;
+    height: auto;
+    margin: 0px;
+    margin-top: 5px;
+    float: left;
+}
+
+
 /*
 	Form contents
 */
+
+input[type=checkbox]{
+    width: 540px;
+    margin: 30px 30px 0;
+}
 
 form .field p {
 	margin-top: 0;
@@ -155,8 +199,4 @@ form .submit button:active {
 form .submit button:active img {
 	width: 18px;
 	height: 18px;
-}
-
-.floatLeft {
-    float: left;
 }
