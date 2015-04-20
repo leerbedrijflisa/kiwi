@@ -216,7 +216,6 @@ namespace Lisa.Kiwi.Web
 
             return RedirectToAction("Vehicle");
             
-            switch(viewModel.HasPerpetrator)
         }
 
         public ActionResult Other()
