@@ -215,7 +215,6 @@ namespace Lisa.Kiwi.Web
             }
 
             return RedirectToAction("Vehicle");
-            
         }
 
         public ActionResult Other()
