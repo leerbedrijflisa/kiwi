@@ -354,6 +354,8 @@
     <Content Include="Views\Report\ReportPartials\_PartialReturnReportContact.cshtml" />
     <Content Include="Views\Report\ReportPartials\_PartialReturnReportVehicle.cshtml" />
     <Content Include="App_Code\ReportHelpers.cshtml" />
+    <Content Include="Views\Report\Error.cshtml" />
+    <Content Include="Views\Dashboard\Error.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
