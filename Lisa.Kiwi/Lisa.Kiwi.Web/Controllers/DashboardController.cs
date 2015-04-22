@@ -48,14 +48,14 @@ namespace Lisa.Kiwi.Web
             return View(reports);
         }
 
-        public async Task<ActionResult> Details(int id = 0)
+        public async Task<ActionResult> Details(int? id)
         {
-            if (id == 0)
+            if (id == null)
             {
                 return HttpNotFound();
             }
 
-            var report = await _reportProxy.GetAsync(id);
+            var report = await _reportProxy.GetAsync(id.Value);
 
             if (report == null)
             {
