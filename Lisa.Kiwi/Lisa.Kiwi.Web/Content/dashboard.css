@@ -168,7 +168,7 @@ ul.options {
 
 /* Closed reports */
 
-section#Solved {
+section.Solved {
   border-top: 1px dashed black;
   margin-top: 8px;
   padding-top: 8px;

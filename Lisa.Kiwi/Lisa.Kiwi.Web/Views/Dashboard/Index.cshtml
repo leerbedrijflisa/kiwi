@@ -1,83 +1,73 @@
 ﻿﻿@model IEnumerable<Report>
 @{
-	Layout = null;
+    Layout = null;
 }
 
 <!doctype html>
 
 <html>
 <head>
-	<title>Leerpark</title>
-	<link href="~/Content/dashboard.css" rel="stylesheet" type="text/css">
-	<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
-	<meta http-equiv="refresh" content="120">
+    <title>Leerpark</title>
+    <link href="~/Content/dashboard.css" rel="stylesheet" type="text/css">
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+    <meta http-equiv="refresh" content="120">
 </head>
 
 <body>
-	@foreach (var report in Model.OrderBy(t => t.Status).ThenByDescending(t => t.Created))
-	{
-		<section id=@report.Status>
-			<article>
-				<a href="@Url.Action("Details", new { id= report.Id })">
-					<div class="category @report.Category">
-						<h1>@Categories.ResourceManager.GetString(report.Category)</h1>
-						@*find a way to make this work*@
-						<p class="time">@DashboardHelpers.Time(report.Created)</p>
-					</div>
-					@if (report.Location != null)
-					{
-						<div class="building @DashboardHelpers.NullCheck(report.Location.Building)">
-							<h2>@DashboardHelpers.NullCheck(report.Location.Building)</h2>
-							<p class="location">@DashboardHelpers.NullCheck(report.Location.Description)</p>
-						</div>
-					}
-					else
-					{
-						<div class="building">
-							<h2>Locatie onbekend</h2>
-							<p class="location">Er is nog geen locatie opgegeven, of deze bestaat niet.</p>
-						</div>
-					}
+    @foreach (var report in Model.OrderBy(t => t.Status).ThenByDescending(t => t.Created))
+    {
+        <section class=@report.Status>
+            <article>
+                <a href="@Url.Action("Details", new { id= report.Id })">
+                    <div class="category @report.Category">
+                        <h1>@Categories.ResourceManager.GetString(report.Category)</h1>
+                        @*find a way to make this work*@
+                        <p class="time">@DashboardHelpers.Time(report.Created)</p>
+                    </div>
+                    @if (report.Location != null)
+                    {
+                        <div class="building @DashboardHelpers.NullCheck(report.Location.Building)">
+                            <h2>@DashboardHelpers.NullCheck(report.Location.Building)</h2>
+                            <p class="location">@DashboardHelpers.NullCheck(report.Location.Description)</p>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="building">
+                            <h2>Locatie onbekend</h2>
+                            <p class="location">Er is nog geen locatie opgegeven, of deze bestaat niet.</p>
+                        </div>
+                    }
 
-					@if (report.Category == "FirstAid")
-					{
-						<p class="details"><img src="~/Content/warning.svg">@DashboardHelpers.NullCheck(ReportProperties.ResourceManager.GetString(report.IsUnconscious + report.Category))</p>
-					}
-					@if (report.Category == "Theft")
-					{
-						<p class="details"> Er is een @DashboardHelpers.NullCheck(report.StolenObject) gestolen om @DashboardHelpers.NullCheck(report.DateOfTheft) .</p>
-					}
-					@if (report.Category == "Bullying")
-					{
-						<p class="details">@DashboardHelpers.NullCheck(report.Description)</p>
-					}
-					@if (report.Category == "Drugs")
-					{
-						<p class="details">@DashboardHelpers.NullCheck(report.Description)</p>
-					}
-					@if (report.Category == "Fight")
-					{
-						<p class="details">Er zijn @DashboardHelpers.NullCheck(report.FighterCount) aan het vechten.</p>
-					}
-					@if (report.Category == "Nuisance")
-					{
-						<p class="details">@DashboardHelpers.NullCheck(report.Description)</p>
-					}
-					@if (report.Category == "Other")
-					{
-						<p class="details">@DashboardHelpers.NullCheck(report.Description)</p>
-					}
-					@if (report.Category == "Weapons")
-					{
-						<p class="details">Het gaat om een: @DashboardHelpers.NullCheck(report.WeaponType)</p>
-					}
-				</a>
-				<ul class="options">
-					<li><a href="@Url.Action("ToggleSolved", new { id = report.Id, currentSolved = report.Status == StatusEnum.Solved})"><img src="~/Content/done.svg"></a></li>
-					<li><a href="@Url.Action("Details", new { id= report.Id })"><img src="~/Content/show.svg"></a></li>
-				</ul>
-			</article>
-		</section>
-	}
+                    <p class="details">
+                        @switch ((string)report.Category)
+                        {
+                            case "FirstAid":
+                                <img src="~/Content/warning.svg">@DashboardHelpers.NullCheck(ReportProperties.ResourceManager.GetString(report.IsUnconscious + report.Category))
+
+                                break;
+                            case "Theft":
+                                @:Er is een @DashboardHelpers.NullCheck(report.StolenObject) gestolen om @DashboardHelpers.NullCheck(report.DateOfTheft).
+                                break;
+                            case "Fight":
+                                @:Er zijn @DashboardHelpers.NullCheck(report.FighterCount) aan het vechten.
+                                break;
+                            case "Weapons":
+                                @:Het gaat om een: @DashboardHelpers.NullCheck(report.WeaponType)
+                                break;
+                            default:
+                                @:@DashboardHelpers.NullCheck(report.Description)
+                                break;
+                        }
+                    </p>
+
+                </a>
+                <ul class="options">
+                    <li><a href="@Url.Action("ToggleSolved", new { id = report.Id, currentSolved = report.Status == StatusEnum.Solved})"><img src="~/Content/done.svg"></a></li>
+                    <li><a href="@Url.Action("Details", new { id= report.Id })"><img src="~/Content/show.svg"></a></li>
+                </ul>
+            </article>
+        </section>
+    }
 </body>
 </html>
