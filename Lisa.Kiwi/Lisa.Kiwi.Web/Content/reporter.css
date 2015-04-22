@@ -98,7 +98,7 @@ ul.buttons li input[type=radio] {
 }
 
 ul.buttons li input[type=radio] + label {
-    background: url("building-appartementen.png");
+    background: url("ReporterBuildings/building-appartementen.png");
     background-repeat: no-repeat;
     display: block;
     padding: 0;
@@ -215,114 +215,114 @@ form .submit button:active img {
 /* Building images*/
 
 input#DVCArcobaleno + label {
-    background: url("building-arcobaleno.png");
+    background: url("ReporterBuildings/building-arcobaleno.png");
     background-repeat: no-repeat;
 }
 
 input#DVCAzzurro + label {
-    background: url("building-azzurro.png");
+    background: url("ReporterBuildings/building-azzurro.png");
 }
 
 input#DVCBianco + label {
-    background: url("building-bianco.png");
+    background: url("ReporterBuildings/building-bianco.png");
 }
 
 input#DVCCeleste + label {
-    background: url("building-celeste.png");
+    background: url("ReporterBuildings/building-celeste.png");
 }
 
 input#DVCGiallo + label {
-    background: url("building-giallo.png");
+    background: url("ReporterBuildings/building-giallo.png");
 }
 
 input#DVCIndaco + label {
-    background: url("building-giallo.png");
+    background: url("ReporterBuildings/building-giallo.png");
 }
 
 input#DVCLilla + label {
-    background: url("building-lilla.png");
+    background: url("ReporterBuildings/building-lilla.png");
 }
 
 input#DVCMarrone + label {
-    background: url("building-marrone.png");
+    background: url("ReporterBuildings/building-marrone.png");
 }
 
 input#DVCRosa + label {
-    background: url("building-rosa.png");
+    background: url("ReporterBuildings/building-rosa.png");
 }
 
 input#DVCVerde + label {
-    background: url("building-verde.png");
+    background: url("ReporterBuildings/building-verde.png");
 }
 
 input#DVCOcra + label {
-    background: url("building-ocra.png");
+    background: url("ReporterBuildings/building-ocra.png");
 }
 
 input#DVCRomboutslaan + label {
-    background: url("building-romboutslaan.png");
+    background: url("ReporterBuildings/building-romboutslaan.png");
 }
 
 input#Duurzaamheidsfabriek + label {
-    background: url("building-duurzaamheidsfabriek.png");
+    background: url("ReporterBuildings/building-duurzaamheidsfabriek.png");
 }
 
 input#DrechtstedenCollege + label {
-    background: url("building-drechtstedencollege.png");
+    background: url("ReporterBuildings/building-drechtstedencollege.png");
 }
 
 input#Samenwerkingsgebouw + label {
-    background: url("building-samenwerkingsgebouw.png");
+    background: url("ReporterBuildings/building-samenwerkingsgebouw.png");
 }
 
 input#Brandweerkazerne + label {
-    background: url("building-brandweer.png");
+    background: url("ReporterBuildings/building-brandweer.png");
 }
 
 input#Veiligheidsregio + label {
-    background: url("building-veiligheidsregio.png");
+    background: url("ReporterBuildings/building-veiligheidsregio.png");
 }
 
 input#Sporthal + label {
-    background: url("building-sporthal.png");
+    background: url("ReporterBuildings/building-sporthal.png");
 }
 
 input#Klimhal + label {
-    background: url("building-klimhal.png");
+    background: url("ReporterBuildings/building-klimhal.png");
 }
 
 input#Bogermanschool + label {
-    background: url("building-bogermanschool.png");
+    background: url("ReporterBuildings/building-bogermanschool.png");
 }
 
 input#Schippersinternaat + label {
-    background: url("building-schippersinternaat.png");
+    background: url("ReporterBuildings/building-schippersinternaat.png");
 }
 
 input#Appartementen + label {
-    background: url("building-appartementen.png");
+    background: url("ReporterBuildings/building-appartementen.png");
 }
 
 input#Wartburg + label {
-    background: url("building-wartburg.png");
+    background: url("ReporterBuildings/building-wartburg.png");
 }
 
 input#DVCmedia + label {
-    background: url("building-davinci-media.png");
+    background: url("ReporterBuildings/building-davinci-media.png");
 }
 
 input#Orthodontist + label {
-    background: url("building-orthodontist.png");
+    background: url("ReporterBuildings/building-orthodontist.png");
 }
 
 input#ParkeerplaatsDuurzaamheidsfabriek + label {
-    background: url("building-parkeerplaats-langeveldlaan.png");
+    background: url("ReporterBuildings/building-parkeerplaats-langeveldlaan.png");
 }
 
 input#ParkeerplaatsOcra + label {
-    background: url("building-parkeerplaats-betaald.png");
+    background: url("ReporterBuildings/building-parkeerplaats-betaald.png");
 }
 
 input#ParkeerplaatsBrandweerkazerne + label {
-    background: url("building-parkeerplaats-langeveldlaan.png");
+    background: url("ReporterBuildings/building-parkeerplaats-langeveldlaan.png");
 }
