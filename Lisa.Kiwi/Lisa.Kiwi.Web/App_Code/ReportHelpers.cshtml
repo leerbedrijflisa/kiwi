@@ -1,0 +1,44 @@
+﻿@helper LocationCheck(string location)
+{
+	string[] normalLocations = { "Buiten", "Arcobaleno", "Azzurro", "Bianco", "Celeste", "Giallo", "Indaco", "Lilla", "Marrone", "Rosa", "Verde", "Ocra", "Romboutslaan", "Veiligheidsregio", "Sporthal", "Klimhal", "Bogermanschool", "Appartementen", "Wartburg", "DVC media", "Orthodontist" };
+	int pos = Array.IndexOf(normalLocations, location);
+			
+	if (pos >- 1)
+	{
+			location = Resources.Buildings.ResourceManager.GetString(location);
+			@location
+	}
+	else
+	{
+		if(location == "ParkeerplaatsDuurzaamheidsfabriek")
+		{
+					location = "Parkeerplaats Duurzaamheids-\nfabriek";		
+		}
+		else if(location == "ParkeerplaatsBrandweerkazerne")
+		{
+					location = "Parkeerplaats Brandweer-\nkazerne";
+		}
+		else if(location == "Duurzaamheidsfabriek")
+		{
+				location = "Duurzaamheids-\nfabriek";
+		}
+		else if(location == "Drechtstedencollege")
+		{
+					location = "Drechtsteden-\ncollege";
+		}
+		else if (location == "Samenwerkingsgebouw")
+		{
+					location = "Samenwerkings-\ngebouw";
+		}
+		else if (location == "Brandweerkazerne")
+		{
+					location = "Brandweer-\nkazerne";
+		}
+		else if (location == "Schippersinternaat")
+		{
+					location = "Schippers-\ninternaat";
+		}		
+		location = location.Replace("\n", Environment.NewLine);
+		@location
+	}
+}

@@ -325,9 +325,12 @@ namespace Lisa.Kiwi.Web
                 return View(viewModel);
             }
 
-            var report = await GetCurrentReport();
-            _modelFactory.Modify(report, viewModel);
-            await _reportProxy.PatchAsync(report.Id, report);
+            if (viewModel.EmailAddress != null || viewModel.Name != null || viewModel.PhoneNumber != null)
+            {
+                var report = await GetCurrentReport();
+                _modelFactory.Modify(report, viewModel);
+                await _reportProxy.PatchAsync(report.Id, report);
+            }
 
             // TODO: add error handling
 
