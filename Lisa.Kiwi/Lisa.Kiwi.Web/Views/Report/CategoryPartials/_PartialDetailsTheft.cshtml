@@ -7,3 +7,11 @@
 	<label>@ReportProperties.ResourceManager.GetString("DateOfTheft")</label>
 	<p>@DashboardHelpers.NullCheck(Model.DateOfTheft)</p>
 </div>
+
+@if (Model.Description != null)
+{
+	<div class="field">
+		<label>@ReportProperties.Description</label>
+		<p>@Model.Description</p>
+	</div>
+}

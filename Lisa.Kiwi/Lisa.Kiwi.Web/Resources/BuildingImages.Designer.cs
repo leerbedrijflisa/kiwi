@@ -22,14 +22,14 @@ namespace Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Buildings {
+    public class BuildingImages {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Buildings() {
+        internal BuildingImages() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Lisa.Kiwi.Web.Resources.Buildings", typeof(Buildings).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Lisa.Kiwi.Web.Resources.BuildingImages", typeof(BuildingImages).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,7 +61,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Appartementen.
+        ///   Looks up a localized string similar to building-appartementen.
         /// </summary>
         public static string Appartementen {
             get {
@@ -70,7 +70,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DVC Arcobaleno.
+        ///   Looks up a localized string similar to building-arcobaleno.
         /// </summary>
         public static string Arcobaleno {
             get {
@@ -79,7 +79,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DVC Azzurro.
+        ///   Looks up a localized string similar to building-azzurro.
         /// </summary>
         public static string Azzurro {
             get {
@@ -88,7 +88,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DVC Bianco.
+        ///   Looks up a localized string similar to building-bianco.
         /// </summary>
         public static string Bianco {
             get {
@@ -97,7 +97,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ds. Bogermanschool.
+        ///   Looks up a localized string similar to building-bogermanschool.
         /// </summary>
         public static string Bogermanschool {
             get {
@@ -106,7 +106,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Brandweerkazerne.
+        ///   Looks up a localized string similar to building-brandweer.
         /// </summary>
         public static string Brandweerkazerne {
             get {
@@ -115,7 +115,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Buiten (Openbare Weg).
+        ///   Looks up a localized string similar to building-appartementen.
         /// </summary>
         public static string Buiten {
             get {
@@ -124,7 +124,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DVC Celeste.
+        ///   Looks up a localized string similar to building-celeste.
         /// </summary>
         public static string Celeste {
             get {
@@ -133,7 +133,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Drechtsteden college.
+        ///   Looks up a localized string similar to building-drechtstedencollege.
         /// </summary>
         public static string Drechtstedencollege {
             get {
@@ -142,7 +142,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Duurzaamheidsfabriek.
+        ///   Looks up a localized string similar to building-duurzaamheidsfabriek.
         /// </summary>
         public static string Duurzaamheidsfabriek {
             get {
@@ -151,7 +151,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DVC Giallo.
+        ///   Looks up a localized string similar to building-giallo.
         /// </summary>
         public static string Giallo {
             get {
@@ -160,7 +160,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DVC Indaco.
+        ///   Looks up a localized string similar to building-indaco.
         /// </summary>
         public static string Indaco {
             get {
@@ -169,7 +169,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Klimhal.
+        ///   Looks up a localized string similar to building-klimhal.
         /// </summary>
         public static string Klimhal {
             get {
@@ -178,7 +178,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DVC Lilla.
+        ///   Looks up a localized string similar to building-lilla.
         /// </summary>
         public static string Lilla {
             get {
@@ -187,7 +187,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DVC Marrone.
+        ///   Looks up a localized string similar to building-marrone.
         /// </summary>
         public static string Marrone {
             get {
@@ -196,7 +196,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DVC media.
+        ///   Looks up a localized string similar to uilding-davinci-media.
         /// </summary>
         public static string media {
             get {
@@ -205,7 +205,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DVC Ocra.
+        ///   Looks up a localized string similar to building-ocra.
         /// </summary>
         public static string Ocra {
             get {
@@ -214,7 +214,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Orthodontist.
+        ///   Looks up a localized string similar to building-orthodontist.
         /// </summary>
         public static string Orthodontist {
             get {
@@ -223,16 +223,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Betaalde parkeerplaats.
-        /// </summary>
-        public static string Parkeerplaats {
-            get {
-                return ResourceManager.GetString("Parkeerplaats", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Parkeerplaats Brandweerkazerne.
+        ///   Looks up a localized string similar to building-parkeerplaats-langeveldlaan.
         /// </summary>
         public static string ParkeerplaatsBrandweerkazerne {
             get {
@@ -241,7 +232,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Parkeerplaats Duurzaamheidsfabriek.
+        ///   Looks up a localized string similar to building-parkeerplaats-langeveldlaan.
         /// </summary>
         public static string ParkeerplaatsDuurzaamheidsfabriek {
             get {
@@ -250,7 +241,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Parkeerplaats Ocra.
+        ///   Looks up a localized string similar to building-parkeerplaats-betaald.
         /// </summary>
         public static string ParkeerplaatsOcra {
             get {
@@ -259,7 +250,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DVC Romboutslaan 40.
+        ///   Looks up a localized string similar to building-romboutslaan.
         /// </summary>
         public static string Romboutslaan {
             get {
@@ -268,7 +259,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DVC Rosa.
+        ///   Looks up a localized string similar to building-rosa.
         /// </summary>
         public static string Rosa {
             get {
@@ -277,7 +268,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Samenwerkingsgebouw.
+        ///   Looks up a localized string similar to building-samenwerkingsgebouw.
         /// </summary>
         public static string Samenwerkingsgebouw {
             get {
@@ -286,7 +277,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Schippersinternaat.
+        ///   Looks up a localized string similar to building-schippersinternaat.
         /// </summary>
         public static string Schippersinternaat {
             get {
@@ -295,7 +286,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sporthal.
+        ///   Looks up a localized string similar to building-sporthal.
         /// </summary>
         public static string Sporthal {
             get {
@@ -304,7 +295,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Veiligheidsregio.
+        ///   Looks up a localized string similar to building-veiligheidsregio.
         /// </summary>
         public static string Veiligheidsregio {
             get {
@@ -313,7 +304,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DVC Verde.
+        ///   Looks up a localized string similar to building-verde.
         /// </summary>
         public static string Verde {
             get {
@@ -322,7 +313,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Wartburg college.
+        ///   Looks up a localized string similar to building-wartburg.
         /// </summary>
         public static string Wartburg {
             get {

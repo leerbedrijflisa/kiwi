@@ -2,3 +2,11 @@
 	<label>@ReportProperties.ResourceManager.GetString("Description")</label>
 	<p>@DashboardHelpers.NullCheck(Model.Description)</p>
 </div>
+
+@if (Model.Description != null)
+{
+	<div class="field">
+		<label>@ReportProperties.Description</label>
+		<p>@Model.Description</p>
+	</div>
+}

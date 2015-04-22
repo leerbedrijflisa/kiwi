@@ -141,6 +141,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\Startup.cs" />
+    <Compile Include="Resources\BuildingImages.Designer.cs">
+      <DependentUpon>BuildingImages.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
     <Compile Include="Resources\Buildings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -218,6 +223,7 @@
     <Content Include="Content\building-davinci-media.png" />
     <Content Include="Content\building-drechtstedencollege.png" />
     <Content Include="Content\building-duurzaamheidsfabriek.png" />
+    <Content Include="Content\building-indaco.png" />
     <Content Include="Content\building-giallo.png" />
     <Content Include="Content\building-klimhal.png" />
     <Content Include="Content\building-lilla.png" />
@@ -237,7 +243,6 @@
     <Content Include="Content\category-Bullying.png" />
     <Content Include="Content\category-Drugs.png" />
     <Content Include="Content\category-Fight.png" />
-    <Content Include="Content\category-first-aid.png" />
     <Content Include="Content\category-FirstAid.png" />
     <Content Include="Content\category-Nuisance.png" />
     <Content Include="Content\category-Other.png" />
@@ -322,6 +327,11 @@
     <Content Include="Views\Report\CategoryPartials\_PartialDetailsOther.cshtml" />
     <Content Include="Views\Report\CategoryPartials\_PartialDetailsTheft.cshtml" />
     <Content Include="Views\Report\CategoryPartials\_PartialDetailsWeapons.cshtml" />
+    <Content Include="Views\Report\ReportPartials\_PartialReturnReportCategory.cshtml" />
+    <Content Include="Views\Report\ReportPartials\_PartialReturnReportLocation.cshtml" />
+    <Content Include="Views\Report\ReportPartials\_PartialReturnReportPerpetrator.cshtml" />
+    <Content Include="Views\Report\ReportPartials\_PartialReturnReportContact.cshtml" />
+    <Content Include="Views\Report\ReportPartials\_PartialReturnReportVehicle.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -330,6 +340,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Resources\BuildingImages.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>BuildingImages.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Buildings.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Buildings.Designer.cs</LastGenOutput>
