@@ -26,6 +26,22 @@ namespace Lisa.Kiwi.Web
             base.OnActionExecuting(context);
         }
 
+        protected override void OnException(ExceptionContext filterContext)
+        {
+            try
+            {
+                throw filterContext.Exception;
+            }
+            catch (UnauthorizedAccessException)
+            {
+                filterContext.Result = RedirectToAction("Login", "Account");
+                filterContext.ExceptionHandled = true;
+            }
+
+
+            base.OnException(filterContext);
+        }
+
         public async Task<ActionResult> Index()
         {
             var reports = await _reportProxy.GetAsync();
