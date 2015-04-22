@@ -14,8 +14,13 @@
 		<label>
 			Is er een voertuig betrokken bij deze melding?
 		</label>
-		<button type="button" onclick=" $('#form-content').show() ">Ja</button>
-		<button type="submit" name="HasVehicle" value="false">Nee</button>
+        <div>
+            <div class="button-container">
+                <button type="button" onclick="$('#form-content').show()">Ja</button>
+                <button type="submit" name="HasVehicle" value="false">Nee</button>
+            </div>
+        </div>
+
 	</div>
 	
 	<div id="form-content">

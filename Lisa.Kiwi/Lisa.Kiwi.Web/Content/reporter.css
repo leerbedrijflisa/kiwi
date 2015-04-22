@@ -172,8 +172,9 @@ ul.buttons li {
 */
 
 input[type=checkbox] {
-    width: 540px;
-    margin: 30px 30px 0;
+    width: 70px;
+    height: 19px;
+    margin-top: 32px;
 }
 
 form .field p, .field p {
@@ -202,7 +203,8 @@ form .field button {
 
 form .submit {
     text-align: right;
-    padding: 30px 0;
+    padding: 30px 3%;
+    width: 94%;
 }
 
     form .submit button {
@@ -211,7 +213,6 @@ form .submit {
         border-radius: 30px;
         text-align: center;
         vertical-align: middle;
-        margin-right: 30px;
         width: 44px;
         height: 44px;
         outline: none;
@@ -227,7 +228,7 @@ form .submit {
         
             margin-top: 1px;
             margin-bottom: 1px;
-            margin-right: 31px;
+            margin-right: 1px;
 }
 
             form .submit button:active img {
@@ -356,11 +357,7 @@ input#ParkeerplaatsBrandweerkazerne + label {
     form,
     .submit{
         width: 100%;
-        min-width: 300px;
-    }
-
-    form .field label {
-        width: 33.34%;
+        min-width: 400px;
     }
 }
 
@@ -381,6 +378,7 @@ input#ParkeerplaatsBrandweerkazerne + label {
     padding: 10px;
 }
 
+.button-container button,
 .button-container input[type=submit]{
     padding: 6px 30px;
     margin-right: 8px;
