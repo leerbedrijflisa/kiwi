@@ -67,7 +67,9 @@ form, .body {
             text-align: right;
             width: 33.34%;
             padding-top: 30px;
-        }
+        
+            word-break: break-word;
+}
 
             form .field label.radio, label.radio:checked {
                 background-color: white;
