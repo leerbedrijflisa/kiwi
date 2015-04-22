@@ -248,10 +248,8 @@
     <Content Include="Content\DashboardBuildings\building-verde.jpg" />
     <Content Include="Content\DashboardBuildings\building-wartburg.jpg" />
     <Content Include="Content\done.svg" />
-    <Content Include="Content\first-aid-circle.png" />
     <Content Include="Content\jquery.datetimepicker.css" />
     <Content Include="Content\next.svg" />
-    <Content Include="Content\nuisance-circle.png" />
     <Content Include="Content\reporter.css" />
     <Content Include="Content\ReporterBuildings\building-appartementen.png" />
     <Content Include="Content\ReporterBuildings\building-arcobaleno.png" />
