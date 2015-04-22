@@ -192,7 +192,14 @@ form .field select {
     font-size: 12pt;
     margin: 15px 0 0 5%;
     width: 90%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
+}
+
+.input-validation-error{
+    border: 1px solid #ca1818;
+    background-color: rgb(255, 222, 222);
 }
 
 form .field button {
