@@ -50,8 +50,7 @@ form, .body {
     form .field, .body .field {
         display: inline-table;
         width: 100%;
-    
-}
+    }
 
         form .field > *, .body .field > * {
             display: table-cell;
@@ -67,9 +66,8 @@ form, .body {
             color: white;
             text-align: right;
             width: 33.34%;
-        
             padding-top: 30px;
-}
+        }
 
             form .field label.radio, label.radio:checked {
                 background-color: white;
@@ -197,7 +195,7 @@ form .field select {
     box-sizing: border-box;
 }
 
-.input-validation-error{
+.input-validation-error {
     border: 1px solid #ca1818;
     background-color: rgb(255, 222, 222);
 }
@@ -232,11 +230,10 @@ form .submit {
         form .submit button:active {
             width: 42px;
             height: 42px;
-        
             margin-top: 1px;
             margin-bottom: 1px;
             margin-right: 1px;
-}
+        }
 
             form .submit button:active img {
                 width: 18px;
@@ -362,9 +359,13 @@ input#ParkeerplaatsBrandweerkazerne + label {
 @media(max-width: 900px) {
     header,
     form,
-    .submit{
+    .submit {
         width: 100%;
         min-width: 400px;
+    }
+
+    .submit {
+        min-width: 380px;
     }
 }
 
@@ -381,16 +382,16 @@ input#ParkeerplaatsBrandweerkazerne + label {
 }
 
 /* View specific css */
-.button-container{
+.button-container {
     padding: 10px;
 }
 
-.button-container button,
-.button-container input[type=submit]{
-    padding: 6px 30px;
-    margin-right: 8px;
-    margin-bottom: 8px;
-    border: none;
-    background-color: #113;
-    color: white;
-}
+    .button-container button,
+    .button-container input[type=submit] {
+        padding: 6px 30px;
+        margin-right: 8px;
+        margin-bottom: 8px;
+        border: none;
+        background-color: #113;
+        color: white;
+    }
