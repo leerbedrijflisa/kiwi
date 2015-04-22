@@ -1,0 +1,32 @@
+﻿@using perpetratorResource = Resources.Perpetrator
+<div class="field">
+	<label><b>@perpetratorResource.Perpetrators</b></label>
+</div>
+<div class="field">
+	<label>@perpetratorResource.Name</label>
+	<p>@DashboardHelpers.NullCheck(Model.Perpetrator.Name)</p>
+</div>
+<div class="field">
+	<label>@perpetratorResource.Sex</label>
+	<p>@DashboardHelpers.NullCheck(Sex.ResourceManager.GetString(Model.Perpetrator.Sex.ToString()))</p>
+</div>
+<div class="field">
+	<label>@perpetratorResource.SkinColor</label>
+	<p>@DashboardHelpers.NullCheck(SkinColor.ResourceManager.GetString(Model.Perpetrator.SkinColor.ToString()))</p>
+</div>
+<div class="field">
+	<label>@perpetratorResource.Clothing</label>
+	<p>@DashboardHelpers.NullCheck(Model.Perpetrator.Clothing)</p>
+</div>
+<div class="field">
+	<label>@perpetratorResource.MinAge</label>
+	<p>@DashboardHelpers.NullCheck(Model.Perpetrator.MinimumAge)</p>
+</div>
+<div class="field">
+	<label>@perpetratorResource.MaxAge</label>
+	<p>@DashboardHelpers.NullCheck(Model.Perpetrator.MaximumAge)</p>
+</div>
+<div class="field">
+	<label>@perpetratorResource.UniqueProp</label>
+	<p>@DashboardHelpers.NullCheck(Model.Perpetrator.UniqueProperties)</p>
+</div>

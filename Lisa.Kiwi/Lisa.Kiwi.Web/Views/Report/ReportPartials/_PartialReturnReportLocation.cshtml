@@ -1,0 +1,8 @@
+﻿<div class="field">
+	<label>@PageItems.LocationDescription</label>
+	<p class="locationCategory"><img src='@Url.Content(string.Format("~/Content/{0}.png", BuildingImages.ResourceManager.GetString(Model.Location.Building)))'><br />@Buildings.ResourceManager.GetString(Model.Location.Building)</p>
+</div>
+<div class="field">
+	<label>@DisplayNames.ReportDescription</label>
+	<p>@Model.Location.Description</p>
+</div>

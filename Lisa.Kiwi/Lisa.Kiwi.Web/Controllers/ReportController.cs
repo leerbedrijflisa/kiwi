@@ -363,18 +363,19 @@ namespace Lisa.Kiwi.Web
         }
 
         [HttpPost]
-        public ActionResult Done(string category)
+        public async Task<ActionResult> Done(string category)
         {
+            var report = await GetCurrentReport();
             switch (category)
             {
                 case "Theft":
-                    return View("Police");
+                    return View("Police", report);
 
                 case "Bullying":
-                    return View("Help");
+                    return View("Help", report);
 
                 default:
-                    return View("End");
+                    return View("End", report);
             }
         }
 

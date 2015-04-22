@@ -14,7 +14,7 @@ textarea {
 */
 
 header {
-    background: url(banner.jpg);
+    background: url('banner.jpg');
     height: 186px;
     background-size: contain;
     background-repeat: no-repeat;
@@ -23,9 +23,9 @@ header {
     margin: auto;
 }
 
-    header h1 {
-        display: none;
-    }
+header h1 {
+    display: none;
+}
 
 /*
 	Basic structure
@@ -35,67 +35,113 @@ header {
 */
 
 form, .body {
+	background-color: white;
+	margin: auto;
+	width: 900px;
+}
+
+.body b {
+    font-family: Arial;
+}
+
+.body h1, h2 {
+    margin: 0;
+    background-color: #113;
+    padding: 5px;
+    color: white;
+}
+
+.grayLayer p{
+   opacity: 0.4;
+}
+
+.grayLayer label{
+    color: gray !important;
+}
+
+.body h1, h2{
+    margin: 0;
+    background-color: #113;
+    padding: 5px;
+    color: white;
+}
+
+form .field, .body .field {
+	display: table-row;
+	width: 100%;
+}
+
+form .field > *, .body .field > * {
+    display: table-cell;
+    vertical-align: top;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 15px;
+}
+
+form .field label, .body .field label {
+	background-color: #113;
+	color: white;
+	text-align: right;
+	width: 270px;
+}
+
+form .field label.radio, label.radio:checked{
     background-color: white;
     margin: auto;
     width: 900px;
 }
 
-    .body h1, h2 {
-        margin: 0;
-        background-color: #113;
-        padding: 5px;
-        color: white;
-    }
-
-    form .field, .body .field {
-        display: inline-table;
-        width: 100%;
-    }
-
-        form .field > *, .body .field > * {
-            display: table-cell;
-            vertical-align: top;
-            -moz-box-sizing: border-box;
-            -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-            padding: 15px;
-        }
-
-        form .field label, .body .field label {
-            background-color: #113;
-            color: white;
-            text-align: right;
-            width: 33.34%;
-            padding-top: 30px;
-        
-            word-break: break-word;
+form .field, .body .field {
+    display: inline-table;
+    width: 100%;
 }
 
-            form .field label.radio, label.radio:checked {
-                background-color: white;
-                color: black;
-                background: none !important;
-                text-align: left;
-                width: auto !important;
-                height: 20px !important;
-                margin: 0 20px 0 20px;
-                cursor: auto;
-            }
+form .field > *, .body .field > * {
+    display: table-cell;
+    vertical-align: top;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 15px;
+}
 
-        form .field .radioList li,
-        form .field .radioList li:first-child {
-            list-style: none;
-            height: 30px;
-            margin-left: 30px;
-        }
+form .field label, .body .field label {
+    background-color: #113;
+    color: white;
+    text-align: right;
+    width: 33.34%;
+    padding-top: 30px;
 
-            form .field .radioList li:first-child {
-                margin-top: 15px;
-            }
+    word-break: break-word;
+}
 
-        form .field ul.radioList {
-            padding: 0;
-        }
+form .field label.radio, label.radio:checked {
+    background-color: white;
+    color: black;
+    background: none !important;
+    text-align: left;
+    width: auto !important;
+    height: 20px !important;
+    margin: 0 20px 0 20px;
+    cursor: auto;
+}
+
+form .field .radioList li,
+form .field .radioList li:first-child {
+    list-style: none;
+    height: 30px;
+    margin-left: 30px;
+}
+
+form .field .radioList li:first-child {
+    margin-top: 15px;
+}
+
+form .field ul.radioList {
+    padding: 0;
+}
 
 .floatLeft {
     float: left;
@@ -109,22 +155,23 @@ ul.buttons li input[type=radio] {
     display: none;
 }
 
-    ul.buttons li input[type=radio] + label {
-        background: url("building-appartementen.png");
-        background-repeat: no-repeat;
-        display: block;
-        margin: 0 auto;
-        padding: 0;
-        height: 99px;
-        width: 99px;
-        cursor: pointer;
-    }
 
-    ul.buttons li input[type=radio]:checked + label {
-        -webkit-filter: grayscale(1);
-        /* fix for ie and firefox */
-        filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
-    }
+ul.buttons li input[type=radio] + label {
+    background: url('ReporterBuildings/building-appartementen.png');
+    background-repeat: no-repeat;
+    display: block;
+    margin: 0 auto;
+    padding: 0;
+    height: 99px;
+    width: 99px;
+    cursor: pointer; 
+}
+
+ul.buttons li input[type=radio]:checked + label {
+    -webkit-filter: grayscale(1);
+    /* fix for ie and firefox */
+    filter: url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale');
+}
 
 ul.buttons {
     padding-left: 12px;
@@ -143,19 +190,19 @@ ul.buttons li {
     margin-bottom: 5px;
 }
 
-    ul.buttons li button {
-        background: white;
-        border: none;
-        padding: 0;
-        font-family: Source Sans Pro;
-        font-size: 12pt;
-        cursor: pointer;
-    }
+ul.buttons li button {
+    background: white;
+    border: none;
+    padding: 0;
+    font-family: Source Sans Pro;
+    font-size: 12pt;
+    cursor: pointer;
+}
 
-        ul.buttons li button img {
-            width: 99px;
-            height: 99px;
-        }
+ul.buttons li button img {
+    width: 99px;
+    height: 99px;
+}
 
 .radioButton input[type=radio] {
     display: inline;
@@ -214,147 +261,147 @@ form .submit {
     width: 94%;
 }
 
-    form .submit button {
-        background-color: #113;
-        border: 1px solid black;
-        border-radius: 30px;
-        text-align: center;
-        vertical-align: middle;
-        width: 44px;
-        height: 44px;
-        outline: none;
-    }
+form .submit button {
+    background-color: #113;
+    border: 1px solid black;
+    border-radius: 30px;
+    text-align: center;
+    vertical-align: middle;
+    width: 44px;
+    height: 44px;
+    outline: none;
+}
 
-        form .submit button:hover {
-            background-color: #557;
-        }
+form .submit button:hover {
+    background-color: #557;
+}
 
-        form .submit button:active {
-            width: 42px;
-            height: 42px;
-            margin-top: 1px;
-            margin-bottom: 1px;
-            margin-right: 1px;
-        }
+form .submit button:active {
+    width: 42px;
+    height: 42px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    margin-right: 1px;
+}
 
-            form .submit button:active img {
-                width: 18px;
-                height: 18px;
-            }
+form .submit button:active img {
+    width: 18px;
+    height: 18px;
+}
 
 /* Building images*/
 
 input#DVCArcobaleno + label {
-    background: url("building-arcobaleno.png");
+    background: url('ReporterBuildings/building-arcobaleno.png');
     background-repeat: no-repeat;
 }
 
 input#DVCAzzurro + label {
-    background: url("building-azzurro.png");
+    background: url('ReporterBuildings/building-azzurro.png');
 }
 
 input#DVCBianco + label {
-    background: url("building-bianco.png");
+    background: url('ReporterBuildings/building-bianco.png');
 }
 
 input#DVCCeleste + label {
-    background: url("building-celeste.png");
+    background: url('ReporterBuildings/building-celeste.png');
 }
 
 input#DVCGiallo + label {
-    background: url("building-giallo.png");
+    background: url('ReporterBuildings/building-giallo.png');
 }
 
 input#DVCIndaco + label {
-    background: url("building-giallo.png");
+    background: url('ReporterBuildings/building-giallo.png');
 }
 
 input#DVCLilla + label {
-    background: url("building-lilla.png");
+    background: url('ReporterBuildings/building-lilla.png');
 }
 
 input#DVCMarrone + label {
-    background: url("building-marrone.png");
+    background: url('ReporterBuildings/building-marrone.png');
 }
 
 input#DVCRosa + label {
-    background: url("building-rosa.png");
+    background: url('ReporterBuildings/building-rosa.png');
 }
 
 input#DVCVerde + label {
-    background: url("building-verde.png");
+    background: url('ReporterBuildings/building-verde.png');
 }
 
 input#DVCOcra + label {
-    background: url("building-ocra.png");
+    background: url('ReporterBuildings/building-ocra.png');
 }
 
 input#DVCRomboutslaan + label {
-    background: url("building-romboutslaan.png");
+    background: url('ReporterBuildings/building-romboutslaan.png');
 }
 
 input#Duurzaamheidsfabriek + label {
-    background: url("building-duurzaamheidsfabriek.png");
+    background: url('ReporterBuildings/building-duurzaamheidsfabriek.png');
 }
 
 input#DrechtstedenCollege + label {
-    background: url("building-drechtstedencollege.png");
+    background: url('ReporterBuildings/building-drechtstedencollege.png');
 }
 
 input#Samenwerkingsgebouw + label {
-    background: url("building-samenwerkingsgebouw.png");
+    background: url('ReporterBuildings/building-samenwerkingsgebouw.png');
 }
 
 input#Brandweerkazerne + label {
-    background: url("building-brandweer.png");
+    background: url('ReporterBuildings/building-brandweer.png');
 }
 
 input#Veiligheidsregio + label {
-    background: url("building-veiligheidsregio.png");
+    background: url('ReporterBuildings/building-veiligheidsregio.png');
 }
 
 input#Sporthal + label {
-    background: url("building-sporthal.png");
+    background: url('ReporterBuildings/building-sporthal.png');
 }
 
 input#Klimhal + label {
-    background: url("building-klimhal.png");
+    background: url('ReporterBuildings/building-klimhal.png');
 }
 
 input#Bogermanschool + label {
-    background: url("building-bogermanschool.png");
+    background: url('ReporterBuildings/building-bogermanschool.png');
 }
 
 input#Schippersinternaat + label {
-    background: url("building-schippersinternaat.png");
+    background: url('ReporterBuildings/building-schippersinternaat.png');
 }
 
 input#Appartementen + label {
-    background: url("building-appartementen.png");
+    background: url('ReporterBuildings/building-appartementen.png');
 }
 
 input#Wartburg + label {
-    background: url("building-wartburg.png");
+    background: url('ReporterBuildings/building-wartburg.png');
 }
 
 input#DVCmedia + label {
-    background: url("building-davinci-media.png");
+    background: url('ReporterBuildings/building-davinci-media.png');
 }
 
 input#Orthodontist + label {
-    background: url("building-orthodontist.png");
+    background: url('ReporterBuildings/building-orthodontist.png');
 }
 
 input#ParkeerplaatsDuurzaamheidsfabriek + label {
-    background: url("building-parkeerplaats-langeveldlaan.png");
+    background: url('ReporterBuildings/building-parkeerplaats-langeveldlaan.png');
 }
 
 input#ParkeerplaatsOcra + label {
-    background: url("building-parkeerplaats-betaald.png");
+    background: url('ReporterBuildings/building-parkeerplaats-betaald.png');
 }
 
 input#ParkeerplaatsBrandweerkazerne + label {
-    background: url("building-parkeerplaats-langeveldlaan.png");
+    background: url('ReporterBuildings/building-parkeerplaats-langeveldlaan.png');
 }
 
 /* Responsive */
@@ -388,12 +435,12 @@ input#ParkeerplaatsBrandweerkazerne + label {
     padding: 10px;
 }
 
-    .button-container button,
-    .button-container input[type=submit] {
-        padding: 6px 30px;
-        margin-right: 8px;
-        margin-bottom: 8px;
-        border: none;
-        background-color: #113;
-        color: white;
-    }
+.button-container button,
+.button-container input[type=submit] {
+    padding: 6px 30px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    border: none;
+    background-color: #113;
+    color: white;
+}

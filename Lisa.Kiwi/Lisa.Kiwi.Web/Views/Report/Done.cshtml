@@ -1,103 +1,25 @@
 ﻿@model Report
-@using perpetratorResource = Resources.Perpetrator
 
-	<div class="body">
-		<div class="field">
-			<label>Melding</label>
-		</div>
-		<div class="field">
-			<label>@PageItems.TypeDescription</label>
-			<p><img src='@Url.Content(string.Format("~/Content/category-{0}.png", Model.Category))'><br />@Categories.ResourceManager.GetString(Model.Category)</p>
-		</div>
-		<div class="field">
-			<label>@PageItems.LocationDescription</label>
-			<p><img src='@Url.Content(string.Format("~/Content/building-{0}.png", Model.Location.Building.ToLower()))'>- @Model.Location.Description</p>
-		</div>
 
-	@Html.Partial("~/Views/Report/CategoryPartials/_PartialDetails" + Model.Category + ".cshtml", Model)
-	@if (Model.Description != null)
-		{
-			<div class="field">
-				<label>@ReportProperties.Description</label>
-				<p>@Model.Description</p>
-			</div>
-		}
-@* TODO: Find a better solution than this, as it makes an empty Contact.*@
-
-@if (Model.Perpetrator != null)
-{
-	<h2>@perpetratorResource.Perpetrators</h2>
-	<div class="field">
-		<label>@perpetratorResource.Name</label>
-		<p>@DashboardHelpers.NullCheck(Model.Perpetrator.Name)</p>
-	</div>
-	<div class="field">
-		<label>@perpetratorResource.Sex</label>
-		<p>@DashboardHelpers.NullCheck(Sex.ResourceManager.GetString(Model.Perpetrator.Sex.ToString()))</p>
-	</div>
-	<div class="field">
-		<label>@perpetratorResource.SkinColor</label>
-		<p>@DashboardHelpers.NullCheck(SkinColor.ResourceManager.GetString(Model.Perpetrator.SkinColor.ToString()))</p>
-	</div>
-	<div class="field">
-		<label>@perpetratorResource.Clothing</label>
-		<p>@DashboardHelpers.NullCheck(Model.Perpetrator.Clothing)</p>
-	</div>
-	<div class="field">
-		<label>@perpetratorResource.MinAge</label>
-		<p>@DashboardHelpers.NullCheck(Model.Perpetrator.MinimumAge)</p>
-	</div>
-	<div class="field">
-		<label>@perpetratorResource.MaxAge</label>
-		<p>@DashboardHelpers.NullCheck(Model.Perpetrator.MaximumAge)</p>
-	</div>
-	<div class="field">
-		<label>@perpetratorResource.UniqueProp</label>
-		<p>@DashboardHelpers.NullCheck(Model.Perpetrator.UniqueProperties)</p>
-	</div>
-}
-
-@if (Model.Contact != null)
-{
-	<div class="field">
-		<label>@PageItems.Contact</label>
-	</div>
-	<div class="field">
-		<label>@PageItems.ContactName</label>
-		<p>@DashboardHelpers.NullCheck(Model.Contact.Name)</p>
-	</div>
-	<div class="field">
-		<label>@PageItems.ContactPhoneNumber</label>
-		<p>@DashboardHelpers.NullCheck(Model.Contact.PhoneNumber)</p>
-	</div>
-	<div class="field">
-		<label>@PageItems.ContactEmail</label>
-		<p>@DashboardHelpers.NullCheck(Model.Contact.EmailAddress)</p>
-	</div>
-}
-
-@if (Model.Vehicle != null)
-{
-	<h2>@ReportProperties.Vehicle</h2>
-	<div class="field">
-		<label>@ReportProperties.VehicleBrand</label>
-		<p>@DashboardHelpers.NullCheck(Model.Vehicle.Brand)</p>
-	</div>
-	<div class="field">
-		<label>@ReportProperties.VehicleColor</label>
-		<p>@DashboardHelpers.NullCheck(Model.Vehicle.Color)</p>
-	</div>
-	<div class="field">
-		<label>@ReportProperties.VehicleNumberPlate</label>
-		<p>@DashboardHelpers.NullCheck(Model.Vehicle.NumberPlate)</p>
-	</div>
-	<div class="field">
-		<label>@ReportProperties.VehicleAdditionalFeatures</label>
-		<p>@DashboardHelpers.NullCheck(Model.Vehicle.AdditionalFeatures)</p>
-	</div>
-}
+<div class="body">
 @using (Html.BeginForm())
 {
+	@Html.Partial("~/Views/Report/ReportPartials/_PartialReturnReportCategory.cshtml", Model)
+	@Html.Partial("~/Views/Report/ReportPartials/_PartialReturnReportLocation.cshtml", Model)
+	@Html.Partial("~/Views/Report/CategoryPartials/_PartialDetails" + Model.Category + ".cshtml", Model)
+	if (Model.Perpetrator != null)
+	{
+			@Html.Partial("~/Views/Report/ReportPartials/_PartialReturnReportPerpetrator.cshtml", Model);
+	}
+
+	if (Model.Contact != null)
+	{
+			@Html.Partial("~/Views/Report/ReportPartials/_PartialReturnReportContact.cshtml", Model);	
+	}	
+	if (Model.Vehicle != null)
+	{
+			@Html.Partial("~/Views/Report/ReportPartials/_PartialReturnReportVehicle.cshtml", Model);		
+	}
 	<input type="hidden" name="category" value="@Model.Category" />
 	<div class="submit">
 		<button type="submit"><img src="@Url.Content("~/Content/next.svg")" /></button>

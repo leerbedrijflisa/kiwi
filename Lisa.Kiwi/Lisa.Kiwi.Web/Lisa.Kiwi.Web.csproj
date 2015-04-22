@@ -141,6 +141,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\Startup.cs" />
+    <Compile Include="Resources\BuildingImages.Designer.cs">
+      <DependentUpon>BuildingImages.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
     <Compile Include="Resources\Buildings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -206,51 +211,74 @@
     <Compile Include="ViewModels\VehicleViewModel.cs" />
     <Compile Include="ViewModels\VictimViewModel.cs" />
     <Compile Include="ViewModels\WeaponViewModel.cs" />
-    <Content Include="Content\azzurro.jpg" />
     <Content Include="Content\banner.jpg" />
-    <Content Include="Content\building-appartementen.png" />
-    <Content Include="Content\building-arcobaleno.png" />
-    <Content Include="Content\building-azzurro.png" />
-    <Content Include="Content\building-bianco.png" />
-    <Content Include="Content\building-bogermanschool.png" />
-    <Content Include="Content\building-brandweer.png" />
-    <Content Include="Content\building-celeste.png" />
-    <Content Include="Content\building-davinci-media.png" />
-    <Content Include="Content\building-drechtstedencollege.png" />
-    <Content Include="Content\building-duurzaamheidsfabriek.png" />
-    <Content Include="Content\building-giallo.png" />
-    <Content Include="Content\building-klimhal.png" />
-    <Content Include="Content\building-lilla.png" />
-    <Content Include="Content\building-marrone.png" />
-    <Content Include="Content\building-ocra.png" />
-    <Content Include="Content\building-orthodontist.png" />
-    <Content Include="Content\building-parkeerplaats-betaald.png" />
-    <Content Include="Content\building-parkeerplaats-langeveldlaan.png" />
-    <Content Include="Content\building-romboutslaan.png" />
-    <Content Include="Content\building-rosa.png" />
-    <Content Include="Content\building-samenwerkingsgebouw.png" />
-    <Content Include="Content\building-schippersinternaat.png" />
-    <Content Include="Content\building-sporthal.png" />
-    <Content Include="Content\building-veiligheidsregio.png" />
-    <Content Include="Content\building-verde.png" />
-    <Content Include="Content\building-wartburg.png" />
     <Content Include="Content\category-Bullying.png" />
     <Content Include="Content\category-Drugs.png" />
     <Content Include="Content\category-Fight.png" />
-    <Content Include="Content\category-first-aid.png" />
     <Content Include="Content\category-FirstAid.png" />
     <Content Include="Content\category-Nuisance.png" />
     <Content Include="Content\category-Other.png" />
     <Content Include="Content\category-Theft.png" />
     <Content Include="Content\category-Weapons.png" />
     <Content Include="Content\dashboard.css" />
+    <Content Include="Content\DashboardBuildings\building-appartementen.jpg" />
+    <Content Include="Content\DashboardBuildings\building-arcobaleno.jpg" />
+    <Content Include="Content\DashboardBuildings\building-azzurro.jpg" />
+    <Content Include="Content\DashboardBuildings\building-bianco.jpg" />
+    <Content Include="Content\DashboardBuildings\building-bogermanschool.jpg" />
+    <Content Include="Content\DashboardBuildings\building-brandweer.jpg" />
+    <Content Include="Content\DashboardBuildings\building-celeste.jpg" />
+    <Content Include="Content\DashboardBuildings\building-davinci-media.jpg" />
+    <Content Include="Content\DashboardBuildings\building-drechtstedencollege.jpg" />
+    <Content Include="Content\DashboardBuildings\building-duurzaamheidsfabriek.jpg" />
+    <Content Include="Content\DashboardBuildings\building-giallo.jpg" />
+    <Content Include="Content\DashboardBuildings\building-klimhal.jpg" />
+    <Content Include="Content\DashboardBuildings\building-lilla.jpg" />
+    <Content Include="Content\DashboardBuildings\building-marrone.jpg" />
+    <Content Include="Content\DashboardBuildings\building-ocra.jpg" />
+    <Content Include="Content\DashboardBuildings\building-orthodontist.jpg" />
+    <Content Include="Content\DashboardBuildings\building-parkeerplaats-betaald.jpg" />
+    <Content Include="Content\DashboardBuildings\building-parkeerplaats-langeveldlaan.jpg" />
+    <Content Include="Content\DashboardBuildings\building-romboutslaan.jpg" />
+    <Content Include="Content\DashboardBuildings\building-rosa.jpg" />
+    <Content Include="Content\DashboardBuildings\building-samenwerkingsgebouw.jpg" />
+    <Content Include="Content\DashboardBuildings\building-schippersinternaat.jpg" />
+    <Content Include="Content\DashboardBuildings\building-sporthal.jpg" />
+    <Content Include="Content\DashboardBuildings\building-veiligheidsregio.jpg" />
+    <Content Include="Content\DashboardBuildings\building-verde.jpg" />
+    <Content Include="Content\DashboardBuildings\building-wartburg.jpg" />
     <Content Include="Content\done.svg" />
-    <Content Include="Content\duurzaamheidsfabriek.jpg" />
     <Content Include="Content\first-aid-circle.png" />
     <Content Include="Content\jquery.datetimepicker.css" />
     <Content Include="Content\next.svg" />
     <Content Include="Content\nuisance-circle.png" />
     <Content Include="Content\reporter.css" />
+    <Content Include="Content\ReporterBuildings\building-appartementen.png" />
+    <Content Include="Content\ReporterBuildings\building-arcobaleno.png" />
+    <Content Include="Content\ReporterBuildings\building-azzurro.png" />
+    <Content Include="Content\ReporterBuildings\building-bianco.png" />
+    <Content Include="Content\ReporterBuildings\building-bogermanschool.png" />
+    <Content Include="Content\ReporterBuildings\building-brandweer.png" />
+    <Content Include="Content\ReporterBuildings\building-celeste.png" />
+    <Content Include="Content\ReporterBuildings\building-davinci-media.png" />
+    <Content Include="Content\ReporterBuildings\building-drechtstedencollege.png" />
+    <Content Include="Content\ReporterBuildings\building-duurzaamheidsfabriek.png" />
+    <Content Include="Content\ReporterBuildings\building-giallo.png" />
+    <Content Include="Content\ReporterBuildings\building-klimhal.png" />
+    <Content Include="Content\ReporterBuildings\building-lilla.png" />
+    <Content Include="Content\ReporterBuildings\building-marrone.png" />
+    <Content Include="Content\ReporterBuildings\building-ocra.png" />
+    <Content Include="Content\ReporterBuildings\building-orthodontist.png" />
+    <Content Include="Content\ReporterBuildings\building-parkeerplaats-betaald.png" />
+    <Content Include="Content\ReporterBuildings\building-parkeerplaats-langeveldlaan.png" />
+    <Content Include="Content\ReporterBuildings\building-romboutslaan.png" />
+    <Content Include="Content\ReporterBuildings\building-rosa.png" />
+    <Content Include="Content\ReporterBuildings\building-samenwerkingsgebouw.png" />
+    <Content Include="Content\ReporterBuildings\building-schippersinternaat.png" />
+    <Content Include="Content\ReporterBuildings\building-sporthal.png" />
+    <Content Include="Content\ReporterBuildings\building-veiligheidsregio.png" />
+    <Content Include="Content\ReporterBuildings\building-verde.png" />
+    <Content Include="Content\ReporterBuildings\building-wartburg.png" />
     <Content Include="Content\show.svg" />
     <Content Include="Content\main.css" />
     <Content Include="Content\Site.css" />
@@ -322,6 +350,11 @@
     <Content Include="Views\Report\CategoryPartials\_PartialDetailsOther.cshtml" />
     <Content Include="Views\Report\CategoryPartials\_PartialDetailsTheft.cshtml" />
     <Content Include="Views\Report\CategoryPartials\_PartialDetailsWeapons.cshtml" />
+    <Content Include="Views\Report\ReportPartials\_PartialReturnReportCategory.cshtml" />
+    <Content Include="Views\Report\ReportPartials\_PartialReturnReportLocation.cshtml" />
+    <Content Include="Views\Report\ReportPartials\_PartialReturnReportPerpetrator.cshtml" />
+    <Content Include="Views\Report\ReportPartials\_PartialReturnReportContact.cshtml" />
+    <Content Include="Views\Report\ReportPartials\_PartialReturnReportVehicle.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -330,6 +363,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Resources\BuildingImages.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>BuildingImages.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Buildings.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Buildings.Designer.cs</LastGenOutput>

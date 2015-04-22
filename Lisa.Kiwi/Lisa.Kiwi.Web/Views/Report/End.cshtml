@@ -1,6 +1,29 @@
-﻿@{
+﻿@model Report	
+@{
 	ViewBag.Title = "Bedankt";
 }
 
-<h2>Bedankt</h2>
-<p>Dank u voor uw melding.</p>
+<div class="body">
+	<div class="field">
+		<label></label>
+		<p>Dank u voor uw melding.</p>
+	</div>
+	<div class="grayLayer">
+		@Html.Partial("~/Views/Report/ReportPartials/_PartialReturnReportCategory.cshtml", Model)
+		@Html.Partial("~/Views/Report/ReportPartials/_PartialReturnReportLocation.cshtml", Model)
+		@Html.Partial("~/Views/Report/CategoryPartials/_PartialDetails" + Model.Category + ".cshtml", Model)
+		@if (Model.Perpetrator != null)
+		{
+		@Html.Partial("~/Views/Report/ReportPartials/_PartialReturnReportPerpetrator.cshtml", Model);
+		}
+
+		@if (Model.Contact != null)
+		{
+		@Html.Partial("~/Views/Report/ReportPartials/_PartialReturnReportContact.cshtml", Model);
+		}
+		@if (Model.Vehicle != null)
+		{
+		@Html.Partial("~/Views/Report/ReportPartials/_PartialReturnReportVehicle.cshtml", Model);
+		}
+	</div>
+</div>
