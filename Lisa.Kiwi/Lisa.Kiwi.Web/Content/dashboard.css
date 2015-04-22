@@ -183,11 +183,35 @@ section.Solved {
 }
 
 .FirstAid {
-  background-image: url(first-aid-circle.png);
+  background-image: url(category-FirstAid.png);
 }
 
-.nuisance {
-  background-image: url(nuisance-circle.png);
+.Nuisance {
+  background-image: url(category-Nuisance.png);
+}
+
+.Fight {
+    background-image: url(category-Fight.png);
+}
+
+.Weapons {
+    background-image: url(category-Weapons.png);
+}
+
+.Drugs {
+    background-image: url(category-Drugs.png);
+}
+
+.Theft {
+    background-image: url(category-Theft.png);
+}
+
+.Bullying {
+    background-image: url(category-Bullying.png);
+}
+
+.Other {
+    background-image: url(category-Other.png);
 }
 
 /* Buildings */

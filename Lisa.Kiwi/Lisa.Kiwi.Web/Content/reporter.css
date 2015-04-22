@@ -34,13 +34,13 @@ header h1 {
 	a blue bar to the left side that contains the labels.
 */
 
-form, .body {
+form, .container {
 	background-color: white;
 	margin: auto;
 	width: 900px;
 }
 
-.body b {
+.container b {
     font-family: Arial;
 }
 
@@ -59,19 +59,19 @@ form, .body {
     color: gray !important;
 }
 
-.body h1, h2{
+.container h1, h2{
     margin: 0;
     background-color: #113;
     padding: 5px;
     color: white;
 }
 
-form .field, .body .field {
+form .field, .container .field {
 	display: table-row;
 	width: 100%;
 }
 
-form .field > *, .body .field > * {
+form .field > *, .container .field > * {
     display: table-cell;
     vertical-align: top;
     -moz-box-sizing: border-box;
@@ -80,7 +80,7 @@ form .field > *, .body .field > * {
     padding: 15px;
 }
 
-form .field label, .body .field label {
+form .field label, .container .field label {
 	background-color: #113;
 	color: white;
 	text-align: right;
@@ -234,6 +234,7 @@ form .field p, .field p {
 form .field textarea,
 form .field input[type=text],
 form .field input[type=number],
+form .field input[type=password],
 form .field select {
     font-family: Source Sans Pro;
     font-size: 12pt;
@@ -287,6 +288,15 @@ form .submit button:active {
 form .submit button:active img {
     width: 18px;
     height: 18px;
+}
+
+/* Finishing pages */
+
+.locationCategory {
+    width: 137px !important;
+    height: 141px !important;
+    text-align: center !important;
+    padding-left: 0px !important;
 }
 
 /* Building images*/

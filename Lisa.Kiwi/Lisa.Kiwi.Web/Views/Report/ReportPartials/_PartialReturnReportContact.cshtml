@@ -3,15 +3,21 @@
 	<div class="field">
 		<label><b>@PageItems.Contact</b></label>
 	</div>
+ @if (Model.Contact.Name != null) { 
 	<div class="field">
 		<label>@PageItems.ContactName</label>
 		<p>@DashboardHelpers.NullCheck(Model.Contact.Name)</p>
 	</div>
+ }
+ @if (Model.Contact.PhoneNumber != null) { 
 	<div class="field">
 		<label>@PageItems.ContactPhoneNumber</label>
 		<p>@DashboardHelpers.NullCheck(Model.Contact.PhoneNumber)</p>
 	</div>
+ }
+ @if (Model.Contact.EmailAddress != null) { 
 	<div class="field">
 		<label>@PageItems.ContactEmail</label>
 		<p>@DashboardHelpers.NullCheck(Model.Contact.EmailAddress)</p>
 	</div>
+ }
