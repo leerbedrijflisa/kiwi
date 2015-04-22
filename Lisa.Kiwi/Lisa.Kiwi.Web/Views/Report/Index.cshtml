@@ -9,12 +9,12 @@
 		{
 			<div class="field">
 				<label>Wat wilt u melden?</label>
-				<ul class="buttons">
+				<ul class="buttons cat-buttons">
 					@foreach (var item in Model.Categories)
 					{
 						<li>
 							<button type="submit" name="Category" value="@item.Value">
-								<img src='@string.Format("Content/category-{0}.png", item.Value)'>
+								<img src='@string.Format("/Content/category-{0}.png", item.Value)'>
 								@item.Text
 							</button>
 						</li>
