@@ -132,6 +132,7 @@ ul.buttons li button {
 	
 	font-family: Source Sans Pro;
 	font-size: 12pt;
+	cursor: pointer;
 }
 
 ul.buttons li button img {
