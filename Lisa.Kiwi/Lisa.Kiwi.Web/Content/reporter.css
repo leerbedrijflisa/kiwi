@@ -5,6 +5,10 @@ body {
 	font-family: Source Sans Pro;	
 }
 
+textarea{
+    resize: vertical;
+}
+
 /*
 	Header
 */
@@ -46,10 +50,12 @@ form .field, .body .field {
 }
 
 form .field > *, .body .field > * {
-	display: table-cell;
-	vertical-align: top;
-	box-sizing: border-box;
-	padding: 15px;
+    display: table-cell;
+    vertical-align: top;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 15px;
 }
 
 form .field label, .body .field label {
@@ -66,7 +72,7 @@ form .field label.radio, label.radio:checked{
     text-align: left;
     width: auto !important;
     height: 20px !important;
-    margin: 0px 20px 0px 20px;
+    margin: 0 20px 0 20px;
     cursor: auto;
 }
 
@@ -82,7 +88,7 @@ form .field .radioList li:first-child {
 }
 
 form .field ul.radioList{
-    padding: 0px;
+    padding: 0;
 }
 
 .floatLeft {
@@ -101,8 +107,8 @@ ul.buttons li input[type=radio] + label {
     background: url("building-appartementen.png");
     background-repeat: no-repeat;
     display: block;
+    margin: 0 auto;
     padding: 0;
-    margin-top: 0;
     height: 99px;
     width: 99px;
     cursor: pointer; 
@@ -115,14 +121,20 @@ ul.buttons li input[type=radio]:checked + label {
 }
 
 ul.buttons {
-	padding-right: 0;
+	padding-left: 12px;
+}
+
+ul.cat-buttons {
+    padding-bottom: 50px;
 }
 
 ul.buttons li {
 	display: inline-table;
-	width: 99px;
-	margin-right: 15px;
-    text-align: center;
+	width: 137px;
+    
+	text-align: center;
+	word-break: break-word;
+	margin-bottom: 5px;
 }
 
 ul.buttons li button {
