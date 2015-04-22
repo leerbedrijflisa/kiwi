@@ -4,18 +4,26 @@
 	ViewBag.Title = Categories.Drugs;
 }
 
-<h2>@DisplayNames.ReportTypeDrugs</h2>
 @using (Html.BeginForm())
 {
-	<p>
-		<label>@Html.RadioButtonFor(m => m.Action, "Using") Er wordt drugs gebruikt*
-		</label><br />
-		<label>@Html.RadioButtonFor(m => m.Action, "Dealing") Er wordt drugs gedeald*</label>
-	</p>
-	<p>
+	<div class="field radioButton">
+		@Html.LabelFor(m => m.Action)
+		<ul class="radioList">
+			<li>
+				@Html.RadioButtonFor(m => m.Action, "Using")<label class="radio">Er wordt drugs gebruikt</label>
+			</li>
+			<li>
+				@Html.RadioButtonFor(m => m.Action, "Dealing")<label class="radio">Er wordt drugs gedealed</label>
+			</li>
+		</ul>
+
+	</div>
+	<div class="field">
 		@Html.LabelFor(m => m.Description)
 		@Html.TextBoxFor(m => m.Description)
-	</p>
-	<input type="submit" value="Verzenden"/>
-	<text>*verplicht veld</text>
+	</div>
+	<div class="submit">
+		<button type="submit"><img src="@Url.Content("~/Content/next.svg")" /></button>
+		<text><span class="floatLeft">*verplichte velden</span></text>
+	</div>
 }

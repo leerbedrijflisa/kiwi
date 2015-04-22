@@ -6,11 +6,11 @@ namespace Lisa.Kiwi.Web
     public class BullyingViewModel
     {
         [Required(ErrorMessage = ErrorMessages.RequiredError)]
-        [DisplayName("Wat is er aan de hand?")]
+        [DisplayName("Wat is er aan de hand? *")]
         public string Description { get; set; }
 
         [Required(ErrorMessage = ErrorMessages.RequiredError)]
-        [DisplayName("Wie word er gepest?")]
+        [DisplayName("Wie word er gepest? *")]
         public string VictimName { get; set; }
 
         public bool HasVictim { get; set; }

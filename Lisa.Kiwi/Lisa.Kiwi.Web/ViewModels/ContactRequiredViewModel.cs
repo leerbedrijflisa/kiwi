@@ -1,20 +1,21 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using Resources;
 
 namespace Lisa.Kiwi.Web
 {
     public class ContactRequiredViewModel
     {
         [Required(ErrorMessage = ErrorMessages.RequiredError)]
-        [DisplayName("Naam")]
+        [Display(Name = "Name", ResourceType = typeof(DisplayNames))]
         public string Name { get; set; }
 
         [Required(ErrorMessage = ErrorMessages.RequiredError)]
-        [DisplayName("Telefoonnummer")]
+        [Display(Name = "PhoneNumber", ResourceType = typeof(DisplayNames))]
         public string PhoneNumber { get; set; }
 
         [Required(ErrorMessage = ErrorMessages.RequiredError)]
-        [DisplayName("E-mail Address")]
+        [Display(Name = "EmailAddress", ResourceType = typeof(DisplayNames))]
         public string EmailAddress { get; set; }
     }
 }

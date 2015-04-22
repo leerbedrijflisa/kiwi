@@ -135,43 +135,43 @@
   <data name="Duurzaamheidsfabriek" xml:space="preserve">
     <value>Duurzaamheidsfabriek</value>
   </data>
-  <data name="DVCArcobaleno" xml:space="preserve">
+  <data name="Arcobaleno" xml:space="preserve">
     <value>DVC Arcobaleno</value>
   </data>
-  <data name="DVCAzzurro" xml:space="preserve">
+  <data name="Azzurro" xml:space="preserve">
     <value>DVC Azzurro</value>
   </data>
-  <data name="DVCBianco" xml:space="preserve">
+  <data name="Bianco" xml:space="preserve">
     <value>DVC Bianco</value>
   </data>
-  <data name="DVCCeleste" xml:space="preserve">
+  <data name="Celeste" xml:space="preserve">
     <value>DVC Celeste</value>
   </data>
-  <data name="DVCGiallo" xml:space="preserve">
+  <data name="Giallo" xml:space="preserve">
     <value>DVC Giallo</value>
   </data>
-  <data name="DVCIndaco" xml:space="preserve">
+  <data name="Indaco" xml:space="preserve">
     <value>DVC Indaco</value>
   </data>
-  <data name="DVCLilla" xml:space="preserve">
+  <data name="Lilla" xml:space="preserve">
     <value>DVC Lilla</value>
   </data>
-  <data name="DVCMarrone" xml:space="preserve">
+  <data name="Marrone" xml:space="preserve">
     <value>DVC Marrone</value>
   </data>
-  <data name="DVCmedia" xml:space="preserve">
+  <data name="media" xml:space="preserve">
     <value>DVC media</value>
   </data>
-  <data name="DVCOcra" xml:space="preserve">
+  <data name="Ocra" xml:space="preserve">
     <value>DVC Ocra</value>
   </data>
-  <data name="DVCRomboutslaan" xml:space="preserve">
+  <data name="Romboutslaan" xml:space="preserve">
     <value>DVC Romboutslaan 40</value>
   </data>
-  <data name="DVCRosa" xml:space="preserve">
+  <data name="Rosa" xml:space="preserve">
     <value>DVC Rosa</value>
   </data>
-  <data name="DVCVerde" xml:space="preserve">
+  <data name="Verde" xml:space="preserve">
     <value>DVC Verde</value>
   </data>
   <data name="Klimhal" xml:space="preserve">

@@ -8,21 +8,22 @@
 	ViewBag.Title = Categories.Theft;
 }
 
-<h2>@DisplayNames.ReportTypeTheft</h2>
 @using (Html.BeginForm())
 {
-	<p>
+	<div class="field">
 		@Html.LabelFor(m => m.StolenObject)
-		@Html.TextBoxFor(m => m.StolenObject)*
-	</p>
-	<p>
+		@Html.TextBoxFor(m => m.StolenObject)
+	</div>
+	<div class="field">
 		@Html.LabelFor(m => m.DateOfTheft)
-		@Html.TextBoxFor(m => m.DateOfTheft)*
-	</p>
-	<p>
+		@Html.TextBoxFor(m => m.DateOfTheft)
+	</div>
+	<div class="field">
 		@Html.LabelFor(m => m.Description)<br />
 		@Html.TextAreaFor(m => m.Description, new { @class = "DescriptionBox" })
-	</p>
-	<input type="submit" value="Verzenden"/>
-	<text>*velden verplicht</text>
+	</div>
+	<div class="submit">
+		<button type="submit"><img src="@Url.Content("~/Content/next.svg")" /></button>
+		<text><span class="floatLeft">*verplichte velden</span></text>
+	</div>
 }
