@@ -193,9 +193,108 @@ section#Solved {
 /* Buildings */
 
 .Azzurro {
-  background-image: url(azzurro.jpg);
+  background-image: url(DashboardBuildings/building-azzurro.jpg);
 }
 
 .Duurzaamheidsfabriek {
-  background-image: url(duurzaamheidsfabriek.jpg);
+  background-image: url(DashboardBuildings/building-duurzaamheidsfabriek.jpg);
+}
+
+.Arcobaleno {
+    background-image: url(DashboardBuildings/building-arcobaleno.jpg);
+}
+
+.Bianco {
+    background-image: url(DashboardBuildings/building-bianco.jpg);
+}
+
+.Celeste {
+    background-image: url(DashboardBuildings/building-celeste.jpg);
+}
+
+.Giallo,
+.Indaco {
+    background-image: url(DashboardBuildings/building-giallo.jpg);
+}
+
+.Lilla {
+    background-image: url(DashboardBuildings/building-lilla.jpg);
+}
+
+.Marrone {
+    background-image: url(DashboardBuildings/building-marrone.jpg);
+}
+
+.Rosa {
+    background-image: url(DashboardBuildings/building-rosa.jpg);
+}
+
+.Verde {
+    background-image: url(DashboardBuildings/building-verde.jpg);
+}
+
+.Ocra {
+    background-image: url(DashboardBuildings/building-ocra.jpg);
+}
+
+.Romboutslaan {
+    background-image: url(DashboardBuildings/building-romboutslaan.jpg);
+}
+
+.ParkeerplaatsOcra,
+.Buiten {
+    background-image: url(DashboardBuildings/building-parkeerplaats-betaald.jpg);
+}
+
+.ParkeerplaatsDuurzaamheidsfabriek,
+.ParkeerplaatsBrandweerkazerne {
+    background-image: url(DashboardBuildings/building-parkeerplaats-langeveldlaan.jpg);
+}
+
+.DrechtstedenCollege {
+    background-image: url(DashboardBuildings/building-drechtstedencollege.jpg);
+}
+
+.Samenwerkingsgebouw {
+    background-image: url(DashboardBuildings/building-samenwerkingsgebouw.jpg);
+}
+
+.Brandweerkazerne {
+    background-image: url(DashboardBuildings/building-brandweer.jpg);
+}
+
+.Veiligheidsregio {
+    background-image: url(DashboardBuildings/building-veiligheidsregio.jpg);
+}
+
+.Sporthal {
+    background-image: url(DashboardBuildings/building-sporthal.jpg); 
+}
+
+.Klimhal {
+    background-image: url(DashboardBuildings/building-klimhal.jpg);
+}
+
+.Bogermanschool {
+    background-image: url(DashboardBuildings/building-bogermanschool.jpg);
+}
+
+.Schippersinternaat {
+    background-image: url(DashboardBuildings/building-schippersinternaat.jpg);
+}
+
+.Appartementen {
+    background-image: url(DashboardBuildings/building-appartementen.jpg);
+}
+
+.Wartburg {
+    background-image: url(DashboardBuildings/building-wartburg.jpg);
+}
+
+.DVCMedia {
+    background-image: url(DashboardBuildings/building-davinci-media.jpg);
+}
+
+.Orthodontist {
+    background-image: url(DashboardBuildings/building-orthodontist.jpg);
 }
