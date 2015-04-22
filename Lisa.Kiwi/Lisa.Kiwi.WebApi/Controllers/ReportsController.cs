@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using System.Web.Security;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Newtonsoft.Json.Linq;
 
 namespace Lisa.Kiwi.WebApi
@@ -14,24 +16,26 @@ namespace Lisa.Kiwi.WebApi
     [Authorize]
     public class ReportsController : ApiController
     {
+        [Authorize(Roles = "dashboardUser")]
         public IHttpActionResult Get()
         {
-            var claimsIdentity = (ClaimsIdentity) User.Identity;
-
-            if (claimsIdentity.HasClaim(ClaimTypes.Role, "anonymous"))
-            {
-                return Unauthorized();
-            }
-
             return Ok(GetCompleteReports());
         }
 
-        public async Task<IHttpActionResult> Get(int? id)
+        public IHttpActionResult Get(int? id)
         {
-            var reportData = await GetCompleteReportData()
-                .SingleOrDefaultAsync(r => id == r.Id);
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            
+            if (claimsIdentity.HasClaim(ClaimTypes.Role, "anonymous"))
+            {
+                if(!claimsIdentity.HasClaim("reportId", id.ToString()))
+                {
+                    return Unauthorized();
+                }
+            }
 
-            // TODO: add check to see if you have access right for the report
+            var reportData = GetCompleteReportData()
+                .SingleOrDefault(r => id == r.Id);
 
             if (reportData == null)
             {
@@ -63,20 +67,19 @@ namespace Lisa.Kiwi.WebApi
             return Created(url, reportJson);
         }
 
+       
         public async Task<IHttpActionResult> Patch(int? id, [FromBody] JToken json)
         {
-            var claimsIdentity = (ClaimsIdentity) User.Identity;
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
 
             if (claimsIdentity.HasClaim(ClaimTypes.Role, "anonymous"))
             {
-                var reportIdFromClaim = Int32.Parse(claimsIdentity.Claims.First(c => c.ValueType == "reportId").Value);
-
-                if (id != reportIdFromClaim)
+                if (!claimsIdentity.HasClaim("reportId", id.ToString()))
                 {
-                    return NotFound();
+                    return Unauthorized();
                 }
             }
-
+        
             var reportData = await _db.Reports.FindAsync(id);
             if (reportData == null)
             {
