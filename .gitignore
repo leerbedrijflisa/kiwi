@@ -185,3 +185,4 @@ FakesAssemblies/
 # ReSharper config file
 *.sln.DotSettings
 Lisa.Kiwi/Lisa.Kiwi.Web/Lisa.Kiwi.Web.csproj.DotSettings
+*.GhostDoc.xml

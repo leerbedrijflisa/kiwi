@@ -1,29 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
-using System.Text;
 using Newtonsoft.Json.Converters;
-using System.Net.Http.Headers;
+using Newtonsoft.Json.Serialization;
 
-namespace Lisa.Kiwi.WebApi
+namespace Lisa.Kiwi.WebApi.Access
 {
-    public class Proxy<T>
+    public class Proxy<T> where T : class
     {
-        public Proxy(string baseUrl, string resourceUrl)
+
+        public Proxy(string resourceUrl, JsonSerializerSettings jsonSerializerSettings = null)
         {
-            _apiBaseUrl = baseUrl.Trim('/');
-            _proxyResourceUrl = resourceUrl.Trim('/');
+            _proxyResourceUrl = new Uri(resourceUrl.Trim('/'));
+            _httpClient = new HttpClient();
 
-            _httpClient = new HttpClient
+            _jsonSerializerSettings = jsonSerializerSettings ?? new JsonSerializerSettings
             {
-                BaseAddress = new Uri(_apiBaseUrl)
-            };
-
-            _jsonSerializerSettings = new JsonSerializerSettings
-            { 
                 ContractResolver = new CamelCasePropertyNamesContractResolver(),
                 NullValueHandling = NullValueHandling.Ignore,
                 Converters = new List<JsonConverter>
@@ -36,86 +32,226 @@ namespace Lisa.Kiwi.WebApi
             };
         }
 
-        public string Token { get; set; }
+        public Token Token { get; set; }
 
-        public async Task<IEnumerable<T>> GetAsync()
+        public async Task<IEnumerable<T>> GetAsync(Uri uri = null, List<Uri> redirectUriList = null)
         {
+            CheckRedirectLoop(uri, ref redirectUriList);
+
             var request = new HttpRequestMessage
             {
                 Method = HttpMethod.Get,
-                RequestUri = new Uri(string.Format("{0}/{1}", _apiBaseUrl, _proxyResourceUrl)),
+                RequestUri = uri ?? _proxyResourceUrl
             };
 
-            AddAuthorizationHeader(request);
+            AddAuthorizationHeader(ref request);
 
             var result = await _httpClient.SendAsync(request);
-            return await DeserializeList(result);
+
+            switch (result.StatusCode)
+            {
+                case HttpStatusCode.OK:
+                    return await DeserializeList(result);
+
+                case HttpStatusCode.TemporaryRedirect:
+                case HttpStatusCode.Redirect:
+                case HttpStatusCode.RedirectMethod:
+                    if (result.Headers.Location != null)
+                    {
+                        redirectUriList.Add(result.Headers.Location);
+                        return await GetAsync(result.Headers.Location, redirectUriList);
+                    }
+                    throw new WebApiException("Redirect without Location provided", result.StatusCode);
+
+                case HttpStatusCode.Unauthorized:
+                case HttpStatusCode.Forbidden:
+                    throw new UnauthorizedAccessException();
+
+                case HttpStatusCode.NotFound:
+                case HttpStatusCode.Gone:
+                    return null;
+            }
+
+            throw new WebApiException("Unexpected statuscode", result.StatusCode);
         }
 
-        public async Task<T> GetAsync(int id)
+        public async Task<T> GetAsync(int id, Uri uri = null, List<Uri> redirectUriList = null)
         {
+            CheckRedirectLoop(uri, ref redirectUriList);
+
             var request = new HttpRequestMessage
             {
                 Method = HttpMethod.Get,
-                RequestUri = new Uri(string.Format("{0}/{1}/{2}", _apiBaseUrl, _proxyResourceUrl, id)),
+                RequestUri = uri ?? new Uri(string.Format("{0}/{1}", _proxyResourceUrl, id))
             };
 
-            AddAuthorizationHeader(request);
-
+            AddAuthorizationHeader(ref request);
+            
             var result = await _httpClient.SendAsync(request);
-            return await DeserializeSingle(result);
+
+            switch (result.StatusCode)
+            {
+                case HttpStatusCode.OK:
+                    return await DeserializeSingle(result);
+
+                case HttpStatusCode.TemporaryRedirect:
+                case HttpStatusCode.Redirect:
+                case HttpStatusCode.RedirectMethod:
+                    if (result.Headers.Location != null)
+                    {
+                        redirectUriList.Add(result.Headers.Location);
+                        return await GetAsync(id, result.Headers.Location, redirectUriList);
+                    }
+                    throw new WebApiException("Redirect without Location provided", result.StatusCode);
+
+                case HttpStatusCode.Unauthorized:
+                case HttpStatusCode.Forbidden:
+                    throw new UnauthorizedAccessException();
+
+                case HttpStatusCode.NotFound:
+                case HttpStatusCode.Gone:
+                    return null;
+            }
+
+            throw new WebApiException("Unexpected statuscode", result.StatusCode);
         }
 
-        public async Task<T> PostAsync(T model)
+        public async Task<T> PostAsync(T model, Uri uri = null, List<Uri> redirectUriList = null)
         {
+            CheckRedirectLoop(uri, ref redirectUriList);
+
             var request = new HttpRequestMessage
             {
                 Method = HttpMethod.Post,
-                RequestUri = new Uri(string.Format("{0}/{1}", _apiBaseUrl, _proxyResourceUrl)),
+                RequestUri = _proxyResourceUrl,
                 Content = new StringContent(JsonConvert.SerializeObject(model, _jsonSerializerSettings), Encoding.UTF8, "Application/json")
             };
 
-            AddAuthorizationHeader(request);
+            AddAuthorizationHeader(ref request);
 
             var result = await _httpClient.SendAsync(request);
-            return await DeserializeSingle(result);
+
+            switch (result.StatusCode)
+            {
+                case HttpStatusCode.OK:
+                case HttpStatusCode.Created:
+                case HttpStatusCode.Accepted:
+                case HttpStatusCode.BadRequest:
+                    return await DeserializeSingle(result);
+
+                case HttpStatusCode.TemporaryRedirect:
+                case HttpStatusCode.Redirect:
+                case HttpStatusCode.RedirectMethod:
+                    if (result.Headers.Location != null)
+                    {
+                        redirectUriList.Add(result.Headers.Location);
+                        return await PostAsync(model, result.Headers.Location, redirectUriList);
+                    }
+                    throw new WebApiException("Redirect without Location provided", result.StatusCode);
+
+                case HttpStatusCode.Unauthorized:
+                case HttpStatusCode.Forbidden:
+                    throw new UnauthorizedAccessException();
+            }
+
+            throw new WebApiException("Unexpected statuscode", result.StatusCode);
         }
 
-        public async Task<T> PatchAsync(int id, T model)
+        public async Task<T> PatchAsync(int id, T model, Uri uri = null, List<Uri> redirectUriList = null)
         {
+            CheckRedirectLoop(uri, ref redirectUriList);
+
             var request = new HttpRequestMessage
             {
                 Method = new HttpMethod("PATCH"),
-                RequestUri = new Uri(String.Format("{0}/{1}/{2}", _apiBaseUrl, _proxyResourceUrl, id)),
-                Content = new StringContent(JsonConvert.SerializeObject(model, _jsonSerializerSettings), Encoding.UTF8, "application/json")
+                RequestUri = new Uri(String.Format("{0}/{1}", _proxyResourceUrl, id)),
+                Content = new StringContent(JsonConvert.SerializeObject(model, _jsonSerializerSettings), Encoding.UTF8, "Application/json")
             };
 
-            AddAuthorizationHeader(request);
+            AddAuthorizationHeader(ref request);
 
             var result = await _httpClient.SendAsync(request);
-            return await DeserializeSingle(result);
+
+            switch (result.StatusCode)
+            {
+                case HttpStatusCode.OK:
+                case HttpStatusCode.Accepted:
+                case HttpStatusCode.NoContent:
+                case HttpStatusCode.BadRequest:
+                    return await DeserializeSingle(result);
+
+                case HttpStatusCode.TemporaryRedirect:
+                case HttpStatusCode.Redirect:
+                case HttpStatusCode.RedirectMethod:
+                    if (result.Headers.Location != null)
+                    {
+                        redirectUriList.Add(result.Headers.Location);
+                        return await PostAsync(model, result.Headers.Location, redirectUriList);
+                    }
+                    throw new WebApiException("Redirect without Location provided", result.StatusCode);
+
+                case HttpStatusCode.Unauthorized:
+                case HttpStatusCode.Forbidden:
+                    throw new UnauthorizedAccessException();
+            }
+
+            throw new WebApiException("Unexpected statuscode", result.StatusCode);
         }
 
-        public async Task<T> DeleteAsync(int id, T model)
+        public async Task DeleteAsync(int id, Uri uri = null, List<Uri> redirectUriList = null)
         {
+            CheckRedirectLoop(uri, ref redirectUriList);
+
             var request = new HttpRequestMessage
             {
-                Method = new HttpMethod("PATCH"),
-                RequestUri = new Uri(String.Format("{0}/{1}/{2}", _apiBaseUrl, _proxyResourceUrl, id)),
-                Content = new StringContent(JsonConvert.SerializeObject(model, _jsonSerializerSettings), Encoding.UTF8, "application/json")
+                Method = new HttpMethod("DELETE"),
+                RequestUri = new Uri(String.Format("{0}/{1}", _proxyResourceUrl, id))
             };
 
-            AddAuthorizationHeader(request);
+            AddAuthorizationHeader(ref request);
 
             var result = await _httpClient.SendAsync(request);
-            return await DeserializeSingle(result);
+
+            switch (result.StatusCode)
+            {
+                case HttpStatusCode.Accepted:
+                case HttpStatusCode.NoContent:
+                    return;
+
+                case HttpStatusCode.TemporaryRedirect:
+                case HttpStatusCode.Redirect:
+                case HttpStatusCode.RedirectMethod:
+                    if (result.Headers.Location != null)
+                    {
+                        redirectUriList.Add(result.Headers.Location);
+                        await DeleteAsync(id, result.Headers.Location, redirectUriList);
+                        return;
+                    }
+                    throw new WebApiException("Redirect without Location provided", result.StatusCode);
+
+                case HttpStatusCode.Unauthorized:
+                case HttpStatusCode.Forbidden:
+                    throw new UnauthorizedAccessException();
+            }
+
+            throw new WebApiException("Unexpected statuscode", result.StatusCode);
         }
 
-        private void AddAuthorizationHeader(HttpRequestMessage request)
+        private void CheckRedirectLoop(Uri uri, ref List<Uri> redirectUriList)
         {
-            if (!String.IsNullOrEmpty(Token))
+            if (redirectUriList != null && redirectUriList.Contains(uri))
             {
-                request.Headers.Add("Authorization", String.Format("Bearer {0}", Token));
+                throw new WebApiException("Endless redirect loop", HttpStatusCode.Redirect);
+            }
+
+            redirectUriList = new List<Uri>();
+        }
+
+        private void AddAuthorizationHeader(ref HttpRequestMessage request)
+        {
+            if (Token != null && !string.IsNullOrEmpty(Token.Value))
+            {
+                request.Headers.Add("Authorization", String.Format("{0} {1}", Token.Type, Token.Value));
             }
         }
 
@@ -133,11 +269,10 @@ namespace Lisa.Kiwi.WebApi
             return JsonConvert.DeserializeObject<IEnumerable<T>>(json, _jsonSerializerSettings);
         }
 
-
-
         private readonly HttpClient _httpClient;
-        private readonly string _apiBaseUrl;
-        private readonly string _proxyResourceUrl;
+        private readonly Uri _proxyResourceUrl;
         private readonly JsonSerializerSettings _jsonSerializerSettings;
     }
+
+
 }
