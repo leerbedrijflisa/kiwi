@@ -1,0 +1,17 @@
+﻿@* TODO: Find a better solution than this, as it makes an empty Contact.*@
+
+	<div class="field">
+		<label><b>@PageItems.Contact</b></label>
+	</div>
+	<div class="field">
+		<label>@PageItems.ContactName</label>
+		<p>@DashboardHelpers.NullCheck(Model.Contact.Name)</p>
+	</div>
+	<div class="field">
+		<label>@PageItems.ContactPhoneNumber</label>
+		<p>@DashboardHelpers.NullCheck(Model.Contact.PhoneNumber)</p>
+	</div>
+	<div class="field">
+		<label>@PageItems.ContactEmail</label>
+		<p>@DashboardHelpers.NullCheck(Model.Contact.EmailAddress)</p>
+	</div>

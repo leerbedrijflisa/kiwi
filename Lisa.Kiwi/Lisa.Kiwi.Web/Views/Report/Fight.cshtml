@@ -3,22 +3,23 @@
 @{
 	ViewBag.Title = Categories.Fight;
 }
-
-<h2>@ViewBag.Title</h2>
 @using (Html.BeginForm())
 {
-	<p>
+	<div class="field">
 		@Html.LabelFor(m => m.FighterCount)
-		@Html.TextBoxFor(m => m.FighterCount, new { @type = "number" })*
-	</p>
-	<p>
+		@Html.TextBoxFor(m => m.FighterCount, new { @type = "number" })
+	</div>
+	<div class="field">
+		@* TODO: figure out a way to make this checkbox look clearer *@
 		@Html.LabelFor(m => m.IsWeaponPresent)
 		@Html.CheckBoxFor(m => m.IsWeaponPresent)
-	</p>
-	<p>
-		@Html.LabelFor(m => m.Description)<br />
-		@Html.TextAreaFor(m => m.Description, new {@class="DescriptionBox"})
-	</p>
-	<input type="submit" value="Verzenden"/>
-	<text>*verplicht veld</text>
+	</div>
+	<div class="field">
+		@Html.LabelFor(m => m.Description)
+		@Html.TextAreaFor(m => m.Description, new {@class = "DescriptionBox"})
+	</div>
+	<div class="submit">
+		<button type="submit"><img src="@Url.Content("~/Content/next.svg")"/></button>
+		<span class="floatLeft">* verplichte velden</span>
+	</div>
 }

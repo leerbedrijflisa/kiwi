@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -242,8 +243,10 @@ namespace Lisa.Kiwi.Web
         }
 
         [HttpPost]
-        public async Task<ActionResult> Perpetrator(PerpetratorViewModel viewModel, bool hasVictim)
+        public async Task<ActionResult> Perpetrator(PerpetratorViewModel viewModel, bool? hasVictim)
         {
+            var victim = hasVictim.HasValue && hasVictim.Value;
+    
             if (!ModelState.IsValid)
             {
                 return View(viewModel);
@@ -252,7 +255,7 @@ namespace Lisa.Kiwi.Web
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(report.Id, report);
 
-            return RedirectToAction(hasVictim ? "Victim" : "Vehicle");
+            return RedirectToAction(victim ? "Victim" : "Vehicle");
         }
 
         public ActionResult Victim()
@@ -360,18 +363,19 @@ namespace Lisa.Kiwi.Web
         }
 
         [HttpPost]
-        public ActionResult Done(string category)
+        public async Task<ActionResult> Done(string category)
         {
+            var report = await GetCurrentReport();
             switch (category)
             {
                 case "Theft":
-                    return View("Police");
+                    return View("Police", report);
 
                 case "Bullying":
-                    return View("Help");
+                    return View("Help", report);
 
                 default:
-                    return View("End");
+                    return View("End", report);
             }
         }
 

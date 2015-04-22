@@ -3,26 +3,22 @@
 @{
 	ViewBag.Title = DisplayNames.ContactRequired;
 }
-
-<h2>@ViewBag.Title</h2>
-
 @using (Html.BeginForm())
 {
-	<p>
-		@Html.LabelFor(m => m.Name)
-		@Html.TextBoxFor(m => m.Name)*
-		@Html.ValidationMessageFor(m => m.Name)
-	</p>
-	<p>
-		@Html.LabelFor(m => m.PhoneNumber)
-		@Html.TextBoxFor(m => m.PhoneNumber)*
-		@Html.ValidationMessageFor(m => m.PhoneNumber)
-	</p>
-	<p>
-		@Html.LabelFor(m => m.EmailAddress)
-		@Html.TextBoxFor(m => m.EmailAddress)*
-		@Html.ValidationMessageFor(m => m.EmailAddress)
-	</p>
-	<input type="submit" value="Verzenden" />
-	<text>*verplicht veld</text>
+	<div class="field">
+		<label>@DisplayNames.Name &#42;</label>
+		@Html.TextBoxFor(m => m.Name)
+	</div>
+	<div class="field">
+		<label>@DisplayNames.PhoneNumber &#42;</label>
+		@Html.TextBoxFor(m => m.PhoneNumber)
+	</div>
+	<div class="field">
+		<label>@DisplayNames.EmailAddress &#42;</label>
+		@Html.TextBoxFor(m => m.EmailAddress)
+	</div>
+	<div class="submit">
+		<button type="submit"><img src="@Url.Content("~/Content/next.svg")"/></button>
+		<span class="floatLeft">*verplichte velden</span>
+	</div>
 }

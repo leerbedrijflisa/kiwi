@@ -1,0 +1,17 @@
+﻿<div class="field">
+	<label>@ReportProperties.ResourceManager.GetString("FightCount")</label>
+	<p>@DashboardHelpers.NullCheck(Model.FighterCount)</p>
+</div>
+
+<div class="field">
+	<label>@ReportProperties.ResourceManager.GetString("WeaponPresent")</label>
+	<p>@DashboardHelpers.NullCheck(Model.IsWeaponPresent)</p>
+</div>
+
+@if (Model.Description != null)
+{
+	<div class="field">
+		<label>@ReportProperties.Description</label>
+		<p>@Model.Description</p>
+	</div>
+}

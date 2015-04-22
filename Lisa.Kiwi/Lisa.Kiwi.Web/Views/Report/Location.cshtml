@@ -1,33 +1,177 @@
 ﻿@model LocationViewModel
 
-@section Scripts{
-	<script src="~/Scripts/Location.js"></script>
-}
-
 @{
 	ViewBag.Title = "Locatie";
 }
 
-<h1>Waar is het gebeurd?</h1>
-
 @using (Html.BeginForm())
 {
-	<section>
-		<div id="map-canvas"></div>
-		<ul id="map-suggestions"></ul>
-		<div id="middle-container">
-			<p>
-				@Html.LabelFor(m => m.Building)
-				@Html.DropDownListFor(m => m.Building, Model.Buildings)*
-				@Html.ValidationMessageFor(m => m.Building)
-			</p>
-			<p>
-				@Html.LabelFor(m => m.Location)
-				@Html.TextAreaFor(m => m.Location, new { placeholder = "Voer hier een duidelijke beschrijving, of een huisnummer in." }) *
-				@Html.ValidationMessageFor(m => m.Location)
-			</p>
-			<input type="submit" value="Verzenden"/>
-			*verplicht veld
+	<div class="field">
+		<label>Waar is het gebeurd?</label>
+		<div>
+			<p>Buiten</p>
+
+			<ul class="buttons">
+				<li>
+					<input type="radio" name="Building" value="Buiten" id="Buiten" /><label for="Buiten"></label>
+					Openbare weg
+				</li>
+
+				<li>
+					<input type="radio" name="Building" value="ParkeerplaatsOcra" id="ParkeerplaatsOcra" /><label for="ParkeerplaatsOcra"></label>
+					Parkeerplaats Ocra
+				</li>
+
+				<li>
+					<input type="radio" name="Building" value="ParkeerplaatsDuurzaamheidsfabriek" id="ParkeerplaatsDuurzaamheidsfabriek" /><label for="ParkeerplaatsDuurzaamheidsfabriek"></label>
+					Parkeerplaats Duurzaamheids&shy;fabriek
+				</li>
+
+				<li>
+					<input type="radio" name="Building" value="Parkeerplaats Brandweerkazerne" id="ParkeerplaatsBrandweerkazerne" /><label for="ParkeerplaatsBrandweerkazerne"></label>
+					Parkeerplaats Brandweer&shy;kazerne
+				</li>
+			</ul>
+
+			<p>Da Vinci College</p>
+
+			<ul class="buttons">
+				<li>
+					<input type="radio" name="Building" value="Arcobaleno" id="DVCArcobaleno" /><label for="DVCArcobaleno"></label>
+					Arcobaleno
+				</li>
+
+				<li>
+					<input type="radio" name="Building" value="Azzurro" id="DVCAzzurro" /><label for="DVCAzzurro"></label>
+					Azzurro
+				</li>
+
+				<li>
+					<input type="radio" name="Building" value="Bianco" id="DVCBianco" /><label for="DVCBianco"></label>
+					Bianco
+				</li>
+
+				<li>
+					<input type="radio" name="Building" value="Celeste" id="DVCCeleste" /><label for="DVCCeleste"></label>
+					Celeste
+				</li>
+
+				<li>
+					<input type="radio" name="Building" value="Giallo" id="DVCGiallo" /><label for="DVCGiallo"></label>
+					Giallo
+				</li>
+
+				<li>
+					<input type="radio" name="Building" value="Indaco" id="DVCIndaco" /><label for="DVCIndaco"></label>
+					Indaco
+				</li>
+
+				<li>
+					<input type="radio" name="Building" value="Lilla" id="DVCLilla" /><label for="DVCLilla"></label>
+					Lilla
+				</li>
+
+				<li>
+					<input type="radio" name="Building" value="Marrone" id="DVCMarrone" /><label for="DVCMarrone"></label>
+					Marrone
+				</li>
+
+				<li>
+					<input type="radio" name="Building" value="Rosa" id="DVCRosa" /><label for="DVCRosa"></label>
+					Rosa
+				</li>
+
+				<li>
+					<input type="radio" name="Building" value="Verde" id="DVCVerde" /><label for="DVCVerde"></label>
+					Verde
+				</li>
+
+				<li>
+					<input type="radio" name="Building" value="Ocra" id="DVCOcra" /><label for="DVCOcra"></label>
+					Ocra
+				</li>
+
+				<li>
+					<input type="radio" name="Building" value="Romboutslaan" id="DVCRomboutslaan" /><label for="DVCRomboutslaan"></label>
+					Romboutslaan
+				</li>
+
+				<li>
+					<input type="radio" name="Building" value="Duurzaamheidsfabriek" id="Duurzaamheidsfabriek" /><label for="Duurzaamheidsfabriek"></label>
+					Duurzaamheids&shy;fabriek
+				</li>
+			</ul>
+
+			<p>Overige</p>
+
+			<ul class="buttons">
+				<li>
+					<input type="radio" name="Building" value="Drechtstedencollege" id="DrechtstedenCollege" /><label for="DrechtstedenCollege"></label>
+					Drechtsteden&shy;college
+				</li>
+
+				<li>
+					<input type="radio" name="Building" value="Samenwerkingsgebouw" id="Samenwerkingsgebouw" /><label for="Samenwerkingsgebouw"></label>
+					Samenwerkings&shy;gebouw
+				</li>
+
+				<li>
+					<input type="radio" name="Building" value="Brandweerkazerne" id="Brandweerkazerne" /><label for="Brandweerkazerne"></label>
+					Brandweer&shy;kazerne
+				</li>
+
+				<li>
+					<input type="radio" name="Building" value="Veiligheidsregio" id="Veiligheidsregio" /><label for="Veiligheidsregio"></label>
+					Veiligheidsregio
+				</li>
+
+				<li>
+					<input type="radio" name="Building" value="Sporthal" id="Sporthal" /><label for="Sporthal"></label>
+					Sporthal
+				</li>
+
+				<li>
+					<input type="radio" name="Building" value="Klimhal" id="Klimhal" /><label for="Klimhal"></label>
+					Klimhal
+				</li>
+
+				<li>
+					<input type="radio" name="Building" value="Bogermanschool" id="Bogermanschool" /><label for="Bogermanschool"></label>
+					Bogermanschool
+				</li>
+
+				<li>
+					<input type="radio" name="Building" value="Schippersinternaat" id="Schippersinternaat" /><label for="Schippersinternaat"></label>
+					Schippers&shy;internaat
+				</li>
+
+				<li>
+					<input type="radio" name="Building" value="Appartementen" id="Appartementen" /><label for="Appartementen"></label>
+					Appartementen
+				</li>
+
+				<li>
+					<input type="radio" name="Building" value="Wartburg" id="Wartburg" /><label for="Wartburg"></label>
+					Wartburg
+				</li>
+
+				<li>
+					<input type="radio" name="Building" value="media" id="DVCmedia" /><label for="DVCmedia"></label>
+					DVC media
+				</li>
+
+				<li>
+					<input type="radio" name="Building" value="Orthodontist" id="Orthodontist" /><label for="Orthodontist"></label>
+					Orthodontist
+				</li>
+			</ul>
 		</div>
-	</section>
+	</div>
+	<div class="field">
+		@Html.LabelFor(m => m.Location)
+		@Html.TextAreaFor(m => m.Location)
+	</div>
+	<div class="submit">
+		<button type="submit"><img src="@Url.Content("~/Content/next.svg")"/></button>
+	</div>
 }

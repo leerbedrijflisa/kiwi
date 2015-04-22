@@ -70,6 +70,33 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to DVC Arcobaleno.
+        /// </summary>
+        public static string Arcobaleno {
+            get {
+                return ResourceManager.GetString("Arcobaleno", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DVC Azzurro.
+        /// </summary>
+        public static string Azzurro {
+            get {
+                return ResourceManager.GetString("Azzurro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DVC Bianco.
+        /// </summary>
+        public static string Bianco {
+            get {
+                return ResourceManager.GetString("Bianco", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ds. Bogermanschool.
         /// </summary>
         public static string Bogermanschool {
@@ -97,6 +124,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to DVC Celeste.
+        /// </summary>
+        public static string Celeste {
+            get {
+                return ResourceManager.GetString("Celeste", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Drechtsteden college.
         /// </summary>
         public static string Drechtstedencollege {
@@ -115,119 +151,20 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DVC Arcobaleno.
-        /// </summary>
-        public static string DVCArcobaleno {
-            get {
-                return ResourceManager.GetString("DVCArcobaleno", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to DVC Azzurro.
-        /// </summary>
-        public static string DVCAzzurro {
-            get {
-                return ResourceManager.GetString("DVCAzzurro", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to DVC Bianco.
-        /// </summary>
-        public static string DVCBianco {
-            get {
-                return ResourceManager.GetString("DVCBianco", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to DVC Celeste.
-        /// </summary>
-        public static string DVCCeleste {
-            get {
-                return ResourceManager.GetString("DVCCeleste", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to DVC Giallo.
         /// </summary>
-        public static string DVCGiallo {
+        public static string Giallo {
             get {
-                return ResourceManager.GetString("DVCGiallo", resourceCulture);
+                return ResourceManager.GetString("Giallo", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to DVC Indaco.
         /// </summary>
-        public static string DVCIndaco {
+        public static string Indaco {
             get {
-                return ResourceManager.GetString("DVCIndaco", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to DVC Lilla.
-        /// </summary>
-        public static string DVCLilla {
-            get {
-                return ResourceManager.GetString("DVCLilla", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to DVC Marrone.
-        /// </summary>
-        public static string DVCMarrone {
-            get {
-                return ResourceManager.GetString("DVCMarrone", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to DVC media.
-        /// </summary>
-        public static string DVCmedia {
-            get {
-                return ResourceManager.GetString("DVCmedia", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to DVC Ocra.
-        /// </summary>
-        public static string DVCOcra {
-            get {
-                return ResourceManager.GetString("DVCOcra", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to DVC Romboutslaan 40.
-        /// </summary>
-        public static string DVCRomboutslaan {
-            get {
-                return ResourceManager.GetString("DVCRomboutslaan", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to DVC Rosa.
-        /// </summary>
-        public static string DVCRosa {
-            get {
-                return ResourceManager.GetString("DVCRosa", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to DVC Verde.
-        /// </summary>
-        public static string DVCVerde {
-            get {
-                return ResourceManager.GetString("DVCVerde", resourceCulture);
+                return ResourceManager.GetString("Indaco", resourceCulture);
             }
         }
         
@@ -237,6 +174,42 @@ namespace Resources {
         public static string Klimhal {
             get {
                 return ResourceManager.GetString("Klimhal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DVC Lilla.
+        /// </summary>
+        public static string Lilla {
+            get {
+                return ResourceManager.GetString("Lilla", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DVC Marrone.
+        /// </summary>
+        public static string Marrone {
+            get {
+                return ResourceManager.GetString("Marrone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DVC media.
+        /// </summary>
+        public static string media {
+            get {
+                return ResourceManager.GetString("media", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DVC Ocra.
+        /// </summary>
+        public static string Ocra {
+            get {
+                return ResourceManager.GetString("Ocra", resourceCulture);
             }
         }
         
@@ -286,6 +259,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to DVC Romboutslaan 40.
+        /// </summary>
+        public static string Romboutslaan {
+            get {
+                return ResourceManager.GetString("Romboutslaan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DVC Rosa.
+        /// </summary>
+        public static string Rosa {
+            get {
+                return ResourceManager.GetString("Rosa", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Samenwerkingsgebouw.
         /// </summary>
         public static string Samenwerkingsgebouw {
@@ -318,6 +309,15 @@ namespace Resources {
         public static string Veiligheidsregio {
             get {
                 return ResourceManager.GetString("Veiligheidsregio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DVC Verde.
+        /// </summary>
+        public static string Verde {
+            get {
+                return ResourceManager.GetString("Verde", resourceCulture);
             }
         }
         

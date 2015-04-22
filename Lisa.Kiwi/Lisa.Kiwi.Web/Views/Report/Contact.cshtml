@@ -3,22 +3,21 @@
 @{
 	ViewBag.Title = "Contact";
 }
-
-<h2>Contact</h2>
-
 @using (Html.BeginForm())
 {
-	<p>
+	<div class="field">
 		@Html.LabelFor(m => m.Name)
 		@Html.TextBoxFor(m => m.Name)
-	</p>
-	<p>
+	</div>
+	<div class="field">
 		@Html.LabelFor(m => m.PhoneNumber)
 		@Html.TextBoxFor(m => m.PhoneNumber)
-	</p>
-	<p>
+	</div>
+	<div class="field">
 		@Html.LabelFor(m => m.EmailAddress)
 		@Html.TextBoxFor(m => m.EmailAddress)
-	</p>
-	<input type="submit" value="Verzenden" />
+	</div>
+	<div class="submit">
+		<button type="submit"><img src="@Url.Content("~/Content/next.svg")"/></button>
+	</div>
 }

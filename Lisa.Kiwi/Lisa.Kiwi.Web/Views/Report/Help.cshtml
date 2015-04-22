@@ -1,18 +1,29 @@
-﻿@{
+﻿@model Report
+@{
 	ViewBag.Title = "Hulp";
 }
 
-<h2>Hulp</h2>
-<p>Wij zullen actie ondernemen. Verder kan je nog hulp zoeken bij de volgende personen:</p>
-<ul>
-	<li>
-		Je mentor
-	</li>
-	<li>
-		Vertrouwenspersoon
-	</li>
-	<li>
-		De landelijke hulplijn.<br />
-		Tel: 0900-0101
-	</li>
-</ul>
+<div class="body">
+	<div class="field">
+		<label></label>
+		<p>Wij zullen actie ondernemen. Verder kan je nog hulp zoeken bij de volgende personen:<br /> Je mentor, je vertrouwenspersoon, of de landelijke hulplijn (Tel: 0900-0101).</p>
+	</div>
+	<div class="grayLayer">
+		@Html.Partial("~/Views/Report/ReportPartials/_PartialReturnReportCategory.cshtml", Model)
+		@Html.Partial("~/Views/Report/ReportPartials/_PartialReturnReportLocation.cshtml", Model)
+		@Html.Partial("~/Views/Report/CategoryPartials/_PartialDetails" + Model.Category + ".cshtml", Model)
+		@if (Model.Perpetrator != null)
+				{
+					@Html.Partial("~/Views/Report/ReportPartials/_PartialReturnReportPerpetrator.cshtml", Model);
+								}
+
+		@if (Model.Contact != null)
+				{
+					@Html.Partial("~/Views/Report/ReportPartials/_PartialReturnReportContact.cshtml", Model);
+								}
+		@if (Model.Vehicle != null)
+				{
+					@Html.Partial("~/Views/Report/ReportPartials/_PartialReturnReportVehicle.cshtml", Model);
+								}
+	</div>
+</div>
