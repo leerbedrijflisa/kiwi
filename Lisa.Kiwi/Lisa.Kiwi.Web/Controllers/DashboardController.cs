@@ -75,6 +75,15 @@ namespace Lisa.Kiwi.Web
             return RedirectToAction("Details", new { viewModel.Id });
         }
 
+
+        public async Task<ActionResult> ToggleSolved(int id, bool currentSolved)
+        {
+            var report = new Report {Status = currentSolved ? StatusEnum.Open : StatusEnum.Solved};
+            await _reportProxy.PatchAsync(id, report);
+
+            return RedirectToAction("Index");
+        }
+
         private readonly ModelFactory _modelFactory = new ModelFactory();
         private Proxy<Report> _reportProxy = new Proxy<Report>(WebConfigurationManager.AppSettings["WebApiUrl"], "/reports/");
     }
