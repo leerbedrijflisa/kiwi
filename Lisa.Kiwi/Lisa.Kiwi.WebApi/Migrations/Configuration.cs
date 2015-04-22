@@ -20,7 +20,7 @@ namespace Lisa.Kiwi.WebApi
         protected override void Seed(KiwiContext context)
         {
 #if !DEBUG
-            Truncates(context);
+            //Truncates(context);
 #endif
             //// Set up our accounts
             CreateRoles(context);
