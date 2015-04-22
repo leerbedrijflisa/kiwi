@@ -1,116 +1,43 @@
-﻿@using Perpetrator = Resources.Perpetrator
-@model Report
-@{
-	Layout = null;
-}
+﻿@model Report
 
-<!doctype html>
-
-<html>
-<head>
-	<title>Leerpark</title>
-	<link href="~/Content/main.css" rel="stylesheet" type="text/css">
-</head>
-<body>
-	<h1>@Categories.ResourceManager.GetString(Model.Category):</h1>
-
-	<dl>
-		<dt>@PageItems.TypeDescription</dt>
-		<dd>@Categories.ResourceManager.GetString(Model.Category)</dd>
-
-		<dt>@PageItems.DateDescription</dt>
-		<dd>@Model.Created.ToString("dddd d MMMM HH:mm")</dd>
-
-		<dt>@PageItems.LocationDescription</dt>
-		@if (Model.Location != null)
-		{
-			<dd> @DashboardHelpers.NullCheck(Model.Location.Building) - @DashboardHelpers.NullCheck(Model.Location.Description) </dd>
-		}
-
-		<dt>@PageItems.StatusDescription</dt>
-		<dd>@Statuses.ResourceManager.GetString(Enum.GetName(typeof(StatusEnum), Model.Status) ?? Enum.GetName(typeof(StatusEnum), StatusEnum.Open))</dd>
-
-		<dt>@PageItems.VisibleDescription</dt>
-		<dd>@Statuses.ResourceManager.GetString("Visible" + Model.IsVisible)</dd>
+<div class="container">
+	@Html.Partial("~/Views/Report/ReportPartials/_PartialReturnReportCategory.cshtml", Model)
+	@Html.Partial("~/Views/Report/ReportPartials/_PartialReturnReportLocation.cshtml", Model)
+	@Html.Partial("~/Views/Report/CategoryPartials/_PartialDetails" + Model.Category + ".cshtml", Model)
 		
-		@Html.Partial("CategoryPartials/" + "_PartialDetails" + Model.Category, Model)
-
-	</dl>
+	@if (Model.Perpetrator != null)
+	{
+		@Html.Partial("~/Views/Report/ReportPartials/_PartialReturnReportPerpetrator.cshtml", Model);
+	}
 
 	@if (Model.Contact != null)
 	{
-		<h2>@PageItems.ResourceManager.GetString("Contact")</h2>
-		<dl>
-			<dt>@PageItems.ContactName</dt>
-			<dd>@DashboardHelpers.NullCheck(Model.Contact.Name)</dd>
-			<dt>@PageItems.ContactPhoneNumber</dt>
-			<dd>@DashboardHelpers.NullCheck(Model.Contact.PhoneNumber)</dd>
-
-			<dt>@PageItems.ContactEmail</dt>
-			<dd>@DashboardHelpers.NullCheck(Model.Contact.EmailAddress)</dd>
-		</dl>
+		@Html.Partial("~/Views/Report/ReportPartials/_PartialReturnReportContact.cshtml", Model);
 	}
-
-	@if (Model.Perpetrator != null)
-	{
-		<h2>@Perpetrator.Perpetrators</h2>
-		<dl>
-			<dt>@Perpetrator.Name</dt>
-			<dd>@DashboardHelpers.NullCheck(Model.Perpetrator.Name)</dd>
-
-			<dt>@Perpetrator.Sex</dt>
-			<dd>@DashboardHelpers.NullCheck(Sex.ResourceManager.GetString(Model.Perpetrator.Sex.ToString()))</dd>
-
-			<dt>@Perpetrator.SkinColor</dt>
-			<dd>@DashboardHelpers.NullCheck(SkinColor.ResourceManager.GetString(Model.Perpetrator.SkinColor.ToString()))</dd>
-
-			<dt>@Perpetrator.Clothing</dt>
-			<dd>@DashboardHelpers.NullCheck(Model.Perpetrator.Clothing)</dd>
-
-			<dt>@Perpetrator.MinAge</dt>
-			<dd>@DashboardHelpers.NullCheck(Model.Perpetrator.MinimumAge)</dd>
-
-			<dt>@Perpetrator.MaxAge</dt>
-			<dd>@DashboardHelpers.NullCheck(Model.Perpetrator.MaximumAge)</dd>
-
-			<dt>@Perpetrator.UniqueProp</dt>
-			<dd>@DashboardHelpers.NullCheck(Model.Perpetrator.UniqueProperties)</dd>
-		</dl>
-	}
-
 	@if (Model.Vehicle != null)
 	{
-		<h2>@ReportProperties.Vehicle</h2>
-		<dl>
-			<dt>@ReportProperties.VehicleBrand</dt>
-			<dd>@DashboardHelpers.NullCheck(Model.Vehicle.Brand)</dd>
-			<dt>@ReportProperties.VehicleColor</dt>
-			<dd>@DashboardHelpers.NullCheck(Model.Vehicle.Color)</dd>
-			<dt>@ReportProperties.VehicleNumberPlate</dt>
-			<dd>@DashboardHelpers.NullCheck(Model.Vehicle.NumberPlate)</dd>
-			<dt>@ReportProperties.VehicleAdditionalFeatures</dt>
-			<dd>@DashboardHelpers.NullCheck(Model.Vehicle.AdditionalFeatures)</dd>
-		</dl>
+		@Html.Partial("~/Views/Report/ReportPartials/_PartialReturnReportVehicle.cshtml", Model);
 	}
-
-<hr />
 
 	@using (Html.BeginForm())
 	{
-		<dl>
-			<dt>@PageItems.Status</dt>
-			<dd>
-				<label><input type="radio" name="Status" value="@StatusEnum.Open" @(Model.Status == StatusEnum.Open ? "checked=\"checked\"" : "") /> @Statuses.Open</label><br />
-				<label><input type="radio" name="Status" value="@StatusEnum.Transferred" @(Model.Status == StatusEnum.Transferred ? "checked=\"checked\"" : "") /> @Statuses.Transferred</label><br />
-				<label><input type="radio" name="Status" value="@StatusEnum.Solved" @(Model.Status == StatusEnum.Solved ? "checked=\"checked\"" : "") /> @Statuses.Solved</label><br />
-			</dd>
-
-			<dt>@PageItems.VisibleChange</dt>
-			<dd>@(!Model.IsVisible ? Html.CheckBox("IsVisible") : Html.CheckBox("IsVisible", new { @checked = "true" }))</dd>
-
-			<dd><input type="submit" value="Opslaan" /></dd>
-		</dl>
+		<div class="field">
+			<label><b>Status</b></label>
+		</div>
+		<div class="field">
+			<label>@PageItems.Status</label>
+			<ul class="radioList">
+				<li><input type="radio" name="Status" value="@StatusEnum.Open" @(Model.Status == StatusEnum.Open ? "checked=\"checked\"" : "")/> @Statuses.Open</li>
+				<li><input type="radio" name="Status" value="@StatusEnum.Transferred" @(Model.Status == StatusEnum.Transferred ? "checked=\"checked\"" : "")/> @Statuses.Transferred</li>
+				<li><input type="radio" name="Status" value="@StatusEnum.Solved" @(Model.Status == StatusEnum.Solved ? "checked=\"checked\"" : "")/> @Statuses.Solved</li>
+			</ul>
+		</div>
+		<div class="field">
+			<label>@PageItems.VisibleChange</label>
+			@(!Model.IsVisible ? Html.CheckBox("IsVisible") : Html.CheckBox("IsVisible", new {@checked = "true"}))
+		</div>
+		<div class="field">
+			<button type="submit">Status wijzigen</button>
+		</div>
 	}
-	<p>@Html.ActionLink("Ga terug naar de startpagina", "Index", "Dashboard", null, new { @class = "btn btn-default btn-report" })</p>
-</body>
-</html>
+</div>
