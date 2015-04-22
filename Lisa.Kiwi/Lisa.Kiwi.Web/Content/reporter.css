@@ -446,11 +446,13 @@ input#ParkeerplaatsBrandweerkazerne + label {
 }
 
 .button-container button,
-.button-container input[type=submit] {
+.button-container input[type=submit],
+.button-container a{
     padding: 6px 30px;
     margin-right: 8px;
     margin-bottom: 8px;
     border: none;
     background-color: #113;
     color: white;
+    text-decoration: none;
 }

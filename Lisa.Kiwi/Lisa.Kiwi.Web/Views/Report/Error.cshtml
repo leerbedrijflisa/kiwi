@@ -1,12 +1,15 @@
-﻿@{
+﻿@model Exception
+
+@{
     ViewBag.Title = "Error";
 }
 
 <div class="container">
-	<div class="field">
-		<label></label>
-		<p></p>
-	</div>
-	@Url.Action("index", "Report");
+    <div class="field">
+        <label>Er is een fout opgetreden!</label>
+        <div class="button-container">@Html.ActionLink("Probeer opnieuw", "index", "Report")</div>
+    </div>
 </div>
+
+<script>console.warn("@Model.Message"); console.info("@Model.StackTrace")</script>
 

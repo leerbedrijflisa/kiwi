@@ -35,9 +35,15 @@ namespace Lisa.Kiwi.Web
             catch (UnauthorizedAccessException)
             {
                 filterContext.Result = RedirectToAction("Login", "Account");
+            }
+            catch (Exception e)
+            {
+                filterContext.Result = View("Error", e);
+            }
+            finally
+            {
                 filterContext.ExceptionHandled = true;
             }
-
 
             base.OnException(filterContext);
         }

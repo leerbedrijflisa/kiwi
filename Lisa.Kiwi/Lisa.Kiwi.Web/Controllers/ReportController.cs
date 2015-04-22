@@ -11,6 +11,21 @@ namespace Lisa.Kiwi.Web
 {
     public class ReportController : Controller
     {
+        protected override void OnException(ExceptionContext filterContext)
+        {
+            try
+            {
+                throw filterContext.Exception;
+            }
+            catch (Exception e)
+            {
+                filterContext.Result = View("Error", e);
+                filterContext.ExceptionHandled = true;
+            }
+
+            base.OnException(filterContext);
+        }
+
         public ActionResult Index()
         {
             return View(new CategoryViewModel());
