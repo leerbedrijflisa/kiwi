@@ -5,7 +5,7 @@
 
     $('#DateOfTheft').datetimepicker({
         maxDate: +maxDate,
-        format: 'd/m/Y H:i',
+        format: 'm/d/Y H:i',
         defaultTime: timeStop,
         maxTime: +timeStop,
         step: 1,
