@@ -3,12 +3,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Lisa.Kiwi.Web
 {
-    public class LocationViewModel
+    public class AdditionalLocationViewModel
     {
-        // TODO: use resource files for display names
-
         [Required(ErrorMessage = ErrorMessages.RequiredError)]
-        [DisplayName("Gebouw *")]
-        public string Building { get; set; }
+        [DisplayName("Locatie *")]
+        public string AdditionalLocation { get; set; }
     }
 }

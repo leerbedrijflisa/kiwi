@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -55,6 +54,26 @@ namespace Lisa.Kiwi.Web
 
         [HttpPost]
         public async Task<ActionResult> Location(LocationViewModel viewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
+
+            var report = await GetCurrentReport();
+            _modelFactory.Modify(report, viewModel);
+            await _reportProxy.PatchAsync(report.Id, report);
+
+            return RedirectToAction("AdditionalLocation");
+        }
+
+        public ActionResult AdditionalLocation()
+        {
+            return View(new AdditionalLocationViewModel());
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> AdditionalLocation(AdditionalLocationViewModel viewModel)
         {
             if (!ModelState.IsValid)
             {

@@ -193,6 +193,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Time.resx</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\AdditionalLocationViewModel.cs" />
     <Compile Include="ViewModels\BullyingViewModel.cs" />
     <Compile Include="ViewModels\CategoryViewModel.cs" />
     <Compile Include="ViewModels\ContactRequiredViewModel.cs" />
@@ -356,6 +357,7 @@
     <Content Include="App_Code\ReportHelpers.cshtml" />
     <Content Include="Views\Report\Error.cshtml" />
     <Content Include="Views\Dashboard\Error.cshtml" />
+    <Content Include="Views\Report\AdditionalLocation.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -20,7 +20,15 @@ namespace Lisa.Kiwi.Web
                 report.Location = new Location();
             }
             report.Location.Building = viewModel.Building;
-            report.Location.Description = viewModel.Location;
+        }
+
+        public void Modify(Report report, AdditionalLocationViewModel viewModel)
+        {
+            if (report.Location == null)
+            {
+                report.Location = new Location();
+            }
+            report.Location.Description = viewModel.AdditionalLocation;
         }
 
         public void Modify(Report report, FirstAidViewModel viewModel)

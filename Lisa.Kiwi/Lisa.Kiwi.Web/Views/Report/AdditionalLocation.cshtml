@@ -1,0 +1,15 @@
+﻿@model AdditionalLocationViewModel
+@{
+    ViewBag.Title = "Aanvullende locatie";
+}
+
+@using (Html.BeginForm())
+{
+	<div class="field">
+		@Html.LabelFor(m => m.AdditionalLocation)
+		@Html.TextAreaFor(m => m.AdditionalLocation)
+	</div>
+	<div class="submit">
+		<button type="submit"><img src="@Url.Content("~/Content/next.svg")"/></button>
+	</div>
+}
