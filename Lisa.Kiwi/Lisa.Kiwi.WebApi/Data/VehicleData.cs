@@ -10,5 +10,6 @@ namespace Lisa.Kiwi.WebApi
         public string NumberPlate { get; set; }
         public string Color { get; set; }
         public string AdditionalFeatures { get; set; }
+        public VehicleTypeEnum? VehicleType { get; set; }
     }
 }

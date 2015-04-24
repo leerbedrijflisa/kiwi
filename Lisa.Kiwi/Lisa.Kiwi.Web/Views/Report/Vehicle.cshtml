@@ -1,9 +1,9 @@
 ﻿@model VehicleViewModel
 @{
-    ViewBag.Title = "Vehicle";
+	ViewBag.Title = "Vehicle";
 }
 <script>
-	$(document).ready(function() {
+	$(document).ready(function () {
 		$("#form-content").hide();
 	})
 </script>
@@ -14,19 +14,19 @@
 		<label>
 			Is er een voertuig betrokken bij deze melding?
 		</label>
-        <div>
-            <div class="button-container">
-                <button type="button" onclick="$('#form-content').show()">Ja</button>
-                <button type="submit" name="HasVehicle" value="false">Nee</button>
-            </div>
-        </div>
+		<div>
+			<div class="button-container">
+				<button type="button" onclick="$('#form-content').show()">Ja</button>
+				<button type="submit" name="HasVehicle" value="false">Nee</button>
+			</div>
+		</div>
 
 	</div>
-	
+
 	<div id="form-content">
 		<div class="field">
-			@Html.LabelFor(m => m.Color)
-			@Html.TextBoxFor(m => m.Color)
+			@Html.LabelFor(m => m.VehicleType)
+			@Html.DropDownListFor(m => m.VehicleType, Model.VehicleTypes)
 		</div>
 		<div class="field">
 			@Html.LabelFor(m => m.Brand)
@@ -37,12 +37,15 @@
 			@Html.TextBoxFor(m => m.NumberPlate)
 		</div>
 		<div class="field">
+			@Html.LabelFor(m => m.Color)
+			@Html.TextBoxFor(m => m.Color)
+		</div>
+		<div class="field">
 			@Html.LabelFor(m => m.AdditionalFeatures)
 			@Html.TextBoxFor(m => m.AdditionalFeatures)
 		</div>
 		<div class="submit">
 			<button type="submit" name="HasVehicle" value="true"><img src="@Url.Content("~/Content/next.svg")"/></button>
 		</div>
-		
 	</div>
 }

@@ -315,7 +315,7 @@ namespace Lisa.Kiwi.Web
 
         public ActionResult Vehicle()
         {
-            return View();
+            return View(new VehicleViewModel());
         }
 
         [HttpPost]
