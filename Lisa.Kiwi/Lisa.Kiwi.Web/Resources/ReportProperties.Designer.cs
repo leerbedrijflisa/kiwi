@@ -196,7 +196,8 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Zijn er nog kenmerken aan het voertuig?.
+        ///   Looks up a localized string similar to Bijzondere kenmerken aan het voertuig
+        ///.
         /// </summary>
         public static string VehicleAdditionalFeatures {
             get {
@@ -205,7 +206,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Wat is het merk van het voertuig?.
+        ///   Looks up a localized string similar to Eventueel merk van het voertuig.
         /// </summary>
         public static string VehicleBrand {
             get {
@@ -214,7 +215,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Wat is de kleur van het voertuig?.
+        ///   Looks up a localized string similar to Kleur van het voertuig.
         /// </summary>
         public static string VehicleColor {
             get {
@@ -223,11 +224,20 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Wat is het kenteken van het voertuig?.
+        ///   Looks up a localized string similar to Eventuele kenteken van het voeruig.
         /// </summary>
         public static string VehicleNumberPlate {
             get {
                 return ResourceManager.GetString("VehicleNumberPlate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type voertuig.
+        /// </summary>
+        public static string VehicleType {
+            get {
+                return ResourceManager.GetString("VehicleType", resourceCulture);
             }
         }
         

@@ -193,6 +193,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Time.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\VehicleTypes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VehicleTypes.resx</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\AdditionalLocationViewModel.cs" />
     <Compile Include="ViewModels\BullyingViewModel.cs" />
     <Compile Include="ViewModels\CategoryViewModel.cs" />
@@ -415,6 +420,11 @@
       <CustomToolNamespace>Resources</CustomToolNamespace>
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Time.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\VehicleTypes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>VehicleTypes.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
