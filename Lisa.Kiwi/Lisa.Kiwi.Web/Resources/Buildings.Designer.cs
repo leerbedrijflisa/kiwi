@@ -169,6 +169,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Grote Parkeerplaats.
+        /// </summary>
+        public static string GroteParkeerplaats {
+            get {
+                return ResourceManager.GetString("GroteParkeerplaats", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to DVC Indaco.
         /// </summary>
         public static string Indaco {

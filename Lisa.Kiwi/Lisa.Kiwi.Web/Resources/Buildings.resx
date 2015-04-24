@@ -207,4 +207,7 @@
   <data name="Wartburg" xml:space="preserve">
     <value>Wartburg college</value>
   </data>
+  <data name="GroteParkeerplaats" xml:space="preserve">
+    <value>Grote Parkeerplaats</value>
+  </data>
 </root>
