@@ -271,6 +271,7 @@ section.Solved {
 }
 
 .ParkeerplaatsDuurzaamheidsfabriek,
+.GroteParkeerplaats,
 .ParkeerplaatsBrandweerkazerne {
     background-image: url(DashboardBuildings/building-parkeerplaats-langeveldlaan.jpg);
 }
@@ -315,7 +316,7 @@ section.Solved {
     background-image: url(DashboardBuildings/building-wartburg.jpg);
 }
 
-.DVCMedia {
+.Media {
     background-image: url(DashboardBuildings/building-davinci-media.jpg);
 }
 

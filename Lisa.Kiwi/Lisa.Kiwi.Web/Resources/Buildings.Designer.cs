@@ -216,9 +216,9 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to DVC media.
         /// </summary>
-        public static string media {
+        public static string Media {
             get {
-                return ResourceManager.GetString("media", resourceCulture);
+                return ResourceManager.GetString("Media", resourceCulture);
             }
         }
         
