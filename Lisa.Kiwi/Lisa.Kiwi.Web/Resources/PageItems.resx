@@ -127,13 +127,13 @@
     <value>Contact</value>
   </data>
   <data name="ContactEmail" xml:space="preserve">
-    <value>E-mailadres van de melder (Indien ingevult):</value>
+    <value>E-mailadres van de melder (Indien ingevuld):</value>
   </data>
   <data name="ContactName" xml:space="preserve">
-    <value>Naam van de melder (Indien ingevult):</value>
+    <value>Naam van de melder (Indien ingevuld):</value>
   </data>
   <data name="ContactPhoneNumber" xml:space="preserve">
-    <value>Telefoonnummer van de melder (Indien ingevult):</value>
+    <value>Telefoonnummer van de melder (Indien ingevuld):</value>
   </data>
   <data name="Date" xml:space="preserve">
     <value>Datum:</value>
