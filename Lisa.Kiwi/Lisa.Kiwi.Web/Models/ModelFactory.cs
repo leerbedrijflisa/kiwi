@@ -141,7 +141,8 @@ namespace Lisa.Kiwi.Web
                 Brand = viewModel.Brand,
                 Color = viewModel.Color,
                 NumberPlate = viewModel.NumberPlate,
-                AdditionalFeatures = viewModel.AdditionalFeatures
+                AdditionalFeatures = viewModel.AdditionalFeatures,
+                VehicleType = viewModel.VehicleType
             };
         }
     }

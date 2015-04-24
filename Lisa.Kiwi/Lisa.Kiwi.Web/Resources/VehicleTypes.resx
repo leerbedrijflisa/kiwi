@@ -117,77 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BullyVictim" xml:space="preserve">
-    <value>Het slachtoffer is:</value>
+  <data name="Bicycle" xml:space="preserve">
+    <value>Fiets</value>
   </data>
-  <data name="DateOfTheft" xml:space="preserve">
-    <value>Tijd van overval:</value>
+  <data name="Car" xml:space="preserve">
+    <value>Auto</value>
   </data>
-  <data name="Description" xml:space="preserve">
-    <value>Verdere beschijving:</value>
+  <data name="Moped" xml:space="preserve">
+    <value>Brommer</value>
   </data>
-  <data name="DrugsDealing" xml:space="preserve">
-    <value>Het wordt verhandelt.</value>
+  <data name="Motorcycle" xml:space="preserve">
+    <value>Motor</value>
   </data>
-  <data name="DrugsUsing" xml:space="preserve">
-    <value>Het wordt gebruikt.</value>
-  </data>
-  <data name="FightCount" xml:space="preserve">
-    <value>Er waren zoveel mensen betrokken:</value>
-  </data>
-  <data name="IsUnconsious" xml:space="preserve">
-    <value>Is het slachtoffer bewusteloos?</value>
-  </data>
-  <data name="StolenObject" xml:space="preserve">
-    <value>Gestolen Voorwerp:</value>
-  </data>
-  <data name="UsingOrDealing" xml:space="preserve">
-    <value>Word de drugs gebruikt of verhandeld:</value>
-  </data>
-  <data name="WeaponLocation" xml:space="preserve">
-    <value>Hier is het wapen:</value>
-  </data>
-  <data name="WeaponPresent" xml:space="preserve">
-    <value>Het betrokken wapen is een:</value>
-  </data>
-  <data name="WeaponType" xml:space="preserve">
-    <value>Om wat voor wapen is het:</value>
-  </data>
-  <data name="_False" xml:space="preserve">
-    <value>Nee</value>
-  </data>
-  <data name="_null" xml:space="preserve">
-    <value>Hier is geen waarde voor ingevuld.</value>
-  </data>
-  <data name="_True" xml:space="preserve">
-    <value>Ja</value>
-  </data>
-  <data name="VehicleColor" xml:space="preserve">
-    <value>Kleur van het voertuig</value>
-  </data>
-  <data name="VehicleNumberPlate" xml:space="preserve">
-    <value>Eventuele kenteken van het voeruig</value>
-  </data>
-  <data name="VehicleAdditionalFeatures" xml:space="preserve">
-    <value>Bijzondere kenmerken aan het voertuig
-</value>
-  </data>
-  <data name="VehicleBrand" xml:space="preserve">
-    <value>Eventueel merk van het voertuig</value>
-  </data>
-  <data name="Vehicle" xml:space="preserve">
-    <value>Voertuig</value>
-  </data>
-  <data name="VictimDescription" xml:space="preserve">
-    <value>Informatie over het slachtoffer:</value>
-  </data>
-  <data name="FalseFirstAid" xml:space="preserve">
-    <value>Het slachtoffer is niet bewusteloos.</value>
-  </data>
-  <data name="TrueFirstAid" xml:space="preserve">
-    <value>Het slachtoffer is bewusteloos.</value>
-  </data>
-  <data name="VehicleType" xml:space="preserve">
-    <value>Type voertuig</value>
+  <data name="Unknown" xml:space="preserve">
+    <value>Onbekend</value>
   </data>
 </root>

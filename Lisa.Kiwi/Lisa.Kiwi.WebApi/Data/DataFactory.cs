@@ -65,7 +65,8 @@ namespace Lisa.Kiwi.WebApi
                 Brand = vehicle.Brand,
                 Color = vehicle.Color,
                 NumberPlate = vehicle.NumberPlate,
-                AdditionalFeatures = vehicle.AdditionalFeatures
+                AdditionalFeatures = vehicle.AdditionalFeatures,
+                VehicleType = vehicle.VehicleType
             };
 
             return vehicleData;
@@ -125,6 +126,10 @@ namespace Lisa.Kiwi.WebApi
             data.Brand = json["brand"] != null ? json.Value<string>("brand") : data.Brand;
             data.Color = json["color"] != null ? json.Value<string>("color") : data.Color;
             data.NumberPlate = json["numberPlate"] != null ? json.Value<string>("numberPlate") : data.NumberPlate;
+
+            var vehicleTypeString = json["vehicleType"] != null ? json.Value<string>("vehicleType") : null;
+            data.VehicleType = vehicleTypeString != null ? (VehicleTypeEnum) Enum.Parse(typeof (VehicleTypeEnum), vehicleTypeString, true) : VehicleTypeEnum.Unknown;
+
             return data;
         }
     }
