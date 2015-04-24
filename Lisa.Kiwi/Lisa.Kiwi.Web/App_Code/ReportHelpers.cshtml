@@ -1,12 +1,12 @@
-﻿@helper LocationCheck(string location)
+@helper LocationCheck(string location)
 {
 	string[] normalLocations = { "Buiten", "Arcobaleno", "Azzurro", "Bianco", "Celeste", "Giallo", "Indaco", "Lilla", "Marrone", "Rosa", "Verde", "Ocra", "Romboutslaan", "Veiligheidsregio", "Sporthal", "Klimhal", "Bogermanschool", "Appartementen", "Wartburg", "Media", "Orthodontist" };
 	int pos = Array.IndexOf(normalLocations, location);
 			
 	if (pos >- 1)
 	{
-			location = Resources.Buildings.ResourceManager.GetString(location);
-			@location
+		location = Resources.Buildings.ResourceManager.GetString(location);
+		@location
 	}
 	else
 	{
@@ -14,10 +14,11 @@
 		{
 					location = "Parkeerplaats Duurzaamheids-\nfabriek";		
 		}
-        if (location == "BetaaldeParkeerplaats")
-        {
-                    location = "Parkeerplaats Duurzaamheids-\nfabriek";
-        }            
+		
+		if (location == "BetaaldeParkeerplaats")
+		{
+		            location = "Parkeerplaats Duurzaamheids-\nfabriek";
+		}            
 		else if(location == "ParkeerplaatsBrandweerkazerne")
 		{
 					location = "Parkeerplaats Brandweer-\nkazerne";
@@ -41,7 +42,8 @@
 		else if (location == "Schippersinternaat")
 		{
 					location = "Schippers-\ninternaat";
-		}		
+		}
+		
 		location = location.Replace("\n", Environment.NewLine);
 		@location
 	}
