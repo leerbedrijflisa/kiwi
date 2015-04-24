@@ -70,7 +70,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hier is geen waarde voor ingevult..
+        ///   Looks up a localized string similar to Hier is geen waarde voor ingevuld..
         /// </summary>
         public static string _null {
             get {
