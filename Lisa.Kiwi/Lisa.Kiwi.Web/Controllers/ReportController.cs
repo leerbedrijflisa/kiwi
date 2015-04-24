@@ -173,7 +173,7 @@ namespace Lisa.Kiwi.Web
 
             // TODO: add error handling
 
-            return RedirectToAction("Vehicle");
+            return RedirectToAction("Contact");
         }
 
         public ActionResult Weapons()
