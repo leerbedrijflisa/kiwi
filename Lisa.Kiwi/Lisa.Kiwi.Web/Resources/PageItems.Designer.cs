@@ -88,7 +88,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to E-mailadres van de melder (Indien ingevult):.
+        ///   Looks up a localized string similar to E-mailadres van de melder (Indien ingevuld):.
         /// </summary>
         public static string ContactEmail {
             get {
@@ -97,7 +97,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Naam van de melder (Indien ingevult):.
+        ///   Looks up a localized string similar to Naam van de melder (Indien ingevuld):.
         /// </summary>
         public static string ContactName {
             get {
@@ -106,7 +106,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Telefoonnummer van de melder (Indien ingevult):.
+        ///   Looks up a localized string similar to Telefoonnummer van de melder (Indien ingevuld):.
         /// </summary>
         public static string ContactPhoneNumber {
             get {
