@@ -11,7 +11,6 @@ namespace Lisa.Kiwi.Web
         public string StolenObject { get; set; }
 
         [Required(ErrorMessage = ErrorMessages.RequiredError)]
-        [DataType(DataType.Date)]
         [DisplayName("Op welke datum is het gestolen? *")]
         public DateTime DateOfTheft { get; set; }
 
