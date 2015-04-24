@@ -189,8 +189,8 @@
   <data name="ParkeerplaatsDuurzaamheidsfabriek" xml:space="preserve">
     <value>Parkeerplaats Duurzaamheidsfabriek</value>
   </data>
-  <data name="ParkeerplaatsOcra" xml:space="preserve">
-    <value>Parkeerplaats Ocra</value>
+  <data name="BetaaldeParkeerplaats" xml:space="preserve">
+    <value>Betaalde Parkeerplaats</value>
   </data>
   <data name="Samenwerkingsgebouw" xml:space="preserve">
     <value>Samenwerkingsgebouw</value>

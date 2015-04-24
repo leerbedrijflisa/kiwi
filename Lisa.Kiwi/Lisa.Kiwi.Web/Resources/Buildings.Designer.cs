@@ -88,6 +88,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Betaalde Parkeerplaats.
+        /// </summary>
+        public static string BetaaldeParkeerplaats {
+            get {
+                return ResourceManager.GetString("BetaaldeParkeerplaats", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to DVC Bianco.
         /// </summary>
         public static string Bianco {
@@ -246,15 +255,6 @@ namespace Resources {
         public static string ParkeerplaatsDuurzaamheidsfabriek {
             get {
                 return ResourceManager.GetString("ParkeerplaatsDuurzaamheidsfabriek", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Parkeerplaats Ocra.
-        /// </summary>
-        public static string ParkeerplaatsOcra {
-            get {
-                return ResourceManager.GetString("ParkeerplaatsOcra", resourceCulture);
             }
         }
         

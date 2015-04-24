@@ -265,7 +265,7 @@ section.Solved {
     background-image: url(DashboardBuildings/building-romboutslaan.jpg);
 }
 
-.ParkeerplaatsOcra,
+.BetaaldeParkeerplaats,
 .Buiten {
     background-image: url(DashboardBuildings/building-parkeerplaats-betaald.jpg);
 }
