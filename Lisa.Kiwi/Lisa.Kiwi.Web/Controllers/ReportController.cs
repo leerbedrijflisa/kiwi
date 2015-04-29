@@ -12,16 +12,9 @@ namespace Lisa.Kiwi.Web
     {
         protected override void OnException(ExceptionContext filterContext)
         {
-            try
-            {
-                throw filterContext.Exception;
-            }
-            catch (Exception e)
-            {
-                filterContext.Result = View("Error", e);
-                filterContext.ExceptionHandled = true;
-            }
-
+            filterContext.Result = View("Error", filterContext.Exception);
+            filterContext.ExceptionHandled = true;
+            
             base.OnException(filterContext);
         }
 

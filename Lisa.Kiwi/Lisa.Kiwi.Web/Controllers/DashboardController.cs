@@ -27,23 +27,18 @@ namespace Lisa.Kiwi.Web
         }
 
         protected override void OnException(ExceptionContext filterContext)
+        
         {
-            try
-            {
-                throw filterContext.Exception;
-            }
-            catch (UnauthorizedAccessException)
+            if (filterContext.Exception.GetType() == typeof (UnauthorizedAccessException))
             {
                 filterContext.Result = RedirectToAction("Login", "Account");
             }
-            catch (Exception e)
+            else
             {
-                filterContext.Result = View("Error", e);
+                filterContext.Result = View("Error", filterContext.Exception);
             }
-            finally
-            {
-                filterContext.ExceptionHandled = true;
-            }
+
+            filterContext.ExceptionHandled = true;
 
             base.OnException(filterContext);
         }
