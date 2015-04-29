@@ -7,8 +7,6 @@ using Microsoft.Owin.Security.OAuth;
 using Owin;
 using Microsoft.AspNet.SignalR;
 
-[assembly: OwinStartup(typeof(Lisa.Kiwi.WebApi.Startup))]
-
 namespace Lisa.Kiwi.WebApi
 {
     public class Startup

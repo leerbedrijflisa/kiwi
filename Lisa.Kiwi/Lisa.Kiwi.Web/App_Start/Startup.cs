@@ -1,7 +1,4 @@
-﻿using Microsoft.Owin;
-using Owin;
-
-[assembly: OwinStartup(typeof(Lisa.Kiwi.Web.Startup))]
+﻿using Owin;
 
 namespace Lisa.Kiwi.Web
 {
