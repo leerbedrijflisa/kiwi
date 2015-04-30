@@ -32,9 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Lisa.Common, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Lisa.Common, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Lisa.Common.1.0.2\lib\portable-net45+sl5+wp8+win8\Lisa.Common.dll</HintPath>
+      <HintPath>..\packages\Lisa.Common.1.0.4\lib\portable-net45+sl5+wp8+win8\Lisa.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks">
       <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
