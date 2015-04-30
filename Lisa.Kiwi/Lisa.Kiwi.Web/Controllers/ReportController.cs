@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -412,7 +414,7 @@ namespace Lisa.Kiwi.Web
 
         protected override void OnActionExecuting(ActionExecutingContext context)
         {
-            _reportProxy = new Proxy<Report>(WebConfigurationManager.AppSettings["WebApiUrl"] + "reports");
+            CreateReportProxy();
 
             var tokenCookie = Request.Cookies["token"];
             if (tokenCookie != null)
@@ -454,6 +456,30 @@ namespace Lisa.Kiwi.Web
             }
             var reportId = Int32.Parse(cookie.Value);
             return await _reportProxy.GetAsync(reportId);
+        }
+
+        private void CreateReportProxy()
+        {
+            string url = null;
+
+#if DEBUG
+            if (FiddlerAvailable())
+            {
+                url = WebConfigurationManager.AppSettings["WebApiFiddlerUrl"];
+            }
+#endif
+            if (string.IsNullOrEmpty(url))
+            {
+                url = WebConfigurationManager.AppSettings["WebApiUrl"];
+            }
+
+            _reportProxy = new Proxy<Report>(url + "reports");
+        }
+
+        private bool FiddlerAvailable()
+        {
+            return Process.GetProcesses()
+                .Any(process => process.ProcessName.Contains("Fiddler"));
         }
 
         private Proxy<Report> _reportProxy;
