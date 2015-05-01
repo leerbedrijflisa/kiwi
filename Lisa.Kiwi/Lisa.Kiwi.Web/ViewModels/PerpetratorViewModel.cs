@@ -26,8 +26,7 @@ namespace Lisa.Kiwi.Web
         [DisplayName("Tussen welke leeftijd is de dader?")]
         public string AgeRange { get; set; }
 
-        [Required(ErrorMessage = ErrorMessages.RequiredError)]
-        [DisplayName("Zijn er opvallende dingen te zien aan de dader? *")]
+        [DisplayName("Zijn er opvallende dingen te zien aan de dader?")]
         public string UniqueProperties { get; set; }
 
         public IEnumerable<SelectListItem> SkinColors

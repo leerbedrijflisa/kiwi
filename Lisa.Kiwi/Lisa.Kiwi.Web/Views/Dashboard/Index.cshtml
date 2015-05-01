@@ -65,7 +65,7 @@
                 </a>
                 <ul class="options">
                     <li><a href="@Url.Action("ToggleSolved", new { id = report.Id, currentSolved = report.Status == StatusEnum.Solved})"><img src="~/Content/done.svg"></a></li>
-                    <li><a href="@Url.Action("Details", new { id = report.Id })"><img src="~/Content/show.svg"></a></li>
+                    <li><a href="@Url.Action("ToggleVisible", new { id = report.Id, Isvisible = report.IsVisible == false })"><img src="~/Content/show.svg"></a></li>
                 </ul>
             </article>
         </section>
