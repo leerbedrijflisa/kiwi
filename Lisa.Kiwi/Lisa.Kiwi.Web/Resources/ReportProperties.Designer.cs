@@ -88,7 +88,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Het slachtoffer is:.
+        ///   Looks up a localized string similar to Het slachtoffer is.
         /// </summary>
         public static string BullyVictim {
             get {
@@ -196,8 +196,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bijzondere kenmerken aan het voertuig
-        ///.
+        ///   Looks up a localized string similar to Bijzondere kenmerken van het voertuig.
         /// </summary>
         public static string VehicleAdditionalFeatures {
             get {
@@ -224,7 +223,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Eventuele kenteken van het voeruig.
+        ///   Looks up a localized string similar to Eventuele kenteken van het voertuig.
         /// </summary>
         public static string VehicleNumberPlate {
             get {

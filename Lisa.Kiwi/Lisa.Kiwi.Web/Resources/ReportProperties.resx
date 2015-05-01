@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BullyVictim" xml:space="preserve">
-    <value>Het slachtoffer is:</value>
+    <value>Het slachtoffer is</value>
   </data>
   <data name="DateOfTheft" xml:space="preserve">
     <value>Tijd van overval</value>
@@ -142,7 +142,7 @@
     <value>Gestolen voorwerp</value>
   </data>
   <data name="UsingOrDealing" xml:space="preserve">
-    <value>Word de drugs gebruikt of verhandeld:</value>
+    <value>Wordt de drugs gebruikt of verhandeld</value>
   </data>
   <data name="WeaponLocation" xml:space="preserve">
     <value>Locatie van het wapen</value>
@@ -166,11 +166,10 @@
     <value>Kleur van het voertuig</value>
   </data>
   <data name="VehicleNumberPlate" xml:space="preserve">
-    <value>Eventuele kenteken van het voeruig</value>
+    <value>Eventuele kenteken van het voertuig</value>
   </data>
   <data name="VehicleAdditionalFeatures" xml:space="preserve">
-    <value>Bijzondere kenmerken aan het voertuig
-</value>
+    <value>Bijzondere kenmerken van het voertuig</value>
   </data>
   <data name="VehicleBrand" xml:space="preserve">
     <value>Eventueel merk van het voertuig</value>
