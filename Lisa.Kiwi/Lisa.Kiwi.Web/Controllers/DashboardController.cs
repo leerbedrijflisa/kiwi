@@ -104,6 +104,14 @@ namespace Lisa.Kiwi.Web
             return RedirectToAction("Index");
         }
 
+        public async Task<ActionResult> ToggleVisible(int id, bool IsVisible)
+        {
+            var report = new Report { IsVisible = IsVisible ? true : false };
+            await _reportProxy.PatchAsync(id, report);
+
+            return RedirectToAction("Index");
+        }
+
         private readonly ModelFactory _modelFactory = new ModelFactory();
         private Proxy<Report> _reportProxy = new Proxy<Report>(WebConfigurationManager.AppSettings["WebApiUrl"] + "reports");
     }
