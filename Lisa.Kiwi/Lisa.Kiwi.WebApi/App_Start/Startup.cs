@@ -5,7 +5,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Cors;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
-using Microsoft.AspNet.SignalR;
+
 
 namespace Lisa.Kiwi.WebApi
 {
@@ -16,12 +16,15 @@ namespace Lisa.Kiwi.WebApi
             // Make sure the database is updated to the latest version. This effectively runs Update-Database, even when running in Azure.
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<KiwiContext, Configuration>());
 
+            /*
             var signalRConfig = new HubConfiguration()
             {
                 EnableJSONP = true
             };
             app.MapSignalR("/signalr/signalr", signalRConfig);
 
+            */
+             
             var config = new HttpConfiguration();
             ConfigureOAuth(app);
 
