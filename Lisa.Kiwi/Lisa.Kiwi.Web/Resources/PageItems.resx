@@ -126,6 +126,9 @@
   <data name="Contact" xml:space="preserve">
     <value>Contact</value>
   </data>
+  <data name="ContactDescription" xml:space="preserve">
+    <value>U kunt hier uw contactgegevens achterlaten (dit is niet verplicht). Hiermee kunnen wij indien we vragen of opmerkingen hebben contact met uw opnemen.</value>
+  </data>
   <data name="ContactEmail" xml:space="preserve">
     <value>E-mailadres van de melder (Indien ingevuld):</value>
   </data>
@@ -135,17 +138,26 @@
   <data name="ContactPhoneNumber" xml:space="preserve">
     <value>Telefoonnummer van de melder (Indien ingevuld):</value>
   </data>
+  <data name="ContactRequiredDescription" xml:space="preserve">
+    <value>Wij willen contact met u opnemen om de melding verder af te handelen. Vul hier uw contactgegevens in.</value>
+  </data>
   <data name="Date" xml:space="preserve">
     <value>Datum:</value>
   </data>
   <data name="DateDescription" xml:space="preserve">
     <value>Tijdstip van de melding:</value>
   </data>
+  <data name="DoneMessage" xml:space="preserve">
+    <value>Bedankt voor uw melding!</value>
+  </data>
   <data name="Location" xml:space="preserve">
     <value>Locatie:</value>
   </data>
   <data name="LocationDescription" xml:space="preserve">
     <value>Locatie en beschrijving:</value>
+  </data>
+  <data name="LocationDetailedDescription" xml:space="preserve">
+    <value>Wat is de precieze plek waar het gebeurd is op uw locatie? (Bijvoorbeeld het lokaal)</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Status:</value>

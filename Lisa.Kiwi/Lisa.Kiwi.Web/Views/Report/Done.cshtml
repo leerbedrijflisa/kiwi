@@ -2,8 +2,12 @@
 
 
 <div class="container">
-@using (Html.BeginForm())
+	@using (Html.BeginForm())
 {
+	<div class="form">
+		<label></label>
+		<p>@Resources.PageItems.DoneMessage</p>
+	</div>
 	if (Model.Category != null)
 	{
 		@Html.Partial("~/Views/Report/ReportPartials/_PartialReturnReportCategory.cshtml", Model)
@@ -13,7 +17,7 @@
 	{
 	@Html.Partial("~/Views/Report/ReportPartials/_PartialReturnReportLocation.cshtml", Model)
 	}
-		
+
 	if (Model.Perpetrator != null)
 	{
 			@Html.Partial("~/Views/Report/ReportPartials/_PartialReturnReportPerpetrator.cshtml", Model);
@@ -21,11 +25,11 @@
 
 	if (Model.Contact != null)
 	{
-			@Html.Partial("~/Views/Report/ReportPartials/_PartialReturnReportContact.cshtml", Model);	
-	}	
+			@Html.Partial("~/Views/Report/ReportPartials/_PartialReturnReportContact.cshtml", Model);
+	}
 	if (Model.Vehicle != null)
 	{
-			@Html.Partial("~/Views/Report/ReportPartials/_PartialReturnReportVehicle.cshtml", Model);		
+			@Html.Partial("~/Views/Report/ReportPartials/_PartialReturnReportVehicle.cshtml", Model);
 	}
 	<input type="hidden" name="category" value="@Model.Category" />
 	<div class="submit">

@@ -15,9 +15,10 @@ namespace Lisa.Kiwi.Web
     {
         protected override void OnException(ExceptionContext filterContext)
         {
-            filterContext.Result = View("Error", filterContext.Exception);
+            filterContext.Result = filterContext.Exception.GetType() == typeof(UnauthorizedAccessException) ? View("SessionExpired") : View("Error", filterContext.Exception);
+
             filterContext.ExceptionHandled = true;
-            
+
             base.OnException(filterContext);
         }
 
@@ -276,7 +277,7 @@ namespace Lisa.Kiwi.Web
         public async Task<ActionResult> Perpetrator(PerpetratorViewModel viewModel, bool? hasVictim)
         {
             var victim = hasVictim.HasValue && hasVictim.Value;
-    
+
             if (!ModelState.IsValid)
             {
                 return View(viewModel);

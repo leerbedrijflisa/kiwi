@@ -318,5 +318,6 @@ form .submit button:active img {
     border: none;
     background-color: #113;
     color: white;
+    cursor: pointer;
     text-decoration: none;
 }

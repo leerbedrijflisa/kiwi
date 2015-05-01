@@ -6,6 +6,10 @@
 @using (Html.BeginForm())
 {
 	<div class="field">
+		<label></label>
+		<p>@Resources.PageItems.ContactRequiredDescription</p>
+	</div>
+	<div class="field">
 		<label>@DisplayNames.Name &#42;</label>
 		@Html.TextBoxFor(m => m.Name)
 	</div>

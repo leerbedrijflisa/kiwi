@@ -104,7 +104,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Buildings.resx</DependentUpon>
     </Compile>
-    <Compile Include="Resources\PageItems.Designer.cs">
+    <Compile Include="Resources\PageItems1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PageItems.resx</DependentUpon>
@@ -316,6 +316,7 @@
     <Content Include="Views\Report\Error.cshtml" />
     <Content Include="Views\Dashboard\Error.cshtml" />
     <Content Include="Views\Report\AdditionalLocation.cshtml" />
+    <Content Include="Views\Report\SessionExpired.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -351,8 +352,8 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\PageItems.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>PageItems.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Resources</CustomToolNamespace>
+      <LastGenOutput>PageItems1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Sex.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
