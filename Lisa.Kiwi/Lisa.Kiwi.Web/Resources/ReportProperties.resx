@@ -121,10 +121,10 @@
     <value>Het slachtoffer is:</value>
   </data>
   <data name="DateOfTheft" xml:space="preserve">
-    <value>Tijd van overval:</value>
+    <value>Tijd van overval</value>
   </data>
   <data name="Description" xml:space="preserve">
-    <value>Verdere beschijving:</value>
+    <value>Verdere beschijving</value>
   </data>
   <data name="DrugsDealing" xml:space="preserve">
     <value>Het wordt verhandelt.</value>
@@ -133,25 +133,25 @@
     <value>Het wordt gebruikt.</value>
   </data>
   <data name="FightCount" xml:space="preserve">
-    <value>Er waren zoveel mensen betrokken:</value>
+    <value>Aantal betrokkenen</value>
   </data>
   <data name="IsUnconsious" xml:space="preserve">
     <value>Is het slachtoffer bewusteloos?</value>
   </data>
   <data name="StolenObject" xml:space="preserve">
-    <value>Gestolen Voorwerp:</value>
+    <value>Gestolen voorwerp</value>
   </data>
   <data name="UsingOrDealing" xml:space="preserve">
     <value>Word de drugs gebruikt of verhandeld:</value>
   </data>
   <data name="WeaponLocation" xml:space="preserve">
-    <value>Hier is het wapen:</value>
+    <value>Locatie van het wapen</value>
   </data>
   <data name="WeaponPresent" xml:space="preserve">
-    <value>Het betrokken wapen is een:</value>
+    <value>Er een wapen bij betrokken</value>
   </data>
   <data name="WeaponType" xml:space="preserve">
-    <value>Om wat voor wapen is het:</value>
+    <value>Om wat voor wapen is het</value>
   </data>
   <data name="_False" xml:space="preserve">
     <value>Nee</value>
@@ -179,7 +179,7 @@
     <value>Voertuig</value>
   </data>
   <data name="VictimDescription" xml:space="preserve">
-    <value>Informatie over het slachtoffer:</value>
+    <value>Informatie over het slachtoffer</value>
   </data>
   <data name="FalseFirstAid" xml:space="preserve">
     <value>Het slachtoffer is niet bewusteloos.</value>

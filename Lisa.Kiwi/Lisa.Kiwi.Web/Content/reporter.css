@@ -232,6 +232,7 @@ form .field button {
     font-family: Source Sans Pro;
     font-size: 12pt;
     margin: 15px 0 0 30px;
+    cursor: pointer;
 }
 
 form .submit {
