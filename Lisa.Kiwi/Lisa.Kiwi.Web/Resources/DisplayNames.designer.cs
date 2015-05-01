@@ -88,7 +88,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to E-mail adres.
+        ///   Looks up a localized string similar to E-mailadres.
         /// </summary>
         public static string EmailAddress {
             get {
