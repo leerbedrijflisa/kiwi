@@ -70,7 +70,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Opgelost.
+        ///   Looks up a localized string similar to Afgehandeld.
         /// </summary>
         public static string Solved {
             get {
@@ -79,7 +79,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Overgedragen.
+        ///   Looks up a localized string similar to Doorverwezen.
         /// </summary>
         public static string Transferred {
             get {

@@ -127,7 +127,7 @@
     <value>Verdere beschijving</value>
   </data>
   <data name="DrugsDealing" xml:space="preserve">
-    <value>Het wordt verhandelt.</value>
+    <value>Het wordt verhandeld.</value>
   </data>
   <data name="DrugsUsing" xml:space="preserve">
     <value>Het wordt gebruikt.</value>
@@ -148,10 +148,10 @@
     <value>Locatie van het wapen</value>
   </data>
   <data name="WeaponPresent" xml:space="preserve">
-    <value>Er een wapen bij betrokken</value>
+    <value>Er is een wapen bij betrokken</value>
   </data>
   <data name="WeaponType" xml:space="preserve">
-    <value>Om wat voor wapen is het</value>
+    <value>Om wat voor wapen gaat het</value>
   </data>
   <data name="_False" xml:space="preserve">
     <value>Nee</value>
@@ -166,13 +166,13 @@
     <value>Kleur van het voertuig</value>
   </data>
   <data name="VehicleNumberPlate" xml:space="preserve">
-    <value>Eventuele kenteken van het voertuig</value>
+    <value>Kenteken van het voertuig</value>
   </data>
   <data name="VehicleAdditionalFeatures" xml:space="preserve">
     <value>Bijzondere kenmerken van het voertuig</value>
   </data>
   <data name="VehicleBrand" xml:space="preserve">
-    <value>Eventueel merk van het voertuig</value>
+    <value>Merk van het voertuig</value>
   </data>
   <data name="Vehicle" xml:space="preserve">
     <value>Voertuig</value>

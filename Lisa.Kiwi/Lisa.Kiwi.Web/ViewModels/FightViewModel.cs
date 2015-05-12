@@ -5,7 +5,7 @@ namespace Lisa.Kiwi.Web
 {
     public class FightViewModel
     {
-        [DisplayName("Hoeveel zijn er aan het vechten? ")]
+        [DisplayName("Hoeveel zijn er aan het vechten?")]
         public int FighterCount { get; set; }
 
         [DisplayName("Zijn er wapens bij betrokken?")]

@@ -10,7 +10,7 @@ namespace Lisa.Kiwi.Web
         public string Description { get; set; }
 
         [Required(ErrorMessage = ErrorMessages.RequiredError)]
-        [DisplayName("Wie word er gepest? *")]
+        [DisplayName("Wie wordt er gepest? *")]
         public string VictimName { get; set; }
 
         public bool HasVictim { get; set; }

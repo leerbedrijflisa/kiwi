@@ -121,10 +121,10 @@
     <value>Open</value>
   </data>
   <data name="Solved" xml:space="preserve">
-    <value>Opgelost</value>
+    <value>Afgehandeld</value>
   </data>
   <data name="Transferred" xml:space="preserve">
-    <value>Overgedragen</value>
+    <value>Doorverwezen</value>
   </data>
   <data name="VisibleFalse" xml:space="preserve">
     <value>Nee</value>
