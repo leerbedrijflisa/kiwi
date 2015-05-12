@@ -17,7 +17,14 @@
 <body>
     @foreach (var report in Model.OrderBy(t => t.Status).ThenByDescending(t => t.Created))
     {
+      // Don't show report until we know where the problem happened.
       if (report.Location == null)
+      {
+        continue;
+      }
+
+      // Don't show hidden reports to anyone but the head of security.
+      if (!User.IsInRole("Administrator") && !report.IsVisible)
       {
         continue;
       }
@@ -70,7 +77,15 @@
                 </a>
                 <ul class="options">
                     <li><a href="@Url.Action("ToggleSolved", new { id = report.Id, currentSolved = report.Status == StatusEnum.Solved})"><img src="~/Content/done.svg"></a></li>
+                  
+                  @*
+                    Only the head of security can hide and show reports.
+                    TODO: Add security check to the ToggleVisible action.
+                  *@
+                  @if (User.IsInRole("Administrator"))
+                  {
                     <li><a href="@Url.Action("ToggleVisible", new { id = report.Id, Isvisible = report.IsVisible == false })"><img src="~/Content/show.svg"></a></li>
+                  }
                 </ul>
             </article>
         </section>
