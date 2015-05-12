@@ -3,10 +3,10 @@
 <form>
 	@Html.Partial("~/Views/Report/ReportPartials/_PartialReturnReportCategory.cshtml", Model)
 
-    @if (Model.Location != null)
+  @if (Model.Location != null)
 	{   
-	@Html.Partial("~/Views/Report/ReportPartials/_PartialReturnReportLocation.cshtml", Model)
-    }
+	  @Html.Partial("~/Views/Report/ReportPartials/_PartialReturnReportLocation.cshtml", Model)
+  }
     
 	@Html.Partial("~/Views/Report/CategoryPartials/_PartialDetails" + Model.Category + ".cshtml", Model)
 		
@@ -19,6 +19,7 @@
 	{
 		@Html.Partial("~/Views/Report/ReportPartials/_PartialReturnReportContact.cshtml", Model);
 	}
+    
 	@if (Model.Vehicle != null)
 	{
 		@Html.Partial("~/Views/Report/ReportPartials/_PartialReturnReportVehicle.cshtml", Model);

@@ -41,13 +41,8 @@ form,
 	width: 900px;
 }
 
-.container b {
-	font-family: Arial;
-	background-color: red;
-	font-size: 50pt;
-}
-
-.body h1, h2 {
+.body h1,
+.container h1 {
   margin: 0;
   background-color: #113;
   padding: 5px;
@@ -60,13 +55,6 @@ form,
 
 .grayLayer label{
     color: gray !important;
-}
-
-.container h1, h2{
-    margin: 0;
-    background-color: #113;
-    padding: 5px;
-    color: white;
 }
 
 form .field,
@@ -122,7 +110,6 @@ form .field label,
     color: white;
     text-align: right;
     width: 33.34%;
-    padding-top: 30px;
 
     word-break: break-word;
 }
@@ -213,11 +200,16 @@ input[type=checkbox] {
     margin-top: 32px;
 }
 
-form .field p, .field p {
+form .field p,
+.field p {
     margin-top: 0;
     font-size: 12pt;
-    font-weight: bold;
     color: #003;
+}
+
+form .field h2 {
+	font-size: 12pt;
+	color: #003;
 }
 
 form .field textarea,
