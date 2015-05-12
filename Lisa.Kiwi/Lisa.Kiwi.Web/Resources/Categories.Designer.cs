@@ -88,7 +88,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EHBO.
+        ///   Looks up a localized string similar to Ongeluk.
         /// </summary>
         public static string FirstAid {
             get {
