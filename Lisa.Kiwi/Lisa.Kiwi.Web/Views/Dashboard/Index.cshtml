@@ -17,6 +17,11 @@
 <body>
     @foreach (var report in Model.OrderBy(t => t.Status).ThenByDescending(t => t.Created))
     {
+      if (report.Location == null)
+      {
+        continue;
+      }
+
         <section class=@report.Status>
             <article>
                 <a href="@Url.Action("Details", new { id= report.Id })">
