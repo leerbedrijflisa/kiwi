@@ -23,7 +23,7 @@ namespace Lisa.Kiwi.Web
         [DisplayName("Wat voor kleding draagt de dader? *")]
         public string Clothing { get; set; }
 
-        [DisplayName("Tussen welke leeftijd is de dader?")]
+        [DisplayName("Welke leeftijd heeft de dader?")]
         public string AgeRange { get; set; }
 
         [DisplayName("Zijn er opvallende dingen te zien aan de dader?")]
