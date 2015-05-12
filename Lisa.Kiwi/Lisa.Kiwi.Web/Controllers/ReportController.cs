@@ -64,8 +64,12 @@ namespace Lisa.Kiwi.Web
             return RedirectToAction("AdditionalLocation");
         }
 
-        public ActionResult AdditionalLocation()
+        public async Task<ActionResult> AdditionalLocation()
         {
+            var report = await GetCurrentReport();
+            ViewBag.Building = Resources.Buildings.ResourceManager.GetString(report.Location.Building);
+            ViewBag.Preposition = Resources.Buildings.ResourceManager.GetString(report.Location.Building + "_Preposition");
+
             return View(new AdditionalLocationViewModel());
         }
 

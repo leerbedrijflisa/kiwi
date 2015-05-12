@@ -118,96 +118,186 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Appartementen" xml:space="preserve">
-    <value>Appartementen</value>
+    <value>appartementen</value>
   </data>
   <data name="Bogermanschool" xml:space="preserve">
-    <value>Ds. Bogermanschool</value>
+    <value>Bogermanschool</value>
   </data>
   <data name="Brandweerkazerne" xml:space="preserve">
-    <value>Brandweerkazerne</value>
+    <value>brandweerkazerne</value>
   </data>
   <data name="Buiten" xml:space="preserve">
-    <value>Buiten (Openbare Weg)</value>
+    <value>openbare weg</value>
   </data>
   <data name="Drechtstedencollege" xml:space="preserve">
-    <value>Drechtsteden college</value>
+    <value>Drechtstedencollege</value>
   </data>
   <data name="Duurzaamheidsfabriek" xml:space="preserve">
     <value>Duurzaamheidsfabriek</value>
   </data>
   <data name="Arcobaleno" xml:space="preserve">
-    <value>DVC Arcobaleno</value>
+    <value>Arcobaleno</value>
   </data>
   <data name="Azzurro" xml:space="preserve">
-    <value>DVC Azzurro</value>
+    <value>Azzurro</value>
   </data>
   <data name="Bianco" xml:space="preserve">
-    <value>DVC Bianco</value>
+    <value>Bianco</value>
   </data>
   <data name="Celeste" xml:space="preserve">
-    <value>DVC Celeste</value>
+    <value>Celeste</value>
   </data>
   <data name="Giallo" xml:space="preserve">
-    <value>DVC Giallo</value>
+    <value>Giallo</value>
   </data>
   <data name="Indaco" xml:space="preserve">
-    <value>DVC Indaco</value>
+    <value>Indaco</value>
   </data>
   <data name="Lilla" xml:space="preserve">
-    <value>DVC Lilla</value>
+    <value>Lilla</value>
   </data>
   <data name="Marrone" xml:space="preserve">
-    <value>DVC Marrone</value>
+    <value>Marrone</value>
   </data>
   <data name="Media" xml:space="preserve">
-    <value>DVC media</value>
+    <value>Da Vinci Media</value>
   </data>
   <data name="Ocra" xml:space="preserve">
-    <value>DVC Ocra</value>
+    <value>Ocra</value>
   </data>
   <data name="Romboutslaan" xml:space="preserve">
-    <value>DVC Romboutslaan 40</value>
+    <value>Romboutslaan 40</value>
   </data>
   <data name="Rosa" xml:space="preserve">
-    <value>DVC Rosa</value>
+    <value>Rosa</value>
   </data>
   <data name="Verde" xml:space="preserve">
-    <value>DVC Verde</value>
+    <value>Verde</value>
   </data>
   <data name="Klimhal" xml:space="preserve">
-    <value>Klimhal</value>
+    <value>klimhal</value>
   </data>
   <data name="Orthodontist" xml:space="preserve">
-    <value>Orthodontist</value>
+    <value>orthodontist</value>
   </data>
   <data name="Parkeerplaats" xml:space="preserve">
-    <value>Betaalde parkeerplaats</value>
+    <value>betaalde parkeerplaats</value>
   </data>
   <data name="ParkeerplaatsBrandweerkazerne" xml:space="preserve">
-    <value>Parkeerplaats Brandweerkazerne</value>
+    <value>parkeerplaats brandweerkazerne</value>
   </data>
   <data name="ParkeerplaatsDuurzaamheidsfabriek" xml:space="preserve">
-    <value>Parkeerplaats Duurzaamheidsfabriek</value>
+    <value>parkeerplaats Duurzaamheidsfabriek</value>
   </data>
   <data name="BetaaldeParkeerplaats" xml:space="preserve">
-    <value>Betaalde Parkeerplaats</value>
+    <value>betaalde parkeerplaats</value>
   </data>
   <data name="Samenwerkingsgebouw" xml:space="preserve">
-    <value>Samenwerkingsgebouw</value>
+    <value>samenwerkingsgebouw</value>
   </data>
   <data name="Schippersinternaat" xml:space="preserve">
-    <value>Schippersinternaat</value>
+    <value>schippersinternaat</value>
   </data>
   <data name="Sporthal" xml:space="preserve">
-    <value>Sporthal</value>
+    <value>sporthal</value>
   </data>
   <data name="Veiligheidsregio" xml:space="preserve">
     <value>Veiligheidsregio</value>
   </data>
   <data name="Wartburg" xml:space="preserve">
-    <value>Wartburg college</value>
+    <value>Wartburg College</value>
   </data>
   <data name="GroteParkeerplaats" xml:space="preserve">
-    <value>Grote Parkeerplaats</value>
+    <value>grote parkeerplaats</value>
+  </data>
+  <data name="Appartementen_Preposition" xml:space="preserve">
+    <value>in de</value>
+  </data>
+  <data name="Arcobaleno_Preposition" xml:space="preserve">
+    <value>in</value>
+  </data>
+  <data name="Azzurro_Preposition" xml:space="preserve">
+    <value>in</value>
+  </data>
+  <data name="BetaaldeParkeerplaats_Preposition" xml:space="preserve">
+    <value>op de</value>
+  </data>
+  <data name="Bianco_Preposition" xml:space="preserve">
+    <value>in</value>
+  </data>
+  <data name="Bogermanschool_Preposition" xml:space="preserve">
+    <value>in de</value>
+  </data>
+  <data name="Brandweerkazerne_Preposition" xml:space="preserve">
+    <value>in de</value>
+  </data>
+  <data name="Buiten_Preposition" xml:space="preserve">
+    <value>op de</value>
+  </data>
+  <data name="Celeste_Preposition" xml:space="preserve">
+    <value>in</value>
+  </data>
+  <data name="Drechtstedencollege_Preposition" xml:space="preserve">
+    <value>in het</value>
+  </data>
+  <data name="Duurzaamheidsfabriek_Preposition" xml:space="preserve">
+    <value>in de</value>
+  </data>
+  <data name="Giallo_Preposition" xml:space="preserve">
+    <value>in</value>
+  </data>
+  <data name="GroteParkeerplaats_Preposition" xml:space="preserve">
+    <value>op de</value>
+  </data>
+  <data name="Indaco_Preposition" xml:space="preserve">
+    <value>in</value>
+  </data>
+  <data name="Klimhal_Preposition" xml:space="preserve">
+    <value>in de</value>
+  </data>
+  <data name="Lilla_Preposition" xml:space="preserve">
+    <value>in</value>
+  </data>
+  <data name="Marrone_Preposition" xml:space="preserve">
+    <value>in</value>
+  </data>
+  <data name="Media_Preposition" xml:space="preserve">
+    <value>in</value>
+  </data>
+  <data name="Ocra_Preposition" xml:space="preserve">
+    <value>in</value>
+  </data>
+  <data name="Orthodontist_Preposition" xml:space="preserve">
+    <value>bij de</value>
+  </data>
+  <data name="ParkeerplaatsBrandweerkazerne__Preposition" xml:space="preserve">
+    <value>op de</value>
+  </data>
+  <data name="Parkeerplaats_Preposition" xml:space="preserve">
+    <value>op de</value>
+  </data>
+  <data name="Romboutslaan_Preposition" xml:space="preserve">
+    <value>in de</value>
+  </data>
+  <data name="Rosa_Preposition" xml:space="preserve">
+    <value>in</value>
+  </data>
+  <data name="Samenwerkingsgebouw_Preposition" xml:space="preserve">
+    <value>in het</value>
+  </data>
+  <data name="Schippersinternaat_Preposition" xml:space="preserve">
+    <value>in het</value>
+  </data>
+  <data name="Sporthal_Preposition" xml:space="preserve">
+    <value>in de</value>
+  </data>
+  <data name="Veiligheidsregio_Preposition" xml:space="preserve">
+    <value>in de</value>
+  </data>
+  <data name="Verde_Preposition" xml:space="preserve">
+    <value>in</value>
+  </data>
+  <data name="Wartburg_Preposition" xml:space="preserve">
+    <value>in het</value>
   </data>
 </root>

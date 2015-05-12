@@ -46,3 +46,15 @@
 		@location
 	}
 }
+
+@helper Capitalize(string value)
+{
+	if (String.IsNullOrEmpty(value))
+	{
+		@value;
+	}
+	else
+	{		
+		@String.Format("{0}{1}", value.ToUpper()[0], value.Substring(1));	
+	}
+}

@@ -61,7 +61,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Appartementen.
+        ///   Looks up a localized string similar to appartementen.
         /// </summary>
         public static string Appartementen {
             get {
@@ -70,7 +70,16 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DVC Arcobaleno.
+        ///   Looks up a localized string similar to in de.
+        /// </summary>
+        public static string Appartementen_Preposition {
+            get {
+                return ResourceManager.GetString("Appartementen_Preposition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Arcobaleno.
         /// </summary>
         public static string Arcobaleno {
             get {
@@ -79,7 +88,16 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DVC Azzurro.
+        ///   Looks up a localized string similar to in.
+        /// </summary>
+        public static string Arcobaleno_Preposition {
+            get {
+                return ResourceManager.GetString("Arcobaleno_Preposition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Azzurro.
         /// </summary>
         public static string Azzurro {
             get {
@@ -88,7 +106,16 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Betaalde Parkeerplaats.
+        ///   Looks up a localized string similar to in.
+        /// </summary>
+        public static string Azzurro_Preposition {
+            get {
+                return ResourceManager.GetString("Azzurro_Preposition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to betaalde parkeerplaats.
         /// </summary>
         public static string BetaaldeParkeerplaats {
             get {
@@ -97,7 +124,16 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DVC Bianco.
+        ///   Looks up a localized string similar to op de.
+        /// </summary>
+        public static string BetaaldeParkeerplaats_Preposition {
+            get {
+                return ResourceManager.GetString("BetaaldeParkeerplaats_Preposition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bianco.
         /// </summary>
         public static string Bianco {
             get {
@@ -106,7 +142,16 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ds. Bogermanschool.
+        ///   Looks up a localized string similar to in.
+        /// </summary>
+        public static string Bianco_Preposition {
+            get {
+                return ResourceManager.GetString("Bianco_Preposition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bogermanschool.
         /// </summary>
         public static string Bogermanschool {
             get {
@@ -115,7 +160,16 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Brandweerkazerne.
+        ///   Looks up a localized string similar to in de.
+        /// </summary>
+        public static string Bogermanschool_Preposition {
+            get {
+                return ResourceManager.GetString("Bogermanschool_Preposition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to brandweerkazerne.
         /// </summary>
         public static string Brandweerkazerne {
             get {
@@ -124,7 +178,16 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Buiten (Openbare Weg).
+        ///   Looks up a localized string similar to in de.
+        /// </summary>
+        public static string Brandweerkazerne_Preposition {
+            get {
+                return ResourceManager.GetString("Brandweerkazerne_Preposition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to openbare weg.
         /// </summary>
         public static string Buiten {
             get {
@@ -133,7 +196,16 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DVC Celeste.
+        ///   Looks up a localized string similar to op de.
+        /// </summary>
+        public static string Buiten_Preposition {
+            get {
+                return ResourceManager.GetString("Buiten_Preposition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Celeste.
         /// </summary>
         public static string Celeste {
             get {
@@ -142,11 +214,29 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Drechtsteden college.
+        ///   Looks up a localized string similar to in.
+        /// </summary>
+        public static string Celeste_Preposition {
+            get {
+                return ResourceManager.GetString("Celeste_Preposition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Drechtstedencollege.
         /// </summary>
         public static string Drechtstedencollege {
             get {
                 return ResourceManager.GetString("Drechtstedencollege", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to in het.
+        /// </summary>
+        public static string Drechtstedencollege_Preposition {
+            get {
+                return ResourceManager.GetString("Drechtstedencollege_Preposition", resourceCulture);
             }
         }
         
@@ -160,7 +250,16 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DVC Giallo.
+        ///   Looks up a localized string similar to in de.
+        /// </summary>
+        public static string Duurzaamheidsfabriek_Preposition {
+            get {
+                return ResourceManager.GetString("Duurzaamheidsfabriek_Preposition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Giallo.
         /// </summary>
         public static string Giallo {
             get {
@@ -169,7 +268,16 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Grote Parkeerplaats.
+        ///   Looks up a localized string similar to in.
+        /// </summary>
+        public static string Giallo_Preposition {
+            get {
+                return ResourceManager.GetString("Giallo_Preposition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to grote parkeerplaats.
         /// </summary>
         public static string GroteParkeerplaats {
             get {
@@ -178,7 +286,16 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DVC Indaco.
+        ///   Looks up a localized string similar to op de.
+        /// </summary>
+        public static string GroteParkeerplaats_Preposition {
+            get {
+                return ResourceManager.GetString("GroteParkeerplaats_Preposition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Indaco.
         /// </summary>
         public static string Indaco {
             get {
@@ -187,7 +304,16 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Klimhal.
+        ///   Looks up a localized string similar to in.
+        /// </summary>
+        public static string Indaco_Preposition {
+            get {
+                return ResourceManager.GetString("Indaco_Preposition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to klimhal.
         /// </summary>
         public static string Klimhal {
             get {
@@ -196,7 +322,16 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DVC Lilla.
+        ///   Looks up a localized string similar to in de.
+        /// </summary>
+        public static string Klimhal_Preposition {
+            get {
+                return ResourceManager.GetString("Klimhal_Preposition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lilla.
         /// </summary>
         public static string Lilla {
             get {
@@ -205,7 +340,16 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DVC Marrone.
+        ///   Looks up a localized string similar to in.
+        /// </summary>
+        public static string Lilla_Preposition {
+            get {
+                return ResourceManager.GetString("Lilla_Preposition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Marrone.
         /// </summary>
         public static string Marrone {
             get {
@@ -214,7 +358,16 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DVC media.
+        ///   Looks up a localized string similar to in.
+        /// </summary>
+        public static string Marrone_Preposition {
+            get {
+                return ResourceManager.GetString("Marrone_Preposition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Da Vinci Media.
         /// </summary>
         public static string Media {
             get {
@@ -223,7 +376,16 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DVC Ocra.
+        ///   Looks up a localized string similar to in.
+        /// </summary>
+        public static string Media_Preposition {
+            get {
+                return ResourceManager.GetString("Media_Preposition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ocra.
         /// </summary>
         public static string Ocra {
             get {
@@ -232,7 +394,16 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Orthodontist.
+        ///   Looks up a localized string similar to in.
+        /// </summary>
+        public static string Ocra_Preposition {
+            get {
+                return ResourceManager.GetString("Ocra_Preposition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to orthodontist.
         /// </summary>
         public static string Orthodontist {
             get {
@@ -241,7 +412,16 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Betaalde parkeerplaats.
+        ///   Looks up a localized string similar to bij de.
+        /// </summary>
+        public static string Orthodontist_Preposition {
+            get {
+                return ResourceManager.GetString("Orthodontist_Preposition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to betaalde parkeerplaats.
         /// </summary>
         public static string Parkeerplaats {
             get {
@@ -250,7 +430,16 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Parkeerplaats Brandweerkazerne.
+        ///   Looks up a localized string similar to op de.
+        /// </summary>
+        public static string Parkeerplaats_Preposition {
+            get {
+                return ResourceManager.GetString("Parkeerplaats_Preposition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to parkeerplaats brandweerkazerne.
         /// </summary>
         public static string ParkeerplaatsBrandweerkazerne {
             get {
@@ -259,7 +448,16 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Parkeerplaats Duurzaamheidsfabriek.
+        ///   Looks up a localized string similar to op de.
+        /// </summary>
+        public static string ParkeerplaatsBrandweerkazerne__Preposition {
+            get {
+                return ResourceManager.GetString("ParkeerplaatsBrandweerkazerne__Preposition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to parkeerplaats Duurzaamheidsfabriek.
         /// </summary>
         public static string ParkeerplaatsDuurzaamheidsfabriek {
             get {
@@ -268,7 +466,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DVC Romboutslaan 40.
+        ///   Looks up a localized string similar to Romboutslaan 40.
         /// </summary>
         public static string Romboutslaan {
             get {
@@ -277,7 +475,16 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DVC Rosa.
+        ///   Looks up a localized string similar to in de.
+        /// </summary>
+        public static string Romboutslaan_Preposition {
+            get {
+                return ResourceManager.GetString("Romboutslaan_Preposition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rosa.
         /// </summary>
         public static string Rosa {
             get {
@@ -286,7 +493,16 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Samenwerkingsgebouw.
+        ///   Looks up a localized string similar to in.
+        /// </summary>
+        public static string Rosa_Preposition {
+            get {
+                return ResourceManager.GetString("Rosa_Preposition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to samenwerkingsgebouw.
         /// </summary>
         public static string Samenwerkingsgebouw {
             get {
@@ -295,7 +511,16 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Schippersinternaat.
+        ///   Looks up a localized string similar to in het.
+        /// </summary>
+        public static string Samenwerkingsgebouw_Preposition {
+            get {
+                return ResourceManager.GetString("Samenwerkingsgebouw_Preposition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to schippersinternaat.
         /// </summary>
         public static string Schippersinternaat {
             get {
@@ -304,11 +529,29 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sporthal.
+        ///   Looks up a localized string similar to in het.
+        /// </summary>
+        public static string Schippersinternaat_Preposition {
+            get {
+                return ResourceManager.GetString("Schippersinternaat_Preposition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sporthal.
         /// </summary>
         public static string Sporthal {
             get {
                 return ResourceManager.GetString("Sporthal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to in de.
+        /// </summary>
+        public static string Sporthal_Preposition {
+            get {
+                return ResourceManager.GetString("Sporthal_Preposition", resourceCulture);
             }
         }
         
@@ -322,7 +565,16 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DVC Verde.
+        ///   Looks up a localized string similar to in de.
+        /// </summary>
+        public static string Veiligheidsregio_Preposition {
+            get {
+                return ResourceManager.GetString("Veiligheidsregio_Preposition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Verde.
         /// </summary>
         public static string Verde {
             get {
@@ -331,11 +583,29 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Wartburg college.
+        ///   Looks up a localized string similar to in.
+        /// </summary>
+        public static string Verde_Preposition {
+            get {
+                return ResourceManager.GetString("Verde_Preposition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wartburg College.
         /// </summary>
         public static string Wartburg {
             get {
                 return ResourceManager.GetString("Wartburg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to in het.
+        /// </summary>
+        public static string Wartburg_Preposition {
+            get {
+                return ResourceManager.GetString("Wartburg_Preposition", resourceCulture);
             }
         }
     }

@@ -6,13 +6,13 @@
 @using (Html.BeginForm())
 {
 	<div class="field">
-		<label></label>
-		<p>@Resources.PageItems.LocationDetailedDescription</p>
+		<label>@String.Format(Resources.PageItems.LocationDetailedDescription, ViewBag.Preposition, ViewBag.Building)</label>
+
+		<div>
+			@Html.TextAreaFor(m => m.AdditionalLocation)
+		</div>
 	</div>
-	<div class="field">
-		@Html.LabelFor(m => m.AdditionalLocation)
-		@Html.TextAreaFor(m => m.AdditionalLocation)
-	</div>
+
 	<div class="submit">
 		<button type="submit"><img src="@Url.Content("~/Content/next.svg")"/></button>
 	</div>

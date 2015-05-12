@@ -157,7 +157,7 @@
     <value>Locatie en beschrijving:</value>
   </data>
   <data name="LocationDetailedDescription" xml:space="preserve">
-    <value>Wat is de precieze plek waar het gebeurd is op uw locatie? (Bijvoorbeeld het lokaal)</value>
+    <value>Waar {0} {1} is het gebeurd?</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Status:</value>

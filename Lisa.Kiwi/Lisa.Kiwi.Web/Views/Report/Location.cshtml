@@ -12,209 +12,43 @@
 			<p>Buiten</p>
 
 			<ul class="buttons">
-				<li>
-					<button type="submit" name="Building" value="Buiten">
-						<img src="@Url.Content("~/Content/ReporterBuildings/building-parkeerplaats-betaald.png")"/>
-						Openbare weg
-					</button>
-				</li>
-
-				<li>
-                    <button type="submit" name="Building" value="BetaaldeParkeerplaats">
-                        <img src="@Url.Content("~/Content/ReporterBuildings/building-parkeerplaats-betaald.png")" />
-                        Betaalde Parkeerplaats
-                    </button>
-				</li>
-
-				<li>
-					<button type="submit" name="Building" value="GroteParkeerplaats">
-						<img src="@Url.Content("~/Content/ReporterBuildings/building-parkeerplaats-langeveldlaan.png")" />
-						Grote parkeerplaats
-					</button>
-				</li>
+				@foreach (var building in new string[] { "Buiten", "BetaaldeParkeerplaats", "GroteParkeerplaats" })
+				{
+					<li>
+						<button type="submit" name="Building" value="@building" class="hyphenate">
+							<img src="@Url.Content(String.Format("~/Content/ReporterBuildings/building-{0}.png", building))" />
+							@ReportHelpers.Capitalize(Resources.Buildings.ResourceManager.GetString(building))
+						</button>
+					</li>
+				}
 			</ul>
 
 			<p>Da Vinci College</p>
 
 			<ul class="buttons">
-				<li>
-					<button type="submit" name="Building" value="Arcobaleno" class="hyphenate">
-						<img src="@Url.Content("~/Content/ReporterBuildings/building-arcobaleno.png")" />
-						Arcobaleno
-					</button>
-				</li>
-
-				<li>
-					<button type="submit" name="Building" value="Azzurro" class="hyphenate">
-						<img src="@Url.Content("~/Content/ReporterBuildings/building-azzurro.png")" />
-						Azzurro
-					</button>
-				</li>
-
-				<li>
-					<button type="submit" name="Building" value="Bianco" class="hyphenate">
-						<img src="@Url.Content("~/Content/ReporterBuildings/building-bianco.png")" />
-						Bianco
-					</button>
-				</li>
-
-				<li>
-					<button type="submit" name="Building" value="Celeste" class="hyphenate">
-						<img src="@Url.Content("~/Content/ReporterBuildings/building-celeste.png")" />
-						Celeste
-					</button>
-				</li>
-
-				<li>
-					<button type="submit" name="Building" value="Giallo" class="hyphenate">
-						<img src="@Url.Content("~/Content/ReporterBuildings/building-giallo.png")" />
-						Giallo
-					</button>
-				</li>
-
-				<li>
-					<button type="submit" name="Building" value="Indaco" class="hyphenate">
-						<img src="@Url.Content("~/Content/ReporterBuildings/building-giallo.png")" />
-						Indaco
-					</button>
-				</li>
-
-				<li>
-					<button type="submit" name="Building" value="Lilla" class="hyphenate">
-						<img src="@Url.Content("~/Content/ReporterBuildings/building-lilla.png")" />
-						Lilla
-					</button>
-				</li>
-
-				<li>
-					<button type="submit" name="Building" value="Marrone" class="hyphenate">
-						<img src="@Url.Content("~/Content/ReporterBuildings/building-marrone.png")" />
-						Marrone
-					</button>
-				</li>
-
-				<li>
-					<button type="submit" name="Building" value="Rosa" class="hyphenate">
-						<img src="@Url.Content("~/Content/ReporterBuildings/building-rosa.png")" />
-						Rosa
-					</button>
-				</li>
-
-				<li>
-					<button type="submit" name="Building" value="Verde" class="hyphenate">
-						<img src="@Url.Content("~/Content/ReporterBuildings/building-verde.png")" />
-						Verde
-					</button>
-				</li>
-
-				<li>
-					<button type="submit" name="Building" value="Ocra" class="hyphenate">
-						<img src="@Url.Content("~/Content/ReporterBuildings/building-ocra.png")" />
-						Ocra
-					</button>
-				</li>
-
-				<li>
-					<button type="submit" name="Building" value="Romboutslaan" class="hyphenate">
-						<img src="@Url.Content("~/Content/ReporterBuildings/building-romboutslaan.png")" />
-						Romboutslaan
-					</button>
-				</li>
-
-				<li>
-					<button type="submit" name="Building" value="Duurzaamheidsfabriek" class="hyphenate">
-						<img src="@Url.Content("~/Content/ReporterBuildings/building-duurzaamheidsfabriek.png")" />
-						Duurzaamheidsfabriek
-					</button>
-				</li>
+				@foreach (var building in new string[] { "Arcobaleno", "Azzurro", "Bianco", "Celeste", "Media", "Duurzaamheidsfabriek", "Giallo", "Indaco", "Lilla", "Marrone", "Ocra", "Romboutslaan", "Rosa", "Verde" })
+				{
+					<li>
+						<button type="submit" name="Building" value="@building" class="hyphenate">
+							<img src="@Url.Content(String.Format("~/Content/ReporterBuildings/building-{0}.png", building))" />
+							@ReportHelpers.Capitalize(Resources.Buildings.ResourceManager.GetString(building))
+						</button>
+					</li>
+				}
 			</ul>
 
 			<p>Overige</p>
 
 			<ul class="buttons">
-				<li>
-					<button type="submit" name="Building" value="Drechtstedencollege" class="hyphenate">
-						<img src="@Url.Content("~/Content/ReporterBuildings/building-drechtstedencollege.png")" />
-						Drechtsteden&shy;college
-					</button>
-				</li>
-
-				<li>
-					<button type="submit" name="Building" value="Samenwerkingsgebouw" class="hyphenate">
-						<img src="@Url.Content("~/Content/ReporterBuildings/building-samenwerkingsgebouw.png")" />
-						Samenwerkingsgebouw
-					</button>
-				</li>
-
-				<li>
-					<button type="submit" name="Building" value="Brandweerkazerne" class="hyphenate">
-						<img src="@Url.Content("~/Content/ReporterBuildings/building-brandweer.png")" />
-						Brandweerkazerne
-					</button>
-				</li>
-
-				<li>
-					<button type="submit" name="Building" value="Veiligheidsregio" class="hyphenate">
-						<img src="@Url.Content("~/Content/ReporterBuildings/building-veiligheidsregio.png")" />
-						Veiligheidsregio
-					</button>
-				</li>
-
-				<li>
-					<button type="submit" name="Building" value="Sporthal" class="hyphenate">
-						<img src="@Url.Content("~/Content/ReporterBuildings/building-sporthal.png")" />
-						Sporthal
-					</button>
-				</li>
-
-				<li>
-					<button type="submit" name="Building" value="Klimhal" class="hyphenate">
-						<img src="@Url.Content("~/Content/ReporterBuildings/building-klimhal.png")" />
-						Klimhal
-					</button>
-				</li>
-
-				<li>
-					<button type="submit" name="Building" value="Bogermanschool" class="hyphenate">
-						<img src="@Url.Content("~/Content/ReporterBuildings/building-bogermanschool.png")" />
-						Bogermanschool
-					</button>
-				</li>
-
-				<li>
-					<button type="submit" name="Building" value="Schippersinternaat" class="hyphenate">
-						<img src="@Url.Content("~/Content/ReporterBuildings/building-schippersinternaat.png")" />
-						Schippersinternaat
-					</button>
-				</li>
-
-				<li>
-					<button type="submit" name="Building" value="Appartementen" class="hyphenate">
-						<img src="@Url.Content("~/Content/ReporterBuildings/building-appartementen.png")" />
-						Appartementen
-					</button>
-				</li>
-
-				<li>
-					<button type="submit" name="Building" value="Wartburg" class="hyphenate">
-						<img src="@Url.Content("~/Content/ReporterBuildings/building-wartburg.png")" />
-						Wartburg
-					</button>
-				</li>
-
-				<li>
-					<button type="submit" name="Building" value="Media" class="hyphenate">
-						<img src="@Url.Content("~/Content/ReporterBuildings/building-davinci-media.png")" />
-						Da Vinci Media
-					</button>
-				</li>
-
-				<li>
-					<button type="submit" name="Building" value="Orthodontist" class="hyphenate">
-						<img src="@Url.Content("~/Content/ReporterBuildings/building-orthodontist.png")" />
-						Orthodontist
-					</button>
-				</li>
+				@foreach (var building in new string[] { "Appartementen", "Bogermanschool", "Brandweerkazerne", "Drechtstedencollege", "Klimhal", "Orthodontist", "Samenwerkingsgebouw", "Schippersinternaat", "Sporthal", "Veiligheidsregio", "Wartburg" })
+				{
+					<li>
+						<button type="submit" name="Building" value="@building" class="hyphenate">
+							<img src="@Url.Content(String.Format("~/Content/ReporterBuildings/building-{0}.png", building))" />
+							@ReportHelpers.Capitalize(Resources.Buildings.ResourceManager.GetString(building))
+						</button>
+					</li>
+				}
 			</ul>
 		</div>
 	</div>

@@ -28,7 +28,7 @@
                     @if (report.Location != null)
                     {
                         <div class="building @DashboardHelpers.NullCheck(report.Location.Building)">
-                            <h2>@DashboardHelpers.NullCheck(Buildings.ResourceManager.GetString(report.Location.Building))</h2>
+                            <h2>@DashboardHelpers.NullCheck(ReportHelpers.Capitalize(Buildings.ResourceManager.GetString(report.Location.Building)))</h2>
                             <p class="location">@DashboardHelpers.NullCheck(report.Location.Description)</p>
                         </div>
                     }
