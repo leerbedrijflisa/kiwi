@@ -1,21 +1,21 @@
 ﻿@model Report
 
 
-<div class="container">
-	@using (Html.BeginForm())
+@using (Html.BeginForm())
 {
-	<div class="form">
-		<label></label>
+	<div class="field">
+		<label>&nbsp;</label>
 		<p>@Resources.PageItems.DoneMessage</p>
 	</div>
+
 	if (Model.Category != null)
 	{
 		@Html.Partial("~/Views/Report/ReportPartials/_PartialReturnReportCategory.cshtml", Model)
-	@Html.Partial("~/Views/Report/CategoryPartials/_PartialDetails" + Model.Category + ".cshtml", Model)
-		}
+		@Html.Partial("~/Views/Report/CategoryPartials/_PartialDetails" + Model.Category + ".cshtml", Model)
+	}
 	if (Model.Location != null)
 	{
-	@Html.Partial("~/Views/Report/ReportPartials/_PartialReturnReportLocation.cshtml", Model)
+		@Html.Partial("~/Views/Report/ReportPartials/_PartialReturnReportLocation.cshtml", Model)
 	}
 
 	if (Model.Perpetrator != null)
@@ -36,4 +36,3 @@
 		<button type="submit"><img src="@Url.Content("~/Content/next.svg")" /></button>
 	</div>
 }
-</div>

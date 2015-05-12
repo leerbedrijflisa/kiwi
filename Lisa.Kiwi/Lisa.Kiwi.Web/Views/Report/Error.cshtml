@@ -4,12 +4,14 @@
 	ViewBag.Title = "Error";
 }
 
-<div class="container">
+<form>
 	<div class="field">
 		<label>Er is een fout opgetreden!</label>
-		<div class="button-container">@Html.ActionLink("Probeer opnieuw", "index", "Report")</div>
+		<div>
+			<div class="button-container">@Html.ActionLink("Probeer opnieuw", "index", "Report")</div>
+		</div>
 	</div>
-</div>
+</form>
 
 <script>
 	var message = (function () {/* @Model.Message */})

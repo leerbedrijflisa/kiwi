@@ -1,6 +1,6 @@
 ﻿@model Report
 
-<div class="container">
+<form>
 	@Html.Partial("~/Views/Report/ReportPartials/_PartialReturnReportCategory.cshtml", Model)
 
     @if (Model.Location != null)
@@ -23,26 +23,23 @@
 	{
 		@Html.Partial("~/Views/Report/ReportPartials/_PartialReturnReportVehicle.cshtml", Model);
 	}
+</form>	
 
-	@using (Html.BeginForm())
-	{
-		<div class="field">
-			<label><b>Status</b></label>
-		</div>
-		<div class="field">
-			<label>@PageItems.Status</label>
-			<ul class="radioList">
-				<li><input type="radio" name="Status" value="@StatusEnum.Open" @(Model.Status == StatusEnum.Open ? "checked=\"checked\"" : "")/> @Statuses.Open</li>
-				<li><input type="radio" name="Status" value="@StatusEnum.Transferred" @(Model.Status == StatusEnum.Transferred ? "checked=\"checked\"" : "")/> @Statuses.Transferred</li>
-				<li><input type="radio" name="Status" value="@StatusEnum.Solved" @(Model.Status == StatusEnum.Solved ? "checked=\"checked\"" : "")/> @Statuses.Solved</li>
-			</ul>
-		</div>
-		<div class="field">
-			<label>@PageItems.VisibleChange</label>
-			@(!Model.IsVisible ? Html.CheckBox("IsVisible") : Html.CheckBox("IsVisible", new {@checked = "true"}))
-		</div>
-		<div class="field">
-			<button type="submit">Status wijzigen</button>
-		</div>
-	}
-</div>
+@using (Html.BeginForm())
+{
+	<div class="field">
+		<label>@PageItems.Status</label>
+		<ul class="radioList">
+			<li><input type="radio" name="Status" value="@StatusEnum.Open" @(Model.Status == StatusEnum.Open ? "checked=\"checked\"" : "")/> @Statuses.Open</li>
+			<li><input type="radio" name="Status" value="@StatusEnum.Transferred" @(Model.Status == StatusEnum.Transferred ? "checked=\"checked\"" : "")/> @Statuses.Transferred</li>
+			<li><input type="radio" name="Status" value="@StatusEnum.Solved" @(Model.Status == StatusEnum.Solved ? "checked=\"checked\"" : "")/> @Statuses.Solved</li>
+		</ul>
+	</div>
+	<div class="field">
+		<label>@PageItems.VisibleChange</label>
+		@(!Model.IsVisible ? Html.CheckBox("IsVisible") : Html.CheckBox("IsVisible", new {@checked = "true"}))
+	</div>
+	<div class="field">
+		<button type="submit">Status wijzigen</button>
+	</div>
+}
