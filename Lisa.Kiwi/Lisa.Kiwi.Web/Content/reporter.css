@@ -164,6 +164,7 @@ ul.cat-buttons {
 
 ul.buttons li {
     display: inline-table;
+    vertical-align: top;
     width: 137px;
     text-align: center;
     -ms-word-break: break-word;
