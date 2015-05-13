@@ -13,7 +13,7 @@ namespace Lisa.Kiwi.Web
         {
             get
             {
-                return new SelectListItem[]
+                return new []
                 {
                     new SelectListItem
                     {

@@ -104,9 +104,9 @@ namespace Lisa.Kiwi.Web
             return RedirectToAction("Index");
         }
 
-        public async Task<ActionResult> ToggleVisible(int id, bool IsVisible)
+        public async Task<ActionResult> ToggleVisible(int id, bool isVisible)
         {
-            var report = new Report { IsVisible = IsVisible ? true : false };
+            var report = new Report { IsVisible = isVisible };
             await _reportProxy.PatchAsync(id, report);
 
             return RedirectToAction("Index");
