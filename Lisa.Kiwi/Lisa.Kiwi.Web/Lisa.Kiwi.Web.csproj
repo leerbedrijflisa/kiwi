@@ -239,10 +239,7 @@
     <Content Include="Content\ReporterBuildings\building-verde.png" />
     <Content Include="Content\ReporterBuildings\building-wartburg.png" />
     <Content Include="Content\show.svg" />
-    <Content Include="Content\main.css" />
-    <Content Include="Content\Site.css" />
     <Compile Include="Controllers\DashboardController.cs" />
-    <Content Include="Content\style.css" />
     <Content Include="Content\warning.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\Buildings.json" />
