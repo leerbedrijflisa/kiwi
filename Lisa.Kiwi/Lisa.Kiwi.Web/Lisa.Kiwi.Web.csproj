@@ -242,7 +242,6 @@
     <Compile Include="Controllers\DashboardController.cs" />
     <Content Include="Content\warning.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Scripts\Buildings.json" />
     <Content Include="App_Code\DashboardHelpers.cshtml" />
     <Content Include="Scripts\hyphenator.js" />
     <Content Include="Scripts\jquery.datetimepicker.js" />
