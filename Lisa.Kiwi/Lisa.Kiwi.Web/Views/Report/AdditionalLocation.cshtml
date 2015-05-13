@@ -6,7 +6,7 @@
 @using (Html.BeginForm())
 {
 	<div class="field">
-		<label>@String.Format(Resources.PageItems.LocationDetailedDescription, ViewBag.Preposition, ViewBag.Building)</label>
+		<label>@String.Format(Resources.PageItems.LocationDetailedDescription, ViewBag.Preposition, ViewBag.Building) *</label>
 
 		<div>
 			@Html.TextAreaFor(m => m.AdditionalLocation)
