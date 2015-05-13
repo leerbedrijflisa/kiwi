@@ -40,7 +40,7 @@ namespace Lisa.Kiwi.WebApi
             {
                 AllowInsecureHttp = true,
                 TokenEndpointPath = new PathString("/api/oauth"),
-                AccessTokenExpireTimeSpan = TimeSpan.FromHours(2),
+                AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
                 Provider = new SimpleAuthorizationServerProvider()
             };
 
