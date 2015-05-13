@@ -284,7 +284,7 @@ form .submit button:active img {
     width: 137px !important;
     height: 141px !important;
     text-align: center !important;
-    padding-left: 0px !important;
+    padding-left: 0 !important;
 }
 
 /* Responsive */
