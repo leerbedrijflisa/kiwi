@@ -81,8 +81,13 @@ form .field label,
 	width: 270px;
 }
 
-form .field label.radio,
-label.radio:checked {
+@media(max-width: 515px) {
+    form .field label.mobile-hide, .container .field label.mobile-hide {
+        display: none;
+    }
+}
+
+form .field label.radio, label.radio:checked{
     background-color: white;
     margin: auto;
     width: 900px;
