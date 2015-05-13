@@ -74,7 +74,7 @@
 					</p>
 				</a>
 				<ul class="options">
-					<li><a href="@Url.Action("ToggleSolved", new { id=report.Id, currentsolved=report.Status = =StatusEnum.Solved})"><img src="~/Content/done.svg"></a></li>
+					<li><a href="@Url.Action("ToggleSolved", new { id=report.Id, currentsolved = report.Status == StatusEnum.Solved})"><img src="~/Content/done.svg"></a></li>
 
 					@*
 						Only the head of security can hide and show reports.
@@ -82,7 +82,7 @@
 					*@
 					@if (User.IsInRole("Administrator"))
 					{
-						<li><a href="@Url.Action("ToggleVisible", new { id=report.Id, isvisible=report.IsVisible = =false })"><img src="~/Content/show.svg"></a></li>
+						<li><a href="@Url.Action("ToggleVisible", new { id=report.Id, isvisible = !report.IsVisible})"><img src="~/Content/show.svg"></a></li>
 					}
 				</ul>
 			</article>
