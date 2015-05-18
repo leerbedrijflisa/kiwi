@@ -16,57 +16,57 @@
 
 @helper Time(DateTimeOffset dateTime)
 {
-	string Difference;
+	string difference;
 	
 	//Calculating difference between current time and report time	
-	TimeSpan DateTimeDifference = DateTimeOffset.Now.Subtract(dateTime);
-	var Weeks = (int)Math.Round((double)DateTimeDifference.Days / 7);
-	var RemainingDays = DateTimeDifference.Days % 7;
-	var MonthDifference = ((DateTimeOffset.Now.Year * 12) + DateTimeOffset.Now.Month) - ((dateTime.Year * 12) + dateTime.Month);
+	var dateTimeDifference = DateTimeOffset.Now.Subtract(dateTime);
+	var weeks = (int)Math.Round((double)dateTimeDifference.Days / 7);
+	var remainingDays = dateTimeDifference.Days % 7;
+	var monthDifference = ((DateTimeOffset.Now.Year * 12) + DateTimeOffset.Now.Month) - ((dateTime.Year * 12) + dateTime.Month);
 		
 	//Callers	
-	var SecondCaller = DateTimeDifference.Seconds == 1 ? Resources.Time.Second : Resources.Time.Seconds;
-	var MinuteCaller = DateTimeDifference.Minutes == 1 ? Resources.Time.Minute : Resources.Time.Minutes;
-	var HourCaller = Resources.Time.Hour;
-	var DayCaller = DateTimeDifference.Days == 1 ? Resources.Time.Day : Resources.Time.Days;
-	var WeekCaller = Weeks == 1 ? Resources.Time.Week : Resources.Time.Weeks;
-	var RemainingDayCaller = RemainingDays == 1 ? Resources.Time.Day : Resources.Time.Days;
-	var MonthCaller = MonthDifference == 1 ? Resources.Time.Month : Resources.Time.Months;	
+	var secondCaller = dateTimeDifference.Seconds == 1 ? Resources.Time.Second : Resources.Time.Seconds;
+	var minuteCaller = dateTimeDifference.Minutes == 1 ? Resources.Time.Minute : Resources.Time.Minutes;
+	var hourCaller = Resources.Time.Hour;
+	var dayCaller = dateTimeDifference.Days == 1 ? Resources.Time.Day : Resources.Time.Days;
+	var weekCaller = weeks == 1 ? Resources.Time.Week : Resources.Time.Weeks;
+	var remainingDayCaller = remainingDays == 1 ? Resources.Time.Day : Resources.Time.Days;
+	var monthCaller = monthDifference == 1 ? Resources.Time.Month : Resources.Time.Months;	
 		
 	//Checking what time should be shown
-	if (DateTimeDifference.Hours < 1 && DateTimeDifference.Days < 1)
+	if (dateTimeDifference.Hours < 1 && dateTimeDifference.Days < 1)
 	{
-		if (DateTimeDifference.Minutes < 1)
+		if (dateTimeDifference.Minutes < 1)
 		{
-			Difference = String.Format("{0} {1} geleden", DateTimeDifference.Seconds, SecondCaller);
+			difference = String.Format("{0} {1} geleden", dateTimeDifference.Seconds, secondCaller);
 		}
 		else
 		{
-			Difference = String.Format("{0} {1} geleden", DateTimeDifference.Minutes, MinuteCaller);
+			difference = String.Format("{0} {1} geleden", dateTimeDifference.Minutes, minuteCaller);
 		}
 	}
-	else if(DateTimeDifference.Hours < 12 && DateTimeDifference.Hours >= 1 && DateTimeDifference.Days < 1)
+	else if(dateTimeDifference.Hours < 12 && dateTimeDifference.Hours >= 1 && dateTimeDifference.Days < 1)
 	{
-		Difference = String.Format("{0} {1} en {2} {3} geleden", DateTimeDifference.Hours, HourCaller, DateTimeDifference.Minutes, MinuteCaller);	
+		difference = String.Format("{0} {1} en {2} {3} geleden", dateTimeDifference.Hours, hourCaller, dateTimeDifference.Minutes, minuteCaller);	
 	}
-	else if (DateTimeDifference.Hours < 24 && DateTimeDifference.Hours >= 12 && DateTimeDifference.Days < 1)
+	else if (dateTimeDifference.Hours < 24 && dateTimeDifference.Hours >= 12 && dateTimeDifference.Days < 1)
 	{
-			Difference = String.Format("{0} {1} geleden", DateTimeDifference.Hours, HourCaller);
+			difference = String.Format("{0} {1} geleden", dateTimeDifference.Hours, hourCaller);
 	}
-	else if(DateTimeDifference.Days < 7)
+	else if(dateTimeDifference.Days < 7)
 	{
-			Difference = String.Format("{0} {1} geleden", DateTimeDifference.Days, DayCaller);
+			difference = String.Format("{0} {1} geleden", dateTimeDifference.Days, dayCaller);
 	}
-	else if(Weeks < 4)
+	else if(weeks < 4)
 	{
-			Difference = RemainingDays == 0 ? String.Format("{0} {1} geleden", Weeks, WeekCaller) 
-							: String.Format("{0} {1} en {2} {3} geleden", Weeks, WeekCaller, RemainingDays, RemainingDayCaller);	
+			difference = remainingDays == 0 ? String.Format("{0} {1} geleden", weeks, weekCaller) 
+							: String.Format("{0} {1} en {2} {3} geleden", weeks, weekCaller, remainingDays, remainingDayCaller);	
 	}		
 	else
 	{
-			Difference = String.Format("{0} {1} geleden", MonthDifference, MonthCaller);
+			difference = String.Format("{0} {1} geleden", monthDifference, monthCaller);
 	}		
-	@Difference;	
+	@difference;	
 }
 
 @helper Capitalize(string value)
