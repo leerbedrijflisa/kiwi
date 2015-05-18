@@ -96,8 +96,8 @@ namespace Lisa.Kiwi.WebApi
             {
                 foreach (var table in target)
                 {
-                    result += db.Database.ExecuteSqlCommand(string.Format("DELETE FROM  [{0}]", table));
-                    db.Database.ExecuteSqlCommand(string.Format("DBCC CHECKIDENT ([{0}], RESEED, 0)", table));
+                    result += db.Database.ExecuteSqlCommand(String.Format("DELETE FROM  [{0}]", table));
+                    db.Database.ExecuteSqlCommand(String.Format("DBCC CHECKIDENT ([{0}], RESEED, 0)", table));
                 }
 
                 scope.Complete();
