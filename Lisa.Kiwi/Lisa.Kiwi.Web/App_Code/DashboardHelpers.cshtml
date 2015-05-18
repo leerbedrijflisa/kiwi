@@ -38,33 +38,33 @@
 	{
 		if (DateTimeDifference.Minutes < 1)
 		{
-			Difference = string.Format("{0} {1} geleden", DateTimeDifference.Seconds, SecondCaller);
+			Difference = String.Format("{0} {1} geleden", DateTimeDifference.Seconds, SecondCaller);
 		}
 		else
 		{
-			Difference = string.Format("{0} {1} geleden", DateTimeDifference.Minutes, MinuteCaller);
+			Difference = String.Format("{0} {1} geleden", DateTimeDifference.Minutes, MinuteCaller);
 		}
 	}
 	else if(DateTimeDifference.Hours < 12 && DateTimeDifference.Hours >= 1 && DateTimeDifference.Days < 1)
 	{
-		Difference = string.Format("{0} {1} en {2} {3} geleden", DateTimeDifference.Hours, HourCaller, DateTimeDifference.Minutes, MinuteCaller);	
+		Difference = String.Format("{0} {1} en {2} {3} geleden", DateTimeDifference.Hours, HourCaller, DateTimeDifference.Minutes, MinuteCaller);	
 	}
 	else if (DateTimeDifference.Hours < 24 && DateTimeDifference.Hours >= 12 && DateTimeDifference.Days < 1)
 	{
-			Difference = string.Format("{0} {1} geleden", DateTimeDifference.Hours, HourCaller);
+			Difference = String.Format("{0} {1} geleden", DateTimeDifference.Hours, HourCaller);
 	}
 	else if(DateTimeDifference.Days < 7)
 	{
-			Difference = string.Format("{0} {1} geleden", DateTimeDifference.Days, DayCaller);
+			Difference = String.Format("{0} {1} geleden", DateTimeDifference.Days, DayCaller);
 	}
 	else if(Weeks < 4)
 	{
-			Difference = RemainingDays == 0 ? string.Format("{0} {1} geleden", Weeks, WeekCaller) 
-							: string.Format("{0} {1} en {2} {3} geleden", Weeks, WeekCaller, RemainingDays, RemainingDayCaller);	
+			Difference = RemainingDays == 0 ? String.Format("{0} {1} geleden", Weeks, WeekCaller) 
+							: String.Format("{0} {1} en {2} {3} geleden", Weeks, WeekCaller, RemainingDays, RemainingDayCaller);	
 	}		
 	else
 	{
-			Difference = string.Format("{0} {1} geleden", MonthDifference, MonthCaller);
+			Difference = String.Format("{0} {1} geleden", MonthDifference, MonthCaller);
 	}		
 	@Difference;	
 }
