@@ -155,6 +155,7 @@
     <Compile Include="Data\PerpetratorData.cs" />
     <Compile Include="Data\ReportData.cs" />
     <Compile Include="Data\VehicleData.cs" />
+    <Compile Include="Hubs\ReportsHub.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AddUserModel.cs" />
     <Compile Include="Models\ModelFactory.cs" />

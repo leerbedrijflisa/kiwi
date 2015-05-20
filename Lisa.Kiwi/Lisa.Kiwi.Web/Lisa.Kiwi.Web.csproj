@@ -257,6 +257,7 @@
     <Content Include="Content\warning.svg" />
     <Content Include="Global.asax" />
     <Content Include="App_Code\DashboardHelpers.cshtml" />
+    <Content Include="Scripts\dashboard.js" />
     <Content Include="Scripts\hyphenator.js" />
     <Content Include="Scripts\jquery.datetimepicker.js" />
     <Content Include="Scripts\Theft.js" />
