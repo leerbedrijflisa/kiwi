@@ -97,11 +97,11 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Onbekend.
+        ///   Looks up a localized string similar to Anders.
         /// </summary>
-        public static string Unknown {
+        public static string Other {
             get {
-                return ResourceManager.GetString("Unknown", resourceCulture);
+                return ResourceManager.GetString("Other", resourceCulture);
             }
         }
     }

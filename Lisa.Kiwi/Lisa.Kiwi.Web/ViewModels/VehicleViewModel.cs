@@ -54,7 +54,7 @@ namespace Lisa.Kiwi.Web
                     new SelectListItem
                     {
                         Text = Resources.VehicleTypes.Unknown,
-                        Value = "Unknown"
+                        Value = "Other"
                     }
                 };
             }
