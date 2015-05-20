@@ -88,7 +88,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to building-parkeerplaats-betaald.
+        ///   Looks up a localized string similar to building-betaaldeparkeerplaats.
         /// </summary>
         public static string BetaaldeParkeerplaats {
             get {

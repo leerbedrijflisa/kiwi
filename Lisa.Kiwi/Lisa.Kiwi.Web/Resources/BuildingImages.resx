@@ -178,7 +178,7 @@
     <value>building-parkeerplaats-langeveldlaan</value>
   </data>
   <data name="BetaaldeParkeerplaats" xml:space="preserve">
-    <value>building-parkeerplaats-betaald</value>
+    <value>building-betaaldeparkeerplaats</value>
   </data>
   <data name="Romboutslaan" xml:space="preserve">
     <value>building-romboutslaan</value>

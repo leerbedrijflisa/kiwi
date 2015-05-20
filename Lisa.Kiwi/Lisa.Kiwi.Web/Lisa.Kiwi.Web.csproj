@@ -210,7 +210,7 @@
     <Content Include="Content\DashboardBuildings\building-marrone.jpg" />
     <Content Include="Content\DashboardBuildings\building-ocra.jpg" />
     <Content Include="Content\DashboardBuildings\building-orthodontist.jpg" />
-    <Content Include="Content\DashboardBuildings\building-parkeerplaats-betaald.jpg" />
+    <Content Include="Content\DashboardBuildings\building-betaaldeparkeerplaats.jpg" />
     <Content Include="Content\DashboardBuildings\building-parkeerplaats-langeveldlaan.jpg" />
     <Content Include="Content\DashboardBuildings\building-romboutslaan.jpg" />
     <Content Include="Content\DashboardBuildings\building-rosa.jpg" />
