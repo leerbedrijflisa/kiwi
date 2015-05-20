@@ -83,6 +83,11 @@ namespace Lisa.Kiwi.WebApi
                 return NotFound();
             }
 
+            if (!claimsIdentity.HasClaim("is_admin", "True") && json.Value<bool>("isVisible") != reportData.IsVisible)
+            {
+                return Unauthorized();
+            }
+
             _dataFactory.Modify(reportData, json);
 
             await _db.SaveChangesAsync();
