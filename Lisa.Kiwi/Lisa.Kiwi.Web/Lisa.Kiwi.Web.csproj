@@ -305,7 +305,7 @@
     <Content Include="Views\Report\CategoryPartials\_PartialDetailsFight.cshtml" />
     <Content Include="Views\Report\CategoryPartials\_PartialDetailsFirstAid.cshtml" />
     <Content Include="Views\Report\CategoryPartials\_PartialDetailsNuisance.cshtml" />
-    <Content Include="Views\Report\CategoryPartials\_PartialDetailsOther.cshtml" />
+    <Content Include="Views\Report\CategoryPartials\_PartialDetailOther.cshtml" />
     <Content Include="Views\Report\CategoryPartials\_PartialDetailsTheft.cshtml" />
     <Content Include="Views\Report\CategoryPartials\_PartialDetailsWeapons.cshtml" />
     <Content Include="Views\Report\ReportPartials\_PartialReturnReportCategory.cshtml" />
