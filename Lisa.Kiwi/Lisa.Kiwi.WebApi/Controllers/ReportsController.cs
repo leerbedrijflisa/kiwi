@@ -13,7 +13,7 @@ namespace Lisa.Kiwi.WebApi
     [Authorize]
     public class ReportsController : ApiController
     {
-        [Authorize(Roles = "dashboardUser")]
+        [Authorize(Roles = "dashboardUser, Administrator")]
         public IHttpActionResult Get()
         {
             return Ok(GetCompleteReports());

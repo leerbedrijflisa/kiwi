@@ -82,13 +82,27 @@ namespace Lisa.Kiwi.WebApi
 
                 identity.AddClaim(new Claim(ClaimTypes.Name, context.UserName));
                 identity.AddClaim(new Claim("id", user.Id));
-                identity.AddClaim(new Claim(ClaimTypes.Role, "dashboardUser"));
-
+                
                 var isAdmin = repo.HasRole(user, "Administrator");
                 identity.AddClaim(new Claim("is_admin", isAdmin.ToString()));
 
+                identity.AddClaim(isAdmin
+                    ? new Claim(ClaimTypes.Role, "Administrator")
+                    : new Claim(ClaimTypes.Role, "dashboardUser"));
+
+
                 context.Validated(identity);
             }
+        }
+
+        public override Task TokenEndpoint(OAuthTokenEndpointContext context)
+        {
+            if (context.Identity.HasClaim("is_admin", "True"))
+            {
+                context.AdditionalResponseParameters.Add("is_admin", "true");
+            }
+
+            return base.TokenEndpoint(context);
         }
     }
 }
