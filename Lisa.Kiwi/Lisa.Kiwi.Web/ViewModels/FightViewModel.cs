@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace Lisa.Kiwi.Web
 {
@@ -7,6 +8,7 @@ namespace Lisa.Kiwi.Web
         [DisplayName("Hoeveel personen zijn er aan het vechten?")]
         public int FighterCount { get; set; }
 
+        [Required]
         [DisplayName("Zijn er wapens bij betrokken?")]
         public bool IsWeaponPresent { get; set; }
 

@@ -186,14 +186,18 @@ ul.buttons li button img {
     height: 99px;
 }
 
-.radioButton input[type=radio] {
+div.radioButtonDivider {
+    padding-left: 30px;
+}
+
+/*.radioButton input[type=radio] {
     display: inline;
     width: auto;
     height: auto;
     margin: 0;
     margin-top: 5px;
     float: left;
-}
+}*/
 
 
 /*
@@ -204,6 +208,10 @@ input[type=checkbox] {
     width: 70px;
     height: 19px;
     margin-top: 32px;
+}
+
+input[type=radio] {
+    margin-top: 5px;
 }
 
 form .field p,
