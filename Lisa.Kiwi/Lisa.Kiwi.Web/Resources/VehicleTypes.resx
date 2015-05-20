@@ -129,7 +129,7 @@
   <data name="Motorcycle" xml:space="preserve">
     <value>Motor</value>
   </data>
-  <data name="Unknown" xml:space="preserve">
-    <value>Onbekend</value>
+  <data name="Other" xml:space="preserve">
+    <value>Anders</value>
   </data>
 </root>

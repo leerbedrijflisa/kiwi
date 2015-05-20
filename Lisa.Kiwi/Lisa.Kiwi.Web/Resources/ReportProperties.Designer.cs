@@ -106,7 +106,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Verdere beschijving.
+        ///   Looks up a localized string similar to Verdere beschrijving.
         /// </summary>
         public static string Description {
             get {

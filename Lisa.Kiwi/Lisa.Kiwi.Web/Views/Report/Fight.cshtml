@@ -12,7 +12,11 @@
 	<div class="field">
 		@* TODO: figure out a way to make this checkbox look clearer *@
 		@Html.LabelFor(m => m.IsWeaponPresent)
-		@Html.CheckBoxFor(m => m.IsWeaponPresent)
+
+		<div class="radioButtonDivider">
+			@Html.RadioButtonFor(m => m.IsWeaponPresent, true) Ja
+			@Html.RadioButtonFor(m => m.IsWeaponPresent, false) Nee
+		</div>
 	</div>
 	<div class="field">
 		@Html.LabelFor(m => m.Description)
