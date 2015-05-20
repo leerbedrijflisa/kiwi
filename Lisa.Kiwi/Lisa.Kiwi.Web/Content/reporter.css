@@ -331,3 +331,33 @@ form .submit button:active img {
     cursor: pointer;
     text-decoration: none;
 }
+
+#bug-report{
+    position: fixed;
+    top: 5%;
+    height: 200px;
+    right: -120px;
+    padding: 5px 14px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: #113;
+    text-decoration: none;
+    color: white;
+    
+    /* Safari */
+    -webkit-transform: rotate(-90deg);
+
+    /* Firefox */
+    -moz-transform: rotate(-90deg);
+
+    /* IE */
+    -ms-transform: rotate(-90deg);
+
+    /* Opera */
+    -o-transform: rotate(-90deg);
+
+    /* Internet Explorer */
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+
+
+}
