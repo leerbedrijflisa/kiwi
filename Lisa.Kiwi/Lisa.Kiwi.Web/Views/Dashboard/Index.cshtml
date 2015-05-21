@@ -80,7 +80,8 @@
 						Only the head of security can hide and show reports.
 						TODO: Add security check to the ToggleVisible action.
 					*@
-					@if (User.IsInRole("Administrator"))
+
+					@if (Request.Cookies["role"] != null && Request.Cookies["role"].Value == "Administrator")
 					{
 						<li><a href="@Url.Action("ToggleVisible", new { id=report.Id, isvisible = !report.IsVisible})"><img src="~/Content/show.svg"></a></li>
 					}
