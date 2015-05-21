@@ -171,7 +171,6 @@
     <Compile Include="ViewModels\ContactRequiredViewModel.cs" />
     <Compile Include="ViewModels\ContactViewModel.cs" />
     <Compile Include="ViewModels\DrugsViewModel.cs" />
-    <Compile Include="ViewModels\EditDoneViewModel.cs" />
     <Compile Include="ViewModels\ErrorMessages.cs" />
     <Compile Include="ViewModels\FightViewModel.cs" />
     <Compile Include="ViewModels\FirstAidViewModel.cs" />
@@ -289,7 +288,6 @@
     <Content Include="Views\Report\Location.cshtml" />
     <Content Include="Views\Report\FirstAid.cshtml" />
     <Content Include="Views\Report\ContactRequired.cshtml" />
-    <Content Include="Views\Dashboard\CategoryPartials\_PartialDetailsFirstAid.cshtml" />
     <Content Include="Views\Report\Contact.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Report\Fight.cshtml" />
@@ -300,13 +298,6 @@
     <Content Include="Views\Report\Theft.cshtml" />
     <Content Include="Views\Report\Other.cshtml" />
     <Content Include="Views\Report\Nuisance.cshtml" />
-    <Content Include="Views\Dashboard\CategoryPartials\_PartialDetailsWeapons.cshtml" />
-    <Content Include="Views\Dashboard\CategoryPartials\_PartialDetailsBullying.cshtml" />
-    <Content Include="Views\Dashboard\CategoryPartials\_PartialDetailsDrugs.cshtml" />
-    <Content Include="Views\Dashboard\CategoryPartials\_PartialDetailsFight.cshtml" />
-    <Content Include="Views\Dashboard\CategoryPartials\_PartialDetailsOther.cshtml" />
-    <Content Include="Views\Dashboard\CategoryPartials\_PartialDetailsNuisance.cshtml" />
-    <Content Include="Views\Dashboard\CategoryPartials\_PartialDetailsTheft.cshtml" />
     <Content Include="Views\Report\View.cshtml" />
     <Content Include="Views\Report\End.cshtml" />
     <Content Include="Views\Report\Police.cshtml" />
@@ -331,7 +322,6 @@
     <Content Include="Views\Dashboard\Error.cshtml" />
     <Content Include="Views\Report\AdditionalLocation.cshtml" />
     <Content Include="Views\Report\SessionExpired.cshtml" />
-    <Content Include="Views\Report\EditDone.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -404,6 +394,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_GlobalResources\" />
+    <Folder Include="Views\Shared\Partials\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Categories.resx">
