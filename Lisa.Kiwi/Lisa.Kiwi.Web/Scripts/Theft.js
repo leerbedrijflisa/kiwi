@@ -3,6 +3,7 @@
     var maxDate = dt.getFullYear() + '/' + dt.getMonth() + '/' + dt.getDate();
     var timeStop = dt.getHours() + ':' + dt.getMinutes()
 
+    //the +maxDate and +timeStop are to set the maxTime and maxDate to the right dates and times, else they will be one minute/day less.
     $('#DateOfTheft').datetimepicker({
         maxDate: +maxDate,
         dateFormat: 'mm/dd/Y H:i',

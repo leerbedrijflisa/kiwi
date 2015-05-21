@@ -42,8 +42,6 @@
             {
                 Building = locationData.Building,
                 Description = locationData.Description,
-                Latitude = locationData.Latitude,
-                Longitude = locationData.Longitude
             };
         }
 

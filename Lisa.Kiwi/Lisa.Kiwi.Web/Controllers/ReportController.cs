@@ -417,6 +417,13 @@ namespace Lisa.Kiwi.Web
             }
         }
 
+        public async Task<ActionResult> EditDone()
+        {
+            var report = await GetCurrentReport();
+            ViewBag.Report = report;
+            return View();
+        }
+
         protected override void OnActionExecuting(ActionExecutingContext context)
         {
             CreateReportProxy();
