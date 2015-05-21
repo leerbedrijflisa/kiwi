@@ -34,7 +34,6 @@
 				<a href="@Url.Action("Details", new { id= report.Id })">
 					<div class="category @report.Category">
 						<h1>@Categories.ResourceManager.GetString(report.Category)</h1>
-						@*find a way to make this work*@
 						<p class="time">@DashboardHelpers.Time(report.Created)</p>
 					</div>
 					@if (report.Location != null)
