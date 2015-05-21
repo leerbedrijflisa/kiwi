@@ -1,13 +1,25 @@
 ﻿@model Report
-@{
-	ViewBag.Title = "Hulp";
+@if (Model.Category == "Theft")
+{
+    ViewBag.Title = "Police";
+}
+else
+{
+    ViewBag.Title = "Help";
 }
 
 <form>
 	<div class="field">
 		<label></label>
-		<p class="noBorder">Wij zullen actie ondernemen. Verder kan je nog hulp zoeken bij de volgende personen:<br /> Je mentor, je vertrouwenspersoon, of de landelijke hulplijn (Tel: 0900-0101).</p>
-	</div>
+        @if (Model.Category == "Theft")
+        {
+            <p class="noBorder">Wij nemen zo snel mogelijk contact met u op.</p>
+        }
+        else
+        {
+            <p class="noBorder">Wij zullen actie ondernemen. Verder kan je nog hulp zoeken bij de volgende personen:<br /> Je mentor, je vertrouwenspersoon, of de landelijke hulplijn (Tel: 0900-0101).</p>
+        }
+    </div>
 	<div class="grayLayer">
 		@Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportCategory.cshtml", Model)
 		@Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportLocation.cshtml", Model)

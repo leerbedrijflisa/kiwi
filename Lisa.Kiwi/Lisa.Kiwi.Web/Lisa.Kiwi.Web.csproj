@@ -301,7 +301,6 @@
     <Content Include="Views\Report\Nuisance.cshtml" />
     <Content Include="Views\Report\View.cshtml" />
     <Content Include="Views\Report\End.cshtml" />
-    <Content Include="Views\Report\Police.cshtml" />
     <Content Include="Views\Report\Help.cshtml" />
     <Content Include="Views\Report\Vehicle.cshtml" />
     <Content Include="Views\Report\Victim.cshtml" />

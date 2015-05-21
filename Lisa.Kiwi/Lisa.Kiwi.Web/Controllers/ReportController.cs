@@ -417,7 +417,7 @@ namespace Lisa.Kiwi.Web
             switch (category)
             {
                 case "Theft":
-                    return View("Police", report);
+                    return View("Help", report);
 
                 case "Bullying":
                     return View("Help", report);
