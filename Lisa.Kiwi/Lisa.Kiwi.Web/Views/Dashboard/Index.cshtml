@@ -2,16 +2,22 @@
 
 @{
 	Layout = null;
+    var api = MvcApplication.GetApiUrl();
 }
 
-<!doctype html>
-
+<!DOCTYPE html>
 <html>
 <head>
 	<title>Leerpark</title>
 	<link href="@Url.Content("~/Content/dashboard.css")" rel="stylesheet" type="text/css">
-	<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
-	<meta http-equiv="refresh" content="30">
+	
+    <script src="@(api)Scripts/jquery-1.6.4.min.js"></script>
+    <script src="@(api)Scripts/jquery.signalR-2.2.0.min.js"></script>
+    <script src="@(api)signalr/hubs"></script>
+    <script>
+        window.ApiUrl = "@api";
+    </script>
+    <script src="~/Scripts/dashboard.js"></script>
 </head>
 
 <body>

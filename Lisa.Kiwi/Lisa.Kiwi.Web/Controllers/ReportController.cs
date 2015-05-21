@@ -475,26 +475,7 @@ namespace Lisa.Kiwi.Web
 
         private void CreateReportProxy()
         {
-            string url = null;
-
-#if DEBUG
-            if (FiddlerAvailable())
-            {
-                url = WebConfigurationManager.AppSettings["WebApiFiddlerUrl"];
-            }
-#endif
-            if (string.IsNullOrEmpty(url))
-            {
-                url = WebConfigurationManager.AppSettings["WebApiUrl"];
-            }
-
-            _reportProxy = new Proxy<Report>(url + "reports");
-        }
-
-        private bool FiddlerAvailable()
-        {
-            return Process.GetProcesses()
-                .Any(process => process.ProcessName.Contains("Fiddler"));
+            _reportProxy = new Proxy<Report>(MvcApplication.GetApiUrl() + "reports");
         }
 
         private Proxy<Report> _reportProxy;
