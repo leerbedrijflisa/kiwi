@@ -174,6 +174,11 @@ namespace Lisa.Kiwi.Web
 
             // TODO: add error handling
 
+            if (report.IsWeaponPresent == true)
+            {
+                return RedirectToAction("Weapons");
+            }
+
             return RedirectToAction("Contact");
         }
 
@@ -194,6 +199,11 @@ namespace Lisa.Kiwi.Web
 
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(report.Id, report);
+
+            if (report.Category == "Fight")
+            {
+                return RedirectToAction("Contact");
+            }
 
             return RedirectToAction("Perpetrator");
         }
