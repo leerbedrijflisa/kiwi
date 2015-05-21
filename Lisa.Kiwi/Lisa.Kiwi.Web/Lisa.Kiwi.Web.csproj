@@ -304,24 +304,24 @@
     <Content Include="Views\Report\Help.cshtml" />
     <Content Include="Views\Report\Vehicle.cshtml" />
     <Content Include="Views\Report\Victim.cshtml" />
-    <Content Include="Views\Report\CategoryPartials\_PartialDetailsBullying.cshtml" />
-    <Content Include="Views\Report\CategoryPartials\_PartialDetailsDrugs.cshtml" />
-    <Content Include="Views\Report\CategoryPartials\_PartialDetailsFight.cshtml" />
-    <Content Include="Views\Report\CategoryPartials\_PartialDetailsFirstAid.cshtml" />
-    <Content Include="Views\Report\CategoryPartials\_PartialDetailsNuisance.cshtml" />
-    <Content Include="Views\Report\CategoryPartials\_PartialDetailsOther.cshtml" />
-    <Content Include="Views\Report\CategoryPartials\_PartialDetailsTheft.cshtml" />
-    <Content Include="Views\Report\CategoryPartials\_PartialDetailsWeapons.cshtml" />
-    <Content Include="Views\Report\ReportPartials\_PartialReturnReportCategory.cshtml" />
-    <Content Include="Views\Report\ReportPartials\_PartialReturnReportLocation.cshtml" />
-    <Content Include="Views\Report\ReportPartials\_PartialReturnReportPerpetrator.cshtml" />
-    <Content Include="Views\Report\ReportPartials\_PartialReturnReportContact.cshtml" />
-    <Content Include="Views\Report\ReportPartials\_PartialReturnReportVehicle.cshtml" />
     <Content Include="App_Code\ReportHelpers.cshtml" />
     <Content Include="Views\Report\Error.cshtml" />
     <Content Include="Views\Dashboard\Error.cshtml" />
     <Content Include="Views\Report\AdditionalLocation.cshtml" />
     <Content Include="Views\Report\SessionExpired.cshtml" />
+    <Content Include="Views\Shared\Partials\Details\_PartialDetailsBullying.cshtml" />
+    <Content Include="Views\Shared\Partials\Details\_PartialDetailsDrugs.cshtml" />
+    <Content Include="Views\Shared\Partials\Details\_PartialDetailsFight.cshtml" />
+    <Content Include="Views\Shared\Partials\Details\_PartialDetailsFirstAid.cshtml" />
+    <Content Include="Views\Shared\Partials\Details\_PartialDetailsNuisance.cshtml" />
+    <Content Include="Views\Shared\Partials\Details\_PartialDetailsOther.cshtml" />
+    <Content Include="Views\Shared\Partials\Details\_PartialDetailsTheft.cshtml" />
+    <Content Include="Views\Shared\Partials\Details\_PartialDetailsWeapons.cshtml" />
+    <Content Include="Views\Shared\Partials\Report\_PartialReturnReportCategory.cshtml" />
+    <Content Include="Views\Shared\Partials\Report\_PartialReturnReportContact.cshtml" />
+    <Content Include="Views\Shared\Partials\Report\_PartialReturnReportLocation.cshtml" />
+    <Content Include="Views\Shared\Partials\Report\_PartialReturnReportPerpetrator.cshtml" />
+    <Content Include="Views\Shared\Partials\Report\_PartialReturnReportVehicle.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -394,7 +394,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_GlobalResources\" />
-    <Folder Include="Views\Shared\Partials\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Categories.resx">
