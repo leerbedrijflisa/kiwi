@@ -1,0 +1,20 @@
+﻿@model EditDoneViewModel
+
+@{
+	Report Report = ViewBag.Report;
+}
+
+@using (Html.BeginForm())
+{
+	if (Report.Category == "FirstAid")
+	{
+		<div class="field">
+			<label>@ReportProperties.ResourceManager.GetString("IsUnconsious")</label>
+			@Html.RadioButtonFor(m => m.IsUnconscious, true) Ja
+			@Html.RadioButtonFor(m => m.IsUnconscious, false) Nee
+		</div>
+	}
+	<div class="submit">
+		<button type="submit"><img src="@Url.Content("~/Content/next.svg")" /></button>
+	</div>
+}

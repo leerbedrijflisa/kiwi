@@ -1,13 +1,13 @@
 ﻿$(function () {
     var dt = new Date();
     var maxDate = dt.getFullYear() + '/' + dt.getMonth() + '/' + dt.getDate();
-    var timeStop = dt.getHours() + ':' + dt.getMinutes()
 
+    //Default for today is 0
     $('#DateOfTheft').datetimepicker({
-        maxDate: +maxDate,
+        maxDate: 0,
         dateFormat: 'mm/dd/Y H:i',
-        defaultTime: timeStop,
-        maxTime: +timeStop,
+        defaultTime: 0,
+        maxTime: 0,
         step: 1,
         lang: 'nl',
         timepickerScrollbar: false,
@@ -16,7 +16,7 @@
             dateCheck = dp.getFullYear() + '/' + dp.getMonth() + '/' + dp.getDate();
             if (dateCheck == maxDate)
             {
-                this.setOptions({ maxTime: +timeStop });
+                this.setOptions({ maxTime:  0});
             }
             if(dateCheck != maxDate)
             {
