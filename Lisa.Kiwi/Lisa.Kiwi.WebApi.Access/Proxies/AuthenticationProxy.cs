@@ -83,12 +83,14 @@ namespace Lisa.Kiwi.WebApi.Access
 
                     try
                     {
+
                         var authInfo = JObject.Parse(resultContent);
-                        return new Token()
+                        return new Token
                         {
                             Value = authInfo.SelectToken("access_token").ToString(),
                             Type = authInfo.SelectToken("token_type").ToString(),
-                            ExpiresIn = authInfo.SelectToken("expires_in").Value<int>()
+                            ExpiresIn = authInfo.SelectToken("expires_in").Value<int>(),
+                            Role = authInfo.SelectToken("role").ToString()
                         };
                     }
                     catch (Exception e)

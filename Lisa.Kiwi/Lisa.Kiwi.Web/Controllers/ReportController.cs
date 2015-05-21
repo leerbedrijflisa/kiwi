@@ -424,7 +424,7 @@ namespace Lisa.Kiwi.Web
             var tokenCookie = Request.Cookies["token"];
             if (tokenCookie != null)
             {
-                _reportProxy.Token = new Token
+                _reportProxy.Token = new Common.Access.Token
                 {
                     Value = tokenCookie.Value
                 };
