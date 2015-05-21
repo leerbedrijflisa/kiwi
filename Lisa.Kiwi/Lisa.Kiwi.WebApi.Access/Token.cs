@@ -1,4 +1,4 @@
-﻿namespace Lisa.Kiwi.WebApi
+﻿namespace Lisa.Kiwi.WebApi.Access
 {
     public class Token
     {
