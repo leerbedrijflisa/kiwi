@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using System.Web.Security;
+using Microsoft.AspNet.SignalR;
 using Newtonsoft.Json.Linq;
 
 namespace Lisa.Kiwi.WebApi
@@ -54,7 +55,7 @@ namespace Lisa.Kiwi.WebApi
             var reportData = _dataFactory.Create(json);
 
             _db.Reports.Add(reportData);
-            await _db.SaveChangesAsync();
+            _db.SaveChanges();
 
             var reportJson = _modelFactory.Create(reportData);
 
@@ -113,6 +114,12 @@ namespace Lisa.Kiwi.WebApi
             var value = MachineKey.Protect(Encoding.UTF8.GetBytes(anonymousToken));
 
             return HttpServerUtility.UrlTokenEncode(value);
+        }
+
+        private void UpdateDashboard(Report report)
+        {
+            var hub = GlobalHost.ConnectionManager.GetHubContext<ReportsHub>();
+            hub.Clients.Group("Authorized").updateReport(report);
         }
 
         private readonly KiwiContext _db = new KiwiContext();

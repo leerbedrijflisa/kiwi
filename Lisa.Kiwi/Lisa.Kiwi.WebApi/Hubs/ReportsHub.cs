@@ -1,13 +1,14 @@
-﻿using Microsoft.AspNet.SignalR;
+﻿using System.Net;
+using Microsoft.AspNet.SignalR;
 
-namespace Lisa.Kiwi.WebApi.Hubs
+namespace Lisa.Kiwi.WebApi
 {
-    [Authorize]
     public class ReportsHub : Hub
     {
-        public void UpdateReport(Report report)
+        public HttpStatusCode Authorize(string token)
         {
-            Clients.All.updateReport(report);
+            Groups.Add(Clients.Caller, "Authorized");
+            return HttpStatusCode.Unauthorized;
         }
     }
 }
