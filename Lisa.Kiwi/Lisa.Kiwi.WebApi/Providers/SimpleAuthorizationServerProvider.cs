@@ -59,7 +59,7 @@ namespace Lisa.Kiwi.WebApi
 
             var identity = new ClaimsIdentity(context.Options.AuthenticationType);
 
-            identity.AddClaim(new Claim(ClaimTypes.Role, "anonymous"));
+            identity.AddClaim(new Claim(ClaimTypes.Role, "Anonymous"));
             identity.AddClaim(new Claim("reportId", reportId.ToString()));
             identity.AddClaim(new Claim("is_anonymous", "true"));
 
@@ -88,21 +88,21 @@ namespace Lisa.Kiwi.WebApi
 
                 identity.AddClaim(isAdmin
                     ? new Claim(ClaimTypes.Role, "Administrator")
-                    : new Claim(ClaimTypes.Role, "dashboardUser"));
+                    : new Claim(ClaimTypes.Role, "DashboardUser"));
 
 
                 context.Validated(identity);
             }
         }
 
-        public override Task TokenEndpoint(OAuthTokenEndpointContext context)
+        public override async Task TokenEndpoint(OAuthTokenEndpointContext context)
         {
-            if (context.Identity.HasClaim("is_admin", "True"))
+            using (var repo = new AuthRepository())
             {
-                context.AdditionalResponseParameters.Add("is_admin", "true");
+                var role = context.Identity.Claims.First(c => c.Type == ClaimTypes.Role).Value;
+                    
+                context.AdditionalResponseParameters.Add("role", role);
             }
-
-            return base.TokenEndpoint(context);
         }
     }
 }

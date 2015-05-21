@@ -13,7 +13,7 @@ namespace Lisa.Kiwi.WebApi
     [Authorize]
     public class ReportsController : ApiController
     {
-        [Authorize(Roles = "dashboardUser, Administrator")]
+        [Authorize(Roles = "DashboardUser, Administrator")]
         public IHttpActionResult Get()
         {
             return Ok(GetCompleteReports());
@@ -23,7 +23,7 @@ namespace Lisa.Kiwi.WebApi
         {
             var claimsIdentity = (ClaimsIdentity)User.Identity;
             
-            if (claimsIdentity.HasClaim(ClaimTypes.Role, "anonymous"))
+            if (claimsIdentity.HasClaim(ClaimTypes.Role, "Anonymous"))
             {
                 if(!claimsIdentity.HasClaim("reportId", id.ToString()))
                 {
@@ -69,7 +69,7 @@ namespace Lisa.Kiwi.WebApi
         {
             var claimsIdentity = (ClaimsIdentity)User.Identity;
 
-            if (claimsIdentity.HasClaim(ClaimTypes.Role, "anonymous"))
+            if (claimsIdentity.HasClaim(ClaimTypes.Role, "Anonymous"))
             {
                 if (!claimsIdentity.HasClaim("reportId", id.ToString()))
                 {
