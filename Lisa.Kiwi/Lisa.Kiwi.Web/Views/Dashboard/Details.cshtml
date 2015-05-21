@@ -36,10 +36,14 @@
 			<li><input type="radio" name="Status" value="@StatusEnum.Solved" @(Model.Status == StatusEnum.Solved ? "checked=\"checked\"" : "")/> @Statuses.Solved</li>
 		</ul>
 	</div>
-	<div class="field">
-		<label>@PageItems.VisibleChange</label>
-		@(!Model.IsVisible ? Html.CheckBox("IsVisible") : Html.CheckBox("IsVisible", new {@checked = "true"}))
-	</div>
+	if (Request.Cookies["role"] != null && Request.Cookies["role"].Value == "Administrator")
+	{
+		<div class="field">
+			<label>@PageItems.VisibleChange</label>
+			@(!Model.IsVisible ? Html.CheckBox("IsVisible") : Html.CheckBox("IsVisible", new { @checked = "true" }))
+		</div>
+	}
+
 	<div class="field">
 		<button type="submit">Status wijzigen</button>
 	</div>

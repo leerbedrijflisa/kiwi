@@ -42,10 +42,20 @@ namespace Lisa.Kiwi.WebApi
             return user;
         }
 
+        public async Task<IdentityUser> FindUser(string username)
+        {
+            return await _userManager.FindByNameAsync(username);
+        }
+
         public bool HasRole(IdentityUser user, string roleName)
         {
             var role = _ctx.Roles.First(r => r.Name == roleName);
             return user.Roles.Any(r => r.RoleId == role.Id);
+        }
+
+        public string GetRole(IdentityUser user)
+        {
+            return _ctx.Roles.First().Name;
         }
     }
 }
