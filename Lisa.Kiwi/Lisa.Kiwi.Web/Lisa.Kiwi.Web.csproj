@@ -108,6 +108,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\Startup.cs" />
+    <Compile Include="Controllers\ResourcesController.cs" />
     <Compile Include="Resources\BuildingImages.Designer.cs">
       <DependentUpon>BuildingImages.resx</DependentUpon>
       <DesignTime>True</DesignTime>
@@ -394,6 +395,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_GlobalResources\" />
+    <Folder Include="Views\Resources\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Categories.resx">
