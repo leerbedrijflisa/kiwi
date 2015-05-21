@@ -11,10 +11,10 @@ using Newtonsoft.Json.Linq;
 
 namespace Lisa.Kiwi.WebApi
 {
-    [Authorize]
+    [System.Web.Http.Authorize]
     public class ReportsController : ApiController
     {
-        [Authorize(Roles = "dashboardUser")]
+        [System.Web.Http.Authorize(Roles = "dashboardUser")]
         public IHttpActionResult Get()
         {
             return Ok(GetCompleteReports());
@@ -45,7 +45,7 @@ namespace Lisa.Kiwi.WebApi
         }
 
         [AllowAnonymous]
-        public async Task<IHttpActionResult> Post([FromBody] JToken json)
+        public IHttpActionResult Post([FromBody] JToken json)
         {
             if (!ModelState.IsValid)
             {
@@ -56,6 +56,7 @@ namespace Lisa.Kiwi.WebApi
 
             _db.Reports.Add(reportData);
             _db.SaveChanges();
+            TriggerReportDataChange();
 
             var reportJson = _modelFactory.Create(reportData);
 
@@ -86,8 +87,9 @@ namespace Lisa.Kiwi.WebApi
 
             _dataFactory.Modify(reportData, json);
 
-            await _db.SaveChangesAsync();
-
+            _db.SaveChanges();
+            TriggerReportDataChange();
+                
             var report = _modelFactory.Create(reportData);
             return Ok(report);
         }
@@ -116,10 +118,10 @@ namespace Lisa.Kiwi.WebApi
             return HttpServerUtility.UrlTokenEncode(value);
         }
 
-        private void UpdateDashboard(Report report)
+        private void TriggerReportDataChange()
         {
             var hub = GlobalHost.ConnectionManager.GetHubContext<ReportsHub>();
-            hub.Clients.Group("Authorized").updateReport(report);
+            hub.Clients.All.ReportDataChange();
         }
 
         private readonly KiwiContext _db = new KiwiContext();

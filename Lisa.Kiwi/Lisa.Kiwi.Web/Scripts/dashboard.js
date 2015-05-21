@@ -1,13 +1,11 @@
 ﻿$(function () {
     var reports = $.connection.reportsHub;
 
-    reports.client.UpdateReport = function (report) {
-        console.log(report);
+    reports.client.ReportDataChange = function () {
+        location.reload();
     };
-    $.connection.hub.url = window.ApiUrl + "signalr";
 
+    $.connection.hub.url = window.ApiUrl + "signalr";
     
-    $.connection.hub.start().done(function () {
-        
-    });
+    $.connection.hub.start();
 });
