@@ -150,6 +150,11 @@ form .field ul.radioList {
     float: left;
 }
 
+.endButtons {
+    text-align: right;
+    width: 94%;
+}
+
 /*
 	Button lists
 */
