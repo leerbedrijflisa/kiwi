@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -417,8 +415,6 @@ namespace Lisa.Kiwi.Web
             switch (category)
             {
                 case "Theft":
-                    return View("Police", report);
-
                 case "Bullying":
                     return View("Help", report);
 
@@ -441,7 +437,7 @@ namespace Lisa.Kiwi.Web
             var tokenCookie = Request.Cookies["token"];
             if (tokenCookie != null)
             {
-                _reportProxy.Token = new Token
+                _reportProxy.Token = new Common.Access.Token
                 {
                     Value = tokenCookie.Value
                 };
@@ -482,26 +478,7 @@ namespace Lisa.Kiwi.Web
 
         private void CreateReportProxy()
         {
-            string url = null;
-
-#if DEBUG
-            if (FiddlerAvailable())
-            {
-                url = WebConfigurationManager.AppSettings["WebApiFiddlerUrl"];
-            }
-#endif
-            if (string.IsNullOrEmpty(url))
-            {
-                url = WebConfigurationManager.AppSettings["WebApiUrl"];
-            }
-
-            _reportProxy = new Proxy<Report>(url + "reports");
-        }
-
-        private bool FiddlerAvailable()
-        {
-            return Process.GetProcesses()
-                .Any(process => process.ProcessName.Contains("Fiddler"));
+            _reportProxy = new Proxy<Report>(MvcApplication.GetApiUrl() + "reports");
         }
 
         private Proxy<Report> _reportProxy;

@@ -36,7 +36,15 @@ namespace Lisa.Kiwi.Web
                 Expires = DateTime.Now.AddMinutes(token.ExpiresIn),
                 HttpOnly = true
             };
+
+            var roleCookie = new HttpCookie("role", token.Role)
+            {
+                Expires = DateTime.Now.AddMinutes(token.ExpiresIn),
+                HttpOnly = true
+            };
+
             Response.Cookies.Add(tokenCookie);
+            Response.Cookies.Add(roleCookie);
             
             return RedirectToAction("Index", "Dashboard");
         }

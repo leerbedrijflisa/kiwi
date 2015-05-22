@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using System.Web.Security;
+using Microsoft.AspNet.SignalR;
 using Newtonsoft.Json.Linq;
 
 namespace Lisa.Kiwi.WebApi
 {
-    [Authorize]
+    [System.Web.Http.Authorize]
     public class ReportsController : ApiController
     {
-        [Authorize(Roles = "dashboardUser")]
+        [System.Web.Http.Authorize(Roles = "DashboardUser, Administrator")]
         public IHttpActionResult Get()
         {
             return Ok(GetCompleteReports());
@@ -23,7 +24,7 @@ namespace Lisa.Kiwi.WebApi
         {
             var claimsIdentity = (ClaimsIdentity)User.Identity;
             
-            if (claimsIdentity.HasClaim(ClaimTypes.Role, "anonymous"))
+            if (claimsIdentity.HasClaim(ClaimTypes.Role, "Anonymous"))
             {
                 if(!claimsIdentity.HasClaim("reportId", id.ToString()))
                 {
@@ -44,7 +45,7 @@ namespace Lisa.Kiwi.WebApi
         }
 
         [AllowAnonymous]
-        public async Task<IHttpActionResult> Post([FromBody] JToken json)
+        public IHttpActionResult Post([FromBody] JToken json)
         {
             if (!ModelState.IsValid)
             {
@@ -54,7 +55,8 @@ namespace Lisa.Kiwi.WebApi
             var reportData = _dataFactory.Create(json);
 
             _db.Reports.Add(reportData);
-            await _db.SaveChangesAsync();
+            _db.SaveChanges();
+            TriggerReportDataChange();
 
             var reportJson = _modelFactory.Create(reportData);
 
@@ -69,7 +71,7 @@ namespace Lisa.Kiwi.WebApi
         {
             var claimsIdentity = (ClaimsIdentity)User.Identity;
 
-            if (claimsIdentity.HasClaim(ClaimTypes.Role, "anonymous"))
+            if (claimsIdentity.HasClaim(ClaimTypes.Role, "Anonymous"))
             {
                 if (!claimsIdentity.HasClaim("reportId", id.ToString()))
                 {
@@ -83,10 +85,16 @@ namespace Lisa.Kiwi.WebApi
                 return NotFound();
             }
 
+            if (!claimsIdentity.HasClaim("is_admin", "True") && json.Value<bool>("isVisible") != reportData.IsVisible)
+            {
+                return Unauthorized();
+            }
+
             _dataFactory.Modify(reportData, json);
 
-            await _db.SaveChangesAsync();
-
+            _db.SaveChanges();
+            TriggerReportDataChange();
+                
             var report = _modelFactory.Create(reportData);
             return Ok(report);
         }
@@ -113,6 +121,12 @@ namespace Lisa.Kiwi.WebApi
             var value = MachineKey.Protect(Encoding.UTF8.GetBytes(anonymousToken));
 
             return HttpServerUtility.UrlTokenEncode(value);
+        }
+
+        private void TriggerReportDataChange()
+        {
+            var hub = GlobalHost.ConnectionManager.GetHubContext<ReportsHub>();
+            hub.Clients.All.ReportDataChange();
         }
 
         private readonly KiwiContext _db = new KiwiContext();

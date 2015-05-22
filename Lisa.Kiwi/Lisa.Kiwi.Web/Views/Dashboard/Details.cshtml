@@ -1,28 +1,28 @@
 ﻿@model Report
 
 <form>
-	@Html.Partial("~/Views/Report/ReportPartials/_PartialReturnReportCategory.cshtml", Model)
+	@Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportCategory.cshtml", Model)
 
   @if (Model.Location != null)
 	{   
-	  @Html.Partial("~/Views/Report/ReportPartials/_PartialReturnReportLocation.cshtml", Model)
+	  @Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportLocation.cshtml", Model)
   }
     
-	@Html.Partial("~/Views/Report/CategoryPartials/_PartialDetails" + Model.Category + ".cshtml", Model)
+	@Html.Partial("~/Views/Shared/Partials/Details/_PartialDetails" + Model.Category + ".cshtml", Model)
 		
 	@if (Model.Perpetrator != null)
 	{
-		@Html.Partial("~/Views/Report/ReportPartials/_PartialReturnReportPerpetrator.cshtml", Model);
+		@Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportPerpetrator.cshtml", Model);
 	}
 
 	@if (Model.Contact != null)
 	{
-		@Html.Partial("~/Views/Report/ReportPartials/_PartialReturnReportContact.cshtml", Model);
+		@Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportContact.cshtml", Model);
 	}
     
 	@if (Model.Vehicle != null)
 	{
-		@Html.Partial("~/Views/Report/ReportPartials/_PartialReturnReportVehicle.cshtml", Model);
+		@Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportVehicle.cshtml", Model);
 	}
 </form>	
 
@@ -36,11 +36,16 @@
 			<li><input type="radio" name="Status" value="@StatusEnum.Solved" @(Model.Status == StatusEnum.Solved ? "checked=\"checked\"" : "")/> @Statuses.Solved</li>
 		</ul>
 	</div>
-	<div class="field">
-		<label>@PageItems.VisibleChange</label>
-		@(!Model.IsVisible ? Html.CheckBox("IsVisible") : Html.CheckBox("IsVisible", new {@checked = "true"}))
-	</div>
+	if (Request.Cookies["role"] != null && Request.Cookies["role"].Value == "Administrator")
+	{
+		<div class="field">
+			<label>@PageItems.VisibleChange</label>
+			@(!Model.IsVisible ? Html.CheckBox("IsVisible") : Html.CheckBox("IsVisible", new { @checked = "true" }))
+		</div>
+	}
+
 	<div class="field">
 		<button type="submit">Status wijzigen</button>
 	</div>
+    <div class="button-container">@Html.ActionLink("terug", "index", "dashboard")</div>
 }
