@@ -2,6 +2,8 @@
 
 @{
 	Report Report = ViewBag.Report;
+	var isUnconscious = (bool) Report.IsUnconscious ? new { @checked = "true"} : null;
+	var isNotUnconscious = (bool) Report.IsUnconscious ? null : new { @checked = "true" };		
 }
 
 @using (Html.BeginForm())
@@ -10,8 +12,8 @@
 	{
 		<div class="field">
 			<label>@ReportProperties.ResourceManager.GetString("IsUnconsious")</label>
-			@Html.RadioButtonFor(m => m.IsUnconscious, true) Ja
-			@Html.RadioButtonFor(m => m.IsUnconscious, false) Nee
+			@Html.RadioButtonFor(m => m.IsUnconscious, true, isUnconscious) Ja
+			@Html.RadioButtonFor(m => m.IsUnconscious, false, isNotUnconscious) Nee
 		</div>
 	}
 	<div class="submit">
