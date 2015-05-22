@@ -74,12 +74,14 @@ namespace Lisa.Kiwi.Web
         [HttpPost]
         public async Task<ActionResult> AdditionalLocation(AdditionalLocationViewModel viewModel)
         {
+            var report = await GetCurrentReport();
             if (!ModelState.IsValid)
             {
+                ViewBag.Building = Resources.Buildings.ResourceManager.GetString(report.Location.Building);
+                ViewBag.Preposition = Resources.Buildings.ResourceManager.GetString(report.Location.Building + "_Preposition");
                 return View(viewModel);
             }
 
-            var report = await GetCurrentReport();
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(report.Id, report);
 
