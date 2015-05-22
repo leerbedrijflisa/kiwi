@@ -35,6 +35,8 @@ namespace Lisa.Kiwi.WebApi
 
             // Create our roles
             roleManager.Create(new IdentityRole("Administrator"));
+            roleManager.Create(new IdentityRole("DashboardUser"));
+            roleManager.Create(new IdentityRole("Anonymous"));
         }
 
         private void CreateUsers(KiwiContext context)
@@ -55,10 +57,12 @@ namespace Lisa.Kiwi.WebApi
             // Add a test "beveiliger" account (name=beveiliger pass=hello)
             var dashboardUser = new IdentityUser("beveiliger");
             userManager.Create(dashboardUser, "helloo");
+            userManager.AddToRole(dashboardUser.Id, "DashboardUser");
 
             // Add a test "beveiliger2" account (name=beveiliger2 pass=hello2)
             var dashboardUser2 = new IdentityUser("beveiliger2");
             userManager.Create(dashboardUser2, "helloo2");
+            userManager.AddToRole(dashboardUser2.Id, "DashboardUser");
 
             // Add a test "hoofdbeveiliger" account (name=hoofdbeveiliger pass=masterpass)
             var headOfSecurity = new IdentityUser("HBD");

@@ -14,7 +14,7 @@ namespace Lisa.Kiwi.WebApi
     [System.Web.Http.Authorize]
     public class ReportsController : ApiController
     {
-        [System.Web.Http.Authorize(Roles = "dashboardUser")]
+        [System.Web.Http.Authorize(Roles = "DashboardUser, Administrator")]
         public IHttpActionResult Get()
         {
             return Ok(GetCompleteReports());
@@ -24,7 +24,7 @@ namespace Lisa.Kiwi.WebApi
         {
             var claimsIdentity = (ClaimsIdentity)User.Identity;
             
-            if (claimsIdentity.HasClaim(ClaimTypes.Role, "anonymous"))
+            if (claimsIdentity.HasClaim(ClaimTypes.Role, "Anonymous"))
             {
                 if(!claimsIdentity.HasClaim("reportId", id.ToString()))
                 {
@@ -71,7 +71,7 @@ namespace Lisa.Kiwi.WebApi
         {
             var claimsIdentity = (ClaimsIdentity)User.Identity;
 
-            if (claimsIdentity.HasClaim(ClaimTypes.Role, "anonymous"))
+            if (claimsIdentity.HasClaim(ClaimTypes.Role, "Anonymous"))
             {
                 if (!claimsIdentity.HasClaim("reportId", id.ToString()))
                 {
@@ -83,6 +83,11 @@ namespace Lisa.Kiwi.WebApi
             if (reportData == null)
             {
                 return NotFound();
+            }
+
+            if (!claimsIdentity.HasClaim("is_admin", "True") && json.Value<bool>("isVisible") != reportData.IsVisible)
+            {
+                return Unauthorized();
             }
 
             _dataFactory.Modify(reportData, json);
