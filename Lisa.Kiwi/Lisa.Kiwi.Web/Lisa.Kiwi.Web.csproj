@@ -172,6 +172,7 @@
     <Compile Include="ViewModels\ContactRequiredViewModel.cs" />
     <Compile Include="ViewModels\ContactViewModel.cs" />
     <Compile Include="ViewModels\DrugsViewModel.cs" />
+    <Compile Include="ViewModels\EditDoneViewModel.cs" />
     <Compile Include="ViewModels\ErrorMessages.cs" />
     <Compile Include="ViewModels\FightViewModel.cs" />
     <Compile Include="ViewModels\FirstAidViewModel.cs" />
