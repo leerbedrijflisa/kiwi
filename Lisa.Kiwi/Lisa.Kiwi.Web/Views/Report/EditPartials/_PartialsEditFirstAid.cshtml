@@ -1,0 +1,10 @@
+﻿@{
+	var isUnconscious = (bool)Model.IsUnconscious ? new { @checked = "true" } : null;
+	var isNotUnconscious = (bool)Model.IsUnconscious ? null : new { @checked = "true" };	
+}
+
+<div class="field">
+	<label>@ReportProperties.ResourceManager.GetString("IsUnconsious")</label>
+	@Html.RadioButtonFor(m => m.IsUnconscious, true, isUnconscious) Ja
+	@Html.RadioButtonFor(m => m.IsUnconscious, false, isNotUnconscious) Nee
+</div>

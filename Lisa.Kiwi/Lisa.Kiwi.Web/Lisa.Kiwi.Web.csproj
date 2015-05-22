@@ -325,6 +325,7 @@
     <Content Include="Views\Shared\Partials\Report\_PartialReturnReportLocation.cshtml" />
     <Content Include="Views\Shared\Partials\Report\_PartialReturnReportPerpetrator.cshtml" />
     <Content Include="Views\Shared\Partials\Report\_PartialReturnReportVehicle.cshtml" />
+    <Content Include="Views\Report\EditPartials\_PartialsEditFirstAid.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
