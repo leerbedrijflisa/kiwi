@@ -81,9 +81,9 @@ namespace Lisa.Kiwi.Web
 
             var authProxy = new AuthenticationProxy(WebConfigurationManager.AppSettings["WebApiUrl"], "user");
 
-            authProxy.UpdatePassword(viewModel.Id, viewModel.NewPassword, "bearer", Request.Cookies["token"].Value);
+            await authProxy.UpdatePassword(viewModel.Id, viewModel.NewPassword, "bearer", Request.Cookies["token"].Value);
 
-            return RedirectToAction("Index", "Dashboard");
+            return RedirectToAction("Index");
         }
 
         public async Task<ActionResult> Index()

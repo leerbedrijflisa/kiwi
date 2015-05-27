@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using Lisa.Common.Access;
@@ -15,7 +16,7 @@ namespace Lisa.Kiwi.WebApi.Access
         {
             _resourceUrl = resourceUrl;
             _client = new HttpClient {BaseAddress = new Uri(baseUrl)};
-            _baseUrl = _baseUrl;
+            _baseUrl = baseUrl;
         }
 
         // TODO: replace the two functions underneath with a function with which you can request
@@ -79,7 +80,7 @@ namespace Lisa.Kiwi.WebApi.Access
             {
                 Method = new HttpMethod("PATCH"),
                 RequestUri = new Uri(String.Format("{0}/{1}?id={2}", _baseUrl, _resourceUrl, id)),
-                Content = new StringContent(JsonConvert.SerializeObject(new {password = password}))
+                Content = new StringContent(JsonConvert.SerializeObject(new { password = password }), Encoding.UTF8, "Application/json")
             };
 
             var response = await _client.SendAsync(request);
