@@ -22,6 +22,7 @@ namespace Lisa.Kiwi.WebApi
             {
                 var user = new User
                 {
+                    Id = identityUser.Id,
                     UserName = identityUser.UserName,
                     Role = await _auth.GetRole(identityUser)
                 };

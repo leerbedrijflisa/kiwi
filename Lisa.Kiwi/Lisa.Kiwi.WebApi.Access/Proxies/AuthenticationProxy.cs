@@ -71,14 +71,14 @@ namespace Lisa.Kiwi.WebApi.Access
             return await Login(requestContent);
         }
 
-        public async Task UpdatePassword(string userName, string password, string tokenType, string token)
+        public async Task UpdatePassword(string id, string password, string tokenType, string token)
         {
             _client.DefaultRequestHeaders.Add("Authorization", String.Join(" ", tokenType, token));
 
             var request = new HttpRequestMessage
             {
                 Method = new HttpMethod("PATCH"),
-                RequestUri = new Uri(String.Format("{0}/{1}", _baseUrl, _resourceUrl)),
+                RequestUri = new Uri(String.Format("{0}/{1}?id={2}", _baseUrl, _resourceUrl, id)),
                 Content = new StringContent(JsonConvert.SerializeObject(new {password = password}))
             };
 
