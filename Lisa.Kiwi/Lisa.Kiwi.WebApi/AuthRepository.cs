@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -35,6 +38,13 @@ namespace Lisa.Kiwi.WebApi
             return result;
         }
 
+        public async Task<IEnumerable<IdentityUser>> GetUsers()
+        {
+            var users = await _userManager.Users.ToListAsync();
+
+            return users;
+        }
+
         public async Task<IdentityUser> FindUser(string userName, string password)
         {
             var user = await _userManager.FindAsync(userName, password);
@@ -53,9 +63,10 @@ namespace Lisa.Kiwi.WebApi
             return user.Roles.Any(r => r.RoleId == role.Id);
         }
 
-        public string GetRole(IdentityUser user)
+        public async Task<string> GetRole(IdentityUser user)
         {
-            return _ctx.Roles.First().Name;
+            var role = await _userManager.GetRolesAsync(user.Id);
+            return role.First();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -10,6 +11,26 @@ namespace Lisa.Kiwi.WebApi
     [RoutePrefix("api/users")]
     public class UserController : ApiController
     {
+        [Authorize(Roles = "Administrator")]
+        public async Task<IEnumerable<User>> Get()
+        {
+            var identityUsers = await _auth.GetUsers();
+            var users = new List<User>();
+
+            foreach (var identityUser in identityUsers)
+            {
+                var user = new User
+                {
+                    UserName = identityUser.UserName,
+                    Role = await _auth.GetRole(identityUser)
+                };
+
+                users.Add(user);
+            }
+
+            return users;
+        }
+        
         [Authorize(Roles = "Administrator")]
         [HttpPost]
         public async Task<IHttpActionResult> Post(AddUserModel userModel)
