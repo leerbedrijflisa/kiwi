@@ -21,9 +21,11 @@ namespace Lisa.Kiwi.Web.Controllers
 
                 foreach (var translation in resource.GetProperties())
                 {
-                    translations.Add(translation.Name, translation.Name);
+                    if (translation.Name != "ResourceManager")
+                    {
+                        translations.Add(translation.Name, translation.GetValue(null, null));
+                    }
                 }
-
                 result.Add(resource.Name, translations);
             }
 

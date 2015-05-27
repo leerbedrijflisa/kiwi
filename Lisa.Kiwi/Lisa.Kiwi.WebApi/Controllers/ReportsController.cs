@@ -15,9 +15,9 @@ namespace Lisa.Kiwi.WebApi
     public class ReportsController : ApiController
     {
         [System.Web.Http.Authorize(Roles = "dashboardUser")]
-        public IHttpActionResult Get()
+        public IQueryable<Report> Get()
         {
-            return Ok(GetCompleteReports());
+            return GetCompleteReports();
         }
 
         public IHttpActionResult Get(int? id)
@@ -56,7 +56,6 @@ namespace Lisa.Kiwi.WebApi
 
             _db.Reports.Add(reportData);
             _db.SaveChanges();
-            TriggerReportDataChange();
 
             var reportJson = _modelFactory.Create(reportData);
 
