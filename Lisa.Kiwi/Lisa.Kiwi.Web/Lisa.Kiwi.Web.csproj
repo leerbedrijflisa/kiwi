@@ -306,8 +306,6 @@
     <Content Include="Views\Report\Vehicle.cshtml" />
     <Content Include="Views\Report\Victim.cshtml" />
     <Content Include="App_Code\ReportHelpers.cshtml" />
-    <Content Include="Views\Report\Error.cshtml" />
-    <Content Include="Views\Dashboard\Error.cshtml" />
     <Content Include="Views\Report\AdditionalLocation.cshtml" />
     <Content Include="Views\Report\SessionExpired.cshtml" />
     <Content Include="Views\Shared\Partials\Details\_PartialDetailsBullying.cshtml" />
@@ -323,6 +321,7 @@
     <Content Include="Views\Shared\Partials\Report\_PartialReturnReportLocation.cshtml" />
     <Content Include="Views\Shared\Partials\Report\_PartialReturnReportPerpetrator.cshtml" />
     <Content Include="Views\Shared\Partials\Report\_PartialReturnReportVehicle.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
