@@ -109,7 +109,6 @@
   <ItemGroup>
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Controllers\ResourcesController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Resources\BuildingImages.Designer.cs">
       <DependentUpon>BuildingImages.resx</DependentUpon>
       <DesignTime>True</DesignTime>
