@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web.Http;
 using Microsoft.AspNet.Identity;
+using Newtonsoft.Json.Linq;
 
 namespace Lisa.Kiwi.WebApi
 {
@@ -43,6 +44,19 @@ namespace Lisa.Kiwi.WebApi
             var result = await _auth.AddUser(userModel);
 
             return GetErrorResult(result) ?? Ok();
+        }
+
+        [Authorize(Roles = "Administrator")]
+        public async Task<IHttpActionResult> Patch(string id, [FromBody] JToken json)
+        {
+            if (json.Value<string>("password") == null)
+            {
+                return BadRequest();
+            }
+
+            await _auth.UpdatePassword(id, json.Value<string>("password"));
+
+            return Ok();
         }
 
         [Authorize]
