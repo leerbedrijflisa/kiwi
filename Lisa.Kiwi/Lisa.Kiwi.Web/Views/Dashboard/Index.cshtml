@@ -13,6 +13,7 @@
 	
     <script src="@(api)Scripts/jquery-1.6.4.min.js"></script>
     <script src="@(api)Scripts/jquery.signalR-2.2.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.min.js"></script>
     <script src="@(api)signalr/hubs"></script>
     <script>
         window.ApiUrl = "@api";
@@ -20,7 +21,7 @@
     <script src="~/Scripts/dashboard.js"></script>
 </head>
 
-<body>
+<!-- <body>
 	@foreach (var report in Model.OrderBy(t => t.Status).ThenByDescending(t => t.Created))
 	{
 		// Don't show report until we know where the problem happened.
@@ -93,5 +94,48 @@
 			</article>
 		</section>
 	}
+</body> -->
+
+<body>
+    <script type="text/template" id="reportsTemplate">
+        {{#each .}}
+        <section class={{status}}>
+            <article>
+                <a href="dashboard/details/{{id}}">
+                    <div class="category {{category}}">
+                        <!-- Translate -->
+                        <h1>{{translate "Categories" category}}</h1>
+
+                        <!-- Format time -->
+                        <p class="time">{{prettyDate created}}</p>
+                    </div>
+                    {{#if location}}
+                        <div class="building {{location.building}}">
+                            <!-- Translate -->
+                            <h2>{{translate "Buildings" location.building}}</h2>
+                            <p class="location">{{location.description}}</p>
+                        </div>
+                    {{else}}
+                        <div class="building">
+                            <h2>Locatie onbekend</h2>
+                            <p class="location">Er is nog geen locatie opgegeven, of deze bestaat niet.</p>
+                        </div>
+                    {{/if}}
+
+                    <p class="details">
+                        {{detailsSummary (translate "Categories" category)}}
+                    </p>
+                </a>
+                <ul class="options">
+                    <li><a href="togglesolved?id={{id}}&currentsolved={{status}}"><img src="/Content/done.svg"></a></li>
+
+                    <!-- Show only if user is admin -->
+                    <li><a href="togglevisible?id={{id}}&currentsolved={{IsVisible}}"><img src="/Content/show.svg"></a></li>
+                </ul>
+            </article>
+        </section>
+        {{/each}}
+    </script>
 </body>
+
 </html>
