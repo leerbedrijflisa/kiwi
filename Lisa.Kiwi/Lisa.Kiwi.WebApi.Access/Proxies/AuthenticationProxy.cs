@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
 using Lisa.Common.Access;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace Lisa.Kiwi.WebApi.Access
@@ -14,7 +15,7 @@ namespace Lisa.Kiwi.WebApi.Access
         {
             _resourceUrl = resourceUrl;
             _client = new HttpClient {BaseAddress = new Uri(baseUrl)};
-
+            _baseUrl = _baseUrl;
         }
 
         // TODO: replace the two functions underneath with a function with which you can request
@@ -70,6 +71,24 @@ namespace Lisa.Kiwi.WebApi.Access
             return await Login(requestContent);
         }
 
+        public async Task UpdatePassword(string userName, string password, string tokenType, string token)
+        {
+            _client.DefaultRequestHeaders.Add("Authorization", String.Join(" ", tokenType, token));
+
+            var request = new HttpRequestMessage
+            {
+                Method = new HttpMethod("PATCH"),
+                RequestUri = new Uri(String.Format("{0}/{1}", _baseUrl, _resourceUrl)),
+                Content = new StringContent(JsonConvert.SerializeObject(new {password = password}))
+            };
+
+            var response = await _client.SendAsync(request);
+            if (response.StatusCode == HttpStatusCode.Forbidden || response.StatusCode == HttpStatusCode.Unauthorized)
+            {
+                throw new UnauthorizedAccessException();
+            }
+        }
+
         private async Task<Token> Login(string requestContent)
         {
             var response = await _client.PostAsync(_resourceUrl, new StringContent(requestContent));
@@ -105,5 +124,6 @@ namespace Lisa.Kiwi.WebApi.Access
 
         private readonly HttpClient _client;
         private readonly string _resourceUrl;
+        private readonly string _baseUrl;
     }
 }
