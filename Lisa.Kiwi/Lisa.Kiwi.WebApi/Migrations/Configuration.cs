@@ -43,31 +43,21 @@ namespace Lisa.Kiwi.WebApi
         {
             var userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>(context));
 
-            // Goodbye all users
-            foreach (var user in userManager.Users.ToList())
+           // Add a test "beveiliger" account (name=beveiliger pass=hello)
+            if (userManager.FindByName("beveiliger") == null)
             {
-                userManager.Delete(user);
+                var dashboardUser = new IdentityUser("beveiliger");
+                userManager.Create(dashboardUser, "helloo");
+                userManager.AddToRole(dashboardUser.Id, "DashboardUser"); 
             }
-
-            // Add a test administrator account (name=admin pass=toor42)
-            var admin = new IdentityUser("admin");
-            ThrowIfFailed(userManager.Create(admin, "toor42"));
-            userManager.AddToRole(admin.Id, "Administrator");
-
-            // Add a test "beveiliger" account (name=beveiliger pass=hello)
-            var dashboardUser = new IdentityUser("beveiliger");
-            userManager.Create(dashboardUser, "helloo");
-            userManager.AddToRole(dashboardUser.Id, "DashboardUser");
-
-            // Add a test "beveiliger2" account (name=beveiliger2 pass=hello2)
-            var dashboardUser2 = new IdentityUser("beveiliger2");
-            userManager.Create(dashboardUser2, "helloo2");
-            userManager.AddToRole(dashboardUser2.Id, "DashboardUser");
-
+            
             // Add a test "hoofdbeveiliger" account (name=hoofdbeveiliger pass=masterpass)
-            var headOfSecurity = new IdentityUser("HBD");
-            ThrowIfFailed(userManager.Create(headOfSecurity, "masterpass"));
-            userManager.AddToRole(headOfSecurity.Id, "Administrator");
+            if (userManager.FindByName("HBD") == null)
+            {
+                var headOfSecurity = new IdentityUser("HBD");
+                ThrowIfFailed(userManager.Create(headOfSecurity, "masterpass"));
+                userManager.AddToRole(headOfSecurity.Id, "Administrator"); 
+            }
         }
 
         private void ThrowIfFailed(IdentityResult result)
