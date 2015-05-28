@@ -17,7 +17,14 @@ namespace Lisa.Kiwi.WebApi
         [System.Web.Http.Authorize(Roles = "DashboardUser, Administrator")]
         public IHttpActionResult Get()
         {
-            return Ok(GetCompleteReports());
+            if (User.IsInRole("DashboardUser"))
+            {
+                return Ok(GetCompleteReports().Where(s => s.IsVisible));
+            }
+            else
+            {
+                return Ok(GetCompleteReports());
+            }
         }
 
         public IHttpActionResult Get(int? id)

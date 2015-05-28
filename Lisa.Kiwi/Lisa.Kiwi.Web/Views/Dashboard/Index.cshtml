@@ -33,12 +33,6 @@
 			continue;
 		}
 
-		// Don't show hidden reports to anyone but the head of security.
-		if (!User.IsInRole("Administrator") && !report.IsVisible)
-		{
-			continue;
-		}
-
 		<section class=@report.Status>
 			<article>
 				<a href="@Url.Action("Details", new { id= report.Id })">
@@ -87,7 +81,6 @@
 
 					@*
 						Only the head of security can hide and show reports.
-						TODO: Add security check to the ToggleVisible action.
 					*@
 
 					@if (Request.Cookies["role"] != null && Request.Cookies["role"].Value == "Administrator")
