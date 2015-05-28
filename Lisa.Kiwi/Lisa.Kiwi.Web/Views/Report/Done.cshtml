@@ -5,7 +5,17 @@
 {
 	<div class="field">
 		<label>&nbsp;</label>
-		<p>@PageItems.DoneMessage</p>
+		<p>
+			@PageItems.DoneMessage
+			@if (Model.Category == "FirstAid" || Model.Category == "Fight")
+			{
+				@PageItems.HelpOnTheWay
+			}
+			else
+			{
+				@PageItems.TakenAction
+			}
+		</p>
 	</div>
 
 	if (Model.Category != null)

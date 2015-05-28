@@ -12,7 +12,17 @@
 <form>
 	<div class="field">
 		<label></label>
-		<p class="noBorder">Dank u voor uw melding.</p>
+		<p class="noBorder">
+			@PageItems.DoneMessage
+			@if (Model.Category == "FirstAid" || Model.Category == "Fight")
+			{
+				@PageItems.HelpOnTheWay
+			}
+			else
+			{
+				@PageItems.TakenAction
+			}
+		</p>
 	</div>
 	<div class="grayLayer">
 		@Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportCategory.cshtml", Model)
