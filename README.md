@@ -1,6 +1,5 @@
 The Kiwi Project
 ====
----
 
 **Getting started**
 
