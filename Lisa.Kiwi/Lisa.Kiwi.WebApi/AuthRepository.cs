@@ -66,7 +66,7 @@ namespace Lisa.Kiwi.WebApi
         public async Task<string> GetRole(IdentityUser user)
         {
             var role = await _userManager.GetRolesAsync(user.Id);
-            return role.First();
+            return role.FirstOrDefault();
         }
 
         public async Task UpdatePassword(string id, string password)

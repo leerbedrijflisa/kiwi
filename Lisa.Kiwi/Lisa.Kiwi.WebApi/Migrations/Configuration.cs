@@ -42,21 +42,35 @@ namespace Lisa.Kiwi.WebApi
         private void CreateUsers(KiwiContext context)
         {
             var userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>(context));
-
+            
            // Add a test "beveiliger" account (name=beveiliger pass=hello)
-            if (userManager.FindByName("beveiliger") == null)
+
+            var dashboardUser = userManager.FindByName("beveiliger");
+            
+            if (dashboardUser == null)
             {
-                var dashboardUser = new IdentityUser("beveiliger");
+                dashboardUser = new IdentityUser("beveiliger");
                 userManager.Create(dashboardUser, "helloo");
-                userManager.AddToRole(dashboardUser.Id, "DashboardUser"); 
+                userManager.AddToRole(dashboardUser.Id, "DashboardUser");
+            }
+            else if (!userManager.IsInRole(dashboardUser.Id, "DashboardUser"))
+            {
+                userManager.AddToRole(dashboardUser.Id, "DashboardUser");
             }
             
             // Add a test "hoofdbeveiliger" account (name=hoofdbeveiliger pass=masterpass)
-            if (userManager.FindByName("HBD") == null)
+
+            var administrator = userManager.FindByName("HBD");
+
+            if (administrator == null)
             {
-                var headOfSecurity = new IdentityUser("HBD");
-                ThrowIfFailed(userManager.Create(headOfSecurity, "masterpass"));
-                userManager.AddToRole(headOfSecurity.Id, "Administrator"); 
+                administrator = new IdentityUser("HBD");
+                ThrowIfFailed(userManager.Create(administrator, "masterpass"));
+                userManager.AddToRole(administrator.Id, "Administrator"); 
+            }
+            else if (!userManager.IsInRole(administrator.Id, "Administrator"))
+            {
+                userManager.AddToRole(administrator.Id, "Administrator"); 
             }
         }
 
