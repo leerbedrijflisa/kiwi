@@ -59,7 +59,11 @@
 						@switch ((string)report.Category)
 						{
 							case "FirstAid":
-								<img src="~/Content/warning.svg">@DashboardHelpers.NullCheck(ReportProperties.ResourceManager.GetString(report.IsUnconscious + report.Category))
+								if (report.IsUnconscious == true)
+								{
+									<img src="~/Content/warning.svg">
+								}
+								@DashboardHelpers.NullCheck(ReportProperties.ResourceManager.GetString(report.IsUnconscious + report.Category))
 								break;
 							case "Theft":
 								@:Er is een @DashboardHelpers.NullCheck(report.StolenObject) gestolen om @DashboardHelpers.NullCheck(report.DateOfTheft).
