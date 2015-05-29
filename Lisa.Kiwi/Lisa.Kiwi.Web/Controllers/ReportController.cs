@@ -425,11 +425,27 @@ namespace Lisa.Kiwi.Web
             }
         }
 
-        public async Task<ActionResult> EditDone(EditDoneViewModel viewModel)
+        public async Task<ActionResult> EditDone()
         {
+            var viewModel = new EditDoneViewModel();
             var report = await GetCurrentReport();
             _modelFactory.Create(report, viewModel);
             return View(viewModel);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> EditDone(EditDoneViewModel viewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
+            var report = await GetCurrentReport();
+            _modelFactory.Modify(report, viewModel);
+            await _reportProxy.PatchAsync(report.Id, report);
+
+            // TODO: add error handling
+            return RedirectToAction("Done");
         }
 
         protected override void OnActionExecuting(ActionExecutingContext context)

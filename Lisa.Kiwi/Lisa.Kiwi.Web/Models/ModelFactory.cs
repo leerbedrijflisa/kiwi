@@ -13,26 +13,6 @@ namespace Lisa.Kiwi.Web
             };
         }
 
-        public void Create(Report report, EditDoneViewModel viewModel)
-        {
-            viewModel.Category = report.Category;
-            viewModel.Location = report.Location;
-            viewModel.Perpetrator = report.Perpetrator;
-            viewModel.Contact = report.Contact;
-            viewModel.DateOfTheft = report.DateOfTheft;
-            viewModel.Description = report.Description;
-            viewModel.DrugsAction = report.DrugsAction;
-            viewModel.FighterCount = report.FighterCount;
-            viewModel.IsUnconscious = report.IsUnconscious;
-            viewModel.IsWeaponPresent = report.IsWeaponPresent;
-            viewModel.StolenObject = report.StolenObject;
-            viewModel.Vehicle = report.Vehicle;
-            viewModel.Victim = report.Victim;
-            viewModel.VictimName = report.VictimName;
-            viewModel.WeaponLocation = report.WeaponLocation;
-            viewModel.WeaponType = report.WeaponType;
-        }
-
         public void Modify(Report report, LocationViewModel viewModel)
         {
             if (report.Location == null)
@@ -164,6 +144,51 @@ namespace Lisa.Kiwi.Web
                 AdditionalFeatures = viewModel.AdditionalFeatures,
                 VehicleType = viewModel.VehicleType
             };
+        }
+
+        public void Create(Report report, EditDoneViewModel viewModel)
+        {
+            viewModel.Category = report.Category;
+            viewModel.Description = report.Description;
+            viewModel.DrugsAction = report.DrugsAction;
+            viewModel.FighterCount = report.FighterCount;
+            viewModel.IsUnconscious = report.IsUnconscious;
+            viewModel.DateOfTheft = report.DateOfTheft;
+            viewModel.StolenObject = report.StolenObject;
+            viewModel.Victim = report.Victim;
+            viewModel.VictimName = report.VictimName;
+            viewModel.IsWeaponPresent = report.IsWeaponPresent;
+            viewModel.WeaponLocation = report.WeaponLocation;
+            viewModel.WeaponType = report.WeaponType;
+            viewModel.Location = report.Location;
+            viewModel.Perpetrator = report.Perpetrator;
+            viewModel.Vehicle = report.Vehicle;
+            viewModel.Contact = report.Contact;
+        }
+
+        public void Modify(Report report, EditDoneViewModel viewModel)
+        {
+            report.Category = viewModel.Category;
+            report.Description = viewModel.Description;
+            report.DrugsAction = viewModel.DrugsAction;
+            report.FighterCount = viewModel.FighterCount;
+            report.IsUnconscious = viewModel.IsUnconscious;
+            report.DateOfTheft = viewModel.DateOfTheft;
+            report.StolenObject = viewModel.StolenObject;
+            report.Victim = viewModel.Victim;
+            report.VictimName = viewModel.VictimName;
+            report.IsWeaponPresent = viewModel.IsWeaponPresent;
+            report.WeaponLocation = viewModel.WeaponLocation;
+            report.WeaponType = viewModel.WeaponType;
+            report.Location = viewModel.Location;
+            report.Perpetrator = viewModel.Perpetrator;
+            report.Vehicle = viewModel.Vehicle;
+
+            if(viewModel.Contact != null)
+            {
+                report.Contact = new Contact();
+            }
+            report.Contact = viewModel.Contact;
         }
     }
 }

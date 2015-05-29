@@ -7,8 +7,4 @@
             $("#Sub").hide();
         }
     });
-})
-
-$( document ).ready(function(){
-    alert($("#Type").val());
 });
