@@ -166,6 +166,10 @@ ul.options {
   padding-bottom: 2px;
 }
 
+.button-green {
+  background-color: green;
+}
+
 /* Closed reports */
 
 section.Solved {

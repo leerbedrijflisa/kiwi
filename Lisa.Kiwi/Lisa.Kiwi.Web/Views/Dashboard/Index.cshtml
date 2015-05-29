@@ -85,7 +85,7 @@
 
 					@if (Request.Cookies["role"] != null && Request.Cookies["role"].Value == "Administrator")
 					{
-						<li><a href="@Url.Action("ToggleVisible", new { id=report.Id, isvisible = !report.IsVisible})"><img src="~/Content/show.svg"></a></li>
+						<li><a href="@Url.Action("ToggleVisible", new { id=report.Id, isvisible = !report.IsVisible})" @if(!report.IsVisible){<text>class="button-green"</text>}><img src="~/Content/show.svg"></a></li>
 					}
 				</ul>
 			</article>
