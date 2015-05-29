@@ -13,6 +13,26 @@ namespace Lisa.Kiwi.Web
             };
         }
 
+        public void Create(Report report, EditDoneViewModel viewModel)
+        {
+            viewModel.Category = report.Category;
+            viewModel.Location = report.Location;
+            viewModel.Perpetrator = report.Perpetrator;
+            viewModel.Contact = report.Contact;
+            viewModel.DateOfTheft = report.DateOfTheft;
+            viewModel.Description = report.Description;
+            viewModel.DrugsAction = report.DrugsAction;
+            viewModel.FighterCount = report.FighterCount;
+            viewModel.IsUnconscious = report.IsUnconscious;
+            viewModel.IsWeaponPresent = report.IsWeaponPresent;
+            viewModel.StolenObject = report.StolenObject;
+            viewModel.Vehicle = report.Vehicle;
+            viewModel.Victim = report.Victim;
+            viewModel.VictimName = report.VictimName;
+            viewModel.WeaponLocation = report.WeaponLocation;
+            viewModel.WeaponType = report.WeaponType;
+        }
+
         public void Modify(Report report, LocationViewModel viewModel)
         {
             if (report.Location == null)

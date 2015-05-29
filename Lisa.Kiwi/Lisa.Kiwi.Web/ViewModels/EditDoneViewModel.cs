@@ -1,60 +1,141 @@
 ﻿using Lisa.Kiwi.WebApi;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace Lisa.Kiwi.Web
 {
-    public class EditDoneViewModel
+    public class EditDoneViewModel : Report
     {
-        public string Category { get; set; }
-        public string Description { get; set; }
+        public string AgeRange { get; set; }
+        public string OtherType { get; set; }
+        public IEnumerable<SelectListItem> SkinColors
+        {
+            get
+            {
+                return new[]
+                {
+                    new SelectListItem
+                    {
+                        Text = Resources.SkinColor.Light,
+                        Value = "Light"
+                    },
+                    new SelectListItem
+                    {
+                        Text = Resources.SkinColor.Tanned,
+                        Value = "Tanned"
+                    },
+                    new SelectListItem
+                    {
+                        Text = Resources.SkinColor.Dark,
+                        Value = "Dark"
+                    },
+                };
+            }
+        }
 
-        //FirstAid
-        public bool? IsUnconscious { get; set; }
+        public IEnumerable<SelectListItem> AgeRanges
+        {
+            get
+            {
+                return new[]
+                {
+                    new SelectListItem
+                    {
+                        Text = Resources.Perpetrator.YoungerThanTwelve,
+                        Value = "0-12"
+                    },
+                    new SelectListItem
+                    {
+                        Text = Resources.Perpetrator.BetweenTwelveAndTwenty,
+                        Value = "12-20"
+                    },
+                    new SelectListItem
+                    {
+                        Text = Resources.Perpetrator.BetweenTwentyOneAndThirtyFive,
+                        Value = "21-35"
+                    },
+                    new SelectListItem
+                    {
+                        Text = Resources.Perpetrator.OlderThanThirtyFive,
+                        Value = "35-99"
+                    },
+                };
+            }
+        }
 
-        //Theft
-        public string StolenObject { get; set; }
-        public DateTime? DateOfTheft { get; set; }
+        public IEnumerable<SelectListItem> VehicleTypes
+        {
+            get
+            {
+                return new[]
+                {
+                    new SelectListItem
+                    {
+                        Text = Resources.VehicleTypes.Car,
+                        Value = "Car"
+                    },
+                    new SelectListItem
+                    {
+                        Text = Resources.VehicleTypes.Bicycle,
+                        Value = "Bicycle"
+                    },
+                    new SelectListItem
+                    {
+                        Text = Resources.VehicleTypes.Moped,
+                        Value = "Moped"
+                    },
+                    new SelectListItem
+                    {
+                        Text = Resources.VehicleTypes.Motorcycle,
+                        Value = "Motorcycle"
+                    },
+                    new SelectListItem
+                    {
+                        Text = Resources.VehicleTypes.Other,
+                        Value = "Other"
+                    }
+                };
+            }
+        }
 
-        //Drugs
-        public string DrugsAction { get; set; }
+        public IEnumerable<SelectListItem> Types
+        {
+            get
+            {
+                return new[]
+                {
+                    new SelectListItem
+                    {
+                        Text = "Mes",
+                        Value = "Mes"
+                    },
+                    new SelectListItem
+                    {
+                        Text = "Boksbeugel",
+                        Value = "Boksbeugel"
+                    },
+                    new SelectListItem
+                    {
+                        Text = "Vuurwapen",
+                        Value = "Vuurwapen"
+                    },
+                    new SelectListItem
+                    {
+                        Text = "Pepperspray",
+                        Value = "Pepperspray"
+                    },
+                    new SelectListItem
+                    {
+                        Text = "Anders",
+                        Value = "Anders"
+                    },
+                };
+            }
+        }
 
-        //Fight
-        public int? FighterCount { get; set; }
-        public bool? IsWeaponPresent { get; set; }
 
-        //Weapons
-        public string WeaponType { get; set; }
-        public string WeaponLocation { get; set; }
-
-        //Bullying
-        public string VictimName { get; set; }
-        public string Victim { get; set; }
-
-        //Vehicle
-        public string Brand { get; set; }
-        public string NumberPlate { get; set; }
-        public string Color { get; set; }
-        public string AdditionalFeatures { get; set; }
-        public VehicleTypeEnum? VehicleType { get; set; }
-
-        //Perpetrator
-        public string PerpetratorName { get; set; }
-        public SexEnum? Sex { get; set; }
-        public SkinColorEnum? SkinColor { get; set; }
-        public string Clothing { get; set; }
-        public int? MinimumAge { get; set; }
-        public int? MaximumAge { get; set; }
-        public string UniqueProperties { get; set; }
-
-        //Contact
-        public string ContactName { get; set; }
-        public string PhoneNumber { get; set; }
-        public string EmailAddress { get; set; }
-
-        //Location
-        public string Building { get; set; }
-        public string LocationDescription { get; set; }
     }
 }

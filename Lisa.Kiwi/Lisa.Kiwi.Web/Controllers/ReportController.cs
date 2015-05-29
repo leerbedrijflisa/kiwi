@@ -425,11 +425,11 @@ namespace Lisa.Kiwi.Web
             }
         }
 
-        public async Task<ActionResult> EditDone()
+        public async Task<ActionResult> EditDone(EditDoneViewModel viewModel)
         {
             var report = await GetCurrentReport();
-            ViewBag.Report = report;
-            return View();
+            _modelFactory.Create(report, viewModel);
+            return View(viewModel);
         }
 
         protected override void OnActionExecuting(ActionExecutingContext context)
