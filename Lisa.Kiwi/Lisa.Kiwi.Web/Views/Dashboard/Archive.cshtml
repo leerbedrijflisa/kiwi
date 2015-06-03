@@ -2,6 +2,7 @@
 
 @{
     Layout = null;
+    var api = MvcApplication.GetApiUrl();    
 }
 
 <!DOCTYPE html>
@@ -10,11 +11,41 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Archive</title>
-    <link href="@Url.Content("~/Content/dashboard.css")" rel="stylesheet" type="text/css">
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/Table.css")">
+    <!-- jQuery -->
+    <script type="text/javascript" charset="utf8" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+
+    <!-- DataTables -->
+    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.js"></script>
 </head>
 <body>
-    <div> 
-        Hey Honey 
-    </div>
+    <table id="allData" class="display">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Category</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var report in Model.OrderBy(t => t.Status).ThenByDescending(t => t.Created))
+            {
+                <tr>
+                    <td>
+                        @report.Id
+                    </td>
+                    <td>
+                        @report.Category
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </body>
 </html>
+
+<script>
+    $(document).ready(function () {
+        $('#allData').DataTable();
+    });
+    </script>
