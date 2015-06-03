@@ -228,4 +228,13 @@
   <data name="PhoneNumber" xml:space="preserve">
     <value>Telefoonnummer</value>
   </data>
+  <data name="Role" xml:space="preserve">
+    <value>Accounttype</value>
+  </data>
+  <data name="RepeatNewPassword" xml:space="preserve">
+    <value>Nieuwe wachtwoord herhalen</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>Nieuw wachtwoord</value>
+  </data>
 </root>

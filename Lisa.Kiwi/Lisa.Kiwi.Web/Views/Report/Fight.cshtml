@@ -15,7 +15,7 @@
 
 		<div class="radioButtonDivider">
 			@Html.RadioButtonFor(m => m.IsWeaponPresent, true) Ja
-			@Html.RadioButtonFor(m => m.IsWeaponPresent, false) Nee
+			@Html.RadioButtonFor(m => m.IsWeaponPresent, false, new { @checked = false }) Nee
 		</div>
 	</div>
 	<div class="field">

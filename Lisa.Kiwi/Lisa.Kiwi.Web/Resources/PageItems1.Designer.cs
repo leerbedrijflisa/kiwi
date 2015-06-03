@@ -160,6 +160,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to We sturen hulp..
+        /// </summary>
+        public static string HelpOnTheWay {
+            get {
+                return ResourceManager.GetString("HelpOnTheWay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Locatie:.
         /// </summary>
         public static string Location {
@@ -201,6 +210,15 @@ namespace Resources {
         public static string StatusDescription {
             get {
                 return ResourceManager.GetString("StatusDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wij ondernemen actie..
+        /// </summary>
+        public static string TakenAction {
+            get {
+                return ResourceManager.GetString("TakenAction", resourceCulture);
             }
         }
         

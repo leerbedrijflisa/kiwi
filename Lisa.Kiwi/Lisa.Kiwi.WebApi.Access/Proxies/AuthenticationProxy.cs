@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using Lisa.Common.Access;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace Lisa.Kiwi.WebApi.Access
@@ -14,7 +16,7 @@ namespace Lisa.Kiwi.WebApi.Access
         {
             _resourceUrl = resourceUrl;
             _client = new HttpClient {BaseAddress = new Uri(baseUrl)};
-
+            _baseUrl = baseUrl;
         }
 
         // TODO: replace the two functions underneath with a function with which you can request
@@ -70,6 +72,24 @@ namespace Lisa.Kiwi.WebApi.Access
             return await Login(requestContent);
         }
 
+        public async Task UpdatePassword(string id, string password, string tokenType, string token)
+        {
+            _client.DefaultRequestHeaders.Add("Authorization", String.Join(" ", tokenType, token));
+
+            var request = new HttpRequestMessage
+            {
+                Method = new HttpMethod("PATCH"),
+                RequestUri = new Uri(String.Format("{0}/{1}?id={2}", _baseUrl, _resourceUrl, id)),
+                Content = new StringContent(JsonConvert.SerializeObject(new { password = password }), Encoding.UTF8, "Application/json")
+            };
+
+            var response = await _client.SendAsync(request);
+            if (response.StatusCode == HttpStatusCode.Forbidden || response.StatusCode == HttpStatusCode.Unauthorized)
+            {
+                throw new UnauthorizedAccessException();
+            }
+        }
+
         private async Task<Token> Login(string requestContent)
         {
             var response = await _client.PostAsync(_resourceUrl, new StringContent(requestContent));
@@ -83,12 +103,14 @@ namespace Lisa.Kiwi.WebApi.Access
 
                     try
                     {
+
                         var authInfo = JObject.Parse(resultContent);
-                        return new Token()
+                        return new Token
                         {
                             Value = authInfo.SelectToken("access_token").ToString(),
                             Type = authInfo.SelectToken("token_type").ToString(),
-                            ExpiresIn = authInfo.SelectToken("expires_in").Value<int>()
+                            ExpiresIn = authInfo.SelectToken("expires_in").Value<int>(),
+                            Role = authInfo.SelectToken("role").ToString()
                         };
                     }
                     catch (Exception e)
@@ -103,5 +125,6 @@ namespace Lisa.Kiwi.WebApi.Access
 
         private readonly HttpClient _client;
         private readonly string _resourceUrl;
+        private readonly string _baseUrl;
     }
 }

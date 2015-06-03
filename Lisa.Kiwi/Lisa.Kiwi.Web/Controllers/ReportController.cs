@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -76,12 +74,14 @@ namespace Lisa.Kiwi.Web
         [HttpPost]
         public async Task<ActionResult> AdditionalLocation(AdditionalLocationViewModel viewModel)
         {
+            var report = await GetCurrentReport();
             if (!ModelState.IsValid)
             {
+                ViewBag.Building = Resources.Buildings.ResourceManager.GetString(report.Location.Building);
+                ViewBag.Preposition = Resources.Buildings.ResourceManager.GetString(report.Location.Building + "_Preposition");
                 return View(viewModel);
             }
 
-            var report = await GetCurrentReport();
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(report.Id, report);
 
@@ -417,8 +417,6 @@ namespace Lisa.Kiwi.Web
             switch (category)
             {
                 case "Theft":
-                    return View("Police", report);
-
                 case "Bullying":
                     return View("Help", report);
 
@@ -441,7 +439,7 @@ namespace Lisa.Kiwi.Web
             var tokenCookie = Request.Cookies["token"];
             if (tokenCookie != null)
             {
-                _reportProxy.Token = new Token
+                _reportProxy.Token = new Common.Access.Token
                 {
                     Value = tokenCookie.Value
                 };
@@ -458,10 +456,7 @@ namespace Lisa.Kiwi.Web
             // TODO: add error handling
             var authCookie = new HttpCookie("token", token.Value)
             {
-                // TODO: let the web api determine the expiration time of the token. Right now, this doesn't
-                // work because both types of token (for the reporter and the dashboard) have the same expiration
-                // value, which is set in Startup.cs.
-                Expires = DateTime.Now.AddMinutes(10)
+                Expires = DateTime.Now.AddMinutes(token.ExpiresIn)
             };
             var cookie = new HttpCookie("report", report.Id.ToString());
 

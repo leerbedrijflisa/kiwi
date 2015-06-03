@@ -166,6 +166,10 @@ ul.options {
   padding-bottom: 2px;
 }
 
+.button-green {
+  background-color: green;
+}
+
 /* Closed reports */
 
 section.Solved {
@@ -173,6 +177,17 @@ section.Solved {
   margin-top: 8px;
   padding-top: 8px;
   opacity: 0.3;
+}
+
+.password-button {
+    background-color: #113;
+    color: #fff;
+    float: right;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    padding: 5px;
+    z-index: 1;
 }
 
 /* Categories */

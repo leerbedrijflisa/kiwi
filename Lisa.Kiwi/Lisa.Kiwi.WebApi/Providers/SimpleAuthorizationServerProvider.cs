@@ -59,9 +59,12 @@ namespace Lisa.Kiwi.WebApi
 
             var identity = new ClaimsIdentity(context.Options.AuthenticationType);
 
-            identity.AddClaim(new Claim(ClaimTypes.Role, "anonymous"));
+            identity.AddClaim(new Claim(ClaimTypes.Role, "Anonymous"));
             identity.AddClaim(new Claim("reportId", reportId.ToString()));
             identity.AddClaim(new Claim("is_anonymous", "true"));
+
+            // token for reporting users should be valid for 10 minutes
+            context.Options.AccessTokenExpireTimeSpan = new TimeSpan(0, 0, 10);
 
             context.Validated(identity);
         }
@@ -82,12 +85,26 @@ namespace Lisa.Kiwi.WebApi
 
                 identity.AddClaim(new Claim(ClaimTypes.Name, context.UserName));
                 identity.AddClaim(new Claim("id", user.Id));
-                identity.AddClaim(new Claim(ClaimTypes.Role, "dashboardUser"));
-
+                
                 var isAdmin = repo.HasRole(user, "Administrator");
                 identity.AddClaim(new Claim("is_admin", isAdmin.ToString()));
 
+                identity.AddClaim(isAdmin
+                    ? new Claim(ClaimTypes.Role, "Administrator")
+                    : new Claim(ClaimTypes.Role, "DashboardUser"));
+
+
                 context.Validated(identity);
+            }
+        }
+
+        public override async Task TokenEndpoint(OAuthTokenEndpointContext context)
+        {
+            using (var repo = new AuthRepository())
+            {
+                var role = context.Identity.Claims.First(c => c.Type == ClaimTypes.Role).Value;
+                    
+                context.AdditionalResponseParameters.Add("role", role);
             }
         }
     }

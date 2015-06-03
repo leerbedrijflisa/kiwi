@@ -20,84 +20,9 @@
     </script>
     <script src="~/Scripts/dashboard.js"></script>
 </head>
-
-<!-- <body>
-	@foreach (var report in Model.OrderBy(t => t.Status).ThenByDescending(t => t.Created))
-	{
-		// Don't show report until we know where the problem happened.
-		if (report.Location == null)
-		{
-			continue;
-		}
-
-		// Don't show hidden reports to anyone but the head of security.
-		if (!User.IsInRole("Administrator") && !report.IsVisible)
-		{
-			continue;
-		}
-
-		<section class=@report.Status>
-			<article>
-				<a href="@Url.Action("Details", new { id= report.Id })">
-					<div class="category @report.Category">
-						<h1>@Categories.ResourceManager.GetString(report.Category)</h1>
-						<p class="time">@DashboardHelpers.Time(report.Created)</p>
-					</div>
-					@if (report.Location != null)
-					{
-						<div class="building @DashboardHelpers.NullCheck(report.Location.Building)">
-							<h2>@DashboardHelpers.NullCheck(ReportHelpers.Capitalize(Buildings.ResourceManager.GetString(report.Location.Building)))</h2>
-							<p class="location">@DashboardHelpers.NullCheck(report.Location.Description)</p>
-						</div>
-					}
-					else
-					{
-						<div class="building">
-							<h2>Locatie onbekend</h2>
-							<p class="location">Er is nog geen locatie opgegeven, of deze bestaat niet.</p>
-						</div>
-					}
-
-					<p class="details">
-						@switch ((string)report.Category)
-						{
-							case "FirstAid":
-								<img src="~/Content/warning.svg">@DashboardHelpers.NullCheck(ReportProperties.ResourceManager.GetString(report.IsUnconscious + report.Category))
-								break;
-							case "Theft":
-								@:Er is een @DashboardHelpers.NullCheck(report.StolenObject) gestolen om @DashboardHelpers.NullCheck(report.DateOfTheft).
-								break;
-							case "Fight":
-								@:Er zijn @DashboardHelpers.NullCheck(report.FighterCount) mensen aan het vechten.
-								break;
-							case "Weapons":
-								@:Het gaat om een: @DashboardHelpers.NullCheck(report.WeaponType)
-								break;
-							default:
-								@:@DashboardHelpers.NullCheck(report.Description)
-								break;
-						}
-					</p>
-				</a>
-				<ul class="options">
-					<li><a href="@Url.Action("ToggleSolved", new { id=report.Id, currentsolved = report.Status == StatusEnum.Solved})"><img src="~/Content/done.svg"></a></li>
-
-					@*
-						Only the head of security can hide and show reports.
-						TODO: Add security check to the ToggleVisible action.
-					*@
-					@if (User.IsInRole("Administrator"))
-					{
-						<li><a href="@Url.Action("ToggleVisible", new { id=report.Id, isvisible = !report.IsVisible})"><img src="~/Content/show.svg"></a></li>
-					}
-				</ul>
-			</article>
-		</section>
-	}
-</body> -->
-
 <body>
     <script type="text/template" id="reportsTemplate">
+        <a href="/account" class="password-button">Wachtwoorden wijzigen</a>
         {{#each .}}
         <section class={{status}}>
             <article>
@@ -129,7 +54,8 @@
                 <ul class="options">
                     <li><a href="togglesolved?id={{id}}&currentsolved={{status}}"><img src="/Content/done.svg"></a></li>
 
-                    <!-- Show only if user is admin -->
+                    <!-- Show only if user is admin: check cookie -->
+                    <!-- Add class "button-green" if visible != true -->
                     <li><a href="togglevisible?id={{id}}&currentsolved={{IsVisible}}"><img src="/Content/show.svg"></a></li>
                 </ul>
             </article>

@@ -94,7 +94,7 @@ form .field label.radio, label.radio:checked{
 }
 
 form .field,
-.body .field {
+.container .field {
     display: inline-table;
     width: 100%;
 }
@@ -110,7 +110,7 @@ form .field > *,
 }
 
 form .field label,
-.body .field label {
+.container .field label {
     background-color: #113;
     color: white;
     text-align: right;
@@ -148,6 +148,11 @@ form .field ul.radioList {
 
 .floatLeft {
     float: left;
+}
+
+.endButtons {
+    text-align: right;
+    width: 94%;
 }
 
 /*

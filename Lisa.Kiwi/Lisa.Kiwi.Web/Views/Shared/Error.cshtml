@@ -1,0 +1,22 @@
+﻿@model Exception
+
+@{
+    ViewBag.Title = "Error";
+}
+
+<form>
+	<div class="field">
+		<label>Er is een fout opgetreden!</label>
+		<div class="button-container">@Html.ActionLink("Probeer opnieuw", "index", "Dashboard")</div>
+	</div>
+</form>
+
+<script>
+	var message = (function () {/* @Model.Message */})
+		.toString().match(/[^]*\/\*([^]*)\*\/\}$/)[1];
+		var stacktrace = (function () {/* @Model.StackTrace */})
+			.toString().match(/[^]*\/\*([^]*)\*\/\}$/)[1];
+
+			console.warn(message);
+			console.info(stacktrace);
+</script>

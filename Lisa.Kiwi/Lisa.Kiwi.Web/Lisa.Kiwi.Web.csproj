@@ -182,6 +182,7 @@
     <Compile Include="ViewModels\LocationViewModel.cs" />
     <Compile Include="ViewModels\NuisanceViewModel.cs" />
     <Compile Include="ViewModels\OtherViewModel.cs" />
+    <Compile Include="ViewModels\PasswordViewModel.cs" />
     <Compile Include="ViewModels\PerpetratorViewModel.cs" />
     <Compile Include="ViewModels\LoginModel.cs" />
     <Compile Include="ViewModels\StatusChangeViewModel.cs" />
@@ -267,7 +268,9 @@
     <Content Include="Scripts\jquery.datetimepicker.js" />
     <Content Include="Scripts\Theft.js" />
     <Content Include="Scripts\Weapons.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Resources\DisplayNames.designer.cs">
@@ -283,7 +286,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\web.config" />
+    <Content Include="Views\web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="packages.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
@@ -306,13 +311,10 @@
     <Content Include="Views\Report\Nuisance.cshtml" />
     <Content Include="Views\Report\View.cshtml" />
     <Content Include="Views\Report\End.cshtml" />
-    <Content Include="Views\Report\Police.cshtml" />
     <Content Include="Views\Report\Help.cshtml" />
     <Content Include="Views\Report\Vehicle.cshtml" />
     <Content Include="Views\Report\Victim.cshtml" />
     <Content Include="App_Code\ReportHelpers.cshtml" />
-    <Content Include="Views\Report\Error.cshtml" />
-    <Content Include="Views\Dashboard\Error.cshtml" />
     <Content Include="Views\Report\AdditionalLocation.cshtml" />
     <Content Include="Views\Report\SessionExpired.cshtml" />
     <Content Include="Views\Shared\Partials\Details\_PartialDetailsBullying.cshtml" />
@@ -328,6 +330,9 @@
     <Content Include="Views\Shared\Partials\Report\_PartialReturnReportLocation.cshtml" />
     <Content Include="Views\Shared\Partials\Report\_PartialReturnReportPerpetrator.cshtml" />
     <Content Include="Views\Shared\Partials\Report\_PartialReturnReportVehicle.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Account\EditPassword.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -401,6 +406,7 @@
   <ItemGroup>
     <Folder Include="App_GlobalResources\" />
     <Folder Include="Views\Resources\" />
+    <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Categories.resx">

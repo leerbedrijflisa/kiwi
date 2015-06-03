@@ -150,6 +150,9 @@
   <data name="DoneMessage" xml:space="preserve">
     <value>Bedankt voor uw melding!</value>
   </data>
+  <data name="HelpOnTheWay" xml:space="preserve">
+    <value>We sturen hulp.</value>
+  </data>
   <data name="Location" xml:space="preserve">
     <value>Locatie:</value>
   </data>
@@ -164,6 +167,9 @@
   </data>
   <data name="StatusDescription" xml:space="preserve">
     <value>Huidige status van het incident:</value>
+  </data>
+  <data name="TakenAction" xml:space="preserve">
+    <value>Wij ondernemen actie.</value>
   </data>
   <data name="TypeDescription" xml:space="preserve">
     <value>Het Meldingstype:</value>
