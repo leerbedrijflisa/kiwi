@@ -7,7 +7,7 @@
 {
 	<div class="field">
 		@Html.LabelFor(m => m.FighterCount)
-		@Html.TextBoxFor(m => m.FighterCount, new { @type = "number" })
+		@Html.TextBoxFor(m => m.FighterCount, new { @type = "number", @min = 2, Value = 2 })
 	</div>
 	<div class="field">
 		@* TODO: figure out a way to make this checkbox look clearer *@
