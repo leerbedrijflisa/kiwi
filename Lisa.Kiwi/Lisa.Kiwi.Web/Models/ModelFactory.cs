@@ -180,15 +180,26 @@ namespace Lisa.Kiwi.Web
             report.IsWeaponPresent = viewModel.IsWeaponPresent;
             report.WeaponLocation = viewModel.WeaponLocation;
             report.WeaponType = viewModel.WeaponType;
+            if(viewModel.WeaponType == "Anders")
+            {
+                report.WeaponType = viewModel.OtherType;
+            }
             report.Location = viewModel.Location;
             report.Perpetrator = viewModel.Perpetrator;
             report.Vehicle = viewModel.Vehicle;
 
-            if(viewModel.Contact != null)
+            if (viewModel.Contact.Name != null || viewModel.Contact.PhoneNumber != null || viewModel.Contact.EmailAddress != null)
             {
-                report.Contact = new Contact();
+                if (report.Contact == null)
+                {
+                    report.Contact = new Contact();
+                }
+                report.Contact = viewModel.Contact;
             }
-            report.Contact = viewModel.Contact;
+            else
+            {
+                report.Contact = null;
+            }
         }
     }
 }
