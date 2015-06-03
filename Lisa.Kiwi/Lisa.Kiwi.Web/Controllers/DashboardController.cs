@@ -95,6 +95,11 @@ namespace Lisa.Kiwi.Web
             return RedirectToAction("Details", new { viewModel.Id });
         }
 
+        public async Task<ActionResult> Archive()
+        {
+            var reports = await _reportProxy.GetAsync();
+            return View(reports);
+        }
 
         public async Task<ActionResult> ToggleSolved(int id, bool currentSolved)
         {
