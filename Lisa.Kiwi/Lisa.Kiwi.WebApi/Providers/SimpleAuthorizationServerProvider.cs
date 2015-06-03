@@ -63,6 +63,9 @@ namespace Lisa.Kiwi.WebApi
             identity.AddClaim(new Claim("reportId", reportId.ToString()));
             identity.AddClaim(new Claim("is_anonymous", "true"));
 
+            // token for reporting users should be valid for 10 minutes
+            context.Options.AccessTokenExpireTimeSpan = new TimeSpan(0, 0, 10);
+
             context.Validated(identity);
         }
 
