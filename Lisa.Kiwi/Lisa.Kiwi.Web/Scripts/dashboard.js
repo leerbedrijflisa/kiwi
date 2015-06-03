@@ -1,5 +1,5 @@
 ﻿$(function () {
-    window.ReportsUrl = window.ApiUrl + "reports";
+    window.ReportsUrl = window.ApiUrl + "reports?$orderby=Created desc";
     var reports = $.connection.reportsHub;
 
     window.update = reports.client.ReportDataChange = function () {
@@ -16,35 +16,47 @@
     update();
 
     $.connection.hub.url = window.ApiUrl + "signalr";
-
     $.connection.hub.start();
 });
 
-function getCookie(cname) {
-    var name = cname + "=";
-    var ca = document.cookie.split(';');
-    for (var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') c = c.substring(1);
-        if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
-    }
-    return "";
-}
+var reportCount,
+    firstLoad = true;
 
 function updateReports(data) {
-    console.table(data);
+    
     var source = $('#reportsTemplate').html();
     var template = Handlebars.compile(source);
     var html = template(data);
-    $('body').html(html);
+    $('#container').html(html);
+
+    if (!firstLoad) {
+        if (reportCount <= data.length) {
+            updatedReport();
+        }
+        else {
+            newReport();
+        }
+    }
+
+    firstLoad = false;
 }
 
+function updatedReport() {
+    var audio = new Audio('/Content/air-horn.mp3');
+    audio.play();
+}
+
+function newReport() {
+    var audio = new Audio('/Content/air-horn.mp3');
+    audio.play();
+}
+
+//#region Handlebars helpers
 Handlebars.registerHelper('detailsSummary', function (category) {
     var result = '<span>De categorie is: ' + category + '</span>';
 
     return new Handlebars.SafeString(result);
 });
-
 
 Handlebars.registerHelper('translate', function (category, key) {
     if (typeof Translations === 'undefined') {
@@ -82,3 +94,17 @@ Handlebars.registerHelper('prettyDate', function (date) {
 
     return todayDate == dateDate ? dateTime : dateDate;
 });
+//#endregion
+
+// #region Extentions
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1);
+        if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+    }
+    return "";
+}
+// #endregion

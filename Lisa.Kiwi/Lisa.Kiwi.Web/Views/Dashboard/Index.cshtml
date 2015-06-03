@@ -21,12 +21,14 @@
     <script src="~/Scripts/dashboard.js"></script>
 </head>
 <body>
-    <script type="text/template" id="reportsTemplate">
-        <a href="/account" class="password-button">Wachtwoorden wijzigen</a>
+    <a href="/account" class="password-button">Wachtwoorden wijzigen</a>
+    <div id="container"></div>
+
+    <script type="text/template" id="reportsTemplate">        
         {{#each .}}
         <section class={{status}}>
             <article>
-                <a href="dashboard/details/{{id}}">
+                <a href="dashboard/details?id={{id}}">
                     <div class="category {{category}}">
                         <!-- Translate -->
                         <h1>{{translate "Categories" category}}</h1>

@@ -190,6 +190,7 @@
     <Compile Include="ViewModels\VehicleViewModel.cs" />
     <Compile Include="ViewModels\VictimViewModel.cs" />
     <Compile Include="ViewModels\WeaponViewModel.cs" />
+    <Content Include="Content\air-horn.mp3" />
     <Content Include="Content\banner.jpg" />
     <Content Include="Content\category-Bullying.png" />
     <Content Include="Content\category-Drugs.png" />

@@ -14,12 +14,12 @@ namespace Lisa.Kiwi.WebApi
     [System.Web.Http.Authorize]
     public class ReportsController : ApiController
     {
-
+        [Queryable]
         [System.Web.Http.Authorize(Roles = "DashboardUser, Administrator")]
-        public IHttpActionResult Get()
+        public IQueryable<Report> Get()
         {
             var reports = GetCompleteReports();
-            return Ok(User.IsInRole("Administrator") ? reports : reports.Where(r => r.IsVisible));
+            return User.IsInRole("Administrator") ? reports : reports.Where(r => r.IsVisible);
         }
 
         public IHttpActionResult Get(int? id)
