@@ -49,7 +49,7 @@ form,
   color: white;
 }
 
-.grayLayer p{
+.grayLayer p, .grayLayer h2{
    opacity: 0.4;
 }
 
