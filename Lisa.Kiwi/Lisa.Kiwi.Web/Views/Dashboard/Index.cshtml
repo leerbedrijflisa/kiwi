@@ -24,7 +24,8 @@
 	@if (Request.Cookies["role"] != null && Request.Cookies["role"].Value == "Administrator")
 	{
 		<a href="@Url.Action("Index", "Account")" class="password-button">Wachtwoorden wijzigen</a>
-	}
+        <a href="@Url.Action("Archive")" class="password-button">Archive</a>
+    }
 	@foreach (var report in Model.OrderBy(t => t.Status).ThenByDescending(t => t.Created))
 	{
 		// Don't show report until we know where the problem happened.
