@@ -13,87 +13,57 @@
 	
     <script src="@(api)Scripts/jquery-1.6.4.min.js"></script>
     <script src="@(api)Scripts/jquery.signalR-2.2.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.min.js"></script>
     <script src="@(api)signalr/hubs"></script>
     <script>
         window.ApiUrl = "@api";
     </script>
     <script src="~/Scripts/dashboard.js"></script>
 </head>
-
 <body>
-	@if (Request.Cookies["role"] != null && Request.Cookies["role"].Value == "Administrator")
-	{
-		<a href="@Url.Action("Index", "Account")" class="password-button">Wachtwoorden wijzigen</a>
-	}
-	@foreach (var report in Model.OrderBy(t => t.Status).ThenByDescending(t => t.Created))
-	{
-		// Don't show report until we know where the problem happened.
-		if (report.Location == null)
-		{
-			continue;
-		}
+    <a href="/account" class="password-button">Wachtwoorden wijzigen</a>
+    <div id="container"></div>
 
-		<section class=@report.Status>
-			<article>
-				<a href="@Url.Action("Details", new { id= report.Id })">
-					<div class="category @report.Category">
-						<h1>@Categories.ResourceManager.GetString(report.Category)</h1>
-						<p class="time">@DashboardHelpers.Time(report.Created)</p>
-					</div>
-					@if (report.Location != null)
-					{
-						<div class="building @DashboardHelpers.NullCheck(report.Location.Building)">
-							<h2>@DashboardHelpers.NullCheck(ReportHelpers.Capitalize(Buildings.ResourceManager.GetString(report.Location.Building)))</h2>
-							<p class="location">@DashboardHelpers.NullCheck(report.Location.Description)</p>
-						</div>
-					}
-					else
-					{
-						<div class="building">
-							<h2>Locatie onbekend</h2>
-							<p class="location">Er is nog geen locatie opgegeven, of deze bestaat niet.</p>
-						</div>
-					}
+    <script type="text/template" id="reportsTemplate">        
+        {{#each .}}
+        <section class={{status}}>
+            <article>
+                <a href="dashboard/details?id={{id}}">
+                    <div class="category {{category}}">
+                        <!-- Translate -->
+                        <h1>{{translate "Categories" category}}</h1>
 
-					<p class="details">
-						@switch ((string)report.Category)
-						{
-							case "FirstAid":
-								if (report.IsUnconscious == true)
-								{
-									<img src="~/Content/warning.svg">
-								}
-								@DashboardHelpers.NullCheck(ReportProperties.ResourceManager.GetString(report.IsUnconscious + report.Category))
-								break;
-							case "Theft":
-								@:Er is een @DashboardHelpers.NullCheck(report.StolenObject) gestolen om @DashboardHelpers.NullCheck(report.DateOfTheft).
-								break;
-							case "Fight":
-								@:Er zijn @DashboardHelpers.NullCheck(report.FighterCount) mensen aan het vechten.
-								break;
-							case "Weapons":
-								@:Het gaat om een: @DashboardHelpers.NullCheck(report.WeaponType)
-								break;
-							default:
-								@:@DashboardHelpers.NullCheck(report.Description)
-								break;
-						}
-					</p>
-				</a>
-				<ul class="options">
-					<li><a href="@Url.Action("ToggleSolved", new { id=report.Id, currentsolved = report.Status == StatusEnum.Solved})"><img src="~/Content/done.svg"></a></li>
+                        <!-- Format time -->
+                        <p class="time">{{prettyDate created}}</p>
+                    </div>
+                    {{#if location}}
+                        <div class="building {{location.building}}">
+                            <!-- Translate -->
+                            <h2>{{translate "Buildings" location.building}}</h2>
+                            <p class="location">{{location.description}}</p>
+                        </div>
+                    {{else}}
+                        <div class="building">
+                            <h2>Locatie onbekend</h2>
+                            <p class="location">Er is nog geen locatie opgegeven, of deze bestaat niet.</p>
+                        </div>
+                    {{/if}}
 
-					@*
-						Only the head of security can hide and show reports.
-					*@
+                    <p class="details">
+                        {{detailsSummary (translate "Categories" category)}}
+                    </p>
+                </a>
+                <ul class="options">
+                    <li><a href="togglesolved?id={{id}}&currentsolved={{status}}"><img src="/Content/done.svg"></a></li>
 
-					@if (Request.Cookies["role"] != null && Request.Cookies["role"].Value == "Administrator")
-					{
-						<li><a href="@Url.Action("ToggleVisible", new { id=report.Id, isvisible = !report.IsVisible})" @if(!report.IsVisible){<text>class="button-green"</text>}><img src="~/Content/show.svg"></a></li>
-					}
-				</ul>
-			</article>
-		</section>
-	}
+                    <!-- Show only if user is admin: check cookie -->
+                    <!-- Add class "button-green" if visible != true -->
+                    <li><a href="togglevisible?id={{id}}&currentsolved={{IsVisible}}"><img src="/Content/show.svg"></a></li>
+                </ul>
+            </article>
+        </section>
+        {{/each}}
+    </script>
 </body>
+
 </html>
