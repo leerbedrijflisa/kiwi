@@ -24,20 +24,47 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Category</th>
+                <th>Categorie</th>
+                <th>Aangemaakt om</th>
+                <th>Details</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var report in Model.OrderBy(t => t.Status).ThenByDescending(t => t.Created))
+            @foreach (var report in Model.OrderBy(t => t.Created))
             {
-                <tr>
-                    <td>
-                        @report.Id
-                    </td>
-                    <td>
-                        @report.Category
-                    </td>
-                </tr>
+                <a href="@Url.Action("Details", new { id= report.Id })">
+                    <tr>
+                        <td>
+                            @report.Id
+                        </td>
+                        <td>
+                            @Categories.ResourceManager.GetString(report.Category)
+                        </td>
+                        <td>
+                            @report.Created.ToString("dd/MM/yyyy HH:mm:ss")
+                        </td>
+                        <td>
+                            @switch ((string)report.Category)
+                            {
+                                case "FirstAid":
+                                @DashboardHelpers.NullCheck(ReportProperties.ResourceManager.GetString(report.IsUnconscious + report.Category))
+                                break;
+                                case "Theft":
+                                @:Er was een @DashboardHelpers.NullCheck(report.StolenObject) gestolen om @DashboardHelpers.NullCheck(report.DateOfTheft).
+								break;
+                                case "Fight":
+                                @:Er waren @DashboardHelpers.NullCheck(report.FighterCount) mensen aan het vechten.
+								break;
+                                case "Weapons":
+                                @:Het ging om een: @DashboardHelpers.NullCheck(report.WeaponType)
+								break;
+                                default:
+                                @:@DashboardHelpers.NullCheck(report.Description)
+								break;
+                            }
+                        </td>
+                    </tr>
+                </a>
             }
         </tbody>
     </table>
