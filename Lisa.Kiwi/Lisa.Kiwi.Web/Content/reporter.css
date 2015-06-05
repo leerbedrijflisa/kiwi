@@ -345,32 +345,51 @@ form .submit button:active img {
     text-decoration: none;
 }
 
-#bug-report{
-    position: fixed;
-    top: 5%;
-    height: 200px;
-    right: -120px;
-    padding: 5px 14px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    background-color: #113;
-    text-decoration: none;
-    color: white;
-    
-    /* Safari */
-    -webkit-transform: rotate(-90deg);
+#bug-report {
+	position: fixed;
+	top: -0.5%;
+	height: 20px;
+	right: 5%;
+	padding: 5px 14px;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	background-color: #113;
+	text-decoration: none;
+	color: white;
+}
 
-    /* Firefox */
-    -moz-transform: rotate(-90deg);
+.bug-report-form {
+	position: fixed;
+	top: -0.5%;
+	right: 5%;
+	padding: 5px 14px;
+	background-color: #113;
+	width: 300px !important;
+	height: 205px;
+	display: none;
+	border: solid 1px #113;
+	border-bottom-left-radius: 10px;
+}
 
-    /* IE */
-    -ms-transform: rotate(-90deg);
+.bug-report-form form {
+    width: 300px;
+	background-color: #113;
+}
 
-    /* Opera */
-    -o-transform: rotate(-90deg);
+.bug-report-form textarea,
+.bug-report-form input {
+    font-family: Source Sans Pro;
+}
 
-    /* Internet Explorer */
-    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+input.email {
+	width: 295px;
+}
 
+input.subject {
+	width: 295px;
+}
 
+textarea.bug {
+	width: 295px;
+	height: 125px;
 }
