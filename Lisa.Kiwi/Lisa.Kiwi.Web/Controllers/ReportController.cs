@@ -6,6 +6,9 @@ using Lisa.Kiwi.WebApi;
 using Lisa.Kiwi.WebApi.Access;
 using System.Web.Configuration;
 using Lisa.Common.Access;
+using SendGrid;
+using System.Net;
+using System.Net.Mail;
 
 namespace Lisa.Kiwi.Web
 {
@@ -40,6 +43,30 @@ namespace Lisa.Kiwi.Web
             await EnsureReportAccess(report);
 
             return RedirectToAction("Location");
+        }
+
+        [HttpPost]
+        public ActionResult BugReport(BugReportViewModel viewModel)
+        {
+            try
+            {
+                var username = "azure_90c1637306a250426ada1015ca65e6e0@azure.com";
+                var pswrd = "27UICbH178dUI0m";
+                SendGridMessage mailMessage = new SendGridMessage();
+                mailMessage.AddTo("kusakabenorin@gmail.com");
+                mailMessage.From = new MailAddress(viewModel.EmailAddress);
+                mailMessage.Subject = viewModel.Subject;
+                mailMessage.Text = viewModel.Message;
+                var credentials = new NetworkCredential(username, pswrd);
+                var transportWeb = new SendGrid.Web(credentials);
+                transportWeb.DeliverAsync(mailMessage);
+                return View();
+            }
+            catch (Exception ex)
+            {
+                Response.Write("Could not send the e-mail - error: " + ex.Message);
+                return View("~/Views/Shared/Error.cshtml");
+            }
         }
 
         public ActionResult Location()

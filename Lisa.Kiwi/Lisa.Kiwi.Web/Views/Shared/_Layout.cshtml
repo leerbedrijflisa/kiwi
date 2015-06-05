@@ -1,4 +1,7 @@
-﻿<html lang="nl">
+﻿@{
+	ViewBag.Model = new BugReportViewModel();
+}
+<html lang="nl">
 <head>
     <title>@ViewBag.Title</title>
     <meta charset="utf-8">
@@ -12,16 +15,7 @@
 </head>
 
 <body>
-		@*mailto:pvanooyenknook@davinci.nl?Subject=Feedback%20-%20Meldings%20applicatie%20leerpark*@
-		<div class="bug-report-form">
-			<form action="#" method="post">
-				<input class="email" type="email" placeholder="Uw mail adres" /><br />
-				<input class="subject" type="text" placeholder="Onderwerp" /><br />
-				<textarea class="bug" placeholder="Feedback"></textarea><br />
-				<input type="submit" value="versturen" />
-			</form>
-		</div>
-		<a href="#" id="bug-report">Feedback</a>
+		@Html.Partial("~/Views/Report/_partialBugReport.cshtml")
     <header>
         <h1>Melden + Leerpark</h1>
     </header>
