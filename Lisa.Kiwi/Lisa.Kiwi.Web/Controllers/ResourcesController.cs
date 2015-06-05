@@ -4,13 +4,13 @@ using System.Web.Mvc;
 using System.Reflection;
 using System.Collections.Generic;
 using System.Dynamic;
-using System.ComponentModel;
+using Newtonsoft.Json;
 
 namespace Lisa.Kiwi.Web.Controllers
 {
     public class ResourcesController : Controller
     {
-        public JsonResult Dutch()
+        public ActionResult Dutch()
         {
             var resourcesTypes = GetAllResourceTypes();
             IDictionary<string, object> result = new ExpandoObject();
@@ -21,15 +21,16 @@ namespace Lisa.Kiwi.Web.Controllers
 
                 foreach (var translation in resource.GetProperties())
                 {
-                    //if(translation. is string){
-                        translations.Add(translation.Name, translation.Name);
-                   // }
+                    if (translation.Name != "ResourceManager")
+                    {
+                        translations.Add(translation.Name, translation.GetValue(null, null));
+                    }
                 }
-
                 result.Add(resource.Name, translations);
             }
 
-            return Json(result, JsonRequestBehavior.AllowGet);     
+            
+            return Content(JsonConvert.SerializeObject(result), "application/json");     
         }
 
         private Type[] GetAllResourceTypes()

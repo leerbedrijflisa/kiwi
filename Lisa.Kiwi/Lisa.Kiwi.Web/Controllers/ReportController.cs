@@ -456,10 +456,7 @@ namespace Lisa.Kiwi.Web
             // TODO: add error handling
             var authCookie = new HttpCookie("token", token.Value)
             {
-                // TODO: let the web api determine the expiration time of the token. Right now, this doesn't
-                // work because both types of token (for the reporter and the dashboard) have the same expiration
-                // value, which is set in Startup.cs.
-                Expires = DateTime.Now.AddMinutes(10)
+                Expires = DateTime.Now.AddMinutes(token.ExpiresIn)
             };
             var cookie = new HttpCookie("report", report.Id.ToString());
 

@@ -14,7 +14,7 @@
 	<div class="field">
 		<label>Wat is het geslacht? *</label>
 		<ul class="radioList">
-			<li>@Html.RadioButtonFor(m => m.Sex, 0) Onbekend</li>
+			<li>@Html.RadioButtonFor(m => m.Sex, 0, new { @checked = true }) Onbekend</li>
 			<li>@Html.RadioButtonFor(m => m.Sex, 1) Man</li>
 			<li>@Html.RadioButtonFor(m => m.Sex, 2) Vrouw</li>
 		</ul>

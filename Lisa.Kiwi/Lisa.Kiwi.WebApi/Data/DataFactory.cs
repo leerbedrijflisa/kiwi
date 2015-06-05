@@ -128,7 +128,7 @@ namespace Lisa.Kiwi.WebApi
             data.NumberPlate = json["numberPlate"] != null ? json.Value<string>("numberPlate") : data.NumberPlate;
 
             var vehicleTypeString = json["vehicleType"] != null ? json.Value<string>("vehicleType") : null;
-            data.VehicleType = vehicleTypeString != null ? (VehicleTypeEnum) Enum.Parse(typeof (VehicleTypeEnum), vehicleTypeString, true) : VehicleTypeEnum.Unknown;
+            data.VehicleType = vehicleTypeString != null ? (VehicleTypeEnum) Enum.Parse(typeof (VehicleTypeEnum), vehicleTypeString, true) : VehicleTypeEnum.Other;
 
             return data;
         }
