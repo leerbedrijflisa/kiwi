@@ -11,6 +11,7 @@
                 IsVisible = reportData.IsVisible,
                 Status = reportData.Status,
                 Created = reportData.Created,
+                Modified = reportData.Modified,
                 Description = reportData.Description,
                 IsUnconscious = reportData.IsUnconscious,
                 
