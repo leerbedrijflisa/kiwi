@@ -55,9 +55,11 @@ namespace Lisa.Kiwi.Web
                 return View(viewModel);
             }
 
-            var report = await GetCurrentReport();
+            var reportId = GetCurrentReportId();
+            var report = new Report();
+
             _modelFactory.Modify(report, viewModel);
-            await _reportProxy.PatchAsync(report.Id, report);
+            await _reportProxy.PatchAsync(reportId, report);
 
             return RedirectToAction("AdditionalLocation");
         }
@@ -471,8 +473,18 @@ namespace Lisa.Kiwi.Web
             {
                 return null;
             }
-            var reportId = Int32.Parse(cookie.Value);
+            var reportId = int.Parse(cookie.Value);
             return await _reportProxy.GetAsync(reportId);
+        }
+
+        private int GetCurrentReportId()
+        {
+            var cookie = Request.Cookies["report"];
+            if (cookie == null)
+            {
+                throw new Exception("Report not found");
+            }
+            return int.Parse(cookie.Value);
         }
 
         private void CreateReportProxy()
