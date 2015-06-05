@@ -1,5 +1,9 @@
 ﻿$(function () {
-    window.ReportsUrl = window.ApiUrl + "reports?$orderby=Created desc";
+    var date = new Date();
+    // set date to now minus 28 days
+    date = new Date(date.getTime() - 2419000000);
+    
+    window.ReportsUrl = window.ApiUrl + "reports?$orderby=Created desc&$filter=year(Created) ge " + date.getFullYear() + " and month(Created) ge " + (date.getMonth() + 1) + " and day(Created) ge " + date.getDay();
     var reports = $.connection.reportsHub;
 
     window.update = reports.client.ReportDataChange = function () {
