@@ -14,10 +14,12 @@ namespace Lisa.Kiwi.WebApi
     [System.Web.Http.Authorize]
     public class ReportsController : ApiController
     {
+        [Queryable]
         [System.Web.Http.Authorize(Roles = "DashboardUser, Administrator")]
-        public IHttpActionResult Get()
+        public IQueryable<Report> Get()
         {
-            return Ok(GetCompleteReports());
+            var reports = GetCompleteReports();
+            return User.IsInRole("Administrator") ? reports : reports.Where(r => r.IsVisible);
         }
 
         public IHttpActionResult Get(int? id)
@@ -56,7 +58,6 @@ namespace Lisa.Kiwi.WebApi
 
             _db.Reports.Add(reportData);
             _db.SaveChanges();
-            TriggerReportDataChange();
 
             var reportJson = _modelFactory.Create(reportData);
 
@@ -91,6 +92,8 @@ namespace Lisa.Kiwi.WebApi
             }
 
             _dataFactory.Modify(reportData, json);
+
+            reportData.Modified = DateTimeOffset.Now;
 
             _db.SaveChanges();
             TriggerReportDataChange();

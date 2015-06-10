@@ -5,7 +5,21 @@
 {
 	<div class="field">
 		<label>&nbsp;</label>
-		<p>@Resources.PageItems.DoneMessage <br />Heeft u een fout gemaakt? <a href="~/Report/EditDone">Klik dan hier om uw melding te weizigen</a>.</p>
+		<p>
+			@PageItems.DoneMessage
+			@if (Model.Category == "FirstAid" || Model.Category == "Fight")
+			{
+				@PageItems.HelpOnTheWay
+			}
+			else
+			{
+				@PageItems.TakenAction
+			}
+		</p>
+	</div>
+	<div class="field">
+		<label>&nbsp;</label>
+		<p>Heeft u een fout gemaakt? <a href="~/Report/EditDone">Klik dan hier om uw melding te weizigen</a>.</p>
 	</div>
 
 	if (Model.Category != null)

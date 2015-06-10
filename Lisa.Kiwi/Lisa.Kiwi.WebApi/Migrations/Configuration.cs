@@ -42,32 +42,36 @@ namespace Lisa.Kiwi.WebApi
         private void CreateUsers(KiwiContext context)
         {
             var userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>(context));
+            
+           // Add a test "beveiliger" account (name=beveiliger pass=hello)
 
-            // Goodbye all users
-            foreach (var user in userManager.Users.ToList())
+            var dashboardUser = userManager.FindByName("beveiliger");
+            
+            if (dashboardUser == null)
             {
-                userManager.Delete(user);
+                dashboardUser = new IdentityUser("beveiliger");
+                userManager.Create(dashboardUser, "helloo");
+                userManager.AddToRole(dashboardUser.Id, "DashboardUser");
             }
-
-            // Add a test administrator account (name=admin pass=toor42)
-            var admin = new IdentityUser("admin");
-            ThrowIfFailed(userManager.Create(admin, "toor42"));
-            userManager.AddToRole(admin.Id, "Administrator");
-
-            // Add a test "beveiliger" account (name=beveiliger pass=hello)
-            var dashboardUser = new IdentityUser("beveiliger");
-            userManager.Create(dashboardUser, "helloo");
-            userManager.AddToRole(dashboardUser.Id, "DashboardUser");
-
-            // Add a test "beveiliger2" account (name=beveiliger2 pass=hello2)
-            var dashboardUser2 = new IdentityUser("beveiliger2");
-            userManager.Create(dashboardUser2, "helloo2");
-            userManager.AddToRole(dashboardUser2.Id, "DashboardUser");
-
+            else if (!userManager.IsInRole(dashboardUser.Id, "DashboardUser"))
+            {
+                userManager.AddToRole(dashboardUser.Id, "DashboardUser");
+            }
+            
             // Add a test "hoofdbeveiliger" account (name=hoofdbeveiliger pass=masterpass)
-            var headOfSecurity = new IdentityUser("HBD");
-            ThrowIfFailed(userManager.Create(headOfSecurity, "masterpass"));
-            userManager.AddToRole(headOfSecurity.Id, "Administrator");
+
+            var administrator = userManager.FindByName("HBD");
+
+            if (administrator == null)
+            {
+                administrator = new IdentityUser("HBD");
+                ThrowIfFailed(userManager.Create(administrator, "masterpass"));
+                userManager.AddToRole(administrator.Id, "Administrator"); 
+            }
+            else if (!userManager.IsInRole(administrator.Id, "Administrator"))
+            {
+                userManager.AddToRole(administrator.Id, "Administrator"); 
+            }
         }
 
         private void ThrowIfFailed(IdentityResult result)

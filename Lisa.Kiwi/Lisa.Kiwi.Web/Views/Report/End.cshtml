@@ -12,7 +12,17 @@
 <form>
 	<div class="field">
 		<label></label>
-		<p class="noBorder">Dank u voor uw melding.</p>
+		<p class="noBorder">
+			@PageItems.DoneMessage
+			@if (Model.Category == "FirstAid" || Model.Category == "Fight")
+			{
+				@PageItems.HelpOnTheWay
+			}
+			else
+			{
+				@PageItems.TakenAction
+			}
+		</p>
 	</div>
 	<div class="grayLayer">
 		@Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportCategory.cshtml", Model)
@@ -32,6 +42,5 @@
 					@Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportVehicle.cshtml", Model);
 								}
 	</div>
-    <div class="button-container"><a href="#" onclick="close_window();return false;">Sluit de pagina</a></div>
-    <div class="button-container">@Html.ActionLink("terug naar start", "index", "Report")</div>
+    <div class="button-container endButtons">@Html.ActionLink("Meld nog een incident", "index", "Report")</div>
 </form>

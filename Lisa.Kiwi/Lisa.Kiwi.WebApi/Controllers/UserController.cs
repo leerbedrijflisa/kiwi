@@ -1,15 +1,38 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web.Http;
 using Microsoft.AspNet.Identity;
+using Newtonsoft.Json.Linq;
 
 namespace Lisa.Kiwi.WebApi
 {
     [RoutePrefix("api/users")]
     public class UserController : ApiController
     {
+        [Authorize(Roles = "Administrator")]
+        public async Task<IEnumerable<User>> Get()
+        {
+            var identityUsers = await _auth.GetUsers();
+            var users = new List<User>();
+
+            foreach (var identityUser in identityUsers)
+            {
+                var user = new User
+                {
+                    Id = identityUser.Id,
+                    UserName = identityUser.UserName,
+                    Role = await _auth.GetRole(identityUser)
+                };
+
+                users.Add(user);
+            }
+
+            return users;
+        }
+        
         [Authorize(Roles = "Administrator")]
         [HttpPost]
         public async Task<IHttpActionResult> Post(AddUserModel userModel)
@@ -22,6 +45,19 @@ namespace Lisa.Kiwi.WebApi
             var result = await _auth.AddUser(userModel);
 
             return GetErrorResult(result) ?? Ok();
+        }
+
+        [Authorize(Roles = "Administrator")]
+        public async Task<IHttpActionResult> Patch(string id, [FromBody] JToken json)
+        {
+            if (json.Value<string>("password") == null)
+            {
+                return BadRequest();
+            }
+
+            await _auth.UpdatePassword(id, json.Value<string>("password"));
+
+            return Ok();
         }
 
         [Authorize]

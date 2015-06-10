@@ -4,13 +4,14 @@
     {
         public Report Create(ReportData reportData)
         {
-            var report = new Report
+            return new Report
             {
                 Id = reportData.Id,
                 Category = reportData.Category,
                 IsVisible = reportData.IsVisible,
                 Status = reportData.Status,
                 Created = reportData.Created,
+                Modified = reportData.Modified,
                 Description = reportData.Description,
                 IsUnconscious = reportData.IsUnconscious,
                 
@@ -33,7 +34,6 @@
                 Contact = reportData.Contact != null ? Create(reportData.Contact) : null,
                 Vehicle = reportData.Vehicle != null ? Create(reportData.Vehicle) : null
             };
-            return report;
         }
 
         private Location Create(LocationData locationData)
@@ -73,14 +73,12 @@
 
         private Contact Create(ContactData contactData)
         {
-            var contact = new Contact
+            return new Contact
             {
                 EmailAddress = contactData.EmailAddress,
                 Name = contactData.Name,
                 PhoneNumber = contactData.PhoneNumber
             };
-
-            return contact;
         }
     }
 }

@@ -79,7 +79,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Kleding:.
+        ///   Looks up a localized string similar to Kleding.
         /// </summary>
         public static string Clothing {
             get {
@@ -88,7 +88,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Maximale leeftijd:.
+        ///   Looks up a localized string similar to Maximale leeftijd.
         /// </summary>
         public static string MaxAge {
             get {
@@ -97,7 +97,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Minimale leeftijd:.
+        ///   Looks up a localized string similar to Minimale leeftijd.
         /// </summary>
         public static string MinAge {
             get {
@@ -106,7 +106,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Naam:.
+        ///   Looks up a localized string similar to Naam.
         /// </summary>
         public static string Name {
             get {
@@ -124,7 +124,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Signalement:.
+        ///   Looks up a localized string similar to Signalement.
         /// </summary>
         public static string Perpetrators {
             get {
@@ -133,7 +133,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Geslacht:.
+        ///   Looks up a localized string similar to Geslacht.
         /// </summary>
         public static string Sex {
             get {
@@ -142,7 +142,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Huidskleur:.
+        ///   Looks up a localized string similar to Huidskleur.
         /// </summary>
         public static string SkinColor {
             get {
@@ -151,7 +151,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unieke kenmerken:.
+        ///   Looks up a localized string similar to Unieke kenmerken.
         /// </summary>
         public static string UniqueProp {
             get {

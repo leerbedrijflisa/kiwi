@@ -19,6 +19,7 @@ namespace Lisa.Kiwi.WebApi
         public StatusEnum Status { get; set; }
 
         public DateTimeOffset Created { get; set; }
+        public DateTimeOffset Modified { get; set; }
 
         public string Description { get; set; }
         
