@@ -45,19 +45,28 @@ namespace Lisa.Kiwi.Web
             return RedirectToAction("Location");
         }
 
+        //Sends a message to the email address
         [HttpPost]
         public ActionResult BugReport(BugReportViewModel viewModel)
         {
             try
             {
+                //SendGrid username and password from azure.
                 var username = "azure_90c1637306a250426ada1015ca65e6e0@azure.com";
                 var pswrd = "27UICbH178dUI0m";
+                //Create a new SendGrid message
                 SendGridMessage mailMessage = new SendGridMessage();
-                mailMessage.AddTo("tjdj2due.x0g@20mail.it");
+                //Where the mail has to go to
+                mailMessage.AddTo("huehuehue@20mail.it");
+                //Sender from the mail
                 mailMessage.From = new MailAddress(viewModel.EmailAddress);
+                //Subject from the mail
                 mailMessage.Subject = viewModel.Subject;
-                mailMessage.Text = viewModel.Message;
+                //Body of the mail
+                mailMessage.Html = viewModel.Message;
+                mailMessage.Html = mailMessage.Html.Replace(System.Environment.NewLine, "<br />");
                 var credentials = new NetworkCredential(username, pswrd);
+                //Send the mail using SendGrid
                 var transportWeb = new SendGrid.Web(credentials);
                 transportWeb.DeliverAsync(mailMessage);
                 return View();
