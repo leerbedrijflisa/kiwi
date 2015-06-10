@@ -279,6 +279,7 @@
     <Content Include="Content\warning.svg" />
     <Content Include="Global.asax" />
     <Content Include="App_Code\DashboardHelpers.cshtml" />
+    <Content Include="Scripts\archive.js" />
     <Content Include="Scripts\dashboard.js" />
     <Content Include="Scripts\DoneWeapons.js" />
     <Content Include="Scripts\hyphenator.js" />
@@ -426,10 +427,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_GlobalResources\" />
     <Folder Include="Views\Report\EditPartials\" />
-    <Folder Include="Views\Resources\" />
-    <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Categories.resx">
