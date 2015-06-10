@@ -93,6 +93,8 @@ namespace Lisa.Kiwi.WebApi
 
             _dataFactory.Modify(reportData, json);
 
+            reportData.Modified = DateTimeOffset.Now;
+
             _db.SaveChanges();
             TriggerReportDataChange();
                 

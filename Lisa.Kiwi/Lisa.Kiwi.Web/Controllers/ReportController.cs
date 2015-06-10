@@ -91,9 +91,11 @@ namespace Lisa.Kiwi.Web
                 return View(viewModel);
             }
 
-            var report = await GetCurrentReport();
+            var reportId = GetCurrentReportId();
+            var report = new Report();
+
             _modelFactory.Modify(report, viewModel);
-            await _reportProxy.PatchAsync(report.Id, report);
+            var responseReport = await _reportProxy.PatchAsync(reportId, report);
 
             return RedirectToAction("AdditionalLocation");
         }
@@ -101,8 +103,9 @@ namespace Lisa.Kiwi.Web
         public async Task<ActionResult> AdditionalLocation()
         {
             var report = await GetCurrentReport();
-            ViewBag.Building = Resources.Buildings.ResourceManager.GetString(report.Location.Building);
-            ViewBag.Preposition = Resources.Buildings.ResourceManager.GetString(report.Location.Building + "_Preposition");
+            var building = report.Location.Building;
+            ViewBag.Building = Resources.Buildings.ResourceManager.GetString(building);
+            ViewBag.Preposition = Resources.Buildings.ResourceManager.GetString(building + "_Preposition");
 
             return View(new AdditionalLocationViewModel());
         }
@@ -110,16 +113,18 @@ namespace Lisa.Kiwi.Web
         [HttpPost]
         public async Task<ActionResult> AdditionalLocation(AdditionalLocationViewModel viewModel)
         {
-            var report = await GetCurrentReport();
             if (!ModelState.IsValid)
             {
-                ViewBag.Building = Resources.Buildings.ResourceManager.GetString(report.Location.Building);
-                ViewBag.Preposition = Resources.Buildings.ResourceManager.GetString(report.Location.Building + "_Preposition");
+                var currentReport = await GetCurrentReport();
+                var building = currentReport.Location.Building;
+
+                ViewBag.Building = Resources.Buildings.ResourceManager.GetString(building);
+                ViewBag.Preposition = Resources.Buildings.ResourceManager.GetString(building + "_Preposition");
                 return View(viewModel);
             }
-
+            var report = new Report();
             _modelFactory.Modify(report, viewModel);
-            await _reportProxy.PatchAsync(report.Id, report);
+            report = await _reportProxy.PatchAsync(GetCurrentReportId(), report);
 
             return RedirectToAction(report.Category);
         }
@@ -137,12 +142,10 @@ namespace Lisa.Kiwi.Web
                 return View(viewModel);
             }
 
-            var report = await GetCurrentReport();
-
+            var report = new Report();
             _modelFactory.Modify(report, viewModel);
-            await _reportProxy.PatchAsync(report.Id, report);
 
-            // TODO: add error handling
+            await _reportProxy.PatchAsync(GetCurrentReportId(), report);
 
             return RedirectToAction("Contact");
         }
@@ -161,10 +164,10 @@ namespace Lisa.Kiwi.Web
                 return View(viewModel);
             }
 
-            var report = await GetCurrentReport();
+            var report = new Report();
 
             _modelFactory.Modify(report, viewModel);
-            await _reportProxy.PatchAsync(report.Id, report);
+            await _reportProxy.PatchAsync(GetCurrentReportId(), report);
 
             return RedirectToAction("Vehicle");
         }
@@ -182,10 +185,10 @@ namespace Lisa.Kiwi.Web
                 return View(viewModel);
             }
 
-            var report = await GetCurrentReport();
+            var report = new Report();
 
             _modelFactory.Modify(report, viewModel);
-            await _reportProxy.PatchAsync(report.Id, report);
+            await _reportProxy.PatchAsync(GetCurrentReportId(), report);
 
             return RedirectToAction("Perpetrator");
         }
@@ -203,14 +206,14 @@ namespace Lisa.Kiwi.Web
                 return View(viewModel);
             }
 
-            var report = await GetCurrentReport();
+            var report = new Report();
 
             _modelFactory.Modify(report, viewModel);
-            await _reportProxy.PatchAsync(report.Id, report);
+            report = await _reportProxy.PatchAsync(GetCurrentReportId(), report);
 
             // TODO: add error handling
 
-            if (report.IsWeaponPresent == true)
+            if (report.IsWeaponPresent ?? false)
             {
                 return RedirectToAction("Weapons");
             }
@@ -231,10 +234,10 @@ namespace Lisa.Kiwi.Web
                 return View(viewModel);
             }
 
-            var report = await GetCurrentReport();
+            var report = new Report();
 
             _modelFactory.Modify(report, viewModel);
-            await _reportProxy.PatchAsync(report.Id, report);
+            report = await _reportProxy.PatchAsync(GetCurrentReportId(), report);
 
             if (report.Category == "Fight")
             {
@@ -257,10 +260,10 @@ namespace Lisa.Kiwi.Web
                 return View(viewModel);
             }
 
-            var report = await GetCurrentReport();
+            var report = new Report();
 
             _modelFactory.Modify(report, viewModel);
-            await _reportProxy.PatchAsync(report.Id, report);
+            await _reportProxy.PatchAsync(GetCurrentReportId(), report);
 
             return RedirectToAction("Vehicle");
         }
@@ -278,9 +281,9 @@ namespace Lisa.Kiwi.Web
                 return View(viewModel);
             }
 
-            var report = await GetCurrentReport();
+            var report = new Report();
             _modelFactory.Modify(report, viewModel);
-            await _reportProxy.PatchAsync(report.Id, report);
+            report = await _reportProxy.PatchAsync(GetCurrentReportId(), report);
 
             if (viewModel.HasPerpetrator && !viewModel.HasVictim)
             {
@@ -311,9 +314,9 @@ namespace Lisa.Kiwi.Web
                 return View(viewModel);
             }
 
-            var report = await GetCurrentReport();
+            var report = new Report();
             _modelFactory.Modify(report, viewModel);
-            await _reportProxy.PatchAsync(report.Id, report);
+            await _reportProxy.PatchAsync(GetCurrentReportId(), report);
 
             return RedirectToAction("Vehicle");
         }
@@ -332,9 +335,9 @@ namespace Lisa.Kiwi.Web
             {
                 return View(viewModel);
             }
-            var report = await GetCurrentReport();
+            var report = new Report();
             _modelFactory.Modify(report, viewModel);
-            await _reportProxy.PatchAsync(report.Id, report);
+            await _reportProxy.PatchAsync(GetCurrentReportId(), report);
 
             return RedirectToAction(victim ? "Victim" : "Vehicle");
         }
@@ -352,9 +355,9 @@ namespace Lisa.Kiwi.Web
                 return View(viewModel);
             }
 
-            var report = await GetCurrentReport();
+            var report = new Report();
             _modelFactory.Modify(report, viewModel);
-            await _reportProxy.PatchAsync(report.Id, report);
+            await _reportProxy.PatchAsync(GetCurrentReportId(), report);
 
             // TODO: add error handling
             return RedirectToAction("Vehicle");
@@ -373,12 +376,16 @@ namespace Lisa.Kiwi.Web
                 return View(viewModel);
             }
 
-            var report = await GetCurrentReport();
+            var report = new Report();
 
             if (viewModel.HasVehicle)
             {
                 _modelFactory.Modify(report, viewModel);
-                await _reportProxy.PatchAsync(report.Id, report);
+                report = await _reportProxy.PatchAsync(GetCurrentReportId(), report);
+            }
+            else
+            {
+                report = await GetCurrentReport();
             }
 
             switch (report.Category)
@@ -408,12 +415,10 @@ namespace Lisa.Kiwi.Web
 
             if (viewModel.EmailAddress != null || viewModel.Name != null || viewModel.PhoneNumber != null)
             {
-                var report = await GetCurrentReport();
+                var report = new Report();
                 _modelFactory.Modify(report, viewModel);
-                await _reportProxy.PatchAsync(report.Id, report);
+                await _reportProxy.PatchAsync(GetCurrentReportId(), report);
             }
-
-            // TODO: add error handling
 
             return RedirectToAction("Done");
         }
@@ -431,11 +436,9 @@ namespace Lisa.Kiwi.Web
                 return View(viewModel);
             }
 
-            var report = await GetCurrentReport();
+            var report = new Report();
             _modelFactory.Modify(report, viewModel);
-            await _reportProxy.PatchAsync(report.Id, report);
-
-            // TODO: add error handling
+            await _reportProxy.PatchAsync(GetCurrentReportId(), report);
 
             return RedirectToAction("Done");
         }
@@ -502,13 +505,17 @@ namespace Lisa.Kiwi.Web
 
         private async Task<Report> GetCurrentReport()
         {
+            return await _reportProxy.GetAsync(GetCurrentReportId());
+        }
+
+        private int GetCurrentReportId()
+        {
             var cookie = Request.Cookies["report"];
             if (cookie == null)
             {
-                return null;
+                throw new Exception("Report not found");
             }
-            var reportId = Int32.Parse(cookie.Value);
-            return await _reportProxy.GetAsync(reportId);
+            return int.Parse(cookie.Value);
         }
 
         private void CreateReportProxy()

@@ -7,6 +7,7 @@ namespace Lisa.Kiwi.WebApi
         public Report()
         {
             Created = DateTimeOffset.Now;
+            Modified = DateTimeOffset.Now;
             IsVisible = true;
             Status = StatusEnum.Open;
         }
@@ -16,6 +17,7 @@ namespace Lisa.Kiwi.WebApi
         public bool IsVisible { get; set; }
         public StatusEnum Status { get; set; }
         public DateTimeOffset Created { get; set; }
+        public DateTimeOffset Modified { get; set; }
         public string AnonymousToken { get; set; }
 
         //Shared
