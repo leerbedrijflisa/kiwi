@@ -277,6 +277,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Grand Café.
+        /// </summary>
+        public static string GrandCafe {
+            get {
+                return ResourceManager.GetString("GrandCafe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to in het.
+        /// </summary>
+        public static string GrandCafe_Preposition {
+            get {
+                return ResourceManager.GetString("GrandCafe_Preposition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to grote parkeerplaats.
         /// </summary>
         public static string GroteParkeerplaats {
