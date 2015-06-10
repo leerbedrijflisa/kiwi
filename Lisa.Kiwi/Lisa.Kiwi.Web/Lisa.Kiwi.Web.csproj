@@ -261,7 +261,6 @@
     <Content Include="Content\ReporterBuildings\building-wartburg.png" />
     <Content Include="Content\show.svg" />
     <Compile Include="Controllers\DashboardController.cs" />
-    <Content Include="Content\Table.css" />
     <Content Include="Content\warning.svg" />
     <Content Include="Global.asax" />
     <Content Include="App_Code\DashboardHelpers.cshtml" />
