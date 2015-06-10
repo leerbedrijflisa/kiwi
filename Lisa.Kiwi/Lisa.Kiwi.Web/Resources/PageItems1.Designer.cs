@@ -61,7 +61,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Gebouw:.
+        ///   Looks up a localized string similar to Gebouw.
         /// </summary>
         public static string Building {
             get {
@@ -70,7 +70,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Categorie:.
+        ///   Looks up a localized string similar to Categorie.
         /// </summary>
         public static string Category {
             get {
@@ -97,7 +97,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to E-mailadres van de melder (Indien ingevuld):.
+        ///   Looks up a localized string similar to E-mailadres van de melder.
         /// </summary>
         public static string ContactEmail {
             get {
@@ -106,7 +106,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Naam van de melder (Indien ingevuld):.
+        ///   Looks up a localized string similar to Naam van de melder.
         /// </summary>
         public static string ContactName {
             get {
@@ -115,7 +115,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Telefoonnummer van de melder (Indien ingevuld):.
+        ///   Looks up a localized string similar to Telefoonnummer van de melder.
         /// </summary>
         public static string ContactPhoneNumber {
             get {
@@ -133,7 +133,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Datum:.
+        ///   Looks up a localized string similar to Datum.
         /// </summary>
         public static string Date {
             get {
@@ -142,7 +142,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tijdstip van de melding:.
+        ///   Looks up a localized string similar to Tijdstip van de melding.
         /// </summary>
         public static string DateDescription {
             get {
@@ -169,7 +169,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Locatie:.
+        ///   Looks up a localized string similar to Locatie.
         /// </summary>
         public static string Location {
             get {
@@ -178,7 +178,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Locatie en beschrijving:.
+        ///   Looks up a localized string similar to Locatie en beschrijving.
         /// </summary>
         public static string LocationDescription {
             get {
@@ -196,7 +196,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Status:.
+        ///   Looks up a localized string similar to Status.
         /// </summary>
         public static string Status {
             get {
@@ -205,7 +205,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Huidige status van het incident:.
+        ///   Looks up a localized string similar to Huidige status van het incident.
         /// </summary>
         public static string StatusDescription {
             get {
@@ -223,7 +223,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Het Meldingstype:.
+        ///   Looks up a localized string similar to Het Meldingstype.
         /// </summary>
         public static string TypeDescription {
             get {

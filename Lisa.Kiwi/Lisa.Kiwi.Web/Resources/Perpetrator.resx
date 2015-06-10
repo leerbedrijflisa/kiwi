@@ -124,31 +124,31 @@
     <value>Tussen 21 en 35</value>
   </data>
   <data name="Clothing" xml:space="preserve">
-    <value>Kleding:</value>
+    <value>Kleding</value>
   </data>
   <data name="MaxAge" xml:space="preserve">
-    <value>Maximale leeftijd:</value>
+    <value>Maximale leeftijd</value>
   </data>
   <data name="MinAge" xml:space="preserve">
-    <value>Minimale leeftijd:</value>
+    <value>Minimale leeftijd</value>
   </data>
   <data name="Name" xml:space="preserve">
-    <value>Naam:</value>
+    <value>Naam</value>
   </data>
   <data name="OlderThanThirtyFive" xml:space="preserve">
     <value>Ouder dan 35</value>
   </data>
   <data name="Perpetrators" xml:space="preserve">
-    <value>Signalement:</value>
+    <value>Signalement</value>
   </data>
   <data name="Sex" xml:space="preserve">
-    <value>Geslacht:</value>
+    <value>Geslacht</value>
   </data>
   <data name="SkinColor" xml:space="preserve">
-    <value>Huidskleur:</value>
+    <value>Huidskleur</value>
   </data>
   <data name="UniqueProp" xml:space="preserve">
-    <value>Unieke kenmerken:</value>
+    <value>Unieke kenmerken</value>
   </data>
   <data name="YoungerThanTwelve" xml:space="preserve">
     <value>Jonger dan 12</value>
