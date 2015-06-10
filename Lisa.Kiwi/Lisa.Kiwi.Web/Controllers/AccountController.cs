@@ -96,6 +96,22 @@ namespace Lisa.Kiwi.Web
             return View(users);
         }
 
+        public ActionResult Logout()
+        {
+            // TODO: the web API should invalidate token when loggong out
+            Response.Cookies.Add(new HttpCookie("token")
+            {
+                Expires = DateTime.Now.AddDays(-1)
+            });
+
+            Response.Cookies.Add(new HttpCookie("role")
+            {
+                Expires = DateTime.Now.AddDays(-1)
+            });
+
+            return RedirectToAction("Login");
+        }
+
         private void EnsureAccess(Proxy<User> proxy)
         {
             var tokenCookie = Request.Cookies["token"];
