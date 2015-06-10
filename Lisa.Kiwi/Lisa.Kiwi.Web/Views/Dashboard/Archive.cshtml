@@ -2,11 +2,10 @@
 
 @{
     Layout = null;
-    var api = MvcApplication.GetApiUrl();    
+    var api = MvcApplication.GetApiUrl();
 }
 
 <!DOCTYPE html>
-@*TODO: Globalize this text*@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -16,71 +15,25 @@
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8" src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+    <script>
+        window.ApiUrl = "@api";
+    </script>
+    <script src="~/Scripts/archive.js"></script>
+	<style>
+		body{
+			 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		}
+
+		#allData tr{
+			cursor: pointer;
+		}
+
+		#allData{
+			width: 100% !important;
+		}
+	</style>
 </head>
 <body>
-    <table id="allData" class="display">
-        <thead>
-            <tr>
-                <th>Datum</th>
-                <th>Categorie</th>
-                <th>Locatie</th>
-                <th>Naam Contact</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var report in Model.OrderBy(t => t.Created))
-            {
-                <a href="@Url.Action("Details", new { id= report.Id })">
-                    <tr>
-                        <td>
-                            @report.Created.ToString("dd/MM/yyyy HH:mm:ss")
-                        </td>
-                        <td>
-                            @Categories.ResourceManager.GetString(report.Category)
-                        </td>
-                        <td>
-                            @if (report.Location != null)
-                            {
-                                @DashboardHelpers.NullCheck(ReportHelpers.Capitalize(Buildings.ResourceManager.GetString(report.Location.Building)))
-                                @DashboardHelpers.NullCheck(report.Location.Description)
-                            }
-                        </td>
-                        <td>
-                            @if (report.Contact != null)
-                            {
-                                @report.Contact.Name
-                            }
-                        </td>
-                    </tr>
-                </a>
-            }
-        </tbody>
-    </table>
+    <table id="allData" class="display">Loading, loading, loading....</table>
 </body>
 </html>
-<script>
-    $(document).ready(function () {
-        $('#allData').DataTable({
-            "aaSorting": [[0,'desc']],
-            "language": {
-                "sProcessing": "Bezig...",
-                "sLengthMenu": "_MENU_ resultaten weergeven",
-                "sZeroRecords": "Geen resultaten gevonden",
-                "sInfo": "_START_ tot _END_ van _TOTAL_ resultaten",
-                "sInfoEmpty": "Geen resultaten om weer te geven",
-                "sInfoFiltered": " (gefilterd uit _MAX_ resultaten)",
-                "sInfoPostFix": "",
-                "sSearch": "Zoeken:",
-                "sEmptyTable": "Geen resultaten aanwezig in de tabel",
-                "sInfoThousands": ".",
-                "sLoadingRecords": "Een moment geduld aub - bezig met laden...",
-                "oPaginate": {
-                    "sFirst": "Eerste",
-                    "sLast": "Laatste",
-                    "sNext": "Volgende",
-                    "sPrevious": "Vorige"
-                }
-            }
-        });
-    });
-</script>
