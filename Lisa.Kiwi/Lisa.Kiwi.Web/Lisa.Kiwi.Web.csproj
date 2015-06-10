@@ -423,11 +423,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_GlobalResources\" />
-    <Folder Include="Views\Resources\" />
-    <Folder Include="Views\User\" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Resources\Categories.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Categories.Designer.cs</LastGenOutput>
