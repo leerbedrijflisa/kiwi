@@ -12,6 +12,7 @@ namespace Lisa.Kiwi.Web
 
         [Display(Name = "NewPassword", ResourceType = typeof(DisplayNames))]
         [Required]
+        [StringLength(50, MinimumLength = 6, ErrorMessage = "Het wachtwoord moet minstens 6 tekens lang zijn.")]
         public string NewPassword { get; set; }
 
         [Display(Name = "RepeatNewPassword", ResourceType = typeof(DisplayNames))]

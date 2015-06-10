@@ -155,6 +155,11 @@ form .field ul.radioList {
     width: 94%;
 }
 
+.field-validation-error {
+    padding-left: 30px !important;
+    padding-bottom: 5px !important;
+}
+
 /*
 	Button lists
 */
