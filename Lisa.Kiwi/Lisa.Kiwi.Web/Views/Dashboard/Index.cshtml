@@ -2,7 +2,7 @@
 
 @{
 	Layout = null;
-    var api = MvcApplication.GetApiUrl();
+	var api = MvcApplication.GetApiUrl();
 }
 
 <!DOCTYPE html>
@@ -10,60 +10,62 @@
 <head>
 	<title>Leerpark</title>
 	<link href="@Url.Content("~/Content/dashboard.css")" rel="stylesheet" type="text/css">
-	
-    <script src="@(api)Scripts/jquery-1.6.4.min.js"></script>
-    <script src="@(api)Scripts/jquery.signalR-2.2.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.min.js"></script>
-    <script src="@(api)signalr/hubs"></script>
-    <script>
-        window.ApiUrl = "@api";
-    </script>
-    <script src="~/Scripts/dashboard.js"></script>
+
+	<script src="@(api)Scripts/jquery-1.6.4.min.js"></script>
+	<script src="@(api)Scripts/jquery.signalR-2.2.0.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.min.js"></script>
+	<script src="@(api)signalr/hubs"></script>
+	<script>
+		window.ApiUrl = "@api";
+	</script>
+	<script src="~/Scripts/dashboard.js"></script>
 </head>
 <body>
-    <a href="/account" class="password-button">Wachtwoorden wijzigen</a>
-    <div id="container"></div>
+	<ul class="side-buttons">
+		<li><a href="@Url.Action("Index", "Account")">Wachtwoorden wijzigen</a></li>
+		<li><a href="@Url.Action("Logout", "Account")">Uitloggen</a></li>
+	</ul>
+	<div id="container"></div>
 
-    <script type="text/template" id="reportsTemplate">        
-        {{#each .}}
-        <section class={{status}}>
-            <article>
-                <a href="dashboard/details?id={{id}}">
-                    <div class="category {{category}}">
-                        <!-- Translate -->
-                        <h1>{{translate "Categories" category}}</h1>
+	<script type="text/template" id="reportsTemplate">
+		{{#each .}}
+		<section class={{status}}>
+			<article>
+				<a href="dashboard/details?id={{id}}">
+					<div class="category {{category}}">
+						<!-- Translate -->
+						<h1>{{translate "Categories" category}}</h1>
 
-                        <!-- Format time -->
-                        <p class="time">{{prettyDate created}}</p>
-                    </div>
-                    {{#if location}}
-                        <div class="building {{location.building}}">
-                            <!-- Translate -->
-                            <h2>{{translate "Buildings" location.building}}</h2>
-                            <p class="location">{{location.description}}</p>
-                        </div>
-                    {{else}}
-                        <div class="building">
-                            <h2>Locatie onbekend</h2>
-                            <p class="location">Er is nog geen locatie opgegeven, of deze bestaat niet.</p>
-                        </div>
-                    {{/if}}
+						<!-- Format time -->
+						<p class="time">{{prettyDate created}}</p>
+					</div>
+					{{#if location}}
+					<div class="building {{location.building}}">
+						<!-- Translate -->
+						<h2>{{translate "Buildings" location.building}}</h2>
+						<p class="location">{{location.description}}</p>
+					</div>
+					{{else}}
+					<div class="building">
+						<h2>Locatie onbekend</h2>
+						<p class="location">Er is nog geen locatie opgegeven, of deze bestaat niet.</p>
+					</div>
+					{{/if}}
 
-                    <p class="details">
-                        {{detailsSummary (translate "Categories" category)}}
-                    </p>
-                </a>
-                <ul class="options">
-                    <li><a href="togglesolved?id={{id}}&currentsolved={{status}}"><img src="/Content/done.svg"></a></li>
+					<p class="details">
+						{{detailsSummary (translate "Categories" category)}}
+					</p>
+				</a>
+				<ul class="options">
+					<li><a href="togglesolved?id={{id}}&currentsolved={{status}}"><img src="/Content/done.svg"></a></li>
 
-                    <!-- Show only if user is admin: check cookie -->
-                    <!-- Add class "button-green" if visible != true -->
-                    <li><a href="togglevisible?id={{id}}&currentsolved={{IsVisible}}"><img src="/Content/show.svg"></a></li>
-                </ul>
-            </article>
-        </section>
-        {{/each}}
-    </script>
+					<!-- Show only if user is admin: check cookie -->
+					<!-- Add class "button-green" if visible != true -->
+					<li><a href="togglevisible?id={{id}}&currentsolved={{IsVisible}}"><img src="/Content/show.svg"></a></li>
+				</ul>
+			</article>
+		</section>
+		{{/each}}
+	</script>
 </body>
-
 </html>
