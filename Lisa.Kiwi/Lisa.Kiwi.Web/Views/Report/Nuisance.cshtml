@@ -6,8 +6,8 @@
 @using (Html.BeginForm())
 {
 	<div class="field">
-		<label>Omschrijving overlast:*</label>
-		@Html.TextBoxFor(m => m.Description)
+		<label>@ReportProperties.NuisanceDescription *</label>
+		@Html.TextBoxFor(m => m.Description)	
 	</div>
 	<div class="submit">
 		<button type="submit"><img src="@Url.Content("~/Content/next.svg")"/></button>

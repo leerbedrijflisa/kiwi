@@ -189,4 +189,7 @@
   <data name="VehicleType" xml:space="preserve">
     <value>Type voertuig</value>
   </data>
+  <data name="NuisanceDescription" xml:space="preserve">
+    <value>Omschrijving overlast</value>
+  </data>
 </root>

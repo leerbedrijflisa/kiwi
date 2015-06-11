@@ -160,6 +160,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Omschrijving overlast.
+        /// </summary>
+        public static string NuisanceDescription {
+            get {
+                return ResourceManager.GetString("NuisanceDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Gestolen voorwerp.
         /// </summary>
         public static string StolenObject {
