@@ -47,7 +47,7 @@ namespace Lisa.Kiwi.Web
 
         //Sends a message to the email address
         [HttpPost]
-        public ActionResult BugReport(BugReportViewModel viewModel)
+        public async Task<ActionResult> BugReport(BugReportViewModel viewModel)
         {
             try
             {
@@ -55,7 +55,7 @@ namespace Lisa.Kiwi.Web
                 var username = "azure_90c1637306a250426ada1015ca65e6e0@azure.com";
                 var pswrd = "27UICbH178dUI0m";
                 //Create a new SendGrid message
-                SendGridMessage mailMessage = new SendGridMessage();
+                var mailMessage = new SendGridMessage();
                 //Where the mail has to go to
                 mailMessage.AddTo("beveiliging@davinci.nl");
                 //Sender from the mail
@@ -64,11 +64,11 @@ namespace Lisa.Kiwi.Web
                 mailMessage.Subject = viewModel.Subject;
                 //Body of the mail
                 mailMessage.Html = viewModel.Message;
-                mailMessage.Html = mailMessage.Html.Replace(System.Environment.NewLine, "<br />");
+                mailMessage.Html = mailMessage.Html.Replace(Environment.NewLine, "<br />");
                 var credentials = new NetworkCredential(username, pswrd);
                 //Send the mail using SendGrid
                 var transportWeb = new SendGrid.Web(credentials);
-                transportWeb.DeliverAsync(mailMessage);
+                await transportWeb.DeliverAsync(mailMessage);
                 return View();
             }
             catch (Exception ex)
