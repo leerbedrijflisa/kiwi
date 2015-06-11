@@ -57,7 +57,7 @@ namespace Lisa.Kiwi.Web
                 //Create a new SendGrid message
                 SendGridMessage mailMessage = new SendGridMessage();
                 //Where the mail has to go to
-                mailMessage.AddTo("huehuehue@20mail.it");
+                mailMessage.AddTo("beveiliging@davinci.nl");
                 //Sender from the mail
                 mailMessage.From = new MailAddress(viewModel.EmailAddress);
                 //Subject from the mail
