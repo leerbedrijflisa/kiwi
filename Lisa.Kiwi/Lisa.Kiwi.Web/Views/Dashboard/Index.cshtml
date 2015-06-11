@@ -22,6 +22,7 @@
 </head>
 <body>
 	<ul class="side-buttons">
+		<li><a href="@Url.Action("Archive")">Archief</a></li>
 		<li><a href="@Url.Action("Index", "Account")">Wachtwoorden wijzigen</a></li>
 		<li><a href="@Url.Action("Logout", "Account")">Uitloggen</a></li>
 	</ul>
@@ -57,11 +58,11 @@
 					</p>
 				</a>
 				<ul class="options">
-					<li><a href="togglesolved?id={{id}}&currentsolved={{status}}"><img src="/Content/done.svg"></a></li>
+					<li><a href="dashboard/togglesolved?id={{id}}&currentsolved={{status}}"><img src="/Content/done.svg"></a></li>
 
 					<!-- Show only if user is admin: check cookie -->
 					<!-- Add class "button-green" if visible != true -->
-					<li><a href="togglevisible?id={{id}}&currentsolved={{IsVisible}}"><img src="/Content/show.svg"></a></li>
+					<li><a href="dashboard/togglevisible?id={{id}}&currentsolved={{IsVisible}}"><img src="/Content/show.svg"></a></li>
 				</ul>
 			</article>
 		</section>
