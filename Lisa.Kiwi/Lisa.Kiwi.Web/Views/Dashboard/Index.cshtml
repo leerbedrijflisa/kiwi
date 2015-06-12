@@ -33,44 +33,48 @@
 
 	<script type="text/template" id="reportsTemplate">
 		{{#each .}}
-		<section class={{status}}>
-			<article>
-				<a href="dashboard/details?id={{id}}">
-					<div class="category {{category}}">
-						<!-- Translate -->
-						<h1>{{translate "Categories" category}}</h1>
+			<section class={{status}}>
+				<article>
+					<a href="dashboard/details?id={{id}}">
+						<div class="category {{category}}">
+							<!-- Translate -->
+							<h1>{{translate "Categories" category}}</h1>
 
-						<!-- Format time -->
-						<p class="time">{{prettyDate created}}</p>
-					</div>
-					{{#if location}}
-					<div class="building {{location.building}}">
-						<!-- Translate -->
-						<h2>{{translate "Buildings" location.building}}</h2>
-						<p class="location">{{location.description}}</p>
-					</div>
-					{{else}}
-					<div class="building">
-						<h2>Locatie onbekend</h2>
-						<p class="location">Er is nog geen locatie opgegeven, of deze bestaat niet.</p>
-					</div>
-					{{/if}}
+							<!-- Format time -->
+							<p class="time">{{prettyDate created}}</p>
+						</div>
+						{{#if location}}
+						<div class="building {{location.building}}">
+							<!-- Translate -->
+							<h2>{{translate "Buildings" location.building}}</h2>
+							<p class="location">{{location.description}}</p>
+						</div>
+						{{else}}
+						<div class="building">
+							<h2>Locatie onbekend</h2>
+							<p class="location">Er is nog geen locatie opgegeven, of deze bestaat niet.</p>
+						</div>
+						{{/if}}
 
-					<p class="details">
-						{{detailsSummary (translate "Categories" category)}}
-					</p>
-				</a>
-				<ul class="options">
-					<li><a href="/dashboard/togglesolved?id={{id}}&currentsolved={{status}}"><img src="/Content/done.svg"></a></li>
+						<p class="details">
+							{{detailsSummary (translate "Categories" category)}}
+						</p>
+					</a>
+					<ul class="options">
+						<li><a href="/dashboard/togglesolved?id={{id}}&currentsolved={{status}}"><img src="/Content/done.svg"></a></li>
 
-					<!-- Add class "button-green" if visible != true -->
-					@if (Request.Cookies["role"] != null && Request.Cookies["role"].Value == "Administrator")
-					{
-						<li><a href="/dashboard/togglevisible?id={{id}}&isVisible={{isVisible}}"><img src="/Content/show.svg"></a></li>
-					}
-				</ul>
-			</article>
-		</section>
+						<!-- Add class "button-green" if visible != true -->
+						@if (Request.Cookies["role"] != null && Request.Cookies["role"].Value == "Administrator")
+						{
+							<text>{{#if isVisible }}</text>
+								<li><a href="/dashboard/togglevisible?id={{id}}&isVisible={{isVisible}}"><img src="/Content/show.svg"></a></li>
+							<text>{{else}}</text>
+								<li><a href="/dashboard/togglevisible?id={{id}}&isVisible={{isVisible}}" class="button-green"><img src="/Content/show.svg"></a></li>
+							<text>{{/if}}</text>
+						}
+					</ul>
+				</article>
+			</section>
 		{{/each}}
 	</script>
 </body>
