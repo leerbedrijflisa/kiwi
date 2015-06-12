@@ -73,6 +73,9 @@ Handlebars.registerHelper('detailsSummary', function (report) {
         case "Theft":
             result = "<span>Er is " + report.stolenObject + " gestolen</span>";
             break;
+        case "Weapons":
+            result = "<span>Het gaat om een " + report.weaponType + "</span>";
+            break;
         default:
             result = "<span>De categorie is: " + report.category + "</span>";
             break;
