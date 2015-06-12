@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
@@ -105,6 +106,7 @@ namespace Lisa.Kiwi.WebApi
         private IQueryable<ReportData> GetCompleteReportData()
         {
             return _db.Reports
+                .Where(s => !s.IsDeleted)
                 .Include("Location")
                 .Include("Perpetrator")
                 .Include("Contact")

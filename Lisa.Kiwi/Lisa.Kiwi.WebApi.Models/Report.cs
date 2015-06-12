@@ -15,6 +15,7 @@ namespace Lisa.Kiwi.WebApi
         public int Id { get; set; }
         public string Category { get; set; }
         public bool IsVisible { get; set; }
+        public bool IsDeleted { get; set; }
         public StatusEnum Status { get; set; }
         public DateTimeOffset Created { get; set; }
         public DateTimeOffset Modified { get; set; }
