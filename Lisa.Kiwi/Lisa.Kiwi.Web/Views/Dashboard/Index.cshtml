@@ -55,13 +55,12 @@
 							<p class="location">Er is nog geen locatie opgegeven, of deze bestaat niet.</p>
 						</div>
 						{{/if}}
-
-						<p class="details">
-							{{detailsSummary (translate "Categories" category)}}
-						</p>
-					</a>
-					<ul class="options">
-						<li><a href="/dashboard/togglesolved?id={{id}}&currentsolved={{status}}"><img src="/Content/done.svg"></a></li>
+					<p class="details">
+						{{detailsSummary (translate "Categories" .)}}
+					</p>
+				</a>
+				<ul class="options">
+					<li><a href="/dashboard/togglesolved?id={{id}}&currentsolved={{status}}"><img src="/Content/done.svg"></a></li>
 
 						@if (Request.Cookies["role"] != null && Request.Cookies["role"].Value == "Administrator")
 						{
