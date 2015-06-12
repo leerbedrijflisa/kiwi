@@ -63,7 +63,6 @@
 					<ul class="options">
 						<li><a href="/dashboard/togglesolved?id={{id}}&currentsolved={{status}}"><img src="/Content/done.svg"></a></li>
 
-						<!-- Add class "button-green" if visible != true -->
 						@if (Request.Cookies["role"] != null && Request.Cookies["role"].Value == "Administrator")
 						{
 							<text>{{#if isVisible }}</text>
