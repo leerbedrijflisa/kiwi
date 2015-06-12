@@ -56,8 +56,21 @@ function newReport() {
 }
 
 //#region Handlebars helpers
-Handlebars.registerHelper('detailsSummary', function (category) {
-    var result = '<span>De categorie is: ' + category + '</span>';
+Handlebars.registerHelper('detailsSummary', function (report) {
+
+    var result;
+    switch (report.category) {
+        case "FirstAid":
+            if (report.isUnconscious) {
+                result = "<span><img src='/Content/warning.svg'>Het slachtoffer is bewusteloos</span>";
+            } else {
+                result = "<span>Het slachtoffer is niet bewusteloos</span>";
+            }
+            break;
+        default:
+            result = "<span>De categorie is: " + report.category + "</span>";
+            break;
+    }
 
     return new Handlebars.SafeString(result);
 });
