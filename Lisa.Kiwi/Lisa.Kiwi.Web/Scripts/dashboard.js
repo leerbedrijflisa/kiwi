@@ -70,6 +70,9 @@ Handlebars.registerHelper('detailsSummary', function (report) {
         case "Fight":
             result = "<span>Er zijn " + report.fighterCount + " personen aan het vechten.";
             break;
+        case "Theft":
+            result = "<span>Er is " + report.stolenObject + " gestolen</span>";
+            break;
         default:
             result = "<span>De categorie is: " + report.category + "</span>";
             break;
