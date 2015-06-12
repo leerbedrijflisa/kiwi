@@ -31,7 +31,7 @@
 					<li>
 						<button type="submit" name="Building" value="@building" class="hyphenate">
 							<img src="@Url.Content(String.Format("~/Content/ReporterBuildings/building-{0}.png", building))" />
-							@ReportHelpers.Capitalize(Resources.Buildings.ResourceManager.GetString(building))
+							@ReportHelpers.Capitalize(Buildings.ResourceManager.GetString(building))
 						</button>
 					</li>
 				}
@@ -40,12 +40,12 @@
 			<h2>Overige</h2>
 
 			<ul class="buttons">
-				@foreach (var building in new string[] { "Appartementen", "Bogermanschool", "Brandweerkazerne", "Drechtstedencollege", "Klimhal", "Orthodontist", "Samenwerkingsgebouw", "Schippersinternaat", "Sporthal", "Veiligheidsregio", "Wartburg" })
+				@foreach (var building in new string[] { "Appartementen", "Bogermanschool", "Brandweerkazerne", "Drechtstedencollege", "Klimhal", "Orthodontist", "Samenwerkingsgebouw", "Schippersinternaat", "Sporthal", "Veiligheidsregio", "Wartburg", "GrandCafe"	})
 				{
 					<li>
 						<button type="submit" name="Building" value="@building" class="hyphenate">
 							<img src="@Url.Content(String.Format("~/Content/ReporterBuildings/building-{0}.png", building))" />
-							@ReportHelpers.Capitalize(Resources.Buildings.ResourceManager.GetString(building))
+							@ReportHelpers.Capitalize(Buildings.ResourceManager.GetString(building))
 						</button>
 					</li>
 				}

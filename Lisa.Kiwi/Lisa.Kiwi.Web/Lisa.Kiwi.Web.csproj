@@ -227,6 +227,7 @@
     <Content Include="Content\DashboardBuildings\building-drechtstedencollege.jpg" />
     <Content Include="Content\DashboardBuildings\building-duurzaamheidsfabriek.jpg" />
     <Content Include="Content\DashboardBuildings\building-giallo.jpg" />
+    <Content Include="Content\DashboardBuildings\building-grandcafe.jpg" />
     <Content Include="Content\DashboardBuildings\building-klimhal.jpg" />
     <Content Include="Content\DashboardBuildings\building-lilla.jpg" />
     <Content Include="Content\DashboardBuildings\building-marrone.jpg" />
@@ -254,6 +255,7 @@
     <Content Include="Content\ReporterBuildings\building-bogermanschool.png" />
     <Content Include="Content\ReporterBuildings\building-brandweerkazerne.png" />
     <Content Include="Content\ReporterBuildings\building-celeste.png" />
+    <Content Include="Content\ReporterBuildings\building-grandcafe.png" />
     <Content Include="Content\ReporterBuildings\building-media.png" />
     <Content Include="Content\ReporterBuildings\building-drechtstedencollege.png" />
     <Content Include="Content\ReporterBuildings\building-duurzaamheidsfabriek.png" />
