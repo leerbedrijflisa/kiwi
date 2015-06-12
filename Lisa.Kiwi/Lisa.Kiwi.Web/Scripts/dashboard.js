@@ -67,6 +67,9 @@ Handlebars.registerHelper('detailsSummary', function (report) {
                 result = "<span>Het slachtoffer is niet bewusteloos</span>";
             }
             break;
+        case "Fight":
+            result = "<span>Er zijn " + report.fighterCount + " personen aan het vechten.";
+            break;
         default:
             result = "<span>De categorie is: " + report.category + "</span>";
             break;
