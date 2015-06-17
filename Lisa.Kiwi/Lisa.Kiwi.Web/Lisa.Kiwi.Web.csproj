@@ -215,6 +215,7 @@
     <Content Include="Content\category-Other.png" />
     <Content Include="Content\category-Theft.png" />
     <Content Include="Content\category-Weapons.png" />
+    <Content Include="Content\cross.svg" />
     <Content Include="Content\dashboard.css" />
     <Content Include="Content\DashboardBuildings\building-appartementen.jpg" />
     <Content Include="Content\DashboardBuildings\building-arcobaleno.jpg" />

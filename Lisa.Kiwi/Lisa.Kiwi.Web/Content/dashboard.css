@@ -152,6 +152,10 @@ ul.options {
   right: 58px;
 }
 
+.options li:nth-child(3) a {
+    right: 103px;
+}
+
 .options a:hover {
   border-color: #333;
   background-color: #666;
