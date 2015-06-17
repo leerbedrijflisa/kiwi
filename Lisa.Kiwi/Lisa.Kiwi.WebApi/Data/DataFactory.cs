@@ -17,7 +17,6 @@ namespace Lisa.Kiwi.WebApi
             reportData.Category = json.Value<string>("category") ?? reportData.Category;
 
             reportData.IsVisible = json.Value<bool?>("isVisible") ?? reportData.IsVisible;
-            reportData.IsDeleted = json.Value<bool?>("isDeleted") ?? reportData.IsDeleted;
             
             var statusString = json["status"] != null ? json.Value<string>("status") : null;
             reportData.Status = statusString != null ? (StatusEnum)Enum.Parse(typeof(StatusEnum), statusString, true) : reportData.Status;
