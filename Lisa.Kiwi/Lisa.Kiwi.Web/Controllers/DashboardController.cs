@@ -117,6 +117,13 @@ namespace Lisa.Kiwi.Web
             return RedirectToAction("Index");
         }
 
+        public async Task<ActionResult> DeleteReport(int id)
+        {
+            await _reportProxy.DeleteAsync(id);
+
+            return RedirectToAction("Index");
+        }
+
         private readonly ModelFactory _modelFactory = new ModelFactory();
         private Proxy<Report> _reportProxy = new Proxy<Report>(WebConfigurationManager.AppSettings["WebApiUrl"] + "reports");
     }
