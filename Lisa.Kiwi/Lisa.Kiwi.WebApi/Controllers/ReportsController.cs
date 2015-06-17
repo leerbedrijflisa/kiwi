@@ -103,6 +103,24 @@ namespace Lisa.Kiwi.WebApi
             return Ok(report);
         }
 
+        [System.Web.Http.Authorize(Roles = "Administrator")]
+        [HttpDelete]
+        public async Task<IHttpActionResult> Delete(int id)
+        {
+            var report = await _db.Reports.FindAsync(id);
+
+            if (report == null)
+            {
+                return NotFound();
+            }
+
+            report.IsDeleted = true;
+
+            await _db.SaveChangesAsync();
+
+            return Ok();
+        }
+
         private IQueryable<ReportData> GetCompleteReportData()
         {
             return _db.Reports
