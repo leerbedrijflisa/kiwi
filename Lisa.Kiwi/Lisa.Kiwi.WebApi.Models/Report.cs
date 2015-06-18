@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Lisa.Kiwi.WebApi
 {
@@ -51,7 +52,7 @@ namespace Lisa.Kiwi.WebApi
         public Location Location { get; set; }
         public Contact Contact { get; set; }
         public Perpetrator Perpetrator { get; set; }
-        public Vehicle Vehicle { get; set; }
+        public IEnumerable<Vehicle> Vehicles { get; set; }
     }
 
     public enum StatusEnum

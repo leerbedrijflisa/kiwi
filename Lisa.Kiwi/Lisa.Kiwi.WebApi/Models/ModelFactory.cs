@@ -1,4 +1,7 @@
-﻿namespace Lisa.Kiwi.WebApi
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace Lisa.Kiwi.WebApi
 {
     internal class ModelFactory
     {
@@ -33,7 +36,7 @@
                 Location = reportData.Location != null ? Create(reportData.Location) : null,
                 Perpetrator = reportData.Perpetrator != null ? Create(reportData.Perpetrator) : null,
                 Contact = reportData.Contact != null ? Create(reportData.Contact) : null,
-                Vehicle = reportData.Vehicle != null ? Create(reportData.Vehicle) : null
+                Vehicles = reportData.Vehicles != null ? Create(reportData.Vehicles) : null
             };
         }
 
@@ -60,16 +63,16 @@
             };
         }
 
-        private Vehicle Create(VehicleData vehicleData)
+        private IEnumerable<Vehicle> Create(IEnumerable<VehicleData> vehicleData)
         {
-            return new Vehicle
+            return vehicleData.Select(v => new Vehicle
             {
-                Brand = vehicleData.Brand,
-                Color = vehicleData.Color,
-                NumberPlate = vehicleData.NumberPlate,
-                AdditionalFeatures = vehicleData.AdditionalFeatures,
-                VehicleType = vehicleData.VehicleType
-            };
+                Brand = v.Brand,
+                AdditionalFeatures = v.AdditionalFeatures,
+                Color = v.Color,
+                NumberPlate = v.NumberPlate,
+                VehicleType = v.VehicleType
+            });
         }
 
         private Contact Create(ContactData contactData)
