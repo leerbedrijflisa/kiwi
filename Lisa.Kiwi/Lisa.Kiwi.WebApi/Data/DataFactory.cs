@@ -54,9 +54,9 @@ namespace Lisa.Kiwi.WebApi
             {
                 reportData.Perpetrator = Modify(reportData.Perpetrator, json["perpetrator"]);
             }
-            if (json["vehicle"] != null)
+            if (json["vehicles"] != null)
             {
-                reportData.Vehicles = Modify(reportData.Vehicles, json["vehicles"]);
+                reportData.Vehicles = Modify(json["vehicles"]);
             }
         }
 
@@ -107,26 +107,16 @@ namespace Lisa.Kiwi.WebApi
             return data;
         }
 
-        private ICollection<VehicleData> Modify(IEnumerable<VehicleData> vehicleData, JToken json)
+        private ICollection<VehicleData> Modify(JToken json)
         {
-            var vehicleDatas = vehicleData.ToList();
-            var completedVehicles = new List<VehicleData>();
-
-            for (var i = 0; i < json.Count(); i++)
+            return json.Select(jsonVehicle => new VehicleData
             {
-                var data = vehicleDatas[i] ?? new VehicleData();
-                data.AdditionalFeatures = json[i]["additionalFeatures"] != null ? json[i].Value<string>("additionalFeatures") : data.AdditionalFeatures;
-                data.Brand = json[i]["brand"] != null ? json[i].Value<string>("brand") : data.Brand;
-                data.Color = json[i]["color"] != null ? json[i].Value<string>("color") : data.Color;
-                data.NumberPlate = json[i]["numberPlate"] != null ? json[i].Value<string>("numberPlate") : data.NumberPlate;
-
-                var vehicleTypeString = json[i]["vehicleType"] != null ? json[i].Value<string>("vehicleType") : null;
-                data.VehicleType = vehicleTypeString != null ? (VehicleTypeEnum)Enum.Parse(typeof(VehicleTypeEnum), vehicleTypeString, true) : VehicleTypeEnum.Other;
-
-                completedVehicles.Add(data);
-            }
-
-            return completedVehicles;
+                Brand = jsonVehicle.Value<string>("brand"),
+                AdditionalFeatures = jsonVehicle.Value<string>("additionalFeatures"),
+                Color = jsonVehicle.Value<string>("color"),
+                NumberPlate = jsonVehicle.Value<string>("numberPlate"),
+                VehicleType = (VehicleTypeEnum)Enum.Parse(typeof(VehicleTypeEnum), jsonVehicle.Value<string>("vehicleType") ?? "Other")
+            }).ToList();
         }
     }
 }
