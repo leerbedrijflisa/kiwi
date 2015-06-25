@@ -121,7 +121,7 @@
     <value>Gebouw</value>
   </data>
   <data name="Category" xml:space="preserve">
-    <value>Categorie</value>
+    <value>Wat is er gebeurd?</value>
   </data>
   <data name="Contact" xml:space="preserve">
     <value>Contact</value>
@@ -154,10 +154,7 @@
     <value>We sturen hulp.</value>
   </data>
   <data name="Location" xml:space="preserve">
-    <value>Locatie</value>
-  </data>
-  <data name="LocationDescription" xml:space="preserve">
-    <value>Locatie en beschrijving</value>
+    <value>Waar is het gebeurd?</value>
   </data>
   <data name="LocationDetailedDescription" xml:space="preserve">
     <value>Waar {0} {1} is het gebeurd?</value>

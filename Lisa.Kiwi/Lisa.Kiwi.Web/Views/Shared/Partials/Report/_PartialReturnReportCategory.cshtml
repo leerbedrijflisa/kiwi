@@ -1,6 +1,6 @@
 ﻿<div class="field">
-	<label>@PageItems.Category</label>
-  <div>
-    <p class="locationCategory"><img src='@Url.Content(String.Format("~/Content/category-{0}.png", Model.Category))'><br />@Categories.ResourceManager.GetString(Model.Category)</p>
-  </div>
+	<h2>@PageItems.Category</h2>
+	<div class="donePadding">
+		<p class="locationCategory"><img src='@Url.Content(String.Format("~/Content/category-{0}.png", Model.Category))'><br />@Categories.ResourceManager.GetString(Model.Category)</p>
+	</div>
 </div>

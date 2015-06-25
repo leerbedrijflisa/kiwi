@@ -5,13 +5,9 @@
 }
 @using (Html.BeginForm())
 {
-	<div class="field">
-		<label>Is het slachtoffer bewusteloos?</label>
-        <div>
-            <div class="button-container">
-                <input type="submit" name="IsUnconscious" value="Ja" />
-                <input type="submit" name="IsUnconscious" value="Nee" />
-            </div>
-        </div>
-	</div>
+	<fieldset>
+		<legend>@DisplayNames.Unconscious</legend>
+    <button name="IsUnconscious" value="Ja">Ja</button>
+    <button name="IsUnconscious" value="Nee">Nee</button>
+	</fieldset>
 }

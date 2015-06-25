@@ -1,8 +1,10 @@
 ﻿@if (Model.FighterCount != null)
 {
 	<div class="field">
-		<label>@ReportProperties.ResourceManager.GetString("FightCount")</label>
-		<p>@DashboardHelpers.NullCheck(Model.FighterCount)</p>
+		<h2>@ReportProperties.ResourceManager.GetString("FightCount")</h2>
+		<div class="donePadding">
+			<p>@DashboardHelpers.NullCheck(Model.FighterCount)</p>
+		</div>
 	</div>
 
 }
@@ -10,28 +12,36 @@
 @if (Model.IsWeaponPresent != null)
 {
 	<div class="field">
-		<label>@ReportProperties.ResourceManager.GetString("WeaponPresent")</label>
-		<p>@DashboardHelpers.NullCheck(Model.IsWeaponPresent)</p>
+		<h2>@ReportProperties.ResourceManager.GetString("WeaponPresent")</h2>
+		<div class="donePadding">
+			<p>@DashboardHelpers.NullCheck(Model.IsWeaponPresent)</p>
+		</div>
 	</div>
 }
 
 @if (Model.IsWeaponPresent == true)
 {
     <div class="field">
-       <label>@ReportProperties.ResourceManager.GetString("WeaponType")</label>
-        <p>@DashboardHelpers.NullCheck(Model.WeaponType)</p>
+				<h2>@ReportProperties.ResourceManager.GetString("WeaponType")</h2>
+				<div class="donePadding">
+				<p>@DashboardHelpers.NullCheck(Model.WeaponType)</p>
+			</div>
     </div>
 
     <div class="field">
-        <label>@ReportProperties.ResourceManager.GetString("WeaponLocation")</label>
-        <p>@DashboardHelpers.NullCheck(Model.WeaponLocation)</p>
+        <h2>@ReportProperties.ResourceManager.GetString("WeaponLocation")</h2>
+				<div class="donePadding">
+				<p>@DashboardHelpers.NullCheck(Model.WeaponLocation)</p>
+			</div>
     </div>
 }
 
 @if (Model.Description != null)
 {
 	<div class="field">
-		<label>@ReportProperties.Description</label>
-		<p>@Model.Description</p>
+		<h2>@ReportProperties.Description</h2>
+		<div class="donePadding">
+			<p>@Model.Description</p>
+		</div>
 	</div>
 }

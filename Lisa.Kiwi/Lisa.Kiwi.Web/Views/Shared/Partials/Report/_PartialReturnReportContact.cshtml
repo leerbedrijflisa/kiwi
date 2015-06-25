@@ -1,22 +1,27 @@
 ﻿	<div class="field">
-		<label>&nbsp;</label>
-    <h2>Contact</h2>
+		<label>Contactgegevens</label>
 	</div>
  @if (Model.Contact.Name != null) { 
 	<div class="field">
-		<label>@PageItems.ContactName</label>
-		<p>@DashboardHelpers.NullCheck(Model.Contact.Name)</p>
+		<h2>@PageItems.ContactName</h2>
+		<div class="donePadding">
+			<p>@DashboardHelpers.NullCheck(Model.Contact.Name)</p>
+		</div>
 	</div>
  }
  @if (Model.Contact.PhoneNumber != null) { 
 	<div class="field">
-		<label>@PageItems.ContactPhoneNumber</label>
-		<p>@DashboardHelpers.NullCheck(Model.Contact.PhoneNumber)</p>
+		<h2>@PageItems.ContactPhoneNumber</h2>
+		<div class="donePadding">
+			<p>@DashboardHelpers.NullCheck(Model.Contact.PhoneNumber)</p>
+		</div>	
 	</div>
  }
  @if (Model.Contact.EmailAddress != null) { 
 	<div class="field">
-		<label>@PageItems.ContactEmail</label>
-		<p>@DashboardHelpers.NullCheck(Model.Contact.EmailAddress)</p>
+		<h2>@PageItems.ContactEmail</h2>
+		<div class="donePadding">
+			<p>@DashboardHelpers.NullCheck(Model.Contact.EmailAddress)</p>
+		</div>	
 	</div>
  }

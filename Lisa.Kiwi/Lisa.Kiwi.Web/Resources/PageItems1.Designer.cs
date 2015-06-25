@@ -70,7 +70,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Categorie.
+        ///   Looks up a localized string similar to Wat is er gebeurd?.
         /// </summary>
         public static string Category {
             get {
@@ -169,20 +169,11 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Locatie.
+        ///   Looks up a localized string similar to Waar is het gebeurd?.
         /// </summary>
         public static string Location {
             get {
                 return ResourceManager.GetString("Location", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Locatie en beschrijving.
-        /// </summary>
-        public static string LocationDescription {
-            get {
-                return ResourceManager.GetString("LocationDescription", resourceCulture);
             }
         }
         
