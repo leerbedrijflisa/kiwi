@@ -2,7 +2,7 @@
     var date = new Date();
     // set date to now minus 28 days
     date = new Date(date.getTime() - 2419000000);
-    
+
     window.ReportsUrl = window.ApiUrl + "reports?$orderby=Created desc&$filter=(Category ne 'Nuisance' or Contact ne null) and (year(Created) ge " + date.getFullYear() + " and month(Created) ge " + (date.getMonth() + 1) + " and day(Created) ge " + date.getDay() + ")";
     var reports = $.connection.reportsHub;
 
@@ -16,7 +16,7 @@
             success: updateReports
         });
     };
-    
+
     update();
 
     $.connection.hub.url = window.ApiUrl + "signalr";
@@ -27,7 +27,7 @@ var reportCount,
     firstLoad = true;
 
 function updateReports(data) {
-    
+
     var source = $('#reportsTemplate').html();
     var template = Handlebars.compile(source);
     var html = template(data);
@@ -62,29 +62,43 @@ Handlebars.registerHelper('detailsSummary', function (report) {
     switch (report.category) {
         case "FirstAid":
             if (report.isUnconscious) {
-                result = "<span><img src='/Content/warning.svg'>Het slachtoffer is bewusteloos</span>";
+                result = "Het slachtoffer is bewusteloos";
             } else {
-                result = "<span>Het slachtoffer is niet bewusteloos</span>";
+                result = "Het slachtoffer is niet bewusteloos";
             }
             break;
         case "Fight":
-            result = "<span>Er zijn " + report.fighterCount + " personen aan het vechten.";
+            result = "Er zijn " + report.fighterCount + " personen aan het vechten.";
             break;
         case "Theft":
-            result = "<span>Er is " + report.stolenObject + " gestolen</span>";
+            result = "Er is " + report.stolenObject + " gestolen";
             break;
         case "Weapons":
-            result = "<span>Het gaat om een " + report.weaponType + "</span>";
+            result = "Het gaat om een " + report.weaponType;
             break;
         default:
-            result = "<span>De categorie is: " + report.category + "</span>";
+            result = report.description || "";
             break;
     }
 
     return new Handlebars.SafeString(result);
 });
 
-Handlebars.registerHelper('translate', function (category, key) {
+Handlebars.registerHelper('translate', translate);
+
+Handlebars.registerHelper('prettyDate', function (date) {
+    var today = new Date(),
+        todayDate = today.getDate() + "-" + (today.getMonth() + 1) + "-" + today.getFullYear(),
+        date = new Date(date),
+        dateDate = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear(),
+        dateTime = date.getHours() + ':' + date.getMinutes();
+
+    return todayDate == dateDate ? dateTime : dateDate;
+});
+//#endregion
+
+// #region Extentions
+function translate(category, key) {
     if (typeof Translations === 'undefined') {
         $.ajax({
             dataType: "json",
@@ -92,7 +106,7 @@ Handlebars.registerHelper('translate', function (category, key) {
             async: false,
             success: function (data) {
                 window.Translations = data;
-           }
+            }
         });
     }
 
@@ -109,20 +123,8 @@ Handlebars.registerHelper('translate', function (category, key) {
     }
 
     return translation;
-});
+}
 
-Handlebars.registerHelper('prettyDate', function (date) {
-    var today       = new Date(),
-        todayDate   = today.getDate() + "-" + (today.getMonth() + 1) + "-" + today.getFullYear(),
-        date        = new Date(date),
-        dateDate    = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear(),
-        dateTime    = date.getHours() + ':' + date.getMinutes();
-
-    return todayDate == dateDate ? dateTime : dateDate;
-});
-//#endregion
-
-// #region Extentions
 function getCookie(cname) {
     var name = cname + "=";
     var ca = document.cookie.split(';');

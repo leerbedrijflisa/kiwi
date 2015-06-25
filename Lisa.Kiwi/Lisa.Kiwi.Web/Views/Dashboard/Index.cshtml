@@ -56,6 +56,9 @@
 						</div>
 						{{/if}}
 					<p class="details">
+						{{#if isUnconscious}}
+							<img src="/Content/warning.svg">
+						{{/if}}
 						{{detailsSummary (translate "Categories" .)}}
 					</p>
 				</a>
