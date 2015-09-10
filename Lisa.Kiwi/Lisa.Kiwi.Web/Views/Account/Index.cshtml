@@ -1,27 +1,27 @@
 ﻿@model IEnumerable<User>
 @{
-    ViewBag.Title = "Gebruikers";
+	ViewBag.Title = "Gebruikers";
 }
 <div class="container">
 	<div class="field">
 		<label>Wachtwoorden wijzigen</label>
 		<table>
 			<thead>
-			<tr>
-				<th></th>
-				<th>@DisplayNames.UserName</th>
-				<th>@DisplayNames.Role</th>
-			</tr>
+				<tr>
+					<th></th>
+					<th>@DisplayNames.UserName</th>
+					<th>@DisplayNames.Role</th>
+				</tr>
 			</thead>
 			<tbody>
-			@foreach (var user in Model)
-			{
-				<tr>
-					<td>@Html.ActionLink("Wijzigen", "EditPassword", new {id = user.Id, userName = user.UserName}) </td>
-					<td>@user.UserName</td>
-					<td>@user.Role</td>
-				</tr>
-			}
+				@foreach (var user in Model)
+				{
+					<tr>
+						<td>@Html.ActionLink("Wijzigen", "EditPassword", new { id = user.Id, userName = user.UserName }) </td>
+						<td>@user.UserName</td>
+						<td>@user.Role</td>
+					</tr>
+				}
 			</tbody>
 		</table>
 	</div>

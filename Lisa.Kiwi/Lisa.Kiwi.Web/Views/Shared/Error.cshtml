@@ -1,29 +1,29 @@
 ﻿@model Exception
 
 @{
-    ViewBag.Title = "Error";
+	ViewBag.Title = "Error";
 }
 
 <form>
-    <div class="field">
-        <label>Er is een fout opgetreden!</label>
-        <div class="button-container">@Html.ActionLink("Probeer opnieuw", "index", "Dashboard")</div>
-    </div>
+	<div class="field">
+		<label>Er is een fout opgetreden!</label>
+		<div class="button-container">@Html.ActionLink("Probeer opnieuw", "index", "Dashboard")</div>
+	</div>
 
-    @if (HttpContext.Current.IsDebuggingEnabled)
-    {
-    // Debug mode is enabled
-    <div class="field">
-        <label>Error bericht</label>
-        <div style="max-width: 600px;">
-            <b><pre style="background-color: white; width: intrinsic;">@Model.Message</pre></b>
-        </div>
-    </div>
-    <div class="field">
-        <label>Stacktrace</label>
-        <div style="max-width: 600px;">
-            <pre style="background-color: white; width: intrinsic;">@Model.StackTrace</pre>
-        </div>
-    </div>
-    }
+	@if (HttpContext.Current.IsDebuggingEnabled)
+	{
+		// Debug mode is enabled
+		<div class="field">
+			<label>Error bericht</label>
+			<div style="max-width: 600px;">
+				<b><pre style="background-color: white; width: intrinsic;">@Model.Message</pre></b>
+			</div>
+		</div>
+		<div class="field">
+			<label>Stacktrace</label>
+			<div style="max-width: 600px;">
+				<pre style="background-color: white; width: intrinsic;">@Model.StackTrace</pre>
+			</div>
+		</div>
+	}
 </form>

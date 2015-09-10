@@ -1,15 +1,15 @@
 ﻿<div class="field">
 	<label>@PageItems.Location</label>
 
-  <div>
-    <p class="locationCategory"><img src='@Url.Content(String.Format("~/Content/ReporterBuildings/{0}.png", BuildingImages.ResourceManager.GetString(Model.Location.Building)))'><br />@ReportHelpers.Capitalize(Resources.Buildings.ResourceManager.GetString(Model.Location.Building))</p>
-  </div>
+	<div>
+		<p class="locationCategory"><img src='@Url.Content(String.Format("~/Content/ReporterBuildings/{0}.png", BuildingImages.ResourceManager.GetString(Model.Location.Building)))'><br />@ReportHelpers.Capitalize(Resources.Buildings.ResourceManager.GetString(Model.Location.Building))</p>
+	</div>
 </div>
 
 <div class="field">
 	<label>@DisplayNames.ReportDescription van de locatie</label>
-	
-  <div>
+
+	<div>
 		<p>@Model.Location.Description</p>
-  </div>
+	</div>
 </div>

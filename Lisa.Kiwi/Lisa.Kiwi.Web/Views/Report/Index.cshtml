@@ -6,20 +6,20 @@
 
 <section class="icons">
 	@using (Html.BeginForm())
-		{
-			<div class="field">
-				<label class="mobile-hide">Wat wilt u melden?</label>
-				<ul class="buttons cat-buttons">
-					@foreach (var item in Model.Categories)
-					{
-						<li>
-							<button type="submit" name="Category" value="@item.Value">
-								<img src='@String.Format("/Content/category-{0}.png", item.Value)'>
-								@item.Text
-							</button>
-						</li>
-					}
+	{
+		<div class="field">
+			<label class="mobile-hide">Wat wilt u melden?</label>
+			<ul class="buttons cat-buttons">
+				@foreach (var item in Model.Categories)
+				{
+					<li>
+						<button type="submit" name="Category" value="@item.Value">
+							<img src='@String.Format("/Content/category-{0}.png", item.Value)'>
+							@item.Text
+						</button>
+					</li>
+				}
 			</ul>
-			</div>
-			}
+		</div>
+	}
 </section>
