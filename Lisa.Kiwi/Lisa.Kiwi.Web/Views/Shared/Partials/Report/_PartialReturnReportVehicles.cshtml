@@ -1,0 +1,28 @@
+﻿@model Report
+@foreach (var vehicle in Model.Vehicles)
+{
+	<div class="field">
+		<label>&nbsp;</label>
+		<h2>@ReportProperties.Vehicle</h2>
+	</div>
+	<div class="field">
+		<label>@ReportProperties.VehicleType</label>
+		<p>@DashboardHelpers.NullCheck(VehicleTypes.ResourceManager.GetString(vehicle.VehicleType.ToString()))</p>
+	</div>
+	<div class="field">
+		<label>@ReportProperties.VehicleBrand</label>
+		<p>@DashboardHelpers.NullCheck(vehicle.Brand)</p>
+	</div>
+	<div class="field">
+		<label>@ReportProperties.VehicleNumberPlate</label>
+		<p>@DashboardHelpers.NullCheck(vehicle.NumberPlate)</p>
+	</div>
+	<div class="field">
+		<label>@ReportProperties.VehicleColor</label>
+		<p>@DashboardHelpers.NullCheck(vehicle.Color)</p>
+	</div>
+	<div class="field">
+		<label>@ReportProperties.VehicleAdditionalFeatures</label>
+		<p>@DashboardHelpers.NullCheck(vehicle.AdditionalFeatures)</p>
+	</div>
+}

@@ -352,7 +352,7 @@
     <Content Include="Views\Shared\Partials\Report\_PartialReturnReportContact.cshtml" />
     <Content Include="Views\Shared\Partials\Report\_PartialReturnReportLocation.cshtml" />
     <Content Include="Views\Shared\Partials\Report\_PartialReturnReportPerpetrator.cshtml" />
-    <Content Include="Views\Shared\Partials\Report\_PartialReturnReportVehicle.cshtml" />
+    <Content Include="Views\Shared\Partials\Report\_PartialReturnReportVehicles.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Account\EditPassword.cshtml" />

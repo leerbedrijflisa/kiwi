@@ -162,7 +162,7 @@ namespace Lisa.Kiwi.Web
             viewModel.WeaponType = report.WeaponType;
             viewModel.Location = report.Location;
             viewModel.Perpetrator = report.Perpetrator;
-            viewModel.Vehicle = report.Vehicle;
+            viewModel.Vehicles = report.Vehicles;
             viewModel.Contact = report.Contact;
         }
 
@@ -186,7 +186,7 @@ namespace Lisa.Kiwi.Web
             }
             report.Location = viewModel.Location;
             report.Perpetrator = viewModel.Perpetrator;
-            report.Vehicle = viewModel.Vehicle;
+            report.Vehicles = viewModel.Vehicles;
 
             if (viewModel.Contact.Name != null || viewModel.Contact.PhoneNumber != null || viewModel.Contact.EmailAddress != null)
             {
