@@ -1,33 +1,33 @@
 ﻿@model WeaponViewModel
 
 @section Scripts{
-    <script src="~/Scripts/Weapons.js"></script>
+	<script src="~/Scripts/Weapons.js"></script>
 }
 
 @{
-    ViewBag.Title = Categories.Weapons;
+	ViewBag.Title = Categories.Weapons;
 }
 
 @using (Html.BeginForm())
 {
-    <div class="field">
-        @Html.LabelFor(m => m.Type)
-        @Html.DropDownListFor(m => m.Type, Model.Types)
-    </div>
-    <div class="field" id="Sub">
-        <label>Wat voor wapen is het dan? *</label>
-        @Html.TextBoxFor(m => m.OtherType)
-    </div>
-    <div class="field">
-        @Html.LabelFor(m => m.Location)
-        @Html.TextBoxFor(m => m.Location)
-    </div>
-    <div class="field">
-        @Html.LabelFor(m => m.Description)<br />
-        @Html.TextAreaFor(m => m.Description, new { @class = "DescriptionBox" })
-    </div>
-    <div class="submit">
-        <button type="submit"><img src="@Url.Content("~/Content/next.svg")" /></button>
-        <text><span class="floatLeft">*verplichte velden</span></text>
-    </div>
+	<div class="field">
+		@Html.LabelFor(m => m.Type)
+		@Html.DropDownListFor(m => m.Type, Model.Types)
+	</div>
+	<div class="field" id="Sub">
+		<label>Wat voor wapen is het dan? *</label>
+		@Html.TextBoxFor(m => m.OtherType)
+	</div>
+	<div class="field">
+		@Html.LabelFor(m => m.Location)
+		@Html.TextBoxFor(m => m.Location)
+	</div>
+	<div class="field">
+		@Html.LabelFor(m => m.Description)<br />
+		@Html.TextAreaFor(m => m.Description, new { @class = "DescriptionBox" })
+	</div>
+	<div class="submit">
+		<button type="submit"><img src="@Url.Content("~/Content/next.svg")" /></button>
+		<text><span class="floatLeft">*verplichte velden</span></text>
+	</div>
 }

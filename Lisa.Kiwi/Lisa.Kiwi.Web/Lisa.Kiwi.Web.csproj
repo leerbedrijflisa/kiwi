@@ -359,6 +359,9 @@
     <Content Include="Views\Dashboard\Archive.cshtml" />
     <Content Include="Views\Report\_partialBugReport.cshtml" />
     <Content Include="Views\Report\BugReport.cshtml" />
+    <Content Include="Views\Shared\Partials\Details\_PartialDetailsCreatedAt.cshtml">
+      <SubType>Code</SubType>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
