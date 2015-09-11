@@ -1,0 +1,45 @@
+﻿@model VehicleViewModel
+
+@section Scripts{
+	<script src="~/Scripts/Weapons.js"></script>
+}
+
+<fieldset>
+
+	<legend>@DisplayNames.Vehicle</legend>
+	<section class="popup" id="vehicle">
+		<header>@DisplayNames.Vehicle</header>
+
+		<fieldset>
+			<legend>@DisplayNames.VehicleType</legend>
+			@Html.DropDownListFor(m => m.VehicleType, Model.VehicleTypes)
+		</fieldset>
+
+		<fieldset>
+			<legend>@DisplayNames.VehicleBrand</legend>
+			@Html.TextBoxFor(m => m.Brand)
+		</fieldset>
+
+		<fieldset>
+			<legend>@DisplayNames.VehicleNumberPlate</legend>
+			@Html.TextBoxFor(m => m.NumberPlate)
+		</fieldset>
+
+		<fieldset>
+			<legend>@DisplayNames.VehicleColor</legend>
+			@Html.TextBoxFor(m => m.Color)
+		</fieldset>
+
+		<fieldset>
+			<legend>@DisplayNames.VehicleProperties</legend>
+			@Html.TextAreaFor(m => m.AdditionalFeatures)
+		</fieldset>
+
+		<button type="submit" onclick="popUpReport('vehicle', 'abort'); return false;"><img src="~/Content/cancel.svg"></button>
+		<button type="submit" onclick="popUpReport('vehicle', 'confirm'); return false;"><img src="~/Content/done.svg"></button>
+	</section>
+
+	@*/* Hier moet komen welke voertuigen je hebt gezien */*@
+	<ul id="vehicleData"></ul>
+	<button id="vehicleButton" onclick="popUpShow('vehicle'); return false;">Voertuig toevoegen</button>
+</fieldset>

@@ -70,11 +70,83 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Contactgegevens.
+        /// </summary>
+        public static string Contact {
+            get {
+                return ResourceManager.GetString("Contact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wat is uw e-mailadres?.
+        /// </summary>
+        public static string ContactEmail {
+            get {
+                return ResourceManager.GetString("ContactEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wat is uw naam?.
+        /// </summary>
+        public static string ContactName {
+            get {
+                return ResourceManager.GetString("ContactName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wat is uw telefoonnummer?.
+        /// </summary>
+        public static string ContactPhoneNumber {
+            get {
+                return ResourceManager.GetString("ContactPhoneNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contactgegevens verplicht.
         /// </summary>
         public static string ContactRequired {
             get {
                 return ResourceManager.GetString("ContactRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mogen we contact met u opnemen?.
+        /// </summary>
+        public static string ContactTitle {
+            get {
+                return ResourceManager.GetString("ContactTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wanneer is het gestolen?.
+        /// </summary>
+        public static string DateOfTheft {
+            get {
+                return ResourceManager.GetString("DateOfTheft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wat kun je er verder over vertellen?.
+        /// </summary>
+        public static string Description {
+            get {
+                return ResourceManager.GetString("Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wat heb je gezien?.
+        /// </summary>
+        public static string DrugsAction {
+            get {
+                return ResourceManager.GetString("DrugsAction", resourceCulture);
             }
         }
         
@@ -93,6 +165,33 @@ namespace Resources {
         public static string EmailAddress {
             get {
                 return ResourceManager.GetString("EmailAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hoeveel personen zijn er aan het vechten?.
+        /// </summary>
+        public static string FightCount {
+            get {
+                return ResourceManager.GetString("FightCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Heb je een wapen gezien?.
+        /// </summary>
+        public static string FightWeapon {
+            get {
+                return ResourceManager.GetString("FightWeapon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wat wilt u melden?.
+        /// </summary>
+        public static string Index {
+            get {
+                return ResourceManager.GetString("Index", resourceCulture);
             }
         }
         
@@ -129,6 +228,69 @@ namespace Resources {
         public static string Password {
             get {
                 return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wie heb je gezien?.
+        /// </summary>
+        public static string Perpetrator {
+            get {
+                return ResourceManager.GetString("Perpetrator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hoe oud is de persoon?.
+        /// </summary>
+        public static string PerpetratorAge {
+            get {
+                return ResourceManager.GetString("PerpetratorAge", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wat voor kleding draagt de persoon?.
+        /// </summary>
+        public static string PerpetratorClothing {
+            get {
+                return ResourceManager.GetString("PerpetratorClothing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hoe heet de persoon?.
+        /// </summary>
+        public static string PerpetratorName {
+            get {
+                return ResourceManager.GetString("PerpetratorName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Heeft de persoon nog andere opvallende kenmerken?.
+        /// </summary>
+        public static string PerpetratorProperties {
+            get {
+                return ResourceManager.GetString("PerpetratorProperties", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wat is het geslacht van de persoon?.
+        /// </summary>
+        public static string PerpetratorSex {
+            get {
+                return ResourceManager.GetString("PerpetratorSex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Welke huidskleur heeft de persoon?.
+        /// </summary>
+        public static string PerpetratorSkinColor {
+            get {
+                return ResourceManager.GetString("PerpetratorSkinColor", resourceCulture);
             }
         }
         
@@ -394,11 +556,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Wat is er gestolen?.
+        /// </summary>
+        public static string StolenObject {
+            get {
+                return ResourceManager.GetString("StolenObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tijd.
         /// </summary>
         public static string Time {
             get {
                 return ResourceManager.GetString("Time", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Is het slachtoffer bewusteloos?.
+        /// </summary>
+        public static string Unconscious {
+            get {
+                return ResourceManager.GetString("Unconscious", resourceCulture);
             }
         }
         
@@ -412,11 +592,101 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Welke voertuigen heb je gezien?.
+        /// </summary>
+        public static string Vehicle {
+            get {
+                return ResourceManager.GetString("Vehicle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wat is het merk van het voertuig?.
+        /// </summary>
+        public static string VehicleBrand {
+            get {
+                return ResourceManager.GetString("VehicleBrand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Welke kleur heeft het voertuig?.
+        /// </summary>
+        public static string VehicleColor {
+            get {
+                return ResourceManager.GetString("VehicleColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wat is het kenteken van het voertuig?.
+        /// </summary>
+        public static string VehicleNumberPlate {
+            get {
+                return ResourceManager.GetString("VehicleNumberPlate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Heeft het voertuig nog andere opvallende kenmerken?.
+        /// </summary>
+        public static string VehicleProperties {
+            get {
+                return ResourceManager.GetString("VehicleProperties", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wat voor voertuig is het?.
+        /// </summary>
+        public static string VehicleType {
+            get {
+                return ResourceManager.GetString("VehicleType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Slachtoffer.
         /// </summary>
         public static string Victim {
             get {
                 return ResourceManager.GetString("Victim", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Waar is het wapen nu?.
+        /// </summary>
+        public static string WeaponLocation {
+            get {
+                return ResourceManager.GetString("WeaponLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wat voor wapen heb je gezien?.
+        /// </summary>
+        public static string WeaponType {
+            get {
+                return ResourceManager.GetString("WeaponType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wat voor wapen is het dan?.
+        /// </summary>
+        public static string WeaponTypeOther {
+            get {
+                return ResourceManager.GetString("WeaponTypeOther", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wat is er gebeurd?.
+        /// </summary>
+        public static string WhatHappened {
+            get {
+                return ResourceManager.GetString("WhatHappened", resourceCulture);
             }
         }
     }

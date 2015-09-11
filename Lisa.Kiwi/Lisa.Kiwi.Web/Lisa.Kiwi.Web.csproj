@@ -285,9 +285,11 @@
     <Content Include="Scripts\archive.js" />
     <Content Include="Scripts\dashboard.js" />
     <Content Include="Scripts\DoneWeapons.js" />
+    <Content Include="Scripts\header-resizer.js" />
     <Content Include="Scripts\hyphenator.js" />
     <Content Include="Scripts\bug-report.js" />
     <Content Include="Scripts\jquery.datetimepicker.js" />
+    <Content Include="Scripts\pop-up.js" />
     <Content Include="Scripts\Theft.js" />
     <Content Include="Scripts\Weapons.js" />
     <Content Include="Web.config">
@@ -362,6 +364,9 @@
     <Content Include="Views\Shared\Partials\Details\_PartialDetailsCreatedAt.cshtml">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="Views\Report\PopUpPartials\_partialPopUpPerpetrator.cshtml" />
+    <Content Include="Views\Report\PopUpPartials\_partialPopUpVehicle.cshtml" />
+    <Content Include="Views\Report\PopUpPartials\_partialPopUpContact.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -432,9 +437,7 @@
       <Name>Lisa.Kiwi.WebApi.Access</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Report\EditPartials\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Resources\Categories.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

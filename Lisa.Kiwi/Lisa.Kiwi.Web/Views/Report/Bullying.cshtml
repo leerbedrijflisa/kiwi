@@ -8,21 +8,27 @@
 {
 	<div class="field">
 		@Html.LabelFor(m => m.VictimName)
-		@Html.TextBoxFor(m => m.VictimName)
+		<div>
+			@Html.TextBoxFor(m => m.VictimName)
+		</div>
 	</div>
 	<div class="field">
 		@Html.LabelFor(m => m.Description)
-		@Html.TextBoxFor(m => m.Description)
+		<div>
+			@Html.TextBoxFor(m => m.Description)
+		</div>
 	</div>
 	<div class="field">
 		@Html.Label("Heeft u nog informatie over de verdachte?")
-		@Html.CheckBoxFor(m => m.HasPerpetrator)
+		<div>
+			@Html.CheckBoxFor(m => m.HasPerpetrator)
+		</div>
 	</div>
 	<div class="field">
 		@Html.Label("Heeft u nog informatie over het slachtoffer?")
-		@Html.CheckBoxFor(m => m.HasVictim)
+		<div>
+			@Html.CheckBoxFor(m => m.HasVictim)
+		</div>
 	</div>
-	<div class="submit">
-		<button type="submit"><img src="@Url.Content("~/Content/next.svg")" /></button>
-	</div>
+	<button type="submit"><img src="@Url.Content("~/Content/next.svg")" /></button>
 }

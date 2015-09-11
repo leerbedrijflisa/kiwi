@@ -171,7 +171,7 @@ namespace Lisa.Kiwi.Web
 
         public ActionResult Drugs()
         {
-            return View();
+            return View(new DrugsViewModel());
         }
 
         [HttpPost]
@@ -192,7 +192,7 @@ namespace Lisa.Kiwi.Web
 
         public ActionResult Fight()
         {
-            return View();
+            return View(new FightViewModel());
         }
 
         [HttpPost]

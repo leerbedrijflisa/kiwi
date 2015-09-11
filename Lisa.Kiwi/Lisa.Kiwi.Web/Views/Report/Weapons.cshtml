@@ -10,24 +10,21 @@
 
 @using (Html.BeginForm())
 {
-	<div class="field">
-		@Html.LabelFor(m => m.Type)
+	<fieldset>
+		<legend>@DisplayNames.WeaponType</legend>
 		@Html.DropDownListFor(m => m.Type, Model.Types)
-	</div>
-	<div class="field" id="Sub">
-		<label>Wat voor wapen is het dan? *</label>
+	</fieldset>
+	<fieldset id="Sub">
+		<legend>@DisplayNames.WeaponTypeOther</legend>
 		@Html.TextBoxFor(m => m.OtherType)
-	</div>
-	<div class="field">
-		@Html.LabelFor(m => m.Location)
-		@Html.TextBoxFor(m => m.Location)
-	</div>
-	<div class="field">
-		@Html.LabelFor(m => m.Description)<br />
-		@Html.TextAreaFor(m => m.Description, new { @class = "DescriptionBox" })
-	</div>
-	<div class="submit">
-		<button type="submit"><img src="@Url.Content("~/Content/next.svg")" /></button>
-		<text><span class="floatLeft">*verplichte velden</span></text>
-	</div>
+	</fieldset>
+	<fieldset>
+		<legend>@DisplayNames.WeaponLocation</legend>
+		@Html.TextAreaFor(m => m.Location)
+		<span class="required">verplicht veld</span>
+	</fieldset>
+	<fieldset>
+		<legend>@DisplayNames.Description</legend>
+		@Html.TextAreaFor(m => m.Description)
+	</fieldset>
 }

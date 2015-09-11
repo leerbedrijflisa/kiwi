@@ -1,0 +1,33 @@
+﻿<div class="field">
+	<label>@ReportProperties.Vehicle</label>
+</div>
+<div class="field">
+	<label>@ReportProperties.VehicleType</label>
+	<div class="donePadding">
+		<p>@DashboardHelpers.NullCheck(VehicleTypes.ResourceManager.GetString(Model.Vehicle.VehicleType.ToString()))</p>
+	</div>
+</div>
+<div class="field">
+	<label>@ReportProperties.VehicleBrand</label>
+	<div class="donePadding">
+		<p>@DashboardHelpers.NullCheck(Model.Vehicle.Brand)</p>
+	</div>
+</div>
+<div class="field">
+	<label>@ReportProperties.VehicleNumberPlate</label>
+	<div class="donePadding">
+		<p>@DashboardHelpers.NullCheck(Model.Vehicle.NumberPlate)</p>
+	</div>
+</div>
+<div class="field">
+	<label>@ReportProperties.VehicleColor</label>
+	<div class="donePadding">
+		<p>@DashboardHelpers.NullCheck(Model.Vehicle.Color)</p>
+	</div>
+</div>
+<div class="field">
+	<label>@ReportProperties.VehicleAdditionalFeatures</label>
+	<div class="donePadding">
+		<p>@DashboardHelpers.NullCheck(Model.Vehicle.AdditionalFeatures)</p>
+	</div>
+</div>
