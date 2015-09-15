@@ -215,6 +215,7 @@
     <Content Include="Content\category-Other.png" />
     <Content Include="Content\category-Theft.png" />
     <Content Include="Content\category-Weapons.png" />
+    <Content Include="Content\cross.svg" />
     <Content Include="Content\dashboard.css" />
     <Content Include="Content\DashboardBuildings\building-appartementen.jpg" />
     <Content Include="Content\DashboardBuildings\building-arcobaleno.jpg" />
@@ -227,6 +228,7 @@
     <Content Include="Content\DashboardBuildings\building-drechtstedencollege.jpg" />
     <Content Include="Content\DashboardBuildings\building-duurzaamheidsfabriek.jpg" />
     <Content Include="Content\DashboardBuildings\building-giallo.jpg" />
+    <Content Include="Content\DashboardBuildings\building-grandcafe.jpg" />
     <Content Include="Content\DashboardBuildings\building-klimhal.jpg" />
     <Content Include="Content\DashboardBuildings\building-lilla.jpg" />
     <Content Include="Content\DashboardBuildings\building-marrone.jpg" />
@@ -254,6 +256,7 @@
     <Content Include="Content\ReporterBuildings\building-bogermanschool.png" />
     <Content Include="Content\ReporterBuildings\building-brandweerkazerne.png" />
     <Content Include="Content\ReporterBuildings\building-celeste.png" />
+    <Content Include="Content\ReporterBuildings\building-grandcafe.png" />
     <Content Include="Content\ReporterBuildings\building-media.png" />
     <Content Include="Content\ReporterBuildings\building-drechtstedencollege.png" />
     <Content Include="Content\ReporterBuildings\building-duurzaamheidsfabriek.png" />
@@ -358,6 +361,9 @@
     <Content Include="Views\Dashboard\Archive.cshtml" />
     <Content Include="Views\Report\_partialBugReport.cshtml" />
     <Content Include="Views\Report\BugReport.cshtml" />
+    <Content Include="Views\Shared\Partials\Details\_PartialDetailsCreatedAt.cshtml">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="Views\Report\PopUpPartials\_partialPopUpPerpetrator.cshtml" />
     <Content Include="Views\Report\PopUpPartials\_partialPopUpVehicle.cshtml" />
     <Content Include="Views\Report\PopUpPartials\_partialPopUpContact.cshtml" />

@@ -1,37 +1,37 @@
 ﻿@{
-    Layout = null;
-    var api = MvcApplication.GetApiUrl();
+	Layout = null;
+	var api = MvcApplication.GetApiUrl();
 }
 
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
+	<meta name="viewport" content="width=device-width" />
 
-    <title>Archive</title>
+	<title>Archive</title>
 
-    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.css">
-    <script type="text/javascript" charset="utf8" src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
-    <script>
-        window.ApiUrl = "@api";
-    </script>
-    <script src="~/Scripts/archive.js"></script>
+	<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.css">
+	<script type="text/javascript" charset="utf8" src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+	<script>
+		window.ApiUrl = "@api";
+	</script>
+	<script src="~/Scripts/archive.js"></script>
 	<style>
-		body{
-			 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 		}
 
-		#allData tr{
+		#allData tr {
 			cursor: pointer;
 		}
 
-		#allData{
+		#allData {
 			width: 100% !important;
 		}
 	</style>
 </head>
 <body>
-    <table id="allData" class="display"></table>
+	<table id="allData" class="display"></table>
 </body>
 </html>

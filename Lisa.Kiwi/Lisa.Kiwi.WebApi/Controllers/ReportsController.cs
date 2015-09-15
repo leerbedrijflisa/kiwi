@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
@@ -102,9 +104,28 @@ namespace Lisa.Kiwi.WebApi
             return Ok(report);
         }
 
+        [System.Web.Http.Authorize(Roles = "Administrator")]
+        [HttpDelete]
+        public async Task<IHttpActionResult> Delete(int id)
+        {
+            var report = await _db.Reports.FindAsync(id);
+
+            if (report == null)
+            {
+                return NotFound();
+            }
+
+            report.IsDeleted = true;
+
+            await _db.SaveChangesAsync();
+
+            return StatusCode(HttpStatusCode.NoContent);
+        }
+
         private IQueryable<ReportData> GetCompleteReportData()
         {
             return _db.Reports
+                .Where(s => !s.IsDeleted)
                 .Include("Location")
                 .Include("Perpetrator")
                 .Include("Contact")

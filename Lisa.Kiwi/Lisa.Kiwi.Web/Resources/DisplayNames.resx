@@ -327,4 +327,10 @@
   <data name="ContactTitle" xml:space="preserve">
     <value>Mogen we contact met u opnemen?</value>
   </data>
+  <data name="BullyingDescription" xml:space="preserve">
+    <value>Wat kun je er verder over vertellen?</value>
+  </data>
+  <data name="VictimName" xml:space="preserve">
+    <value>Wie wordt er gepest?</value>
+  </data>
 </root>

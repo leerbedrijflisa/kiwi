@@ -121,6 +121,4 @@ namespace Lisa.Kiwi.WebApi
                 .Select(x => x.Name).ToList();
         }
     }
-
 }
-

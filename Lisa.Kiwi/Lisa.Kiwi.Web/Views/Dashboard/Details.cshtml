@@ -3,15 +3,15 @@
 <form>
 	@Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportCategory.cshtml", Model)
 
-    @if (Model.Location != null)
-	{   
-	  @Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportLocation.cshtml", Model)
-    }
-    
-    @Html.Partial("~/Views/Shared/Partials/Details/_PartialDetailsCreatedAt.cshtml", Model)
+	@if (Model.Location != null)
+	{
+		@Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportLocation.cshtml", Model)
+	}
+
+	@Html.Partial("~/Views/Shared/Partials/Details/_PartialDetailsCreatedAt.cshtml", Model)
 
 	@Html.Partial("~/Views/Shared/Partials/Details/_PartialDetails" + Model.Category + ".cshtml", Model)
-		
+
 	@if (Model.Perpetrator != null)
 	{
 		@Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportPerpetrator.cshtml", Model);
@@ -21,21 +21,21 @@
 	{
 		@Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportContact.cshtml", Model);
 	}
-    
+
 	@if (Model.Vehicle != null)
 	{
 		@Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportVehicle.cshtml", Model);
 	}
-</form>	
+</form>
 
 @using (Html.BeginForm())
 {
 	<div class="field">
 		<label>@PageItems.Status</label>
 		<ul class="radioList">
-			<li><input type="radio" name="Status" value="@StatusEnum.Open" @(Model.Status == StatusEnum.Open ? "checked=\"checked\"" : "")/> @Statuses.Open</li>
-			<li><input type="radio" name="Status" value="@StatusEnum.Transferred" @(Model.Status == StatusEnum.Transferred ? "checked=\"checked\"" : "")/> @Statuses.Transferred</li>
-			<li><input type="radio" name="Status" value="@StatusEnum.Solved" @(Model.Status == StatusEnum.Solved ? "checked=\"checked\"" : "")/> @Statuses.Solved</li>
+			<li><input type="radio" name="Status" value="@StatusEnum.Open" @(Model.Status == StatusEnum.Open ? "checked=\"checked\"" : "") /> @Statuses.Open</li>
+			<li><input type="radio" name="Status" value="@StatusEnum.Transferred" @(Model.Status == StatusEnum.Transferred ? "checked=\"checked\"" : "") /> @Statuses.Transferred</li>
+			<li><input type="radio" name="Status" value="@StatusEnum.Solved" @(Model.Status == StatusEnum.Solved ? "checked=\"checked\"" : "") /> @Statuses.Solved</li>
 		</ul>
 	</div>
 	if (Request.Cookies["role"] != null && Request.Cookies["role"].Value == "Administrator")
@@ -49,5 +49,5 @@
 	<div class="field">
 		<button type="submit">Status wijzigen</button>
 	</div>
-    <div class="button-container">@Html.ActionLink("terug", "index", "dashboard")</div>
+	<div class="button-container">@Html.ActionLink("terug", "index", "dashboard")</div>
 }

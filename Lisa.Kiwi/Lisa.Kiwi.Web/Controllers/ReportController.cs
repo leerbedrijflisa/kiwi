@@ -166,7 +166,7 @@ namespace Lisa.Kiwi.Web
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(GetCurrentReportId(), report);
 
-            return RedirectToAction("Vehicle");
+            return RedirectToAction("ContactRequired");
         }
 
         public ActionResult Drugs()
@@ -187,7 +187,7 @@ namespace Lisa.Kiwi.Web
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(GetCurrentReportId(), report);
 
-            return RedirectToAction("Perpetrator");
+            return RedirectToAction("Contact");
         }
 
         public ActionResult Fight()
@@ -236,12 +236,7 @@ namespace Lisa.Kiwi.Web
             _modelFactory.Modify(report, viewModel);
             report = await _reportProxy.PatchAsync(GetCurrentReportId(), report);
 
-            if (report.Category == "Fight")
-            {
-                return RedirectToAction("Contact");
-            }
-
-            return RedirectToAction("Perpetrator");
+            return RedirectToAction("Contact");
         }
 
         public ActionResult Nuisance()
@@ -262,7 +257,7 @@ namespace Lisa.Kiwi.Web
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(GetCurrentReportId(), report);
 
-            return RedirectToAction("Vehicle");
+            return RedirectToAction("ContactRequired");
         }
 
         public ActionResult Bullying()
@@ -284,18 +279,18 @@ namespace Lisa.Kiwi.Web
 
             if (viewModel.HasPerpetrator && !viewModel.HasVictim)
             {
-                return RedirectToAction("Perpetrator");
+                return RedirectToAction("Contact");
             }
             else if (!viewModel.HasPerpetrator && viewModel.HasVictim)
             {
-                return RedirectToAction("Victim");
+                return RedirectToAction("Contact");
             }
             else if (viewModel.HasPerpetrator && viewModel.HasVictim)
             {
-                return RedirectToAction("Perpetrator", routeValues: new { hasVictim = viewModel.HasVictim });
+                return RedirectToAction("Contact", routeValues: new { hasVictim = viewModel.HasVictim });
             }
 
-            return RedirectToAction("Vehicle");
+            return RedirectToAction("Done");
         }
 
         public ActionResult Other()
@@ -315,7 +310,7 @@ namespace Lisa.Kiwi.Web
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(GetCurrentReportId(), report);
 
-            return RedirectToAction("Vehicle");
+            return RedirectToAction("ContactRequired");
         }
 
         public ActionResult Perpetrator()
@@ -336,7 +331,7 @@ namespace Lisa.Kiwi.Web
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(GetCurrentReportId(), report);
 
-            return RedirectToAction(victim ? "Victim" : "Vehicle");
+            return RedirectToAction(victim ? "Contact" : "Contact");
         }
 
         public ActionResult Victim()
@@ -357,7 +352,7 @@ namespace Lisa.Kiwi.Web
             await _reportProxy.PatchAsync(GetCurrentReportId(), report);
 
             // TODO: add error handling
-            return RedirectToAction("Vehicle");
+            return RedirectToAction("Contact");
         }
 
         public ActionResult Vehicle()

@@ -300,4 +300,10 @@
   <data name="Wartburg_Preposition" xml:space="preserve">
     <value>in het</value>
   </data>
+  <data name="GrandCafe" xml:space="preserve">
+    <value>Grand Café</value>
+  </data>
+  <data name="GrandCafe_Preposition" xml:space="preserve">
+    <value>in het</value>
+  </data>
 </root>

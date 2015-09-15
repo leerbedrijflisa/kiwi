@@ -1,4 +1,4 @@
-﻿@model Report
+﻿@model EditDoneViewModel
 
 
 @using (Html.BeginForm())
@@ -32,16 +32,16 @@
 
 	if (Model.Perpetrator != null)
 	{
-			@Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportPerpetrator.cshtml", Model);
+		@Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportPerpetrator.cshtml", Model);
 	}
 
 	if (Model.Contact != null)
 	{
-			@Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportContact.cshtml", Model);
+		@Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportContact.cshtml", Model);
 	}
 	if (Model.Vehicle != null)
 	{
-			@Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportVehicle.cshtml", Model);
+		@Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportVehicle.cshtml", Model);
 	}
 	<input type="hidden" name="category" value="@Model.Category" />
 	<div class="submit">

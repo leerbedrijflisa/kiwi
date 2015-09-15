@@ -144,8 +144,16 @@ ul.options {
   background-color: #ccc;
 }
 
+.options a.button-green {
+    background-color: green;
+}
+
 .options li:nth-child(2) a {
   right: 58px;
+}
+
+.options li:nth-child(3) a {
+    right: 103px;
 }
 
 .options a:hover {
@@ -164,10 +172,6 @@ ul.options {
   width: 14px;
   height: 14px;
   padding-bottom: 2px;
-}
-
-.button-green {
-  background-color: green;
 }
 
 /* Closed reports */
@@ -342,4 +346,8 @@ section.Solved {
 
 .Orthodontist {
     background-image: url(DashboardBuildings/building-orthodontist.jpg);
+}
+
+.GrandCafe {
+    background-image: url(DashboardBuildings/building-grandcafe.jpg);
 }

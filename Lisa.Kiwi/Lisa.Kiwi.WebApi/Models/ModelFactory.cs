@@ -9,6 +9,7 @@
                 Id = reportData.Id,
                 Category = reportData.Category,
                 IsVisible = reportData.IsVisible,
+                IsDeleted = reportData.IsDeleted,
                 Status = reportData.Status,
                 Created = reportData.Created,
                 Modified = reportData.Modified,
