@@ -1,17 +1,23 @@
 ﻿<div class="field">
-	<label>@ReportProperties.StolenObject</label>
-	<p>@DashboardHelpers.NullCheck(Model.StolenObject)</p>
+	<h2>@ReportProperties.StolenObject</h2>
+	<div class="donePadding">
+		<p>@DashboardHelpers.NullCheck(Model.StolenObject)</p>
+	</div>
 </div>
 
 <div class="field">
-	<label>@ReportProperties.DateOfTheft</label>
-	<p>@DashboardHelpers.NullCheck(Model.DateOfTheft)</p>
+	<h2>@ReportProperties.DateOfTheft</h2>
+	<div class="donePadding">
+		<p>@DashboardHelpers.NullCheck(Model.DateOfTheft)</p>
+	</div>
 </div>
 
 @if (Model.Description != null)
 {
 	<div class="field">
-		<label>@ReportProperties.Description</label>
-		<p>@Model.Description</p>
+		<h2>@ReportProperties.Description</h2>
+		<div class="donePadding">
+			<p>@Model.Description</p>
+		</div>	
 	</div>
 }

@@ -1,9 +1,15 @@
-﻿<div class="field">
-	<label>@ReportProperties.ResourceManager.GetString("UsingOrDealing")</label>
-	<p>@ReportProperties.ResourceManager.GetString("Drugs" + Model.DrugsAction ?? "_null")</p>
-</div>
+﻿<fieldset>
+	<legend>@ReportProperties.ResourceManager.GetString("UsingOrDealing")</legend>
+	<div>
+		<input type="text" id="VictimName" value="@DashboardHelpers.NullCheck(Model.DrugsAction)" />
+	</div>
+</fieldset>
 
-<div class="field">
-	<label>@ReportProperties.ResourceManager.GetString("Description")</label>
-	<p>@DashboardHelpers.NullCheck(Model.Description)</p>
-</div>
+<fieldset>
+	<legend>@ReportProperties.ResourceManager.GetString("Description")</legend>
+	<div>
+		<input type="text" id="VictimName" value="@DashboardHelpers.NullCheck(Model.Description)" />
+	</div>
+</fieldset>
+
+@*<input type="text" id="VictimName" value="@DashboardHelpers.NullCheck()" />*@

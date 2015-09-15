@@ -15,11 +15,12 @@
 </head>
 
 <body>
-	@Html.Partial("~/Views/Report/_partialBugReport.cshtml")
-	<header>
-		<h1>Melden + Leerpark</h1>
-	</header>
-	@RenderBody()
-	@RenderSection("WeaponScript", required: false)
+		@Html.Partial("~/Views/Report/_partialBugReport.cshtml")
+    <header id="header">
+        <h1>Melden + Leerpark</h1>
+    </header>
+		<script src="~/Scripts/header-resizer.js" type="text/javascript"></script>
+    @RenderBody()
+		@RenderSection("WeaponScript", required: false)
 </body>
 </html>

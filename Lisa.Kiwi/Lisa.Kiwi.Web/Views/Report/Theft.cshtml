@@ -4,6 +4,7 @@
 	<script src="~/Scripts/Theft.js"></script>
 	<link rel="stylesheet" type="text/css" href="~/Content/jquery.datetimepicker.css" />
 	<script src="~/Scripts/jquery.datetimepicker.js"></script>
+	<script src="~/Scripts/pop-up.js"></script>
 }
 
 @{
@@ -12,20 +13,20 @@
 
 @using (Html.BeginForm())
 {
-	<div class="field">
-		@Html.LabelFor(m => m.StolenObject)
+	<fieldset>
+		<legend>@DisplayNames.StolenObject</legend>
 		@Html.TextBoxFor(m => m.StolenObject)
-	</div>
-	<div class="field">
-		@Html.LabelFor(m => m.DateOfTheft)
+		<span class="required">verplicht veld</span>
+	</fieldset>
+	<fieldset>
+		<legend>@DisplayNames.DateOfTheft</legend>
 		@Html.TextBoxFor(m => m.DateOfTheft)
-	</div>
-	<div class="field">
-		@Html.LabelFor(m => m.Description)<br />
-		@Html.TextAreaFor(m => m.Description, new { @class = "DescriptionBox" })
-	</div>
-	<div class="submit">
-		<button type="submit"><img src="@Url.Content("~/Content/next.svg")" /></button>
-		<text><span class="floatLeft">*verplichte velden</span></text>
-	</div>
+	</fieldset>
+	@Html.Partial("~/Views/Report/PopUpPartials/_partialPopUpPerpetrator.cshtml", new PerpetratorViewModel())
+	@Html.Partial("~/Views/Report/PopUpPartials/_partialPopUpVehicle.cshtml", new VehicleViewModel())
+	<fieldset>
+		<legend>@DisplayNames.Description</legend>
+		@Html.TextAreaFor(m => m.Description)
+	</fieldset>
+	<button type="submit"><img src="@Url.Content("~/Content/next.svg")" /></button>
 }

@@ -12,236 +12,42 @@
 
 @using (Html.BeginForm())
 {
-	<div class="field">
-		<label>@PageItems.Category</label>
-		<div>
-			<p class="locationCategory"><img src='@Url.Content(String.Format("~/Content/category-{0}.png", Model.Category))'><br />@Categories.ResourceManager.GetString(Model.Category)</p>
-		</div>
-	</div>
-	<div class="field">
-		<label>@PageItems.Location</label>
-		<div>
-			<p class="locationCategory"><img src='@Url.Content(String.Format("~/Content/ReporterBuildings/{0}.png", BuildingImages.ResourceManager.GetString(Model.Location.Building)))'><br />@ReportHelpers.Capitalize(Resources.Buildings.ResourceManager.GetString(Model.Location.Building))</p>
-		</div>
-	</div>
-	<div class="field">
-		<label>@DisplayNames.ReportDescription van de locatie.</label>
-			@Html.TextBoxFor(m => m.Location.Description)
-	</div>
-	switch (Model.Category)
-	{
-		case "FirstAid":
-			var isUnconscious = (bool)Model.IsUnconscious ? new { @checked = "true" } : null;
-			var isNotUnconscious = (bool)Model.IsUnconscious ? null : new { @checked = "true" };
-			<div class="field">
-				<label>Is het slachtoffer bewusteloos?</label>
-				<div>
-					<div class="button-container">
-						@Html.RadioButtonFor(m => m.IsUnconscious, true, isUnconscious) Ja
-						@Html.RadioButtonFor(m => m.IsUnconscious, false, isNotUnconscious) Nee
-					</div>
-				</div>
-			</div>
-			break;
-
-		case "Bullying":
-			<div class="field">
-				<label>Wie wordt er gepest?</label>
-				@Html.TextBoxFor(m => m.VictimName)
-			</div>
-			<div class="field">
-				<label>Wat is er aan de hand?</label>
-				@Html.TextBoxFor(m => m.Description)
-			</div>
-			if (Model.Victim != null)
+	<fieldset>
+		<legend>
+			@PageItems.DoneMessage
+		</legend>
+		<p class="summary">
+			@if (Model.Category == "FirstAid" || Model.Category == "Fight")
 			{
-				<div class="field">
-					<label>Geef hier een beschrijving van het slachtoffer</label>
-					@Html.TextBoxFor(m => m.Victim)
-				</div>
+					@PageItems.HelpOnTheWay
 			}
-			break;
-
-		case "Drugs":
-			var usingDrugs = Model.DrugsAction == "Using" ? new { @checked = "true" } : null;						
-			var dealingDrugs = Model.DrugsAction == "Dealing" ? new { @checked = "true" } : null;			
-			<div class="field radioButton">
-				<label>Wordt er gedeald of gebruikt?</label>
-				<ul class="radioList">
-					<li>
-						@Html.RadioButtonFor(m => m.DrugsAction, "Using", usingDrugs)<label class="radio">Er wordt drugs gebruikt.</label>
-					</li>
-					<li>
-						@Html.RadioButtonFor(m => m.DrugsAction, "Dealing", dealingDrugs)<label class="radio">Er wordt drugs gedeald.</label>
-					</li>
-				</ul>
-			</div>
-			<div class="field">
-				<label>Heeft u nog overige informatie die u wilt melden?</label>
-				@Html.TextBoxFor(m => m.Description)
-			</div>
-			break;
-
-		case "Fight":
-			var weaponPresent = (bool)Model.IsWeaponPresent ? new { @checked = "true" } : null;
-			var noWeaponPresent = (bool)Model.IsWeaponPresent ? null : new { @checked = "true" };					
-			<div class="field">
-				<label>Hoeveel personen zijn er aan het vechten?</label>
-				@Html.TextBoxFor(m => m.FighterCount, new { @type = "number" })
-			</div>
-			<div class="field">
-				<label>Zijn er wapens bij betrokken?</label>
-
-				<div class="radioButtonDivider">
-					@Html.RadioButtonFor(m => m.IsWeaponPresent, true, weaponPresent) Ja
-					@Html.RadioButtonFor(m => m.IsWeaponPresent, false, noWeaponPresent) Nee
-				</div>
-			</div>
-			<div class="field">
-				<label>Wilt u nog iets toevoegen?</label>
-				@Html.TextAreaFor(m => m.Description, new { @class = "DescriptionBox" })
-			</div>
-			break;
-
-		case "Nuisance":
-			<div class="field">
-				<label>Omschrijving overlast:*</label>
-				@Html.TextBoxFor(m => m.Description)
-			</div>
-			break;
-
-		case "Other":
-			<div class="field">
-				<label>Wat is er aan de hand?</label>
-				@Html.TextBoxFor(m => m.Description)
-			</div>
-			break;
-
-		case "Theft":
-			<div class="field">
-				<label>Wat is er gestolen?</label>
-				@Html.TextBoxFor(m => m.StolenObject)
-			</div>
-			<div class="field">
-				<label>Op welke datum is het gestolen?</label>
-				@Html.TextBoxFor(m => m.DateOfTheft)
-			</div>
-			<div class="field">
-				<label>Wilt u nog iets toevoegen?</label>
-				@Html.TextAreaFor(m => m.Description, new { @class = "DescriptionBox" })
-			</div>
-			break;
-
-		case "Weapons":
-			var otherType = "";
-			if (Model.WeaponType != "Mes" && Model.WeaponType != "Boksbeugel" && Model.WeaponType != "Vuurwapen" && Model.WeaponType != "Pepperspray")
-			{			
-				otherType = Model.WeaponType;
-			}				
-			<div class="field">
-				@Html.LabelFor(m => m.WeaponType)
-				@Html.DropDownListFor(m => m.WeaponType, Model.Types, new { @id = "Type"})
-			</div>
-			<div class="field" id="Sub">
-				<label>Wat voor wapen is het dan? *</label>
-				@Html.TextBoxFor(m => m.OtherType, new { Value = otherType })
-			</div>
-			<div class="field">
-				@Html.LabelFor(m => m.Location)
-				@Html.TextBoxFor(m => m.WeaponLocation)
-			</div>
-			<div class="field">
-				@Html.LabelFor(m => m.Description)<br />
-				@Html.TextAreaFor(m => m.Description, new { @class = "DescriptionBox" })
-			</div>
-			break;
-		}
+			else
+			{
+					@PageItems.TakenAction
+			}
+		</p>
+	</fieldset>
+	if (Model.Location != null)
+	{
+		@Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportLocation.cshtml", Model)
+	}
+	@Html.Partial("~/Views/Shared/Partials/Details/_PartialDetails" + Model.Category + ".cshtml", Model)
 
 	if (Model.Perpetrator != null)
 	{
-		var sexUnknown = Model.Perpetrator.Sex == SexEnum.Unknown ? new { @checked = "true" } : null;
-		var sexMale = Model.Perpetrator.Sex == SexEnum.Male ? new { @checked = "true" } : null;
-		var sexFemale = Model.Perpetrator.Sex == SexEnum.Female ? new { @checked = "true" } : null;					
-		<div class="field">
-			<label>&nbsp;</label>
-			<h2>@perpetratorResource.Perpetrators</h2>
-		</div>
-		<div class="field">
-			<label>@perpetratorResource.Name</label>
-			@Html.TextBoxFor(m => m.Perpetrator.Name)
-		</div>
-		<div class="field">
-			<label>Wat is het geslacht? *</label>
-			<ul class="radioList">
-				<li>@Html.RadioButtonFor(m => m.Perpetrator.Sex, 0, sexUnknown) Onbekend</li>
-				<li>@Html.RadioButtonFor(m => m.Perpetrator.Sex, 1, sexMale) Man</li>
-				<li>@Html.RadioButtonFor(m => m.Perpetrator.Sex, 2, sexFemale) Vrouw</li>
-			</ul>
-		</div>
-		<div class="field">
-			<label>@perpetratorResource.SkinColor</label>
-			@Html.DropDownListFor(m => m.Perpetrator.SkinColor, Model.SkinColors)
-		</div>
-		<div class="field">
-			<label>@perpetratorResource.Clothing</label>
-			@Html.TextAreaFor(m => m.Perpetrator.Clothing)
-		</div>
-		<div class="field">
-			<label>Welke leeftijd heeft de dader?</label>
-			@Html.DropDownListFor(m => m.AgeRange, Model.AgeRanges)
-		</div>
-		<div class="field">
-			<label>@perpetratorResource.UniqueProp</label>
-			@Html.TextAreaFor(m => m.Perpetrator.UniqueProperties)
-		</div>
-		}
+				@Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportPerpetrator.cshtml", Model);
+	}
 
-		if (Model.Vehicle != null)
-		{
-			<div class="field">
-				<label>&nbsp;</label>
-				<h2>@ReportProperties.Vehicle</h2>
-			</div>
-			<div class="field">
-				<label>@ReportProperties.VehicleType</label>
-				@Html.DropDownListFor(m => m.Vehicle.VehicleType, Model.VehicleTypes)
-			</div>
-			<div class="field">
-				<label>@ReportProperties.VehicleBrand</label>
-				@Html.TextBoxFor(m => m.Vehicle.Brand)
-			</div>
-			<div class="field">
-				<label>@ReportProperties.VehicleNumberPlate</label>
-				@Html.TextBoxFor(m => m.Vehicle.NumberPlate)
-			</div>
-			<div class="field">
-				<label>@ReportProperties.VehicleColor</label>
-				@Html.TextBoxFor(m => m.Vehicle.Color)
-			</div>
-			<div class="field">
-				<label>@ReportProperties.VehicleAdditionalFeatures</label>
-				@Html.TextBoxFor(m => m.Vehicle.AdditionalFeatures)
-			</div>
-		}
-
-		<div class="field">
-			<label>&nbsp;</label>
-			<h2>Contact</h2>
+	if (Model.Contact != null)
+	{
+				@Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportContact.cshtml", Model);
+	}
+	if (Model.Vehicle != null)
+	{
+				@Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportVehicle.cshtml", Model);
+	}
+		<input type="hidden" name="category" value="@Model.Category" />
+		<div class="submit">
+			<button type="submit"><img src="@Url.Content("~/Content/next.svg")" /></button>
 		</div>
-		<div class="field">
-			<label>Naam van de melder:</label>
-			@Html.TextBoxFor(m => m.Contact.Name)
-		</div>
-		<div class="field">
-			<label>Telefoonnummer van de melder:</label>
-			@Html.TextBoxFor(m => m.Contact.PhoneNumber)
-		</div>
-		<div class="field">
-			<label>E-mailadres van de melder:</label>
-			@Html.TextBoxFor(m => m.Contact.EmailAddress)
-		</div>
-
-	<div class="submit">
-		<button type="submit"><img src="@Url.Content("~/Content/next.svg")" /></button>
-	</div>
 }

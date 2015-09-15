@@ -4,26 +4,22 @@
 	ViewBag.Title = Categories.Drugs;
 }
 
+@section Scripts{
+	<script src="~/Scripts/pop-up.js"></script>
+}
+
 @using (Html.BeginForm())
 {
-	<div class="field radioButton">
-		@Html.LabelFor(m => m.Action)
-		<ul class="radioList">
-			<li>
-				@Html.RadioButtonFor(m => m.Action, "Using")<label class="radio">Er wordt drugs gebruikt.</label>
-			</li>
-			<li>
-				@Html.RadioButtonFor(m => m.Action, "Dealing")<label class="radio">Er wordt drugs gedeald.</label>
-			</li>
-		</ul>
-
-	</div>
-	<div class="field">
-		@Html.LabelFor(m => m.Description)
-		@Html.TextBoxFor(m => m.Description)
-	</div>
-	<div class="submit">
-		<button type="submit"><img src="@Url.Content("~/Content/next.svg")" /></button>
-		<text><span class="floatLeft">*verplichte velden</span></text>
-	</div>
+	<fieldset>
+		<legend>@DisplayNames.DrugsAction</legend>
+		@Html.DropDownListFor(m => m.Action, Model.DrugsActions)
+	</fieldset>
+	@Html.Partial("~/Views/Report/PopUpPartials/_partialPopUpPerpetrator.cshtml", new PerpetratorViewModel())
+	@Html.Partial("~/Views/Report/PopUpPartials/_partialPopUpVehicle.cshtml", new VehicleViewModel())
+	<fieldset>
+		<legend>@DisplayNames.Description</legend>
+		@Html.TextAreaFor(m => m.Description)
+	</fieldset>
+	<button type="submit"><img src="@Url.Content("~/Content/next.svg")" /></button>
 }
+<div class="overlay"></div>

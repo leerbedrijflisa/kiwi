@@ -1,27 +1,18 @@
-﻿@model ContactViewModel
-
-@{
+﻿@{
 	ViewBag.Title = "Contact";
 }
+
+@section Scripts{
+	<script src="~/Scripts/pop-up.js"></script>
+}
+
 @using (Html.BeginForm())
 {
-	<div class="field">
-		<label></label>
-		<p>@PageItems.ContactDescription</p>
-	</div>
-	<div class="field">
-		@Html.LabelFor(m => m.Name)
-		@Html.TextBoxFor(m => m.Name)
-	</div>
-	<div class="field">
-		@Html.LabelFor(m => m.PhoneNumber)
-		@Html.TextBoxFor(m => m.PhoneNumber)
-	</div>
-	<div class="field">
-		@Html.LabelFor(m => m.EmailAddress)
-		@Html.TextBoxFor(m => m.EmailAddress)
-	</div>
-	<div class="submit">
-		<button type="submit"><img src="@Url.Content("~/Content/next.svg")" /></button>
-	</div>
+	<fieldset>
+		<legend>@DisplayNames.ContactTitle</legend>
+		@Html.Partial("~/Views/Report/PopUpPartials/_partialPopUpContact.cshtml", new ContactViewModel())
+		<button onclick="popUpShow('contact'); return false;">Ja</button>
+		<button>Nee</button>
+	</fieldset>
 }
+<div class="overlay"></div>

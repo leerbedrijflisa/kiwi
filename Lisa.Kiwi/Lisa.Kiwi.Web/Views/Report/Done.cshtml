@@ -1,11 +1,10 @@
-﻿@model Report
+﻿@model EditDoneViewModel
 
 
 @using (Html.BeginForm())
 {
 	<div class="field">
-		<label>&nbsp;</label>
-		<p>
+		<label>
 			@PageItems.DoneMessage
 			@if (Model.Category == "FirstAid" || Model.Category == "Fight")
 			{
@@ -15,21 +14,20 @@
 			{
 				@PageItems.TakenAction
 			}
-		</p>
-	</div>
-	<div class="field">
-		<label>&nbsp;</label>
-		<p><a href="~/Report/EditDone">Klik hier om uw eerder ingevulde waarden aan te passen.</a></p>
+		</label>
+		<div class="donePadding">
+			<p><a href="~/Report/EditDone">Klik hier om uw eerder ingevulde waarden aan te passen.</a></p>
+		</div>	
 	</div>
 
 	if (Model.Category != null)
 	{
 		@Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportCategory.cshtml", Model)
+		if (Model.Location != null)
+		{
+			@Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportLocation.cshtml", Model)
+		}
 		@Html.Partial("~/Views/Shared/Partials/Details/_PartialDetails" + Model.Category + ".cshtml", Model)
-	}
-	if (Model.Location != null)
-	{
-		@Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportLocation.cshtml", Model)
 	}
 
 	if (Model.Perpetrator != null)

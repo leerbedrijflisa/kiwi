@@ -5,15 +5,10 @@
 
 @using (Html.BeginForm())
 {
-	<div class="field">
-		<label>@String.Format(PageItems.LocationDetailedDescription, ViewBag.Preposition, ViewBag.Building) *</label>
+	<fieldset>
+		<legend>@String.Format(PageItems.LocationDetailedDescription, ViewBag.Preposition, ViewBag.Building)</legend>
+		@Html.TextAreaFor(m => m.AdditionalLocation)
+	</fieldset>
 
-		<div>
-			@Html.TextAreaFor(m => m.AdditionalLocation)
-		</div>
-	</div>
-
-	<div class="submit">
-		<button type="submit"><img src="@Url.Content("~/Content/next.svg")"></button>
-	</div>
+	<button type="submit"><img src="@Url.Content("~/Content/next.svg")"></button>
 }
