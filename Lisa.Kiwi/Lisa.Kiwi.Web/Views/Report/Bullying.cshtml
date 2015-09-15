@@ -4,31 +4,25 @@
 	ViewBag.Title = Categories.Bullying;
 }
 
+@section Scripts{
+    <script src="~/Scripts/pop-up.js"></script>
+}
+
 @using (Html.BeginForm())
 {
-	<div class="field">
-		@Html.LabelFor(m => m.VictimName)
-		<div>
-			@Html.TextBoxFor(m => m.VictimName)
-		</div>
-	</div>
-	<div class="field">
-		@Html.LabelFor(m => m.Description)
-		<div>
-			@Html.TextBoxFor(m => m.Description)
-		</div>
-	</div>
-	<div class="field">
-		@Html.Label("Heeft u nog informatie over de verdachte?")
-		<div>
-			@Html.CheckBoxFor(m => m.HasPerpetrator)
-		</div>
-	</div>
-	<div class="field">
-		@Html.Label("Heeft u nog informatie over het slachtoffer?")
-		<div>
-			@Html.CheckBoxFor(m => m.HasVictim)
-		</div>
-	</div>
-	<button type="submit"><img src="@Url.Content("~/Content/next.svg")" /></button>
+    <fieldset>
+        <legend>@DisplayNames.VictimName</legend>
+        <div>
+            @Html.TextBoxFor(m => m.VictimName)
+        </div>
+    </fieldset>
+    @Html.Partial("~/Views/Report/PopUpPartials/_partialPopUpPerpetrator.cshtml", new PerpetratorViewModel())
+    <fieldset>
+        <legend>
+            @DisplayNames.BullyingDescription</legend>
+        <div>
+            @Html.TextAreaFor(m => m.Description)
+        </div>
+    </fieldset>
+    <button type="submit"><img src="@Url.Content("~/Content/next.svg")" /></button>
 }

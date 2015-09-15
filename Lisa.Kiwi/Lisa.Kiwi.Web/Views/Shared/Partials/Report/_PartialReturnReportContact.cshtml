@@ -1,15 +1,12 @@
-﻿<div class="field">
-	<label>Contactgegevens</label>
-</div>
-@if (Model.Contact.Name != null) {
-	<div class="field">
-		<h2>@PageItems.ContactName</h2>
-		<div class="donePadding">
-			<p>@DashboardHelpers.NullCheck(Model.Contact.Name)</p>
+ @if (Model.Contact.Name != null)
+ {
+	<fieldset>
+		<legend>@PageItems.ContactName</legend>
+		<div>
+			<input type="text" id="VictimName" value="@DashboardHelpers.NullCheck(Model.Contact.Name)" />
 		</div>
-	</div>
-}
-
+	</fieldset>
+ }
 @if (Model.Contact.PhoneNumber != null)
 {
 	<div class="field">

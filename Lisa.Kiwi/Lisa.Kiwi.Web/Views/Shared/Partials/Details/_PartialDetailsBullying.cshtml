@@ -4,7 +4,10 @@
 		<p>@DashboardHelpers.NullCheck(Model.VictimName)</p>
 	</div>
 </div>
-
+<fieldset>
+    <legend>@ReportProperties.ResourceManager.GetString("BullyVictim")</legend>
+	<input type="text" id="VictimName" value="@DashboardHelpers.NullCheck(Model.VictimName)" />
+</fieldset>
 <div class="field">
 	<h2>@Resources.ReportProperties.ResourceManager.GetString("Description")</h2>
 	<div class="donePadding">

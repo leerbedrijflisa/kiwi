@@ -1,6 +1,11 @@
-﻿<div class="field">
-	<h2>@PageItems.Location</h2>
-	<div class="donePadding">
-		<p class="locationCategory"><img src='@Url.Content(String.Format("~/Content/ReporterBuildings/{0}.png", BuildingImages.ResourceManager.GetString(Model.Location.Building)))'><br />@ReportHelpers.Capitalize(Resources.Buildings.ResourceManager.GetString(Model.Location.Building)): @Model.Location.Description</p>
+<fieldset>
+	<legend>@PageItems.Location </legend>
+	<div>
+		<select id="Building">
+			@foreach (var building in new string[] { "Buiten", "BetaaldeParkeerplaats", "GroteParkeerplaats", "Arcobaleno", "Azzurro", "Bianco", "Celeste", "Media", "Duurzaamheidsfabriek", "Giallo", "Indaco", "Lilla", "Marrone", "Ocra", "Romboutslaan", "Rosa", "Verde", "Appartementen", "Bogermanschool", "Brandweerkazerne", "Drechtstedencollege", "Klimhal", "Orthodontist", "Samenwerkingsgebouw", "Schippersinternaat", "Sporthal", "Veiligheidsregio", "Wartburg" })
+			{
+				<option value="@building">@building</option>
+			}
+		</select>
 	</div>
-</div>
+</fieldset>
