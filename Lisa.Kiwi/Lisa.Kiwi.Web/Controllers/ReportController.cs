@@ -166,7 +166,7 @@ namespace Lisa.Kiwi.Web
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(GetCurrentReportId(), report);
 
-            return RedirectToAction("Vehicle");
+            return RedirectToAction("ContactRequired");
         }
 
         public ActionResult Drugs()
@@ -262,7 +262,7 @@ namespace Lisa.Kiwi.Web
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(GetCurrentReportId(), report);
 
-            return RedirectToAction("Vehicle");
+            return RedirectToAction("ContactRequired");
         }
 
         public ActionResult Bullying()
@@ -295,7 +295,7 @@ namespace Lisa.Kiwi.Web
                 return RedirectToAction("Perpetrator", routeValues: new { hasVictim = viewModel.HasVictim });
             }
 
-            return RedirectToAction("Vehicle");
+            return RedirectToAction("Contact");
         }
 
         public ActionResult Other()
@@ -315,7 +315,7 @@ namespace Lisa.Kiwi.Web
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(GetCurrentReportId(), report);
 
-            return RedirectToAction("Vehicle");
+            return RedirectToAction("ContactRequired");
         }
 
         public ActionResult Perpetrator()
@@ -336,7 +336,7 @@ namespace Lisa.Kiwi.Web
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(GetCurrentReportId(), report);
 
-            return RedirectToAction(victim ? "Victim" : "Vehicle");
+            return RedirectToAction(victim ? "Victim" : "Contact");
         }
 
         public ActionResult Victim()
@@ -357,44 +357,7 @@ namespace Lisa.Kiwi.Web
             await _reportProxy.PatchAsync(GetCurrentReportId(), report);
 
             // TODO: add error handling
-            return RedirectToAction("Vehicle");
-        }
-
-        public ActionResult Vehicle()
-        {
-            return View(new VehicleViewModel());
-        }
-
-        [HttpPost]
-        public async Task<ActionResult> Vehicle(VehicleViewModel viewModel)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View(viewModel);
-            }
-
-            var report = new Report();
-
-            if (viewModel.HasVehicle)
-            {
-                _modelFactory.Modify(report, viewModel);
-                report = await _reportProxy.PatchAsync(GetCurrentReportId(), report);
-            }
-            else
-            {
-                report = await GetCurrentReport();
-            }
-
-            switch (report.Category)
-            {
-                case "Theft":
-                case "Nuisance":
-                case "Other":
-                    return RedirectToAction("ContactRequired");
-
-                default:
-                    return RedirectToAction("Contact");
-            }
+            return RedirectToAction("Contact");
         }
 
         public ActionResult Contact()

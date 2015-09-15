@@ -21,5 +21,7 @@ namespace Lisa.Kiwi.Web
 
         [DisplayName("Wilt u nog iets toevoegen?")]
         public string Description { get; set; }
+
+        public string Vehicles { get; set; }
     }
 }

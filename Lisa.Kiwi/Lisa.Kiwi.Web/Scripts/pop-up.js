@@ -63,21 +63,21 @@ function popUpReport(e, a) {
                     vehicleCount++;
                     var type = $("#vehicle").children("fieldset").children("#VehicleType").val();
                     var brand = $("#vehicle").children("fieldset").children("#Brand").val();
-
                     var numberplate = $("#vehicle").children("fieldset").children("#NumberPlate").val();
-
                     var color = $("#vehicle").children("fieldset").children("#Color").val();
-
                     var features = $("#vehicle").children("fieldset").children("#AdditionalFeatures").val();
+
                     var vehicleArray = {
                         Id: vehicleCount,
                         Type: type,
                         Brand: brand,
                         NumberPlate: numberplate,
                         Color: color,
-                        Features: features
+                        AdditionalFeatures: features
                     };
                     vehicles.splice(vehicles.length, 0, vehicleArray);
+
+                    $("input[name=Vehicles]").val(JSON.stringify(vehicles));
 
                     if (numberplate != "") {
                         numberplate = ", " + numberplate;

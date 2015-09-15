@@ -1,5 +1,11 @@
 ﻿using Lisa.Kiwi.WebApi;
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 
 namespace Lisa.Kiwi.Web
 {
@@ -41,6 +47,7 @@ namespace Lisa.Kiwi.Web
             report.StolenObject = viewModel.StolenObject ;
             report.DateOfTheft = viewModel.DateOfTheft.Add(viewModel.TimeOfTheft.TimeOfDay);
             report.Description = viewModel.Description;
+            report.Vehicles = GetVehicles(viewModel.Vehicles);
         }
 
         public void Modify(Report report, DrugsViewModel viewModel)
@@ -136,14 +143,14 @@ namespace Lisa.Kiwi.Web
 
         public void Modify(Report report, VehicleViewModel viewModel)
         {
-            report.Vehicle = new Vehicle
-            {
-                Brand = viewModel.Brand,
-                Color = viewModel.Color,
-                NumberPlate = viewModel.NumberPlate,
-                AdditionalFeatures = viewModel.AdditionalFeatures,
-                VehicleType = viewModel.VehicleType
-            };
+            //report.Vehicle = new Vehicle
+            //{
+            //    Brand = viewModel.Brand,
+            //    Color = viewModel.Color,
+            //    NumberPlate = viewModel.NumberPlate,
+            //    AdditionalFeatures = viewModel.AdditionalFeatures,
+            //    VehicleType = viewModel.VehicleType
+            //};
         }
 
         public void Create(Report report, EditDoneViewModel viewModel)
@@ -200,6 +207,18 @@ namespace Lisa.Kiwi.Web
             {
                 report.Contact = null;
             }
+        }
+
+        private IEnumerable<Vehicle> GetVehicles(string json)
+        {
+            return JsonConvert.DeserializeObject<IEnumerable<JToken>>(json).Select(vehicle => new Vehicle
+            {
+                Brand = vehicle.Value<string>("brand"),
+                AdditionalFeatures = vehicle.Value<string>("additionalFeatures"),
+                Color = vehicle.Value<string>("color"),
+                NumberPlate = vehicle.Value<string>("numberPlate"),
+                VehicleType = (VehicleTypeEnum) Enum.Parse(typeof (VehicleTypeEnum), vehicle.Value<string>("vehicleType") ?? "Other")
+            });
         }
     }
 }

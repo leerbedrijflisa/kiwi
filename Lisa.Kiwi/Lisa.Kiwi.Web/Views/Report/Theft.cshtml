@@ -4,6 +4,7 @@
 	<script src="~/Scripts/Theft.js"></script>
 	<link rel="stylesheet" type="text/css" href="~/Content/jquery.datetimepicker.css" />
 	<script src="~/Scripts/jquery.datetimepicker.js"></script>
+	<script src="~/Scripts/pop-up.js"></script>
 }
 
 @{
@@ -27,5 +28,6 @@
 		<legend>@DisplayNames.Description</legend>
 		@Html.TextAreaFor(m => m.Description)
 	</fieldset>
+	@Html.HiddenFor(m => m.Vehicles)
 	<button type="submit"><img src="@Url.Content("~/Content/next.svg")" /></button>
 }

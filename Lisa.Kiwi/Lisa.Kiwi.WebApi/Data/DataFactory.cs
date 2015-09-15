@@ -109,13 +109,17 @@ namespace Lisa.Kiwi.WebApi
 
         private ICollection<VehicleData> Modify(JToken json)
         {
-            return json.Select(jsonVehicle => new VehicleData
+            var jsonstring = json.ToString();
+
+            var jsonding = JArray.Parse(jsonstring);
+
+            return json.Select(s => new VehicleData
             {
-                Brand = jsonVehicle.Value<string>("brand"),
-                AdditionalFeatures = jsonVehicle.Value<string>("additionalFeatures"),
-                Color = jsonVehicle.Value<string>("color"),
-                NumberPlate = jsonVehicle.Value<string>("numberPlate"),
-                VehicleType = (VehicleTypeEnum)Enum.Parse(typeof(VehicleTypeEnum), jsonVehicle.Value<string>("vehicleType") ?? "Other")
+                Brand = s.Value<string>("brand"),
+                AdditionalFeatures = s.Value<string>("additionalFeatures"),
+                Color = s.Value<string>("color"),
+                NumberPlate = s.Value<string>("numberPlate"),
+                VehicleType = (VehicleTypeEnum)Enum.Parse(typeof(VehicleTypeEnum), s.Value<string>("vehicleType") ?? "Other")
             }).ToList();
         }
     }
