@@ -141,18 +141,6 @@ namespace Lisa.Kiwi.Web
             report.IsVisible = viewModel.IsVisible;
         }
 
-        public void Modify(Report report, VehicleViewModel viewModel)
-        {
-            //report.Vehicle = new Vehicle
-            //{
-            //    Brand = viewModel.Brand,
-            //    Color = viewModel.Color,
-            //    NumberPlate = viewModel.NumberPlate,
-            //    AdditionalFeatures = viewModel.AdditionalFeatures,
-            //    VehicleType = viewModel.VehicleType
-            //};
-        }
-
         public void Create(Report report, EditDoneViewModel viewModel)
         {
             viewModel.Category = report.Category;
@@ -211,13 +199,16 @@ namespace Lisa.Kiwi.Web
 
         private IEnumerable<Vehicle> GetVehicles(string json)
         {
-            return JsonConvert.DeserializeObject<IEnumerable<JToken>>(json).Select(vehicle => new Vehicle
+            var vehiclesJson = JsonConvert.DeserializeObject<JToken>(json);
+
+            return vehiclesJson.Select(vehicleJson => new Vehicle
             {
-                Brand = vehicle.Value<string>("brand"),
-                AdditionalFeatures = vehicle.Value<string>("additionalFeatures"),
-                Color = vehicle.Value<string>("color"),
-                NumberPlate = vehicle.Value<string>("numberPlate"),
-                VehicleType = (VehicleTypeEnum) Enum.Parse(typeof (VehicleTypeEnum), vehicle.Value<string>("vehicleType") ?? "Other")
+                Brand = vehicleJson.Value<string>("Brand"),
+                AdditionalFeatures = vehicleJson.Value<string>("AdditionalFeatures"),
+                Color = vehicleJson.Value<string>("Color"),
+                NumberPlate = vehicleJson.Value<string>("NumberPlate"),
+                VehicleType = (VehicleTypeEnum) Enum.Parse(typeof (VehicleTypeEnum), 
+                vehicleJson.Value<string>("Type"), true)
             });
         }
     }
