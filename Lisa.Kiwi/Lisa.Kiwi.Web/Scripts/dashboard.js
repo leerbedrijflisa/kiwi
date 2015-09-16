@@ -70,7 +70,7 @@ Handlebars.registerHelper('detailsSummary', function (report) {
         case "Fight":
             if (report.fighterCount == null)
             {
-                report.fighterCount = "een onbekend hoeveelheid";
+                report.fighterCount = "een onbekende hoeveelheid";
             }
             result = "Er zijn " + report.fighterCount + " personen aan het vechten.";
             break;
