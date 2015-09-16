@@ -68,12 +68,24 @@ Handlebars.registerHelper('detailsSummary', function (report) {
             }
             break;
         case "Fight":
+            if (report.fighterCount == null)
+            {
+                report.fighterCount = "een onbekend hoeveelheid";
+            }
             result = "Er zijn " + report.fighterCount + " personen aan het vechten.";
             break;
         case "Theft":
+            if (report.stolenObject == null)
+            {
+                report.stolenObject = "een onbekend voorwerp";
+            }
             result = "Er is " + report.stolenObject + " gestolen";
             break;
         case "Weapons":
+            if (report.weaponType == null)
+            {
+                report.weaponType = "een onbekend wapen";
+            }
             result = "Het gaat om een " + report.weaponType;
             break;
         default:
