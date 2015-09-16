@@ -21,6 +21,7 @@ namespace Lisa.Kiwi.WebApi
         public IQueryable<Report> Get()
         {
             var reports = GetCompleteReports();
+            //StatusEnum.Open = 0
             return User.IsInRole("Administrator") ? reports : reports.Where(r => r.IsVisible);
         }
 

@@ -101,9 +101,24 @@ namespace Lisa.Kiwi.Web
             return View(reports);
         }
 
-        public async Task<ActionResult> ToggleSolved(int id, bool currentSolved)
+        public async Task<ActionResult> ToggleSolved(int id, StatusEnum currentSolved)
         {
-            var report = new Report {Status = currentSolved ? StatusEnum.Open : StatusEnum.Solved};
+            Report report;
+
+            switch(currentSolved)
+            {
+                case StatusEnum.Open:
+                case StatusEnum.Transferred:
+                    report = new Report { Status = StatusEnum.Solved };
+                    break;
+                case StatusEnum.Solved:
+                    report = new Report { Status = StatusEnum.Open };
+                    break;
+                default:
+                    throw new ArgumentException();
+                    break;
+            }
+
             await _reportProxy.PatchAsync(id, report);
 
             return RedirectToAction("Index");
