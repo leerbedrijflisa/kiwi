@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.SqlServer.Utilities;
+using System.Globalization;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 
@@ -109,18 +111,26 @@ namespace Lisa.Kiwi.WebApi
 
         private ICollection<VehicleData> Modify(JToken json)
         {
-            var jsonstring = json.ToString();
+            var vehicles = new List<VehicleData>();
 
-            var jsonding = JArray.Parse(jsonstring);
-
-            return json.Select(s => new VehicleData
+            foreach (var vehicleJson in json)
             {
-                Brand = s.Value<string>("brand"),
-                AdditionalFeatures = s.Value<string>("additionalFeatures"),
-                Color = s.Value<string>("color"),
-                NumberPlate = s.Value<string>("numberPlate"),
-                VehicleType = (VehicleTypeEnum)Enum.Parse(typeof(VehicleTypeEnum), s.Value<string>("vehicleType") ?? "Other")
-            }).ToList();
+                var vehicle = new VehicleData
+                {
+                    Brand = vehicleJson.Value<string>("brand"),
+                    AdditionalFeatures = vehicleJson.Value<string>("additionalFeatures"),
+                    Color = vehicleJson.Value<string>("color"),
+                    NumberPlate = vehicleJson.Value<string>("numberPlate")
+                };
+                
+                var vehicleType = new CultureInfo("en-US", false).TextInfo.ToTitleCase(vehicleJson.Value<string>("vehicleType") ?? "Other");
+
+                vehicle.VehicleType = (VehicleTypeEnum) Enum.Parse(typeof (VehicleTypeEnum), vehicleType);
+
+                vehicles.Add(vehicle);
+            }
+
+            return vehicles;
         }
     }
 }
