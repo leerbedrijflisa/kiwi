@@ -15,6 +15,7 @@ namespace Lisa.Kiwi.Web
         public string Description { get; set; }
 
         public string Vehicles { get; set; }
+        public string Perpetrators { get; set; }
 
         public IEnumerable<SelectListItem> DrugsActions
         {

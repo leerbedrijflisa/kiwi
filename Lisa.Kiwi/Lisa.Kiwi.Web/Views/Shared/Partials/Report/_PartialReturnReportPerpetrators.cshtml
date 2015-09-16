@@ -1,0 +1,50 @@
+﻿@model Report
+@using perpetratorResource = Resources.Perpetrator
+@foreach (var perpetrator in Model.Perpetrators)
+{
+	<div class="field">
+		<label>@perpetratorResource.Perpetrators</label>
+	</div>
+	<div class="field">
+		<h2>@perpetratorResource.Name</h2>
+		<div class="donePadding">
+			<p>@DashboardHelpers.NullCheck(perpetrator.Name)</p>
+		</div>
+	</div>
+	<div class="field">
+		<h2>@perpetratorResource.Sex</h2>
+		<div class="donePadding">
+			<p>@DashboardHelpers.NullCheck(Sex.ResourceManager.GetString(perpetrator.Sex.ToString()))</p>
+		</div>
+	</div>
+	<div class="field">
+		<h2>@perpetratorResource.SkinColor</h2>
+		<div class="donePadding">
+			<p>@DashboardHelpers.NullCheck(SkinColor.ResourceManager.GetString(perpetrator.SkinColor.ToString()))</p>
+		</div>
+	</div>
+	<div class="field">
+		<h2>@perpetratorResource.Clothing</h2>
+		<div class="donePadding">
+			<p>@DashboardHelpers.NullCheck(perpetrator.Clothing)</p>
+		</div>
+	</div>
+	<div class="field">
+		<h2>@perpetratorResource.MinAge</h2>
+		<div class="donePadding">
+			<p>@DashboardHelpers.NullCheck(perpetrator.MinimumAge)</p>
+		</div>
+	</div>
+	<div class="field">
+		<h2>@perpetratorResource.MaxAge</h2>
+		<div class="donePadding">
+			<p>@DashboardHelpers.NullCheck(perpetrator.MaximumAge)</p>
+		</div>
+	</div>
+	<div class="field">
+		<h2>@perpetratorResource.UniqueProp</h2>
+		<div class="donePadding">
+			<p>@DashboardHelpers.NullCheck(perpetrator.UniqueProperties)</p>
+		</div>
+	</div>
+}

@@ -48,6 +48,8 @@ function popUpReport(e, a) {
                     };
                     perpetrators.splice(perpetrators.length, 0, perpArray);
 
+                    $("input[name=Perpetrators]").val(JSON.stringify(perpetrators));
+
                     if (name === "") {
                         name = Sex + ", " + skincolortrans + ", " + agerange;
                     }

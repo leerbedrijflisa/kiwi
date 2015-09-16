@@ -12,9 +12,9 @@
 
 	@Html.Partial("~/Views/Shared/Partials/Details/_PartialDetails" + Model.Category + ".cshtml", Model)
 
-	@if (Model.Perpetrator != null)
+	@if (Model.Perpetrators != null)
 	{
-		@Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportPerpetrator.cshtml", Model);
+		@Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportPerpetrators.cshtml", Model);
 	}
 
 	@if (Model.Contact != null)

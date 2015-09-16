@@ -330,7 +330,6 @@
     <Content Include="Views\Report\Drugs.cshtml" />
     <Content Include="Views\Report\Weapons.cshtml" />
     <Content Include="Views\Report\Bullying.cshtml" />
-    <Content Include="Views\Report\Perpetrator.cshtml" />
     <Content Include="Views\Report\Theft.cshtml" />
     <Content Include="Views\Report\Other.cshtml" />
     <Content Include="Views\Report\Nuisance.cshtml" />
@@ -354,7 +353,7 @@
     <Content Include="Views\Shared\Partials\Report\_PartialReturnReportCategory.cshtml" />
     <Content Include="Views\Shared\Partials\Report\_PartialReturnReportContact.cshtml" />
     <Content Include="Views\Shared\Partials\Report\_PartialReturnReportLocation.cshtml" />
-    <Content Include="Views\Shared\Partials\Report\_PartialReturnReportPerpetrator.cshtml" />
+    <Content Include="Views\Shared\Partials\Report\_PartialReturnReportPerpetrators.cshtml" />
     <Content Include="Views\Shared\Partials\Report\_PartialReturnReportVehicles.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />

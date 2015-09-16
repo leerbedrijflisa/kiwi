@@ -49,7 +49,7 @@ namespace Lisa.Kiwi.WebApi
 
         
         public virtual LocationData Location { get; set; }
-        public virtual PerpetratorData Perpetrator { get; set; }
+        public virtual ICollection<PerpetratorData> Perpetrators { get; set; }
         public virtual ContactData Contact { get; set; }
         public virtual ICollection<VehicleData> Vehicles { get; set; }
     }

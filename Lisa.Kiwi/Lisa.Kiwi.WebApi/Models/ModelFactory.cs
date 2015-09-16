@@ -34,7 +34,7 @@ namespace Lisa.Kiwi.WebApi
                 DateOfTheft = reportData.DateOfTheft,
 
                 Location = reportData.Location != null ? Create(reportData.Location) : null,
-                Perpetrator = reportData.Perpetrator != null ? Create(reportData.Perpetrator) : null,
+                Perpetrators = reportData.Perpetrators != null ? Create(reportData.Perpetrators) : null,
                 Contact = reportData.Contact != null ? Create(reportData.Contact) : null,
                 Vehicles = reportData.Vehicles != null ? Create(reportData.Vehicles) : null
             };
@@ -49,18 +49,18 @@ namespace Lisa.Kiwi.WebApi
             };
         }
 
-        private Perpetrator Create(PerpetratorData perpetratorData)
+        private IEnumerable<Perpetrator> Create(IEnumerable<PerpetratorData> perpetratorData)
         {
-            return new Perpetrator
+            return perpetratorData.Select(p => new Perpetrator
             {
-                Clothing = perpetratorData.Clothing,
-                MaximumAge = perpetratorData.MaximumAge,
-                MinimumAge = perpetratorData.MinimumAge,
-                Name = perpetratorData.Name,
-                Sex = perpetratorData.Sex,
-                SkinColor = perpetratorData.SkinColor,
-                UniqueProperties = perpetratorData.UniqueProperties,
-            };
+                Clothing = p.Clothing,
+                MinimumAge = p.MinimumAge,
+                MaximumAge = p.MaximumAge,
+                Name = p.Name,
+                Sex = p.Sex,
+                SkinColor = p.SkinColor,
+                UniqueProperties = p.UniqueProperties
+            });
         }
 
         private IEnumerable<Vehicle> Create(IEnumerable<VehicleData> vehicleData)

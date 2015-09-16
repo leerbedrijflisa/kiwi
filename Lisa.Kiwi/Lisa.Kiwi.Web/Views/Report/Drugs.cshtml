@@ -17,6 +17,7 @@
 	@Html.Partial("~/Views/Report/PopUpPartials/_partialPopUpPerpetrator.cshtml", new PerpetratorViewModel())
 	@Html.Partial("~/Views/Report/PopUpPartials/_partialPopUpVehicle.cshtml", new VehicleViewModel())
 	@Html.HiddenFor(m => m.Vehicles)
+	@Html.HiddenFor(m => m.Perpetrators)
 	<fieldset>
 		<legend>@DisplayNames.Description</legend>
 		@Html.TextAreaFor(m => m.Description)

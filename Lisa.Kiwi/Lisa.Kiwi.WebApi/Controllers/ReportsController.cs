@@ -127,7 +127,7 @@ namespace Lisa.Kiwi.WebApi
             return _db.Reports
                 .Where(s => !s.IsDeleted)
                 .Include("Location")
-                .Include("Perpetrator")
+                .Include("Perpetrators")
                 .Include("Contact")
                 .Include("Vehicles");
         }

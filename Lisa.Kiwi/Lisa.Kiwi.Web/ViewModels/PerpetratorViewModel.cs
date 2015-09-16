@@ -62,18 +62,18 @@ namespace Lisa.Kiwi.Web
                 {
                     new SelectListItem
                     {
-                        Text = "Onbekend",
-                        Value = "0"
+                        Text = Resources.Sex.Unknown,
+                        Value = "Unknown"
                     },
                     new SelectListItem
                     {
-                        Text = "Man",
-                        Value = "1"
+                        Text = Resources.Sex.Male,
+                        Value = "Male"
                     },
                     new SelectListItem
                     {
-                        Text = "Vrouw",
-                        Value = "2"
+                        Text = Resources.Sex.Female,
+                        Value = "Female"
                     },
                 };
             }

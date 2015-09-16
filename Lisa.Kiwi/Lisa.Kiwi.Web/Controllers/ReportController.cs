@@ -313,27 +313,6 @@ namespace Lisa.Kiwi.Web
             return RedirectToAction("ContactRequired");
         }
 
-        public ActionResult Perpetrator()
-        {
-            return View(new PerpetratorViewModel());
-        }
-
-        [HttpPost]
-        public async Task<ActionResult> Perpetrator(PerpetratorViewModel viewModel, bool? hasVictim)
-        {
-            var victim = hasVictim.HasValue && hasVictim.Value;
-
-            if (!ModelState.IsValid)
-            {
-                return View(viewModel);
-            }
-            var report = new Report();
-            _modelFactory.Modify(report, viewModel);
-            await _reportProxy.PatchAsync(GetCurrentReportId(), report);
-            
-            return RedirectToAction("Contact");
-        }
-
         public ActionResult Victim()
         {
             return View(new VictimViewModel());

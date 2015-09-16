@@ -48,6 +48,7 @@ namespace Lisa.Kiwi.Web
             report.DateOfTheft = viewModel.DateOfTheft.Add(viewModel.TimeOfTheft.TimeOfDay);
             report.Description = viewModel.Description;
             report.Vehicles = GetVehicles(viewModel.Vehicles);
+            report.Perpetrators = GetPerpetrators(viewModel.Perpetrators);
         }
 
         public void Modify(Report report, DrugsViewModel viewModel)
@@ -55,6 +56,7 @@ namespace Lisa.Kiwi.Web
             report.DrugsAction = viewModel.Action;
             report.Description = viewModel.Description;
             report.Vehicles = GetVehicles(viewModel.Vehicles);
+            report.Perpetrators = GetPerpetrators(viewModel.Perpetrators);
         }
 
         public void Modify(Report report, FightViewModel viewModel)
@@ -79,6 +81,7 @@ namespace Lisa.Kiwi.Web
         {
             report.Description = viewModel.Description;
             report.Vehicles = GetVehicles(viewModel.Vehicles);
+            report.Perpetrators = GetPerpetrators(viewModel.Perpetrators);
         }
 
         public void Modify(Report report, BullyingViewModel viewModel)
@@ -94,29 +97,9 @@ namespace Lisa.Kiwi.Web
         {
             report.Description = viewModel.Description;
             report.Vehicles = GetVehicles(viewModel.Vehicles);
+            report.Perpetrators = GetPerpetrators(viewModel.Perpetrators);
         }
-
-        public void Modify(Report report, PerpetratorViewModel viewModel)
-        {
-            if (report.Perpetrator == null)
-            {
-                report.Perpetrator = new Perpetrator();
-            }
-            if (viewModel.AgeRange != null)
-            {
-                var values = viewModel.AgeRange.Split('-');
-                var minimumAge = Convert.ToInt32(values[0]);
-                var maximumAge = Convert.ToInt32(values[1]);
-                report.Perpetrator.MinimumAge = minimumAge;
-                report.Perpetrator.MaximumAge = maximumAge;
-            }
-            report.Perpetrator.Name = viewModel.Name;
-            report.Perpetrator.Clothing = viewModel.Clothing;
-            report.Perpetrator.Sex = viewModel.Sex;
-            report.Perpetrator.SkinColor = viewModel.SkinColor;
-            report.Perpetrator.UniqueProperties = viewModel.UniqueProperties;
-        }
-
+        
         public void Modify(Report report, ContactViewModel viewModel)
         {
              if(report.Contact == null)
@@ -160,7 +143,7 @@ namespace Lisa.Kiwi.Web
             viewModel.WeaponLocation = report.WeaponLocation;
             viewModel.WeaponType = report.WeaponType;
             viewModel.Location = report.Location;
-            viewModel.Perpetrator = report.Perpetrator;
+            viewModel.Perpetrators = report.Perpetrators;
             viewModel.Vehicles = report.Vehicles;
             viewModel.Contact = report.Contact;
         }
@@ -184,7 +167,7 @@ namespace Lisa.Kiwi.Web
                 report.WeaponType = viewModel.OtherType;
             }
             report.Location = viewModel.Location;
-            report.Perpetrator = viewModel.Perpetrator;
+            report.Perpetrators = viewModel.Perpetrators;
             report.Vehicles = viewModel.Vehicles;
 
             if (viewModel.Contact.Name != null || viewModel.Contact.PhoneNumber != null || viewModel.Contact.EmailAddress != null)
@@ -201,18 +184,48 @@ namespace Lisa.Kiwi.Web
             }
         }
 
+        private IEnumerable<Perpetrator> GetPerpetrators(string json)
+        {
+            var perpetratorsJson = json != null ? JsonConvert.DeserializeObject<JToken>(json) : new JArray();
+            var perpetrators = new List<Perpetrator>();
+
+            foreach (var perpetratorJson in perpetratorsJson)
+            {
+                var perpetrator = new Perpetrator
+                {
+                    Name = perpetratorJson.Value<string>("Name"),
+                    Clothing = perpetratorJson.Value<string>("Clothing"),
+                    UniqueProperties = perpetratorJson.Value<string>("UniqueProperties")
+                };
+
+                var skinColor = perpetratorJson["SkinColor"] != null ? perpetratorJson.Value<string>("SkinColor") : null;
+                perpetrator.SkinColor = skinColor != null ? (SkinColorEnum) Enum.Parse(typeof (SkinColorEnum), skinColor, true) : SkinColorEnum.Unknown;
+
+                var sex = perpetratorJson["Sex"] != null ? perpetratorJson.Value<string>("Sex") : null;
+                perpetrator.Sex = sex != null ? (SexEnum) Enum.Parse(typeof (SexEnum), sex, true) : SexEnum.Unknown;
+
+                var ages = perpetratorJson.Value<string>("AgeRange").Split('-');
+
+                perpetrator.MinimumAge = int.Parse(ages[0]);
+                perpetrator.MaximumAge = int.Parse(ages[1]);
+
+                perpetrators.Add(perpetrator);
+            }
+
+            return perpetrators;
+        }
+
         private IEnumerable<Vehicle> GetVehicles(string json)
         {
-            var vehiclesJson = JsonConvert.DeserializeObject<JToken>(json);
-
+            var vehiclesJson = json != null ? JsonConvert.DeserializeObject<JToken>(json) : new JArray();
+            
             return vehiclesJson.Select(vehicleJson => new Vehicle
             {
                 Brand = vehicleJson.Value<string>("Brand"),
                 AdditionalFeatures = vehicleJson.Value<string>("AdditionalFeatures"),
                 Color = vehicleJson.Value<string>("Color"),
                 NumberPlate = vehicleJson.Value<string>("NumberPlate"),
-                VehicleType = (VehicleTypeEnum) Enum.Parse(typeof (VehicleTypeEnum), 
-                vehicleJson.Value<string>("Type"), true)
+                VehicleType = (VehicleTypeEnum) Enum.Parse(typeof (VehicleTypeEnum), vehicleJson.Value<string>("Type") ?? "Other", true)
             });
         }
     }
