@@ -8,5 +8,7 @@ namespace Lisa.Kiwi.Web
         [Required(ErrorMessage = ErrorMessages.RequiredError)]
         [Display(Name = "NuisanceDescription", ResourceType = typeof(ReportProperties))]
         public string Description { get; set; }
+
+        public string Vehicles { get; set; }
     }
 }

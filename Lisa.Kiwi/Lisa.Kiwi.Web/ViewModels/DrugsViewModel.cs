@@ -14,6 +14,8 @@ namespace Lisa.Kiwi.Web
         [DisplayName("Wat kun je er verder over vertellen?")]
         public string Description { get; set; }
 
+        public string Vehicles { get; set; }
+
         public IEnumerable<SelectListItem> DrugsActions
         {
             get

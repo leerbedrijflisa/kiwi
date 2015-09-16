@@ -54,7 +54,9 @@ namespace Lisa.Kiwi.Web
         {
             report.DrugsAction = viewModel.Action;
             report.Description = viewModel.Description;
+            report.Vehicles = GetVehicles(viewModel.Vehicles);
         }
+
         public void Modify(Report report, FightViewModel viewModel)
         {
             report.FighterCount = viewModel.FighterCount;
@@ -76,6 +78,7 @@ namespace Lisa.Kiwi.Web
         public void Modify(Report report, NuisanceViewModel viewModel)
         {
             report.Description = viewModel.Description;
+            report.Vehicles = GetVehicles(viewModel.Vehicles);
         }
 
         public void Modify(Report report, BullyingViewModel viewModel)
@@ -90,6 +93,7 @@ namespace Lisa.Kiwi.Web
         public void Modify(Report report, OtherViewModel viewModel)
         {
             report.Description = viewModel.Description;
+            report.Vehicles = GetVehicles(viewModel.Vehicles);
         }
 
         public void Modify(Report report, PerpetratorViewModel viewModel)

@@ -3,6 +3,11 @@
 @{
 	ViewBag.Title = Categories.Nuisance;
 }
+
+@section Scripts{
+	<script src="~/Scripts/pop-up.js"></script>
+}
+
 @using (Html.BeginForm())
 {
 	<fieldset>
@@ -11,5 +16,6 @@
 	</fieldset>
 	@Html.Partial("~/Views/Report/PopUpPartials/_partialPopUpPerpetrator.cshtml", new PerpetratorViewModel())
 	@Html.Partial("~/Views/Report/PopUpPartials/_partialPopUpVehicle.cshtml", new VehicleViewModel())
+	@Html.HiddenFor(m => m.Vehicles)
 	<button type="submit"><img src="@Url.Content("~/Content/next.svg")"/></button>
 }
