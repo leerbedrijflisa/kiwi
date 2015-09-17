@@ -18,13 +18,14 @@
     };
 
     update();
+    
 
     $.connection.hub.url = window.ApiUrl + "signalr";
     $.connection.hub.start();
 });
 
-var reportCount,
-    firstLoad = true;
+var firstLoad = true;
+var reportCount = 0;
 
 function updateReports(data) {
 
@@ -34,7 +35,7 @@ function updateReports(data) {
     $('#container').html(html);
 
     if (!firstLoad) {
-        if (reportCount <= data.length) {
+        if (reportCount == data.length) {
             updatedReport();
         }
         else {
@@ -47,6 +48,7 @@ function updateReports(data) {
 
 function updatedReport() {
     var audio = new Audio('/Content/air-horn.mp3');
+    audio.volume = 0.5;
     audio.play();
 }
 
@@ -92,6 +94,8 @@ Handlebars.registerHelper('detailsSummary', function (report) {
             result = report.description || "";
             break;
     }
+
+    reportCount = $('section').length;
 
     return new Handlebars.SafeString(result);
 });
