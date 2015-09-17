@@ -1,23 +1,19 @@
-﻿<div class="field">
-	<h2>@Resources.ReportProperties.ResourceManager.GetString("BullyVictim")</h2>
-	<div class="donePadding">
-		<p>@DashboardHelpers.NullCheck(Model.VictimName)</p>
-	</div>
-</div>
-<fieldset>
-    <legend>@ReportProperties.ResourceManager.GetString("BullyVictim")</legend>
-	<input type="text" id="VictimName" value="@DashboardHelpers.NullCheck(Model.VictimName)" />
-</fieldset>
-<div class="field">
-	<h2>@Resources.ReportProperties.ResourceManager.GetString("Description")</h2>
-	<div class="donePadding">
-		<p>@DashboardHelpers.NullCheck(Model.Description)</p>
-	</div>
-</div>
+﻿@model Report
 
-<div class="field">
-	<h2>@Resources.ReportProperties.ResourceManager.GetString("VictimDescription")</h2>
-	<div class="donePadding">
-		<p>@DashboardHelpers.NullCheck(Model.Victim)</p>
-	</div>
-</div>
+<fieldset class="summary">
+	<legend>@PageItems.BullyVictimName</legend>
+	<p>@Model.VictimName</p>
+</fieldset>
+
+@if (Model.Victim != null)
+{
+	<fieldset class="summary">
+		<legend>@PageItems.BullyVictim</legend>
+		<p>@Model.Victim</p>
+	</fieldset>
+}
+
+<fieldset class="summary">
+	<legend>@PageItems.Description</legend>
+	<p>@Model.Description</p>
+</fieldset>
