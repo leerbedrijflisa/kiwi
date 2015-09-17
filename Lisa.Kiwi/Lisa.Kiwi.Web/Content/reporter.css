@@ -252,3 +252,24 @@ textarea {
 header h1 {
     display: none;
 }
+
+/*
+  Summary form
+
+  At the end of the wizard, the user sees a summary form. This summary form
+  has slightly different styling from regular forms to indicate that the user
+  has already filled out these fields.
+*/
+
+.summary legend { /* descriptions on the summary page */
+  background-color: #eee;
+	color: #113;
+}
+
+.summary button {
+  background-color: white;
+}
+
+p.summary {
+  margin-top: 0;
+}
