@@ -1,6 +1,7 @@
-﻿<fieldset class="summary">
-	<legend>Wat heb je gezien?</legend>
-	<select>
-		<option>@Model.Category</option>
-	</select>
+﻿@model Report
+<fieldset class="summary">
+	<legend>Wat is er gemeld?</legend>
+	<p>
+		@Categories.ResourceManager.GetString(Model.Category)
+	</p>
 </fieldset>
