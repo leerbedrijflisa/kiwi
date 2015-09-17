@@ -1,5 +1,27 @@
 ﻿@model Report
 @using perpetratorResource = Resources.Perpetrator
+
+
+
+<fieldset class="summary">
+	<legend>Wie heb je gezien?</legend>
+	
+	@if (Model.Perpetrators.Count() != 0)
+	{
+		<ul>
+			@foreach (var perp in Model.Perpetrators)
+			{
+				<li>
+					@perp.Name, @String.Format("{0}-{1} jaar", perp.MinimumAge, perp.MaximumAge)
+				</li>
+			}
+		</ul>
+	}
+	
+
+	<button onclick="showPopup('person'); return false;">Persoon toevoegen</button>
+</fieldset>
+
 @foreach (var perpetrator in Model.Perpetrators)
 {
 	<div class="field">

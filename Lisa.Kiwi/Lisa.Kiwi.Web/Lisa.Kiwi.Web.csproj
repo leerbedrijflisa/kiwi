@@ -367,6 +367,7 @@
     <Content Include="Views\Report\PopUpPartials\_partialPopUpPerpetrator.cshtml" />
     <Content Include="Views\Report\PopUpPartials\_partialPopUpVehicle.cshtml" />
     <Content Include="Views\Report\PopUpPartials\_partialPopUpContact.cshtml" />
+    <Content Include="Views\Shared\Partials\Done\_PartialDoneTheft.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
