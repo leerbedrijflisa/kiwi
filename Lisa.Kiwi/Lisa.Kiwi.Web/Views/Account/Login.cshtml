@@ -4,18 +4,20 @@
 }
 @using (Html.BeginForm())
 {
-	<div class="field">
-		<label><b>Login</b></label>
-	</div>
-	<div class="field">
-		@Html.LabelFor(m => m.UserName)
+	<fieldset>
+		<legend>Login</legend>
+	</fieldset>
+	<fieldset>
+		<legend>
+			@Html.LabelFor(m => m.UserName)
+		</legend>
 		@Html.TextBoxFor(m => m.UserName)
-	</div>
-	<div class="field">
-		@Html.LabelFor(m => m.Password)
+	</fieldset>
+	<fieldset>
+		<legend>
+			@Html.LabelFor(m => m.Password)
+		</legend>
 		@Html.PasswordFor(m => m.Password)
-	</div>
-	<div class="submit">
-		<button type="submit"><img src="@Url.Content("~/Content/next.svg")" /></button>
-	</div>
+	</fieldset>
+	<button type="submit"><img src="@Url.Content("~/Content/next.svg")" /></button>
 }
