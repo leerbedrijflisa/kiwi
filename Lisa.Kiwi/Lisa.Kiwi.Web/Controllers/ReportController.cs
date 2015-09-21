@@ -166,7 +166,7 @@ namespace Lisa.Kiwi.Web
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(GetCurrentReportId(), report);
 
-            return RedirectToAction("Vehicle");
+            return RedirectToAction("Perpetrator");
         }
 
         public ActionResult Drugs()
