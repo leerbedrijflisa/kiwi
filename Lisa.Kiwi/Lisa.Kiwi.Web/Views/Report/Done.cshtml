@@ -24,7 +24,7 @@
 	{
 		if (Model.Location != null)
 		{
-			@Html.Partial("~/Views/Shared/Partials/Done/_PartialDoneLocation.cshtml", Model)
+			@Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportLocation.cshtml", Model.Location)
 		}
 
 		<fieldset class="summary">
@@ -37,18 +37,9 @@
 		@Html.Partial("~/Views/Shared/Partials/Done/_PartialDone" + Model.Category + ".cshtml", Model)
 	}
 
-	if (Model.Perpetrators != null)
-	{
-		@Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportPerpetrators.cshtml", Model);
-	}
-
 	if (Model.Contact != null)
 	{
-		@Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportContact.cshtml", Model);
-	}
-	if (Model.Vehicles != null)
-	{
-		@Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportVehicles.cshtml", Model);
+		@Html.Partial("~/Views/Shared/Partials/Done/_PartialDoneContact.cshtml", Model.Contact);
 	}
 	<input type="hidden" name="category" value="@Model.Category" />
 	<div class="submit">
