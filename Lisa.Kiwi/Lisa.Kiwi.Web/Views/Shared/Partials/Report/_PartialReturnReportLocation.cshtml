@@ -1,13 +1,13 @@
-@model Report
+@model Location
 <fieldset class="summary">
 	<legend>@PageItems.Location </legend>
 	<p>
 		@{
-			var prePosition = Buildings.ResourceManager.GetString(String.Format("{0}_Preposition", Model.Location.Building));
+			var prePosition = Buildings.ResourceManager.GetString(String.Format("{0}_Preposition", Model.Building));
 			prePosition = Char.ToUpper(prePosition[0]) + prePosition.Substring(1);
 		}
 		@prePosition 
-		@Buildings.ResourceManager.GetString(Model.Location.Building)
-		 - @Model.Location.Description
+		@Buildings.ResourceManager.GetString(Model.Building)
+		 - @Model.Description
 	</p>
 </fieldset>

@@ -1,32 +1,30 @@
 ﻿@model Report
 
-<form>
-	@Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportCategory.cshtml", Model)
+@Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportCategory.cshtml", Model.Category)
 
-	@if (Model.Location != null)
-	{
-		@Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportLocation.cshtml", Model)
-	}
+@if (Model.Location != null)
+{
+	@Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportLocation.cshtml", Model.Location)
+}
 
-	@Html.Partial("~/Views/Shared/Partials/Details/_PartialDetailsCreatedAt.cshtml", Model)
+@Html.Partial("~/Views/Shared/Partials/Details/_PartialDetailsCreatedAt.cshtml", Model.Created)
 
-	@Html.Partial("~/Views/Shared/Partials/Details/_PartialDetails" + Model.Category + ".cshtml", Model)
+@Html.Partial("~/Views/Shared/Partials/Details/_PartialDetails" + Model.Category + ".cshtml", Model)
 
-	@if (Model.Perpetrators != null)
-	{
-		@Html.Partial("~/Views/Shared/Partials/Details/_PartialDetailsPerpetrators.cshtml", Model);
-	}
+@if (Model.Perpetrators != null)
+{
+	@Html.Partial("~/Views/Shared/Partials/Details/_PartialDetailsPerpetrators.cshtml", Model.Perpetrators);
+}
 
-	@if (Model.Contact != null)
-	{
-		@Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportContact.cshtml", Model);
-	}
+@if (Model.Contact != null)
+{
+	@Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportContact.cshtml", Model.Contact);
+}
 
-	@if (Model.Vehicles != null)
-	{
-		@Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportVehicles.cshtml", Model);
-	}
-</form>
+@if (Model.Vehicles != null)
+{
+	@Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportVehicles.cshtml", Model.Vehicles);
+}
 
 @using (Html.BeginForm())
 {

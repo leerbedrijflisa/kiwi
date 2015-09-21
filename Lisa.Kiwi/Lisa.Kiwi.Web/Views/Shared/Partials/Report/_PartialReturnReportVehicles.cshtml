@@ -1,5 +1,6 @@
-﻿@model Report
-@foreach (var vehicle in Model.Vehicles)
+﻿@model IEnumerable<Vehicle>
+
+@foreach (var vehicle in Model)
 {
 	<div class="field">
 		<label>&nbsp;</label>

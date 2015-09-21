@@ -1,7 +1,8 @@
-﻿@model Report
+﻿@model string
+
 <fieldset class="summary">
 	<legend>Wat is er gemeld?</legend>
 	<p>
-		@Categories.ResourceManager.GetString(Model.Category)
+		@Categories.ResourceManager.GetString(Model)
 	</p>
 </fieldset>
