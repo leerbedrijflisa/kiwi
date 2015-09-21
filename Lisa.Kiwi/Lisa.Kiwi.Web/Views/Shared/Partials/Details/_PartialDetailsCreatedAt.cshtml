@@ -1,4 +1,6 @@
-﻿<fieldset class="summary">
+﻿@model DateTimeOffset
+
+<fieldset class="summary">
 	<legend>@PageItems.CreatedAt</legend>
-	<p>@Model.Created.ToString("dd MMMM yyyy H:mm")</p>
+	<p>@Model.ToString("dd MMMM yyyy H:mm")</p>
 </fieldset>
