@@ -13,7 +13,7 @@ namespace Lisa.Kiwi.Web
         public string Name { get; set; }
 
         [Required(ErrorMessage = ErrorMessages.RequiredError)]
-        [DisplayName("Wat is het geslacht van de dader? *")]
+        [DisplayName("Wat is het geslacht van de dader? ")]
         public SexEnum Sex { get; set; }
 
         [DisplayName("Wat is de huidskleur van de dader?")]
