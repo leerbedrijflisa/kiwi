@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Lisa.Kiwi.WebApi
@@ -51,5 +52,6 @@ namespace Lisa.Kiwi.WebApi
         public virtual PerpetratorData Perpetrator { get; set; }
         public virtual ContactData Contact { get; set; }
         public virtual VehicleData Vehicle { get; set; }
+        public virtual List<FileData> Files { get; set; }
     }
 }

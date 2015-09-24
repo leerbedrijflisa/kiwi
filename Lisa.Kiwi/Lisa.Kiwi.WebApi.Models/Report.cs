@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Lisa.Kiwi.WebApi
 {
@@ -46,12 +47,13 @@ namespace Lisa.Kiwi.WebApi
         //Bullying
         public string VictimName { get; set; }
         public string Victim { get; set; }
-        //Other
 
+        //Other
         public Location Location { get; set; }
         public Contact Contact { get; set; }
         public Perpetrator Perpetrator { get; set; }
         public Vehicle Vehicle { get; set; }
+        public List<File> Files { get; set; }
     }
 
     public enum StatusEnum
