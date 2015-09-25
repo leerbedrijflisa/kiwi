@@ -26,13 +26,13 @@ namespace Lisa.Kiwi.Web
                     new SelectListItem
                     {
                         Text = "Drugsgebruik",
-                        Value = "Ùsing"
+                        Value = "Using"
                     },
                     new SelectListItem
                     {
                         Text = "Dealen van drugs",
                         Value = "Dealing"
-                    },
+                    }
                 };
             }
         }
