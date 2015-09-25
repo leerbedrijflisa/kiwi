@@ -52,6 +52,6 @@ namespace Lisa.Kiwi.WebApi
         public virtual PerpetratorData Perpetrator { get; set; }
         public virtual ContactData Contact { get; set; }
         public virtual VehicleData Vehicle { get; set; }
-        public virtual List<FileData> Files { get; set; }
+        public virtual ICollection<FileData> Files { get; set; }
     }
 }

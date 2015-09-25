@@ -53,7 +53,7 @@ namespace Lisa.Kiwi.WebApi
         public Contact Contact { get; set; }
         public Perpetrator Perpetrator { get; set; }
         public Vehicle Vehicle { get; set; }
-        public List<File> Files { get; set; }
+        public IEnumerable<File> Files { get; set; }
     }
 
     public enum StatusEnum

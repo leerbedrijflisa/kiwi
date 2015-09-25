@@ -8,6 +8,5 @@
         public string ContentType { get; set; }
         public string Key { get; set; }
         public string Container { get; set; }
-        public byte[] Md5 { get; set; }
     }
 }

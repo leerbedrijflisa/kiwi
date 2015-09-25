@@ -14,7 +14,5 @@ namespace Lisa.Kiwi.WebApi
 
         public string Key { get; set; }
         public string Container { get; set; }
-
-        public byte[] Md5 { get; set; }
     }
 }
