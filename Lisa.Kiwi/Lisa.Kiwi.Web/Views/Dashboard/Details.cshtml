@@ -1,13 +1,21 @@
 ﻿@model Report
 
-@Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportCategory.cshtml", Model.Category)
+<fieldset class="summary">
+	<legend>Wat is er gemeld?</legend>
+	<p>
+		@Categories.ResourceManager.GetString(Model.Category)
+	</p>
+</fieldset>
 
 @if (Model.Location != null)
 {
-	@Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportLocation.cshtml", Model.Location)
+	@Html.Partial("~/Views/Shared/Partials/Details/_PartialDetailsLocation.cshtml", Model.Location)
 }
 
-@Html.Partial("~/Views/Shared/Partials/Details/_PartialDetailsCreatedAt.cshtml", Model.Created)
+<fieldset class="summary">
+	<legend>@PageItems.CreatedAt</legend>
+	<p>@Model.Created.ToString("dd MMMM yyyy H:mm")</p>
+</fieldset>
 
 @Html.Partial("~/Views/Shared/Partials/Details/_PartialDetails" + Model.Category + ".cshtml", Model)
 
@@ -18,34 +26,33 @@
 
 @if (Model.Contact != null)
 {
-	@Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportContact.cshtml", Model.Contact);
+	@Html.Partial("~/Views/Shared/Partials/Details/_PartialDetailsContact.cshtml", Model.Contact);
 }
 
 @if (Model.Vehicles != null)
 {
-	@Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportVehicles.cshtml", Model.Vehicles);
+	@Html.Partial("~/Views/Shared/Partials/Details/_PartialDetailsVehicles.cshtml", Model.Vehicles);
 }
 
 @using (Html.BeginForm())
 {
-	<div class="field">
-		<label>@PageItems.Status</label>
+	<fieldset>
+		<legend>@PageItems.Status</legend>
 		<ul class="radioList">
 			<li><input type="radio" name="Status" value="@StatusEnum.Open" @(Model.Status == StatusEnum.Open ? "checked=\"checked\"" : "") /> @Statuses.Open</li>
 			<li><input type="radio" name="Status" value="@StatusEnum.Transferred" @(Model.Status == StatusEnum.Transferred ? "checked=\"checked\"" : "") /> @Statuses.Transferred</li>
 			<li><input type="radio" name="Status" value="@StatusEnum.Solved" @(Model.Status == StatusEnum.Solved ? "checked=\"checked\"" : "") /> @Statuses.Solved</li>
 		</ul>
-	</div>
+	</fieldset>
 	if (Request.Cookies["role"] != null && Request.Cookies["role"].Value == "Administrator")
 	{
-		<div class="field">
+		<fieldset>
 			<label>@PageItems.VisibleChange</label>
 			@(!Model.IsVisible ? Html.CheckBox("IsVisible") : Html.CheckBox("IsVisible", new { @checked = "true" }))
-		</div>
+		</fieldset>
 	}
-
-	<div class="field">
+	<fieldset>
 		<button type="submit">Status wijzigen</button>
-	</div>
+	</fieldset>
 	<div class="button-container">@Html.ActionLink("terug", "index", "dashboard")</div>
 }

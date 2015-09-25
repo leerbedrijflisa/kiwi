@@ -22,11 +22,18 @@
 
 	if (Model.Category != null)
 	{
-		if (Model.Location != null)
-		{
-			@Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportLocation.cshtml", Model.Location)
-		}
-
+		<fieldset class="summary">
+			<legend>@PageItems.Location </legend>
+			<p>
+				@{
+					var prePosition = Buildings.ResourceManager.GetString(String.Format("{0}_Preposition", Model.Location.Building));
+					prePosition = Char.ToUpper(prePosition[0]) + prePosition.Substring(1);
+				}
+				@prePosition
+				@Buildings.ResourceManager.GetString(Model.Location.Building)
+				- @Model.Location.Description
+			</p>
+		</fieldset>
 		<fieldset class="summary">
 			<legend>Wat heb je gezien?</legend>
 			<select>
