@@ -44,8 +44,8 @@ namespace Lisa.Kiwi.Web
 
         public void Modify(Report report, TheftViewModel viewModel)
         {
-            report.StolenObject = viewModel.StolenObject ;
-            report.DateOfTheft = viewModel.DateOfTheft.Add(viewModel.TimeOfTheft.TimeOfDay);
+            report.StolenObject = viewModel.StolenObject;
+            report.DateOfTheft = viewModel.DateOfTheft;
             report.Description = viewModel.Description;
             report.Vehicles = GetVehicles(viewModel.Vehicles);
             report.Perpetrators = GetPerpetrators(viewModel.Perpetrators);
