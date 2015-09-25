@@ -1,0 +1,10 @@
+﻿@model IEnumerable<Lisa.Kiwi.WebApi.Perpetrator>
+
+<ul>
+	@foreach (var perpetrator in Model)
+	{
+		<li>
+			@perpetrator.Name
+		</li>
+	}
+</ul>

@@ -1,0 +1,13 @@
+﻿@model Report
+
+<fieldset class="summary">
+	<legend>@DisplayNames.Unconscious</legend>
+	@if (Model.IsUnconscious == null || Model.IsUnconscious == false)
+	{
+		<input type="checkbox" name="IsUnconscious"/>
+	}
+	else
+	{
+		<input type="checkbox" name="IsUnconscious" checked="checked"/>
+	}
+</fieldset>

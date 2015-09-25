@@ -11,10 +11,10 @@
 
 @if (Model.Vehicles != null)
 {
-	@Html.Partial("~/Views/Shared/Partials/Done/_PartialDoneVehicles.cshtml", Model.Vehicles)
+	@Html.Partial("~/Views/Shared/Partials/Done/Vehicles.cshtml", Model.Vehicles)
 }
 
 @if (Model.Perpetrators != null)
 {
-	@Html.Partial("~/Views/Shared/Partials/Done/_PartialDonePerpetrators.cshtml", Model.Perpetrators)
+	@Html.Partial("~/Views/Shared/Partials/Done/Perpetrators.cshtml", Model.Perpetrators)
 }

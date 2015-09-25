@@ -1,0 +1,10 @@
+﻿@model IEnumerable<Vehicle>
+
+<ul>
+	@foreach (var vehicle in Model)
+	{
+		<li>
+			@vehicle.NumberPlate
+		</li>
+	}
+</ul>

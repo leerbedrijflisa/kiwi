@@ -41,12 +41,12 @@
 			</select>
 		</fieldset>
 
-		@Html.Partial("~/Views/Shared/Partials/Done/_PartialDone" + Model.Category + ".cshtml", Model)
+		@Html.Partial("~/Views/Shared/Partials/Done/" + Model.Category + ".cshtml", Model)
 	}
 
 	if (Model.Contact != null)
 	{
-		@Html.Partial("~/Views/Shared/Partials/Done/_PartialDoneContact.cshtml", Model.Contact);
+		@Html.Partial("~/Views/Shared/Partials/Done/Contact.cshtml", Model.Contact);
 	}
 	<input type="hidden" name="category" value="@Model.Category" />
 	<div class="submit">
