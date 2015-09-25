@@ -395,7 +395,7 @@ namespace Lisa.Kiwi.Web
         }
 
        protected override void OnActionExecuting(ActionExecutingContext context)
-        {
+       {
             CreateReportProxy();
 
             var tokenCookie = Request.Cookies["token"];
