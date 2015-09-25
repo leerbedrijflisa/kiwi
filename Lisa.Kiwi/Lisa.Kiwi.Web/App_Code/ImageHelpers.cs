@@ -1,17 +1,15 @@
-﻿using System;
+﻿using Microsoft.WindowsAzure.Storage.Blob;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using Microsoft.WindowsAzure.Storage.Blob;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.Azure;
 
 namespace Lisa.Kiwi.Web
 {
-    internal static class ImageHelpers
+    public class ImageHelpers
     {
         /// <summary>
         /// Checks if image is smaller than given dimensions.
@@ -89,37 +87,27 @@ namespace Lisa.Kiwi.Web
         /// <summary>
         /// Returns the Url of the given File object
         /// </summary>
-        public static string GetImageUrl(WebApi.Models.File file)
+        public static string GetImageUrl(WebApi.File file)
         {
-            _container = _blobClient.GetContainerReference(file.Container);
-            _container.CreateIfNotExists();
-            _container.SetPermissions(
-                new BlobContainerPermissions
-                {
-                    PublicAccess = BlobContainerPublicAccessType.Blob
-                });
+            _container = MvcApplication.GetBlobContainer(file.Container);
 
             return _container.GetBlockBlobReference(file.Key).Uri.ToString();
         }
 
-        public static string GetImageUrl(WebApi.Models.File file, string size)
+        public static string GetImageUrl(WebApi.File file, string size)
         {
-            var key = file.Key.Split('.').First();
-            var extension = file.Key.Split('.').Last();
-            var keyResized = string.Format("{0}_{1}.{2}", key, size.Split('/').First(), extension);
+            var keyGuid = file.Key.Split('.').First();
+            var keyExtension = file.Key.Split('.').Last();
+            var keySizeIdentifier = size.Split('/').First();
 
-            _container = _blobClient.GetContainerReference(file.Container);
-            _container.CreateIfNotExists();
-            _container.SetPermissions(
-                new BlobContainerPermissions
-                {
-                    PublicAccess = BlobContainerPublicAccessType.Blob
-                });
+            var key = string.Format("{0}_{1}.{2}", keyGuid, keySizeIdentifier, keyExtension);
 
-            if (_container.GetBlockBlobReference(keyResized)
+            _container = MvcApplication.GetBlobContainer(file.Container);
+
+            if (_container.GetBlockBlobReference(key)
                 .Exists())
             {
-                return _container.GetBlockBlobReference(keyResized).Uri.ToString();
+                return _container.GetBlockBlobReference(key).Uri.ToString();
             }
 
             return _container.GetBlockBlobReference(file.Key).Uri.ToString();
@@ -133,15 +121,12 @@ namespace Lisa.Kiwi.Web
             public static List<string> List { get { return _list; } }
 
             private static List<string> _list = new List<string>
-        {
-            Thumbnail,
-            InPage,
-            FullSize
-        };
+            {
+                Thumbnail,
+                InPage,
+                FullSize
+            };
         }
-
-        private static readonly CloudStorageAccount _storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("StorageConnectionString"));
-        private static readonly CloudBlobClient _blobClient = _storageAccount.CreateCloudBlobClient();
         private static CloudBlobContainer _container;
     }
 }
