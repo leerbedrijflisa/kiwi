@@ -13,7 +13,6 @@ namespace Lisa.Kiwi.Web
         [DisplayName("Wie wordt er gepest? *")]
         public string VictimName { get; set; }
 
-        public bool HasVictim { get; set; }
-        public bool HasPerpetrator { get; set; }
+        public string Perpetrators { get; set; }
     }
 }

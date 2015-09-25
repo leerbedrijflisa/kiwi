@@ -276,19 +276,6 @@ namespace Lisa.Kiwi.Web
             var report = new Report();
             _modelFactory.Modify(report, viewModel);
             report = await _reportProxy.PatchAsync(GetCurrentReportId(), report);
-
-            if (viewModel.HasPerpetrator && !viewModel.HasVictim)
-            {
-                return RedirectToAction("Contact");
-            }
-            else if (!viewModel.HasPerpetrator && viewModel.HasVictim)
-            {
-                return RedirectToAction("Contact");
-            }
-            else if (viewModel.HasPerpetrator && viewModel.HasVictim)
-            {
-                return RedirectToAction("Contact", routeValues: new { hasVictim = viewModel.HasVictim });
-            }
             
             return RedirectToAction("Contact");
         }

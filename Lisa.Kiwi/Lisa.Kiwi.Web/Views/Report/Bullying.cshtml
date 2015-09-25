@@ -25,5 +25,6 @@
 			@Html.TextAreaFor(m => m.Description)
 		</div>
 	</fieldset>
+	@Html.HiddenFor(m => m.Perpetrators)
 	<button type="submit"><img src="@Url.Content("~/Content/next.svg")" /></button>
 }
