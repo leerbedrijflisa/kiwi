@@ -1,1 +1,14 @@
 ﻿@model Contact
+
+<fieldset>
+	<legend>@DisplayNames.ContactName</legend>
+	@Html.TextBoxFor( m => m.Name )
+</fieldset>
+<fieldset>
+	<legend>@DisplayNames.ContactPhoneNumber</legend>
+	@Html.TextBoxFor( m => m.PhoneNumber )
+</fieldset>
+<fieldset>
+	<legend>@DisplayNames.ContactEmail</legend>
+	@Html.TextBoxFor( m => m.EmailAddress )
+</fieldset>
