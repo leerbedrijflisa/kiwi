@@ -371,10 +371,19 @@ namespace Lisa.Kiwi.Web
         }
 
         [HttpPost]
-        public async Task<ActionResult> Done(string category)
+        public async Task<ActionResult> Done(Report viewModel)
         {
-            var report = await GetCurrentReport();
-            switch (category)
+            if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
+            
+            var report = new Report();
+
+            _modelFactory.Modify(report, viewModel);
+            await _reportProxy.PatchAsync(GetCurrentReportId(), report);
+
+            switch (report.Category)
             {
                 case "Theft":
                 case "Bullying":

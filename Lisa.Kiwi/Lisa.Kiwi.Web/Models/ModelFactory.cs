@@ -129,27 +129,7 @@ namespace Lisa.Kiwi.Web
             report.IsVisible = viewModel.IsVisible;
         }
 
-        public void Create(Report report, EditDoneViewModel viewModel)
-        {
-            viewModel.Category = report.Category;
-            viewModel.Description = report.Description;
-            viewModel.DrugsAction = report.DrugsAction;
-            viewModel.FighterCount = report.FighterCount;
-            viewModel.IsUnconscious = report.IsUnconscious;
-            viewModel.DateOfTheft = report.DateOfTheft;
-            viewModel.StolenObject = report.StolenObject;
-            viewModel.Victim = report.Victim;
-            viewModel.VictimName = report.VictimName;
-            viewModel.IsWeaponPresent = report.IsWeaponPresent;
-            viewModel.WeaponLocation = report.WeaponLocation;
-            viewModel.WeaponType = report.WeaponType;
-            viewModel.Location = report.Location;
-            viewModel.Perpetrators = report.Perpetrators;
-            viewModel.Vehicles = report.Vehicles;
-            viewModel.Contact = report.Contact;
-        }
-
-        public void Modify(Report report, EditDoneViewModel viewModel)
+        public void Modify(Report report, Report viewModel)
         {
             report.Category = viewModel.Category;
             report.Description = viewModel.Description;
@@ -163,10 +143,7 @@ namespace Lisa.Kiwi.Web
             report.IsWeaponPresent = viewModel.IsWeaponPresent;
             report.WeaponLocation = viewModel.WeaponLocation;
             report.WeaponType = viewModel.WeaponType;
-            if(viewModel.WeaponType == "Anders")
-            {
-                report.WeaponType = viewModel.OtherType;
-            }
+            report.WeaponType = viewModel.WeaponType;
             report.Location = viewModel.Location;
             report.Perpetrators = viewModel.Perpetrators;
             report.Vehicles = viewModel.Vehicles;
