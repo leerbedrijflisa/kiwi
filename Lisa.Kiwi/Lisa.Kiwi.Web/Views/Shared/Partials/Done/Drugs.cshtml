@@ -1,2 +1,39 @@
 ﻿@model Report
 
+@{
+	var drugsActions = new[]
+	{
+			new SelectListItem
+			{
+					Text = "Drugsgebruik",
+					Value = "Using",
+					Selected = Model.DrugsAction == "Using"
+			},
+			new SelectListItem
+			{
+					Text = "Dealen van drugs",
+					Value = "Dealing",
+					Selected = Model.DrugsAction == "Dealing"
+			}
+	};
+}
+
+<fieldset>
+	<legend>@DisplayNames.DrugsAction</legend>
+	@Html.DropDownListFor(m => m.DrugsAction, drugsActions)
+</fieldset>
+
+@if (Model.Vehicles != null)
+{
+	@Html.Partial("~/Views/Shared/Partials/Done/Vehicles.cshtml", Model.Vehicles)
+}
+
+@if (Model.Perpetrators != null)
+{
+	@Html.Partial("~/Views/Shared/Partials/Done/Perpetrators.cshtml", Model.Perpetrators)
+}
+
+<fieldset>
+	<legend>@DisplayNames.Description</legend>
+	@Html.TextAreaFor(m => m.Description)
+</fieldset>
