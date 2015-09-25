@@ -484,6 +484,25 @@ namespace Lisa.Kiwi.Web
             return RedirectToAction("Done");
         }
 
+        [HttpPost]
+        public async Task<JsonResult> UploadFiles()
+        {
+            try
+            {
+                var files = Request.Files;
+                var report = await GetCurrentReport();
+                _modelFactory.Modify(report, files);
+                await _reportProxy.PatchAsync(report.Id, report);
+            }
+            catch (Exception)
+            {
+                Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                return Json("Upload failed");
+            }
+
+            return Json("File uploaded successfully");
+        }
+
         protected override void OnActionExecuting(ActionExecutingContext context)
         {
             CreateReportProxy();

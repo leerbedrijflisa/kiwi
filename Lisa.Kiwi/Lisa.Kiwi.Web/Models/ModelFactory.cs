@@ -1,5 +1,7 @@
 ﻿using Lisa.Kiwi.WebApi;
 using System;
+using System.Collections.Generic;
+using System.Web;
 
 namespace Lisa.Kiwi.Web
 {
@@ -200,6 +202,29 @@ namespace Lisa.Kiwi.Web
             {
                 report.Contact = null;
             }
+        }
+
+        public void Modify(Report report, HttpFileCollectionBase files)
+        {
+            report.Files = GetFiles(files, report.Id.ToString());
+        }
+
+        private IEnumerable<File> GetFiles(HttpFileCollectionBase httpFiles, string uploadContainer)
+        {
+            var files = new List<File>();
+
+            foreach (string fileId in httpFiles)
+            {
+                var fileContent = httpFiles[fileId];
+                if (fileContent != null && fileContent.ContentLength > 0)
+                {
+                    var uploader = new FileUploader(fileContent, uploadContainer);
+                    files.Add(uploader.GetFileEntity());
+                    uploader.UploadFile();
+                }
+            }
+
+            return files;
         }
     }
 }
