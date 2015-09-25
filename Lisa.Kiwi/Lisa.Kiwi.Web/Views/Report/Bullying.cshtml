@@ -5,24 +5,25 @@
 }
 
 @section Scripts{
-    <script src="~/Scripts/pop-up.js"></script>
+	<script src="~/Scripts/pop-up.js"></script>
 }
 
 @using (Html.BeginForm())
 {
-    <fieldset>
-        <legend>@DisplayNames.VictimName</legend>
-        <div>
-            @Html.TextBoxFor(m => m.VictimName)
-        </div>
-    </fieldset>
-    @Html.Partial("~/Views/Report/PopUpPartials/_partialPopUpPerpetrator.cshtml", new PerpetratorViewModel())
-    <fieldset>
-        <legend>
-            @DisplayNames.BullyingDescription</legend>
-        <div>
-            @Html.TextAreaFor(m => m.Description)
-        </div>
-    </fieldset>
-    <button type="submit"><img src="@Url.Content("~/Content/next.svg")" /></button>
+	<fieldset>
+		<legend>@DisplayNames.VictimName</legend>
+		<div>
+			@Html.TextBoxFor(m => m.VictimName)
+		</div>
+	</fieldset>
+	@Html.Partial("~/Views/Report/PopUpPartials/_partialPopUpPerpetrator.cshtml", new PerpetratorViewModel())
+	<fieldset>
+		<legend>
+			@DisplayNames.BullyingDescription
+		</legend>
+		<div>
+			@Html.TextAreaFor(m => m.Description)
+		</div>
+	</fieldset>
+	<button type="submit"><img src="@Url.Content("~/Content/next.svg")" /></button>
 }
