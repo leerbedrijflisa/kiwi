@@ -4,3 +4,13 @@
 	<legend>@DisplayNames.WhatHappened</legend>
 		@Html.TextAreaFor(m => m.Description)
 </fieldset>
+
+@if (Model.Vehicles != null)
+{
+	@Html.Partial("~/Views/Shared/Partials/Done/Vehicles.cshtml", Model.Vehicles)
+}
+
+@if (Model.Perpetrators != null)
+{
+	@Html.Partial("~/Views/Shared/Partials/Done/Perpetrators.cshtml", Model.Perpetrators)
+}
