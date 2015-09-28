@@ -375,7 +375,7 @@ namespace Lisa.Kiwi.Web
         {
             if (!ModelState.IsValid)
             {
-                return View(viewModel);
+                return View(new DoneViewModel(await GetCurrentReport()));
             }
             
             var report = new Report();
