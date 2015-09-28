@@ -3,14 +3,20 @@
 @{
 	ViewBag.Title = Categories.Nuisance;
 }
+
+@section Scripts{
+	<script src="~/Scripts/pop-up.js"></script>
+}
+
 @using (Html.BeginForm())
 {
-	<div class="field">
-		<label>@ReportProperties.NuisanceDescription *</label>
-		@Html.TextBoxFor(m => m.Description)	
-	</div>
-	<div class="submit">
-		<button type="submit"><img src="@Url.Content("~/Content/next.svg")"/></button>
-		<span class="floatLeft">*verplichte velden</span>
-	</div>
+	<fieldset>
+		<legend>@DisplayNames.WhatHappened</legend>
+		@Html.TextAreaFor(m => m.Description)
+	</fieldset>
+	@Html.Partial("~/Views/Report/PopUpPartials/_partialPopUpPerpetrator.cshtml", new PerpetratorViewModel())
+	@Html.Partial("~/Views/Report/PopUpPartials/_partialPopUpVehicle.cshtml", new VehicleViewModel())
+	@Html.HiddenFor(m => m.Vehicles)
+	@Html.HiddenFor(m => m.Perpetrators)
+	<button type="submit"><img src="@Url.Content("~/Content/next.svg")"/></button>
 }

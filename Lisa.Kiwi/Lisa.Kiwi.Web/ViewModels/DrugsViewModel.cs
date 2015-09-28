@@ -1,15 +1,40 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace Lisa.Kiwi.Web
 {
     public class DrugsViewModel
     {
         [Required(ErrorMessage = ErrorMessages.RequiredError)]
-        [DisplayName("Wordt er gedeald of gebruikt? *")]
+        [DisplayName("Wat heb je gezien?")]
         public string Action { get; set; }
 
-        [DisplayName("Heeft u nog overige informatie die u wilt melden?")]
+        [DisplayName("Wat kun je er verder over vertellen?")]
         public string Description { get; set; }
+
+        public string Vehicles { get; set; }
+        public string Perpetrators { get; set; }
+
+        public IEnumerable<SelectListItem> DrugsActions
+        {
+            get
+            {
+                return new[]
+                {
+                    new SelectListItem
+                    {
+                        Text = "Drugsgebruik",
+                        Value = "Using"
+                    },
+                    new SelectListItem
+                    {
+                        Text = "Dealen van drugs",
+                        Value = "Dealing"
+                    }
+                };
+            }
+        }
     }
 }

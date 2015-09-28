@@ -1,49 +1,50 @@
-﻿@model Report
-
+﻿@model DoneViewModel
 
 @using (Html.BeginForm())
 {
-	<div class="field">
-		<label>&nbsp;</label>
-		<p>
-			@PageItems.DoneMessage
+	<fieldset>
+		<legend>@PageItems.DoneMessage</legend>
+		<p class="summary">
 			@if (Model.Category == "FirstAid" || Model.Category == "Fight")
 			{
-				@PageItems.HelpOnTheWay
+				<text>
+					Hulp is onderweg. Indien nodig kun je hieronder je melding aanpassen.
+				</text>
 			}
 			else
 			{
-				@PageItems.TakenAction
+				<text>
+					We nemen je melding van @Categories.ResourceManager.GetString(Model.Category) zo snel mogelijk in behandeling. Indien nodig kun je hieronder je melding nog wijzigen.
+				</text>
 			}
 		</p>
-	</div>
-	<div class="field">
-		<label>&nbsp;</label>
-		<p><a href="~/Report/EditDone">Klik hier om uw eerder ingevulde waarden aan te passen.</a></p>
-	</div>
+	</fieldset>
 
 	if (Model.Category != null)
 	{
-		@Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportCategory.cshtml", Model)
-		@Html.Partial("~/Views/Shared/Partials/Details/_PartialDetails" + Model.Category + ".cshtml", Model)
+		<fieldset class="summary">
+			<legend>@DisplayNames.Index</legend>
+			<p>@Categories.ResourceManager.GetString(Model.Category)</p>
+		</fieldset>
 	}
-	if (Model.Location != null)
-	{
-		@Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportLocation.cshtml", Model)
-	}
-
-	if (Model.Perpetrator != null)
-	{
-		@Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportPerpetrator.cshtml", Model);
-	}
+	<fieldset class="summary">
+		<legend>@PageItems.Location </legend>
+		<p>
+			@{
+				var prePosition = Buildings.ResourceManager.GetString(String.Format("{0}_Preposition", Model.Location.Building));
+				prePosition = Char.ToUpper(prePosition[0]) + prePosition.Substring(1);
+			}
+			@prePosition
+			@Buildings.ResourceManager.GetString(Model.Location.Building)
+			- @Model.Location.Description
+		</p>
+	</fieldset>
+		
+	@Html.Partial("~/Views/Shared/Partials/Done/" + Model.Category + ".cshtml", Model)
 
 	if (Model.Contact != null)
 	{
-		@Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportContact.cshtml", Model);
-	}
-	if (Model.Vehicle != null)
-	{
-		@Html.Partial("~/Views/Shared/Partials/Report/_PartialReturnReportVehicle.cshtml", Model);
+		@Html.Partial("~/Views/Shared/Partials/Done/Contact.cshtml", Model.Contact);
 	}
 	<input type="hidden" name="category" value="@Model.Category" />
 	<div class="submit">

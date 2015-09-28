@@ -1,0 +1,14 @@
+﻿@model Contact
+
+<fieldset class="summary">
+	<legend>@DisplayNames.ContactName</legend>
+	<input type="text" value="@Model.Name" name="ContactName"/>
+</fieldset>
+<fieldset class="summary">
+	<legend>@DisplayNames.ContactPhoneNumber</legend>
+	<input type="text" value="@Model.PhoneNumber" name="ContactPhoneNumber"/>
+</fieldset>
+<fieldset class="summary">
+	<legend>@DisplayNames.ContactEmail</legend>
+	<input type="text" value="@Model.EmailAddress" name="ContactEmail"/>
+</fieldset>

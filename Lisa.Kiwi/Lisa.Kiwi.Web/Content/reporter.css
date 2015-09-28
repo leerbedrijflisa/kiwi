@@ -1,400 +1,259 @@
 @import url(//fonts.googleapis.com/css?family=Source+Sans+Pro:400,600);
 
+/*
+	Common typography
+*/
+
+body,
+input,
+textarea,
+button {
+  font-family: Source Sans Pro, sans-serif;
+  font-size: 12pt;
+}
+
+/*
+	Basic structure
+*/
+
 body {
+  background-color: white;
+  max-width: 720px;
+  margin: 0;
+}
+
+html {
+  min-height: 100%;
+  position: relative;
+}
+
+@media (min-width: 720px) {
+  html {
     background-color: #ccc;
-    font-family: Source Sans Pro;
+  }
+
+  body {
+    margin: 10px auto; /* center the entire page */
+  }
+}
+
+/*
+	Site banner
+
+	The top of the page is usually covered by a banner image, but in case
+	the CSS doesn't load, the banner also contains text. This is also
+	useful for web crawlers. The text is hidden here in favor of the
+	banner image.
+*/
+
+header {
+  background-image: url(banner.jpg);
+  background-repeat: repeat;
+  background-size: contain;
+  height: 74px;
+}
+
+  header h1 {
+    display: none; /* hide the text */
+  }
+
+/*
+	Forms
+
+	The fields of a form are displayed vertically. Each field has a
+	description right above it.
+
+	Each field together with its description is wrapped in fieldset-tags.
+	Inside the fieldset-element, the legend-element contains the
+	description of the field.
+*/
+
+fieldset {
+  display: block;
+  border: none;
+  padding: 0px;
+  margin: 0 0 15px 0;
+}
+
+legend {
+  display: block;
+  width: 100%;
+  background-color: #113;
+  color: white;
+  text-align: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+fieldset p { /* heading inside form */
+  margin: 10px 0;
+  padding: 10px;
+  width: calc(100% - 20px);
+}
+
+input:not([type='radio']),
+select,
+textarea {
+  box-sizing: border-box; /* otherwise element overflows to the right */
+  width: calc(100% - 20px);
+  min-height: 44px; /* easier to select on mobile devices */
+  margin: 0 10px;
+  padding: 5px;
 }
 
 textarea {
-    resize: vertical;
+  min-height: 88px;
+}
+
+.required {
+  display: block;
+  color: #999;
+  font-size: 10pt;
+  text-align: right;
+  margin-right: 10px;
+}
+
+/*
+	Buttons
+*/
+
+button {
+  background-color: #eee;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: center;
+  vertical-align: middle;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  width: calc(100% - 20px);
+  height: 44px;
+  position: relative; /* serve as a container for images */
+}
+
+  button[type=submit] {
+    background-color: #113;
+    color: white;
+    border-color: black;
+  }
+
+  button:not([type=submit]) img {
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    max-width: 32px;
+    max-height: 32px;
+    border: 1px solid #ccc;
+    border-radius: 16px;
+  }
+
+/*
+	Popups
+
+	Some forms show a popup for additional information (e.g. about persons of
+	interest, or vehicles).
+*/
+
+fieldset {
+  position: relative; /* make fieldset container for popup */
+}
+
+.popup {
+  display: none; /* popup is invisible by default */
+  position: absolute; /* position popup over the form */
+  z-index: 1;
+  background-color: white; /* visually distinguish popup from background */
+  border: 1px solid #889;
+  width: calc(100% - 20px); /* center popup */
+  margin-left: 10px;
+}
+
+  .popup header {
+    background: none; /* disable style from regular header */
+    height: auto;
+    /* NOTE: following style is same as legend in regular form */
+    display: block;
+    width: 100%;
+    background-color: #113;
+    color: white;
+    text-align: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .popup legend {
+    background-color: #eee; /* visually distinguish from regular form */
+    color: #333;
+    font-size: 11pt;
+    margin-left: 10px; /* add whitespace to show field is nested */
+    width: calc(100% - 20px);
+    margin-bottom: 5px; /* less whitespace at bottom just looks better */
+  }
+
+  .popup button {
+    display: inline;
+    width: calc(50% - 20px); /* a popup has two buttons next to each other */
+  }
+
+.overlay { /* obscures the background when popup is active */
+  display: none; /* overlay is invisible by default */
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(250, 250, 250, 0.8);
+}
+
+#bug-report {
+  display: none;
+}
+
+.bug-report-form {
+  display: none;
+}
+
+@media(max-width: 515px) {
+  form .field label.mobile-hide, .container .field label.mobile-hide {
+    display: none;
+  }
+}
+
+textarea {
+  resize: vertical;
 }
 
 /*
 	Header
 */
 
-header {
-    background: url('banner.jpg');
-    height: 186px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 900px;
-    background-position: bottom;
-    margin: auto;
-}
-
 header h1 {
-    display: none;
+  display: none;
 }
 
 /*
-	Basic structure
-	
-	The form is centered on the page. It has a blue banner across the top that contains the header and
-	a blue bar to the left side that contains the labels.
+  Summary form
+
+  At the end of the wizard, the user sees a summary form. This summary form
+  has slightly different styling from regular forms to indicate that the user
+  has already filled out these fields.
 */
 
-form,
-.container {
-	background-color: white;
-	margin: auto;
-	width: 900px;
+.summary legend { /* descriptions on the summary page */
+  background-color: #eee;
+  color: #113;
 }
 
-.body h1,
-.container h1 {
-  margin: 0;
-  background-color: #113;
-  padding: 5px;
-  color: white;
+.summary button {
+  background-color: white;
 }
 
-.grayLayer p, .grayLayer h2{
-   opacity: 0.4;
+p.summary {
+  margin-top: 0;
 }
 
-.grayLayer label{
-    color: gray !important;
-}
-
-form .field,
-.container .field {
-	display: table-row;
-	width: 100%;
-}
-
-form .field > *,
-.container .field > * {
-    display: table-cell;
-    vertical-align: top;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    padding: 15px;
-}
-
-form .field label,
-.container .field label {
-	background-color: #113;
-	color: white;
-	text-align: right;
-	width: 270px;
-}
-
-@media(max-width: 515px) {
-    form .field label.mobile-hide, .container .field label.mobile-hide {
-        display: none;
-    }
-}
-
-form .field label.radio, label.radio:checked{
-    background-color: white;
-    margin: auto;
-    width: 900px;
-}
-
-form .field,
-.container .field {
-    display: inline-table;
-    width: 100%;
-}
-
-form .field > *,
-.body .field > * {
-    display: table-cell;
-    vertical-align: top;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    padding: 15px;
-}
-
-form .field label,
-.container .field label {
-    background-color: #113;
-    color: white;
-    text-align: right;
-    width: 33.34%;
-
-    word-break: break-word;
-}
-
-form .field label.radio,
-label.radio:checked {
-    background-color: white;
-    color: black;
-    background: none !important;
-    text-align: left;
-    width: auto !important;
-    height: 20px !important;
-    margin: 0 20px 0 20px;
-    cursor: auto;
-}
-
-form .field .radioList li,
-form .field .radioList li:first-child {
-    list-style: none;
-    height: 30px;
-    margin-left: 30px;
-}
-
-form .field .radioList li:first-child {
-    margin-top: 15px;
-}
-
-form .field ul.radioList {
-    padding: 0;
-}
-
-.floatLeft {
-    float: left;
-}
-
-.endButtons {
-    text-align: right;
-    width: 94%;
-}
-
-.field-validation-error {
-    padding-left: 30px !important;
-    padding-bottom: 5px !important;
-}
-
-/*
-	Button lists
-*/
-
-ul.buttons {
-    padding-left: 12px;
-}
-
-ul.cat-buttons {
-    padding-bottom: 50px;
-}
-
-ul.buttons li {
-    display: inline-table;
-    vertical-align: top;
-    width: 137px;
-    text-align: center;
-    -ms-word-break: break-word;
-    word-break: break-word;
-    margin-bottom: 5px;
-}
-
-ul.buttons li button {
-    background: white;
-    border: none;
-    padding: 0;
-    font-family: Source Sans Pro;
-    font-size: 12pt;
-    cursor: pointer;
-}
-
-ul.buttons li button img {
-    width: 99px;
-    height: 99px;
-}
-
-div.radioButtonDivider {
-    padding-left: 30px;
-}
-
-/*.radioButton input[type=radio] {
-    display: inline;
-    width: auto;
-    height: auto;
-    margin: 0;
-    margin-top: 5px;
-    float: left;
-}*/
-
-
-/*
-	Form contents
-*/
-
-input[type=checkbox] {
-    width: 70px;
-    height: 19px;
-    margin-top: 32px;
-}
-
-input[type=radio] {
-    margin-top: 5px;
-}
-
-form .field p,
-.field p {
-    margin-top: 0;
-    font-size: 12pt;
-    color: #003;
-}
-
-form .field h2 {
-	font-size: 12pt;
-	color: #003;
-}
-
-form .field textarea,
-form .field input[type=text],
-form .field input[type=number],
-form .field input[type=password],
-form .field select {
-    font-family: Source Sans Pro;
-    font-size: 12pt;
-    margin: 15px 0 0 5%;
-    width: 90%;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
-.input-validation-error {
-    border: 1px solid #ca1818;
-    background-color: rgb(255, 222, 222);
-}
-
-form .field button {
-    font-family: Source Sans Pro;
-    font-size: 12pt;
-    margin: 15px 0 0 30px;
-    cursor: pointer;
-}
-
-form .submit {
-    text-align: right;
-    padding: 30px 3%;
-    width: 94%;
-}
-
-form .submit button {
-    background-color: #113;
-    border: 1px solid black;
-    border-radius: 30px;
-    text-align: center;
-    vertical-align: middle;
-    width: 44px;
-    height: 44px;
-    outline: none;
-}
-
-form .submit button:hover {
-    background-color: #557;
-}
-
-form .submit button:active {
-    width: 42px;
-    height: 42px;
-    margin-top: 1px;
-    margin-bottom: 1px;
-    margin-right: 1px;
-}
-
-form .submit button:active img {
-    width: 18px;
-    height: 18px;
-}
-
-/* Finishing pages */
-
-.locationCategory {
-    width: 137px !important;
-    height: 141px !important;
-    text-align: center !important;
-    padding-left: 0 !important;
-}
-
-/* Responsive */
-@media(max-width: 900px) {
-    header,
-    form,
-		.container,
-    .submit {
-        width: 100%;
-        min-width: 400px;
-    }
-
-    .submit {
-        min-width: 380px;
-    }
-}
-
-@media(max-width: 683px) {
-    header {
-        height: 137px;
-    }
-}
-
-@media(max-width: 477px) {
-    header {
-        height: 96px;
-    }
-}
-
-/* View specific css */
-.button-container {
-    padding: 10px;
-}
-
-.button-container button,
-.button-container input[type=submit],
-.button-container a{
-    padding: 6px 30px;
-    margin-right: 8px;
-    margin-bottom: 8px;
-    border: none;
-    background-color: #113;
-    color: white;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-#bug-report {
-	position: fixed;
-	top: -0.5%;
-	height: 20px;
-	right: 5%;
-	padding: 5px 14px;
-	border-bottom-left-radius: 10px;
-	border-bottom-right-radius: 10px;
-	background-color: #113;
-	text-decoration: none;
-	color: white;
-}
-
-.bug-report-form {
-	position: fixed;
-	top: -0.5%;
-	right: 5%;
-	padding: 5px 14px;
-	background-color: #113;
-	width: 300px !important;
-	height: 205px;
-	display: none;
-	border: solid 1px #113;
-	border-bottom-left-radius: 10px;
-}
-
-.bug-report-form form {
-    width: 300px;
-	background-color: #113;
-}
-
-.bug-report-form textarea,
-.bug-report-form input {
-    font-family: Source Sans Pro;
-}
-
-input.email {
-	width: 295px;
-}
-
-input.subject {
-	width: 295px;
-}
-
-textarea.bug {
-	width: 295px;
-	height: 125px;
+.radioList {
+  list-style: none;
 }

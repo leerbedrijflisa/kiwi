@@ -8,5 +8,8 @@ namespace Lisa.Kiwi.Web
         [Required(ErrorMessage = ErrorMessages.RequiredError)]
         [DisplayName("Wat is er aan de hand? *")]
         public string Description { get; set; }
+
+        public string Vehicles { get; set; }
+        public string Perpetrators { get; set; }
     }
 }

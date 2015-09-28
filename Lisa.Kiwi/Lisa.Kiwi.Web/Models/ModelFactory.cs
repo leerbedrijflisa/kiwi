@@ -1,7 +1,10 @@
 ﻿using Lisa.Kiwi.WebApi;
 using System;
-using System.Collections.Generic;
 using System.Web;
+using System.Collections.Generic;
+using System.Linq;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Lisa.Kiwi.Web
 {
@@ -40,16 +43,21 @@ namespace Lisa.Kiwi.Web
 
         public void Modify(Report report, TheftViewModel viewModel)
         {
-            report.StolenObject = viewModel.StolenObject ;
-            report.DateOfTheft = viewModel.DateOfTheft.Add(viewModel.TimeOfTheft.TimeOfDay);
+            report.StolenObject = viewModel.StolenObject;
+            report.DateOfTheft = viewModel.DateOfTheft;
             report.Description = viewModel.Description;
+            report.Vehicles = GetVehicles(viewModel.Vehicles);
+            report.Perpetrators = GetPerpetrators(viewModel.Perpetrators);
         }
 
         public void Modify(Report report, DrugsViewModel viewModel)
         {
             report.DrugsAction = viewModel.Action;
             report.Description = viewModel.Description;
+            report.Vehicles = GetVehicles(viewModel.Vehicles);
+            report.Perpetrators = GetPerpetrators(viewModel.Perpetrators);
         }
+
         public void Modify(Report report, FightViewModel viewModel)
         {
             report.FighterCount = viewModel.FighterCount;
@@ -71,12 +79,15 @@ namespace Lisa.Kiwi.Web
         public void Modify(Report report, NuisanceViewModel viewModel)
         {
             report.Description = viewModel.Description;
+            report.Vehicles = GetVehicles(viewModel.Vehicles);
+            report.Perpetrators = GetPerpetrators(viewModel.Perpetrators);
         }
 
         public void Modify(Report report, BullyingViewModel viewModel)
         {
             report.Description = viewModel.Description;
             report.VictimName = viewModel.VictimName;
+            report.Perpetrators = GetPerpetrators(viewModel.Perpetrators);
         }
         public void Modify(Report report, VictimViewModel viewModel)
         {
@@ -85,29 +96,10 @@ namespace Lisa.Kiwi.Web
         public void Modify(Report report, OtherViewModel viewModel)
         {
             report.Description = viewModel.Description;
+            report.Vehicles = GetVehicles(viewModel.Vehicles);
+            report.Perpetrators = GetPerpetrators(viewModel.Perpetrators);
         }
-
-        public void Modify(Report report, PerpetratorViewModel viewModel)
-        {
-            if (report.Perpetrator == null)
-            {
-                report.Perpetrator = new Perpetrator();
-            }
-            if (viewModel.AgeRange != null)
-            {
-                var values = viewModel.AgeRange.Split('-');
-                var minimumAge = Convert.ToInt32(values[0]);
-                var maximumAge = Convert.ToInt32(values[1]);
-                report.Perpetrator.MinimumAge = minimumAge;
-                report.Perpetrator.MaximumAge = maximumAge;
-            }
-            report.Perpetrator.Name = viewModel.Name;
-            report.Perpetrator.Clothing = viewModel.Clothing;
-            report.Perpetrator.Sex = viewModel.Sex;
-            report.Perpetrator.SkinColor = viewModel.SkinColor;
-            report.Perpetrator.UniqueProperties = viewModel.UniqueProperties;
-        }
-
+        
         public void Modify(Report report, ContactViewModel viewModel)
         {
              if(report.Contact == null)
@@ -136,39 +128,7 @@ namespace Lisa.Kiwi.Web
             report.IsVisible = viewModel.IsVisible;
         }
 
-        public void Modify(Report report, VehicleViewModel viewModel)
-        {
-            report.Vehicle = new Vehicle
-            {
-                Brand = viewModel.Brand,
-                Color = viewModel.Color,
-                NumberPlate = viewModel.NumberPlate,
-                AdditionalFeatures = viewModel.AdditionalFeatures,
-                VehicleType = viewModel.VehicleType
-            };
-        }
-
-        public void Create(Report report, EditDoneViewModel viewModel)
-        {
-            viewModel.Category = report.Category;
-            viewModel.Description = report.Description;
-            viewModel.DrugsAction = report.DrugsAction;
-            viewModel.FighterCount = report.FighterCount;
-            viewModel.IsUnconscious = report.IsUnconscious;
-            viewModel.DateOfTheft = report.DateOfTheft;
-            viewModel.StolenObject = report.StolenObject;
-            viewModel.Victim = report.Victim;
-            viewModel.VictimName = report.VictimName;
-            viewModel.IsWeaponPresent = report.IsWeaponPresent;
-            viewModel.WeaponLocation = report.WeaponLocation;
-            viewModel.WeaponType = report.WeaponType;
-            viewModel.Location = report.Location;
-            viewModel.Perpetrator = report.Perpetrator;
-            viewModel.Vehicle = report.Vehicle;
-            viewModel.Contact = report.Contact;
-        }
-
-        public void Modify(Report report, EditDoneViewModel viewModel)
+        public void Modify(Report report, DoneViewModel viewModel)
         {
             report.Category = viewModel.Category;
             report.Description = viewModel.Description;
@@ -182,28 +142,27 @@ namespace Lisa.Kiwi.Web
             report.IsWeaponPresent = viewModel.IsWeaponPresent;
             report.WeaponLocation = viewModel.WeaponLocation;
             report.WeaponType = viewModel.WeaponType;
-            if(viewModel.WeaponType == "Anders")
-            {
-                report.WeaponType = viewModel.OtherType;
-            }
+            report.WeaponType = viewModel.WeaponType;
             report.Location = viewModel.Location;
-            report.Perpetrator = viewModel.Perpetrator;
-            report.Vehicle = viewModel.Vehicle;
+            report.Perpetrators = viewModel.Perpetrators;
+            report.Vehicles = viewModel.Vehicles;
 
-            if (viewModel.Contact.Name != null || viewModel.Contact.PhoneNumber != null || viewModel.Contact.EmailAddress != null)
+            if (viewModel.ContactName != null || viewModel.ContactPhoneNumber != null || viewModel.ContactEmail != null)
             {
                 if (report.Contact == null)
                 {
                     report.Contact = new Contact();
                 }
-                report.Contact = viewModel.Contact;
+                report.Contact.EmailAddress = viewModel.ContactEmail;
+                report.Contact.PhoneNumber = viewModel.ContactPhoneNumber;
+                report.Contact.Name = viewModel.ContactName;
             }
             else
             {
                 report.Contact = null;
             }
         }
-
+        
         public void Modify(Report report, HttpFileCollectionBase files)
         {
             report.Files = GetFiles(files, report.Id.ToString());
@@ -225,6 +184,51 @@ namespace Lisa.Kiwi.Web
             }
 
             return files;
+        }
+
+        private IEnumerable<Perpetrator> GetPerpetrators(string json)
+        {
+            var perpetratorsJson = json != null ? JsonConvert.DeserializeObject<JToken>(json) : new JArray();
+            var perpetrators = new List<Perpetrator>();
+
+            foreach (var perpetratorJson in perpetratorsJson)
+            {
+                var perpetrator = new Perpetrator
+                {
+                    Name = perpetratorJson.Value<string>("Name"),
+                    Clothing = perpetratorJson.Value<string>("Clothing"),
+                    UniqueProperties = perpetratorJson.Value<string>("UniqueProperties")
+                };
+
+                var skinColor = perpetratorJson["SkinColor"] != null ? perpetratorJson.Value<string>("SkinColor") : null;
+                perpetrator.SkinColor = skinColor != null ? (SkinColorEnum) Enum.Parse(typeof (SkinColorEnum), skinColor, true) : SkinColorEnum.Unknown;
+
+                var sex = perpetratorJson["Sex"] != null ? perpetratorJson.Value<string>("Sex") : null;
+                perpetrator.Sex = sex != null ? (SexEnum) Enum.Parse(typeof (SexEnum), sex, true) : SexEnum.Unknown;
+
+                var ages = perpetratorJson.Value<string>("AgeRange").Split('-');
+
+                perpetrator.MinimumAge = int.Parse(ages[0]);
+                perpetrator.MaximumAge = int.Parse(ages[1]);
+
+                perpetrators.Add(perpetrator);
+            }
+
+            return perpetrators;
+        }
+
+        private IEnumerable<Vehicle> GetVehicles(string json)
+        {
+            var vehiclesJson = json != null ? JsonConvert.DeserializeObject<JToken>(json) : new JArray();
+            
+            return vehiclesJson.Select(vehicleJson => new Vehicle
+            {
+                Brand = vehicleJson.Value<string>("Brand"),
+                AdditionalFeatures = vehicleJson.Value<string>("AdditionalFeatures"),
+                Color = vehicleJson.Value<string>("Color"),
+                NumberPlate = vehicleJson.Value<string>("NumberPlate"),
+                VehicleType = (VehicleTypeEnum) Enum.Parse(typeof (VehicleTypeEnum), vehicleJson.Value<string>("Type") ?? "Other", true)
+            });
         }
     }
 }

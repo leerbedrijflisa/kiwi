@@ -1,0 +1,32 @@
+﻿@model Report
+
+@{
+	var weaponPresent = new[]
+	{
+		new SelectListItem
+		{
+			Text = "Ja",
+			Value = "true",
+			Selected = Model.IsWeaponPresent ?? false
+		},
+		new SelectListItem
+		{
+			Text = "Nee",
+			Value = "false",
+			Selected = Model.IsWeaponPresent ?? true
+		},
+	};
+}
+
+<fieldset class="summary">
+	<legend>@DisplayNames.FightCount</legend>
+	@Html.TextBoxFor(m => m.FighterCount, new { type = "number", min = 2, Value = 2 })
+</fieldset>
+<fieldset class="summary">
+	<legend>@DisplayNames.FightWeapon</legend>
+	@Html.DropDownListFor(m => m.IsWeaponPresent, weaponPresent)
+</fieldset>
+<fieldset class="summary">
+	<legend>@DisplayNames.Description</legend>
+	@Html.TextAreaFor(m => m.Description)
+</fieldset>

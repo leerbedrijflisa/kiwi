@@ -13,7 +13,7 @@ namespace Lisa.Kiwi.Web
         public string Name { get; set; }
 
         [Required(ErrorMessage = ErrorMessages.RequiredError)]
-        [DisplayName("Wat is het geslacht van de dader? *")]
+        [DisplayName("Wat is het geslacht van de dader? ")]
         public SexEnum Sex { get; set; }
 
         [DisplayName("Wat is de huidskleur van de dader?")]
@@ -49,6 +49,31 @@ namespace Lisa.Kiwi.Web
                     {
                         Text = Resources.SkinColor.Dark,
                         Value = "Dark"
+                    },
+                };
+            }
+        }
+
+        public IEnumerable<SelectListItem> SexList
+        {
+            get
+            {
+                return new[]
+                {
+                    new SelectListItem
+                    {
+                        Text = Resources.Sex.Unknown,
+                        Value = "Unknown"
+                    },
+                    new SelectListItem
+                    {
+                        Text = Resources.Sex.Male,
+                        Value = "Male"
+                    },
+                    new SelectListItem
+                    {
+                        Text = Resources.Sex.Female,
+                        Value = "Female"
                     },
                 };
             }

@@ -1,0 +1,15 @@
+<fieldset class="summary">
+	<legend>@ReportProperties.ResourceManager.GetString("UsingOrDealing")</legend>
+	<div>
+		<p>
+			@ReportProperties.ResourceManager.GetString("Drugs" + Model.DrugsAction)
+		</p>
+	</div>
+</fieldset>
+
+<fieldset class="summary">
+	<legend>@ReportProperties.ResourceManager.GetString("Description")</legend>
+	<div>
+		<p>@DashboardHelpers.NullCheck(Model.Description)</p>
+	</div>
+</fieldset>

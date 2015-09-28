@@ -1,0 +1,17 @@
+﻿<fieldset class="summary">
+	<legend>@ReportProperties.ResourceManager.GetString("WeaponType")</legend>
+	<p>@DashboardHelpers.NullCheck(Model.WeaponType)</p>
+</fieldset>
+
+<fieldset class="summary">
+	<h2>@ReportProperties.ResourceManager.GetString("WeaponLocation")</h2>
+	<p>@DashboardHelpers.NullCheck(Model.WeaponLocation)</p>
+</fieldset>
+
+@if (Model.Description != null)
+{
+	<fieldset class="summary">
+		<legend>@ReportProperties.Description</legend>
+		<p>@Model.Description</p>
+	</fieldset>
+}

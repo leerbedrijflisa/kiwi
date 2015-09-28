@@ -1,0 +1,63 @@
+﻿@model Report
+
+@{
+	var weaponTypes = new[]
+	{
+		new SelectListItem
+		{
+			Text = "Mes",
+			Value = "Mes",
+			Selected = Model.WeaponType == "Mes"
+		},
+		new SelectListItem
+		{
+			Text = "Boksbeugel",
+			Value = "Boksbeugel",
+			Selected = Model.WeaponType == "Boksbeugel"
+		},
+		new SelectListItem
+		{
+			Text = "Vuurwapen",
+			Value = "Vuurwapen",
+			Selected = Model.WeaponType == "Vuurwapen"
+		},
+		new SelectListItem
+		{
+			Text = "Pepperspray",
+			Value = "Pepperspray",
+			Selected = Model.WeaponType == "Pepperspray"
+		},
+		new SelectListItem
+		{
+			Text = "Anders",
+			Value = "Anders",
+			Selected = Model.WeaponType == "Anders"
+		}
+	};
+}
+
+
+@if (weaponTypes.Select(s => s.Text).Contains(Model.WeaponType))
+{
+	<fieldset class="summary">
+		<legend>@DisplayNames.WeaponType</legend>
+		@Html.DropDownListFor(m => m.WeaponType, weaponTypes)
+	</fieldset>
+}
+else
+{
+	<fieldset class="summary">
+		<legend>@DisplayNames.WeaponTypeOther</legend>
+		@Html.TextBoxFor(m => m.WeaponType)
+	</fieldset>
+}
+
+<fieldset class="summary">
+	<legend>@DisplayNames.WeaponLocation</legend>
+	@Html.TextAreaFor(m => m.Location)
+	<span class="required">verplicht veld</span>
+</fieldset>
+<fieldset class="summary">
+	<legend>@DisplayNames.Description</legend>
+	@Html.TextAreaFor(m => m.Description)
+</fieldset>

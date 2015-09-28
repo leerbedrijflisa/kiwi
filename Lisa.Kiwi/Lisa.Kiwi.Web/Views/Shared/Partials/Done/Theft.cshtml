@@ -1,0 +1,27 @@
+﻿@model Report
+
+<script src="~/Scripts/Theft.js"></script>
+<link rel="stylesheet" type="text/css" href="~/Content/jquery.datetimepicker.css" />
+<script src="~/Scripts/jquery.datetimepicker.js"></script>
+
+<fieldset class="summary">
+	<legend>@DisplayNames.StolenObject</legend>
+	<input name="StolenObject" value="@Model.StolenObject"/>
+</fieldset>
+<fieldset class="summary">
+	<legend>@DisplayNames.DateOfTheft</legend>
+	<input name="DateOfTheft" id="DateOfTheft" value="@Model.DateOfTheft"/>
+</fieldset>
+<fieldset class="summary">
+	<legend>@DisplayNames.Description</legend>
+	<input name="Description" value="@Model.Description"/>
+</fieldset>
+@if (Model.Vehicles != null)
+{
+	@Html.Partial("~/Views/Shared/Partials/Done/Vehicles.cshtml", Model.Vehicles)
+}
+
+@if (Model.Perpetrators != null)
+{
+	@Html.Partial("~/Views/Shared/Partials/Done/Perpetrators.cshtml", Model.Perpetrators)
+}

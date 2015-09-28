@@ -1,0 +1,20 @@
+﻿@model IEnumerable<Lisa.Kiwi.WebApi.Perpetrator>
+
+<fieldset class="summary">
+	<legend>@Resources.Perpetrator.Perpetrators</legend>
+	@if (Model.Count() != 0)
+	{
+		<ul>
+			@foreach (var perp in Model)
+			{
+				<li>
+					@perp.Name, 
+					@String.Format("{0}-{1} jaar", perp.MinimumAge, perp.MaximumAge), 
+					@Sex.ResourceManager.GetString(perp.Sex.ToString()),
+					kleding: @perp.Clothing,
+					andere kenmerken: @perp.UniqueProperties
+				</li>
+			}
+		</ul>
+	}
+</fieldset>

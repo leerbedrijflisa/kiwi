@@ -1,0 +1,37 @@
+﻿@if (Model.FighterCount != null)
+{
+	<fieldset class="summary">
+		<legend>@ReportProperties.ResourceManager.GetString("FightCount")</legend>
+		<p>@DashboardHelpers.NullCheck(Model.FighterCount)</p>
+	</fieldset>
+
+}
+
+@if (Model.IsWeaponPresent != null)
+{
+	<fieldset class="summary">
+		<legend>@ReportProperties.ResourceManager.GetString("WeaponPresent")</legend>
+		<p>@DashboardHelpers.NullCheck(Model.IsWeaponPresent)</p>
+	</fieldset>
+}
+
+@if (Model.IsWeaponPresent == true)
+{
+	<fieldset class="summary">
+		<legend>@ReportProperties.ResourceManager.GetString("WeaponType")</legend>
+		<p>@DashboardHelpers.NullCheck(Model.WeaponType)</p>
+	</fieldset>
+
+	<fieldset class="summary">
+		<legend>@ReportProperties.ResourceManager.GetString("WeaponLocation")</legend>
+		<p>@DashboardHelpers.NullCheck(Model.WeaponLocation)</p>
+	</fieldset>
+}
+
+@if (Model.Description != null)
+{
+	<fieldset class="summary">
+		<legend>@ReportProperties.Description</legend>
+		<p>@Model.Description</p>
+	</fieldset>
+}
