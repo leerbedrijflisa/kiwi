@@ -1,47 +1,37 @@
 ﻿@if (Model.FighterCount != null)
 {
-	<div class="field">
-		<h2>@ReportProperties.ResourceManager.GetString("FightCount")</h2>
-		<div class="donePadding">
-			<p>@DashboardHelpers.NullCheck(Model.FighterCount)</p>
-		</div>
-	</div>
+	<fieldset class="summary">
+		<legend>@ReportProperties.ResourceManager.GetString("FightCount")</legend>
+		<p>@DashboardHelpers.NullCheck(Model.FighterCount)</p>
+	</fieldset>
 
 }
 
 @if (Model.IsWeaponPresent != null)
 {
-	<div class="field">
-		<h2>@ReportProperties.ResourceManager.GetString("WeaponPresent")</h2>
-		<div class="donePadding">
-			<p>@DashboardHelpers.NullCheck(Model.IsWeaponPresent)</p>
-		</div>
-	</div>
+	<fieldset class="summary">
+		<legend>@ReportProperties.ResourceManager.GetString("WeaponPresent")</legend>
+		<p>@DashboardHelpers.NullCheck(Model.IsWeaponPresent)</p>
+	</fieldset>
 }
 
 @if (Model.IsWeaponPresent == true)
 {
-    <div class="field">
-				<h2>@ReportProperties.ResourceManager.GetString("WeaponType")</h2>
-				<div class="donePadding">
-				<p>@DashboardHelpers.NullCheck(Model.WeaponType)</p>
-			</div>
-    </div>
+	<fieldset class="summary">
+		<legend>@ReportProperties.ResourceManager.GetString("WeaponType")</legend>
+		<p>@DashboardHelpers.NullCheck(Model.WeaponType)</p>
+	</fieldset>
 
-    <div class="field">
-        <h2>@ReportProperties.ResourceManager.GetString("WeaponLocation")</h2>
-				<div class="donePadding">
-				<p>@DashboardHelpers.NullCheck(Model.WeaponLocation)</p>
-			</div>
-    </div>
+	<fieldset class="summary">
+		<legend>@ReportProperties.ResourceManager.GetString("WeaponLocation")</legend>
+		<p>@DashboardHelpers.NullCheck(Model.WeaponLocation)</p>
+	</fieldset>
 }
 
 @if (Model.Description != null)
 {
-	<div class="field">
-		<h2>@ReportProperties.Description</h2>
-		<div class="donePadding">
-			<p>@Model.Description</p>
-		</div>
-	</div>
+	<fieldset class="summary">
+		<legend>@ReportProperties.Description</legend>
+		<p>@Model.Description</p>
+	</fieldset>
 }

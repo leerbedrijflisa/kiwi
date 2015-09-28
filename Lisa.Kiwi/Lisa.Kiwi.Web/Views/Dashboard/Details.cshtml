@@ -47,12 +47,16 @@
 	if (Request.Cookies["role"] != null && Request.Cookies["role"].Value == "Administrator")
 	{
 		<fieldset>
-			<label>@PageItems.VisibleChange</label>
+			<legend>@PageItems.VisibleChange</legend>
 			@(!Model.IsVisible ? Html.CheckBox("IsVisible") : Html.CheckBox("IsVisible", new { @checked = "true" }))
 		</fieldset>
 	}
 	<fieldset>
 		<button type="submit">Status wijzigen</button>
 	</fieldset>
-	<div class="button-container">@Html.ActionLink("terug", "index", "dashboard")</div>
+	<fieldset>
+		<p>
+			@Html.ActionLink("terug", "index", "dashboard")
+		</p>
+	</fieldset>
 }

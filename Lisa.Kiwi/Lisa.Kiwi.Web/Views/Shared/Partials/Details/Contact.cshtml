@@ -1,30 +1,24 @@
 @model Contact 
 
 @if (Model.Name != null)
- {
-	<fieldset>
+{
+	<fieldset class="summary">
 		<legend>@PageItems.ContactName</legend>
-		<div>
-			<input type="text" id="VictimName" value="@DashboardHelpers.NullCheck(Model.Name)" />
-		</div>
+		<p>@DashboardHelpers.NullCheck(Model.Name)</p>
 	</fieldset>
- }
+}
 @if (Model.PhoneNumber != null)
 {
-	<div class="field">
-		<h2>@PageItems.ContactPhoneNumber</h2>
-		<div class="donePadding">
-			<p>@DashboardHelpers.NullCheck(Model.PhoneNumber)</p>
-		</div>	
-	</div>
+	<fieldset class="summary">
+		<legend>@PageItems.ContactPhoneNumber</legend>
+		<p>@DashboardHelpers.NullCheck(Model.PhoneNumber)</p>
+	</fieldset>
 }
 
 @if (Model.EmailAddress != null)
 {
-	<div class="field">
-		<h2>@PageItems.ContactEmail</h2>
-		<div class="donePadding">
-			<p>@DashboardHelpers.NullCheck(Model.EmailAddress)</p>
-		</div>	
-	</div>
+	<fieldset class="summary">
+		<legend>@PageItems.ContactEmail</legend>
+		<p>@DashboardHelpers.NullCheck(Model.EmailAddress)</p>
+	</fieldset>
 }

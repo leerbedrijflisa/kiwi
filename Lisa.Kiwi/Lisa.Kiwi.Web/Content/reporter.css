@@ -118,8 +118,7 @@ textarea {
 	Buttons
 */
 
-button,
-.button {
+button {
   background-color: #eee;
   color: #333;
   border: 1px solid #ccc;
@@ -131,9 +130,6 @@ button,
   width: calc(100% - 20px);
   height: 44px;
   position: relative; /* serve as a container for images */
-  -webkit-appearance: button;
-  -moz-appearance: button;
-  appearance: button;
 }
 
   button[type=submit] {

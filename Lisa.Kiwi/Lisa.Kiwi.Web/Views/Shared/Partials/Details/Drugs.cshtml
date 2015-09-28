@@ -1,15 +1,15 @@
-<fieldset>
+<fieldset class="summary">
 	<legend>@ReportProperties.ResourceManager.GetString("UsingOrDealing")</legend>
 	<div>
-		<input type="text" id="VictimName" value="@DashboardHelpers.NullCheck(Model.DrugsAction)" />
+		<p>
+			@ReportProperties.ResourceManager.GetString("Drugs" + Model.DrugsAction)
+		</p>
 	</div>
 </fieldset>
 
-<fieldset>
+<fieldset class="summary">
 	<legend>@ReportProperties.ResourceManager.GetString("Description")</legend>
 	<div>
-		<input type="text" id="VictimName" value="@DashboardHelpers.NullCheck(Model.Description)" />
+		<p>@DashboardHelpers.NullCheck(Model.Description)</p>
 	</div>
 </fieldset>
-
-@*<input type="text" id="VictimName" value="@DashboardHelpers.NullCheck()" />*@
