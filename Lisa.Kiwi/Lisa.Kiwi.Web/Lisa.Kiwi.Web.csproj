@@ -89,6 +89,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Spatial, Version=5.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\System.Spatial.5.6.2\lib\net40\System.Spatial.dll</HintPath>
@@ -190,8 +191,8 @@
     <Compile Include="ViewModels\CategoryViewModel.cs" />
     <Compile Include="ViewModels\ContactRequiredViewModel.cs" />
     <Compile Include="ViewModels\ContactViewModel.cs" />
+    <Compile Include="ViewModels\DoneViewModel.cs" />
     <Compile Include="ViewModels\DrugsViewModel.cs" />
-    <Compile Include="ViewModels\EditDoneViewModel.cs" />
     <Compile Include="ViewModels\ErrorMessages.cs" />
     <Compile Include="ViewModels\FightViewModel.cs" />
     <Compile Include="ViewModels\FirstAidViewModel.cs" />
@@ -286,9 +287,11 @@
     <Content Include="Scripts\archive.js" />
     <Content Include="Scripts\dashboard.js" />
     <Content Include="Scripts\DoneWeapons.js" />
+    <Content Include="Scripts\header-resizer.js" />
     <Content Include="Scripts\hyphenator.js" />
     <Content Include="Scripts\bug-report.js" />
     <Content Include="Scripts\jquery.datetimepicker.js" />
+    <Content Include="Scripts\pop-up.js" />
     <Content Include="Scripts\Theft.js" />
     <Content Include="Scripts\Weapons.js" />
     <Content Include="Web.config">
@@ -328,7 +331,6 @@
     <Content Include="Views\Report\Drugs.cshtml" />
     <Content Include="Views\Report\Weapons.cshtml" />
     <Content Include="Views\Report\Bullying.cshtml" />
-    <Content Include="Views\Report\Perpetrator.cshtml" />
     <Content Include="Views\Report\Theft.cshtml" />
     <Content Include="Views\Report\Other.cshtml" />
     <Content Include="Views\Report\Nuisance.cshtml" />
@@ -340,29 +342,38 @@
     <Content Include="App_Code\ReportHelpers.cshtml" />
     <Content Include="Views\Report\AdditionalLocation.cshtml" />
     <Content Include="Views\Report\SessionExpired.cshtml" />
-    <Content Include="Views\Report\EditDone.cshtml" />
-    <Content Include="Views\Shared\Partials\Details\_PartialDetailsBullying.cshtml" />
-    <Content Include="Views\Shared\Partials\Details\_PartialDetailsDrugs.cshtml" />
-    <Content Include="Views\Shared\Partials\Details\_PartialDetailsFight.cshtml" />
-    <Content Include="Views\Shared\Partials\Details\_PartialDetailsFirstAid.cshtml" />
-    <Content Include="Views\Shared\Partials\Details\_PartialDetailsNuisance.cshtml" />
-    <Content Include="Views\Shared\Partials\Details\_PartialDetailsOther.cshtml" />
-    <Content Include="Views\Shared\Partials\Details\_PartialDetailsTheft.cshtml" />
-    <Content Include="Views\Shared\Partials\Details\_PartialDetailsWeapons.cshtml" />
-    <Content Include="Views\Shared\Partials\Report\_PartialReturnReportCategory.cshtml" />
-    <Content Include="Views\Shared\Partials\Report\_PartialReturnReportContact.cshtml" />
-    <Content Include="Views\Shared\Partials\Report\_PartialReturnReportLocation.cshtml" />
-    <Content Include="Views\Shared\Partials\Report\_PartialReturnReportPerpetrator.cshtml" />
-    <Content Include="Views\Shared\Partials\Report\_PartialReturnReportVehicle.cshtml" />
+    <Content Include="Views\Shared\Partials\Details\Bullying.cshtml" />
+    <Content Include="Views\Shared\Partials\Details\Drugs.cshtml" />
+    <Content Include="Views\Shared\Partials\Details\Fight.cshtml" />
+    <Content Include="Views\Shared\Partials\Details\FirstAid.cshtml" />
+    <Content Include="Views\Shared\Partials\Details\Nuisance.cshtml" />
+    <Content Include="Views\Shared\Partials\Details\Other.cshtml" />
+    <Content Include="Views\Shared\Partials\Details\Theft.cshtml" />
+    <Content Include="Views\Shared\Partials\Details\Weapons.cshtml" />
+    <Content Include="Views\Shared\Partials\Details\Contact.cshtml" />
+    <Content Include="Views\Shared\Partials\Details\Location.cshtml" />
+    <Content Include="Views\Shared\Partials\Details\Perpetrators.cshtml" />
+    <Content Include="Views\Shared\Partials\Details\Vehicles.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Account\EditPassword.cshtml" />
     <Content Include="Views\Dashboard\Archive.cshtml" />
     <Content Include="Views\Report\_partialBugReport.cshtml" />
     <Content Include="Views\Report\BugReport.cshtml" />
-    <Content Include="Views\Shared\Partials\Details\_PartialDetailsCreatedAt.cshtml">
-      <SubType>Code</SubType>
-    </Content>
+    <Content Include="Views\Report\PopUpPartials\_partialPopUpPerpetrator.cshtml" />
+    <Content Include="Views\Report\PopUpPartials\_partialPopUpVehicle.cshtml" />
+    <Content Include="Views\Report\PopUpPartials\_partialPopUpContact.cshtml" />
+    <Content Include="Views\Shared\Partials\Done\Theft.cshtml" />
+    <Content Include="Views\Shared\Partials\Done\Vehicles.cshtml" />
+    <Content Include="Views\Shared\Partials\Done\Perpetrators.cshtml" />
+    <Content Include="Views\Shared\Partials\Done\Contact.cshtml" />
+    <Content Include="Views\Shared\Partials\Done\FirstAid.cshtml" />
+    <Content Include="Views\Shared\Partials\Done\Fight.cshtml" />
+    <Content Include="Views\Shared\Partials\Done\Weapons.cshtml" />
+    <Content Include="Views\Shared\Partials\Done\Nuisance.cshtml" />
+    <Content Include="Views\Shared\Partials\Done\Other.cshtml" />
+    <Content Include="Views\Shared\Partials\Done\Drugs.cshtml" />
+    <Content Include="Views\Shared\Partials\Done\Bullying.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -433,9 +444,7 @@
       <Name>Lisa.Kiwi.WebApi.Access</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Report\EditPartials\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Resources\Categories.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

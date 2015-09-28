@@ -5,25 +5,18 @@
 }
 @using (Html.BeginForm())
 {
-	<div class="field">
-		@Html.LabelFor(m => m.FighterCount)
+	<fieldset>
+		<legend>@DisplayNames.FightCount</legend>
 		@Html.TextBoxFor(m => m.FighterCount, new { @type = "number", @min = 2, Value = 2 })
-	</div>
-	<div class="field">
-		@* TODO: figure out a way to make this checkbox look clearer *@
-		@Html.LabelFor(m => m.IsWeaponPresent)
-
-		<div class="radioButtonDivider">
-			@Html.RadioButtonFor(m => m.IsWeaponPresent, true) Ja
-			@Html.RadioButtonFor(m => m.IsWeaponPresent, false, new { @checked = false }) Nee
-		</div>
-	</div>
-	<div class="field">
-		@Html.LabelFor(m => m.Description)
-		@Html.TextAreaFor(m => m.Description, new {@class = "DescriptionBox"})
-	</div>
-	<div class="submit">
-		<button type="submit"><img src="@Url.Content("~/Content/next.svg")"/></button>
-		<span class="floatLeft">* verplichte velden</span>
-	</div>
+		<span class="required">verplicht veld</span>
+	</fieldset>
+	<fieldset>
+		<legend>@DisplayNames.FightWeapon</legend>
+		@Html.DropDownListFor(m => m.IsWeaponPresent, Model.WeaponPresent)
+	</fieldset>
+	<fieldset>
+		<legend>@DisplayNames.Description</legend>
+		@Html.TextAreaFor(m => m.Description)
+	</fieldset>
+	<button type="submit"><img src="@Url.Content("~/Content/next.svg")"/></button>
 }

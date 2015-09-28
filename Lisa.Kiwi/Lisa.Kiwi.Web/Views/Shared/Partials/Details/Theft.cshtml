@@ -1,0 +1,17 @@
+﻿<fieldset class="summary">
+	<legend>@ReportProperties.StolenObject</legend>
+	<p>@DashboardHelpers.NullCheck(Model.StolenObject)</p>
+</fieldset>
+
+<fieldset class="summary">
+	<legend>@ReportProperties.DateOfTheft</legend>
+	<p>@DashboardHelpers.NullCheck(Model.DateOfTheft)</p>
+</fieldset>
+
+@if (Model.Description != null)
+{
+	<fieldset class="summary">
+		<legend>@ReportProperties.Description</legend>
+		<p>@Model.Description</p>
+	</fieldset>
+}

@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity.SqlServer.Utilities;
+using System.Globalization;
+using System.Linq;
 using Newtonsoft.Json.Linq;
 
 namespace Lisa.Kiwi.WebApi
@@ -48,28 +52,14 @@ namespace Lisa.Kiwi.WebApi
             {
                 reportData.Contact = Modify(reportData.Contact, json["contact"]);
             }
-            if (json["perpetrator"] != null)
+            if (json["perpetrators"] != null)
             {
-                reportData.Perpetrator = Modify(reportData.Perpetrator, json["perpetrator"]);
+                reportData.Perpetrators = ModifyPerpetrators(json["perpetrators"]);
             }
-            if (json["vehicle"] != null)
+            if (json["vehicles"] != null)
             {
-                reportData.Vehicle = Modify(reportData.Vehicle, json["vehicle"]);
+                reportData.Vehicles = ModifyVehicles(json["vehicles"]);
             }
-        }
-
-        public VehicleData Create(Vehicle vehicle)
-        {
-            var vehicleData = new VehicleData
-            {
-                Brand = vehicle.Brand,
-                Color = vehicle.Color,
-                NumberPlate = vehicle.NumberPlate,
-                AdditionalFeatures = vehicle.AdditionalFeatures,
-                VehicleType = vehicle.VehicleType
-            };
-
-            return vehicleData;
         }
 
         public ContactData Create(Contact contact)
@@ -101,36 +91,57 @@ namespace Lisa.Kiwi.WebApi
             return data;
         }
 
-        private PerpetratorData Modify(PerpetratorData perpetratorData, JToken json)
+        private ICollection<PerpetratorData> ModifyPerpetrators(JToken json)
         {
-            var data = perpetratorData ?? new PerpetratorData();
-            data.Name = json["name"] != null ? json.Value<string>("name") : data.Name;
+            var perpetrators = new List<PerpetratorData>();
 
-            var sexString = json["sex"] != null ? json.Value<string>("sex") : null;
-            data.Sex = sexString != null ? (SexEnum) Enum.Parse(typeof(SexEnum), sexString, true) : SexEnum.Unknown;
+            foreach (var perpetratorJson in json)
+            {
+                var perpetrator = new PerpetratorData
+                {
+                    Name = perpetratorJson.Value<string>("name"),
+                    Clothing = perpetratorJson.Value<string>("clothing"),
+                    MinimumAge = perpetratorJson.Value<int>("minimumAge"),
+                    MaximumAge = perpetratorJson.Value<int>("maximumAge"),
+                    UniqueProperties = perpetratorJson.Value<string>("uniqueProperties")
+                };
 
-            var skinColorString = json["skinColor"] != null ? json.Value<string>("skinColor") : null;
-            data.SkinColor = skinColorString != null ? (SkinColorEnum)Enum.Parse(typeof(SkinColorEnum), skinColorString, true) : SkinColorEnum.Unknown;
+                var textInfo = new CultureInfo("en-US", false).TextInfo;
 
-            data.Clothing = json["clothing"] != null ? json.Value<string>("clothing") : data.Clothing;
-            data.MinimumAge = json["minimumAge"] != null ? json.Value<int>("minimumAge") : data.MinimumAge;
-            data.MaximumAge = json["maximumAge"] != null ? json.Value<int>("maximumAge") : data.MaximumAge;
-            data.UniqueProperties = json["uniqueProperties"] != null ? json.Value<string>("uniqueProperties") : data.UniqueProperties;
-            return data;
-        }
+                var sex = perpetratorJson["sex"] != null ? textInfo.ToTitleCase(perpetratorJson.Value<string>("sex")) : null;
+                var skinColor = perpetratorJson["skinColor"] != null ? textInfo.ToTitleCase(perpetratorJson.Value<string>("skinColor")) : null;
 
-        private VehicleData Modify(VehicleData vehicleData, JToken json)
+                perpetrator.SkinColor = skinColor != null ? (SkinColorEnum) Enum.Parse(typeof (SkinColorEnum), skinColor, true) : SkinColorEnum.Unknown;
+                perpetrator.Sex = sex != null ? (SexEnum) Enum.Parse(typeof (SexEnum), sex, true) : SexEnum.Unknown;
+
+                perpetrators.Add(perpetrator);
+            }
+
+            return perpetrators;
+        } 
+
+        private ICollection<VehicleData> ModifyVehicles(JToken json)
         {
-            var data = vehicleData ?? new VehicleData();
-            data.AdditionalFeatures = json["additionalFeatures"] != null ? json.Value<string>("additionalFeatures") : data.AdditionalFeatures;
-            data.Brand = json["brand"] != null ? json.Value<string>("brand") : data.Brand;
-            data.Color = json["color"] != null ? json.Value<string>("color") : data.Color;
-            data.NumberPlate = json["numberPlate"] != null ? json.Value<string>("numberPlate") : data.NumberPlate;
+            var vehicles = new List<VehicleData>();
 
-            var vehicleTypeString = json["vehicleType"] != null ? json.Value<string>("vehicleType") : null;
-            data.VehicleType = vehicleTypeString != null ? (VehicleTypeEnum) Enum.Parse(typeof (VehicleTypeEnum), vehicleTypeString, true) : VehicleTypeEnum.Other;
+            foreach (var vehicleJson in json)
+            {
+                var vehicle = new VehicleData
+                {
+                    Brand = vehicleJson.Value<string>("brand"),
+                    AdditionalFeatures = vehicleJson.Value<string>("additionalFeatures"),
+                    Color = vehicleJson.Value<string>("color"),
+                    NumberPlate = vehicleJson.Value<string>("numberPlate")
+                };
+                
+                var vehicleType = new CultureInfo("en-US", false).TextInfo.ToTitleCase(vehicleJson.Value<string>("vehicleType") ?? "Other");
 
-            return data;
+                vehicle.VehicleType = (VehicleTypeEnum) Enum.Parse(typeof (VehicleTypeEnum), vehicleType);
+
+                vehicles.Add(vehicle);
+            }
+
+            return vehicles;
         }
     }
 }

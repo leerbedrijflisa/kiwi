@@ -1,0 +1,24 @@
+@model Contact 
+
+@if (Model.Name != null)
+{
+	<fieldset class="summary">
+		<legend>@PageItems.ContactName</legend>
+		<p>@DashboardHelpers.NullCheck(Model.Name)</p>
+	</fieldset>
+}
+@if (Model.PhoneNumber != null)
+{
+	<fieldset class="summary">
+		<legend>@PageItems.ContactPhoneNumber</legend>
+		<p>@DashboardHelpers.NullCheck(Model.PhoneNumber)</p>
+	</fieldset>
+}
+
+@if (Model.EmailAddress != null)
+{
+	<fieldset class="summary">
+		<legend>@PageItems.ContactEmail</legend>
+		<p>@DashboardHelpers.NullCheck(Model.EmailAddress)</p>
+	</fieldset>
+}

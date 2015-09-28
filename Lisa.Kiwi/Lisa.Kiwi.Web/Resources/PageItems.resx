@@ -120,8 +120,14 @@
   <data name="Building" xml:space="preserve">
     <value>Gebouw</value>
   </data>
+  <data name="BullyVictim" xml:space="preserve">
+    <value>Is er nog meer informatie over de gepeste?</value>
+  </data>
+  <data name="BullyVictimName" xml:space="preserve">
+    <value>Wie is er gepest?</value>
+  </data>
   <data name="Category" xml:space="preserve">
-    <value>Categorie</value>
+    <value>Wat is er gebeurd?</value>
   </data>
   <data name="Contact" xml:space="preserve">
     <value>Contact</value>
@@ -141,11 +147,17 @@
   <data name="ContactRequiredDescription" xml:space="preserve">
     <value>Wij willen contact met u opnemen om de melding verder af te handelen. Vul hier uw contactgegevens in.</value>
   </data>
+  <data name="CreatedAt" xml:space="preserve">
+    <value>Wanneer is de melding gedaan?</value>
+  </data>
   <data name="Date" xml:space="preserve">
     <value>Datum</value>
   </data>
   <data name="DateDescription" xml:space="preserve">
     <value>Tijdstip van de melding</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Wat is er aan de hand?</value>
   </data>
   <data name="DoneMessage" xml:space="preserve">
     <value>Bedankt voor uw melding!</value>
@@ -154,13 +166,13 @@
     <value>We sturen hulp.</value>
   </data>
   <data name="Location" xml:space="preserve">
-    <value>Locatie</value>
-  </data>
-  <data name="LocationDescription" xml:space="preserve">
-    <value>Locatie en beschrijving</value>
+    <value>Waar is het gebeurd?</value>
   </data>
   <data name="LocationDetailedDescription" xml:space="preserve">
     <value>Waar {0} {1} is het gebeurd?</value>
+  </data>
+  <data name="Perpetrator" xml:space="preserve">
+    <value>Wie is er bij de melding gemeld?</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Status</value>

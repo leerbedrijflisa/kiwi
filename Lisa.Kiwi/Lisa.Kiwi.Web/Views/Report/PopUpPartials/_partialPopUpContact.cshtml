@@ -1,0 +1,24 @@
+﻿@model ContactViewModel
+
+<fieldset>
+	<section class="popup" id="contact">
+		<header>@DisplayNames.Contact</header>
+		<fieldset>
+			<legend>@DisplayNames.ContactName</legend>
+			@Html.TextBoxFor( m => m.Name )
+			<span class="required">verplicht veld</span>
+		</fieldset>
+		<fieldset>
+			<legend>@DisplayNames.ContactPhoneNumber</legend>
+			@Html.TextBoxFor( m => m.PhoneNumber )
+			<span class="required">telefoonnummer of e-mailadres is verplicht</span>
+		</fieldset>
+		<fieldset>
+			<legend>@DisplayNames.ContactEmail</legend>
+			@Html.TextBoxFor( m => m.EmailAddress )
+			<span class="required">telefoonnummer of e-mailadres is verplicht</span>
+		</fieldset>
+		<button type="submit" onclick="popUpReport('contact', 'abort'); return false;"><img src="~/Content/cancel.svg" /></button>
+		<button type="submit"><img src="~/Content/done.svg" /></button>
+	</section>
+</fieldset>

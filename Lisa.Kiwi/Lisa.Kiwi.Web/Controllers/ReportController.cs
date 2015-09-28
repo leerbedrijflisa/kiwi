@@ -166,12 +166,12 @@ namespace Lisa.Kiwi.Web
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(GetCurrentReportId(), report);
 
-            return RedirectToAction("Perpetrator");
+            return RedirectToAction("ContactRequired");
         }
 
         public ActionResult Drugs()
         {
-            return View();
+            return View(new DrugsViewModel());
         }
 
         [HttpPost]
@@ -187,12 +187,12 @@ namespace Lisa.Kiwi.Web
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(GetCurrentReportId(), report);
 
-            return RedirectToAction("Perpetrator");
+            return RedirectToAction("Contact");
         }
 
         public ActionResult Fight()
         {
-            return View();
+            return View(new FightViewModel());
         }
 
         [HttpPost]
@@ -236,12 +236,7 @@ namespace Lisa.Kiwi.Web
             _modelFactory.Modify(report, viewModel);
             report = await _reportProxy.PatchAsync(GetCurrentReportId(), report);
 
-            if (report.Category == "Fight")
-            {
-                return RedirectToAction("Contact");
-            }
-
-            return RedirectToAction("Perpetrator");
+            return RedirectToAction("Contact");
         }
 
         public ActionResult Nuisance()
@@ -262,7 +257,7 @@ namespace Lisa.Kiwi.Web
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(GetCurrentReportId(), report);
 
-            return RedirectToAction("Vehicle");
+            return RedirectToAction("ContactRequired");
         }
 
         public ActionResult Bullying()
@@ -281,21 +276,8 @@ namespace Lisa.Kiwi.Web
             var report = new Report();
             _modelFactory.Modify(report, viewModel);
             report = await _reportProxy.PatchAsync(GetCurrentReportId(), report);
-
-            if (viewModel.HasPerpetrator && !viewModel.HasVictim)
-            {
-                return RedirectToAction("Perpetrator");
-            }
-            else if (!viewModel.HasPerpetrator && viewModel.HasVictim)
-            {
-                return RedirectToAction("Victim");
-            }
-            else if (viewModel.HasPerpetrator && viewModel.HasVictim)
-            {
-                return RedirectToAction("Perpetrator", routeValues: new { hasVictim = viewModel.HasVictim });
-            }
-
-            return RedirectToAction("Vehicle");
+            
+            return RedirectToAction("Contact");
         }
 
         public ActionResult Other()
@@ -315,28 +297,7 @@ namespace Lisa.Kiwi.Web
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(GetCurrentReportId(), report);
 
-            return RedirectToAction("Vehicle");
-        }
-
-        public ActionResult Perpetrator()
-        {
-            return View(new PerpetratorViewModel());
-        }
-
-        [HttpPost]
-        public async Task<ActionResult> Perpetrator(PerpetratorViewModel viewModel, bool? hasVictim)
-        {
-            var victim = hasVictim.HasValue && hasVictim.Value;
-
-            if (!ModelState.IsValid)
-            {
-                return View(viewModel);
-            }
-            var report = new Report();
-            _modelFactory.Modify(report, viewModel);
-            await _reportProxy.PatchAsync(GetCurrentReportId(), report);
-
-            return RedirectToAction(victim ? "Victim" : "Vehicle");
+            return RedirectToAction("ContactRequired");
         }
 
         public ActionResult Victim()
@@ -357,44 +318,7 @@ namespace Lisa.Kiwi.Web
             await _reportProxy.PatchAsync(GetCurrentReportId(), report);
 
             // TODO: add error handling
-            return RedirectToAction("Vehicle");
-        }
-
-        public ActionResult Vehicle()
-        {
-            return View(new VehicleViewModel());
-        }
-
-        [HttpPost]
-        public async Task<ActionResult> Vehicle(VehicleViewModel viewModel)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View(viewModel);
-            }
-
-            var report = new Report();
-
-            if (viewModel.HasVehicle)
-            {
-                _modelFactory.Modify(report, viewModel);
-                report = await _reportProxy.PatchAsync(GetCurrentReportId(), report);
-            }
-            else
-            {
-                report = await GetCurrentReport();
-            }
-
-            switch (report.Category)
-            {
-                case "Theft":
-                case "Nuisance":
-                case "Other":
-                    return RedirectToAction("ContactRequired");
-
-                default:
-                    return RedirectToAction("Contact");
-            }
+            return RedirectToAction("Contact");
         }
 
         public ActionResult Contact()
@@ -443,49 +367,27 @@ namespace Lisa.Kiwi.Web
         public async Task<ActionResult> Done()
         {
             var report = await GetCurrentReport();
-            return View(report);
+            return View(new DoneViewModel(report));
         }
 
         [HttpPost]
-        public async Task<ActionResult> Done(string category)
-        {
-            var report = await GetCurrentReport();
-            switch (category)
-            {
-                case "Theft":
-                case "Bullying":
-                    return View("Help", report);
-
-                default:
-                    return View("End", report);
-            }
-        }
-
-        public async Task<ActionResult> EditDone()
-        {
-            var viewModel = new EditDoneViewModel();
-            var report = await GetCurrentReport();
-            _modelFactory.Create(report, viewModel);
-            return View(viewModel);
-        }
-
-        [HttpPost]
-        public async Task<ActionResult> EditDone(EditDoneViewModel viewModel)
+        public async Task<ActionResult> Done(DoneViewModel viewModel)
         {
             if (!ModelState.IsValid)
             {
                 return View(viewModel);
             }
-            var report = await GetCurrentReport();
-            _modelFactory.Modify(report, viewModel);
-            await _reportProxy.PatchAsync(report.Id, report);
+            
+            var report = new Report();
 
-            // TODO: add error handling
+            _modelFactory.Modify(report, viewModel);
+            await _reportProxy.PatchAsync(GetCurrentReportId(), report);
+
             return RedirectToAction("Done");
         }
 
-        protected override void OnActionExecuting(ActionExecutingContext context)
-        {
+       protected override void OnActionExecuting(ActionExecutingContext context)
+       {
             CreateReportProxy();
 
             var tokenCookie = Request.Cookies["token"];

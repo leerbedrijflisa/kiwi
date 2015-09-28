@@ -1,28 +1,21 @@
 ﻿@model ContactRequiredViewModel
 
-@{
-	ViewBag.Title = DisplayNames.ContactRequired;
-}
 @using (Html.BeginForm())
-{
-	<div class="field">
-		<label></label>
-		<p>@PageItems.ContactRequiredDescription</p>
-	</div>
-	<div class="field">
-		<label>@DisplayNames.Name &#42;</label>
-		@Html.TextBoxFor(m => m.Name)
-	</div>
-	<div class="field">
-		<label>@DisplayNames.PhoneNumber &#42;</label>
-		@Html.TextBoxFor(m => m.PhoneNumber)
-	</div>
-	<div class="field">
-		<label>@DisplayNames.EmailAddress &#42;</label>
-		@Html.TextBoxFor(m => m.EmailAddress)
-	</div>
-	<div class="submit">
-		<button type="submit"><img src="@Url.Content("~/Content/next.svg")"/></button>
-		<span class="floatLeft">*verplichte velden</span>
-	</div>
+{	
+		<fieldset>
+			<legend>@DisplayNames.ContactName</legend>
+			@Html.TextBoxFor(m => m.Name)
+			<span class="required">verplicht veld</span>
+		</fieldset>
+		<fieldset>
+			<legend>@DisplayNames.ContactPhoneNumber</legend>
+			@Html.TextBoxFor(m => m.PhoneNumber)
+			<span class="required">telefoonnummer of e-mailadres is verplicht</span>
+		</fieldset>
+		<fieldset>
+			<legend>@DisplayNames.ContactEmail</legend>
+			@Html.TextBoxFor(m => m.EmailAddress)
+			<span class="required">telefoonnummer of e-mailadres is verplicht</span>
+		</fieldset>
+	<button type="submit"><img src="@Url.Content("~/Content/next.svg")" /></button>
 }

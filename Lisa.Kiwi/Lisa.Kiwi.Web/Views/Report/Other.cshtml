@@ -4,14 +4,18 @@
 	ViewBag.Title = Categories.Other;
 }
 
+@section Scripts{
+	<script src="~/Scripts/pop-up.js"></script>
+}
+
 @using (Html.BeginForm())
 {
-	<div class="field">
-		@Html.LabelFor(m => m.Description)
-		@Html.TextBoxFor(m => m.Description)
-	</div>
-	<div class="submit">
-		<button type="submit"><img src="@Url.Content("~/Content/next.svg")" /></button>
-		<text><span class="floatLeft">*verplichte velden</span></text>
-	</div>
+	<fieldset>
+		<legend>@DisplayNames.WhatHappened</legend>
+		@Html.TextAreaFor(m => m.Description)
+	</fieldset>
+	@Html.Partial("~/Views/Report/PopUpPartials/_partialPopUpPerpetrator.cshtml", new PerpetratorViewModel())
+	@Html.Partial("~/Views/Report/PopUpPartials/_partialPopUpVehicle.cshtml", new VehicleViewModel())
+	@Html.HiddenFor(m => m.Vehicles)
+	<button type="submit"><img src="@Url.Content("~/Content/next.svg")" /></button>
 }

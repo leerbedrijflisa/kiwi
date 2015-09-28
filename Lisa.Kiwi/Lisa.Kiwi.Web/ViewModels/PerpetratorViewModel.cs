@@ -54,6 +54,31 @@ namespace Lisa.Kiwi.Web
             }
         }
 
+        public IEnumerable<SelectListItem> SexList
+        {
+            get
+            {
+                return new[]
+                {
+                    new SelectListItem
+                    {
+                        Text = Resources.Sex.Unknown,
+                        Value = "Unknown"
+                    },
+                    new SelectListItem
+                    {
+                        Text = Resources.Sex.Male,
+                        Value = "Male"
+                    },
+                    new SelectListItem
+                    {
+                        Text = Resources.Sex.Female,
+                        Value = "Female"
+                    },
+                };
+            }
+        }
+
         public IEnumerable<SelectListItem> AgeRanges
         {
             get

@@ -13,13 +13,11 @@ namespace Lisa.Kiwi.Web
         [Required(ErrorMessage = ErrorMessages.RequiredError)]
         [DisplayName("Op welke datum is het gestolen? *")]
         public DateTime DateOfTheft { get; set; }
-
-        [Required(ErrorMessage = ErrorMessages.RequiredError)]
-        [DataType(DataType.Time)]
-        [DisplayName("Hoe laat is het gestolen? *")]
-        public DateTime TimeOfTheft { get; set; }
-
+        
         [DisplayName("Wilt u nog iets toevoegen?")]
         public string Description { get; set; }
+
+        public string Vehicles { get; set; }
+        public string Perpetrators { get; set; }
     }
 }

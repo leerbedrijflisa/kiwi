@@ -1,0 +1,18 @@
+﻿@model Report
+
+<fieldset class="summary">
+	<legend>@DisplayNames.VictimName</legend>
+	<div>
+		@Html.TextBoxFor(m => m.VictimName)
+	</div>
+</fieldset>
+<fieldset class="summary">
+	<legend>
+		@DisplayNames.BullyingDescription
+	</legend>
+	<div>
+		@Html.TextAreaFor(m => m.Description)
+	</div>
+</fieldset>
+
+@Html.Partial("~/Views/Shared/Partials/Done/Perpetrators.cshtml", Model.Perpetrators)
