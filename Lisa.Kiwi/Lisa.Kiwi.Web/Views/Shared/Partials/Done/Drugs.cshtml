@@ -18,7 +18,7 @@
 	};
 }
 
-<fieldset>
+<fieldset class="summary">
 	<legend>@DisplayNames.DrugsAction</legend>
 	@Html.DropDownListFor(m => m.DrugsAction, drugsActions)
 </fieldset>
@@ -33,7 +33,7 @@
 	@Html.Partial("~/Views/Shared/Partials/Done/Perpetrators.cshtml", Model.Perpetrators)
 }
 
-<fieldset>
+<fieldset class="summary">
 	<legend>@DisplayNames.Description</legend>
 	@Html.TextAreaFor(m => m.Description)
 </fieldset>

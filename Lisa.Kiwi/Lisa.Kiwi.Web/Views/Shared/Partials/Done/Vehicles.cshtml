@@ -1,10 +1,23 @@
 ﻿@model IEnumerable<Vehicle>
 
-<ul>
-	@foreach (var vehicle in Model)
-	{
-		<li>
-			@vehicle.NumberPlate
-		</li>
-	}
-</ul>
+@if (Model != null)
+{
+	<fieldset class="summary">
+		<legend>@ReportProperties.Vehicle</legend>
+
+		<ul>
+			@foreach (var vehicle in Model)
+			{
+				<li>
+					@VehicleTypes.ResourceManager.GetString(vehicle.VehicleType.ToString()),
+					@vehicle.Brand,
+					@vehicle.NumberPlate,
+					@vehicle.Color,
+					bijzondere kenmerken: @vehicle.AdditionalFeatures
+				</li>
+			}
+		</ul>
+
+		
+	</fieldset>
+}

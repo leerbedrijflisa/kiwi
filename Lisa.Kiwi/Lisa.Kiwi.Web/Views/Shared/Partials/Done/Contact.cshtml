@@ -1,14 +1,14 @@
 ﻿@model Contact
 
-<fieldset>
+<fieldset class="summary">
 	<legend>@DisplayNames.ContactName</legend>
-	@Html.TextBoxFor( m => m.Name )
+	<input type="text" value="@Model.Name" name="ContactName"/>
 </fieldset>
-<fieldset>
+<fieldset class="summary">
 	<legend>@DisplayNames.ContactPhoneNumber</legend>
-	@Html.TextBoxFor( m => m.PhoneNumber )
+	<input type="text" value="@Model.PhoneNumber" name="ContactPhoneNumber"/>
 </fieldset>
-<fieldset>
+<fieldset class="summary">
 	<legend>@DisplayNames.ContactEmail</legend>
-	@Html.TextBoxFor( m => m.EmailAddress )
+	<input type="text" value="@Model.EmailAddress" name="ContactEmail"/>
 </fieldset>

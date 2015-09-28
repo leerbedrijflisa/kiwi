@@ -129,7 +129,7 @@ namespace Lisa.Kiwi.Web
             report.IsVisible = viewModel.IsVisible;
         }
 
-        public void Modify(Report report, Report viewModel)
+        public void Modify(Report report, DoneViewModel viewModel)
         {
             report.Category = viewModel.Category;
             report.Description = viewModel.Description;
@@ -148,13 +148,15 @@ namespace Lisa.Kiwi.Web
             report.Perpetrators = viewModel.Perpetrators;
             report.Vehicles = viewModel.Vehicles;
 
-            if (viewModel.Contact.Name != null || viewModel.Contact.PhoneNumber != null || viewModel.Contact.EmailAddress != null)
+            if (viewModel.ContactName != null || viewModel.ContactPhoneNumber != null || viewModel.ContactEmail != null)
             {
                 if (report.Contact == null)
                 {
                     report.Contact = new Contact();
                 }
-                report.Contact = viewModel.Contact;
+                report.Contact.EmailAddress = viewModel.ContactEmail;
+                report.Contact.PhoneNumber = viewModel.ContactPhoneNumber;
+                report.Contact.Name = viewModel.ContactName;
             }
             else
             {

@@ -367,11 +367,11 @@ namespace Lisa.Kiwi.Web
         public async Task<ActionResult> Done()
         {
             var report = await GetCurrentReport();
-            return View(report);
+            return View(new DoneViewModel(report));
         }
 
         [HttpPost]
-        public async Task<ActionResult> Done(Report viewModel)
+        public async Task<ActionResult> Done(DoneViewModel viewModel)
         {
             if (!ModelState.IsValid)
             {
@@ -383,15 +383,7 @@ namespace Lisa.Kiwi.Web
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(GetCurrentReportId(), report);
 
-            switch (report.Category)
-            {
-                case "Theft":
-                case "Bullying":
-                    return View("Help", report);
-
-                default:
-                    return View("End", report);
-            }
+            return RedirectToAction("Done");
         }
 
        protected override void OnActionExecuting(ActionExecutingContext context)
