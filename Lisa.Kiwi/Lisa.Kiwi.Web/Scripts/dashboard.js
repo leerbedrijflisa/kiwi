@@ -36,10 +36,10 @@ function updateReports(data) {
 
     if (!firstLoad) {
         if (reportCount == data.length) {
-            updatedReport();
+            setTimeout(newReport, 1);
         }
         else {
-            newReport();
+            setTimeout(newReport, 1);
         }
     }
 
