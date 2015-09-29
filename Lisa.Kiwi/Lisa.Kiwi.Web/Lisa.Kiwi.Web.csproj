@@ -207,7 +207,7 @@
     <Compile Include="ViewModels\VehicleViewModel.cs" />
     <Compile Include="ViewModels\VictimViewModel.cs" />
     <Compile Include="ViewModels\WeaponViewModel.cs" />
-    <Content Include="Content\air-horn.mp3" />
+    <Content Include="Content\alert.mp3" />
     <Content Include="Content\banner.jpg" />
     <Content Include="Content\category-Bullying.png" />
     <Content Include="Content\category-Drugs.png" />
@@ -281,6 +281,7 @@
     <Content Include="Content\ReporterBuildings\building-wartburg.png" />
     <Content Include="Content\show.svg" />
     <Compile Include="Controllers\DashboardController.cs" />
+    <Content Include="Content\update.mp3" />
     <Content Include="Content\warning.svg" />
     <Content Include="Global.asax" />
     <Content Include="App_Code\DashboardHelpers.cshtml" />
