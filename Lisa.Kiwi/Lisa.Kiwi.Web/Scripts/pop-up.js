@@ -14,8 +14,8 @@ function popUpReport(e, a) {
             switch (a) {
                 case "confirm":
                     perpCount++;
-                    var name = $("#perpetrator").children("fieldset").children("#Name").val();
-                    var sex = $("#perpetrator").children("fieldset").children("#Sex").val();
+                    var name = $("#Name").val();
+                    var sex = $("#Sex").val();
                     if (sex === "0") {
                         sex = "Onbekend";
                     } else if (sex === "1") {
@@ -24,7 +24,7 @@ function popUpReport(e, a) {
                         sex = "Vrouw";
                     }
 
-                    var skincolor = $("#perpetrator").children("fieldset").children("#SkinColor").val();
+                    var skincolor = $("#SkinColor").val();
                     if (skincolor === "Light") {
                         var skincolortrans = "Blank";
                     } else if (skincolor === "Tanned") {
@@ -33,10 +33,10 @@ function popUpReport(e, a) {
                         var skincolortrans = "Donker";
                     }
 
-                    var agerange = $("#perpetrator").children("fieldset").children("#AgeRange").val();
+                    var agerange = $("#AgeRange").val();
                     
-                    var clothing = $("#perpetrator").children("fieldset").children("#Clothing").val();
-                    var uniqueproperties = $("#perpetrator").children("fieldset").children("#UniqueProperties").val();
+                    var clothing = $("#Clothing").val();
+                    var uniqueproperties = $("#UniqueProperties").val();
                     var perpArray = {
                             Id: perpCount,
                             Name: name,
@@ -63,11 +63,11 @@ function popUpReport(e, a) {
             switch (a) {
                 case "confirm":
                     vehicleCount++;
-                    var type = $("#vehicle").children("fieldset").children("#VehicleType").val();
-                    var brand = $("#vehicle").children("fieldset").children("#Brand").val();
-                    var numberplate = $("#vehicle").children("fieldset").children("#NumberPlate").val();
-                    var color = $("#vehicle").children("fieldset").children("#Color").val();
-                    var features = $("#vehicle").children("fieldset").children("#AdditionalFeatures").val();
+                    var type = $("#VehicleType").val();
+                    var brand = $("#Brand").val();
+                    var numberplate = $("#NumberPlate").val();
+                    var color = $("#Color").val();
+                    var features = $("#AdditionalFeatures").val();
 
                     var vehicleArray = {
                         Id: vehicleCount,
@@ -101,8 +101,8 @@ function popUpReport(e, a) {
             break;
     }
 
-    $("#" + e + "").children("fieldset").children("select").prop('selectedIndex', 0);
-    $("#" + e + "").children("fieldset").children("input, textarea").val(null);
+    $("#" + e + " fieldset select").prop('selectedIndex', 0);
+    $("#" + e + " fieldset").children("input, textarea").val(null);
     $(".overlay").hide();
     $("#" + e + "").hide();
-}   
+}
