@@ -3,6 +3,56 @@ var vehicles = [];
 var perpCount = -1;
 var vehicleCount = -1;
 
+$(document).ready(function() {
+    if (typeof $("input[name=Vehicles") != "undefined" && $("input[name=Vehicles]").val() != "") {
+        vehicles = JSON.parse($("input[name=Vehicles]").val());
+        vehicleCount = vehicles.length - 1;
+
+        vehicles.forEach(function (value) {
+            if (value.NumberPlate != "") {
+                value.NumberPlate = ", " + value.NumberPlate;
+                var name = value.Type + value.NumberPlate;
+            } else {
+                if (value.Brand != "") {
+                    value.Brand = ", " + value.Brand;
+                }
+
+                if (value.Color != "") {
+                    value.Color = ", " + value.Color;
+                }
+                var name = value.Type + value.Brand + value.Color;
+            }
+
+            $("#vehicleData").append("<li>" + name + "</li>");
+        });
+    }
+
+    if (typeof $("input[name=Perpetrators") != "undefined" && $("input[name=Perpetrators]").val() != "") {
+        perpetrators = JSON.parse($("input[name=Perpetrators]").val());
+        perpCount = perpetrators.length - 1;
+
+        perpetrators.forEach(function (value) {
+            var name = value.Name;
+
+            if (value.SkinColor === "Light") {
+                value.SkinColor = "Blank";
+            } else if (value.SkinColor === "Tanned") {
+                value.SkinColor = "Licht getint";
+            } else if (value.SkinColor === "Dark") {
+                value.SkinColor = "Donker";
+            }
+
+            if (name === "") {
+                name = value.Sex + ", " + value.SkinColor + ", " + value.AgeRange;
+            }
+
+            $("#perpetratorData").append("<li>" + name + "</li>");
+        });
+    }
+});
+
+
+
 function popUpShow(e) {
     $( ".overlay" ).show();
     $( "#" + e + "" ).show();
