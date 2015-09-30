@@ -209,6 +209,7 @@
     <Compile Include="ViewModels\WeaponViewModel.cs" />
     <Content Include="Content\alert.mp3" />
     <Content Include="Content\banner.jpg" />
+    <Content Include="Content\cancel.svg" />
     <Content Include="Content\category-Bullying.png" />
     <Content Include="Content\category-Drugs.png" />
     <Content Include="Content\category-Fight.png" />
