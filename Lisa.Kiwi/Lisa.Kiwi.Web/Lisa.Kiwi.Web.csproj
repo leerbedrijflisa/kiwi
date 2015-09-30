@@ -361,9 +361,9 @@
     <Content Include="Views\Dashboard\Archive.cshtml" />
     <Content Include="Views\Report\_partialBugReport.cshtml" />
     <Content Include="Views\Report\BugReport.cshtml" />
-    <Content Include="Views\Report\PopUpPartials\_partialPopUpPerpetrator.cshtml" />
-    <Content Include="Views\Report\PopUpPartials\_partialPopUpVehicle.cshtml" />
-    <Content Include="Views\Report\PopUpPartials\_partialPopUpContact.cshtml" />
+    <Content Include="Views\Report\PopUpPartials\Perpetrator.cshtml" />
+    <Content Include="Views\Report\PopUpPartials\Vehicle.cshtml" />
+    <Content Include="Views\Report\PopUpPartials\Contact.cshtml" />
     <Content Include="Views\Shared\Partials\Done\Theft.cshtml" />
     <Content Include="Views\Shared\Partials\Done\Vehicles.cshtml" />
     <Content Include="Views\Shared\Partials\Done\Perpetrators.cshtml" />

@@ -23,8 +23,8 @@
 		@Html.TextBoxFor(m => m.DateOfTheft)
 		<span class="required">verplicht veld</span>
 	</fieldset>
-	@Html.Partial("~/Views/Report/PopUpPartials/_partialPopUpPerpetrator.cshtml", new PerpetratorViewModel())
-	@Html.Partial("~/Views/Report/PopUpPartials/_partialPopUpVehicle.cshtml", new VehicleViewModel())
+	@Html.Partial("~/Views/Report/PopUpPartials/Perpetrator.cshtml", new PerpetratorViewModel())
+	@Html.Partial("~/Views/Report/PopUpPartials/Vehicle.cshtml", new VehicleViewModel())
 	<fieldset>
 		<legend>@DisplayNames.Description</legend>
 		@Html.TextAreaFor(m => m.Description)
