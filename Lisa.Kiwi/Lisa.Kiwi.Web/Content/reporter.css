@@ -20,11 +20,11 @@ body {
   background-color: white;
   max-width: 720px;
   margin: 0;
+  position: relative;
 }
 
 html {
   min-height: 100%;
-  position: relative;
 }
 
 @media (min-width: 720px) {
@@ -155,13 +155,10 @@ button {
 	interest, or vehicles).
 */
 
-fieldset {
-  position: relative; /* make fieldset container for popup */
-}
-
 .popup {
   display: none; /* popup is invisible by default */
   position: absolute; /* position popup over the form */
+  top: 20px;
   z-index: 1;
   background-color: white; /* visually distinguish popup from background */
   border: 1px solid #889;
