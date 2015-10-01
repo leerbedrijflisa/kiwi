@@ -381,3 +381,23 @@ p.summary {
 .radioList {
   list-style: none;
 }
+
+/* Images in dashboard/details */
+
+@media(max-width: 720px) {
+    img {
+        width: calc(50% - 11px);
+    }
+}
+@media(min-width: 721px) {
+    img {
+        width: calc(33% - 10px);
+    }
+}
+
+img {
+    margin: 0 5px;
+    margin-bottom: 5px;
+    float: left;
+    max-height: 300px;
+}

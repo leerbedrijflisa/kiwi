@@ -34,6 +34,11 @@
 	@Html.Partial("~/Views/Shared/Partials/Details/Vehicles.cshtml", Model.Vehicles);
 }
 
+@if (Model.Files != null)
+{
+    @Html.Partial("~/Views/Shared/Partials/Details/Files.cshtml", Model.Files);
+}
+
 @using (Html.BeginForm())
 {
 	<fieldset>

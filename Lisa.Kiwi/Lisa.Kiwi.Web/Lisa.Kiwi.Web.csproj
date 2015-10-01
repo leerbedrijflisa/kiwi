@@ -397,6 +397,7 @@
     <Content Include="Views\Report\Details.cshtml" />
     <Content Include="Views\Shared\_LayoutLoadedInFrame.cshtml" />
     <Content Include="Views\Report\Continue.cshtml" />
+    <Content Include="Views\Shared\Partials\Details\Files.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
