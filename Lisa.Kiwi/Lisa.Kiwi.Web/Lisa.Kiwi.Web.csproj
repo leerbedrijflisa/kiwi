@@ -141,8 +141,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Code\FileUploader.cs" />
-    <Compile Include="App_Code\ImageHelpers.cs" />
+    <Compile Include="Magic\FileUploader.cs" />
+    <Compile Include="Magic\ImageHelpers.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Controllers\ResourcesController.cs" />
     <Compile Include="Resources\BuildingImages.Designer.cs">
