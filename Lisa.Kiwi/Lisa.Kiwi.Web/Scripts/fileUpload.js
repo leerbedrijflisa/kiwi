@@ -103,6 +103,17 @@ function appendTableWithFileData(fileKey, file, table) {
     row.appendTo(table);
 }
 
+function ActivateFileUploadOverlay() {
+    var overlay = $('#fileUpload #overlay');
+    overlay.css('height', overlay.parents('fieldset').height() - 40);
+    overlay.show();
+}
+
+function DeactivateFileUploadOverlay() {
+    var overlay = $('#fileUpload #overlay');
+    overlay.hide();
+}
+
 // Utilities
 function objectHasproperties(object) {
     for (var prop in object) {

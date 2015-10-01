@@ -82,8 +82,8 @@ iframe {
     top: 0;
     right: 0;
     margin: 0;
-    opacity: 0.0;
     padding: 0;
+    opacity: 0.0;
     filter: alpha(opacity=0);
     -o-transform: translate(250px, -50px) scale(1);
     -moz-transform: translate(-300px, 0) scale(4);
@@ -91,11 +91,6 @@ iframe {
     cursor: pointer;
     width: 100%;
 }
-
-/*#uploadfiles button[type=submit] {
-    display: inline-block;
-    width: calc(50% - 17px);
-}*/
 
 #uploadfiles .uploadwrapper {
     display: inline-block;
@@ -119,6 +114,14 @@ iframe {
     display: inline-block;
 	vertical-align: middle;
 	text-align: center;
+}
+
+#fileUpload #overlay {
+    display:none;
+    width: 100%;
+    position: absolute;
+    background-color: rgba(17, 17, 51, 0.5);
+    z-index: 1;
 }
 
 #uploadqueue {
