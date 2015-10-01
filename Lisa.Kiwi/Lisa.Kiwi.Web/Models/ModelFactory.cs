@@ -165,7 +165,7 @@ namespace Lisa.Kiwi.Web
         
         public void Modify(Report report, HttpFileCollectionBase files)
         {
-            report.Files = GetFiles(files, report.Id.ToString());
+            report.Files = GetFiles(files, string.Format("report-{0}", report.Id.ToString()));
         }
 
         private IEnumerable<File> GetFiles(HttpFileCollectionBase httpFiles, string uploadContainer)

@@ -129,7 +129,8 @@ namespace Lisa.Kiwi.WebApi
                 .Include("Location")
                 .Include("Perpetrators")
                 .Include("Contact")
-                .Include("Vehicles");
+                .Include("Vehicles")
+                .Include("Files");
         }
 
         private IQueryable<Report> GetCompleteReports()
