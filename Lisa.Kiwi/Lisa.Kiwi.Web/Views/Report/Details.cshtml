@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Details";
+    var report = (Report)Model;
+}
+
+<iframe src="@report.Category" id="iframe" scrolling="no" onload="resizeIframe(this);"></iframe>
+
+<fieldset id="fileUpload">
+    <legend>Stuur afbeeldingen mee</legend>
+    <form id="uploadfiles" method="POST" enctype="multipart/form-data">
+        <div class="uploadwrapper">
+            <div class="pseudo-align"></div>
+            <span>Add Files</span>
+            <input type="file" accept="image/*" multiple="multiple" title=" " />
+        </div>
+    </form>
+
+    <table id="uploadqueue" cellspacing="0" cellpadding="0"></table>
+</fieldset>
+
+    <script>
+        if (window.FormData === undefined) {
+            $('div#fileUpload').remove();
+        }
+    </script>
+    <script src="~/Scripts/fileUpload.js"></script>

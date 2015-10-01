@@ -123,7 +123,14 @@ namespace Lisa.Kiwi.Web
             _modelFactory.Modify(report, viewModel);
             report = await _reportProxy.PatchAsync(GetCurrentReportId(), report);
 
-            return RedirectToAction(report.Category);
+            return RedirectToAction("Details");
+        }
+
+        public async Task<ActionResult> Details()
+        {
+            var report = await GetCurrentReport();
+
+            return View(report);
         }
 
         public ActionResult FirstAid()
@@ -341,7 +348,7 @@ namespace Lisa.Kiwi.Web
                 await _reportProxy.PatchAsync(GetCurrentReportId(), report);
             }
 
-            return RedirectToAction("Done");
+            return RedirectToAction("Continue");
         }
 
         public ActionResult ContactRequired()
@@ -361,7 +368,12 @@ namespace Lisa.Kiwi.Web
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(GetCurrentReportId(), report);
 
-            return RedirectToAction("Done");
+            return RedirectToAction("Continue");
+        }
+
+        public ActionResult Continue()
+        {
+            return View();
         }
 
         public async Task<ActionResult> Done()

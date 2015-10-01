@@ -304,10 +304,13 @@
     <Content Include="Scripts\archive.js" />
     <Content Include="Scripts\dashboard.js" />
     <Content Include="Scripts\DoneWeapons.js" />
+    <Content Include="Scripts\fileUpload.js" />
     <Content Include="Scripts\header-resizer.js" />
     <Content Include="Scripts\hyphenator.js" />
     <Content Include="Scripts\bug-report.js" />
     <Content Include="Scripts\jquery.datetimepicker.js" />
+    <Content Include="Scripts\messageReciever.js" />
+    <Content Include="Scripts\messageSender.js" />
     <Content Include="Scripts\pop-up.js" />
     <Content Include="Scripts\Theft.js" />
     <Content Include="Scripts\Weapons.js" />
@@ -391,6 +394,9 @@
     <Content Include="Views\Shared\Partials\Done\Other.cshtml" />
     <Content Include="Views\Shared\Partials\Done\Drugs.cshtml" />
     <Content Include="Views\Shared\Partials\Done\Bullying.cshtml" />
+    <Content Include="Views\Report\Details.cshtml" />
+    <Content Include="Views\Shared\_LayoutLoadedInFrame.cshtml" />
+    <Content Include="Views\Report\Continue.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

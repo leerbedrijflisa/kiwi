@@ -9,9 +9,16 @@
 	<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 	<script src="~/Scripts/hyphenator.js" type="text/javascript"></script>
 	<script src="~/Scripts/bug-report.js" type="text/javascript"></script>
+    <script src="~/Scripts/messageReciever.js"></script>
 	@RenderSection("Scripts", required: false)
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript">
+      function resizeIframe(obj){
+         {obj.style.height = 0;};
+         {obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';}
+      }
+    </script>
 </head>
 
 <body>
