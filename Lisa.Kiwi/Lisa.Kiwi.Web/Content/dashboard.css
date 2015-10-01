@@ -194,9 +194,23 @@ section.Solved {
 .side-buttons li {
     margin-bottom: 5px;
     background-color: #113;
-    color: #fff;
-    padding: 5px;
+    color: #ccc;
+    padding: 0px;
     text-align: center;
+    box-shadow: 1px 1px 1px 1px #888888;
+    border-radius: 20px;
+}
+
+.side-buttons a{
+    display: block;
+    width: 170px;
+    height: 20px;
+    padding: 5px;
+}
+
+.side-buttons a:hover{
+    font-weight: bold;
+    color: white;
 }
 
 /* Categories */

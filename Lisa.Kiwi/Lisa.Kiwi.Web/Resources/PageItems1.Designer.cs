@@ -187,7 +187,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bedankt voor uw melding!.
+        ///   Looks up a localized string similar to Bedankt voor uw melding.
         /// </summary>
         public static string DoneMessage {
             get {
