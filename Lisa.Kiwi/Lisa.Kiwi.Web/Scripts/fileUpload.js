@@ -2,13 +2,16 @@
 var fileObj = new Object;
 var listCount = 0;
 
-$('form#uploadfiles .uploadwrapper input[type=file]').on('change', function (e) {
+
+// Event listeners
+$('form#uploadfiles input[type=file]').on('change', function (e) {
     var files = e.target.files;
     if (files.length > 0) {
         processFileSelection(e, files)
     }
 });
 
+// Upload methods
 function upload() {
     if (objectHasproperties(fileObj)) {
         // Add all non-standard properties of the file object to the form data
@@ -53,15 +56,12 @@ function uploadFailed(xhr, status, p3, p4) {
     console.log(err);
 }
 
+// Client side file processing
 function deleteFileFromList(element) {
     var fileId = $(element).parents('tr').attr('id');
     $("#" + fileId).remove();
     delete fileObj[fileId];
     console.log(fileObj[fileId]);
-}
-
-function compareFilesForDuplicate(file1, file2) {
-    return file1.size == file2.size && file1.lastModified == file2.lastModified;
 }
 
 function processFileSelection(event, files) {
@@ -103,6 +103,7 @@ function appendTableWithFileData(fileKey, file, table) {
     row.appendTo(table);
 }
 
+// Utilities
 function objectHasproperties(object) {
     for (var prop in object) {
         if (object.hasOwnProperty(prop)) {
@@ -110,4 +111,8 @@ function objectHasproperties(object) {
         }
     }
     return false;
+}
+
+function compareFilesForDuplicate(file1, file2) {
+    return file1.size == file2.size && file1.lastModified == file2.lastModified;
 }

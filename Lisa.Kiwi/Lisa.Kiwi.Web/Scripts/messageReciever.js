@@ -7,22 +7,30 @@ var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
 eventer(messageEvent, function (e) {
     console.log(e.data);
     if (e.data === "continue") {
-        $('#iframe').remove();
-
-        // Generate new table row for the added file
-        var button = $('<button></button>', {
-            type: "submit",
-            name: "save",
-            onclick: "upload();"
-        });
-
-        $('<img />').attr("src", "/Content/done.svg").appendTo(button);
-
-        button.appendTo('#fileUpload');
+        continueNavigation();
     }
     if (e.data === "resize") {
-        obj = document.getElementById("iframe");
-        obj.style.height = 0;
-        obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+        resizeIFrame();
     }
 }, false);
+
+function continueNavigation() {
+    $('#iframe').remove();
+
+    // Generate new table row for the added file
+    var button = $('<button></button>', {
+        type: "submit",
+        name: "save",
+        onclick: "upload();"
+    });
+
+    $('<img />').attr("src", "/Content/done.svg").appendTo(button);
+
+    button.appendTo('#fileUpload');
+}
+
+function resizeIFrame() {
+    iframe = $('#iframe');
+    iframe.height = 0;
+    iframe.height = obj.contentWindow.document.body.scrollHeight + 'px';
+}
