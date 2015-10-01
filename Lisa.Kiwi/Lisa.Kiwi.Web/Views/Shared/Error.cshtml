@@ -7,7 +7,7 @@
 <form>
 	<div class="field">
 		<label>Er is een fout opgetreden!</label>
-		<div class="button-container">@Html.ActionLink("Probeer opnieuw", "index", "Dashboard")</div>
+		<div class="button-container"><a href="javascript:history.go(-1)">Probeer Opnieuw</a></div>
 	</div>
 
 	@if (HttpContext.Current.IsDebuggingEnabled)
