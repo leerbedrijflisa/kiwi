@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<Vehicle>
 
-@if (Model != null)
+@if (Model != null && Model.Any())
 {
 	<fieldset class="summary">
 		<legend>@ReportProperties.Vehicle</legend>

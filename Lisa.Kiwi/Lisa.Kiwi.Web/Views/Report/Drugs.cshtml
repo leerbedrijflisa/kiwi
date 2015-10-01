@@ -15,8 +15,8 @@
 		<legend>@DisplayNames.DrugsAction</legend>
 		@Html.DropDownListFor(m => m.Action, Model.DrugsActions)
 	</fieldset>
-	@Html.Partial("~/Views/Report/PopUpPartials/_partialPopUpPerpetrator.cshtml", new PerpetratorViewModel())
-	@Html.Partial("~/Views/Report/PopUpPartials/_partialPopUpVehicle.cshtml", new VehicleViewModel())
+	@Html.Partial("~/Views/Report/PopUpPartials/Perpetrator.cshtml", new PerpetratorViewModel())
+	@Html.Partial("~/Views/Report/PopUpPartials/Vehicle.cshtml", new VehicleViewModel())
 	@Html.HiddenFor(m => m.Vehicles)
 	@Html.HiddenFor(m => m.Perpetrators)
 	<fieldset>

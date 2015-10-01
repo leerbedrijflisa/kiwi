@@ -36,10 +36,10 @@ function updateReports(data) {
 
     if (!firstLoad) {
         if (reportCount == data.length) {
-            updatedReport();
+            setTimeout(newReport, 1);
         }
         else {
-            newReport();
+            setTimeout(newReport, 1);
         }
     }
 
@@ -47,13 +47,13 @@ function updateReports(data) {
 }
 
 function updatedReport() {
-    var audio = new Audio('/Content/air-horn.mp3');
+    var audio = new Audio('/Content/update.mp3');
     audio.volume = 0.5;
     audio.play();
 }
 
 function newReport() {
-    var audio = new Audio('/Content/air-horn.mp3');
+    var audio = new Audio('/Content/alert.mp3');
     audio.play();
 }
 

@@ -224,8 +224,9 @@
     <Compile Include="ViewModels\VehicleViewModel.cs" />
     <Compile Include="ViewModels\VictimViewModel.cs" />
     <Compile Include="ViewModels\WeaponViewModel.cs" />
-    <Content Include="Content\air-horn.mp3" />
+    <Content Include="Content\alert.mp3" />
     <Content Include="Content\banner.jpg" />
+    <Content Include="Content\cancel.svg" />
     <Content Include="Content\category-Bullying.png" />
     <Content Include="Content\category-Drugs.png" />
     <Content Include="Content\category-Fight.png" />
@@ -298,6 +299,7 @@
     <Content Include="Content\ReporterBuildings\building-wartburg.png" />
     <Content Include="Content\show.svg" />
     <Compile Include="Controllers\DashboardController.cs" />
+    <Content Include="Content\update.mp3" />
     <Content Include="Content\warning.svg" />
     <Content Include="Global.asax" />
     <Content Include="App_Code\DashboardHelpers.cshtml" />
@@ -355,8 +357,6 @@
     <Content Include="Views\Report\Other.cshtml" />
     <Content Include="Views\Report\Nuisance.cshtml" />
     <Content Include="Views\Report\View.cshtml" />
-    <Content Include="Views\Report\End.cshtml" />
-    <Content Include="Views\Report\Help.cshtml" />
     <Content Include="Views\Report\Vehicle.cshtml" />
     <Content Include="Views\Report\Victim.cshtml" />
     <Content Include="App_Code\ReportHelpers.cshtml" />
@@ -380,9 +380,9 @@
     <Content Include="Views\Dashboard\Archive.cshtml" />
     <Content Include="Views\Report\_partialBugReport.cshtml" />
     <Content Include="Views\Report\BugReport.cshtml" />
-    <Content Include="Views\Report\PopUpPartials\_partialPopUpPerpetrator.cshtml" />
-    <Content Include="Views\Report\PopUpPartials\_partialPopUpVehicle.cshtml" />
-    <Content Include="Views\Report\PopUpPartials\_partialPopUpContact.cshtml" />
+    <Content Include="Views\Report\PopUpPartials\Perpetrator.cshtml" />
+    <Content Include="Views\Report\PopUpPartials\Vehicle.cshtml" />
+    <Content Include="Views\Report\PopUpPartials\Contact.cshtml" />
     <Content Include="Views\Shared\Partials\Done\Theft.cshtml" />
     <Content Include="Views\Shared\Partials\Done\Vehicles.cshtml" />
     <Content Include="Views\Shared\Partials\Done\Perpetrators.cshtml" />

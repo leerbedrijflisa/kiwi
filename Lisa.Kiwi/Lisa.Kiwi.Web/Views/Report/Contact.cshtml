@@ -11,8 +11,8 @@
 {
 	<fieldset>
 		<legend>@DisplayNames.ContactTitle</legend>
-		@Html.Partial("~/Views/Report/PopUpPartials/_partialPopUpContact.cshtml", new ContactViewModel())
-		<button onclick="popUpShow('contact'); postResizeMessage(); return false;">Ja</button>
+		@Html.Partial("~/Views/Report/PopUpPartials/Contact.cshtml", new ContactViewModel())
+		<button onclick="popUpShow('contact'); return false;">Ja</button>
 		<button>Nee</button>
 	</fieldset>
 }

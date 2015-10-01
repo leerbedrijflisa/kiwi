@@ -3,6 +3,56 @@ var vehicles = [];
 var perpCount = -1;
 var vehicleCount = -1;
 
+$(document).ready(function() {
+    if (typeof $("input[name=Vehicles") != "undefined" && $("input[name=Vehicles]").val() != "") {
+        vehicles = JSON.parse($("input[name=Vehicles]").val());
+        vehicleCount = vehicles.length - 1;
+
+        vehicles.forEach(function (value) {
+            if (value.NumberPlate != "") {
+                value.NumberPlate = ", " + value.NumberPlate;
+                var name = value.Type + value.NumberPlate;
+            } else {
+                if (value.Brand != "") {
+                    value.Brand = ", " + value.Brand;
+                }
+
+                if (value.Color != "") {
+                    value.Color = ", " + value.Color;
+                }
+                var name = value.Type + value.Brand + value.Color;
+            }
+
+            $("#vehicleData").append("<li>" + name + "</li>");
+        });
+    }
+
+    if (typeof $("input[name=Perpetrators") != "undefined" && $("input[name=Perpetrators]").val() != "") {
+        perpetrators = JSON.parse($("input[name=Perpetrators]").val());
+        perpCount = perpetrators.length - 1;
+
+        perpetrators.forEach(function (value) {
+            var name = value.Name;
+
+            if (value.SkinColor === "Light") {
+                value.SkinColor = "Blank";
+            } else if (value.SkinColor === "Tanned") {
+                value.SkinColor = "Licht getint";
+            } else if (value.SkinColor === "Dark") {
+                value.SkinColor = "Donker";
+            }
+
+            if (name === "") {
+                name = value.Sex + ", " + value.SkinColor + ", " + value.AgeRange;
+            }
+
+            $("#perpetratorData").append("<li>" + name + "</li>");
+        });
+    }
+});
+
+
+
 function popUpShow(e) {
     $( ".overlay" ).show();
     $( "#" + e + "" ).show();
@@ -14,8 +64,8 @@ function popUpReport(e, a) {
             switch (a) {
                 case "confirm":
                     perpCount++;
-                    var name = $("#perpetrator").children("fieldset").children("#Name").val();
-                    var sex = $("#perpetrator").children("fieldset").children("#Sex").val();
+                    var name = $("#Name").val();
+                    var sex = $("#Sex").val();
                     if (sex === "0") {
                         sex = "Onbekend";
                     } else if (sex === "1") {
@@ -24,7 +74,7 @@ function popUpReport(e, a) {
                         sex = "Vrouw";
                     }
 
-                    var skincolor = $("#perpetrator").children("fieldset").children("#SkinColor").val();
+                    var skincolor = $("#SkinColor").val();
                     if (skincolor === "Light") {
                         var skincolortrans = "Blank";
                     } else if (skincolor === "Tanned") {
@@ -33,10 +83,10 @@ function popUpReport(e, a) {
                         var skincolortrans = "Donker";
                     }
 
-                    var agerange = $("#perpetrator").children("fieldset").children("#AgeRange").val();
+                    var agerange = $("#AgeRange").val();
                     
-                    var clothing = $("#perpetrator").children("fieldset").children("#Clothing").val();
-                    var uniqueproperties = $("#perpetrator").children("fieldset").children("#UniqueProperties").val();
+                    var clothing = $("#Clothing").val();
+                    var uniqueproperties = $("#UniqueProperties").val();
                     var perpArray = {
                             Id: perpCount,
                             Name: name,
@@ -63,11 +113,11 @@ function popUpReport(e, a) {
             switch (a) {
                 case "confirm":
                     vehicleCount++;
-                    var type = $("#vehicle").children("fieldset").children("#VehicleType").val();
-                    var brand = $("#vehicle").children("fieldset").children("#Brand").val();
-                    var numberplate = $("#vehicle").children("fieldset").children("#NumberPlate").val();
-                    var color = $("#vehicle").children("fieldset").children("#Color").val();
-                    var features = $("#vehicle").children("fieldset").children("#AdditionalFeatures").val();
+                    var type = $("#VehicleType").val();
+                    var brand = $("#Brand").val();
+                    var numberplate = $("#NumberPlate").val();
+                    var color = $("#Color").val();
+                    var features = $("#AdditionalFeatures").val();
 
                     var vehicleArray = {
                         Id: vehicleCount,
@@ -101,8 +151,8 @@ function popUpReport(e, a) {
             break;
     }
 
-    $("#" + e + "").children("fieldset").children("select").prop('selectedIndex', 0);
-    $("#" + e + "").children("fieldset").children("input, textarea").val(null);
+    $("#" + e + " fieldset select").prop('selectedIndex', 0);
+    $("#" + e + " fieldset").children("input, textarea").val(null);
     $(".overlay").hide();
     $("#" + e + "").hide();
-}   
+}
