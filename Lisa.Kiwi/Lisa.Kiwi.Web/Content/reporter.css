@@ -70,8 +70,9 @@ header {
 iframe {
     display: block;
     border: none;
-    padding: 0px;
+    padding: 0;
     margin: auto;
+    margin-bottom: 10px;
     width: 100%;
     height: 100%;
 }
@@ -385,17 +386,17 @@ p.summary {
 /* Images in dashboard/details */
 
 @media(max-width: 720px) {
-    img {
+    img.dashboardImage {
         width: calc(50% - 11px);
     }
 }
 @media(min-width: 721px) {
-    img {
+    img.dashboardImage {
         width: calc(33% - 10px);
     }
 }
 
-img {
+img.dashboardImage {
     margin: 0 5px;
     margin-bottom: 5px;
     float: left;

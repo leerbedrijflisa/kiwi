@@ -2,7 +2,6 @@
 var fileObj = new Object;
 var listCount = 0;
 
-
 // Event listeners
 $('form#uploadfiles input[type=file]').on('change', function (e) {
     var files = e.target.files;
@@ -30,9 +29,15 @@ function upload() {
             contentType: false,
             processData: false,
             data: data,
-            success: uploadSuccess(),
-            error: uploadFailed(xhr, textStatus, errorThrown),
-            complete: requestComplete(xhr, textStatus)
+            success: function(data, textStatus, xhr) {
+                uploadSuccess(data, textStatus, xhr)
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                uploadFailed(xhr, textStatus, errorThrown)
+                },
+            complete: function (xhr, textStatus) {
+                requestComplete(xhr, textStatus)
+            }
         });
     }
     else {
@@ -41,11 +46,11 @@ function upload() {
 }
 
 function requestComplete(xhr, textStatus) {
+    // Clear formdata so that it can be refilled when needed
     data = new FormData();
 }
 
 function uploadSuccess(data, textStatus, xhr) {
-    console.log(data);
     // Clear the file object and file list
     fileObj = new Object;
     $('#uploadqueue').empty();
@@ -56,7 +61,6 @@ function uploadFailed(xhr, textStatus, errorThrown) {
     DeactivateFileUploadOverlay();
     var err = "Error : " + status + " " + errorThrown + " " + xhr.responseText;
     showError(xhr);
-    console.log(err);
 }
 
 function showError(xhr) {
@@ -70,7 +74,6 @@ function deleteFileFromList(element) {
     var fileId = $(element).parents('tr').attr('id');
     $("#" + fileId).remove();
     delete fileObj[fileId];
-    console.log(fileObj[fileId]);
 }
 
 function processFileSelection(event, files) {
