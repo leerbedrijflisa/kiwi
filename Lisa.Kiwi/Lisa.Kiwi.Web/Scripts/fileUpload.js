@@ -21,6 +21,8 @@ function upload() {
             }
         }
 
+        ActivateFileUploadOverlay();
+
         // Send the ajax call
         $.ajax({
             type: "POST",
@@ -28,12 +30,9 @@ function upload() {
             contentType: false,
             processData: false,
             data: data,
-            success: function (result) {
-                uploadSuccess(result);
-            },
-            error: function () {
-                uploadFailed(xhr, status, p3, p4);
-            }
+            success: uploadSuccess(),
+            error: uploadFailed(xhr, textStatus, errorThrown),
+            complete: requestComplete(xhr, textStatus)
         });
     }
     else {
@@ -41,19 +40,29 @@ function upload() {
     }
 }
 
-function uploadSuccess(result) {
-    console.log(result);
+function requestComplete(xhr, textStatus) {
+    data = new FormData();
+}
+
+function uploadSuccess(data, textStatus, xhr) {
+    console.log(data);
     // Clear the file object and file list
     fileObj = new Object;
     $('#uploadqueue').empty();
     window.location.href = '/Report/Done';
 }
 
-function uploadFailed(xhr, status, p3, p4) {
-    var err = "Error " + " " + status + " " + p3 + " " + p4;
-    if (xhr.responseText && xhr.responseText[0] == "{")
-        err = JSON.parse(xhr.responseText).Message;
+function uploadFailed(xhr, textStatus, errorThrown) {
+    DeactivateFileUploadOverlay();
+    var err = "Error : " + status + " " + errorThrown + " " + xhr.responseText;
+    showError(xhr);
     console.log(err);
+}
+
+function showError(xhr) {
+    var errorField = $('#fileUpload #errors');
+    var errorText = xhr.responseText;
+    errorField.html(errorText);
 }
 
 // Client side file processing

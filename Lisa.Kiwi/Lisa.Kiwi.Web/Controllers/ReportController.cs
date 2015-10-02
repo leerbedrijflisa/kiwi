@@ -404,6 +404,21 @@ namespace Lisa.Kiwi.Web
             try
             {
                 var files = Request.Files;
+
+                foreach (string file in files)
+                {
+                    if (!FileHelpers.IsSize(files[file], 2000000))
+                    {
+                        Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                        return Json("One or more files are too large to be uploaded");
+                    }
+                    if (!FileHelpers.IsMimes(files[file], new string[] { "image" }))
+                    {
+                        Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                        return Json("The files are required to be images");
+                    }
+                }
+
                 var report = await GetCurrentReport();
                 _modelFactory.Modify(report, files);
                 await _reportProxy.PatchAsync(report.Id, report);
@@ -411,10 +426,10 @@ namespace Lisa.Kiwi.Web
             catch (Exception)
             {
                 Response.StatusCode = (int)HttpStatusCode.BadRequest;
-                return Json("Upload failed");
+                return Json("Unexpected Error");
             }
 
-            return Json("File uploaded successfully");
+            return Json("Files uploaded successfully");
         }
 
        protected override void OnActionExecuting(ActionExecutingContext context)
