@@ -311,6 +311,7 @@
     <Content Include="Scripts\header-resizer.js" />
     <Content Include="Scripts\hyphenator.js" />
     <Content Include="Scripts\bug-report.js" />
+    <Content Include="Scripts\jquery-1.11.2.min.js" />
     <Content Include="Scripts\jquery.datetimepicker.js" />
     <Content Include="Scripts\messageReciever.js" />
     <Content Include="Scripts\messageSender.js" />
