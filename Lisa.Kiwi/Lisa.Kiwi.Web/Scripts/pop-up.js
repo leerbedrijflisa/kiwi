@@ -66,21 +66,15 @@ function popUpReport(e, a) {
                     perpCount++;
                     var name = $("#Name").val();
                     var sex = $("#Sex").val();
-                    if (sex === "0") {
-                        sex = "Onbekend";
-                    } else if (sex === "1") {
-                        sex = "Man";
-                    } else if (sex === "2") {
-                        sex = "Vrouw";
-                    }
+                    
 
                     var skincolor = $("#SkinColor").val();
-                    if (skincolor === "Light") {
-                        var skincolortrans = "Blank";
-                    } else if (skincolor === "Tanned") {
-                        var skincolortrans = "Licht getint";
+                    var skinColorTrans = "Blank";
+
+                    if (skincolor === "Tanned") {
+                        skinColorTrans = "Licht getint";
                     } else if (skincolor === "Dark") {
-                        var skincolortrans = "Donker";
+                        skinColorTrans = "Donker";
                     }
 
                     var agerange = $("#AgeRange").val();
@@ -100,8 +94,16 @@ function popUpReport(e, a) {
 
                     $("input[name=Perpetrators]").val(JSON.stringify(perpetrators));
 
+                    if (sex === "Unknown") {
+                        sex = "Onbekend";
+                    } else if (sex === "Male") {
+                        sex = "Man";
+                    } else if (sex === "Female") {
+                        sex = "Vrouw";
+                    }
+
                     if (name === "") {
-                        name = Sex + ", " + skincolortrans + ", " + agerange;
+                        name = sex + ", " + skinColorTrans + ", " + agerange;
                     }
 
                     $("#perpetratorData").append("<li>" + name +  "</li>");
@@ -130,6 +132,24 @@ function popUpReport(e, a) {
                     vehicles.splice(vehicles.length, 0, vehicleArray);
 
                     $("input[name=Vehicles]").val(JSON.stringify(vehicles));
+
+                    switch(type) {
+                        case "Car":
+                            type = "Auto";
+                            break;
+                        case "Moped":
+                            type = "Brommer";
+                            break;
+                        case "MotorCycle":
+                            type = "Motor";
+                            break;
+                        case "BiCycle":
+                            type = "Fiets";
+                            break;
+                        default:
+                            type = "Onbekend";
+                            break;
+                    }
 
                     if (numberplate != "") {
                         numberplate = ", " + numberplate;

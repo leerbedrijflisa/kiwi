@@ -220,6 +220,12 @@ fieldset p { /* heading inside form */
   width: calc(100% - 20px);
 }
 
+fieldset h2 { /* heading inside form */
+  margin: 10px 0;
+  padding: 10px;
+  width: calc(100% - 20px);
+}
+
 input:not([type='radio']),
 select,
 textarea {
