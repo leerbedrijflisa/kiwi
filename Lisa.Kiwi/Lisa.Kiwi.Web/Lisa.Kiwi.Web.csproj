@@ -142,9 +142,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Magic\FileUploader.cs" />
-    <Compile Include="Magic\ImageHelpers.cs" />
+    <Compile Include="Magic\FileHelpers.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Controllers\ResourcesController.cs" />
+    <Compile Include="Magic\ImageHelpers.cs" />
     <Compile Include="Resources\BuildingImages.Designer.cs">
       <DependentUpon>BuildingImages.resx</DependentUpon>
       <DesignTime>True</DesignTime>

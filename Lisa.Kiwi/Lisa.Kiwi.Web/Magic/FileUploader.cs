@@ -45,20 +45,6 @@ namespace Lisa.Kiwi.Web
             return fileEntity;
         }
 
-        public bool IsSize(int maxSize)
-        {
-            return _file.ContentLength <= maxSize;
-        }
-
-        public bool IsSmallerThanDimensions(Stream imageStream, int maxHeight, int maxWidth)
-        {
-            using (var img = Image.FromStream(imageStream))
-            {
-                if (img.Width <= maxWidth && img.Height <= maxHeight) return true;
-            }
-            return false;
-        }
-
         public async Task UploadFile()
         {
             using (var fileStream = _file.InputStream)
@@ -73,10 +59,10 @@ namespace Lisa.Kiwi.Web
 
         private async Task UploadImagesResized(Stream imageStream)
         {
-            foreach (var s in ImageHelpers.ImageSizes.List)
+            foreach (var s in FileHelpers.ImageHelpers.ImageSizes.List)
             {
                 // Only upload additional files if the image is larger than the target size
-                if (ImageHelpers.IsLargerThanDimensions(imageStream, Convert.ToInt32(s.Split('/').Last())))
+                if (FileHelpers.ImageHelpers.IsLargerThanDimensions(imageStream, Convert.ToInt32(s.Split('/').Last())))
                 {
                     var keyGuid = _key.Split('.').First();
                     var keyExtension = _key.Split('.').Last();
@@ -93,7 +79,7 @@ namespace Lisa.Kiwi.Web
                     stream.Position = 0;
 
                     // Resize and upload image
-                    var resizedstream = ImageHelpers.ResizeImage(stream, maxPixelSize);
+                    var resizedstream = FileHelpers.ImageHelpers.ResizeImage(stream, maxPixelSize);
                     await UploadStreamToStorage(resizedstream, _contentType, key);
                 }
             }   

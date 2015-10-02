@@ -5,6 +5,6 @@
 
     @foreach (var file in Model)
     {
-        <img src="@ImageHelpers.GetImageUrl(file, ImageHelpers.ImageSizes.Thumbnail)" />
+        <img src="@FileHelpers.ImageHelpers.GetImageUrl(file, FileHelpers.ImageHelpers.ImageSizes.Thumbnail)" />
     }
 </fieldset>
