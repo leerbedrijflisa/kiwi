@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Threading.Tasks;
 
 namespace Lisa.Kiwi.Web
 {
@@ -163,12 +164,12 @@ namespace Lisa.Kiwi.Web
             }
         }
         
-        public void Modify(Report report, HttpFileCollectionBase files)
+        public async Task Modify(Report report, HttpFileCollectionBase files)
         {
-            report.Files = GetFiles(files, string.Format("report-{0}", report.Id.ToString()));
+            report.Files = await GetFiles(files, string.Format("report-{0}", report.Id.ToString()));
         }
 
-        private IEnumerable<File> GetFiles(HttpFileCollectionBase httpFiles, string uploadContainer)
+        private async Task<IEnumerable<File>> GetFiles(HttpFileCollectionBase httpFiles, string uploadContainer)
         {
             var files = new List<File>();
 
@@ -179,7 +180,7 @@ namespace Lisa.Kiwi.Web
                 {
                     var uploader = new FileUploader(fileContent, uploadContainer);
                     files.Add(uploader.GetFileEntity());
-                    uploader.UploadFile();
+                    await uploader.UploadFile();
                 }
             }
 

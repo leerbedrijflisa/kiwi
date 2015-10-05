@@ -420,7 +420,7 @@ namespace Lisa.Kiwi.Web
                 }
 
                 var report = await GetCurrentReport();
-                _modelFactory.Modify(report, files);
+                await _modelFactory.Modify(report, files);
                 await _reportProxy.PatchAsync(report.Id, report);
             }
             catch (Exception)

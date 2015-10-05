@@ -406,3 +406,21 @@ img.dashboardImage {
     float: left;
     max-height: 300px;
 }
+
+#lightBox {
+    display: none;
+    position: absolute;
+    top: 0;
+    left:0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    background-color:rgba(000, 000, 000, 0.5);
+}
+
+#lightBox img {
+    top: 25%;
+    left: 25%;
+    width: 50%;
+    position: fixed;
+}

@@ -34,7 +34,7 @@
 	@Html.Partial("~/Views/Shared/Partials/Details/Vehicles.cshtml", Model.Vehicles);
 }
 
-@if (Model.Files != null)
+@if (Model.Files != null && Model.Files.Any())
 {
     @Html.Partial("~/Views/Shared/Partials/Details/Files.cshtml", Model.Files);
 }
@@ -64,4 +64,8 @@
 			@Html.ActionLink("terug", "index", "dashboard")
 		</p>
 	</fieldset>
+    
 }
+<div id="lightBox">
+    <img />
+</div>

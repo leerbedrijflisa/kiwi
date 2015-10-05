@@ -307,6 +307,7 @@
     <Content Include="App_Code\DashboardHelpers.cshtml" />
     <Content Include="Scripts\archive.js" />
     <Content Include="Scripts\dashboard.js" />
+    <Content Include="Scripts\dashboardLightbox.js" />
     <Content Include="Scripts\DoneWeapons.js" />
     <Content Include="Scripts\fileUpload.js" />
     <Content Include="Scripts\header-resizer.js" />
