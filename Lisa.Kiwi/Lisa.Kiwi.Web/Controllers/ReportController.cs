@@ -389,12 +389,12 @@ namespace Lisa.Kiwi.Web
                     if (!FileHelpers.IsMimes(files[file], new string[] { "image" }))
                     {
                         Response.StatusCode = (int)HttpStatusCode.BadRequest;
-                        return Json("The files are required to be images");
+                        return Json(Resources.ErrorMessages.FileExtension);
                     }
-                    if (!FileHelpers.IsSize(files[file], 2000000))
+                    if (!FileHelpers.IsSize(files[file], 10485760))
                     {
                         Response.StatusCode = (int)HttpStatusCode.BadRequest;
-                        return Json("One or more files are too large to be uploaded");
+                        return Json(Resources.ErrorMessages.FileSize);
                     }
                 }
 
@@ -405,10 +405,10 @@ namespace Lisa.Kiwi.Web
             catch (Exception)
             {
                 Response.StatusCode = (int)HttpStatusCode.BadRequest;
-                return Json("Unexpected Error");
+                return Json(Resources.ErrorMessages.FileUnexpected);
             }
 
-            return Json("Files uploaded successfully");
+            return Json(Resources.PageItems.FileSuccess);
         }
 
        protected override void OnActionExecuting(ActionExecutingContext context)

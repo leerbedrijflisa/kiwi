@@ -33,13 +33,13 @@ namespace Lisa.Kiwi.Web
                 url = WebConfigurationManager.AppSettings["WebApiUrl"];
             }
             return url;
-
-
         }
 
         public static CloudBlobClient GetBlobStorageClient()
         {
-            return CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("StorageConnectionString")).CreateCloudBlobClient();
+            if (_blobClient == null) _blobClient = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("StorageConnectionString")).CreateCloudBlobClient();
+
+            return _blobClient;
         }
 
         public static CloudBlobContainer GetBlobContainer(string containerName)
@@ -73,5 +73,7 @@ namespace Lisa.Kiwi.Web
             return Process.GetProcesses()
                 .Any(process => process.ProcessName.Contains("Fiddler"));
         }
+
+        private static CloudBlobClient _blobClient;
     }
 }

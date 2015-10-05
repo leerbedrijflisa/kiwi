@@ -411,7 +411,7 @@ img.dashboardImage {
     display: none;
     position: absolute;
     top: 0;
-    left:0;
+    left: 0;
     height: 100%;
     width: 100%;
     z-index: 1;
@@ -419,7 +419,7 @@ img.dashboardImage {
 }
 
 #lightBox img {
-    top: 25%;
+    top: 10%;
     left: 25%;
     width: 50%;
     position: fixed;

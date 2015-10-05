@@ -162,6 +162,9 @@
   <data name="DoneMessage" xml:space="preserve">
     <value>Bedankt voor uw melding</value>
   </data>
+  <data name="FileSuccess" xml:space="preserve">
+    <value>Afbeeldingen verzonden</value>
+  </data>
   <data name="HelpOnTheWay" xml:space="preserve">
     <value>We sturen hulp.</value>
   </data>
