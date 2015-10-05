@@ -30,7 +30,7 @@ function continueNavigation() {
 }
 
 function resizeIFrame() {
-    iframe = $('#iframe');
-    iframe.height = 0;
-    iframe.height = obj.contentWindow.document.body.scrollHeight + 'px';
+    iframe = document.getElementById('iframe');
+    iframe.style.height = 0;
+    iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
 }

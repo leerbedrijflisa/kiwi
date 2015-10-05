@@ -27,8 +27,8 @@
 			<legend>@DisplayNames.PerpetratorProperties</legend>
 			@Html.TextAreaFor(m => m.UniqueProperties)
 		</fieldset>
-		<button type="submit" onclick="popUpReport('perpetrator', 'abort'); return false;"><img src="~/Content/cancel.svg" /></button>
-		<button type="submit" onclick="popUpReport('perpetrator', 'confirm'); return false;"><img src="~/Content/done.svg" /></button>
+		<button type="submit" onclick="popUpReport('perpetrator', 'abort'); postResizeMessage(); return false;"><img src="~/Content/cancel.svg" /></button>
+		<button type="submit" onclick="popUpReport('perpetrator', 'confirm'); postResizeMessage(); return false;"><img src="~/Content/done.svg" /></button>
 	</section>
 	<legend>@DisplayNames.Perpetrator</legend>
 

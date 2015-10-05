@@ -18,7 +18,7 @@
 			@Html.TextBoxFor( m => m.EmailAddress )
 			<span class="required">telefoonnummer of e-mailadres is verplicht</span>
 		</fieldset>
-		<button type="submit" onclick="popUpReport('contact', 'abort'); return false;"><img src="~/Content/cancel.svg" /></button>
+		<button type="submit" onclick="popUpReport('contact', 'abort'); postResizeMessage(); return false;"><img src="~/Content/cancel.svg" /></button>
 		<button type="submit"><img src="~/Content/done.svg" /></button>
 	</section>
 </fieldset>
