@@ -1,5 +1,5 @@
 /*!
- * ASP.NET SignalR JavaScript Library v2.2.0-pre
+ * ASP.NET SignalR JavaScript Library v2.2.0
  * http://signalr.net/
  *
  * Copyright Microsoft Open Technologies, Inc. All rights reserved.
@@ -78,12 +78,15 @@
             registerHubProxies(proxies, false);
         });
 
-    /*hubs*/
+        proxies['reportsHub'] = this.createHubProxy('reportsHub');
+        proxies['reportsHub'].client = {};
+        proxies['reportsHub'].server = {
+        };
 
         return proxies;
     };
 
-    signalR.hub = $.hubConnection("{serviceUrl}", { useDefaultPath: false });
+    signalR.hub = $.hubConnection("/signalr", { useDefaultPath: false });
     $.extend(signalR, signalR.hub.createHubProxies());
 
 }(window.jQuery, window));
