@@ -90,10 +90,7 @@ namespace Lisa.Kiwi.Web
             report.VictimName = viewModel.VictimName;
             report.Perpetrators = GetPerpetrators(viewModel.Perpetrators);
         }
-        public void Modify(Report report, VictimViewModel viewModel)
-        {
-            report.Victim = viewModel.Victim;
-        }
+
         public void Modify(Report report, OtherViewModel viewModel)
         {
             report.Description = viewModel.Description;

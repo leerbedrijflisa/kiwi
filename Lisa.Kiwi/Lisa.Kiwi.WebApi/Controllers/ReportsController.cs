@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.OData;
 using System.Web.Security;
 using Microsoft.AspNet.SignalR;
 using Newtonsoft.Json.Linq;
@@ -16,7 +17,7 @@ namespace Lisa.Kiwi.WebApi
     [System.Web.Http.Authorize]
     public class ReportsController : ApiController
     {
-        [Queryable]
+        [EnableQuery]
         [System.Web.Http.Authorize(Roles = "DashboardUser, Administrator")]
         public IQueryable<Report> Get()
         {

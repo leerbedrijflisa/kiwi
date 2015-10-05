@@ -95,7 +95,7 @@ namespace Lisa.Kiwi.Web
             var report = new Report();
 
             _modelFactory.Modify(report, viewModel);
-            var responseReport = await _reportProxy.PatchAsync(reportId, report);
+            await _reportProxy.PatchAsync(reportId, report);
 
             return RedirectToAction("AdditionalLocation");
         }
@@ -241,7 +241,7 @@ namespace Lisa.Kiwi.Web
             var report = new Report();
 
             _modelFactory.Modify(report, viewModel);
-            report = await _reportProxy.PatchAsync(GetCurrentReportId(), report);
+            await _reportProxy.PatchAsync(GetCurrentReportId(), report);
 
             return RedirectToAction("Contact");
         }
@@ -282,7 +282,7 @@ namespace Lisa.Kiwi.Web
 
             var report = new Report();
             _modelFactory.Modify(report, viewModel);
-            report = await _reportProxy.PatchAsync(GetCurrentReportId(), report);
+            await _reportProxy.PatchAsync(GetCurrentReportId(), report);
             
             return RedirectToAction("Contact");
         }
@@ -305,27 +305,6 @@ namespace Lisa.Kiwi.Web
             await _reportProxy.PatchAsync(GetCurrentReportId(), report);
 
             return RedirectToAction("ContactRequired");
-        }
-
-        public ActionResult Victim()
-        {
-            return View(new VictimViewModel());
-        }
-
-        [HttpPost]
-        public async Task<ActionResult> Victim(VictimViewModel viewModel)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View(viewModel);
-            }
-
-            var report = new Report();
-            _modelFactory.Modify(report, viewModel);
-            await _reportProxy.PatchAsync(GetCurrentReportId(), report);
-
-            // TODO: add error handling
-            return RedirectToAction("Contact");
         }
 
         public ActionResult Contact()

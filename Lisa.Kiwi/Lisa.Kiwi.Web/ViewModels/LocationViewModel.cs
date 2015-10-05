@@ -1,14 +1,11 @@
-﻿using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using Lisa.Kiwi.Web.Resources;
 
 namespace Lisa.Kiwi.Web
 {
     public class LocationViewModel
     {
-        // TODO: use resource files for display names
-
-        [Required(ErrorMessage = ErrorMessages.RequiredError)]
-        [DisplayName("Gebouw *")]
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(ErrorMessages))]
         public string Building { get; set; }
     }
 }
