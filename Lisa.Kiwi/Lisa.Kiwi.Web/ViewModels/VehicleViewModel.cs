@@ -8,8 +8,6 @@ namespace Lisa.Kiwi.Web
 {
     public class VehicleViewModel
     {
-        public bool HasVehicle { get; set; }
-
         [Display(Name = "VehicleColor", ResourceType = typeof(ReportProperties))]
         public string Color { get; set; }
 
