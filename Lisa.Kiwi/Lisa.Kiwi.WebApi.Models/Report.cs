@@ -8,7 +8,7 @@ namespace Lisa.Kiwi.WebApi
         public Report()
         {
             Modified = DateTimeOffset.Now;
-            IsVisible = true;
+            
         }
 
         public int Id { get; set; }

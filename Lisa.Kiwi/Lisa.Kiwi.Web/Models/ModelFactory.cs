@@ -17,7 +17,8 @@ namespace Lisa.Kiwi.Web
             {
                 Created = DateTimeOffset.Now,
                 Status = StatusEnum.Open,
-                Category = viewModel.Category
+                Category = viewModel.Category,
+                IsVisible = true
             };
         }
 

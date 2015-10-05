@@ -88,7 +88,7 @@ namespace Lisa.Kiwi.WebApi
                 return NotFound();
             }
 
-            if (!claimsIdentity.HasClaim("is_admin", "True") && json.Value<bool>("isVisible") != reportData.IsVisible)
+            if (!claimsIdentity.HasClaim("is_admin", "True") && !claimsIdentity.HasClaim(ClaimTypes.Role, "Anonymous") && json.Value<bool>("isVisible") != reportData.IsVisible)
             {
                 return Unauthorized();
             }
