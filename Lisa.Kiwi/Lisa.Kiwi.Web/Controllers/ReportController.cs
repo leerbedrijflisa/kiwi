@@ -95,7 +95,7 @@ namespace Lisa.Kiwi.Web
             var report = new Report();
 
             _modelFactory.Modify(report, viewModel);
-            var responseReport = await _reportProxy.PatchAsync(reportId, report);
+            await _reportProxy.PatchAsync(reportId, report);
 
             return RedirectToAction("AdditionalLocation");
         }
@@ -234,7 +234,7 @@ namespace Lisa.Kiwi.Web
             var report = new Report();
 
             _modelFactory.Modify(report, viewModel);
-            report = await _reportProxy.PatchAsync(GetCurrentReportId(), report);
+            await _reportProxy.PatchAsync(GetCurrentReportId(), report);
 
             return RedirectToAction("Contact");
         }
@@ -275,7 +275,7 @@ namespace Lisa.Kiwi.Web
 
             var report = new Report();
             _modelFactory.Modify(report, viewModel);
-            report = await _reportProxy.PatchAsync(GetCurrentReportId(), report);
+            await _reportProxy.PatchAsync(GetCurrentReportId(), report);
             
             return RedirectToAction("Contact");
         }
