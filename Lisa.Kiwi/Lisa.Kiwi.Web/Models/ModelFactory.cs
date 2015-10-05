@@ -15,6 +15,8 @@ namespace Lisa.Kiwi.Web
         {
             return new Report
             {
+                Created = DateTimeOffset.Now,
+                Status = StatusEnum.Open,
                 Category = viewModel.Category
             };
         }

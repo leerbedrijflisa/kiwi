@@ -7,10 +7,8 @@ namespace Lisa.Kiwi.WebApi
     {
         public Report()
         {
-            Created = DateTimeOffset.Now;
             Modified = DateTimeOffset.Now;
             IsVisible = true;
-            Status = StatusEnum.Open;
         }
 
         public int Id { get; set; }
