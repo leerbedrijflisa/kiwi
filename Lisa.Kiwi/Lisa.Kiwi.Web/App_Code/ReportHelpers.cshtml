@@ -1,60 +1,11 @@
-﻿@helper LocationCheck(string location)
-{
-	string[] normalLocations = { "Buiten", "Arcobaleno", "Azzurro", "Bianco", "Celeste", "Giallo", "Indaco", "Lilla", "Marrone", "Rosa", "Verde", "Ocra", "Romboutslaan", "Veiligheidsregio", "Sporthal", "Klimhal", "Bogermanschool", "Appartementen", "Wartburg", "Media", "Orthodontist" };
-	int pos = Array.IndexOf(normalLocations, location);
-			
-	if (pos >- 1)
-	{
-			location = Resources.Buildings.ResourceManager.GetString(location);
-			@location
-	}
-	else
-	{
-		if(location == "ParkeerplaatsDuurzaamheidsfabriek")
-		{
-					location = "Parkeerplaats Duurzaamheids-\nfabriek";		
-		}
-        if (location == "BetaaldeParkeerplaats")
-        {
-                    location = "Parkeerplaats Duurzaamheids-\nfabriek";
-        }            
-		else if(location == "ParkeerplaatsBrandweerkazerne")
-		{
-					location = "Parkeerplaats Brandweer-\nkazerne";
-		}
-		else if(location == "Duurzaamheidsfabriek")
-		{
-				    location = "Duurzaamheids-\nfabriek";
-		}
-		else if(location == "Drechtstedencollege")
-		{
-					location = "Drechtsteden-\ncollege";
-		}
-		else if (location == "Samenwerkingsgebouw")
-		{
-					location = "Samenwerkings-\ngebouw";
-		}
-		else if (location == "Brandweerkazerne")
-		{
-					location = "Brandweer-\nkazerne";
-		}
-		else if (location == "Schippersinternaat")
-		{
-					location = "Schippers-\ninternaat";
-		}		
-		location = location.Replace("\n", Environment.NewLine);
-		@location
-	}
-}
-
-@helper Capitalize(string value)
+﻿@helper Capitalize(string value)
 {
 	if (String.IsNullOrEmpty(value))
 	{
-		@value;
+		@value
 	}
 	else
 	{		
-		@String.Format("{0}{1}", value.ToUpper()[0], value.Substring(1));	
+		@String.Format("{0}{1}", value.ToUpper()[0], value.Substring(1))	
 	}
 }

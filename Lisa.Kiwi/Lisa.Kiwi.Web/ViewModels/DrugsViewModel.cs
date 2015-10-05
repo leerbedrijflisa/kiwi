@@ -1,17 +1,15 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
+using Lisa.Kiwi.Web.Resources;
 
 namespace Lisa.Kiwi.Web
 {
     public class DrugsViewModel
     {
-        [Required(ErrorMessage = ErrorMessages.RequiredError)]
-        [DisplayName("Wat heb je gezien?")]
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(ErrorMessages))]
         public string Action { get; set; }
 
-        [DisplayName("Wat kun je er verder over vertellen?")]
         public string Description { get; set; }
 
         public string Vehicles { get; set; }

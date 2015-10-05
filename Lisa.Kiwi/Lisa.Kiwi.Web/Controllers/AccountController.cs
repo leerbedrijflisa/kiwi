@@ -6,6 +6,7 @@ using Lisa.Kiwi.WebApi.Access;
 using System.Web.Configuration;
 using Lisa.Common.Access;
 using Lisa.Kiwi.WebApi;
+using Lisa.Kiwi.Web.Resources;
 
 namespace Lisa.Kiwi.Web
 {
@@ -44,7 +45,7 @@ namespace Lisa.Kiwi.Web
             var token = await authProxy.Login(model.UserName, model.Password);
             if (token == null)
             {
-                ModelState.AddModelError("password", "Wachtwoord of gebruikersnaam is onjuist");
+                ModelState.AddModelError("password", ErrorMessages.IncorrectLogin);
                 return View();
             }
 

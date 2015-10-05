@@ -1,21 +1,18 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Resources;
+using Lisa.Kiwi.Web.Resources;
 
 namespace Lisa.Kiwi.Web
 {
     public class ContactRequiredViewModel
     {
-        [Required(ErrorMessage = ErrorMessages.RequiredError)]
-        [Display(Name = "Name", ResourceType = typeof(DisplayNames))]
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(ErrorMessages))]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = ErrorMessages.RequiredError)]
-        [Display(Name = "PhoneNumber", ResourceType = typeof(DisplayNames))]
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(ErrorMessages))]
         public string PhoneNumber { get; set; }
 
-        [RegularExpression(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", ErrorMessage = "Please enter a valid e-mail adress")]
-        [Required(ErrorMessage = ErrorMessages.RequiredError)]
-        [Display(Name = "EmailAddress", ResourceType = typeof(DisplayNames))]
+        [RegularExpression(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", ErrorMessageResourceName = "Email", ErrorMessageResourceType = typeof(ErrorMessages))]
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(ErrorMessages))]
         [DataType(DataType.EmailAddress)]
         public string EmailAddress { get; set; }
     }
