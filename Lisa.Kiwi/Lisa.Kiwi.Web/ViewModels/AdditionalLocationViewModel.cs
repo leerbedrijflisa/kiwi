@@ -1,12 +1,11 @@
-﻿using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using Lisa.Kiwi.Web.Resources;
 
 namespace Lisa.Kiwi.Web
 {
     public class AdditionalLocationViewModel
     {
-        [Required(ErrorMessage = ErrorMessages.RequiredError)]
-        [DisplayName("Locatie")]
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(ErrorMessages))]
         public string AdditionalLocation { get; set; }
     }
 }

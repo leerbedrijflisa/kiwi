@@ -138,6 +138,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Buildings.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\ErrorMessages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ErrorMessages.resx</DependentUpon>
+    </Compile>
     <Compile Include="Resources\PageItems1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -193,7 +198,6 @@
     <Compile Include="ViewModels\ContactViewModel.cs" />
     <Compile Include="ViewModels\DoneViewModel.cs" />
     <Compile Include="ViewModels\DrugsViewModel.cs" />
-    <Compile Include="ViewModels\ErrorMessages.cs" />
     <Compile Include="ViewModels\FightViewModel.cs" />
     <Compile Include="ViewModels\FirstAidViewModel.cs" />
     <Compile Include="ViewModels\LocationViewModel.cs" />
@@ -205,7 +209,6 @@
     <Compile Include="ViewModels\StatusChangeViewModel.cs" />
     <Compile Include="ViewModels\TheftViewModel.cs" />
     <Compile Include="ViewModels\VehicleViewModel.cs" />
-    <Compile Include="ViewModels\VictimViewModel.cs" />
     <Compile Include="ViewModels\WeaponViewModel.cs" />
     <Content Include="Content\alert.mp3" />
     <Content Include="Content\banner.jpg" />
@@ -288,11 +291,13 @@
     <Content Include="App_Code\DashboardHelpers.cshtml" />
     <Content Include="Scripts\archive.js" />
     <Content Include="Scripts\dashboard.js" />
+    <Content Include="Scripts\date.js" />
     <Content Include="Scripts\DoneWeapons.js" />
     <Content Include="Scripts\header-resizer.js" />
-    <Content Include="Scripts\hyphenator.js" />
     <Content Include="Scripts\bug-report.js" />
+    <Content Include="Scripts\hubs.js" />
     <Content Include="Scripts\jquery.datetimepicker.js" />
+    <Content Include="Scripts\jquery.signalR.min.js" />
     <Content Include="Scripts\pop-up.js" />
     <Content Include="Scripts\Theft.js" />
     <Content Include="Scripts\Weapons.js" />
@@ -338,7 +343,6 @@
     <Content Include="Views\Report\Nuisance.cshtml" />
     <Content Include="Views\Report\View.cshtml" />
     <Content Include="Views\Report\Vehicle.cshtml" />
-    <Content Include="Views\Report\Victim.cshtml" />
     <Content Include="App_Code\ReportHelpers.cshtml" />
     <Content Include="Views\Report\AdditionalLocation.cshtml" />
     <Content Include="Views\Report\SessionExpired.cshtml" />
@@ -385,57 +389,62 @@
     <EmbeddedResource Include="Resources\BuildingImages.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>BuildingImages.Designer.cs</LastGenOutput>
-      <CustomToolNamespace>Resources</CustomToolNamespace>
+      <CustomToolNamespace>Lisa.Kiwi.Web.Resources</CustomToolNamespace>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Buildings.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Buildings.Designer.cs</LastGenOutput>
-      <CustomToolNamespace>Resources</CustomToolNamespace>
+      <CustomToolNamespace>Lisa.Kiwi.Web.Resources</CustomToolNamespace>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\DisplayNames.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>DisplayNames.designer.cs</LastGenOutput>
-      <CustomToolNamespace>Resources</CustomToolNamespace>
+      <CustomToolNamespace>Lisa.Kiwi.Web.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ErrorMessages.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ErrorMessages.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Lisa.Kiwi.Web.Resources</CustomToolNamespace>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Statuses.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Statuses.Designer.cs</LastGenOutput>
-      <CustomToolNamespace>Resources</CustomToolNamespace>
+      <CustomToolNamespace>Lisa.Kiwi.Web.Resources</CustomToolNamespace>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\ReportProperties.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ReportProperties.Designer.cs</LastGenOutput>
-      <CustomToolNamespace>Resources</CustomToolNamespace>
+      <CustomToolNamespace>Lisa.Kiwi.Web.Resources</CustomToolNamespace>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\PageItems.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <CustomToolNamespace>Resources</CustomToolNamespace>
+      <CustomToolNamespace>Lisa.Kiwi.Web.Resources</CustomToolNamespace>
       <LastGenOutput>PageItems1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Sex.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Sex.Designer.cs</LastGenOutput>
-      <CustomToolNamespace>Resources</CustomToolNamespace>
+      <CustomToolNamespace>Lisa.Kiwi.Web.Resources</CustomToolNamespace>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Perpetrator.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Perpetrator.Designer.cs</LastGenOutput>
-      <CustomToolNamespace>Resources</CustomToolNamespace>
+      <CustomToolNamespace>Lisa.Kiwi.Web.Resources</CustomToolNamespace>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\SkinColor.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SkinColor.Designer.cs</LastGenOutput>
-      <CustomToolNamespace>Resources</CustomToolNamespace>
+      <CustomToolNamespace>Lisa.Kiwi.Web.Resources</CustomToolNamespace>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Time.resx">
-      <CustomToolNamespace>Resources</CustomToolNamespace>
+      <CustomToolNamespace>Lisa.Kiwi.Web.Resources</CustomToolNamespace>
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Time.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\VehicleTypes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>VehicleTypes.Designer.cs</LastGenOutput>
-      <CustomToolNamespace>Resources</CustomToolNamespace>
+      <CustomToolNamespace>Lisa.Kiwi.Web.Resources</CustomToolNamespace>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -449,7 +458,7 @@
     <EmbeddedResource Include="Resources\Categories.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Categories.Designer.cs</LastGenOutput>
-      <CustomToolNamespace>Resources</CustomToolNamespace>
+      <CustomToolNamespace>Lisa.Kiwi.Web.Resources</CustomToolNamespace>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

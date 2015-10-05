@@ -1,20 +1,17 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
+using Lisa.Kiwi.Web.Resources;
 
 namespace Lisa.Kiwi.Web
 {
     public class FightViewModel
     {
-        [DisplayName("Hoeveel personen zijn er aan het vechten?*")]
         public int FighterCount { get; set; }
-
-        [Required(ErrorMessage = ErrorMessages.RequiredError)]
-        [DisplayName("Zijn er wapens bij betrokken?")]
+        
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(ErrorMessages))]
         public bool IsWeaponPresent { get; set; }
 
-        [DisplayName("Wilt u nog iets toevoegen?")]
         public string Description { get; set; }
 
         public IEnumerable<SelectListItem> WeaponPresent
@@ -32,7 +29,7 @@ namespace Lisa.Kiwi.Web
                     {
                         Text = "Nee",
                         Value = "false"
-                    },
+                    }
                 };
             }
         }

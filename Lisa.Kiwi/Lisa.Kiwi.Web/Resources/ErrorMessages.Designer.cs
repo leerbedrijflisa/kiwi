@@ -22,14 +22,14 @@ namespace Lisa.Kiwi.Web.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Statuses {
+    public class ErrorMessages {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Statuses() {
+        internal ErrorMessages() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Lisa.Kiwi.Web.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Lisa.Kiwi.Web.Resources.Statuses", typeof(Statuses).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Lisa.Kiwi.Web.Resources.ErrorMessages", typeof(ErrorMessages).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,47 +61,56 @@ namespace Lisa.Kiwi.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Open.
+        ///   Looks up a localized string similar to Vul een geldig e-mailadres in.
         /// </summary>
-        public static string Open {
+        public static string Email {
             get {
-                return ResourceManager.GetString("Open", resourceCulture);
+                return ResourceManager.GetString("Email", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Afgehandeld.
+        ///   Looks up a localized string similar to Wachtwoord of gebruikersnaam is onjuist.
         /// </summary>
-        public static string Solved {
+        public static string IncorrectLogin {
             get {
-                return ResourceManager.GetString("Solved", resourceCulture);
+                return ResourceManager.GetString("IncorrectLogin", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Doorverwezen.
+        ///   Looks up a localized string similar to Foutieve naam.
         /// </summary>
-        public static string Transferred {
+        public static string Name {
             get {
-                return ResourceManager.GetString("Transferred", resourceCulture);
+                return ResourceManager.GetString("Name", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nee.
+        ///   Looks up a localized string similar to Het wachtwoord moet minstens 6 tekens lang zijn.
         /// </summary>
-        public static string VisibleFalse {
+        public static string PasswordLength {
             get {
-                return ResourceManager.GetString("VisibleFalse", resourceCulture);
+                return ResourceManager.GetString("PasswordLength", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ja.
+        ///   Looks up a localized string similar to Vul een geldig telefoonnummer in.
         /// </summary>
-        public static string VisibleTrue {
+        public static string PhoneNumber {
             get {
-                return ResourceManager.GetString("VisibleTrue", resourceCulture);
+                return ResourceManager.GetString("PhoneNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dit is een verplicht veld.
+        /// </summary>
+        public static string Required {
+            get {
+                return ResourceManager.GetString("Required", resourceCulture);
             }
         }
     }

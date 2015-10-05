@@ -1,12 +1,11 @@
-﻿using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using Lisa.Kiwi.Web.Resources;
 
 namespace Lisa.Kiwi.Web
 {
     public class OtherViewModel
     {
-        [Required(ErrorMessage = ErrorMessages.RequiredError)]
-        [DisplayName("Wat is er aan de hand? *")]
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(ErrorMessages))]
         public string Description { get; set; }
 
         public string Vehicles { get; set; }

@@ -133,6 +133,24 @@ function popUpReport(e, a) {
 
                     $("input[name=Vehicles]").val(JSON.stringify(vehicles));
 
+                    switch(type) {
+                        case "Car":
+                            type = "Auto";
+                            break;
+                        case "Moped":
+                            type = "Brommer";
+                            break;
+                        case "MotorCycle":
+                            type = "Motor";
+                            break;
+                        case "BiCycle":
+                            type = "Fiets";
+                            break;
+                        default:
+                            type = "Onbekend";
+                            break;
+                    }
+
                     if (numberplate != "") {
                         numberplate = ", " + numberplate;
                         var name = type + numberplate;
