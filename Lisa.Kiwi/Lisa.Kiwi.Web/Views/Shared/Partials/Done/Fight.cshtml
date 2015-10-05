@@ -26,6 +26,17 @@
 	<legend>@DisplayNames.FightWeapon</legend>
 	@Html.DropDownListFor(m => m.IsWeaponPresent, weaponPresent)
 </fieldset>
+@if (Model.IsWeaponPresent ?? true)
+{
+    <fieldset class="summary">
+        <legend>@DisplayNames.WeaponType</legend>
+        @Html.TextAreaFor(m => m.WeaponType)
+    </fieldset>
+    <fieldset class="summary">
+        <legend>@DisplayNames.WeaponLocation</legend>
+        @Html.TextAreaFor(m => m.WeaponLocation)
+    </fieldset>
+}
 <fieldset class="summary">
 	<legend>@DisplayNames.Description</legend>
 	@Html.TextAreaFor(m => m.Description)

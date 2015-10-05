@@ -407,15 +407,15 @@ namespace Lisa.Kiwi.Web
 
                 foreach (string file in files)
                 {
-                    if (!FileHelpers.IsSize(files[file], 2000000))
-                    {
-                        Response.StatusCode = (int)HttpStatusCode.BadRequest;
-                        return Json("One or more files are too large to be uploaded");
-                    }
                     if (!FileHelpers.IsMimes(files[file], new string[] { "image" }))
                     {
                         Response.StatusCode = (int)HttpStatusCode.BadRequest;
                         return Json("The files are required to be images");
+                    }
+                    if (!FileHelpers.IsSize(files[file], 2000000))
+                    {
+                        Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                        return Json("One or more files are too large to be uploaded");
                     }
                 }
 
