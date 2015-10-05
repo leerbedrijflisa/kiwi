@@ -77,13 +77,11 @@ iframe {
     height: 100%;
 }
 
-#uploadfiles .uploadwrapper input[type=file],
-#uploadfiles .uploadwrapper input[type=file]::-webkit-file-upload-button {
+#uploadfiles .uploadwrapper input[type=file] {
     position: absolute;
     top: 0;
     right: 0;
     margin: 0;
-    padding: 0;
     opacity: 0.0;
     filter: alpha(opacity=0);
     -o-transform: translate(250px, -50px) scale(1);
