@@ -1,12 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Resources;
+using Lisa.Kiwi.Web.Resources;
 
 namespace Lisa.Kiwi.Web
 {
     public class NuisanceViewModel
     {
-        [Required(ErrorMessage = ErrorMessages.RequiredError)]
-        [Display(Name = "NuisanceDescription", ResourceType = typeof(ReportProperties))]
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(ErrorMessages))]
         public string Description { get; set; }
 
         public string Vehicles { get; set; }

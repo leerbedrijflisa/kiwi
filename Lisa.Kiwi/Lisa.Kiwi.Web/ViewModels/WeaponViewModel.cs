@@ -2,19 +2,20 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
+using Lisa.Kiwi.Web.Resources;
 
 namespace Lisa.Kiwi.Web
 {
     public class WeaponViewModel
     {
-        [Required(ErrorMessage = ErrorMessages.RequiredError)]
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(ErrorMessages))]
         [DisplayName("Wat voor wapen is het? *")]
         public string Type { get; set; }
 
         public string OtherType { get; set; }
-        
 
-        [Required(ErrorMessage = ErrorMessages.RequiredError)]
+
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(ErrorMessages))]
         [DisplayName("Waar is het wapen? *")]
         public string Location { get; set; }
 

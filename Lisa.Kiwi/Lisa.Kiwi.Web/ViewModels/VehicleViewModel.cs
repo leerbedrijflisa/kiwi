@@ -1,26 +1,15 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 using Lisa.Kiwi.WebApi;
-using Resources;
 
 namespace Lisa.Kiwi.Web
 {
     public class VehicleViewModel
     {
-        [Display(Name = "VehicleColor", ResourceType = typeof(ReportProperties))]
         public string Color { get; set; }
-
-        [Display(Name = "VehicleNumberPlate", ResourceType = typeof(ReportProperties))]
         public string NumberPlate { get; set; }
-
-        [Display(Name = "VehicleBrand", ResourceType = typeof(ReportProperties))]
         public string Brand { get; set; }
-
-        [Display(Name = "VehicleAdditionalFeatures", ResourceType = typeof(ReportProperties))]
         public string AdditionalFeatures { get; set; }
-
-        [Display(Name = "VehicleType", ResourceType = typeof(ReportProperties))]
         public VehicleTypeEnum VehicleType { get; set; }
 
         public IEnumerable<SelectListItem> VehicleTypes

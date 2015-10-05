@@ -1,12 +1,14 @@
-﻿@helper NullCheck(object content)
+﻿@using Lisa.Kiwi.Web.Resources
+
+@helper NullCheck(object content)
 {
 	if (content == null)
 	{
-		@Resources.ReportProperties.ResourceManager.GetString("_null")
+		@ReportProperties.ResourceManager.GetString("_null")
 	}
 	else if (content is bool)
 	{
-		@Resources.ReportProperties.ResourceManager.GetString("_" + content)
+		@ReportProperties.ResourceManager.GetString("_" + content)
 	}
 	else
 	{

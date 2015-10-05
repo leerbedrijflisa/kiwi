@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using Lisa.Common.Access;
-using Resources;
+using Lisa.Kiwi.Web.Resources;
 using System.Web.Configuration;
 using Lisa.Kiwi.WebApi;
 
