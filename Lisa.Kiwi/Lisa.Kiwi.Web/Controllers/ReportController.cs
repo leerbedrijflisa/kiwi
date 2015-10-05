@@ -300,27 +300,6 @@ namespace Lisa.Kiwi.Web
             return RedirectToAction("ContactRequired");
         }
 
-        public ActionResult Victim()
-        {
-            return View(new VictimViewModel());
-        }
-
-        [HttpPost]
-        public async Task<ActionResult> Victim(VictimViewModel viewModel)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View(viewModel);
-            }
-
-            var report = new Report();
-            _modelFactory.Modify(report, viewModel);
-            await _reportProxy.PatchAsync(GetCurrentReportId(), report);
-
-            // TODO: add error handling
-            return RedirectToAction("Contact");
-        }
-
         public ActionResult Contact()
         {
             return View();

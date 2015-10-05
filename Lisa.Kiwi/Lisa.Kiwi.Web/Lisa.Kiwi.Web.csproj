@@ -205,7 +205,6 @@
     <Compile Include="ViewModels\StatusChangeViewModel.cs" />
     <Compile Include="ViewModels\TheftViewModel.cs" />
     <Compile Include="ViewModels\VehicleViewModel.cs" />
-    <Compile Include="ViewModels\VictimViewModel.cs" />
     <Compile Include="ViewModels\WeaponViewModel.cs" />
     <Content Include="Content\alert.mp3" />
     <Content Include="Content\banner.jpg" />
@@ -340,7 +339,6 @@
     <Content Include="Views\Report\Nuisance.cshtml" />
     <Content Include="Views\Report\View.cshtml" />
     <Content Include="Views\Report\Vehicle.cshtml" />
-    <Content Include="Views\Report\Victim.cshtml" />
     <Content Include="App_Code\ReportHelpers.cshtml" />
     <Content Include="Views\Report\AdditionalLocation.cshtml" />
     <Content Include="Views\Report\SessionExpired.cshtml" />
