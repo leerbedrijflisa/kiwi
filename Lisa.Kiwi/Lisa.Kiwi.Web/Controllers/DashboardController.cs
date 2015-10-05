@@ -116,7 +116,6 @@ namespace Lisa.Kiwi.Web
                     break;
                 default:
                     throw new ArgumentException();
-                    break;
             }
 
             await _reportProxy.PatchAsync(id, report);
