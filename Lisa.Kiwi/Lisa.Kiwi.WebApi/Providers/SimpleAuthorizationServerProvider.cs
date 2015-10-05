@@ -100,12 +100,9 @@ namespace Lisa.Kiwi.WebApi
 
         public override async Task TokenEndpoint(OAuthTokenEndpointContext context)
         {
-            using (var repo = new AuthRepository())
-            {
-                var role = context.Identity.Claims.First(c => c.Type == ClaimTypes.Role).Value;
+            var role = context.Identity.Claims.First(c => c.Type == ClaimTypes.Role).Value;
                     
-                context.AdditionalResponseParameters.Add("role", role);
-            }
+            context.AdditionalResponseParameters.Add("role", role);
         }
     }
 }
