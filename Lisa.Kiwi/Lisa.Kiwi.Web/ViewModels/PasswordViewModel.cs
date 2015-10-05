@@ -6,11 +6,10 @@ namespace Lisa.Kiwi.Web
     public class PasswordViewModel
     {
         public string Id { get; set; }
-        [Display(Name = "UserName", ResourceType = typeof(DisplayNames))]
+
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(ErrorMessages))]
         public string Username { get; set; }
 
-        [Display(Name = "NewPassword", ResourceType = typeof(DisplayNames))]
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(ErrorMessages))]
         [StringLength(50, MinimumLength = 6, ErrorMessageResourceName = "PasswordLength", ErrorMessageResourceType = typeof(ErrorMessages))]
         public string NewPassword { get; set; }
