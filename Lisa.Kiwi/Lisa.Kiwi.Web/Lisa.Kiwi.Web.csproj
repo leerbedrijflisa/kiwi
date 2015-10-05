@@ -288,6 +288,7 @@
     <Content Include="App_Code\DashboardHelpers.cshtml" />
     <Content Include="Scripts\archive.js" />
     <Content Include="Scripts\dashboard.js" />
+    <Content Include="Scripts\date.js" />
     <Content Include="Scripts\DoneWeapons.js" />
     <Content Include="Scripts\header-resizer.js" />
     <Content Include="Scripts\bug-report.js" />
