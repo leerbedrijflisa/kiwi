@@ -1,9 +1,7 @@
 ﻿$(function () {
-    var date = new Date();
-    // set date to now minus 28 days
-    date = new Date(date.getTime() - 2419000000);
+    var date = Date.today().addDays(-28).toString("yyyy-MM-dd");
 
-    window.ReportsUrl = window.ApiUrl + "reports?$orderby=Created desc&$filter=(Category ne 'Nuisance' or Contact ne null) and (year(Created) ge " + date.getFullYear() + " and month(Created) ge " + (date.getMonth() + 1) + " and day(Created) ge " + date.getDay() + ")";
+    window.ReportsUrl = window.ApiUrl + "reports?$orderby=Created desc&$filter=(Category ne 'Nuisance' or Contact ne null) and Created ge datetimeoffset'" + date + "'";
     var reports = $.connection.reportsHub;
 
     window.update = reports.client.ReportDataChange = function () {
