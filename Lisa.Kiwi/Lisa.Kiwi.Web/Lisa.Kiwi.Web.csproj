@@ -292,6 +292,7 @@
     <Content Include="Scripts\DoneWeapons.js" />
     <Content Include="Scripts\header-resizer.js" />
     <Content Include="Scripts\bug-report.js" />
+    <Content Include="Scripts\hubs.js" />
     <Content Include="Scripts\jquery.datetimepicker.js" />
     <Content Include="Scripts\jquery.signalR.min.js" />
     <Content Include="Scripts\pop-up.js" />
