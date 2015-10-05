@@ -13,6 +13,7 @@
 	<fieldset>
 		<legend>@DisplayNames.FightWeapon</legend>
 		@Html.DropDownListFor(m => m.IsWeaponPresent, Model.WeaponPresent)
+		@Html.ValidationMessageFor(m => m.IsWeaponPresent)
 	</fieldset>
 	<fieldset>
 		<legend>@DisplayNames.Description</legend>

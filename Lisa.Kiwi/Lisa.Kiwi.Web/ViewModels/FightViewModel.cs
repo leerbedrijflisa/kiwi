@@ -10,7 +10,7 @@ namespace Lisa.Kiwi.Web
         [DisplayName("Hoeveel personen zijn er aan het vechten?*")]
         public int FighterCount { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = ErrorMessages.RequiredError)]
         [DisplayName("Zijn er wapens bij betrokken?")]
         public bool IsWeaponPresent { get; set; }
 

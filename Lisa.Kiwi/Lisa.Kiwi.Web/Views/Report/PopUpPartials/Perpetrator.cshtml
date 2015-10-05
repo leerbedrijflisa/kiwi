@@ -10,6 +10,7 @@
 		<fieldset>
 			<legend>@DisplayNames.PerpetratorSex</legend>
 			@Html.DropDownListFor(m => m.Sex, Model.SexList)
+			@Html.ValidationMessageFor(m => m.Sex)
 		</fieldset>
 		<fieldset>
 			<legend>@DisplayNames.PerpetratorSkinColor</legend>
@@ -22,6 +23,7 @@
 		<fieldset>
 			<legend>@DisplayNames.PerpetratorClothing</legend>
 			@Html.TextAreaFor(m => m.Clothing)
+			@Html.ValidationMessageFor(m => m.Clothing)
 		</fieldset>
 		<fieldset>
 			<legend>@DisplayNames.PerpetratorProperties</legend>

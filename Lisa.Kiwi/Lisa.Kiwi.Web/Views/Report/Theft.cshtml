@@ -16,11 +16,13 @@
 	<fieldset>
 		<legend>@DisplayNames.StolenObject</legend>
 		@Html.TextBoxFor(m => m.StolenObject)
+		@Html.ValidationMessageFor(m => m.StolenObject)
 		<span class="required">verplicht veld</span>
 	</fieldset>
 	<fieldset>
 		<legend>@DisplayNames.DateOfTheft</legend>
 		@Html.TextBoxFor(m => m.DateOfTheft)
+		@Html.ValidationMessageFor(m => m.DateOfTheft)
 		<span class="required">verplicht veld</span>
 	</fieldset>
 	@Html.Partial("~/Views/Report/PopUpPartials/Perpetrator.cshtml", new PerpetratorViewModel())
