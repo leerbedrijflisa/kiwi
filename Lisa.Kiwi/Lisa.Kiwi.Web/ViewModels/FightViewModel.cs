@@ -8,7 +8,7 @@ namespace Lisa.Kiwi.Web
     public class FightViewModel
     {
         public int FighterCount { get; set; }
-
+        
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(ErrorMessages))]
         public bool IsWeaponPresent { get; set; }
 

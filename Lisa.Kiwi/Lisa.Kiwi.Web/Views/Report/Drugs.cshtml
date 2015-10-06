@@ -14,6 +14,7 @@
 	<fieldset>
 		<legend>@DisplayNames.DrugsAction</legend>
 		@Html.DropDownListFor(m => m.Action, Model.DrugsActions)
+		@Html.ValidationMessageFor(m => m.Action)
 	</fieldset>
 	@Html.Partial("~/Views/Report/PopUpPartials/Perpetrator.cshtml", new PerpetratorViewModel())
 	@Html.Partial("~/Views/Report/PopUpPartials/Vehicle.cshtml", new VehicleViewModel())
