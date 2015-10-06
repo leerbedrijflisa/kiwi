@@ -129,6 +129,9 @@
   <data name="PasswordLength" xml:space="preserve">
     <value>Het wachtwoord moet minstens 6 tekens lang zijn</value>
   </data>
+  <data name="PasswordRepeat" xml:space="preserve">
+    <value>Beide wachtwoorden moeten hetzelfde zijn.</value>
+  </data>
   <data name="PhoneNumber" xml:space="preserve">
     <value>Vul een geldig telefoonnummer in</value>
   </data>

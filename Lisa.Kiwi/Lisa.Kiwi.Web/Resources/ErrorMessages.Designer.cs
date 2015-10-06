@@ -97,6 +97,15 @@ namespace Lisa.Kiwi.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Beide wachtwoorden moeten hetzelfde zijn..
+        /// </summary>
+        public static string PasswordRepeat {
+            get {
+                return ResourceManager.GetString("PasswordRepeat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Vul een geldig telefoonnummer in.
         /// </summary>
         public static string PhoneNumber {
