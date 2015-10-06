@@ -3,8 +3,8 @@
 @using (Html.BeginForm())
 {
 	<fieldset>
-		<legend><i class="fa fa-check-circle-o"></i> @PageItems.DoneMessage</legend>
-		<p class="summary">
+		<legend><a href="~/" class="nostylea"><i class="fa fa-plus-circle fabutton"></i> Een nieuwe melding maken</a><hr /><i class="fa fa-check-circle-o"></i> @PageItems.DoneMessage</legend>
+        <p class="summary">
 			@if (Model.Category == "FirstAid" || Model.Category == "Fight")
 			{
 				<text>

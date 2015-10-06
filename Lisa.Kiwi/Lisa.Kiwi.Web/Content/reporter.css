@@ -162,6 +162,21 @@ button {
     border-radius: 16px;
   }
 
+  .nostylea{
+      text-decoration: none;
+      opacity: 0.8;
+      color: greenyellow;
+  }
+
+  .nostylea:hover{
+      opacity: 1.0;
+      font-size: 103%;
+  }
+
+  .fabutton{
+      color: greenyellow;
+  }
+
 /*
 	Popups
 
