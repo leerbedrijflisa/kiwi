@@ -9,7 +9,7 @@
 	<fieldset>
 		<legend><i class="fa fa-location-arrow"></i> @DisplayNames.Location</legend>
 		<h2>Buiten</h2>
-		@foreach (var building in new [] { "Buiten", "Betaalde Parkeerplaats", "GroteParkeerplaats" })
+		@foreach (var building in new [] { "Buiten", "BetaaldeParkeerplaats", "GroteParkeerplaats" })
 		{
 			<button name="Building" value="@building" class="hyphenate">
 				<img src="@Url.Content(String.Format("~/Content/ReporterBuildings/building-{0}.png", building))" />
