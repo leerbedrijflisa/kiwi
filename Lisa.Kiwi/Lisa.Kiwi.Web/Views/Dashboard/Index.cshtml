@@ -65,7 +65,6 @@
 				</a>
 				<ul class="options">
 					<li><a href="/dashboard/togglesolved?id={{id}}&currentsolved={{status}}"><img src="/Content/done.svg"></a></li>
-
 						@* Todo: Do this check client side *@
 						@if (Request.Cookies["role"] != null && Request.Cookies["role"].Value == "Administrator")
 						{
