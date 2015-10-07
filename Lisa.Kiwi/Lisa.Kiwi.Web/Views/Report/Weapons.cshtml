@@ -12,7 +12,7 @@
 {
 	<fieldset>
 		<legend>@DisplayNames.WeaponType</legend>
-		@Html.DropDownListFor(m => m.Type, Model.Types)
+		@Html.TextBoxFor(m => m.Type)
 		@Html.ValidationMessageFor(m => m.Type)
 	</fieldset>
 	<fieldset id="Sub">

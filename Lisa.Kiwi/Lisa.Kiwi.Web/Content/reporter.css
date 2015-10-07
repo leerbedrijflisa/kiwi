@@ -162,6 +162,37 @@ button {
     border-radius: 16px;
   }
 
+  .nostylea{
+      text-decoration: none;
+      opacity: 0.8;
+      color: #60d928;
+  }
+
+  .nostylea:hover{
+      opacity: 1.0;
+      font-size: 103%;
+  }
+
+  .fabutton{
+      color: greenyellow;
+  }
+
+    .dashboardbutton {
+      display: block;
+      width: 100%;
+      background-color: #113;
+      color: white;
+      text-align: center;
+      margin: 0px;
+      padding: 3px;
+      box-sizing: border-box;
+    }
+
+    .dashboardbutton:hover{
+        opacity: 0.8;
+        color: #60d928;
+    }
+
 /*
 	Popups
 
