@@ -3,11 +3,9 @@
 @{
 	ViewBag.Title = "Categorie";
 }
-
 <section class="icons">
 	@using (Html.BeginForm())
     {
-        <a href="~/dashboard" class="nostylea dashboardbutton"><i class="fa fa-dashboard"></i> Dashboard</a>
 		<fieldset>
 			<legend><i class="fa fa-exclamation-circle"></i> @DisplayNames.Index</legend>
 			@foreach (var item in Model.Categories)
