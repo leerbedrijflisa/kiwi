@@ -3,18 +3,18 @@
 @using (Html.BeginForm())
 {
 	<fieldset>
-		<legend><i class="fa fa-check-circle-o"></i> @PageItems.DoneMessage</legend>
+		<legend><i class="fa fa-check-circle-o"></i>&nbsp;&nbsp;@PageItems.DoneMessage</legend>
 		<p class="summary">
 			@if (Model.Category == "FirstAid" || Model.Category == "Fight")
 			{
 				<text>
-					Hulp is onderweg. Indien nodig kun je hieronder je melding aanpassen.
+                    Hulp is onderweg. Indien nodig kunt u hieronder uw melding aanpassen.
 				</text>
 			}
 			else
 			{
 				<text>
-					We nemen je melding van @Categories.ResourceManager.GetString(Model.Category) zo snel mogelijk in behandeling. Indien nodig kun je hieronder je melding nog wijzigen.
+					We nemen uw melding van @Categories.ResourceManager.GetString(Model.Category) zo snel mogelijk in behandeling. Indien nodig kunt u hieronder uw melding nog wijzigen.
 				</text>
 			}
 		</p>

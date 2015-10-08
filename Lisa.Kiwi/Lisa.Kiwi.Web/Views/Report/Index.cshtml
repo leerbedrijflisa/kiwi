@@ -8,7 +8,7 @@
 	@using (Html.BeginForm())
 	{
 		<fieldset>
-			<legend><i class="fa fa-exclamation-circle"></i> @DisplayNames.Index</legend>
+			<legend><i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;@DisplayNames.Index</legend>
 			@foreach (var item in Model.Categories)
 			{
 				<button name="Category" value="@item.Value">
