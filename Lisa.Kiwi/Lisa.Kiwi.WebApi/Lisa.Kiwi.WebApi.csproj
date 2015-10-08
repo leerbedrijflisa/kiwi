@@ -167,6 +167,10 @@
     <Compile Include="Data\ReportData.cs" />
     <Compile Include="Data\VehicleData.cs" />
     <Compile Include="Hubs\ReportsHub.cs" />
+    <Compile Include="Migrations\201510071211568_VehiclesPerpetrators.cs" />
+    <Compile Include="Migrations\201510071211568_VehiclesPerpetrators.Designer.cs">
+      <DependentUpon>201510071211568_VehiclesPerpetrators.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AddUserModel.cs" />
     <Compile Include="Models\ModelFactory.cs" />
@@ -186,7 +190,11 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201510071211568_VehiclesPerpetrators.resx">
+      <DependentUpon>201510071211568_VehiclesPerpetrators.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
