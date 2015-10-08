@@ -167,9 +167,9 @@
     <Compile Include="Data\ReportData.cs" />
     <Compile Include="Data\VehicleData.cs" />
     <Compile Include="Hubs\ReportsHub.cs" />
-    <Compile Include="Migrations\201510071211568_VehiclesPerpetrators.cs" />
-    <Compile Include="Migrations\201510071211568_VehiclesPerpetrators.Designer.cs">
-      <DependentUpon>201510071211568_VehiclesPerpetrators.cs</DependentUpon>
+    <Compile Include="Migrations\201510070919314_VehiclesPerpetrators.cs" />
+    <Compile Include="Migrations\201510070919314_VehiclesPerpetrators.Designer.cs">
+      <DependentUpon>201510070919314_VehiclesPerpetrators.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AddUserModel.cs" />
@@ -191,8 +191,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201510071211568_VehiclesPerpetrators.resx">
-      <DependentUpon>201510071211568_VehiclesPerpetrators.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201510070919314_VehiclesPerpetrators.resx">
+      <DependentUpon>201510070919314_VehiclesPerpetrators.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
@@ -207,7 +207,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>20151</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

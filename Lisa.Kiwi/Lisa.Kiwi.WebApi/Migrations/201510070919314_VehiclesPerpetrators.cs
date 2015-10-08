@@ -22,7 +22,7 @@ namespace Lisa.Kiwi.WebApi
             
             // execute migration queries
             var vehiclesQuery = "DECLARE @VehicleReports TABLE(ReportId int, VehicleId int); INSERT INTO @VehicleReports (ReportId, VehicleId) SELECT Id, Vehicle_Id FROM kiwi.dbo.Reports WHERE Vehicle_Id != 0; UPDATE V SET ReportData_Id = VR.ReportId FROM kiwi.dbo.Vehicles V JOIN @VehicleReports VR ON V.Id = VR.VehicleId WHERE VR.VehicleId != 0;";
-            var perpetratorsQuery = "DECLARE @PerpetratorReports TABLE(ReportId int, PerpetratorId int); INSERT INTO @PerpetratorReports (ReportId, PerpetratorId) SELECT Id, Vehicle_Id FROM kiwi.dbo.Reports WHERE Vehicle_Id != 0; UPDATE P SET ReportData_Id = PR.ReportId FROM kiwi.dbo.Perpetrators P JOIN @PerpetratorReports PR ON P.Id = PR.ReportId WHERE PR.PerpetratorId != 0;";
+            var perpetratorsQuery = "DECLARE @PerpetratorReports TABLE(ReportId int, PerpetratorId int); INSERT INTO @PerpetratorReports (ReportId, PerpetratorId) SELECT Id, Perpetrator_Id FROM kiwi.dbo.Reports WHERE Perpetrator_Id != 0; UPDATE P SET ReportData_Id = PR.ReportId FROM kiwi.dbo.Perpetrators P JOIN @PerpetratorReports PR ON P.Id = PR.ReportId WHERE PR.PerpetratorId != 0;";
             
             Sql(vehiclesQuery);
             Sql(perpetratorsQuery);
