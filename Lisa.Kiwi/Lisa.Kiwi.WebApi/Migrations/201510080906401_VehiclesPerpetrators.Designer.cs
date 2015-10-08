@@ -13,7 +13,7 @@ namespace Lisa.Kiwi.WebApi
         
         string IMigrationMetadata.Id
         {
-            get { return "201510070919314_VehiclesPerpetrators"; }
+            get { return "201510080906401_VehiclesPerpetrators"; }
         }
         
         string IMigrationMetadata.Source

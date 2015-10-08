@@ -167,9 +167,9 @@
     <Compile Include="Data\ReportData.cs" />
     <Compile Include="Data\VehicleData.cs" />
     <Compile Include="Hubs\ReportsHub.cs" />
-    <Compile Include="Migrations\201510070919314_VehiclesPerpetrators.cs" />
-    <Compile Include="Migrations\201510070919314_VehiclesPerpetrators.Designer.cs">
-      <DependentUpon>201510070919314_VehiclesPerpetrators.cs</DependentUpon>
+    <Compile Include="Migrations\201510080906401_VehiclesPerpetrators.cs" />
+    <Compile Include="Migrations\201510080906401_VehiclesPerpetrators.Designer.cs">
+      <DependentUpon>201510080906401_VehiclesPerpetrators.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AddUserModel.cs" />
@@ -191,8 +191,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201510070919314_VehiclesPerpetrators.resx">
-      <DependentUpon>201510070919314_VehiclesPerpetrators.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201510080906401_VehiclesPerpetrators.resx">
+      <DependentUpon>201510080906401_VehiclesPerpetrators.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
