@@ -166,6 +166,64 @@ button {
     color: greenyellow;
     }
 
+.titlebar{
+    display: block;
+    width: 100%;
+    background-color: #113;
+    color: white;
+    text-align: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.changepassword{
+    text-decoration: none;
+    color: white;
+    margin: 10px;
+    padding: 3px;
+}
+
+td, th{
+    border: 2px solid #113;
+
+}
+
+td{
+    padding: 10px;
+    color: black;
+    font-weight: bold;
+}
+
+th{
+    background-color: #113;
+}
+
+td a{
+    color: green;
+    text-decoration: none;
+}
+
+.backbutton a{
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.backbutton{
+    border: 2px solid black;
+    width: 100px;
+    background-color: #113;
+    opacity: 0.8;
+    margin: 10px;
+    color: green;
+    padding: 3px;
+}
+
+.backbutton:hover{
+    opacity: 1.0;
+}
+
 /*
 	Popups
 
