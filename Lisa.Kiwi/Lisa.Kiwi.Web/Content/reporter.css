@@ -222,6 +222,7 @@ td a{
 
 .backbutton:hover{
     opacity: 1.0;
+    cursor: pointer;
 }
 
 /*

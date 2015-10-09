@@ -54,9 +54,7 @@
 	<fieldset>
 		<button type="submit">Status wijzigen</button>
 	</fieldset>
-	<fieldset>
-		<p>
-			@Html.ActionLink("terug", "index", "dashboard")
-		</p>
-	</fieldset>
+    <fieldset class="field backbutton fa fa-arrow-left">
+        @Html.ActionLink("Terug", "Index", "Dashboard")
+    </fieldset>
 }
