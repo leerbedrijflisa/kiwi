@@ -238,19 +238,19 @@
     <value>Nieuw wachtwoord</value>
   </data>
   <data name="Description" xml:space="preserve">
-    <value>Wat kun je er verder over vertellen?</value>
+    <value>Wat kunt u hier verder over vertellen?</value>
   </data>
   <data name="DrugsAction" xml:space="preserve">
-    <value>Wat heb je gezien?</value>
+    <value>Wat heeft u gezien?</value>
   </data>
   <data name="FightCount" xml:space="preserve">
     <value>Hoeveel personen zijn er aan het vechten?</value>
   </data>
   <data name="FightWeapon" xml:space="preserve">
-    <value>Heb je een wapen gezien?</value>
+    <value>Heeft u een wapen gezien?</value>
   </data>
   <data name="Perpetrator" xml:space="preserve">
-    <value>Wie heb je gezien?</value>
+    <value>Wie heeft u gezien?</value>
   </data>
   <data name="PerpetratorAge" xml:space="preserve">
     <value>Hoe oud is de persoon?</value>
@@ -271,7 +271,7 @@
     <value>Welke huidskleur heeft de persoon?</value>
   </data>
   <data name="Vehicle" xml:space="preserve">
-    <value>Welke voertuigen heb je gezien?</value>
+    <value>Welke voertuigen heeft u gezien?</value>
   </data>
   <data name="Index" xml:space="preserve">
     <value>Wat wilt u melden?</value>
@@ -298,10 +298,10 @@
     <value>Waar is het wapen nu?</value>
   </data>
   <data name="WeaponType" xml:space="preserve">
-    <value>Wat voor wapen heb je gezien?</value>
+    <value>Wat voor wapen heeft u gezien?</value>
   </data>
   <data name="WeaponTypeOther" xml:space="preserve">
-    <value>Wat voor wapen is het dan?</value>
+    <value>Wat voor wapen is het?</value>
   </data>
   <data name="WhatHappened" xml:space="preserve">
     <value>Wat is er gebeurd?</value>
@@ -328,9 +328,12 @@
     <value>Mogen we contact met u opnemen?</value>
   </data>
   <data name="BullyingDescription" xml:space="preserve">
-    <value>Wat kun je er verder over vertellen?</value>
+    <value>Wat kunt u hier verder over vertellen?</value>
   </data>
   <data name="VictimName" xml:space="preserve">
     <value>Wie wordt er gepest?</value>
+  </data>
+  <data name="Location" xml:space="preserve">
+    <value>Waar is het gebeurd?</value>
   </data>
 </root>

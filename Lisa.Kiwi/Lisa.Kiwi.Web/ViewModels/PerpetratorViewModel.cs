@@ -1,32 +1,25 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
+using Lisa.Kiwi.Web.Resources;
 using Lisa.Kiwi.WebApi;
-using Perpetrator = Resources.Perpetrator;
 
 namespace Lisa.Kiwi.Web
 {
     public class PerpetratorViewModel
     {
-        [DisplayName("Wat is de naam van de dader?")]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = ErrorMessages.RequiredError)]
-        [DisplayName("Wat is het geslacht van de dader? ")]
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(ErrorMessages))]
         public SexEnum Sex { get; set; }
 
-        [DisplayName("Wat is de huidskleur van de dader?")]
         public SkinColorEnum SkinColor { get; set; }
 
-        [Required(ErrorMessage = ErrorMessages.RequiredError)]
-        [DisplayName("Wat voor kleding draagt de dader? *")]
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(ErrorMessages))]
         public string Clothing { get; set; }
 
-        [DisplayName("Welke leeftijd heeft de dader?")]
         public string AgeRange { get; set; }
 
-        [DisplayName("Zijn er opvallende dingen te zien aan de dader?")]
         public string UniqueProperties { get; set; }
 
         public IEnumerable<SelectListItem> SkinColors
@@ -87,22 +80,22 @@ namespace Lisa.Kiwi.Web
                 {
                     new SelectListItem
                     {
-                        Text = Perpetrator.YoungerThanTwelve,
+                        Text = Resources.Perpetrator.YoungerThanTwelve,
                         Value = "0-12"
                     },
                     new SelectListItem
                     {
-                        Text = Perpetrator.BetweenTwelveAndTwenty,
+                        Text = Resources.Perpetrator.BetweenTwelveAndTwenty,
                         Value = "12-20"
                     },
                     new SelectListItem
                     {
-                        Text = Perpetrator.BetweenTwentyOneAndThirtyFive,
+                        Text = Resources.Perpetrator.BetweenTwentyOneAndThirtyFive,
                         Value = "21-35"
                     },
                     new SelectListItem
                     {
-                        Text = Perpetrator.OlderThanThirtyFive,
+                        Text = Resources.Perpetrator.OlderThanThirtyFive,
                         Value = "35-99"
                     },
                 };

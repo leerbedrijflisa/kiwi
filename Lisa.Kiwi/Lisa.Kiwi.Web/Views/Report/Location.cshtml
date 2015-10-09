@@ -7,32 +7,32 @@
 @using (Html.BeginForm())
 {
 	<fieldset>
-		<legend><i class="fa fa-location-arrow"></i> Waar is het gebeurd?</legend>
+		<legend><i class="fa fa-location-arrow"></i>&nbsp;&nbsp;@DisplayNames.Location</legend>
 		<h2>Buiten</h2>
-		@foreach (var building in new string[] { "Buiten", "BetaaldeParkeerplaats", "GroteParkeerplaats" })
+		@foreach (var building in new [] { "Buiten", "BetaaldeParkeerplaats", "GroteParkeerplaats" })
 		{
 			<button name="Building" value="@building" class="hyphenate">
 				<img src="@Url.Content(String.Format("~/Content/ReporterBuildings/building-{0}.png", building))" />
-				@ReportHelpers.Capitalize(Resources.Buildings.ResourceManager.GetString(building))
+				@ReportHelpers.Capitalize(Buildings.ResourceManager.GetString(building))
 			</button>
 		}
 
 		<h2>Da Vinci College</h2>
 
-		@foreach (var building in new string[] { "Arcobaleno", "Azzurro", "Bianco", "Celeste", "Media", "Duurzaamheidsfabriek", "Giallo", "Indaco", "Lilla", "Marrone", "Ocra", "Romboutslaan", "Rosa", "Verde" })
+		@foreach (var building in new [] { "Arcobaleno", "Azzurro", "Bianco", "Celeste", "Media", "Duurzaamheidsfabriek", "Giallo", "Indaco", "Lilla", "Marrone", "Ocra", "Romboutslaan", "Rosa", "Verde" })
 		{
 			<button name="Building" value="@building" class="hyphenate">
 				<img src="@Url.Content(String.Format("~/Content/ReporterBuildings/building-{0}.png", building))" />
-				@ReportHelpers.Capitalize(Resources.Buildings.ResourceManager.GetString(building))
+				@ReportHelpers.Capitalize(Buildings.ResourceManager.GetString(building))
 			</button>
 		}
 
 		<h2>Overige</h2>
-		@foreach (var building in new string[] { "Appartementen", "Bogermanschool", "Brandweerkazerne", "Drechtstedencollege", "Klimhal", "Orthodontist", "Samenwerkingsgebouw", "Schippersinternaat", "Sporthal", "Veiligheidsregio", "Wartburg" })
+		@foreach (var building in new [] { "Appartementen", "Bogermanschool", "Brandweerkazerne", "Drechtstedencollege", "Klimhal", "Orthodontist", "Samenwerkingsgebouw", "Schippersinternaat", "Sporthal", "Veiligheidsregio", "Wartburg" })
 		{
 			<button name="Building" value="@building" class="hyphenate">
 				<img src="@Url.Content(String.Format("~/Content/ReporterBuildings/building-{0}.png", building))" />
-				@ReportHelpers.Capitalize(Resources.Buildings.ResourceManager.GetString(building))
+				@ReportHelpers.Capitalize(Buildings.ResourceManager.GetString(building))
 			</button>
 		}
 	</fieldset>

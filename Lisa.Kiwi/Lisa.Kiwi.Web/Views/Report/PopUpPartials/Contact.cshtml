@@ -16,6 +16,7 @@
 		<fieldset>
 			<legend>@DisplayNames.ContactEmail</legend>
 			@Html.TextBoxFor( m => m.EmailAddress )
+			@Html.ValidationMessageFor(m => m.EmailAddress)
 			<span class="required">telefoonnummer of e-mailadres is verplicht</span>
 		</fieldset>
 		<button type="submit" onclick="popUpReport('contact', 'abort'); return false;"><img src="~/Content/cancel.svg" /></button>

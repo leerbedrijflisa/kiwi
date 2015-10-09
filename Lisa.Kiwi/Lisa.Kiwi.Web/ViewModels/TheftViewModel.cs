@@ -1,22 +1,18 @@
 ﻿using System;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using Lisa.Kiwi.Web.Resources;
 
 namespace Lisa.Kiwi.Web
 {
     public class TheftViewModel
     {
-        [Required(ErrorMessage = ErrorMessages.RequiredError)]
-        [DisplayName("Wat is er gestolen? *")]
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(ErrorMessages))]
         public string StolenObject { get; set; }
 
-        [Required(ErrorMessage = ErrorMessages.RequiredError)]
-        [DisplayName("Op welke datum is het gestolen? *")]
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(ErrorMessages))]
         public DateTime DateOfTheft { get; set; }
         
-        [DisplayName("Wilt u nog iets toevoegen?")]
         public string Description { get; set; }
-
         public string Vehicles { get; set; }
         public string Perpetrators { get; set; }
     }

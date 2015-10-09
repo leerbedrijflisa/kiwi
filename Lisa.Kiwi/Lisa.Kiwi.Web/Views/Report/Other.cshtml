@@ -13,6 +13,7 @@
 	<fieldset>
 		<legend>@DisplayNames.WhatHappened</legend>
 		@Html.TextAreaFor(m => m.Description)
+		@Html.ValidationMessageFor(m => m.Description)
 	</fieldset>
 	@Html.Partial("~/Views/Report/PopUpPartials/Perpetrator.cshtml", new PerpetratorViewModel())
 	@Html.Partial("~/Views/Report/PopUpPartials/Vehicle.cshtml", new VehicleViewModel())

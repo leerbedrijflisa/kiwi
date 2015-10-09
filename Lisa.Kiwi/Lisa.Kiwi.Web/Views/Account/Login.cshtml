@@ -5,18 +5,15 @@
 @using (Html.BeginForm())
 {
 	<fieldset>
-		<legend>Login</legend>
-	</fieldset>
-	<fieldset>
 		<legend>
-            <i class="fa fa-user"></i>
+			<i class="fa fa-user"></i>
 			@Html.LabelFor(m => m.UserName)
 		</legend>
 		@Html.TextBoxFor(m => m.UserName)
 	</fieldset>
 	<fieldset>
 		<legend>
-            <i class="fa fa-key"></i>
+			<i class="fa fa-key"></i>
 			@Html.LabelFor(m => m.Password)
 		</legend>
 		@Html.PasswordFor(m => m.Password)

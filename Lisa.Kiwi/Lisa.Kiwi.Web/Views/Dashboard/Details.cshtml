@@ -21,17 +21,17 @@
 
 @if (Model.Perpetrators != null)
 {
-	@Html.Partial("~/Views/Shared/Partials/Details/Perpetrators.cshtml", Model.Perpetrators);
+	@Html.Partial("~/Views/Shared/Partials/Details/Perpetrators.cshtml", Model.Perpetrators)
 }
 
 @if (Model.Contact != null)
 {
-	@Html.Partial("~/Views/Shared/Partials/Details/Contact.cshtml", Model.Contact);
+	@Html.Partial("~/Views/Shared/Partials/Details/Contact.cshtml", Model.Contact)
 }
 
 @if (Model.Vehicles != null)
 {
-	@Html.Partial("~/Views/Shared/Partials/Details/Vehicles.cshtml", Model.Vehicles);
+	@Html.Partial("~/Views/Shared/Partials/Details/Vehicles.cshtml", Model.Vehicles)
 }
 
 @using (Html.BeginForm())

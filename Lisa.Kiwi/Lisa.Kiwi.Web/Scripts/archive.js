@@ -134,7 +134,7 @@ function translate(category, key) {
 
     var translation = categoryTranslations[key];
     if (typeof translation === 'undefined') {
-        console.warn('Key: "' + key + '" does not exists in the category "' + category + '" of the translations')
+        console.warn('Key: "' + key + '" does not exists in the category "' + category + '" of the translations');
         return key;
     }
 

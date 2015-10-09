@@ -12,7 +12,8 @@
 {
 	<fieldset>
 		<legend>@DisplayNames.WeaponType</legend>
-		@Html.DropDownListFor(m => m.Type, Model.Types)
+		@Html.TextBoxFor(m => m.Type)
+		@Html.ValidationMessageFor(m => m.Type)
 	</fieldset>
 	<fieldset id="Sub">
 		<legend>@DisplayNames.WeaponTypeOther</legend>
@@ -21,6 +22,7 @@
 	<fieldset>
 		<legend>@DisplayNames.WeaponLocation</legend>
 		@Html.TextAreaFor(m => m.Location)
+		@Html.ValidationMessageFor(m => m.Location)
 		<span class="required">verplicht veld</span>
 	</fieldset>
 	<fieldset>

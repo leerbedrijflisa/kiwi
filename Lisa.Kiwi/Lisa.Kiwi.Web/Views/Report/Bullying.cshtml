@@ -14,15 +14,17 @@
 		<legend>@DisplayNames.VictimName</legend>
 		<div>
 			@Html.TextBoxFor(m => m.VictimName)
+			@Html.ValidationMessageFor(m => m.VictimName)
 		</div>
 	</fieldset>
-	@Html.Partial("~/Views/Report/PopUpPartials/_partialPopUpPerpetrator.cshtml", new PerpetratorViewModel())
+	@Html.Partial("~/Views/Report/PopUpPartials/Perpetrator.cshtml", new PerpetratorViewModel())
 	<fieldset>
 		<legend>
 			@DisplayNames.BullyingDescription
 		</legend>
 		<div>
 			@Html.TextAreaFor(m => m.Description)
+			@Html.ValidationMessageFor(m => m.Description)
 		</div>
 	</fieldset>
 	@Html.HiddenFor(m => m.Perpetrators)

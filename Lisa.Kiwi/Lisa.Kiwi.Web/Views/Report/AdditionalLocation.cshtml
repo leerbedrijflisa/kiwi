@@ -6,8 +6,9 @@
 @using (Html.BeginForm())
 {
 	<fieldset>
-		<legend>@String.Format(PageItems.LocationDetailedDescription, ViewBag.Preposition, ViewBag.Building)</legend>
+		<legend><i class="fa fa-arrows-alt"></i>&nbsp;&nbsp;@String.Format(PageItems.LocationDetailedDescription, ViewBag.Preposition, ViewBag.Building)</legend>
 		@Html.TextAreaFor(m => m.AdditionalLocation)
+		@Html.ValidationMessageFor(m => m.AdditionalLocation)
 	</fieldset>
 
 	<button type="submit"><img src="@Url.Content("~/Content/next.svg")"></button>

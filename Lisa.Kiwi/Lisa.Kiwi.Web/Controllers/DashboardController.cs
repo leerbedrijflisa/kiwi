@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using Lisa.Common.Access;
-using Resources;
+using Lisa.Kiwi.Web.Resources;
 using System.Web.Configuration;
 using Lisa.Kiwi.WebApi;
 
@@ -116,7 +116,6 @@ namespace Lisa.Kiwi.Web
                     break;
                 default:
                     throw new ArgumentException();
-                    break;
             }
 
             await _reportProxy.PatchAsync(id, report);

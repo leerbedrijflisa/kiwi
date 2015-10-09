@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Resources {
+namespace Lisa.Kiwi.Web.Resources {
     using System;
     
     
