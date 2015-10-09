@@ -48,7 +48,7 @@
 	{
 		<fieldset>
 			<legend>@PageItems.VisibleChange</legend>
-			@(!Model.IsVisible ? Html.CheckBox("IsVisible") : Html.CheckBox("IsVisible", new { @checked = "true" }))
+			@(!Model.IsVisible == true ? Html.CheckBox("IsVisible") : Html.CheckBox("IsVisible", new { @checked = "true" }))
 		</fieldset>
 	}
 	<fieldset>
