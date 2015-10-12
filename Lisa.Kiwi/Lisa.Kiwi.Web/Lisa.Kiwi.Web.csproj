@@ -300,6 +300,7 @@
     <Content Include="Scripts\jquery.signalR.min.js" />
     <Content Include="Scripts\pop-up.js" />
     <Content Include="Scripts\Theft.js" />
+    <Content Include="version.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -341,7 +342,6 @@
     <Content Include="Views\Report\Other.cshtml" />
     <Content Include="Views\Report\Nuisance.cshtml" />
     <Content Include="Views\Report\View.cshtml" />
-    <Content Include="Views\Report\Vehicle.cshtml" />
     <Content Include="App_Code\ReportHelpers.cshtml" />
     <Content Include="Views\Report\AdditionalLocation.cshtml" />
     <Content Include="Views\Report\SessionExpired.cshtml" />
@@ -465,7 +465,6 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
-  <Import Project="..\Lisa.Kiwi.WebApi.Models\Lisa.Kiwi.WebApi.Models.projitems" Label="Shared" Condition="Exists('..\Lisa.Kiwi.WebApi.Models\Lisa.Kiwi.WebApi.Models.projitems')" />
   <Import Project="..\Lisa.Kiwi.WebApi.Models\Lisa.Kiwi.WebApi.Models.projitems" Label="Shared" Condition="Exists('..\Lisa.Kiwi.WebApi.Models\Lisa.Kiwi.WebApi.Models.projitems')" />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
