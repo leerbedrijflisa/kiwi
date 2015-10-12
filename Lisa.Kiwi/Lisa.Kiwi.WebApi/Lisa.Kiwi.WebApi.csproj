@@ -152,6 +152,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\kiwi-webapi.pubxml" />
+    <Content Include="version.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
