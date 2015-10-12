@@ -82,7 +82,7 @@ namespace Lisa.Kiwi.WebApi
                     return Unauthorized();
                 }
             }
-        
+            
             var reportData = await _db.Reports.FindAsync(id);
             if (reportData == null)
             {
@@ -99,11 +99,14 @@ namespace Lisa.Kiwi.WebApi
 
             _dataFactory.Modify(reportData, json);
             
-            reportData.Modified = DateTimeOffset.Now;
-            
-            _db.SaveChanges();
-            TriggerReportDataChange();
-                
+            if (_db.HasUnsavedChanges())
+            {
+                reportData.Modified = DateTimeOffset.Now;
+
+                _db.SaveChanges();
+                TriggerReportDataChange();
+            }
+
             var report = _modelFactory.Create(reportData);
             return Ok(report);
         }
