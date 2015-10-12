@@ -35,7 +35,7 @@ namespace Lisa.Kiwi.Web.Controllers
 
         private Type[] GetAllResourceTypes()
         {
-            return Assembly.GetExecutingAssembly().GetTypes().Where(t => string.Equals(t.Namespace, "Resources", StringComparison.Ordinal)).ToArray();
+            return Assembly.GetExecutingAssembly().GetTypes().Where(t => string.Equals(t.Namespace, "Lisa.Kiwi.Web.Resources", StringComparison.Ordinal)).ToArray();
         }
     }
 }

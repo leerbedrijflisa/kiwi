@@ -61,7 +61,7 @@ namespace Lisa.Kiwi.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Wat kun je er verder over vertellen?.
+        ///   Looks up a localized string similar to Wat kunt u hier verder over vertellen?.
         /// </summary>
         public static string BullyingDescription {
             get {
@@ -142,7 +142,7 @@ namespace Lisa.Kiwi.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Wat kun je er verder over vertellen?.
+        ///   Looks up a localized string similar to Wat kunt u hier verder over vertellen?.
         /// </summary>
         public static string Description {
             get {
@@ -151,7 +151,7 @@ namespace Lisa.Kiwi.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Wat heb je gezien?.
+        ///   Looks up a localized string similar to Wat heeft u gezien?.
         /// </summary>
         public static string DrugsAction {
             get {
@@ -187,7 +187,7 @@ namespace Lisa.Kiwi.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Heb je een wapen gezien?.
+        ///   Looks up a localized string similar to Heeft u een wapen gezien?.
         /// </summary>
         public static string FightWeapon {
             get {
@@ -250,7 +250,7 @@ namespace Lisa.Kiwi.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Wie heb je gezien?.
+        ///   Looks up a localized string similar to Wie heeft u gezien?.
         /// </summary>
         public static string Perpetrator {
             get {
@@ -610,7 +610,7 @@ namespace Lisa.Kiwi.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Welke voertuigen heb je gezien?.
+        ///   Looks up a localized string similar to Welke voertuigen heeft u gezien?.
         /// </summary>
         public static string Vehicle {
             get {
@@ -691,7 +691,7 @@ namespace Lisa.Kiwi.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Wat voor wapen heb je gezien?.
+        ///   Looks up a localized string similar to Wat voor wapen heeft u gezien?.
         /// </summary>
         public static string WeaponType {
             get {
@@ -700,7 +700,7 @@ namespace Lisa.Kiwi.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Wat voor wapen is het dan?.
+        ///   Looks up a localized string similar to Wat voor wapen is het?.
         /// </summary>
         public static string WeaponTypeOther {
             get {

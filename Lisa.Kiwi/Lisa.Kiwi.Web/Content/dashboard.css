@@ -189,6 +189,7 @@ section.Solved {
     right: 10px;
     z-index: 1;
     list-style: none;
+    opacity: 0.9;
 }
 
 .side-buttons li {
@@ -198,7 +199,6 @@ section.Solved {
     padding: 0px;
     text-align: center;
     box-shadow: 1px 1px 1px 1px #888888;
-    border-radius: 20px;
 }
 
 .side-buttons a{
@@ -303,7 +303,7 @@ section.Solved {
     background-image: url(DashboardBuildings/building-romboutslaan.jpg);
 }
 
-.BetaaldeParkeerplaats,
+.Betaaldeparkeerplaats,
 .Buiten {
     background-image: url(DashboardBuildings/building-betaaldeparkeerplaats.jpg);
 }

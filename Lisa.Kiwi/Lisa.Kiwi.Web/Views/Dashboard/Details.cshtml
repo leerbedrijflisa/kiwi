@@ -53,16 +53,14 @@
 	{
 		<fieldset>
 			<legend>@PageItems.VisibleChange</legend>
-			@(!Model.IsVisible ? Html.CheckBox("IsVisible") : Html.CheckBox("IsVisible", new { @checked = "true" }))
+			@(!Model.IsVisible == true ? Html.CheckBox("IsVisible") : Html.CheckBox("IsVisible", new { @checked = "true" }))
 		</fieldset>
 	}
 	<fieldset>
 		<button type="submit">Status wijzigen</button>
 	</fieldset>
-	<fieldset>
-		<p>
-			@Html.ActionLink("terug", "index", "dashboard")
-		</p>
+	<fieldset class="field backbutton fa fa-arrow-left">
+			@Html.ActionLink("Terug", "Index", "Dashboard")
 	</fieldset>
     
 }

@@ -1,32 +1,36 @@
 ﻿$(function () {
-    var date = Date.today().addDays(-28).toString("yyyy-MM-dd");
-
-    window.ReportsUrl = window.ApiUrl + "reports?$orderby=Created desc&$filter=(Category ne 'Nuisance' or Contact ne null) and Created ge datetimeoffset'" + date + "'";
-    var reports = $.connection.reportsHub;
-
-    window.update = reports.client.ReportDataChange = function () {
-        $.ajax({
-            dataType: "json",
-            url: window.ReportsUrl,
-            headers: {
-                'Authorization': 'bearer ' + getCookie('token')
-            },
-            success: updateReports
-        });
-    };
-
-    update();
+    updateReportData();
     
-
-    $.connection.hub.url = window.ApiUrl + "signalr";
     $.connection.hub.start();
 });
+
+// Get the date of 28 days ago
+var maxReportAgeDate = Date.today().addDays(-28).toString("yyyy-MM-dd");
+
+// Get all reports created less than a month ago. Only show nuisance reports when contact details are supplied. Order by youngest report.
+var reportsUrl = ApiUrl + "reports?$orderby=Created desc&$filter=(Category ne 'Nuisance' or Contact ne null) and Created ge datetimeoffset'" + maxReportAgeDate + "'";
+
+$.connection.hub.url = ApiUrl + "signalr";
+
+// Create the ReportDataChange method in the signalR hub. This method can be called by the server
+$.connection.reportsHub.client.ReportDataChange = updateReportData;
 
 var firstLoad = true;
 var reportCount = 0;
 
-function updateReports(data) {
+// Ajax call to the Web API for an update
+function updateReportData() {
+    $.ajax({
+        dataType: "json",
+        url: reportsUrl,
+        headers: {
+            'Authorization': 'bearer ' + getCookie('token')
+        },
+        success: updateReports
+    });
+}
 
+function updateReports(data) {
     var source = $('#reportsTemplate').html();
     var template = Handlebars.compile(source);
     var html = template(data);
@@ -34,7 +38,7 @@ function updateReports(data) {
 
     if (!firstLoad) {
         if (reportCount == data.length) {
-            setTimeout(newReport, 1);
+            setTimeout(updatedReport, 1);
         }
         else {
             setTimeout(newReport, 1);
@@ -105,9 +109,17 @@ Handlebars.registerHelper('prettyDate', function (date) {
         todayDate = today.getDate() + "-" + (today.getMonth() + 1) + "-" + today.getFullYear(),
         date = new Date(date),
         dateDate = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear(),
-        dateTime = date.getHours() + ':' + date.getMinutes();
+        dateTime = date.getHours() + ':' + ((date.getMinutes()
+            < 10 ? '0' : '') + date.getMinutes());
 
     return todayDate == dateDate ? dateTime : dateDate;
+});
+
+Handlebars.registerHelper('ifCond', function (v1, v2, options) {
+    if (v1 === v2) {
+        return options.fn(this);
+    }
+    return options.inverse(this);
 });
 //#endregion
 
