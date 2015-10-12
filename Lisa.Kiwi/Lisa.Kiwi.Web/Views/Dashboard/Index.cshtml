@@ -64,8 +64,11 @@
 					</p>
 				</a>
 				<ul class="options">
-					<li><a href="/dashboard/togglesolved?id={{id}}&currentsolved={{status}}"><img src="/Content/done.svg"></a></li>
-
+					{{#ifCond status "open"}}
+						<li><a href="/dashboard/togglesolved?id={{id}}&currentsolved={{status}}"><img src="/Content/done.svg" /></a></li>
+					{{else}}
+						<li><a href="/dashboard/togglesolved?id={{id}}&currentsolved={{status}}" class="button-green"><img src="/Content/done.svg" /></a></li>
+					{{/ifCond}}
 						@* Todo: Do this check client side *@
 						@if (Request.Cookies["role"] != null && Request.Cookies["role"].Value == "Administrator")
 						{

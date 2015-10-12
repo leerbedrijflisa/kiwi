@@ -109,6 +109,13 @@ Handlebars.registerHelper('prettyDate', function (date) {
 
     return todayDate == dateDate ? dateTime : dateDate;
 });
+
+Handlebars.registerHelper('ifCond', function (v1, v2, options) {
+    if (v1 === v2) {
+        return options.fn(this);
+    }
+    return options.inverse(this);
+});
 //#endregion
 
 // #region Extentions
