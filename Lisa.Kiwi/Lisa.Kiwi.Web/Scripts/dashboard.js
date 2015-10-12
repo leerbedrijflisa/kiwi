@@ -105,7 +105,8 @@ Handlebars.registerHelper('prettyDate', function (date) {
         todayDate = today.getDate() + "-" + (today.getMonth() + 1) + "-" + today.getFullYear(),
         date = new Date(date),
         dateDate = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear(),
-        dateTime = date.getHours() + ':' + date.getMinutes();
+        dateTime = date.getHours() + ':' + ((date.getMinutes()
+            < 10 ? '0' : '') + date.getMinutes());
 
     return todayDate == dateDate ? dateTime : dateDate;
 });
