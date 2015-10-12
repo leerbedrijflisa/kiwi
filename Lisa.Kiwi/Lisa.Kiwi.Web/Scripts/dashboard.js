@@ -34,7 +34,7 @@ function updateReports(data) {
 
     if (!firstLoad) {
         if (reportCount == data.length) {
-            setTimeout(newReport, 1);
+            setTimeout(updatedReport, 1);
         }
         else {
             setTimeout(newReport, 1);
