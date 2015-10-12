@@ -14,10 +14,7 @@ namespace Lisa.Kiwi.WebApi
             // add new foreign key to the perps and vehicles
             AddColumn("dbo.Perpetrators", "ReportData_Id", c => c.Int());
             AddColumn("dbo.Vehicles", "ReportData_Id", c => c.Int());
-            CreateIndex("dbo.Perpetrators", "ReportData_Id");
-            CreateIndex("dbo.Vehicles", "ReportData_Id");
-            AddForeignKey("dbo.Perpetrators", "ReportData_Id", "dbo.Reports", "Id");
-            AddForeignKey("dbo.Vehicles", "ReportData_Id", "dbo.Reports", "Id");
+            
 
             // execute migration queries
             var vehiclesQuery = "DECLARE @VehicleReports TABLE(ReportId int, VehicleId int); INSERT INTO @VehicleReports (ReportId, VehicleId) SELECT Id, Vehicle_Id FROM kiwi.dbo.Reports WHERE Vehicle_Id != 0; UPDATE V SET ReportData_Id = VR.ReportId FROM kiwi.dbo.Vehicles V JOIN @VehicleReports VR ON V.Id = VR.VehicleId WHERE VR.VehicleId != 0;";
@@ -25,6 +22,11 @@ namespace Lisa.Kiwi.WebApi
 
             Sql(vehiclesQuery);
             Sql(perpetratorsQuery);
+
+            CreateIndex("dbo.Perpetrators", "ReportData_Id");
+            CreateIndex("dbo.Vehicles", "ReportData_Id");
+            AddForeignKey("dbo.Perpetrators", "ReportData_Id", "dbo.Reports", "Id");
+            AddForeignKey("dbo.Vehicles", "ReportData_Id", "dbo.Reports", "Id");
 
             // drop foreign keys
             DropForeignKey("dbo.Reports", "Perpetrator_Id", "dbo.Perpetrators");
