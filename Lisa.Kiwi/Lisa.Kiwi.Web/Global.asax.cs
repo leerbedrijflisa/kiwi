@@ -29,9 +29,8 @@ namespace Lisa.Kiwi.Web
             {
                 url = WebConfigurationManager.AppSettings["WebApiUrl"];
             }
+
             return url;
-
-
         }
 
         private static bool FiddlerAvailable()
