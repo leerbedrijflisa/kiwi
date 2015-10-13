@@ -15,6 +15,8 @@ namespace Lisa.Kiwi.Web
         public string NewPassword { get; set; }
 
         [Display(Name = "RepeatNewPassword", ResourceType = typeof(DisplayNames))]
+        [StringLength(50, MinimumLength = 6, ErrorMessageResourceName = "PasswordLength", ErrorMessageResourceType = typeof(ErrorMessages))]
+        [Compare("NewPassword", ErrorMessageResourceName = "PasswordRepeat", ErrorMessageResourceType = typeof(ErrorMessages))]
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(ErrorMessages))]
         public string NewPasswordRepeat { get; set; }
     }
