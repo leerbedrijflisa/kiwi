@@ -9,7 +9,6 @@
     <Import_RootNamespace>Lisa.Kiwi.WebApi.Models</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)AnonymousLogin.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Contact.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Location.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Perpetrator.cs" />
