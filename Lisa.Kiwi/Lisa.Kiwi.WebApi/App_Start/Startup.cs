@@ -28,13 +28,7 @@ namespace Lisa.Kiwi.WebApi
             {
 
                 map.UseCors(CorsOptions.AllowAll);
-                var hubConfiguration = new HubConfiguration
-                {
-                    // You can enable JSONP by uncommenting line below.
-                    // JSONP requests are insecure but some older browsers (and some
-                    // versions of IE) require JSONP to work cross domain
-                    // EnableJSONP = true
-                };
+                var hubConfiguration = new HubConfiguration();
 
                 map.RunSignalR(hubConfiguration);
             });

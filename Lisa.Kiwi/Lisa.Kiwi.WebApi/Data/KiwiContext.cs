@@ -18,7 +18,7 @@ namespace Lisa.Kiwi.WebApi
 
         public bool HasUnsavedChanges()
         {
-            return this.ChangeTracker.Entries().Any(e => e.State == EntityState.Added
+            return ChangeTracker.Entries().Any(e => e.State == EntityState.Added
                                                       || e.State == EntityState.Modified
                                                       || e.State == EntityState.Deleted);
         }

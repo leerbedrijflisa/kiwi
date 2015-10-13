@@ -9,9 +9,10 @@ $(document).ready(function() {
         vehicleCount = vehicles.length - 1;
 
         vehicles.forEach(function (value) {
+            var name;
             if (value.NumberPlate != "") {
                 value.NumberPlate = ", " + value.NumberPlate;
-                var name = value.Type + value.NumberPlate;
+                name = value.Type + value.NumberPlate;
             } else {
                 if (value.Brand != "") {
                     value.Brand = ", " + value.Brand;
@@ -20,7 +21,7 @@ $(document).ready(function() {
                 if (value.Color != "") {
                     value.Color = ", " + value.Color;
                 }
-                var name = value.Type + value.Brand + value.Color;
+                name = value.Type + value.Brand + value.Color;
             }
 
             $("#vehicleData").append("<li>" + name + "</li>");
@@ -151,9 +152,11 @@ function popUpReport(e, a) {
                             break;
                     }
 
+                    var name;
+
                     if (numberplate != "") {
                         numberplate = ", " + numberplate;
-                        var name = type + numberplate;
+                        name = type + numberplate;
                     } else {
                         if (brand != "") {
                             brand = ", " + brand;
@@ -162,7 +165,7 @@ function popUpReport(e, a) {
                         if (color != "") {
                             color = ", " + color;
                         }
-                        var name = type + brand + color;
+                        name = type + brand + color;
                     }
 
                     $("#vehicleData").append("<li>" + name + "</li>");

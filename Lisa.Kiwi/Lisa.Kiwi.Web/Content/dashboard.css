@@ -196,7 +196,7 @@ section.Solved {
     margin-bottom: 5px;
     background-color: #113;
     color: #ccc;
-    padding: 0px;
+    padding: 0;
     text-align: center;
     box-shadow: 1px 1px 1px 1px #888888;
 }
