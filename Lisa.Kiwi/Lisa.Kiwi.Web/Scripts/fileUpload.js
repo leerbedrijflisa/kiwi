@@ -64,9 +64,10 @@ function uploadFailed(xhr, textStatus, errorThrown) {
 }
 
 function showError(xhr) {
-    var errorField = $('#fileUpload #errors');
+    var errorField = $('#fileUpload p.errors');
     var errorText = xhr.responseText;
     errorField.html(errorText);
+    errorField.show();
 }
 
 // Client side file processing
@@ -108,9 +109,9 @@ function appendTableWithFileData(fileKey, file, table) {
         id: fileKey
     });
 
-    $('<td></td>').html('<img src="' + URL.createObjectURL(file) + '">').appendTo(row);
-    $('<td></td>').html(file.name).appendTo(row);
-    $('<td></td>').html('<button onclick="deleteFileFromList(this)"><img src="/Content/cross.svg" /></button>').appendTo(row);
+    $('<td class="filePreview"></td>').html('<img src="' + URL.createObjectURL(file) + '">').appendTo(row);
+    $('<td class="fileName"></td>').html(file.name).appendTo(row);
+    $('<td class="fileRemove"></td>').html('<button onclick="deleteFileFromList(this)"><img src="/Content/cross.svg" /></button>').appendTo(row);
 
     row.appendTo(table);
 }

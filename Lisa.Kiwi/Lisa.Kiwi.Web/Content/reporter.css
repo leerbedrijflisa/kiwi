@@ -77,6 +77,11 @@ iframe {
     height: 100%;
 }
 
+#fileUpload p.errors {
+    display: none;
+    color: red;
+}
+
 #uploadfiles .uploadwrapper input[type=file] {
     position: absolute;
     top: 0;
@@ -87,7 +92,7 @@ iframe {
     -o-transform: translate(250px, -50px) scale(1);
     -moz-transform: translate(-300px, 0) scale(4);
     direction: ltr;
-    cursor: pointer;
+    cursor: default;
     width: 100%;
 }
 
@@ -99,14 +104,15 @@ iframe {
     vertical-align: middle;
     overflow: hidden;
 
-    color: white;
-    background-color: #113;
-    border: 1px solid black;
+    color: #333;
+    background-color: #eee;
+    border: 1px solid #ccc;
     border-radius: 4px;
     margin-left: 10px;
     margin-bottom: 10px;
     height: 42px;
     width: calc(100% - 20px);
+    cursor: default;
 }
 
 #uploadfiles .uploadwrapper span {
@@ -128,12 +134,19 @@ iframe {
     margin: auto;
 }
 
+#uploadqueue td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
 #uploadqueue tr {
     height: 100px;
 }
 
 #uploadqueue tr td {
     width: 50%;
+    -ms-word-break: break-all;
     word-break: break-all;
     overflow: hidden;
 }
@@ -144,28 +157,43 @@ iframe {
     width: 25%;
 }
 
-#uploadqueue tr button {
-    height: 75%;
-    padding: 1px;
+td.filePreview {
+    min-width: 100px;
 }
 
-#uploadqueue tr td button img {
+td.filePreview img {
+    max-height: 90px;
+    max-width: 90px;
+    padding: 5px;
+}
+
+td.fileName {
+    font-weight: normal;
+}
+
+td.fileRemove button {
+    height: 70px;
+    width: 70px;
+    padding: 0;
+    border: 0;
+    background: none;
+}
+
+td.fileRemove button img {
     position: relative;
     top: 0;
     left: 0;
     background-color: #113;
-    margin: auto; 
+    margin: 0 auto;
     vertical-align: middle;
-    height: 75%;
+    height: 95%;
+    width: 95%;
+    max-height: 100%;
+    max-width: 100%;
 }
 
 #uploadqueue tr:nth-child(odd) {
     background-color: #eee;
-}
-
-#uploadqueue img {
-    max-height: 100px;
-    max-width: 100px;
 }
 
 .pseudo-align {
