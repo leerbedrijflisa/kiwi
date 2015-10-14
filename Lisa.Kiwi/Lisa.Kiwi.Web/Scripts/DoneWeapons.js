@@ -18,3 +18,14 @@ $(function () {
         }
     });
 })
+
+function toggleWeaponOther() {
+    if ($("#WeaponType").val() === "Anders") {
+        $(".toggle-weapontype-different").show();
+    } else {
+        $(".toggle-weapontype-different").hide();
+    };
+}
+
+window.onload = toggleWeaponOther();
+$("#WeaponType").change(function () { toggleWeaponOther() });

@@ -20,6 +20,7 @@ namespace Lisa.Kiwi.Web
             FighterCount = report.FighterCount;
             IsWeaponPresent = report.IsWeaponPresent;
             WeaponType = report.WeaponType;
+            WeaponTypeOther = report.WeaponTypeOther;
             WeaponLocation = report.WeaponLocation;
             VictimName = report.VictimName;
             Victim = report.Victim;

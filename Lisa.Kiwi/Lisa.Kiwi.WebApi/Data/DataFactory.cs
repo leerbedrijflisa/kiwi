@@ -36,6 +36,7 @@ namespace Lisa.Kiwi.WebApi
             reportData.IsWeaponPresent = json.Value<bool?>("isWeaponPresent") ?? reportData.IsWeaponPresent;
 
             reportData.WeaponType = json.Value<string>("weaponType") ?? reportData.WeaponType;
+            reportData.WeaponTypeOther = json.Value<string>("weaponTypeOther") ?? reportData.WeaponTypeOther;
             reportData.WeaponLocation = json.Value<string>("weaponLocation") ?? reportData.WeaponLocation;
 
             reportData.Victim = json.Value<string>("victim") ?? reportData.Victim;
