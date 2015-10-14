@@ -36,21 +36,15 @@
 	};
 }
 
+<fieldset class="summary">
+	<legend>@DisplayNames.WeaponType</legend>
+	@Html.DropDownListFor(m => m.WeaponType, weaponTypes)
+</fieldset>
 
-@if (weaponTypes.Select(s => s.Text).Contains(Model.WeaponType))
-{
-	<fieldset class="summary">
-		<legend>@DisplayNames.WeaponType</legend>
-		@Html.DropDownListFor(m => m.WeaponType, weaponTypes)
-	</fieldset>
-}
-else
-{
-	<fieldset class="summary">
-		<legend>@DisplayNames.WeaponTypeOther</legend>
-		@Html.TextBoxFor(m => m.WeaponType)
-	</fieldset>
-}
+<fieldset class="summary toggle-weapontype-different">
+	<legend>@DisplayNames.WeaponTypeOther</legend>
+	@Html.TextBoxFor(m => m.WeaponTypeOther)
+</fieldset>
 
 <fieldset class="summary">
 	<legend>@DisplayNames.WeaponLocation</legend>

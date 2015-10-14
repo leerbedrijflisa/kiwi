@@ -18,11 +18,12 @@ namespace Lisa.Kiwi.WebApi
                 Modified = reportData.Modified,
                 Description = reportData.Description,
                 IsUnconscious = reportData.IsUnconscious,
-                
+
                 Victim = reportData.Victim,
                 VictimName = reportData.VictimName,
 
                 WeaponType = reportData.WeaponType,
+                WeaponTypeOther = reportData.WeaponTypeOther,
                 WeaponLocation = reportData.WeaponLocation,
 
                 FighterCount = reportData.FighterCount,

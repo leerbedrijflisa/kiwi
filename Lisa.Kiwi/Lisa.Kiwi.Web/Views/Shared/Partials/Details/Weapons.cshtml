@@ -1,6 +1,13 @@
 ﻿<fieldset class="summary">
 	<legend>@ReportProperties.ResourceManager.GetString("WeaponType")</legend>
-	<p>@DashboardHelpers.NullCheck(Model.WeaponType)</p>
+	@if (Model.WeaponType == "Anders")
+    {
+        <p>@DashboardHelpers.NullCheck(Model.WeaponTypeOther)</p>
+    }
+    else
+    {
+        <p>@DashboardHelpers.NullCheck(Model.WeaponType)</p>
+    }
 </fieldset>
 
 <fieldset class="summary">

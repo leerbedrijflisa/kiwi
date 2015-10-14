@@ -86,7 +86,16 @@ Handlebars.registerHelper('detailsSummary', function (report) {
             {
                 report.weaponType = "een onbekend wapen";
             }
-            result = "Het gaat om een " + report.weaponType;
+            if (report.weaponType == "Pepperspray") {
+                result = "Het gaat om " + report.weaponType;
+            } else if (report.weaponType == "Anders") {
+                result = "Het wapen is zelf ingevoerd namelijk: " + report.weaponTypeOther;
+            } else if (report.weaponType == "een onbekend wapen") {
+                result = "Het gaat om " + report.weaponType;
+            } else {
+                result = "Het gaat om een " + report.weaponType;
+    }
+            
             break;
         default:
             result = report.description || "";

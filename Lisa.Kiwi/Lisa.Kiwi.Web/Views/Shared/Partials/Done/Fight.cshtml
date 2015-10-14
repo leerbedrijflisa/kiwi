@@ -18,25 +18,66 @@
 	};
 }
 
+@{
+    var weaponTypes = new[]
+    {
+        new SelectListItem
+        {
+            Text = "Mes",
+            Value = "Mes",
+            Selected = Model.WeaponType == "Mes"
+        },
+        new SelectListItem
+        {
+            Text = "Boksbeugel",
+            Value = "Boksbeugel",
+            Selected = Model.WeaponType == "Boksbeugel"
+        },
+        new SelectListItem
+        {
+            Text = "Vuurwapen",
+            Value = "Vuurwapen",
+            Selected = Model.WeaponType == "Vuurwapen"
+        },
+        new SelectListItem
+        {
+            Text = "Pepperspray",
+            Value = "Pepperspray",
+            Selected = Model.WeaponType == "Pepperspray"
+        },
+        new SelectListItem
+        {
+            Text = "Anders",
+            Value = "Anders",
+            Selected = Model.WeaponType == "Anders"
+        }
+    };
+}
+
 <fieldset class="summary">
 	<legend>@DisplayNames.FightCount</legend>
 	@Html.TextBoxFor(m => m.FighterCount, new { type = "number", min = 2, Value = 2 })
 </fieldset>
-<fieldset class="summary">
+<fieldset id="weapon-present" class="summary">
 	<legend>@DisplayNames.FightWeapon</legend>
 	@Html.DropDownListFor(m => m.IsWeaponPresent, weaponPresent)
 </fieldset>
-@if (Model.IsWeaponPresent ?? true)
-{
-    <fieldset class="summary">
-        <legend>@DisplayNames.WeaponType</legend>
-        @Html.TextBoxFor(m => m.WeaponType)
-    </fieldset>
-    <fieldset class="summary">
-        <legend>@DisplayNames.WeaponLocation</legend>
-        @Html.TextAreaFor(m => m.WeaponLocation)
-    </fieldset>
-}
+
+<fieldset class="summary toggle-weapon-present">
+    <legend>@DisplayNames.WeaponType</legend>
+    @Html.DropDownListFor(m => m.WeaponType, weaponTypes)
+</fieldset>
+
+<fieldset class="summary toggle-weapon-present toggle-weapontype-different ">
+    <legend>@DisplayNames.WeaponTypeOther</legend>
+    @Html.TextBoxFor(m => m.WeaponTypeOther)
+</fieldset>
+
+<fieldset class="summary toggle-weapon-present">
+    <legend>@DisplayNames.WeaponLocation</legend>
+    @Html.TextAreaFor(m => m.WeaponLocation)
+</fieldset>
+
 <fieldset class="summary">
 	<legend>@DisplayNames.Description</legend>
 	@Html.TextAreaFor(m => m.Description)
