@@ -10,6 +10,12 @@
     <fieldset>
         <legend><i class="fa fa-check-circle-o"></i>&nbsp;&nbsp;@PageItems.DoneMessage</legend>
         <p class="summary">
+            @if (ViewBag.Changed)
+            {
+                <legend class="success_updated_report">
+                    <a class="close_successmessage" title="close" aria-label="close" onclick="close_menu()">x</a>Uw wijziging is successvol opgeslagen.
+                </legend>
+            }
             @if (Model.Category == "FirstAid" || Model.Category == "Fight")
             {
                 <text>
@@ -20,13 +26,6 @@
                 <text>
                     We nemen uw melding van @Categories.ResourceManager.GetString(Model.Category) zo snel mogelijk in behandeling. Indien nodig kunt u hieronder uw melding nog wijzigen.
                 </text>}
-
-            @if (ViewBag.Changed)
-            {
-                <text>
-                    <br />Uw wijzigingen zijn opgeslagen.
-                </text>
-            }
         </p>
     </fieldset>
 

@@ -12,6 +12,9 @@ function convertStringToBool(elementVal) {
         $(".toggle-weapon-present").hide();
     }
 }
+function close_menu() {
+    $(".success_updated_report").hide();
+}
 
 window.onload = convertStringToBool($("#IsWeaponPresent").val());
 $("#IsWeaponPresent").change(function () { convertStringToBool($(this).val()) });
