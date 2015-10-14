@@ -1,5 +1,9 @@
 ﻿@model Report
 
+@{
+		ViewBag.Back = @Url.Action("Index", "Dashboard");
+}
+
 <fieldset class="summary">
 	<legend>Wat is er gemeld?</legend>
 	<p>
@@ -52,9 +56,7 @@
 		</fieldset>
 	}
 	<fieldset>
-		<button type="submit">Status wijzigen</button>
-	</fieldset>
-	<fieldset class="field backbutton fa fa-arrow-left">
-			@Html.ActionLink("Terug", "Index", "Dashboard")
+		<input type="button" class="detailsbutton" value="Terug" onclick="location.href='@ViewBag.Back'"/>
+		<button type="submit" class="detailsbutton">Status wijzigen</button>
 	</fieldset>
 }

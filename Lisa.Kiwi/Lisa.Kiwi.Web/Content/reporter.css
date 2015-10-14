@@ -225,6 +225,29 @@ td a{
     cursor: pointer;
 }
 
+.detailsbutton {
+    background-color: #113;
+    color: white;
+    border-color: black;
+    display: inline;
+    width: calc(50% - 20px); 
+  }
+
+input.detailsbutton {
+    background-color: #113;
+    color: white;
+    border: 1px solid #000;
+    border-radius: 4px;
+    display: inline;
+    width: calc(50% - 20px); 
+    height: 44px;
+    padding: 0px 6px 0px 6px;
+    margin-bottom: 10px;
+    position: relative;
+    vertical-align: middle;
+    text-align: center;
+}
+
 /*
 	Popups
 
