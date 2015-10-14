@@ -22,7 +22,7 @@ namespace Lisa.Kiwi.WebApi
         public IQueryable<Report> Get()
         {
             var reports = GetCompleteReports();
-            return User.IsInRole("Administrator") ? reports : reports.Where(r => r.IsVisible && r.Status == 0);
+            return User.IsInRole("Administrator") ? reports : reports.Where(r => r.IsVisible == true && r.Status == 0);
         }
 
         public IHttpActionResult Get(int? id)
@@ -82,25 +82,31 @@ namespace Lisa.Kiwi.WebApi
                     return Unauthorized();
                 }
             }
-        
+            
             var reportData = await _db.Reports.FindAsync(id);
             if (reportData == null)
             {
                 return NotFound();
             }
 
-            if (!claimsIdentity.HasClaim("is_admin", "True") && json.Value<bool>("isVisible") != reportData.IsVisible)
+            if (!claimsIdentity.HasClaim(ClaimTypes.Role, "Anonymous"))
             {
-                return Unauthorized();
+                if (!claimsIdentity.HasClaim("is_admin", "True") && json.Value<bool>("isVisible") != reportData.IsVisible)
+                {
+                    return Unauthorized();
+                }
             }
 
             _dataFactory.Modify(reportData, json);
+            
+            if (_db.HasUnsavedChanges())
+            {
+                reportData.Modified = DateTimeOffset.Now;
 
-            reportData.Modified = DateTimeOffset.Now;
+                _db.SaveChanges();
+                TriggerReportDataChange();
+            }
 
-            _db.SaveChanges();
-            TriggerReportDataChange();
-                
             var report = _modelFactory.Create(reportData);
             return Ok(report);
         }

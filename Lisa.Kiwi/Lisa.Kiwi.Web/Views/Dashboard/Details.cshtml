@@ -1,5 +1,9 @@
 ﻿@model Report
 
+@{
+		ViewBag.Back = @Url.Action("Index", "Dashboard");
+}
+
 <fieldset class="summary">
 	<legend>Wat is er gemeld?</legend>
 	<p>
@@ -36,7 +40,7 @@
 
 @using (Html.BeginForm())
 {
-	<fieldset>
+	<fieldset class="summary">
 		<legend>@PageItems.Status</legend>
 		<ul class="radioList">
 			<li><input type="radio" name="Status" value="@StatusEnum.Open" @(Model.Status == StatusEnum.Open ? "checked=\"checked\"" : "") /> @Statuses.Open</li>
@@ -46,17 +50,13 @@
 	</fieldset>
 	if (Request.Cookies["role"] != null && Request.Cookies["role"].Value == "Administrator")
 	{
-		<fieldset>
+		<fieldset class="summary">
 			<legend>@PageItems.VisibleChange</legend>
-			@(!Model.IsVisible ? Html.CheckBox("IsVisible") : Html.CheckBox("IsVisible", new { @checked = "true" }))
+			@(!Model.IsVisible == true ? Html.CheckBox("IsVisible") : Html.CheckBox("IsVisible", new { @checked = "true" }))
 		</fieldset>
 	}
 	<fieldset>
-		<button type="submit">Status wijzigen</button>
-	</fieldset>
-	<fieldset>
-		<p>
-			@Html.ActionLink("terug", "index", "dashboard")
-		</p>
+		<input type="button" class="detailsbutton" value="Terug" onclick="location.href='@ViewBag.Back'"/>
+		<button type="submit" class="detailsbutton">Status wijzigen</button>
 	</fieldset>
 }

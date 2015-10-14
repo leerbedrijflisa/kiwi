@@ -152,6 +152,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\kiwi-webapi.pubxml" />
+    <Content Include="version.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -167,6 +168,7 @@
     <Compile Include="Data\ReportData.cs" />
     <Compile Include="Data\VehicleData.cs" />
     <Compile Include="Hubs\ReportsHub.cs" />
+    <Compile Include="Migrations\201510080906401_VehiclesPerpetrators.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AddUserModel.cs" />
     <Compile Include="Models\ModelFactory.cs" />

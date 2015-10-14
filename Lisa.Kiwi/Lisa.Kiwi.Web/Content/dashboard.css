@@ -189,16 +189,16 @@ section.Solved {
     right: 10px;
     z-index: 1;
     list-style: none;
+    opacity: 0.9;
 }
 
 .side-buttons li {
     margin-bottom: 5px;
     background-color: #113;
     color: #ccc;
-    padding: 0px;
+    padding: 0;
     text-align: center;
     box-shadow: 1px 1px 1px 1px #888888;
-    border-radius: 20px;
 }
 
 .side-buttons a{

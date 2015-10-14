@@ -14,12 +14,12 @@
 	<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 	<script src="~/Scripts/jquery.signalR.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.min.js"></script>
+    <script src="~/Scripts/date.js"></script>
 	<script src="~/Scripts/hubs.js"></script>
 	<script>
 		window.ApiUrl = "@api";
 	</script>
 	<script src="~/Scripts/dashboard.js"></script>
-	<script src="~/Scripts/date.js"></script>
 </head>
 <body>
 	<ul class="side-buttons">
@@ -36,7 +36,7 @@
 		{{#each .}}
 			<section class={{status}}>
 				<article>
-					<a href="dashboard/details?id={{id}}">
+					<a href="/dashboard/details?id={{id}}">
 						<div class="category {{category}}">
 							<!-- Translate -->
 							<h1>{{translate "Categories" category}}</h1>
@@ -64,8 +64,11 @@
 					</p>
 				</a>
 				<ul class="options">
-					<li><a href="/dashboard/togglesolved?id={{id}}&currentsolved={{status}}"><img src="/Content/done.svg"></a></li>
-
+					{{#ifCond status "open"}}
+						<li><a href="/dashboard/togglesolved?id={{id}}&currentsolved={{status}}"><img src="/Content/done.svg" /></a></li>
+					{{else}}
+						<li><a href="/dashboard/togglesolved?id={{id}}&currentsolved={{status}}" class="button-green"><img src="/Content/done.svg" /></a></li>
+					{{/ifCond}}
 						@* Todo: Do this check client side *@
 						@if (Request.Cookies["role"] != null && Request.Cookies["role"].Value == "Administrator")
 						{
