@@ -40,7 +40,7 @@
 
 @using (Html.BeginForm())
 {
-	<fieldset>
+	<fieldset class="summary">
 		<legend>@PageItems.Status</legend>
 		<ul class="radioList">
 			<li><input type="radio" name="Status" value="@StatusEnum.Open" @(Model.Status == StatusEnum.Open ? "checked=\"checked\"" : "") /> @Statuses.Open</li>
@@ -50,7 +50,7 @@
 	</fieldset>
 	if (Request.Cookies["role"] != null && Request.Cookies["role"].Value == "Administrator")
 	{
-		<fieldset>
+		<fieldset class="summary">
 			<legend>@PageItems.VisibleChange</legend>
 			@(!Model.IsVisible == true ? Html.CheckBox("IsVisible") : Html.CheckBox("IsVisible", new { @checked = "true" }))
 		</fieldset>
