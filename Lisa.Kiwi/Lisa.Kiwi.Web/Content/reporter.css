@@ -300,13 +300,14 @@ button {
   position: relative; /* serve as a container for images */
 }
 
-  button[type=submit] {
+  button[type=submit],
+  button.submit {
     background-color: #113;
     color: white;
     border-color: black;
   }
 
-  button:not([type=submit]) img {
+  button:not([type=submit]):not([class=submit]) img {
     position: absolute;
     left: 5px;
     top: 5px;
@@ -314,7 +315,12 @@ button {
     max-height: 32px;
     border: 1px solid #ccc;
     border-radius: 16px;
-    }
+  }
+
+  .action {
+    width: 100px;
+    height: 40px;
+  }
 
 .fabutton{
     color: greenyellow;
@@ -567,4 +573,9 @@ img.dashboardImage {
     opacity: 0.2;
     text-shadow: 0 1px 0 #fff;
     cursor: pointer;
+}
+
+.done-button {
+    display: inline-block; 
+    width: calc(50% - 2px);
 }
