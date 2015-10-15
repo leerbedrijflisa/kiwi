@@ -39,7 +39,7 @@ namespace Lisa.Kiwi.WebApi
             var reportId = Int32.Parse(tokenArray[0]);
             var time = DateTime.Parse(tokenArray[1]);
 
-            if (tokenArray.Count() != 2 && reportId != 0 && time != new DateTime())
+            if (tokenArray.Length != 2 && reportId != 0 && time != new DateTime())
             {
                 context.SetError("invalid_grant", "This token is invalid");
                 return;

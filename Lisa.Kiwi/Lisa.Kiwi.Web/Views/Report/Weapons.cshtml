@@ -1,7 +1,7 @@
 ﻿@model WeaponViewModel
 
 @section Scripts{
-	<script src="~/Scripts/Weapons.js"></script>
+	<script src="~/Scripts/Weapon.js"></script>
 }
 
 @{
@@ -11,11 +11,11 @@
 
 @using (Html.BeginForm())
 {
-	<fieldset>
-		<legend>@DisplayNames.WeaponType</legend>
-		@Html.TextBoxFor(m => m.Type)
+    <fieldset>
+        <legend>@DisplayNames.WeaponType</legend>
+        @Html.DropDownListFor(m => m.Type, Model.Types)
 		@Html.ValidationMessageFor(m => m.Type)
-	</fieldset>
+    </fieldset>
 	<fieldset id="Sub">
 		<legend>@DisplayNames.WeaponTypeOther</legend>
 		@Html.TextBoxFor(m => m.OtherType)

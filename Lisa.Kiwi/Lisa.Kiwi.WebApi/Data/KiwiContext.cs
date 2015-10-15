@@ -12,14 +12,10 @@ namespace Lisa.Kiwi.WebApi
         }
 
         public DbSet<ReportData> Reports { get; set; }
-        public DbSet<VehicleData> Vehicles { get; set; }
-        public DbSet<LocationData> Locations { get; set; }
-        public DbSet<ContactData> Contacts { get; set; }
-        public DbSet<FileData> Files { get; set; }
 
         public bool HasUnsavedChanges()
         {
-            return this.ChangeTracker.Entries().Any(e => e.State == EntityState.Added
+            return ChangeTracker.Entries().Any(e => e.State == EntityState.Added
                                                       || e.State == EntityState.Modified
                                                       || e.State == EntityState.Deleted);
         }

@@ -357,6 +357,8 @@ namespace Lisa.Kiwi.Web
 
         public async Task<ActionResult> Done()
         {
+            ViewBag.Changed = TempData["Changed"] ?? false;
+
             var report = await GetCurrentReport();
             return View(new DoneViewModel(report));
         }
@@ -373,6 +375,8 @@ namespace Lisa.Kiwi.Web
 
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(GetCurrentReportId(), report);
+            
+            TempData["Changed"] = true;
 
             return RedirectToAction("Done");
         }

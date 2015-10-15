@@ -221,7 +221,7 @@ form {
 fieldset {
   display: block;
   border: none;
-  padding: 0px;
+  padding: 0;
   margin: 0 0 15px 0;
 }
 
@@ -379,6 +379,29 @@ td a{
     cursor: pointer;
 }
 
+.detailsbutton {
+    background-color: #113;
+    color: white;
+    border-color: black;
+    display: inline;
+    width: calc(50% - 20px); 
+  }
+
+input.detailsbutton {
+    background-color: #113;
+    color: white;
+    border: 1px solid #000;
+    border-radius: 4px;
+    display: inline;
+    width: calc(50% - 20px); 
+    height: 44px;
+    padding: 0px 6px 0px 6px;
+    margin-bottom: 10px;
+    position: relative;
+    vertical-align: middle;
+    text-align: center;
+}
+
 /*
 	Popups
 
@@ -522,4 +545,26 @@ img.dashboardImage {
     left: 25%;
     width: 50%;
     position: fixed;
+}
+
+.success_updated_report {
+    color: #3c763d !important;
+    background-color: #dff0d8 !important;
+    border-color: #d6e9c6 !important;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    padding: 15px;
+}
+
+.close_successmessage {
+    font-size: 18px !important;
+    line-height: 1.2;
+    text-decoration: none !important;
+    color: #000 !important;
+    float: right;
+    font-size: 21px;
+    font-weight: 700;
+    opacity: 0.2;
+    text-shadow: 0 1px 0 #fff;
+    cursor: pointer;
 }

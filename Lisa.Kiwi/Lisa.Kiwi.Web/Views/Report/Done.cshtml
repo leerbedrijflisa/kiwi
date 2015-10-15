@@ -1,53 +1,61 @@
 ﻿@model DoneViewModel
 
+@section WeaponScript{
+    <script src="~/Scripts/DoneFight.js"></script>
+    <script src="~/Scripts/DoneWeapons.js"></script>
+}
+
 @using (Html.BeginForm())
 {
-	<fieldset>
-		<legend><i class="fa fa-check-circle-o"></i>&nbsp;&nbsp;@PageItems.DoneMessage</legend>
-		<p class="summary">
-			@if (Model.Category == "FirstAid" || Model.Category == "Fight")
-			{
-				<text>
-					Hulp is onderweg. Indien nodig kunt u hieronder uw melding aanpassen.
-				</text>
-			}
-			else
-			{
-				<text>
-					We nemen uw melding van @Categories.ResourceManager.GetString(Model.Category) zo snel mogelijk in behandeling. Indien nodig kunt u hieronder uw melding nog wijzigen.
-				</text>
-			}
-		</p>
-	</fieldset>
+    <fieldset>
+        <legend><i class="fa fa-check-circle-o"></i>&nbsp;&nbsp;@PageItems.DoneMessage</legend>
+        <p class="summary">
+            @if (ViewBag.Changed)
+            {
+                <legend class="success_updated_report">
+                    <a class="close_successmessage" title="close" aria-label="close" onclick="close_menu()">x</a>Uw wijziging is successvol opgeslagen.
+                </legend>
+            }
+            @if (Model.Category == "FirstAid" || Model.Category == "Fight")
+            {
+                <text>
+                    Hulp is onderweg. Indien nodig kunt u hieronder uw melding aanpassen.
+                </text>}
+            else
+            {
+                <text>
+                    We nemen uw melding van @Categories.ResourceManager.GetString(Model.Category) zo snel mogelijk in behandeling. Indien nodig kunt u hieronder uw melding nog wijzigen.
+                </text>}
+        </p>
+    </fieldset>
 
-	if (Model.Category != null)
-	{
-		<fieldset class="summary">
-			<legend>@DisplayNames.Index</legend>
-			<p>@Categories.ResourceManager.GetString(Model.Category)</p>
-		</fieldset>
-	}
-	<fieldset class="summary">
-		<legend>@PageItems.Location </legend>
-		<p>
-			@{
-				var prePosition = Buildings.ResourceManager.GetString(String.Format("{0}_Preposition", Model.Location.Building));
-				prePosition = Char.ToUpper(prePosition[0]) + prePosition.Substring(1);
-			}
-			@prePosition
-			@Buildings.ResourceManager.GetString(Model.Location.Building)
-			- @Model.Location.Description
-		</p>
-	</fieldset>
-		
-	@Html.Partial("~/Views/Shared/Partials/Done/" + Model.Category + ".cshtml", Model)
+    if (Model.Category != null)
+    {
+        <fieldset class="summary">
+            <legend>@DisplayNames.Index</legend>
+            <p>@Categories.ResourceManager.GetString(Model.Category)</p>
+        </fieldset>
+    }
+    <fieldset class="summary">
+        <legend>@PageItems.Location </legend>
+        <p>
+            @{    var prePosition = Buildings.ResourceManager.GetString(String.Format("{0}_Preposition", Model.Location.Building));
+                prePosition = Char.ToUpper(prePosition[0]) + prePosition.Substring(1);
+            }
+            @prePosition
+            @Buildings.ResourceManager.GetString(Model.Location.Building)
+            - @Model.Location.Description
+        </p>
+    </fieldset>
 
-	if (Model.Contact != null)
-	{
-		@Html.Partial("~/Views/Shared/Partials/Done/Contact.cshtml", Model.Contact)
-	}
-	<input type="hidden" name="category" value="@Model.Category" />
-	<div class="submit">
-		<button type="submit"><img src="@Url.Content("~/Content/next.svg")" /></button>
-	</div>
-}
+    @Html.Partial("~/Views/Shared/Partials/Done/" + Model.Category + ".cshtml", Model)
+
+                if (Model.Contact != null)
+                {
+                    @Html.Partial("~/Views/Shared/Partials/Done/Contact.cshtml", Model.Contact)
+                }
+                <input type="hidden" name="category" value="@Model.Category" />
+                <div class="submit">
+                    <button type="submit"><img src="@Url.Content("~/Content/next.svg")" /></button>
+                </div>
+                }

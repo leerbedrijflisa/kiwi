@@ -38,6 +38,7 @@ namespace Lisa.Kiwi.WebApi
 
         //Weapons
         public string WeaponType { get; set; }
+        public string WeaponTypeOther { get; set; }
         public string WeaponLocation { get; set; }
 
         //Nuisance

@@ -314,6 +314,7 @@
     <Content Include="Scripts\date.js" />
     <Content Include="Scripts\DoneWeapons.js" />
     <Content Include="Scripts\fileUpload.js" />
+    <Content Include="Scripts\DoneFight.js" />
     <Content Include="Scripts\header-resizer.js" />
     <Content Include="Scripts\bug-report.js" />
     <Content Include="Scripts\jquery-1.11.2.min.js" />
@@ -325,6 +326,7 @@
     <Content Include="Scripts\jquery.signalR.min.js" />
     <Content Include="Scripts\pop-up.js" />
     <Content Include="Scripts\Theft.js" />
+    <Content Include="Scripts\Weapon.js" />
     <Content Include="version.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
