@@ -28,6 +28,7 @@ namespace Lisa.Kiwi.Web
             Contact = report.Contact;
             Perpetrators = report.Perpetrators;
             Vehicles = report.Vehicles;
+            Files = report.Files;
         }
 
         public string ContactName { get; set; }
