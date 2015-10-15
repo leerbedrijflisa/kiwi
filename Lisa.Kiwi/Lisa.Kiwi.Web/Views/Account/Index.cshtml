@@ -1,11 +1,12 @@
 ﻿@model IEnumerable<User>
 @{
 	ViewBag.Title = "Gebruikers";
+	ViewBag.Back = @Url.Action("Index", "Dashboard");
 }
 <div class="container">
 	<fieldset>
 		<legend>Wachtwoorden wijzigen</legend>
-		<table class="changepassword">
+		<table class="passwordtable">
 			<thead>
 				<tr>
 					<th>@DisplayNames.UserName</th>
@@ -18,14 +19,21 @@
 				{
 					<tr>
 						<td>@user.UserName</td>
-						<td>@user.Role</td>
+						<td>
+						@if(user.Role == "DashboardUser")
+						{
+								<text>Dashboard-gebruiker</text>
+						}
+						else
+						{
+								@user.Role
+						}
+						</td>
 						<td class="changepassword">@Html.ActionLink("Wijzigen", "EditPassword", new { id = user.Id, userName = user.UserName }) </td>
 					</tr>
 				}
 			</tbody>
 		</table>
 	</fieldset>
-	<div class="field backbutton fa fa-arrow-left">
-		@Html.ActionLink("Terug", "Index", "Dashboard")
-	</div>
+	<input type="button" value="Terug" onclick="location.href='@ViewBag.Back'" />
 </div>
