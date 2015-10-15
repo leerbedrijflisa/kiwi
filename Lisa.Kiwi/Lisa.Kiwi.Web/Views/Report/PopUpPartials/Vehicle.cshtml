@@ -35,11 +35,11 @@
 			@Html.TextAreaFor(m => m.AdditionalFeatures)
 		</fieldset>
 
-		<button type="submit" onclick="popUpReport('vehicle', 'abort'); return false;"><img src="~/Content/cancel.svg"></button>
-		<button type="submit" onclick="popUpReport('vehicle', 'confirm'); return false;"><img src="~/Content/done.svg"></button>
+		<button class="submit" type="button" onclick="popUpHide('vehicle'); return false;"><img src="~/Content/cancel.svg"></button>
+		<button class="submit" type="button" onclick="popUpReport('vehicle', 'confirm'); return false;"><img src="~/Content/done.svg"></button>
 	</section>
 
 	@*/* Hier moet komen welke voertuigen je hebt gezien */*@
 	<ul id="vehicleData"></ul>
-	<button id="vehicleButton" onclick="popUpShow('vehicle'); return false;">Voertuig toevoegen</button>
+	<button type="button" id="vehicleButton" onclick="popUpShow('vehicle'); return false;">Voertuig toevoegen</button>
 </fieldset>
