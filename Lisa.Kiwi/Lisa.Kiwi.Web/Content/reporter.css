@@ -380,3 +380,8 @@ p.summary {
     text-shadow: 0 1px 0 #fff;
     cursor: pointer;
 }
+
+.done-button {
+    display: inline-block; 
+    width: calc(50% - 2px);
+}
