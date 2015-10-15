@@ -1,113 +1,158 @@
-﻿var perpetrators = [];
-var vehicles = [];
-var perpCount = -1;
-var vehicleCount = -1;
+﻿var perpetrators = [],
+    vehicles = [],
+    editing = false,
+    editingIndex;
 
-$(document).ready(function() {
+$(document).ready(function () {
+    // if the vehicles input already has data in it, print vehicles to the page
     if (typeof $("input[name=Vehicles") != "undefined" && $("input[name=Vehicles]").val() != "") {
         vehicles = JSON.parse($("input[name=Vehicles]").val());
-        vehicleCount = vehicles.length - 1;
 
-        vehicles.forEach(function (value) {
-            var name;
-            if (value.NumberPlate != "") {
-                value.NumberPlate = ", " + value.NumberPlate;
-                name = value.Type + value.NumberPlate;
-            } else {
-                if (value.Brand != "") {
-                    value.Brand = ", " + value.Brand;
-                }
-
-                if (value.Color != "") {
-                    value.Color = ", " + value.Color;
-                }
-                name = value.Type + value.Brand + value.Color;
-            }
-
-            $("#vehicleData").append("<li>" + name + "</li>");
-        });
+        setVehiclesText();
     }
 
+    // if the perpetrators input has data in it, print the perpetrators to the page
     if (typeof $("input[name=Perpetrators") != "undefined" && $("input[name=Perpetrators]").val() != "") {
         perpetrators = JSON.parse($("input[name=Perpetrators]").val());
-        perpCount = perpetrators.length - 1;
 
-        perpetrators.forEach(function (value) {
-            var name = value.Name;
-
-            if (value.SkinColor === "Light") {
-                value.SkinColor = "Blank";
-            } else if (value.SkinColor === "Tanned") {
-                value.SkinColor = "Licht getint";
-            } else if (value.SkinColor === "Dark") {
-                value.SkinColor = "Donker";
-            }
-
-            if (name === "") {
-                name = value.Sex + ", " + value.SkinColor + ", " + value.AgeRange;
-            }
-
-            $("#perpetratorData").append("<li>" + name + "</li>");
-        });
+        setPerpetratorsText();
     }
 });
 
+function setVehiclesText() {
+    $("#vehicleData").html("");
 
+    for (var i = 0; i < vehicles.length; i++) {
+        var vehicle = vehicles[i],
+            vehicleType,
+            text = "";
 
+        switch (vehicle.Type) {
+            case "Car":
+                vehicleType = "Auto";
+                break;
+            case "Moped":
+                vehicleType = "Brommer";
+                break;
+            case "MotorCycle":
+                vehicleType = "Motor";
+                break;
+            case "BiCycle":
+                vehicleType = "Fiets";
+                break;
+            default:
+                vehicleType = "Onbekend";
+                break;
+        }
+
+        if (vehicle.NumberPlate != "") {
+            text += vehicleType + ", " + vehicle.NumberPlate;
+        } else {
+            if (vehicle.Brand != "") {
+                text += ", " + vehicle.Brand;
+            }
+
+            if (vehicle.Color != "") {
+                text += ", " + vehicle.Color;
+            }
+        }
+
+        text += "<button class='action' type='button' onclick='removeVehicle(" + i + ")'>verwijderen</button>";
+        text += "<button class='action' type='button' onclick='editVehicle(" + i + ")'>aanpassen</button>";
+
+        $("#vehicleData").append("<li>" + text + "</li>");
+    }
+}
+
+function setPerpetratorsText() {
+    $("#perpetratorData").html("");
+
+    for (var i = 0; i < perpetrators.length; i++) {
+        var perpetrator = perpetrators[i],
+            skinColorTrans = "Blank",
+            sex = " Onbekend",
+            text = perpetrator.Name;
+
+        if (perpetrator.SkinColor === "Tanned") {
+            skinColorTrans = "Licht getint";
+        } else if (perpetrator.SkinColor === "Dark") {
+            skinColorTrans = "Donker";
+        }
+
+        if (perpetrator.Sex === "Unknown") {
+            sex = "Onbekend";
+        } else if (perpetrator.Sex === "Male") {
+            sex = "Man";
+        } else if (perpetrator.Sex === "Female") {
+            sex = "Vrouw";
+        }
+
+        if (perpetrator.Name === "") {
+            text = sex + ", " + skinColorTrans + ", " + perpetrator.AgeRange;
+        }
+
+        text += "<button class='action' type='button' onclick='removePerpetrator(" + i + ")'>verwijderen</button>";
+        text += "<button class='action' type='button' onclick='editPerpetrator(" + i + ")'>aanpassen</button>";
+
+        $("#perpetratorData").append("<li>" + text + "</li>");
+    }
+}
+
+// show the popup with id: e
 function popUpShow(e) {
     $( ".overlay" ).show();
     $( "#" + e + "" ).show();
 };
+
+function popUpHide(e) {
+    $("#" + e + " fieldset select").prop('selectedIndex', 0);
+    $("#" + e + " fieldset").children("input, textarea").val(null);
+    $(".overlay").hide();
+    $("#" + e + "").hide();
+    editing = false;
+}
 
 function popUpReport(e, a) {
     switch (e) {
         case "perpetrator":
             switch (a) {
                 case "confirm":
-                    perpCount++;
-                    var name = $("#Name").val();
-                    var sex = $("#Sex").val();
-                    
+                    if (editing) {
+                        perpetrators[editingIndex] = {
+                            Id: perpetrators[editingIndex].Id,
+                            Name: $("#Name").val(),
+                            Sex: $("#Sex").val(),
+                            SkinColor: $("#SkinColor").val(),
+                            AgeRange: $("#AgeRange").val(),
+                            Clothing: $("#Clothing").val(),
+                            UniqueProperties: $("#UniqueProperties").val()
+                        };
 
-                    var skincolor = $("#SkinColor").val();
-                    var skinColorTrans = "Blank";
+                        editing = false;
+                    } else {
+                        // create a perpetrator from input values
+                        var perpetrator = {
+                            Id: perpetrators.length,
+                            Name: $("#Name").val(),
+                            Sex: $("#Sex").val(),
+                            SkinColor: $("#SkinColor").val(),
+                            AgeRange: $("#AgeRange").val(),
+                            Clothing: $("#Clothing").val(),
+                            UniqueProperties: $("#UniqueProperties").val()
+                        };
 
-                    if (skincolor === "Tanned") {
-                        skinColorTrans = "Licht getint";
-                    } else if (skincolor === "Dark") {
-                        skinColorTrans = "Donker";
+                        // add perpetrator to array
+                        perpetrators.splice(perpetrators.length, 0, perpetrator);
                     }
 
-                    var agerange = $("#AgeRange").val();
-                    
-                    var clothing = $("#Clothing").val();
-                    var uniqueproperties = $("#UniqueProperties").val();
-                    var perpArray = {
-                            Id: perpCount,
-                            Name: name,
-                            Sex: sex,
-                            SkinColor: skincolor,
-                            AgeRange: agerange,
-                            Clothing: clothing,
-                            UniqueProperties: uniqueproperties
-                    };
-                    perpetrators.splice(perpetrators.length, 0, perpArray);
-
+                    // put the new JSON in the perpetrators input field
                     $("input[name=Perpetrators]").val(JSON.stringify(perpetrators));
 
-                    if (sex === "Unknown") {
-                        sex = "Onbekend";
-                    } else if (sex === "Male") {
-                        sex = "Man";
-                    } else if (sex === "Female") {
-                        sex = "Vrouw";
-                    }
+                    // display new perpetrators text
+                    setPerpetratorsText();
 
-                    if (name === "") {
-                        name = sex + ", " + skinColorTrans + ", " + agerange;
-                    }
+                    popUpHide(e);
 
-                    $("#perpetratorData").append("<li>" + name +  "</li>");
                     break;
             }
             break;
@@ -115,67 +160,96 @@ function popUpReport(e, a) {
         case "vehicle":
             switch (a) {
                 case "confirm":
-                    vehicleCount++;
-                    var type = $("#VehicleType").val();
-                    var brand = $("#Brand").val();
-                    var numberplate = $("#NumberPlate").val();
-                    var color = $("#Color").val();
-                    var features = $("#AdditionalFeatures").val();
+                    if (editing) {
+                        vehicles[editingIndex] = {
+                            Id: vehicles[editingIndex].Id,
+                            Type: $("#VehicleType").val(),
+                            Brand: $("#Brand").val(),
+                            NumberPlate: $("#NumberPlate").val(),
+                            Color: $("#Color").val(),
+                            AdditionalFeatures: $("#AdditionalFeatures").val()
+                        };
 
-                    var vehicleArray = {
-                        Id: vehicleCount,
-                        Type: type,
-                        Brand: brand,
-                        NumberPlate: numberplate,
-                        Color: color,
-                        AdditionalFeatures: features
-                    };
-                    vehicles.splice(vehicles.length, 0, vehicleArray);
+                        editing = false;
+                    } else {
+                        var vehicle = {
+                            Id: vehicles.length,
+                            Type: $("#VehicleType").val(),
+                            Brand: $("#Brand").val(),
+                            NumberPlate: $("#NumberPlate").val(),
+                            Color: $("#Color").val(),
+                            AdditionalFeatures: $("#AdditionalFeatures").val()
+                        };
+
+                        vehicles.splice(vehicles.length, 0, vehicle);
+                    }
 
                     $("input[name=Vehicles]").val(JSON.stringify(vehicles));
 
-                    switch(type) {
-                        case "Car":
-                            type = "Auto";
-                            break;
-                        case "Moped":
-                            type = "Brommer";
-                            break;
-                        case "MotorCycle":
-                            type = "Motor";
-                            break;
-                        case "BiCycle":
-                            type = "Fiets";
-                            break;
-                        default:
-                            type = "Onbekend";
-                            break;
-                    }
+                    setVehiclesText();
 
-                    var name;
+                    popUpHide(e);
 
-                    if (numberplate != "") {
-                        numberplate = ", " + numberplate;
-                        name = type + numberplate;
-                    } else {
-                        if (brand != "") {
-                            brand = ", " + brand;
-                        }
-
-                        if (color != "") {
-                            color = ", " + color;
-                        }
-                        name = type + brand + color;
-                    }
-
-                    $("#vehicleData").append("<li>" + name + "</li>");
                     break;
             }
             break;
     }
+    
+}
 
-    $("#" + e + " fieldset select").prop('selectedIndex', 0);
-    $("#" + e + " fieldset").children("input, textarea").val(null);
-    $(".overlay").hide();
-    $("#" + e + "").hide();
+function removeVehicle(i) {
+    // remove element at position i from array of vehicles
+    vehicles.splice(i, 1);
+
+    // put the json again in the input field
+    $("input[name=Vehicles]").val(JSON.stringify(vehicles));
+
+    // print vehicles in array
+    setVehiclesText();
+}
+
+function editVehicle(i) {
+    // get vehicle from array
+    var vehicle = vehicles[i];
+
+    // set input values from vehicle
+    $("select[name=VehicleType]").val(vehicle.Type);
+    $("input[name=Brand]").val(vehicle.Brand);
+    $("input[name=NumberPlate]").val(vehicle.NumberPlate);
+    $("input[name=Color]").val(vehicle.Color);
+    $("textarea[name=AdditionalFeatures]").val(vehicle.AdditionalFeatures);
+
+    editing = true;
+    editingIndex = i;
+
+    // show the popup
+    popUpShow("vehicle");
+}
+
+function removePerpetrator(i) {
+    // remove element at posistion i from array of perpetrators
+    perpetrators.splice(i, 1);
+
+    // put the new json in the input
+    $("input[name=Perpetrators]").val(JSON.stringify(perpetrators));
+
+    // print text
+    setPerpetratorsText();
+}
+
+function editPerpetrator(i) {
+    // get perpetrator from array
+    var perpetrator = perpetrators[i];
+
+    $("input[name=Name]").val(perpetrator.Name);
+    $("select[name=Sex]").val(perpetrator.Sex);
+    $("select[name=SkinColor]").val(perpetrator.SkinColor);
+    $("select[name=AgeRange]").val(perpetrator.AgeRange);
+    $("textarea[name=Clothing]").val(perpetrator.Clothing);
+    $("textarea[name=UniqueProperties]").val(perpetrator.UniqueProperties);
+
+    editing = true;
+    editingIndex = i;
+
+    popUpShow("perpetrator");
 }
