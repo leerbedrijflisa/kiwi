@@ -190,7 +190,7 @@ td.fileRemove button img {
     width: 100%;
 }
 
-#uploadqueue tr:nth-child(odd) {
+#uploadqueue tr:nth-child(even) {
     background-color: #eee;
 }
 
