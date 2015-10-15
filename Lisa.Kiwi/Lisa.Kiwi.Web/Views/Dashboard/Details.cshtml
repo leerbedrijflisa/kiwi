@@ -4,7 +4,19 @@
 		ViewBag.Back = @Url.Action("Index", "Dashboard");
 }
 
+@section WeaponScript{
+    <script src="~/Scripts/DoneFight.js"></script>
+    <script src="~/Scripts/DoneWeapons.js"></script>
+}
+
 <fieldset class="summary">
+    @if (ViewBag.Changed)
+    {
+        <legend class="success_updated_report">
+            <a class="close_successmessage" title="close" aria-label="close" onclick="close_menu()">x</a>Uw wijziging is succesvol opgeslagen.
+        </legend>
+    }
+
 	<legend>Wat is er gemeld?</legend>
 	<p>
 		@Categories.ResourceManager.GetString(Model.Category)

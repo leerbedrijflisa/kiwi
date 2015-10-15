@@ -63,6 +63,8 @@ namespace Lisa.Kiwi.Web
                 return HttpNotFound();
             }
 
+            ViewBag.Changed = TempData["Changed"] ?? false;
+
             ViewBag.StatusNames = new []
             {
                 new SelectListItem()
@@ -91,6 +93,8 @@ namespace Lisa.Kiwi.Web
             var report = new Report();
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(viewModel.Id, report);
+
+            TempData["Changed"] = true;
 
             return RedirectToAction("Details", new { viewModel.Id });
         }
