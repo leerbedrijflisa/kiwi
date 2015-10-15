@@ -111,7 +111,7 @@ function appendTableWithFileData(fileKey, file, table) {
 
     $('<td class="filePreview"></td>').html('<img src="' + URL.createObjectURL(file) + '">').appendTo(row);
     $('<td class="fileName"></td>').html(file.name).appendTo(row);
-    $('<td class="fileRemove"></td>').html('<button onclick="deleteFileFromList(this)"><img src="/Content/cross.svg" /></button>').appendTo(row);
+    $('<td class="fileRemove"></td>').html('<button type="submit" onclick="deleteFileFromList(this)"><img src="/Content/cross.svg" /></button>').appendTo(row);
 
     row.appendTo(table);
 }
