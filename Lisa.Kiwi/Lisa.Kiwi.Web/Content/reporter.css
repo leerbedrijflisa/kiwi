@@ -132,7 +132,8 @@ textarea {
 	Buttons
 */
 
-button {
+button,
+input[type=button] {
   background-color: #eee;
   color: #333;
   border: 1px solid #ccc;
@@ -147,7 +148,8 @@ button {
 }
 
   button[type=submit],
-  button.submit {
+  button.submit,
+  input[type=button] {
     background-color: #113;
     color: white;
     border-color: black;
@@ -190,24 +192,37 @@ button {
     padding: 3px;
 }
 
-td, th{
-    border: 2px solid #113;
-
+.passwordtable {
+    width: calc(100% - 20px);
+    margin: auto;
+    text-align: center;
 }
 
-td{
-    padding: 10px;
-    color: black;
-    font-weight: bold;
+.passwordtable td {
+    margin: 0;
+    padding: 0;
+    border: 0;
 }
 
-th{
-    background-color: #113;
+.passwordtable tr {
+    height: 40px;
 }
 
-td a{
-    color: green;
-    text-decoration: none;
+.passwordtable tr td {
+    width: 33%;
+}
+
+.passwordtable th {
+    background-color: #C0BFBF;
+    border: solid 1px black;
+}
+
+.passwordtable tr:nth-child(even) {
+    background-color: #D8DADA;
+}
+
+.passwordtable tr:nth-child(odd) {
+    background-color: #EDEDED;
 }
 
 .backbutton a{
