@@ -29,12 +29,12 @@
 			<legend>@DisplayNames.PerpetratorProperties</legend>
 			@Html.TextAreaFor(m => m.UniqueProperties)
 		</fieldset>
-		<button type="submit" onclick="popUpReport('perpetrator', 'abort'); return false;"><img src="~/Content/cancel.svg" /></button>
-		<button type="submit" onclick="popUpReport('perpetrator', 'confirm'); return false;"><img src="~/Content/done.svg" /></button>
+		<button class="submit" type="button" onclick="popUpHide('perpetrator'); return false;"><img src="~/Content/cancel.svg" /></button>
+		<button class="submit" type="button" onclick="popUpReport('perpetrator', 'confirm'); return false;"><img src="~/Content/done.svg" /></button>
 	</section>
 	<legend>@DisplayNames.Perpetrator</legend>
 
 	@*/* Hier moet komen wie je heb gezien */*@
 	<ul id="perpetratorData"></ul>
-	<button id="perpButton" onclick="popUpShow('perpetrator'); return false;">Persoon toevoegen</button>
+	<button type="button" id="perpButton" onclick="popUpShow('perpetrator'); return false;">Persoon toevoegen</button>
 </fieldset>
