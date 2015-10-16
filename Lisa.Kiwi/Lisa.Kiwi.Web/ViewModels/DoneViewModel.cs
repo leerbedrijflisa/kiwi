@@ -1,4 +1,5 @@
-﻿using Lisa.Kiwi.WebApi;
+﻿using System.Linq;
+using Lisa.Kiwi.WebApi;
 
 namespace Lisa.Kiwi.Web
 {
@@ -19,8 +20,15 @@ namespace Lisa.Kiwi.Web
             DrugsAction = report.DrugsAction;
             FighterCount = report.FighterCount;
             IsWeaponPresent = report.IsWeaponPresent;
-            WeaponType = report.WeaponType;
-            WeaponTypeOther = report.WeaponTypeOther;
+            if (!_validWeapons.Contains(report.WeaponType))
+            {
+                WeaponType = "Anders";
+                WeaponTypeOther = report.WeaponType;
+            }
+            else
+            {
+                WeaponType = report.WeaponType;
+            }
             WeaponLocation = report.WeaponLocation;
             VictimName = report.VictimName;
             Victim = report.Victim;
@@ -29,9 +37,17 @@ namespace Lisa.Kiwi.Web
             Perpetrators = report.Perpetrators;
             Vehicles = report.Vehicles;
         }
-
+        public string WeaponTypeOther { get; set; }
         public string ContactName { get; set; }
         public string ContactEmail { get; set; }
         public string ContactPhoneNumber { get; set; }
+
+        private static string[] _validWeapons =
+        {
+            "Mes",
+            "Boksbeugel",
+            "Vuurwapen",
+            "Pepperspray"
+        };
     }
 }
