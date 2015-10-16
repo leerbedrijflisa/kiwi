@@ -1,20 +1,24 @@
-﻿function boolChange(element) {
-    return element.toLowerCase() == "true";
-}
-
-function convertStringToBool(elementVal) {
-    var elementBool = boolChange(elementVal);
-    if (elementBool) {
-        // The value is true
-        $(".toggle-weapon-present").show();
-    } else {
-        // The value is false
-        $(".toggle-weapon-present").hide();
-    }
-}
-function close_menu() {
+﻿function close_menu() {
     $(".success_updated_report").hide();
 }
 
-window.onload = convertStringToBool($("#IsWeaponPresent").val());
-$("#IsWeaponPresent").change(function () { convertStringToBool($(this).val()) });
+$(document).ready(function () {
+    checkWeapon();
+
+    $("select[name=IsWeaponPresent]").attr("onchange", "checkWeapon()");
+});
+
+function checkWeapon() {
+    if ($("select[name=IsWeaponPresent]").val() == "false") {
+        $("select[name=WeaponType]").parent().hide();
+        $("input[name=WeaponTypeOther]").parent().hide();
+        $("textarea[name=WeaponLocation]").parent().hide();
+    } else {
+        $("select[name=WeaponType]").parent().show();
+        $("textarea[name=WeaponLocation]").parent().show();
+
+        if ($("select[name=WeaponType]").val() == "Anders") {
+            $("input[name=WeaponTypeOther]").parent().show();
+        }
+    }
+}
