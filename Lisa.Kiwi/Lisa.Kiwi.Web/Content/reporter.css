@@ -352,3 +352,7 @@ p.summary {
     display: inline-block; 
     width: calc(50% - 2px);
 }
+
+.fa{
+    margin-right: 3px;
+}

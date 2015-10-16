@@ -25,7 +25,7 @@ else
 @using (Html.BeginForm())
 {
 	<fieldset>
-		<legend><i class="fa fa-check-circle-o"></i>&nbsp;&nbsp;@PageItems.DoneMessage</legend>
+		<legend><i class="fa fa-check-circle-o"></i>@PageItems.DoneMessage</legend>
         @if (ViewBag.Changed)
         {
             <legend class="success_updated_report">
@@ -78,7 +78,7 @@ else
 	<input type="hidden" name="category" value="@Model.Category" />
 	<div class="done-button">
 		<a href="/Report/">
-			<button class="submit" type="button">Nieuwe melding</button>
+			<button class="submit" type="button"><i class="fa fa-plus"></i>Nieuwe melding</button>
 		</a>
 	</div>
 	<div class="done-button">
