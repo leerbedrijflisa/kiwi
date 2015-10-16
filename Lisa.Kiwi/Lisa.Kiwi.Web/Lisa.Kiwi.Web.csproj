@@ -292,6 +292,7 @@
     <Content Include="Scripts\archive.js" />
     <Content Include="Scripts\dashboard.js" />
     <Content Include="Scripts\date.js" />
+    <Content Include="Scripts\Done.js" />
     <Content Include="Scripts\DoneWeapons.js" />
     <Content Include="Scripts\DoneFight.js" />
     <Content Include="Scripts\header-resizer.js" />
