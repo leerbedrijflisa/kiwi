@@ -310,6 +310,8 @@ namespace Lisa.Kiwi.Web
         {
             if (!ModelState.IsValid)
             {
+                ViewBag.IsValid = false;
+
                 return View(viewModel);
             }
 

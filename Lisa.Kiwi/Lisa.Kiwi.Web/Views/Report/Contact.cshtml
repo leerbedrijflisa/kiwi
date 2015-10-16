@@ -6,6 +6,15 @@
 	<script src="~/Scripts/pop-up.js"></script>
 }
 
+@if (ViewBag.IsValid != null && !ViewBag.IsValid)
+{
+	<script>
+		$(document).ready(function() {
+			popUpShow("contact");
+		});
+	</script>
+}
+
 @using (Html.BeginForm())
 {
 	<fieldset>
