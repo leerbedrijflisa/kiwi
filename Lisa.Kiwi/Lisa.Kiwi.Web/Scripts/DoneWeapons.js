@@ -1,31 +1,21 @@
 ﻿$(window).load(function () {
-    if($("#OtherType").val() != "")
-    {
-        $("#Type").val("Anders");
+    if($("select[name=WeaponType]").val() == "Anders") {
+        $("input[name=WeaponTypeOther]").parent().show();
     }
     else
     {
-        $("#Sub").hide();
+        $("input[name=WeaponTypeOther]").parent().hide();
+        $("input[name=WeaponTypeOther]").val("");
     }
 });
 
-$(function () {
-    $("#Type").change(function () {
+$(function() {
+    $("select[name=WeaponType]").change(function() {
         if ($(this).val() === "Anders") {
-            $("#Sub").show();
+            $("input[name=WeaponTypeOther]").parent().show();
         } else {
-            $("#Sub").hide();
+            $("input[name=WeaponTypeOther]").parent().hide();
+            $("input[name=WeaponTypeOther]").val("");
         }
     });
-})
-
-function toggleWeaponOther() {
-    if ($("#WeaponType").val() === "Anders") {
-        $(".toggle-weapontype-different").show();
-    } else {
-        $(".toggle-weapontype-different").hide();
-    };
-}
-
-window.onload = toggleWeaponOther();
-$("#WeaponType").change(function () { toggleWeaponOther() });
+});
