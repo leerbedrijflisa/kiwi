@@ -4,9 +4,26 @@
 		ViewBag.Back = @Url.Action("Index", "Dashboard");
 }
 
-@section WeaponScript{
-    <script src="~/Scripts/DoneFight.js"></script>
-    <script src="~/Scripts/DoneWeapons.js"></script>
+@if (Model.Category == "Weapons")
+{
+    @section Scripts{
+        <script src="~/Scripts/DoneWeapons.js"></script>
+        <script src="~/Scripts/Done.js"></script>
+    }
+}
+else if (Model.Category == "Fight")
+{
+    @section Scripts{
+        <script src="~/Scripts/DoneWeapons.js"></script>
+        <script src="~/Scripts/DoneFight.js"></script>
+        <script src="~/Scripts/Done.js"></script>
+    }
+}
+else
+{
+    @section Scripts {
+        <script src="~/Scripts/Done.js"></script>
+    }
 }
 
 <fieldset class="summary">

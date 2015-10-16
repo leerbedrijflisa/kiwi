@@ -4,6 +4,7 @@
 {
 	@section Scripts{
 		<script src="~/Scripts/DoneWeapons.js"></script>
+        <script src="~/Scripts/Done.js"></script>
 	}
 }
 else if (Model.Category == "Fight")
@@ -11,21 +12,26 @@ else if (Model.Category == "Fight")
 	@section Scripts{
 		<script src="~/Scripts/DoneWeapons.js"></script>
 		<script src="~/Scripts/DoneFight.js"></script>
+        <script src="~/Scripts/Done.js"></script>
 	}
+}
+else
+{
+    @section Scripts {
+        <script src="~/Scripts/Done.js"></script>
+    }
 }
 
 @using (Html.BeginForm())
 {
 	<fieldset>
 		<legend><i class="fa fa-check-circle-o"></i>&nbsp;&nbsp;@PageItems.DoneMessage</legend>
+        @if (ViewBag.Changed)
+        {
+            <legend class="success_updated_report">
+                <a class="close_successmessage" title="close" aria-label="close" onclick="close_menu()">x</a> Uw wijziging is succesvol opgeslagen.
+            </legend>}
 		<p class="summary">
-			@if (ViewBag.Changed)
-			{
-				<legend class="success_updated_report">
-					<a class="close_successmessage" title="close" aria-label="close" onclick="close_menu()">x</a>Uw wijziging is succesvol opgeslagen.
-				</legend>
-			}
-			
 			@if (Model.Category == "FirstAid" || Model.Category == "Fight")
 			{
 				<text>
