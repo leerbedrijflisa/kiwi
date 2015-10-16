@@ -1,8 +1,4 @@
-﻿function close_menu() {
-    $(".success_updated_report").hide();
-}
-
-$(document).ready(function () {
+﻿$(document).ready(function () {
     checkWeapon();
 
     $("select[name=IsWeaponPresent]").attr("onchange", "checkWeapon()");

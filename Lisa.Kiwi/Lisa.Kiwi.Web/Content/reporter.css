@@ -109,15 +109,16 @@ fieldset h2 { /* heading inside form */
 input:not([type='radio']),
 select,
 textarea {
-  box-sizing: border-box; /* otherwise element overflows to the right */
-  width: calc(100% - 20px);
-  min-height: 44px; /* easier to select on mobile devices */
-  margin: 0 10px;
-  padding: 5px;
+    box-sizing: border-box; /* otherwise element overflows to the right */
+    width: calc(100% - 20px);
+    min-height: 44px; /* easier to select on mobile devices */
+    margin: 0 10px;
+    padding: 5px;
 }
 
 textarea {
   min-height: 88px;
+  resize: vertical;
 }
 
 .required {
@@ -170,10 +171,6 @@ input[type=button] {
     height: 40px;
   }
 
-.fabutton{
-    color: greenyellow;
-    }
-
 .titlebar{
     display: block;
     width: 100%;
@@ -225,49 +222,15 @@ input[type=button] {
     background-color: #EDEDED;
 }
 
-.backbutton a{
-    color: white;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-.backbutton{
-    border: 2px solid black;
-    width: 100px;
-    background-color: #113;
-    opacity: 0.8;
-    margin: 10px;
-    color: green;
-    padding: 3px;
-}
-
-.backbutton:hover{
-    opacity: 1.0;
-    cursor: pointer;
-}
-
-.detailsbutton {
+.detailsbutton,
+input.detailsbutton /* input.detailsbutton is declared seperately to prevent CSS overriding */ {
     background-color: #113;
     color: white;
     border-color: black;
     display: inline;
-    width: calc(50% - 20px); 
-  }
-
-input.detailsbutton {
-    background-color: #113;
-    color: white;
-    border: 1px solid #000;
-    border-radius: 4px;
-    display: inline;
-    width: calc(50% - 20px); 
-    height: 44px;
-    padding: 0px 6px 0px 6px;
+    width: calc(50% - 20px);
     margin-bottom: 10px;
-    position: relative;
-    vertical-align: middle;
-    text-align: center;
-}
+  }
 
 /*
 	Popups
@@ -339,18 +302,6 @@ input.detailsbutton {
   }
 }
 
-textarea {
-  resize: vertical;
-}
-
-/*
-	Header
-*/
-
-header h1 {
-  display: none;
-}
-
 /*
   Summary form
 
@@ -375,6 +326,7 @@ p.summary {
 .radioList {
   list-style: none;
 }
+
 .success_updated_report {
     color: #3c763d !important;
     background-color: #dff0d8 !important;
@@ -383,13 +335,13 @@ p.summary {
     margin-bottom: 20px;
     padding: 15px;
 }
+
 .close_successmessage {
     font-size: 18px !important;
     line-height: 1.2;
     text-decoration: none !important;
     color: #000 !important;
     float: right;
-    font-size: 21px;
     font-weight: 700;
     opacity: 0.2;
     text-shadow: 0 1px 0 #fff;
