@@ -1,4 +1,4 @@
-﻿@model Report
+﻿@model DoneViewModel
 
 @{
 	var weaponTypes = new[]
@@ -31,7 +31,7 @@
 		{
 			Text = "Anders",
 			Value = "Anders",
-			Selected = Model.WeaponType == "Anders"
+			Selected = Model.WeaponType != "Mes" && Model.WeaponType != "Boksbeugel" && Model.WeaponType != "Vuurwapen" && Model.WeaponType != "Pepperspray"
 		}
 	};
 }
@@ -41,7 +41,7 @@
 	@Html.DropDownListFor(m => m.WeaponType, weaponTypes)
 </fieldset>
 
-<fieldset class="summary toggle-weapontype-different">
+<fieldset class="summary">
 	<legend>@DisplayNames.WeaponTypeOther</legend>
 	@Html.TextBoxFor(m => m.WeaponTypeOther)
 </fieldset>

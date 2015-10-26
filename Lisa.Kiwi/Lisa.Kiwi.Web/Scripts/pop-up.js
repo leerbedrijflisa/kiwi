@@ -5,14 +5,14 @@
 
 $(document).ready(function () {
     // if the vehicles input already has data in it, print vehicles to the page
-    if (typeof $("input[name=Vehicles") != "undefined" && $("input[name=Vehicles]").val() != "") {
+    if (typeof $("input[name=Vehicles]").val() != "undefined" && $("input[name=Vehicles]").val() != "") {
         vehicles = JSON.parse($("input[name=Vehicles]").val());
 
         setVehiclesText();
     }
 
     // if the perpetrators input has data in it, print the perpetrators to the page
-    if (typeof $("input[name=Perpetrators") != "undefined" && $("input[name=Perpetrators]").val() != "") {
+    if (typeof $("input[name=Perpetrators]").val() != "undefined" && $("input[name=Perpetrators]").val() != "") {
         perpetrators = JSON.parse($("input[name=Perpetrators]").val());
 
         setPerpetratorsText();

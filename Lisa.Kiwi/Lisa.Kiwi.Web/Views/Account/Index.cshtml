@@ -1,31 +1,39 @@
 ﻿@model IEnumerable<User>
 @{
 	ViewBag.Title = "Gebruikers";
+	ViewBag.Back = @Url.Action("Index", "Dashboard");
 }
 <div class="container">
-	<div class="field">
-		<label class="titlebar">Wachtwoorden wijzigen</label>
-		<table class="changepassword">
+	<fieldset>
+		<legend>Wachtwoorden wijzigen</legend>
+		<table class="passwordtable">
 			<thead>
 				<tr>
-					<th><i class="fa fa-edit"></i></th>
 					<th>@DisplayNames.UserName</th>
 					<th>@DisplayNames.Role</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
 				@foreach (var user in Model)
 				{
 					<tr>
-						<td class="changepassword">@Html.ActionLink("Wijzigen", "EditPassword", new { id = user.Id, userName = user.UserName }) </td>
 						<td>@user.UserName</td>
-						<td>@user.Role</td>
+						<td>
+						@if(user.Role == "DashboardUser")
+						{
+								<text>Dashboard-gebruiker</text>
+						}
+						else
+						{
+								@user.Role
+						}
+						</td>
+						<td class="changepassword">@Html.ActionLink("Wijzigen", "EditPassword", new { id = user.Id, userName = user.UserName }) </td>
 					</tr>
 				}
 			</tbody>
 		</table>
-	</div>
-	<div class="field backbutton fa fa-arrow-left">
-		@Html.ActionLink("Terug", "Index", "Dashboard")
-	</div>
+	</fieldset>
+	<input type="button" value="Terug" onclick="location.href='@ViewBag.Back'" />
 </div>

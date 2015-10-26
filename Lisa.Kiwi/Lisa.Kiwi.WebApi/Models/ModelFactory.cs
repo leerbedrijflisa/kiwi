@@ -23,7 +23,6 @@ namespace Lisa.Kiwi.WebApi
                 VictimName = reportData.VictimName,
 
                 WeaponType = reportData.WeaponType,
-                WeaponTypeOther = reportData.WeaponTypeOther,
                 WeaponLocation = reportData.WeaponLocation,
 
                 FighterCount = reportData.FighterCount,

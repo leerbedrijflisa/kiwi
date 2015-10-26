@@ -1,20 +1,23 @@
-﻿function boolChange(element) {
-    return element.toLowerCase() == "true";
-}
+﻿$(document).ready(function () {
+    checkWeapon();
+    $("select[name=IsWeaponPresent]").attr("onchange", "checkWeapon()");
+});
 
-function convertStringToBool(elementVal) {
-    var elementBool = boolChange(elementVal);
-    if (elementBool) {
-        // The value is true
-        $(".toggle-weapon-present").show();
+function checkWeapon() {
+    if ($("select[name=IsWeaponPresent]").val() == "false") {
+        $("select[name=WeaponType]").parent().slideUp(300);
+        $("input[name=WeaponTypeOther]").parent().slideUp(300);
+        $("textarea[name=WeaponLocation]").parent().slideUp(300);
     } else {
-        // The value is false
-        $(".toggle-weapon-present").hide();
+        $("select[name=WeaponType]").parent().slideDown(300);
+        $("textarea[name=WeaponLocation]").parent().slideDown(300);
+
+        if ($("select[name=WeaponType]").val() == "Anders") {
+            $("input[name=WeaponTypeOther]").parent().slideDown(300);
+        }
+        else
+        {
+            $("input[name=WeaponTypeOther]").parent().slideUp(300);
+        }
     }
 }
-function close_menu() {
-    $(".success_updated_report").hide();
-}
-
-window.onload = convertStringToBool($("#IsWeaponPresent").val());
-$("#IsWeaponPresent").change(function () { convertStringToBool($(this).val()) });

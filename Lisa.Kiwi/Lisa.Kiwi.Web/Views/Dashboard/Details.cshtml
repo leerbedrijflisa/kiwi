@@ -4,7 +4,36 @@
 		ViewBag.Back = @Url.Action("Index", "Dashboard");
 }
 
+@if (Model.Category == "Weapons")
+{
+    @section Scripts{
+        <script src="~/Scripts/DoneWeapons.js"></script>
+        <script src="~/Scripts/Done.js"></script>
+    }
+}
+else if (Model.Category == "Fight")
+{
+    @section Scripts{
+        <script src="~/Scripts/DoneWeapons.js"></script>
+        <script src="~/Scripts/DoneFight.js"></script>
+        <script src="~/Scripts/Done.js"></script>
+    }
+}
+else
+{
+    @section Scripts {
+        <script src="~/Scripts/Done.js"></script>
+    }
+}
+
 <fieldset class="summary">
+    @if (ViewBag.Changed)
+    {
+        <legend class="success_updated_report">
+            <a class="close_successmessage" title="close" aria-label="close" onclick="close_menu()">x</a>Uw wijziging is succesvol opgeslagen.
+        </legend>
+    }
+
 	<legend>Wat is er gemeld?</legend>
 	<p>
 		@Categories.ResourceManager.GetString(Model.Category)
@@ -66,6 +95,7 @@
 	</fieldset>
     
 }
+
 <div id="lightBox">
-    <img />
+    <img>
 </div>

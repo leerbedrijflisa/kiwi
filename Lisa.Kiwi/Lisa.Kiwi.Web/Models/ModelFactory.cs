@@ -74,7 +74,7 @@ namespace Lisa.Kiwi.Web
             report.WeaponType = viewModel.Type;
             if (viewModel.Type == "Anders")
             {
-                report.WeaponTypeOther = viewModel.OtherType;
+                report.WeaponType = viewModel.OtherType;
             }
             report.WeaponLocation = viewModel.Location;
             report.Description = viewModel.Description;
@@ -142,8 +142,7 @@ namespace Lisa.Kiwi.Web
             report.VictimName = viewModel.VictimName;
             report.IsWeaponPresent = viewModel.IsWeaponPresent;
             report.WeaponLocation = viewModel.WeaponLocation;
-            report.WeaponType = viewModel.WeaponType;
-            report.WeaponTypeOther = viewModel.WeaponTypeOther;
+            report.WeaponType = viewModel.WeaponType == "Anders" ? viewModel.WeaponTypeOther : viewModel.WeaponType;
             report.Location = viewModel.Location;
             report.Perpetrators = viewModel.Perpetrators;
             report.Vehicles = viewModel.Vehicles;

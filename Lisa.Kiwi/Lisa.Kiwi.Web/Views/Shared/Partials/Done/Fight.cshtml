@@ -1,4 +1,4 @@
-﻿@model Report
+﻿@model DoneViewModel
 
 @{
 	var weaponPresent = new[]
@@ -19,63 +19,63 @@
 }
 
 @{
-    var weaponTypes = new[]
-    {
-        new SelectListItem
-        {
-            Text = "Mes",
-            Value = "Mes",
-            Selected = Model.WeaponType == "Mes"
-        },
-        new SelectListItem
-        {
-            Text = "Boksbeugel",
-            Value = "Boksbeugel",
-            Selected = Model.WeaponType == "Boksbeugel"
-        },
-        new SelectListItem
-        {
-            Text = "Vuurwapen",
-            Value = "Vuurwapen",
-            Selected = Model.WeaponType == "Vuurwapen"
-        },
-        new SelectListItem
-        {
-            Text = "Pepperspray",
-            Value = "Pepperspray",
-            Selected = Model.WeaponType == "Pepperspray"
-        },
-        new SelectListItem
-        {
-            Text = "Anders",
-            Value = "Anders",
-            Selected = Model.WeaponType == "Anders"
-        }
-    };
+	var weaponTypes = new[]
+	{
+		new SelectListItem
+		{
+			Text = "Mes",
+			Value = "Mes",
+			Selected = Model.WeaponType == "Mes"
+		},
+		new SelectListItem
+		{
+			Text = "Boksbeugel",
+			Value = "Boksbeugel",
+			Selected = Model.WeaponType == "Boksbeugel"
+		},
+		new SelectListItem
+		{
+			Text = "Vuurwapen",
+			Value = "Vuurwapen",
+			Selected = Model.WeaponType == "Vuurwapen"
+		},
+		new SelectListItem
+		{
+			Text = "Pepperspray",
+			Value = "Pepperspray",
+			Selected = Model.WeaponType == "Pepperspray"
+		},
+		new SelectListItem
+		{
+			Text = "Anders",
+			Value = "Anders",
+			Selected = Model.WeaponType != "Mes" && Model.WeaponType != "Boksbeugel" && Model.WeaponType != "Vuurwapen" && Model.WeaponType != "Pepperspray"
+		}
+	};
 }
 
 <fieldset class="summary">
 	<legend>@DisplayNames.FightCount</legend>
 	@Html.TextBoxFor(m => m.FighterCount, new { type = "number", min = 2, Value = 2 })
 </fieldset>
-<fieldset id="weapon-present" class="summary">
+<fieldset class="summary">
 	<legend>@DisplayNames.FightWeapon</legend>
 	@Html.DropDownListFor(m => m.IsWeaponPresent, weaponPresent)
 </fieldset>
 
-<fieldset class="summary toggle-weapon-present">
-    <legend>@DisplayNames.WeaponType</legend>
-    @Html.DropDownListFor(m => m.WeaponType, weaponTypes)
+<fieldset class="summary">
+	<legend>@DisplayNames.WeaponType</legend>
+	@Html.DropDownListFor(m => m.WeaponType, weaponTypes)
 </fieldset>
 
-<fieldset class="summary toggle-weapon-present toggle-weapontype-different ">
-    <legend>@DisplayNames.WeaponTypeOther</legend>
-    @Html.TextBoxFor(m => m.WeaponTypeOther)
+<fieldset class="summary">
+	<legend>@DisplayNames.WeaponTypeOther</legend>
+	@Html.TextBoxFor(m => m.WeaponTypeOther)
 </fieldset>
 
 <fieldset class="summary toggle-weapon-present">
-    <legend>@DisplayNames.WeaponLocation</legend>
-    @Html.TextAreaFor(m => m.WeaponLocation)
+	<legend>@DisplayNames.WeaponLocation</legend>
+	@Html.TextAreaFor(m => m.WeaponLocation)
 </fieldset>
 
 <fieldset class="summary">
