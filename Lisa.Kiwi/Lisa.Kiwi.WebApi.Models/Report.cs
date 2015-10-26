@@ -44,10 +44,11 @@ namespace Lisa.Kiwi.WebApi
         //Bullying
         public string VictimName { get; set; }
         public string Victim { get; set; }
-        //Other
 
+        //Other
         public Location Location { get; set; }
         public Contact Contact { get; set; }
+        public IEnumerable<File> Files { get; set; }
         public IEnumerable<Perpetrator> Perpetrators { get; set; }
         public IEnumerable<Vehicle> Vehicles { get; set; }
     }

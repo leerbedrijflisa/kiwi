@@ -1,9 +1,11 @@
 ﻿using Lisa.Kiwi.WebApi;
 using System;
+using System.Web;
 using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Threading.Tasks;
 
 namespace Lisa.Kiwi.Web
 {
@@ -159,6 +161,29 @@ namespace Lisa.Kiwi.Web
             {
                 report.Contact = null;
             }
+        }
+        
+        public async Task Modify(Report report, HttpFileCollectionBase files)
+        {
+            report.Files = await GetFiles(files, string.Format("report-{0}", report.Id.ToString()));
+        }
+
+        private async Task<IEnumerable<File>> GetFiles(HttpFileCollectionBase httpFiles, string uploadContainer)
+        {
+            var files = new List<File>();
+
+            foreach (string fileId in httpFiles)
+            {
+                var fileContent = httpFiles[fileId];
+                if (fileContent != null && fileContent.ContentLength > 0)
+                {
+                    var uploader = new FileUploader(fileContent, uploadContainer);
+                    files.Add(uploader.GetFileEntity());
+                    await uploader.UploadFile();
+                }
+            }
+
+            return files;
         }
 
         private IEnumerable<Perpetrator> GetPerpetrators(string json)

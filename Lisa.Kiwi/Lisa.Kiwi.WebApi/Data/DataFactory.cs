@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Globalization;
 using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
+using System.Web;
 
 namespace Lisa.Kiwi.WebApi
 {
@@ -58,6 +60,10 @@ namespace Lisa.Kiwi.WebApi
             if (json["vehicles"] != null)
             {
                 reportData.Vehicles = ModifyVehicles(json["vehicles"]);
+            }
+            if (json["files"] != null)
+            {
+                reportData.Files = ModifyFiles(json["files"]);
             }
         }
 
@@ -141,6 +147,27 @@ namespace Lisa.Kiwi.WebApi
             }
 
             return vehicles;
+        }
+
+        private ICollection<FileData> ModifyFiles(JToken json)
+        {
+            var files = new List<FileData>();
+
+            foreach (var fileJson in json)
+            {
+                var file = new FileData
+                {
+                    Name = fileJson.Value<string>("name"),
+                    ContentLength = fileJson.Value<int>("contentLength"),
+                    ContentType = fileJson.Value<string>("contentType"),
+                    Key = fileJson.Value<string>("key"),
+                    Container = fileJson.Value<string>("container")
+                };
+
+                files.Add(file);
+            }
+
+            return files;
         }
     }
 }

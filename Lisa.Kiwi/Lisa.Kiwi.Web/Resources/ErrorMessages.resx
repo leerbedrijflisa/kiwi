@@ -120,6 +120,15 @@
   <data name="Email" xml:space="preserve">
     <value>Vul een geldig e-mailadres in</value>
   </data>
+  <data name="FileExtension" xml:space="preserve">
+    <value>Upload alleen geldige afbeeldingen</value>
+  </data>
+  <data name="FileSize" xml:space="preserve">
+    <value>Upload alleen afbeeldingen die kleiner zijn dan 10 MB</value>
+  </data>
+  <data name="FileUnexpected" xml:space="preserve">
+    <value>Onverwachte fout, probeer het opnieuw</value>
+  </data>
   <data name="IncorrectLogin" xml:space="preserve">
     <value>Wachtwoord of gebruikersnaam is onjuist</value>
   </data>

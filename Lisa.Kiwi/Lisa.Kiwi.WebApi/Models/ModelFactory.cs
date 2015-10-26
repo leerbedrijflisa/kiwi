@@ -36,7 +36,8 @@ namespace Lisa.Kiwi.WebApi
                 Location = reportData.Location != null ? Create(reportData.Location) : null,
                 Perpetrators = reportData.Perpetrators != null ? Create(reportData.Perpetrators) : null,
                 Contact = reportData.Contact != null ? Create(reportData.Contact) : null,
-                Vehicles = reportData.Vehicles != null ? Create(reportData.Vehicles) : null
+                Vehicles = reportData.Vehicles != null ? Create(reportData.Vehicles) : null,
+                Files = reportData.Files != null ? Create(reportData.Files) : null 
             };
         }
 
@@ -72,6 +73,18 @@ namespace Lisa.Kiwi.WebApi
                 Color = v.Color,
                 NumberPlate = v.NumberPlate,
                 VehicleType = v.VehicleType
+            });
+        }
+
+        private IEnumerable<File> Create(IEnumerable<FileData> fileData)
+        {
+            return fileData.Select(f => new File
+            {
+                Name = f.Name,
+                ContentLength = f.ContentLength,
+                ContentType = f.ContentType,
+                Key = f.Key,
+                Container = f.Container
             });
         }
 

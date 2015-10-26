@@ -192,4 +192,7 @@
   <data name="NuisanceDescription" xml:space="preserve">
     <value>Omschrijving overlast</value>
   </data>
+  <data name="Files" xml:space="preserve">
+    <value>Bestanden</value>
+  </data>
 </root>

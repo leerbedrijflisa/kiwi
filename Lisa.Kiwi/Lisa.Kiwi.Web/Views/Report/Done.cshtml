@@ -69,6 +69,11 @@ else
 	</fieldset>
 
 	@Html.Partial("~/Views/Shared/Partials/Done/" + Model.Category + ".cshtml", Model)
+                
+    if (Model.Files != null && Model.Files.Any())
+    {
+        @Html.Partial("~/Views/Shared/Partials/Details/Files.cshtml", Model.Files)
+    }
 
 	if (Model.Contact != null)
 	{

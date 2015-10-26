@@ -151,6 +151,15 @@ namespace Lisa.Kiwi.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bestanden.
+        /// </summary>
+        public static string Files {
+            get {
+                return ResourceManager.GetString("Files", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Is het slachtoffer bewusteloos?.
         /// </summary>
         public static string IsUnconsious {

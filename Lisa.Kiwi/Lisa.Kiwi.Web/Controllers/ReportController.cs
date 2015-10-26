@@ -123,7 +123,14 @@ namespace Lisa.Kiwi.Web
             _modelFactory.Modify(report, viewModel);
             report = await _reportProxy.PatchAsync(GetCurrentReportId(), report);
 
-            return RedirectToAction(report.Category);
+            return RedirectToAction("Details");
+        }
+
+        public async Task<ActionResult> Details()
+        {
+            var report = await GetCurrentReport();
+
+            return View(report);
         }
 
         public ActionResult FirstAid()
@@ -322,7 +329,7 @@ namespace Lisa.Kiwi.Web
                 await _reportProxy.PatchAsync(GetCurrentReportId(), report);
             }
 
-            return RedirectToAction("Done");
+            return RedirectToAction("Continue");
         }
 
         public ActionResult ContactRequired()
@@ -342,7 +349,12 @@ namespace Lisa.Kiwi.Web
             _modelFactory.Modify(report, viewModel);
             await _reportProxy.PatchAsync(GetCurrentReportId(), report);
 
-            return RedirectToAction("Done");
+            return RedirectToAction("Continue");
+        }
+
+        public ActionResult Continue()
+        {
+            return View();
         }
 
         public async Task<ActionResult> Done()
@@ -369,6 +381,40 @@ namespace Lisa.Kiwi.Web
             TempData["Changed"] = true;
 
             return RedirectToAction("Done");
+        }
+
+        [HttpPost]
+        public async Task<JsonResult> UploadFiles()
+        {
+            try
+            {
+                var files = Request.Files;
+
+                foreach (string file in files)
+                {
+                    if (!FileHelpers.IsMimes(files[file], new string[] { "image" }))
+                    {
+                        Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                        return Json(Resources.ErrorMessages.FileExtension);
+                    }
+                    if (!FileHelpers.IsSize(files[file], 10485760))
+                    {
+                        Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                        return Json(Resources.ErrorMessages.FileSize);
+                    }
+                }
+
+                var report = new Report();
+                await _modelFactory.Modify(report, files);
+                await _reportProxy.PatchAsync(GetCurrentReportId(), report);
+            }
+            catch (Exception)
+            {
+                Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                return Json(Resources.ErrorMessages.FileUnexpected);
+            }
+
+            return Json(Resources.PageItems.FileSuccess);
         }
 
        protected override void OnActionExecuting(ActionExecutingContext context)

@@ -196,6 +196,15 @@ namespace Lisa.Kiwi.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Afbeeldingen verzonden.
+        /// </summary>
+        public static string FileSuccess {
+            get {
+                return ResourceManager.GetString("FileSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to We sturen hulp..
         /// </summary>
         public static string HelpOnTheWay {

@@ -33,7 +33,7 @@ html {
   }
 
   body {
-    margin: 10px auto; /* center the entire page */
+    margin: 0px auto; /* center the entire page */
   }
 }
 
@@ -58,6 +58,150 @@ header {
   }
 
 /*
+	iFrame
+
+	While the user provides details on the report, the forms are loaded in an iFrame. 
+    Outside of the iFrame is image upload functionality. 
+    
+    Once the details are completed, the iFrame sends a signal to the parent page to upload the images 
+    and head towards the next page.
+*/
+
+iframe {
+    display: block;
+    border: none;
+    padding: 0;
+    margin: auto;
+    margin-bottom: 10px;
+    width: 100%;
+    height: 100%;
+}
+
+#fileUpload p.errors {
+    display: none;
+    color: red;
+}
+
+#uploadfiles .uploadwrapper input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    opacity: 0.0;
+    filter: alpha(opacity=0);
+    -o-transform: translate(250px, -50px) scale(1);
+    -moz-transform: translate(-300px, 0) scale(4);
+    direction: ltr;
+    cursor: default;
+    width: 100%;
+}
+
+#uploadfiles .uploadwrapper {
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+    overflow: hidden;
+    color: #333;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    height: 42px;
+    width: calc(100% - 20px);
+    cursor: default;
+}
+
+#uploadfiles .uploadwrapper span {
+    display: inline-block;
+	vertical-align: middle;
+	text-align: center;
+}
+
+#fileUpload #overlay {
+    display:none;
+    width: 100%;
+    position: absolute;
+    background-color: rgba(17, 17, 51, 0.5);
+    z-index: 1;
+}
+
+#uploadqueue {
+    width: calc(100% - 20px);
+    margin: auto;
+}
+
+#uploadqueue td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+#uploadqueue tr {
+    height: 100px;
+}
+
+#uploadqueue tr td {
+    width: 50%;
+    -ms-word-break: break-all;
+    word-break: break-all;
+    overflow: hidden;
+}
+
+#uploadqueue tr td:first-child,
+#uploadqueue tr td:last-child
+{
+    width: 25%;
+}
+
+td.filePreview {
+    min-width: 100px;
+}
+
+td.filePreview img {
+    max-height: 90px;
+    max-width: 90px;
+    padding: 5px;
+}
+
+td.fileName {
+    font-weight: normal;
+}
+
+td.fileRemove button {
+    height: 69px;
+    width: 69px;
+    margin: 0;
+    padding: 0;
+    border: 1px solid #133;
+    border-radius: 5px;
+    background: none;
+}
+
+td.fileRemove button img {
+    position: relative;
+    top: 0;
+    left: 0;
+    background-color: #113;
+    margin: 0 auto;
+    vertical-align: middle;
+    height: 100%;
+    width: 100%;
+}
+
+#uploadqueue tr:nth-child(even) {
+    background-color: #eee;
+}
+
+.pseudo-align {
+	display: inline-block;
+	vertical-align: middle;
+	height: 100%;
+	width: 0;
+}
+
+/*
 	Forms
 
 	The fields of a form are displayed vertically. Each field has a
@@ -68,11 +212,19 @@ header {
 	description of the field.
 */
 
+form {
+    margin-bottom: 0;
+}
+
 fieldset {
   display: block;
   border: none;
   padding: 0;
   margin: 0 0 15px 0;
+}
+
+fieldset:last-child {
+    margin-bottom: 0;
 }
 
 legend {
@@ -325,6 +477,44 @@ p.summary {
 
 .radioList {
   list-style: none;
+}
+
+/* Images in dashboard/details */
+
+@media(max-width: 720px) {
+    img.dashboardImage {
+        width: calc(50% - 11px);
+    }
+}
+@media(min-width: 721px) {
+    img.dashboardImage {
+        width: calc(33% - 10px);
+    }
+}
+
+img.dashboardImage {
+    margin: 0 5px;
+    margin-bottom: 5px;
+    float: left;
+    max-height: 300px;
+}
+
+#lightBox {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    background-color:rgba(000, 000, 000, 0.5);
+}
+
+#lightBox img {
+    top: 10%;
+    left: 25%;
+    width: 50%;
+    position: fixed;
 }
 
 .success_updated_report {

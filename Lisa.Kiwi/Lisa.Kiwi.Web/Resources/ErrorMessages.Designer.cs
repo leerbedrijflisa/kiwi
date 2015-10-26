@@ -70,6 +70,33 @@ namespace Lisa.Kiwi.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Upload alleen geldige afbeeldingen.
+        /// </summary>
+        public static string FileExtension {
+            get {
+                return ResourceManager.GetString("FileExtension", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upload alleen afbeeldingen die kleiner zijn dan 10 MB.
+        /// </summary>
+        public static string FileSize {
+            get {
+                return ResourceManager.GetString("FileSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Onverwachte fout, probeer het opnieuw.
+        /// </summary>
+        public static string FileUnexpected {
+            get {
+                return ResourceManager.GetString("FileUnexpected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Wachtwoord of gebruikersnaam is onjuist.
         /// </summary>
         public static string IncorrectLogin {

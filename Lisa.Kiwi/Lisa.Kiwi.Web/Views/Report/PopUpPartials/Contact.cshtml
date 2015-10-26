@@ -19,7 +19,7 @@
 			@Html.ValidationMessageFor(m => m.EmailAddress)
 			<span class="required">telefoonnummer of e-mailadres is verplicht</span>
 		</fieldset>
-		<button class="submit" type="submit" onclick="popUpHide('contact'); return false;"><img src="~/Content/cancel.svg" /></button>
+		<button class="submit" type="submit" onclick="popUpHide('contact'); postResizeMessage(); return false;"><img src="~/Content/cancel.svg" /></button>
 		<button class="submit" type="submit"><img src="~/Content/done.svg" /></button>
 	</section>
 </fieldset>

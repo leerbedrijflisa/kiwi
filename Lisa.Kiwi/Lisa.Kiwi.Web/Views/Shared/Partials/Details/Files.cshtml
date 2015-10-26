@@ -1,0 +1,10 @@
+﻿@model IEnumerable<Lisa.Kiwi.WebApi.File>
+
+<fieldset class="summary">
+    <legend>@ReportProperties.Files</legend>
+
+    @foreach (var file in Model)
+    {
+        <img class="dashboardImage" src="@FileHelpers.ImageHelpers.GetImageUrl(file, FileHelpers.ImageHelpers.ImageSizes.Thumbnail)" data-original="@FileHelpers.ImageHelpers.GetImageUrl(file, FileHelpers.ImageHelpers.ImageSizes.FullSize)" />
+    }
+</fieldset>

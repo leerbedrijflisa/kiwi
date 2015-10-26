@@ -1,4 +1,7 @@
-﻿using System.Diagnostics;
+﻿using Microsoft.Azure;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Blob;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Configuration;
@@ -29,8 +32,40 @@ namespace Lisa.Kiwi.Web
             {
                 url = WebConfigurationManager.AppSettings["WebApiUrl"];
             }
-
             return url;
+        }
+
+        public static CloudBlobClient GetBlobStorageClient()
+        {
+            if (_blobClient == null) _blobClient = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("StorageConnectionString")).CreateCloudBlobClient();
+
+            return _blobClient;
+        }
+
+        public static CloudBlobContainer GetBlobContainer(string containerName)
+        {
+            var container = GetBlobStorageClient().GetContainerReference(containerName);
+            container.CreateIfNotExists();
+            container.SetPermissions(
+                new BlobContainerPermissions
+                {
+                    PublicAccess = BlobContainerPublicAccessType.Blob
+                });
+
+            return container;
+        }
+
+        public static CloudBlobContainer GetBlobContainer(CloudBlobClient blobClient, string containerName)
+        {
+            var container = blobClient.GetContainerReference(containerName);
+            container.CreateIfNotExists();
+            container.SetPermissions(
+                new BlobContainerPermissions
+                {
+                    PublicAccess = BlobContainerPublicAccessType.Blob
+                });
+
+            return container;
         }
 
         private static bool FiddlerAvailable()
@@ -38,5 +73,7 @@ namespace Lisa.Kiwi.Web
             return Process.GetProcesses()
                 .Any(process => process.ProcessName.Contains("Fiddler"));
         }
+
+        private static CloudBlobClient _blobClient;
     }
 }

@@ -1,0 +1,22 @@
+﻿<html lang="nl">
+<head>
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8">
+    <link href="@Url.Content("~/Content/reporter.css")" type="text/css" rel="stylesheet">
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script>
+        if (!window.jQuery) {
+            document.write('<script src="/Scripts/jquery-1.11.2.min.js"><\/script>');
+        }
+    </script>
+    <script src="/Scripts/messageSender.js"></script>
+    @RenderSection("Scripts", required: false)
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    @RenderBody()
+    @RenderSection("WeaponScript", required: false)
+</body>
+</html>
