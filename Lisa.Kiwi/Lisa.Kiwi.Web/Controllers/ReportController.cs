@@ -404,9 +404,9 @@ namespace Lisa.Kiwi.Web
                     }
                 }
 
-                var report = await GetCurrentReport();
+                var report = new Report();
                 await _modelFactory.Modify(report, files);
-                await _reportProxy.PatchAsync(report.Id, report);
+                await _reportProxy.PatchAsync(GetCurrentReportId(), report);
             }
             catch (Exception)
             {
