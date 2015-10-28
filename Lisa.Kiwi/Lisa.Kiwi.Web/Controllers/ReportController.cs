@@ -123,7 +123,7 @@ namespace Lisa.Kiwi.Web
             _modelFactory.Modify(report, viewModel);
             report = await _reportProxy.PatchAsync(GetCurrentReportId(), report);
 
-            return RedirectToAction("Details");
+            return report.Category != "FirstAid" ? RedirectToAction("Details") : RedirectToAction("FirstAid");
         }
 
         public async Task<ActionResult> Details()
@@ -150,6 +150,8 @@ namespace Lisa.Kiwi.Web
             _modelFactory.Modify(report, viewModel);
 
             await _reportProxy.PatchAsync(GetCurrentReportId(), report);
+
+            TempData["FirstAid"] = true;
 
             return RedirectToAction("Contact");
         }
@@ -309,7 +311,7 @@ namespace Lisa.Kiwi.Web
 
         public ActionResult Contact()
         {
-            return View();
+            return (bool?)TempData["FirstAid"] ?? false ? View("ContactFirstAid") : View();
         }
 
         [HttpPost]
@@ -322,14 +324,20 @@ namespace Lisa.Kiwi.Web
                 return View(viewModel);
             }
 
+            Report report;
+
             if (viewModel.EmailAddress != null || viewModel.Name != null || viewModel.PhoneNumber != null)
             {
-                var report = new Report();
+                report = new Report();
                 _modelFactory.Modify(report, viewModel);
-                await _reportProxy.PatchAsync(GetCurrentReportId(), report);
+                report = await _reportProxy.PatchAsync(GetCurrentReportId(), report);
+            }
+            else
+            {
+                report = await GetCurrentReport();
             }
 
-            return RedirectToAction("Continue");
+            return report.Category != "FirstAid" ? RedirectToAction("Continue") : RedirectToAction("Done");
         }
 
         public ActionResult ContactRequired()
