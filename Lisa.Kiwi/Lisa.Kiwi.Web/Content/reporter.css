@@ -47,7 +47,7 @@ html {
 */
 
 header {
-  background-image: url(banner.jpg);
+  background-image: url(/Content/banner.jpg);
   background-repeat: repeat;
   background-size: contain;
   height: 74px;

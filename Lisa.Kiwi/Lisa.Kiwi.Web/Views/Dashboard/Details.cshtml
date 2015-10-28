@@ -1,38 +1,41 @@
 ﻿@model Report
 
 @{
-		ViewBag.Back = @Url.Action("Index", "Dashboard");
+	ViewBag.Back = @Url.Action("Index", "Dashboard");
 }
 
 @if (Model.Category == "Weapons")
 {
-    @section Scripts{
-        <script src="~/Scripts/DoneWeapons.js"></script>
-        <script src="~/Scripts/Done.js"></script>
-    }
+	@section Scripts{
+		<script src="~/Scripts/DoneWeapons.js"></script>
+		<script src="~/Scripts/Done.js"></script>
+		<script src="~/Scripts/dashboardLightbox.js" type="text/javascript"></script>
+	}
 }
 else if (Model.Category == "Fight")
 {
-    @section Scripts{
-        <script src="~/Scripts/DoneWeapons.js"></script>
-        <script src="~/Scripts/DoneFight.js"></script>
-        <script src="~/Scripts/Done.js"></script>
-    }
+	@section Scripts{
+		<script src="~/Scripts/DoneWeapons.js"></script>
+		<script src="~/Scripts/DoneFight.js"></script>
+		<script src="~/Scripts/Done.js"></script>
+		<script src="~/Scripts/dashboardLightbox.js" type="text/javascript"></script>
+	}
 }
 else
 {
-    @section Scripts {
-        <script src="~/Scripts/Done.js"></script>
-    }
+	@section Scripts {
+		<script src="~/Scripts/Done.js"></script>
+		<script src="~/Scripts/dashboardLightbox.js" type="text/javascript"></script>
+	}
 }
 
 <fieldset class="summary">
-    @if (ViewBag.Changed)
-    {
-        <legend class="success_updated_report">
-            <a class="close_successmessage" title="close" aria-label="close" onclick="close_menu()">x</a>Uw wijziging is succesvol opgeslagen.
-        </legend>
-    }
+	@if (ViewBag.Changed)
+	{
+		<legend class="success_updated_report">
+			<a class="close_successmessage" title="close" aria-label="close" onclick="close_menu()">x</a>Uw wijziging is succesvol opgeslagen.
+		</legend>
+	}
 
 	<legend>Wat is er gemeld?</legend>
 	<p>
@@ -69,7 +72,7 @@ else
 
 @if (Model.Files != null && Model.Files.Any())
 {
-    @Html.Partial("~/Views/Shared/Partials/Details/Files.cshtml", Model.Files);
+	@Html.Partial("~/Views/Shared/Partials/Details/Files.cshtml", Model.Files);
 }
 
 @using (Html.BeginForm())
@@ -90,12 +93,12 @@ else
 		</fieldset>
 	}
 	<fieldset>
-		<input type="button" class="detailsbutton" value="Terug" onclick="location.href='@ViewBag.Back'"/>
+		<input type="button" class="detailsbutton" value="Terug" onclick="location.href='@ViewBag.Back'" />
 		<button type="submit" class="detailsbutton">Status wijzigen</button>
 	</fieldset>
-    
+
 }
 
 <div id="lightBox">
-    <img>
+	<img>
 </div>
