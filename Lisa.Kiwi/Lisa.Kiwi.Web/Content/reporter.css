@@ -298,6 +298,7 @@ input[type=button] {
   width: calc(100% - 20px);
   height: 44px;
   position: relative; /* serve as a container for images */
+  cursor: pointer;
 }
 
   button[type=submit],
