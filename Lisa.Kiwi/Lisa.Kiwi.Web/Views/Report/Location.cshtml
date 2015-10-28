@@ -7,7 +7,7 @@
 @using (Html.BeginForm())
 {
 	<fieldset>
-		<legend><i class="fa fa-location-arrow"></i>@DisplayNames.Location</legend>
+		<legend>@DisplayNames.Location</legend>
 		<h2>Buiten</h2>
 		@foreach (var building in new [] { "Buiten", "BetaaldeParkeerplaats", "GroteParkeerplaats" })
 		{

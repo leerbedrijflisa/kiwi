@@ -6,7 +6,7 @@
 @using (Html.BeginForm())
 {
 	<fieldset>
-		<legend><i class="fa fa-arrows-alt"></i>@String.Format(PageItems.LocationDetailedDescription, ViewBag.Preposition, ViewBag.Building)</legend>
+		<legend>@String.Format(PageItems.LocationDetailedDescription, ViewBag.Preposition, ViewBag.Building)</legend>
 		@Html.TextAreaFor(m => m.AdditionalLocation)
 		@Html.ValidationMessageFor(m => m.AdditionalLocation)
 	</fieldset>

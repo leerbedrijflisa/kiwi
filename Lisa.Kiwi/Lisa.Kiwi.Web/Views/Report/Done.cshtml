@@ -4,7 +4,7 @@
 {
 	@section Scripts{
 		<script src="~/Scripts/DoneWeapons.js"></script>
-        <script src="~/Scripts/Done.js"></script>
+		<script src="~/Scripts/Done.js"></script>
 	}
 }
 else if (Model.Category == "Fight")
@@ -12,25 +12,26 @@ else if (Model.Category == "Fight")
 	@section Scripts{
 		<script src="~/Scripts/DoneWeapons.js"></script>
 		<script src="~/Scripts/DoneFight.js"></script>
-        <script src="~/Scripts/Done.js"></script>
+		<script src="~/Scripts/Done.js"></script>
 	}
 }
 else
 {
-    @section Scripts {
-        <script src="~/Scripts/Done.js"></script>
-    }
+	@section Scripts {
+		<script src="~/Scripts/Done.js"></script>
+	}
 }
 
 @using (Html.BeginForm())
 {
 	<fieldset>
-		<legend><i class="fa fa-check-circle-o"></i>@PageItems.DoneMessage</legend>
-        @if (ViewBag.Changed)
-        {
-            <legend class="success_updated_report">
-                <a class="close_successmessage" title="close" aria-label="close" onclick="close_menu()">x</a> Uw wijziging is succesvol opgeslagen.
-            </legend>}
+		<legend>@PageItems.DoneMessage</legend>
+		@if (ViewBag.Changed)
+		{
+			<legend class="success_updated_report">
+				<a class="close_successmessage" title="close" aria-label="close" onclick="close_menu()">x</a> Uw wijziging is succesvol opgeslagen.
+			</legend>
+		}
 		<p class="summary">
 			@if (Model.Category == "FirstAid" || Model.Category == "Fight")
 			{
@@ -69,11 +70,11 @@ else
 	</fieldset>
 
 	@Html.Partial("~/Views/Shared/Partials/Done/" + Model.Category + ".cshtml", Model)
-                
-    if (Model.Files != null && Model.Files.Any())
-    {
-        @Html.Partial("~/Views/Shared/Partials/Details/Files.cshtml", Model.Files)
-    }
+
+	if (Model.Files != null && Model.Files.Any())
+	{
+		@Html.Partial("~/Views/Shared/Partials/Details/Files.cshtml", Model.Files)
+	}
 
 	if (Model.Contact != null)
 	{
@@ -83,7 +84,7 @@ else
 	<input type="hidden" name="category" value="@Model.Category" />
 	<div class="done-button">
 		<a href="/Report/">
-			<button class="submit" type="button"><i class="fa fa-plus"></i>Nieuwe melding</button>
+			<button class="submit" type="button">Nieuwe melding</button>
 		</a>
 	</div>
 	<div class="done-button">
