@@ -6,6 +6,7 @@
 @using (Html.BeginForm())
 {	
 		<fieldset>
+            <legend>Contactgegevens</legend>
 			<legend>@DisplayNames.ContactName</legend>
 			@Html.TextBoxFor(m => m.Name)
 			@Html.ValidationMessageFor(m => m.Name)
