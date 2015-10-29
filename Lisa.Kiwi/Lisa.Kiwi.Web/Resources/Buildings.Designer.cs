@@ -115,7 +115,7 @@ namespace Lisa.Kiwi.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Betaalde Parkeerplaats.
+        ///   Looks up a localized string similar to Betaalde parkeerplaats.
         /// </summary>
         public static string BetaaldeParkeerplaats {
             get {
