@@ -118,16 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Appartementen" xml:space="preserve">
-    <value>appartementen</value>
+    <value>Appartementen</value>
   </data>
   <data name="Bogermanschool" xml:space="preserve">
     <value>Bogermanschool</value>
   </data>
   <data name="Brandweerkazerne" xml:space="preserve">
-    <value>brandweerkazerne</value>
+    <value>Brandweerkazerne</value>
   </data>
   <data name="Buiten" xml:space="preserve">
-    <value>openbare weg</value>
+    <value>Openbare weg</value>
   </data>
   <data name="Drechtstedencollege" xml:space="preserve">
     <value>Drechtstedencollege</value>
@@ -175,31 +175,31 @@
     <value>Verde</value>
   </data>
   <data name="Klimhal" xml:space="preserve">
-    <value>klimhal</value>
+    <value>Klimhal</value>
   </data>
   <data name="Orthodontist" xml:space="preserve">
-    <value>orthodontist</value>
+    <value>Orthodontist</value>
   </data>
   <data name="Parkeerplaats" xml:space="preserve">
-    <value>betaalde parkeerplaats</value>
+    <value>Betaalde parkeerplaats</value>
   </data>
   <data name="ParkeerplaatsBrandweerkazerne" xml:space="preserve">
-    <value>parkeerplaats brandweerkazerne</value>
+    <value>Parkeerplaats brandweerkazerne</value>
   </data>
   <data name="ParkeerplaatsDuurzaamheidsfabriek" xml:space="preserve">
-    <value>parkeerplaats Duurzaamheidsfabriek</value>
+    <value>Parkeerplaats Duurzaamheidsfabriek</value>
   </data>
   <data name="BetaaldeParkeerplaats" xml:space="preserve">
-    <value>betaalde parkeerplaats</value>
+    <value>Betaalde Parkeerplaats</value>
   </data>
   <data name="Samenwerkingsgebouw" xml:space="preserve">
-    <value>samenwerkingsgebouw</value>
+    <value>Samenwerkingsgebouw</value>
   </data>
   <data name="Schippersinternaat" xml:space="preserve">
-    <value>schippersinternaat</value>
+    <value>Schippersinternaat</value>
   </data>
   <data name="Sporthal" xml:space="preserve">
-    <value>sporthal</value>
+    <value>Sporthal</value>
   </data>
   <data name="Veiligheidsregio" xml:space="preserve">
     <value>Veiligheidsregio</value>
@@ -208,7 +208,7 @@
     <value>Wartburg College</value>
   </data>
   <data name="GroteParkeerplaats" xml:space="preserve">
-    <value>grote parkeerplaats</value>
+    <value>Grote parkeerplaats</value>
   </data>
   <data name="Appartementen_Preposition" xml:space="preserve">
     <value>in de</value>

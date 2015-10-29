@@ -61,7 +61,7 @@ namespace Lisa.Kiwi.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to appartementen.
+        ///   Looks up a localized string similar to Appartementen.
         /// </summary>
         public static string Appartementen {
             get {
@@ -115,7 +115,7 @@ namespace Lisa.Kiwi.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to betaalde parkeerplaats.
+        ///   Looks up a localized string similar to Betaalde Parkeerplaats.
         /// </summary>
         public static string BetaaldeParkeerplaats {
             get {
@@ -169,7 +169,7 @@ namespace Lisa.Kiwi.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to brandweerkazerne.
+        ///   Looks up a localized string similar to Brandweerkazerne.
         /// </summary>
         public static string Brandweerkazerne {
             get {
@@ -187,7 +187,7 @@ namespace Lisa.Kiwi.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to openbare weg.
+        ///   Looks up a localized string similar to Openbare weg.
         /// </summary>
         public static string Buiten {
             get {
@@ -295,7 +295,7 @@ namespace Lisa.Kiwi.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to grote parkeerplaats.
+        ///   Looks up a localized string similar to Grote parkeerplaats.
         /// </summary>
         public static string GroteParkeerplaats {
             get {
@@ -331,7 +331,7 @@ namespace Lisa.Kiwi.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to klimhal.
+        ///   Looks up a localized string similar to Klimhal.
         /// </summary>
         public static string Klimhal {
             get {
@@ -421,7 +421,7 @@ namespace Lisa.Kiwi.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to orthodontist.
+        ///   Looks up a localized string similar to Orthodontist.
         /// </summary>
         public static string Orthodontist {
             get {
@@ -439,7 +439,7 @@ namespace Lisa.Kiwi.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to betaalde parkeerplaats.
+        ///   Looks up a localized string similar to Betaalde parkeerplaats.
         /// </summary>
         public static string Parkeerplaats {
             get {
@@ -457,7 +457,7 @@ namespace Lisa.Kiwi.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to parkeerplaats brandweerkazerne.
+        ///   Looks up a localized string similar to Parkeerplaats brandweerkazerne.
         /// </summary>
         public static string ParkeerplaatsBrandweerkazerne {
             get {
@@ -475,7 +475,7 @@ namespace Lisa.Kiwi.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to parkeerplaats Duurzaamheidsfabriek.
+        ///   Looks up a localized string similar to Parkeerplaats Duurzaamheidsfabriek.
         /// </summary>
         public static string ParkeerplaatsDuurzaamheidsfabriek {
             get {
@@ -520,7 +520,7 @@ namespace Lisa.Kiwi.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to samenwerkingsgebouw.
+        ///   Looks up a localized string similar to Samenwerkingsgebouw.
         /// </summary>
         public static string Samenwerkingsgebouw {
             get {
@@ -538,7 +538,7 @@ namespace Lisa.Kiwi.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to schippersinternaat.
+        ///   Looks up a localized string similar to Schippersinternaat.
         /// </summary>
         public static string Schippersinternaat {
             get {
@@ -556,7 +556,7 @@ namespace Lisa.Kiwi.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to sporthal.
+        ///   Looks up a localized string similar to Sporthal.
         /// </summary>
         public static string Sporthal {
             get {
