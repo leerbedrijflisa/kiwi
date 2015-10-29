@@ -108,7 +108,7 @@ namespace Lisa.Kiwi.Web
         {
             var report = await GetCurrentReport();
             var building = report.Location.Building;
-            ViewBag.Building = Resources.Buildings.ResourceManager.GetString(building);
+            ViewBag.Building = Resources.Buildings.ResourceManager.GetString(building).ToLowerInvariant();
             ViewBag.Preposition = Resources.Buildings.ResourceManager.GetString(building + "_Preposition");
 
             return View(new AdditionalLocationViewModel());
