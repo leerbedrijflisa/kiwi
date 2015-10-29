@@ -11,6 +11,7 @@
 		if (!window.jQuery) {
 			document.write('<script src="/Scripts/jquery-1.11.2.min.js"><\/script>');
 		}
+		var category = "@ViewBag.ReportCategory"
 	</script>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,16 +32,5 @@
 	@Scripts.Render("~/bundles/scripts")
 
 	@RenderSection("Scripts", required: false)
-    <script>
-        var category = "@ViewBag.ReportCategory"
-        if (typeof (Storage) !== "undefined" && localStorage.Category !== category && !(category.length === 0 || !category.trim() || category === null)) {
-            localStorage.Category = category;
-        } else {
-            // Sorry! No Web Storage support..
-        }
-        if (!(localStorage.Category.length === 0 || !localStorage.Category.trim() || localStorage.Category === null)) {
-            $('legend i').first().after(localStorage.Category + " - ");
-        }
-    </script>
 </body>
 </html>
