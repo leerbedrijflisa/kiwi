@@ -1,29 +1,36 @@
 ﻿@{
-    ViewBag.Title = "Details";
-    var report = (Report)Model;
+	ViewBag.Title = "Details";
+	var report = (Report)Model;
 }
 
 <iframe src="@report.Category" id="iframe" scrolling="no" onload="resizeIframe(this);"></iframe>
 
 <fieldset id="fileUpload">
-    <legend>Stuur afbeeldingen mee</legend>
-    <div id="overlay"></div>
+	<legend>Stuur afbeeldingen mee</legend>
+	<div id="overlay"></div>
 
-    <p class="errors"></p>
-    <form id="uploadfiles" method="POST" enctype="multipart/form-data">
-        <div class="uploadwrapper">
-            <div class="pseudo-align"></div>
-            <span>Afbeelding toevoegen</span>
-            <input type="file" accept="image/*" capture="camera" title=" " />
-        </div>
-    </form>
+	<p class="errors"></p>
+	<form id="uploadfiles" method="POST" enctype="multipart/form-data">
+		<div class="uploadwrapper">
+			<div class="pseudo-align"></div>
+			<span>Afbeelding toevoegen</span>
+			<input type="file" accept="image/*" capture="camera" title=" " id="file" />
+		</div>
+	</form>
 
-    <table id="uploadqueue" cellspacing="0" cellpadding="0"></table>
+	<table id="uploadqueue" cellspacing="0" cellpadding="0"></table>
 </fieldset>
 
 <script>
-    if (window.FormData === undefined) {
-        $('div#fileUpload').remove();
-    }
+	$(window).load(function () {
+		// when on android, the 'capture' attribute will open the camera app directly
+		if (navigator.userAgent.toLowerCase().indexOf("android") > -1) {
+			$("#file").removeAttr("capture");
+		}
+	});
+
+	if (window.FormData === undefined) {
+		$('div#fileUpload').remove();
+	}
 </script>
 <script src="~/Scripts/fileUpload.js"></script>
