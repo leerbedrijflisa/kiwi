@@ -7,13 +7,13 @@
 
 if (typeof (Storage) !== "undefined")
 {
-    if (localStorage.Category !== category && !isNullOrEmpty(category)) {
+    if (localStorage.Category !== category && !isNullOrWhitespace(category)) {
         localStorage.Category = category;
     } else {
         // Sorry! No Web Storage support...
     }
 
-    if (!isNullOrEmpty(localStorage.Category) && !$('#iframe').length) {
+    if (!isNullOrWhitespace(localStorage.Category) && !$('#iframe').length) {
         $('legend').first().prepend(localStorage.Category + " - ");
     }
 }
