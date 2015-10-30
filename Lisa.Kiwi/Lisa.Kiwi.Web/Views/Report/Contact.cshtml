@@ -23,7 +23,7 @@
 		@Html.Partial("~/Views/Report/PopUpPartials/Contact.cshtml", new ContactViewModel())
 		<button onclick="popUpShow('contact'); postResizeMessage(); return false;">Ja</button>
 		<button>Nee</button>
+		<input type="hidden" name="Enabled" value="false"/>
 	</fieldset>
-	<input type="hidden" name="Enabled" value="false"/>
 }
 <div class="overlay"></div>
