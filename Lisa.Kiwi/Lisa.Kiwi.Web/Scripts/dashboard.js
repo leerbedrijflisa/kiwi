@@ -50,12 +50,12 @@ function updateReports(data) {
 
 function updatedReport() {
     var audio = new Audio('/Content/update.mp3');
-    audio.volume = 0.5;
     audio.play();
 }
 
 function newReport() {
     var audio = new Audio('/Content/alert.mp3');
+    audio.volume = 0.3;
     audio.play();
 }
 
