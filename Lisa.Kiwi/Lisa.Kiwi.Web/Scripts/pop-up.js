@@ -101,7 +101,11 @@ function setPerpetratorsText() {
 // show the popup with id: e
 function popUpShow(e) {
     $( ".overlay" ).show();
-    $( "#" + e + "" ).show();
+    $("#" + e + "").show();
+
+    if (e == "contact") {
+        $("input[name=Enabled]").val("true");
+    }
 };
 
 function popUpHide(e) {
@@ -110,6 +114,10 @@ function popUpHide(e) {
     $(".overlay").hide();
     $("#" + e + "").hide();
     editing = false;
+
+    if (e == "contact") {
+        $("input[name=Enabled]").val("false");
+    }
 }
 
 function popUpReport(e, a) {

@@ -258,7 +258,7 @@ fieldset h2 { /* heading inside form */
   width: calc(100% - 20px);
 }
 
-input:not([type='radio']),
+input:not([type='radio']):not([type='hidden']),
 select,
 textarea {
     box-sizing: border-box; /* otherwise element overflows to the right */
