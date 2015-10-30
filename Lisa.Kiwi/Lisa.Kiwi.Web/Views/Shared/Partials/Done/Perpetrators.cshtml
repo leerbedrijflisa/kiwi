@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Lisa.Kiwi.WebApi.Perpetrator>
+﻿	@using Microsoft.Ajax.Utilities	@model IEnumerable<Lisa.Kiwi.WebApi.Perpetrator>
 
 @if (Model != null && Model.Any())
 {
@@ -8,11 +8,24 @@
 			@foreach (var perp in Model)
 			{
 				<li>
-					@perp.Name, 
+					@{
+						if (!perp.Name.IsNullOrWhiteSpace())
+						{
+							<text>@perp.Name,</text>
+						}
+					} 
 					@String.Format("{0}-{1} jaar", perp.MinimumAge, perp.MaximumAge), 
 					@Sex.ResourceManager.GetString(perp.Sex.ToString()),
-					kleding: @perp.Clothing,
-					andere kenmerken: @perp.UniqueProperties
+					@{
+						if (!perp.Clothing.IsNullOrWhiteSpace())
+						{
+							<text>kleding: @perp.Clothing,</text>
+						}
+						if (!perp.UniqueProperties.IsNullOrWhiteSpace())
+						{
+							<text>andere kenmerken: @perp.UniqueProperties</text>
+						}
+					}
 				</li>
 			}
 		</ul>
