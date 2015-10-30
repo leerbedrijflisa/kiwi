@@ -42,6 +42,8 @@ namespace Lisa.Kiwi.Web
 
             await EnsureReportAccess(report);
 
+            TempData["Category"] = report.Category;
+
             return RedirectToAction("Location");
         }
 
@@ -80,6 +82,8 @@ namespace Lisa.Kiwi.Web
 
         public ActionResult Location()
         {
+            ViewBag.ReportCategory = TempData["Category"] != null ? Resources.Categories.ResourceManager.GetString(TempData["Category"].ToString()) : null;
+
             return View(new LocationViewModel());
         }
 

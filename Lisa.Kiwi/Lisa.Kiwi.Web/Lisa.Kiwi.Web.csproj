@@ -327,6 +327,7 @@
     <Content Include="Scripts\DoneFight.js" />
     <Content Include="Scripts\header-resizer.js" />
     <Content Include="Scripts\bug-report.js" />
+    <Content Include="Scripts\headerCategory.js" />
     <Content Include="Scripts\jquery-1.11.2.min.js" />
     <Content Include="Scripts\jquery.datetimepicker.js" />
     <Content Include="Scripts\messageReciever.js" />
