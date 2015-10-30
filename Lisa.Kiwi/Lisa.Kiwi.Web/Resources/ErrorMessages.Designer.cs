@@ -115,7 +115,7 @@ namespace Lisa.Kiwi.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Het wachtwoord moet minstens 6 tekens lang zijn.
+        ///   Looks up a localized string similar to Het wachtwoord moet minimaal 4 tekens lang zijn.
         /// </summary>
         public static string PasswordLength {
             get {
@@ -138,6 +138,15 @@ namespace Lisa.Kiwi.Web.Resources {
         public static string PhoneNumber {
             get {
                 return ResourceManager.GetString("PhoneNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vul een telefoonnummer of e-mailadres in.
+        /// </summary>
+        public static string PhoneOrEmail {
+            get {
+                return ResourceManager.GetString("PhoneOrEmail", resourceCulture);
             }
         }
         
