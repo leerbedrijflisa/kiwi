@@ -1,28 +1,32 @@
 ﻿@model ContactRequiredViewModel
-    @{
-        Layout = "~/Views/Shared/_LayoutLoadedInFrame.cshtml";
-    }
+@{
+	Layout = "~/Views/Shared/_LayoutLoadedInFrame.cshtml";
+}
+
+@section Scripts{
+	<script src="~/Scripts/headerCategory.js"></script>
+}
 
 @using (Html.BeginForm())
-{	
-		<fieldset>
-            <legend>Contactgegevens</legend>
-			<legend>@DisplayNames.ContactName</legend>
-			@Html.TextBoxFor(m => m.Name)
-			@Html.ValidationMessageFor(m => m.Name)
-			<span class="required">verplicht veld</span>
-		</fieldset>
-		<fieldset>
-			<legend>@DisplayNames.ContactPhoneNumber</legend>
-			@Html.TextBoxFor(m => m.PhoneNumber)
-			@Html.ValidationMessageFor(m => m.PhoneNumber)
-			<span class="required">telefoonnummer of e-mailadres is verplicht</span>
-		</fieldset>
-		<fieldset>
-			<legend>@DisplayNames.ContactEmail</legend>
-			@Html.TextBoxFor(m => m.EmailAddress)
-			@Html.ValidationMessageFor(m => m.EmailAddress)
-			<span class="required">telefoonnummer of e-mailadres is verplicht</span>
-		</fieldset>
+{
+	<fieldset>
+		<legend>Contactgegevens</legend>
+		<legend>@DisplayNames.ContactName</legend>
+		@Html.TextBoxFor(m => m.Name)
+		@Html.ValidationMessageFor(m => m.Name)
+		<span class="required">verplicht veld</span>
+	</fieldset>
+	<fieldset>
+		<legend>@DisplayNames.ContactPhoneNumber</legend>
+		@Html.TextBoxFor(m => m.PhoneNumber)
+		@Html.ValidationMessageFor(m => m.PhoneNumber)
+		<span class="required">telefoonnummer of e-mailadres is verplicht</span>
+	</fieldset>
+	<fieldset>
+		<legend>@DisplayNames.ContactEmail</legend>
+		@Html.TextBoxFor(m => m.EmailAddress)
+		@Html.ValidationMessageFor(m => m.EmailAddress)
+		<span class="required">telefoonnummer of e-mailadres is verplicht</span>
+	</fieldset>
 	<button type="submit"><img src="@Url.Content("~/Content/next.svg")" /></button>
 }

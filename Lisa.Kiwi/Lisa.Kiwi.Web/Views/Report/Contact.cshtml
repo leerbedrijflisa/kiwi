@@ -1,16 +1,17 @@
 ﻿@{
-    ViewBag.Title = "Contact";
-    Layout = "~/Views/Shared/_LayoutLoadedInFrame.cshtml";
+	ViewBag.Title = "Contact";
+	Layout = "~/Views/Shared/_LayoutLoadedInFrame.cshtml";
 }
 
 @section Scripts{
 	<script src="~/Scripts/pop-up.js"></script>
+	<script src="~/Scripts/headerCategory.js"></script>
 }
 
 @if (ViewBag.IsValid != null && !ViewBag.IsValid)
 {
 	<script>
-		$(document).ready(function() {
+		$(document).ready(function () {
 			popUpShow("contact");
 		});
 	</script>
@@ -23,7 +24,7 @@
 		@Html.Partial("~/Views/Report/PopUpPartials/Contact.cshtml", new ContactViewModel())
 		<button onclick="popUpShow('contact'); postResizeMessage(); return false;">Ja</button>
 		<button>Nee</button>
-		<input type="hidden" name="Enabled" value="false"/>
+		<input type="hidden" name="Enabled" value="false" />
 	</fieldset>
 }
 <div class="overlay"></div>

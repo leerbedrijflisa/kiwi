@@ -2,6 +2,9 @@
 	ViewBag.Title = "Details";
 	var report = (Report)Model;
 }
+@section Scripts{
+	<script src="~/Scripts/headerCategory.js"></script>
+}
 
 <iframe src="@report.Category" id="iframe" scrolling="no" onload="resizeIframe(this);"></iframe>
 

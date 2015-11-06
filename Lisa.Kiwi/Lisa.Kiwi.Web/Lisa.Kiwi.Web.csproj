@@ -379,7 +379,6 @@
     <Content Include="Views\Report\Theft.cshtml" />
     <Content Include="Views\Report\Other.cshtml" />
     <Content Include="Views\Report\Nuisance.cshtml" />
-    <Content Include="Views\Report\View.cshtml" />
     <Content Include="App_Code\ReportHelpers.cshtml" />
     <Content Include="Views\Report\AdditionalLocation.cshtml" />
     <Content Include="Views\Report\SessionExpired.cshtml" />

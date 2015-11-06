@@ -1,8 +1,13 @@
 ﻿@model FirstAidViewModel
 
 @{
-    ViewBag.Title = Categories.FirstAid;
+	ViewBag.Title = Categories.FirstAid;
 }
+
+@section Scripts{
+	<script src="~/Scripts/headerCategory.js"></script>
+}
+
 @using (Html.BeginForm())
 {
 	<fieldset>

@@ -9,8 +9,7 @@ namespace Lisa.Kiwi.Web
             bundles.Add(new ScriptBundle("~/bundles/scripts")
                 .Include("~/Scripts/bug-report.js")
                 .Include("~/Scripts/messageReciever.js")
-                .Include("~/Scripts/header-resizer.js")
-                .Include("~/Scripts/headerCategory.js"));
+                .Include("~/Scripts/header-resizer.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/frameScripts")
                 .Include("~/Scripts/messageSender.js")
