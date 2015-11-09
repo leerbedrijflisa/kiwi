@@ -29,7 +29,6 @@ namespace Lisa.Kiwi.Web.Controllers
                 result.Add(resource.Name, translations);
             }
 
-            
             return Content(JsonConvert.SerializeObject(result), "application/json");     
         }
 

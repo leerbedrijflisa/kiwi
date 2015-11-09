@@ -40,7 +40,7 @@ namespace Lisa.Kiwi.Web
                 return View();
             }
 
-            var authProxy = new AuthenticationProxy(WebConfigurationManager.AppSettings["WebApiUrl"], "/api/oauth");
+            var authProxy = new AuthenticationProxy(MvcApplication.GetApiUrl(), "/api/oauth");
 
             var token = await authProxy.Login(model.UserName, model.Password);
             if (token == null)

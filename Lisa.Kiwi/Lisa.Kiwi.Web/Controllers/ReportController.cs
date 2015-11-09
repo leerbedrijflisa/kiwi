@@ -447,7 +447,7 @@ namespace Lisa.Kiwi.Web
 
         private async Task EnsureReportAccess(Report report)
         {
-            var loginProxy = new AuthenticationProxy(WebConfigurationManager.AppSettings["WebApiUrl"], "/api/oauth");
+            var loginProxy = new AuthenticationProxy(MvcApplication.GetApiUrl(), "/api/oauth");
             var token = await loginProxy.LoginAnonymous(report.AnonymousToken);
 
             // TODO: add error handling

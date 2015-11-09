@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using Lisa.Common.Access;
 using Lisa.Kiwi.Web.Resources;
-using System.Web.Configuration;
 using Lisa.Kiwi.WebApi;
 
 namespace Lisa.Kiwi.Web
@@ -12,7 +11,7 @@ namespace Lisa.Kiwi.Web
     {
         protected override void OnActionExecuting(ActionExecutingContext context)
         {
-            _reportProxy = new Proxy<Report>(WebConfigurationManager.AppSettings["WebApiUrl"] + "reports");
+            _reportProxy = new Proxy<Report>(MvcApplication.GetApiUrl() + "reports");
 
             var tokenCookie = Request.Cookies["token"];
             if (tokenCookie != null)
@@ -43,10 +42,9 @@ namespace Lisa.Kiwi.Web
             base.OnException(filterContext);
         }
 
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
-            var reports = await _reportProxy.GetAsync();
-            return View(reports);
+            return View();
         }
 
         public async Task<ActionResult> Details(int? id)
@@ -99,10 +97,9 @@ namespace Lisa.Kiwi.Web
             return RedirectToAction("Details", new { viewModel.Id });
         }
 
-        public async Task<ActionResult> Archive()
+        public ActionResult Archive()
         {
-            var reports = await _reportProxy.GetAsync();
-            return View(reports);
+            return View();
         }
 
         public async Task<ActionResult> ToggleSolved(int id, StatusEnum currentSolved)
@@ -143,6 +140,6 @@ namespace Lisa.Kiwi.Web
         }
 
         private readonly ModelFactory _modelFactory = new ModelFactory();
-        private Proxy<Report> _reportProxy = new Proxy<Report>(WebConfigurationManager.AppSettings["WebApiUrl"] + "reports");
+        private Proxy<Report> _reportProxy = new Proxy<Report>(MvcApplication.GetApiUrl() + "reports");
     }
 }
