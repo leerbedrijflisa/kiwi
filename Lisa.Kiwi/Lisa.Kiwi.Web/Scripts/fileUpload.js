@@ -2,6 +2,10 @@
 var fileObj = new Object;
 var listCount = 0;
 
+String.prototype.isNullOrEmpty = function () {
+    return this.length === 0 || !this.trim() || this === null;
+};
+
 // Event listeners
 $('form#uploadfiles input[type=file]').on('change', function (e) {
     var files = e.target.files;
@@ -29,15 +33,9 @@ function upload() {
             contentType: false,
             processData: false,
             data: data,
-            success: function(data, textStatus, xhr) {
-                uploadSuccess(data, textStatus, xhr)
-            },
-            error: function (xhr, textStatus, errorThrown) {
-                uploadFailed(xhr, textStatus, errorThrown)
-                },
-            complete: function (xhr, textStatus) {
-                requestComplete(xhr, textStatus)
-            }
+            success: uploadSuccess,
+            error: uploadFailed,
+            complete: requestComplete
         });
     }
     else {
@@ -59,13 +57,15 @@ function uploadSuccess(data, textStatus, xhr) {
 
 function uploadFailed(xhr, textStatus, errorThrown) {
     DeactivateFileUploadOverlay();
-    var err = "Error : " + status + " " + errorThrown + " " + xhr.responseText;
     showError(xhr);
 }
 
 function showError(xhr) {
     var errorField = $('#fileUpload p.errors');
-    var errorText = xhr.responseText;
+    var errorText = !xhr.responseText.isNullOrEmpty() ? xhr.responseJSON : xhr.statusText;
+    if (xhr.status === 404) {
+        errorText = "Upload alleen bestanden die samen niet groter zijn dan 50 MB";
+    }
     errorField.html(errorText);
     errorField.show();
 }

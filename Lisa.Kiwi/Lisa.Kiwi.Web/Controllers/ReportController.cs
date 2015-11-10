@@ -409,11 +409,11 @@ namespace Lisa.Kiwi.Web
                         Response.StatusCode = (int)HttpStatusCode.BadRequest;
                         return Json(Resources.ErrorMessages.FileExtension);
                     }
-                    if (!FileHelpers.IsSize(files[file], 10485760))
-                    {
-                        Response.StatusCode = (int)HttpStatusCode.BadRequest;
-                        return Json(Resources.ErrorMessages.FileSize);
-                    }
+                    //if (!FileHelpers.IsSize(files[file], 50000000))
+                    //{
+                    //    Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                    //    return Json(Resources.ErrorMessages.FileSize);
+                    //}
                 }
 
                 var report = new Report();

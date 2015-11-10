@@ -79,7 +79,7 @@ namespace Lisa.Kiwi.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Upload alleen afbeeldingen die kleiner zijn dan 10 MB.
+        ///   Looks up a localized string similar to Upload alleen bestanden die samen niet groter zijn dan 50 MB.
         /// </summary>
         public static string FileSize {
             get {
