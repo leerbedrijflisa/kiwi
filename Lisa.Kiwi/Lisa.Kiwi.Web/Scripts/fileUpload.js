@@ -6,7 +6,7 @@ var listCount = 0;
 $('form#uploadfiles input[type=file]').on('change', function (e) {
     var files = e.target.files;
     if (files.length > 0) {
-        processFileSelection(e, files)
+        processFileSelection(e, files);
     }
 });
 
@@ -30,13 +30,13 @@ function upload() {
             processData: false,
             data: data,
             success: function(data, textStatus, xhr) {
-                uploadSuccess(data, textStatus, xhr)
+                uploadSuccess(data, textStatus, xhr);
             },
             error: function (xhr, textStatus, errorThrown) {
-                uploadFailed(xhr, textStatus, errorThrown)
-                },
+                uploadFailed(xhr, textStatus, errorThrown);
+            },
             complete: function (xhr, textStatus) {
-                requestComplete(xhr, textStatus)
+                requestComplete(xhr, textStatus);
             }
         });
     }
@@ -138,5 +138,5 @@ function objectHasproperties(object) {
 }
 
 function compareFilesForDuplicate(file1, file2) {
-    return file1.size == file2.size && file1.lastModified == file2.lastModified;
+    return file1.size === file2.size && file1.lastModified === file2.lastModified;
 }

@@ -1,5 +1,4 @@
 ﻿using Microsoft.WindowsAzure.Storage.Blob;
-using System.IO;
 using System.Linq;
 using System.Web;
 

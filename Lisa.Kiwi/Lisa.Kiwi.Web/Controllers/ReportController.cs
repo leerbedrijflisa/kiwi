@@ -4,7 +4,6 @@ using System.Web;
 using System.Web.Mvc;
 using Lisa.Kiwi.WebApi;
 using Lisa.Kiwi.WebApi.Access;
-using System.Web.Configuration;
 using Lisa.Common.Access;
 using SendGrid;
 using System.Net;
@@ -404,7 +403,7 @@ namespace Lisa.Kiwi.Web
 
                 foreach (string file in files)
                 {
-                    if (!FileHelpers.IsMimes(files[file], new string[] { "image" }))
+                    if (!FileHelpers.IsMimes(files[file], new [] { "image" }))
                     {
                         Response.StatusCode = (int)HttpStatusCode.BadRequest;
                         return Json(Resources.ErrorMessages.FileExtension);

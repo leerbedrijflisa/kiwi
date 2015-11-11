@@ -113,12 +113,13 @@ namespace Lisa.Kiwi.Web
                 public static List<string> List { get { return _list; } }
 
                 private static List<string> _list = new List<string>
-            {
-                Thumbnail,
-                InPage,
-                FullSize
-            };
+                {
+                    Thumbnail,
+                    InPage,
+                    FullSize
+                };
             }
+
             private static CloudBlobContainer _container;
         }
     }

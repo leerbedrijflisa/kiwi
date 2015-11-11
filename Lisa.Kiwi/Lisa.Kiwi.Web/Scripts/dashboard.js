@@ -37,7 +37,7 @@ function updateReports(data) {
     $('#container').html(html);
 
     if (!firstLoad) {
-        if (reportCount == data.length) {
+        if (reportCount === data.length) {
             setTimeout(updatedReport, 1);
         }
         else {
@@ -90,11 +90,11 @@ Handlebars.registerHelper('detailsSummary', function (report) {
             {
                 report.weaponType = "een onbekend wapen";
             }
-            if (report.weaponType == "Pepperspray") {
+            if (report.weaponType === "Pepperspray") {
                 result = "Het gaat om " + report.weaponType;
-            } else if (report.weaponType == "Anders") {
+            } else if (report.weaponType === "Anders") {
                 result = "Het wapen is zelf ingevoerd namelijk: " + report.weaponTypeOther;
-            } else if (report.weaponType == "een onbekend wapen") {
+            } else if (report.weaponType === "een onbekend wapen") {
                 result = "Het gaat om " + report.weaponType;
             } else {
                 result = "Het gaat om een " + report.weaponType;
@@ -114,14 +114,15 @@ Handlebars.registerHelper('detailsSummary', function (report) {
 Handlebars.registerHelper('translate', translate);
 
 Handlebars.registerHelper('prettyDate', function (date) {
+    date = new Date(date);
+
     var today = new Date(),
         todayDate = today.getDate() + "-" + (today.getMonth() + 1) + "-" + today.getFullYear(),
-        date = new Date(date),
         dateDate = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear(),
         dateTime = date.getHours() + ':' + ((date.getMinutes()
             < 10 ? '0' : '') + date.getMinutes());
 
-    return todayDate == dateDate ? dateTime : dateDate;
+    return todayDate === dateDate ? dateTime : dateDate;
 });
 
 Handlebars.registerHelper('ifCond', function (v1, v2, options) {
@@ -165,8 +166,8 @@ function getCookie(cname) {
     var ca = document.cookie.split(';');
     for (var i = 0; i < ca.length; i++) {
         var c = ca[i];
-        while (c.charAt(0) == ' ') c = c.substring(1);
-        if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+        while (c.charAt(0) === ' ') c = c.substring(1);
+        if (c.indexOf(name) === 0) return c.substring(name.length, c.length);
     }
     return "";
 }
