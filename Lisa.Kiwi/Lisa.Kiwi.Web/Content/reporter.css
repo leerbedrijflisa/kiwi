@@ -33,7 +33,7 @@ html {
   }
 
   body {
-    margin: 0px auto; /* center the entire page */
+    margin: 0 auto; /* center the entire page */
   }
 }
 

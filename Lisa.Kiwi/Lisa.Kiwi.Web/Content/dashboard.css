@@ -303,14 +303,12 @@ section.Solved {
     background-image: url(DashboardBuildings/building-romboutslaan.jpg);
 }
 
-.Betaaldeparkeerplaats,
+.BetaaldeParkeerplaats,
 .Buiten {
     background-image: url(DashboardBuildings/building-betaaldeparkeerplaats.jpg);
 }
 
-.ParkeerplaatsDuurzaamheidsfabriek,
-.GroteParkeerplaats,
-.ParkeerplaatsBrandweerkazerne {
+.GroteParkeerplaats {
     background-image: url(DashboardBuildings/building-parkeerplaats-langeveldlaan.jpg);
 }
 
@@ -363,6 +361,5 @@ section.Solved {
 }
 
 .GrandCafe {
-    background-image: url(DashboardBuildings/building-grandcafe.jpg);
+  background-image: url(DashboardBuildings/building-grandcafe.jpg);
 }
-

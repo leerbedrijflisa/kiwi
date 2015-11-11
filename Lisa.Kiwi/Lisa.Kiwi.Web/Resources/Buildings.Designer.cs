@@ -457,33 +457,6 @@ namespace Lisa.Kiwi.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Parkeerplaats brandweerkazerne.
-        /// </summary>
-        public static string ParkeerplaatsBrandweerkazerne {
-            get {
-                return ResourceManager.GetString("ParkeerplaatsBrandweerkazerne", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to op de.
-        /// </summary>
-        public static string ParkeerplaatsBrandweerkazerne__Preposition {
-            get {
-                return ResourceManager.GetString("ParkeerplaatsBrandweerkazerne__Preposition", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Parkeerplaats Duurzaamheidsfabriek.
-        /// </summary>
-        public static string ParkeerplaatsDuurzaamheidsfabriek {
-            get {
-                return ResourceManager.GetString("ParkeerplaatsDuurzaamheidsfabriek", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Romboutslaan 40.
         /// </summary>
         public static string Romboutslaan {
