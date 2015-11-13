@@ -73,8 +73,10 @@ namespace Lisa.Kiwi.WebApi
        
         public async Task<IHttpActionResult> Patch(int? id, [FromBody] JToken json)
         {
+
             var claimsIdentity = (ClaimsIdentity)User.Identity;
 
+            // check if the patching user is anonymous, then check if the anonymous user has rights to patch this report
             if (claimsIdentity.HasClaim(ClaimTypes.Role, "Anonymous"))
             {
                 if (!claimsIdentity.HasClaim("reportId", id.ToString()))
@@ -89,15 +91,9 @@ namespace Lisa.Kiwi.WebApi
                 return NotFound();
             }
 
-            if (!claimsIdentity.HasClaim(ClaimTypes.Role, "Anonymous"))
-            {
-                if (!claimsIdentity.HasClaim("is_admin", "True") && json.Value<bool>("isVisible") != reportData.IsVisible)
-                {
-                    return Unauthorized();
-                }
-            }
-
-            _dataFactory.Modify(reportData, json);
+            _dataFactory.Modify(reportData, json, claimsIdentity.Claims.Where(s => s.Type == ClaimTypes.Role)
+                .Select(s => s.Value)
+                .FirstOrDefault());
             
             if (_db.HasUnsavedChanges())
             {

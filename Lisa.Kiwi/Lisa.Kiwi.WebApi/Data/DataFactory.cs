@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Globalization;
 using Newtonsoft.Json.Linq;
-using System.Collections.Generic;
-using System.Web;
 
 namespace Lisa.Kiwi.WebApi
 {
@@ -12,18 +10,24 @@ namespace Lisa.Kiwi.WebApi
         public ReportData Create(JToken json)
         {
             var reportData = new ReportData();
-            Modify(reportData, json);
+            Modify(reportData, json, "Anonymous");
             return reportData;
         }
 
-        public void Modify(ReportData reportData, JToken json)
+        public void Modify(ReportData reportData, JToken json, string role)
         {
             reportData.Category = json.Value<string>("category") ?? reportData.Category;
 
-            reportData.IsVisible = json.Value<bool?>("isVisible") ?? reportData.IsVisible;
+            if (role == "Administrator")
+            {
+                reportData.IsVisible = json.Value<bool?>("isVisible") ?? reportData.IsVisible; 
+            }
             
-            var statusString = json["status"] != null ? json.Value<string>("status") : null;
-            reportData.Status = statusString != null ? (StatusEnum)Enum.Parse(typeof(StatusEnum), statusString, true) : reportData.Status;
+            if (role != "Anonymous")
+            {
+                var statusString = json["status"] != null ? json.Value<string>("status") : null;
+                reportData.Status = statusString != null ? (StatusEnum)Enum.Parse(typeof(StatusEnum), statusString, true) : reportData.Status;
+            }
 
             reportData.Description = json.Value<string>("description") ?? reportData.Description;
 
