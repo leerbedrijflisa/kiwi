@@ -72,7 +72,7 @@ else
 
 @if (Model.Files != null && Model.Files.Any())
 {
-	@Html.Partial("~/Views/Shared/Partials/Details/Files.cshtml", Model.Files);
+	@Html.Partial("~/Views/Shared/Partials/Details/Files.cshtml", Model.Files)
 }
 
 @using (Html.BeginForm())

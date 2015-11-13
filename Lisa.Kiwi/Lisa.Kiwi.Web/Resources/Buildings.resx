@@ -183,12 +183,6 @@
   <data name="Parkeerplaats" xml:space="preserve">
     <value>Betaalde parkeerplaats</value>
   </data>
-  <data name="ParkeerplaatsBrandweerkazerne" xml:space="preserve">
-    <value>Parkeerplaats brandweerkazerne</value>
-  </data>
-  <data name="ParkeerplaatsDuurzaamheidsfabriek" xml:space="preserve">
-    <value>Parkeerplaats Duurzaamheidsfabriek</value>
-  </data>
   <data name="BetaaldeParkeerplaats" xml:space="preserve">
     <value>Betaalde parkeerplaats</value>
   </data>
@@ -269,9 +263,6 @@
   </data>
   <data name="Orthodontist_Preposition" xml:space="preserve">
     <value>bij de</value>
-  </data>
-  <data name="ParkeerplaatsBrandweerkazerne__Preposition" xml:space="preserve">
-    <value>op de</value>
   </data>
   <data name="Parkeerplaats_Preposition" xml:space="preserve">
     <value>op de</value>

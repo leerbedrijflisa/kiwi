@@ -37,7 +37,7 @@ namespace Lisa.Kiwi.Web
             return url;
         }
 
-        public static CloudBlobClient GetBlobStorageClient()
+        private static CloudBlobClient GetBlobStorageClient()
         {
             if (_blobClient == null) _blobClient = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("StorageConnectionString")).CreateCloudBlobClient();
 

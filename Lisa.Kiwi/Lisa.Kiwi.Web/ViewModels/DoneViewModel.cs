@@ -43,7 +43,7 @@ namespace Lisa.Kiwi.Web
         public string ContactEmail { get; set; }
         public string ContactPhoneNumber { get; set; }
 
-        private static string[] _validWeapons =
+        private static readonly string[] _validWeapons =
         {
             "Mes",
             "Boksbeugel",

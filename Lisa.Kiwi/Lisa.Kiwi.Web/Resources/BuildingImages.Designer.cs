@@ -243,15 +243,6 @@ namespace Lisa.Kiwi.Web.Resources {
         /// <summary>
         ///   Looks up a localized string similar to building-parkeerplaats-langeveldlaan.
         /// </summary>
-        public static string ParkeerplaatsBrandweerkazerne {
-            get {
-                return ResourceManager.GetString("ParkeerplaatsBrandweerkazerne", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to building-parkeerplaats-langeveldlaan.
-        /// </summary>
         public static string ParkeerplaatsDuurzaamheidsfabriek {
             get {
                 return ResourceManager.GetString("ParkeerplaatsDuurzaamheidsfabriek", resourceCulture);

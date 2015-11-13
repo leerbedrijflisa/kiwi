@@ -10,7 +10,7 @@ String.prototype.isNullOrEmpty = function () {
 $('form#uploadfiles input[type=file]').on('change', function (e) {
     var files = e.target.files;
     if (files.length > 0) {
-        processFileSelection(e, files)
+        processFileSelection(e, files);
     }
 });
 
@@ -138,5 +138,5 @@ function objectHasproperties(object) {
 }
 
 function compareFilesForDuplicate(file1, file2) {
-    return file1.size == file2.size && file1.lastModified == file2.lastModified;
+    return file1.size === file2.size && file1.lastModified === file2.lastModified;
 }

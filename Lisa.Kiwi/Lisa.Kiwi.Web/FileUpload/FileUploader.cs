@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -96,11 +95,11 @@ namespace Lisa.Kiwi.Web
             await block.UploadFromStreamAsync(stream);
         }
 
-        private string _key;
-        private string _extension;
-        private string _contentType;
-        private string _containerName;
-        private HttpPostedFileBase _file;
-        private CloudBlobContainer _container;
+        private readonly string _key;
+        private readonly string _extension;
+        private readonly string _contentType;
+        private readonly string _containerName;
+        private readonly HttpPostedFileBase _file;
+        private readonly CloudBlobContainer _container;
     }
 }
