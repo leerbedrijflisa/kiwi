@@ -45,7 +45,7 @@ namespace Lisa.Kiwi.Web
 
         public async Task<ActionResult> Index()
         {
-            if (await _authenticationProxy.GetIsAnonymous("bearer", Request.Cookies["token"].Value))
+            if (Request.Cookies["token"] == null || await _authenticationProxy.GetIsAnonymous("bearer", Request.Cookies["token"].Value))
             {
                 throw new UnauthorizedAccessException();
             }
@@ -105,7 +105,7 @@ namespace Lisa.Kiwi.Web
 
         public async Task<ActionResult> Archive()
         {
-            if (!await _authenticationProxy.GetIsAdmin("bearer", Request.Cookies["token"].Value))
+            if (Request.Cookies["token"] == null || !await _authenticationProxy.GetIsAdmin("bearer", Request.Cookies["token"].Value))
             {
                 throw new UnauthorizedAccessException();
             }
