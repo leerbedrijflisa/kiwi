@@ -4,6 +4,8 @@ using System.Web.Mvc;
 using Lisa.Common.Access;
 using Lisa.Kiwi.Web.Resources;
 using Lisa.Kiwi.WebApi;
+using Lisa.Kiwi.WebApi.Access;
+using Token = Lisa.Common.Access.Token;
 
 namespace Lisa.Kiwi.Web
 {
@@ -26,7 +28,6 @@ namespace Lisa.Kiwi.Web
         }
 
         protected override void OnException(ExceptionContext filterContext)
-        
         {
             if (filterContext.Exception.GetType() == typeof (UnauthorizedAccessException))
             {
@@ -42,8 +43,13 @@ namespace Lisa.Kiwi.Web
             base.OnException(filterContext);
         }
 
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
+            if (await _authenticationProxy.GetIsAnonymous("bearer", Request.Cookies["token"].Value))
+            {
+                throw new UnauthorizedAccessException();
+            }
+
             return View();
         }
 
@@ -97,8 +103,13 @@ namespace Lisa.Kiwi.Web
             return RedirectToAction("Details", new { viewModel.Id });
         }
 
-        public ActionResult Archive()
+        public async Task<ActionResult> Archive()
         {
+            if (!await _authenticationProxy.GetIsAdmin("bearer", Request.Cookies["token"].Value))
+            {
+                throw new UnauthorizedAccessException();
+            }
+
             return View();
         }
 
@@ -141,5 +152,6 @@ namespace Lisa.Kiwi.Web
 
         private readonly ModelFactory _modelFactory = new ModelFactory();
         private Proxy<Report> _reportProxy = new Proxy<Report>(MvcApplication.GetApiUrl() + "reports");
+        private AuthenticationProxy _authenticationProxy = new AuthenticationProxy(MvcApplication.GetApiUrl(), "");
     }
 }
