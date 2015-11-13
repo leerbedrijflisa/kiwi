@@ -152,6 +152,6 @@ namespace Lisa.Kiwi.Web
 
         private readonly ModelFactory _modelFactory = new ModelFactory();
         private Proxy<Report> _reportProxy = new Proxy<Report>(MvcApplication.GetApiUrl() + "reports");
-        private AuthenticationProxy _authenticationProxy = new AuthenticationProxy(MvcApplication.GetApiUrl(), "");
+        private readonly AuthenticationProxy _authenticationProxy = new AuthenticationProxy(MvcApplication.GetApiUrl(), "");
     }
 }
