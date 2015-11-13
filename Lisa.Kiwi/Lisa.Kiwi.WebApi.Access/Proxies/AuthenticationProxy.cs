@@ -26,7 +26,7 @@ namespace Lisa.Kiwi.WebApi.Access
         {
             _client.DefaultRequestHeaders.Add("Authorization", String.Format("{0} {1}", tokenType, token));
 
-            var response = await _client.GetAsync("is_admin");
+            var response = await _client.GetAsync("/api/users/is_admin");
 
             if (response.StatusCode != HttpStatusCode.OK)
             {
