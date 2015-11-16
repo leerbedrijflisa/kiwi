@@ -2,6 +2,8 @@
     updateReportData();
     
     $.connection.hub.start();
+
+    setInterval(checkConnection, 60000);
 });
 
 // Get the date of 28 days ago
@@ -15,8 +17,11 @@ $.connection.hub.url = ApiUrl + "signalr";
 // Create the ReportDataChange method in the signalR hub. This method can be called by the server
 $.connection.reportsHub.client.ReportDataChange = updateReportData;
 
+
+
 var firstLoad = true;
 var reportCount = 0;
+
 
 // Ajax call to the Web API for an update
 function updateReportData() {
@@ -57,6 +62,24 @@ function newReport() {
     var audio = new Audio('/Content/alert.mp3');
     audio.volume = 0.3;
     audio.play();
+}
+
+function checkConnection() {
+    $.ajax({
+        type: "GET",
+        url: ApiUrl + "reports",
+        success: function() {
+            alert("connected");
+        },
+        error: function (xhr) {
+            if (xhr.status !== 401) {
+                alert("disconnected");
+            }
+            else {
+                alert("connected");
+            }
+        }
+    });
 }
 
 //#region Handlebars helpers
