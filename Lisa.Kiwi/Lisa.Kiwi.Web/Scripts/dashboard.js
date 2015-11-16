@@ -3,6 +3,8 @@
     
     $.connection.hub.start();
 
+    $("#connectionLostBox").hide();
+
     setInterval(checkConnection, 60000);
 });
 
@@ -17,11 +19,9 @@ $.connection.hub.url = ApiUrl + "signalr";
 // Create the ReportDataChange method in the signalR hub. This method can be called by the server
 $.connection.reportsHub.client.ReportDataChange = updateReportData;
 
-
-
 var firstLoad = true;
 var reportCount = 0;
-
+var connected = true;
 
 // Ajax call to the Web API for an update
 function updateReportData() {
@@ -69,17 +69,33 @@ function checkConnection() {
         type: "GET",
         url: ApiUrl + "reports",
         success: function() {
-            alert("connected");
+            $("#connectionLostBox").hide();
+            setConnected();
         },
         error: function (xhr) {
             if (xhr.status !== 401) {
-                alert("disconnected");
+                $("#connectionLostBox").show();
+                setTimeout(checkConnection, 10000);
+                setDisconnected();
             }
             else {
-                alert("connected");
+                $("#connectionLostBox").hide();
+                setConnected();
             }
         }
     });
+}
+
+function setConnected() {
+    if (!connected) {
+        updateReportData();
+    }
+
+    connected = true;
+}
+
+function setDisconnected() {
+    connected = false;
 }
 
 //#region Handlebars helpers

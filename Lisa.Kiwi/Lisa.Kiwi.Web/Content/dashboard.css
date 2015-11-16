@@ -363,3 +363,13 @@ section.Solved {
 .GrandCafe {
   background-image: url(DashboardBuildings/building-grandcafe.jpg);
 }
+
+#connectionLostBox {
+    border: 1px solid black;
+    position: fixed;
+    bottom: 10px;
+    padding: 20px;
+    background-color: #da4c4c;
+    color: white;
+    border-radius: 40px;
+}
