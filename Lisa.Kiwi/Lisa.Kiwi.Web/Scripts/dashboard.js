@@ -6,6 +6,8 @@
     $("#connectionLostBox").hide();
 
     setInterval(checkConnection, 60000);
+
+    console.error = function() {};
 });
 
 // Get the date of 28 days ago
@@ -67,21 +69,17 @@ function newReport() {
 function checkConnection() {
     $.ajax({
         type: "GET",
-        url: ApiUrl + "reports",
+        url: ApiUrl + "api/users/ping",
+        headers: {
+            'Authorization': 'bearer ' + getCookie('token')
+        },
         success: function() {
             $("#connectionLostBox").hide();
             setConnected();
         },
         error: function (xhr) {
-            if (xhr.status !== 401) {
-                $("#connectionLostBox").show();
-                setTimeout(checkConnection, 10000);
-                setDisconnected();
-            }
-            else {
-                $("#connectionLostBox").hide();
-                setConnected();
-            }
+            $("#connectionLostBox").show();
+            setDisconnected();
         }
     });
 }

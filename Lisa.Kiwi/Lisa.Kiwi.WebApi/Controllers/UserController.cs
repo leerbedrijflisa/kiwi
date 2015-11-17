@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -106,6 +107,14 @@ namespace Lisa.Kiwi.WebApi
             }
 
             return BadRequest(ModelState);
+        }
+
+        [HttpGet]
+        [Route("ping")]
+        [Authorize]
+        public IHttpActionResult Ping()
+        {
+            return StatusCode(HttpStatusCode.NoContent);
         }
 
         private readonly AuthRepository _auth = new AuthRepository();
