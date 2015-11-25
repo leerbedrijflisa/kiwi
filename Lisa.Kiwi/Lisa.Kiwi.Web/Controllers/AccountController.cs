@@ -51,13 +51,13 @@ namespace Lisa.Kiwi.Web
 
             var tokenCookie = new HttpCookie("token", token.Value)
             {
-                Expires = DateTime.Now.AddMinutes(token.ExpiresIn),
+                Expires = DateTime.Now.AddSeconds(token.ExpiresIn),
                 HttpOnly = false
             };
 
             var roleCookie = new HttpCookie("role", token.Role)
             {
-                Expires = DateTime.Now.AddMinutes(token.ExpiresIn),
+                Expires = DateTime.Now.AddSeconds(token.ExpiresIn),
                 HttpOnly = true
             };
 
