@@ -78,8 +78,13 @@ function checkConnection() {
             setConnected();
         },
         error: function (xhr) {
-            $("#connectionLostBox").show();
-            setDisconnected();
+            if (xhr.status == 401) {
+                window.location.href = "/account/login";
+            }
+            else {
+                $("#connectionLostBox").show();
+                setDisconnected();
+            }
         }
     });
 }
