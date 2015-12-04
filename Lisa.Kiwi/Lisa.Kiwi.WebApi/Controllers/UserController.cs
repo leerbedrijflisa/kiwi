@@ -80,6 +80,22 @@ namespace Lisa.Kiwi.WebApi
             return Ok(user.Claims.Any(c => c.Type == "is_anonymous" && Boolean.Parse(c.Value)));
         }
 
+        [Route("time")]
+        [HttpGet]
+        public IHttpActionResult Time()
+        {
+            var timeZoneInfoCorrected = TimeZoneInfo.FindSystemTimeZoneById("W. Europe Standard Time");
+            var timeZoneInfo = TimeZoneInfo.Utc;
+
+            var originalTime = DateTime.Now;
+            var correctedTime = DateTime.Now.AddHours(timeZoneInfoCorrected.GetUtcOffset(DateTime.UtcNow).Hours);
+            var isDSTOriginal = timeZoneInfo.IsDaylightSavingTime(originalTime);
+            var isDSTCorrected = timeZoneInfoCorrected.IsDaylightSavingTime(correctedTime);
+
+
+            return Ok(new { originalTime, correctedTime, isDSTOriginal, isDSTCorrected });
+        }
+
         private IHttpActionResult GetErrorResult(IdentityResult result)
         {
             if (result == null)
