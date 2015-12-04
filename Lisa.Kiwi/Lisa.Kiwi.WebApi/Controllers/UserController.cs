@@ -87,8 +87,8 @@ namespace Lisa.Kiwi.WebApi
             var timeZoneInfoCorrected = TimeZoneInfo.FindSystemTimeZoneById("W. Europe Standard Time");
             var timeZoneInfo = TimeZoneInfo.Utc;
 
-            var originalTime = DateTime.Now;
-            var correctedTime = DateTime.Now.AddHours(timeZoneInfoCorrected.GetUtcOffset(DateTime.UtcNow).Hours);
+            var originalTime = DateTimeOffset.Now;
+            var correctedTime = DateTimeOffset.Now.AddHours(timeZoneInfoCorrected.GetUtcOffset(DateTimeOffset.UtcNow).Hours);
             var isDSTOriginal = timeZoneInfo.IsDaylightSavingTime(originalTime);
             var isDSTCorrected = timeZoneInfoCorrected.IsDaylightSavingTime(correctedTime);
 
