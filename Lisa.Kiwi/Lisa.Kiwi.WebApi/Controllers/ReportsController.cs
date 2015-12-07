@@ -97,7 +97,7 @@ namespace Lisa.Kiwi.WebApi
             
             if (_db.HasUnsavedChanges())
             {
-                reportData.Modified = DateTimeOffset.Now.AddHours(TimeZoneInfo.FindSystemTimeZoneById("W. Europe Standard Time").GetUtcOffset(DateTime.UtcNow).Hours);
+                reportData.Modified = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now, "W. Europe Standard Time");
 
                 _db.SaveChanges();
                 TriggerReportDataChange();

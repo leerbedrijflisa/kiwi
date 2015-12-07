@@ -15,7 +15,7 @@ namespace Lisa.Kiwi.Web
         {
             return new Report
             {
-                Created = DateTimeOffset.Now.AddHours(TimeZoneInfo.FindSystemTimeZoneById("W. Europe Standard Time").GetUtcOffset(DateTime.UtcNow).Hours),
+                Created = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now, "W. Europe Standard Time"),
                 Status = StatusEnum.Open,
                 IsVisible = true,
                 Category = viewModel.Category

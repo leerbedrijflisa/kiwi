@@ -9,7 +9,7 @@ namespace Lisa.Kiwi.WebApi
     {
         public ReportData()
         {
-            Created = DateTimeOffset.Now.AddHours(TimeZoneInfo.FindSystemTimeZoneById("W. Europe Standard Time").GetUtcOffset(DateTime.UtcNow).Hours);
+            Created = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now, "W. Europe Standard Time");
             IsVisible = true;
         }
 
