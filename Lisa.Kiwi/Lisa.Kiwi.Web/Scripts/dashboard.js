@@ -156,6 +156,8 @@ Handlebars.registerHelper('detailsSummary', function (report) {
 Handlebars.registerHelper('translate', translate);
 
 Handlebars.registerHelper('prettyDate', function (date) {
+    date = date.substring(0, 29) + "1:00";
+
     date = new Date(date);
 
     var today = new Date(),
