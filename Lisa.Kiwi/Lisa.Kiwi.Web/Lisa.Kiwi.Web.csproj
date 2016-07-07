@@ -488,12 +488,7 @@
       <CustomToolNamespace>Lisa.Kiwi.Web.Resources</CustomToolNamespace>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Lisa.Kiwi.WebApi.Access\Lisa.Kiwi.WebApi.Access.csproj">
-      <Project>{2587c3b3-925f-4d00-96c7-535c57f90675}</Project>
-      <Name>Lisa.Kiwi.WebApi.Access</Name>
-    </ProjectReference>
-  </ItemGroup>
+  
   <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Resources\Categories.resx">
