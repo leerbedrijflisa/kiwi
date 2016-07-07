@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Net;
 using System.Net.Http;
 using System.Text;
@@ -126,5 +126,25 @@ namespace Lisa.Kiwi.WebApi.Access
         private readonly HttpClient _client;
         private readonly string _resourceUrl;
         private readonly string _baseUrl;
+    }
+}
+
+namespace Lisa.Common.Access
+{
+    public class WebApiException : Exception
+    {
+        public WebApiException(string message, HttpStatusCode statusCode)
+            : base(message)
+        {
+            StatusCode = statusCode;
+        }
+
+        public WebApiException(string message, HttpStatusCode statusCode, Exception innerException)
+            : base(message, innerException)
+        {
+            StatusCode = statusCode;
+        }
+
+        public HttpStatusCode StatusCode { get; set; }
     }
 }
